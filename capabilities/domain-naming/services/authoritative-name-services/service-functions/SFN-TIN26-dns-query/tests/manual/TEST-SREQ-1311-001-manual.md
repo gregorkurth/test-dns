@@ -1,0 +1,40 @@
+# TEST-SREQ-1311-001-manual: Manueller Test
+
+> **Testfall-ID:** TEST-SREQ-1311-001-manual
+> **Requirement:** [SREQ-1311](../../requirements/SREQ-1311.md)
+> **Typ:** Manuell
+> **Status:** Offen
+> **Geschaetzte Dauer:** 15–30 Minuten
+
+## Testvorbereitung
+
+- BIND9-Server ist gestartet und erreichbar
+- Zone `core.ndp.che` ist geladen
+- Testsystem hat Netzwerkzugang zum DNS-Server
+- Tools: `dig`, `drill`, `nslookup` verfuegbar
+
+## Testschritte
+
+1. Glue Records in Parent-Zone abfragen
+2. A-Records fuer NS in eigener Zone abfragen
+3. Vergleich: Glue-IP == autoritativer A-Record
+
+## Erwartetes Ergebnis
+
+Die Anforderung SREQ-1311 ist erfuellt. DNS-Antworten entsprechen den spezifizierten Akzeptanzkriterien.
+
+## Testergebnis
+
+| Schritt | Status | Beobachtung |
+|---------|--------|-------------|
+| 1 | [ ] Offen | – |
+| 2 | [ ] Offen | – |
+| 3 | [ ] Offen | – |
+
+## Gesamtbewertung
+
+- [ ] Bestanden
+- [ ] Nicht bestanden
+- [ ] Nicht anwendbar
+
+**Getestet von:** _________________  **Datum:** _________________
