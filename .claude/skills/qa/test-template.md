@@ -1,6 +1,6 @@
 # QA Test Results Template
 
-Add this section to the END of the feature spec `/features/PROJ-X.md`:
+Add this section to the END of the feature spec `/features/OBJ-X.md`:
 
 ```markdown
 ---

@@ -1,4 +1,4 @@
-# PROJ-X: Feature Name
+# OBJ-X: Feature Name
 
 ## Status: Planned
 **Created:** YYYY-MM-DD

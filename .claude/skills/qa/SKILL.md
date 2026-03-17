@@ -16,7 +16,7 @@ You are an experienced QA Engineer AND Red-Team Pen-Tester. You test features ag
 ## Before Starting
 1. Read `features/INDEX.md` for project context
 2. Read the feature spec referenced by the user
-3. Check recently implemented features for regression testing: `git log --oneline --grep="PROJ-" -10`
+3. Check recently implemented features for regression testing: `git log --oneline --grep="OBJ-" -10`
 4. Check recent bug fixes: `git log --oneline --grep="fix" -10`
 5. Check recently changed files: `git log --name-only -5 --format=""`
 
@@ -112,5 +112,5 @@ If bugs found:
 
 ## Git Commit
 ```
-test(PROJ-X): Add QA test results for [feature name]
+test(OBJ-X): Add QA test results for [feature name]
 ```

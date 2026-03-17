@@ -20,7 +20,7 @@ src/
     ui/             shadcn/ui components (NEVER recreate these)
   hooks/            Custom React hooks
   lib/              Utilities (supabase.ts, utils.ts)
-features/           Feature specifications (PROJ-X-name.md)
+features/           Feature specifications (OBJ-X-name.md)
   INDEX.md          Feature status overview
 docs/
   PRD.md            Product Requirements Document
@@ -38,12 +38,12 @@ docs/
 
 ## Feature Tracking
 
-All features tracked in `features/INDEX.md`. Every skill reads it at start and updates it when done. Feature specs live in `features/PROJ-X-name.md`.
+All features tracked in `features/INDEX.md`. Every skill reads it at start and updates it when done. Feature specs live in `features/OBJ-X-name.md`.
 
 ## Key Conventions
 
-- **Feature IDs:** PROJ-1, PROJ-2, etc. (sequential)
-- **Commits:** `feat(PROJ-X): description`, `fix(PROJ-X): description`
+- **Feature IDs:** OBJ-1, OBJ-2, etc. (sequential)
+- **Commits:** `feat(OBJ-X): description`, `fix(OBJ-X): description`
 - **Single Responsibility:** One feature per spec file
 - **shadcn/ui first:** NEVER create custom versions of installed shadcn components
 - **Human-in-the-loop:** All workflows have user approval checkpoints

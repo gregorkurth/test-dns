@@ -86,5 +86,5 @@ See [checklist.md](checklist.md) for the full implementation checklist.
 
 ## Git Commit
 ```
-feat(PROJ-X): Implement frontend for [feature name]
+feat(OBJ-X): Implement frontend for [feature name]
 ```

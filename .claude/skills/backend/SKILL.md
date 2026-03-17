@@ -99,5 +99,5 @@ After completion:
 
 ## Git Commit
 ```
-feat(PROJ-X): Implement backend for [feature name]
+feat(OBJ-X): Implement backend for [feature name]
 ```

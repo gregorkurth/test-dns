@@ -64,8 +64,8 @@ For first deployment, guide the user through these setup guides:
 ### 6. Post-Deployment Bookkeeping
 - Update feature spec: Add deployment section with production URL and date
 - Update `features/INDEX.md`: Set status to **Deployed**
-- Create git tag: `git tag -a v1.X.0-PROJ-X -m "Deploy PROJ-X: [Feature Name]"`
-- Push tag: `git push origin v1.X.0-PROJ-X`
+- Create git tag: `git tag -a v1.X.0-OBJ-X -m "Deploy OBJ-X: [Feature Name]"`
+- Push tag: `git push origin v1.X.0-OBJ-X`
 
 ## Common Issues
 
@@ -106,7 +106,7 @@ If production is broken:
 
 ## Git Commit
 ```
-deploy(PROJ-X): Deploy [feature name] to production
+deploy(OBJ-X): Deploy [feature name] to production
 
 - Production URL: https://your-app.vercel.app
 - Deployed: YYYY-MM-DD

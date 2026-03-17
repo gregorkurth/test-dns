@@ -49,20 +49,20 @@ Based on the state analysis, determine what the user should do next:
 > Run `/requirements` to create your first feature specification.
 
 **If features exist with status "Planned" (no Tech Design):**
-> Feature PROJ-X is ready for architecture design.
-> Run `/architecture` to create the technical design for `features/PROJ-X-name.md`
+> Feature OBJ-X is ready for architecture design.
+> Run `/architecture` to create the technical design for `features/OBJ-X-name.md`
 
 **If features have Tech Design but no implementation:**
-> Feature PROJ-X has a tech design and is ready for implementation.
-> Run `/frontend` to build the UI for `features/PROJ-X-name.md`
+> Feature OBJ-X has a tech design and is ready for implementation.
+> Run `/frontend` to build the UI for `features/OBJ-X-name.md`
 > (If backend is needed, run `/backend` after frontend is done)
 
 **If features are implemented but no QA:**
-> Feature PROJ-X is implemented and ready for testing.
-> Run `/qa` to test `features/PROJ-X-name.md` against its acceptance criteria.
+> Feature OBJ-X is implemented and ready for testing.
+> Run `/qa` to test `features/OBJ-X-name.md` against its acceptance criteria.
 
 **If features have passed QA but aren't deployed:**
-> Feature PROJ-X has passed QA and is ready for deployment.
+> Feature OBJ-X has passed QA and is ready for deployment.
 > Run `/deploy` to deploy to production.
 
 **If all features are deployed:**

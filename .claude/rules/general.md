@@ -16,15 +16,15 @@ Before starting ANY work, check if the project has been initialized:
 
 ## Feature Tracking
 - All features are tracked in `features/INDEX.md` - read it before starting any work
-- Feature specs live in `features/PROJ-X-feature-name.md`
+- Feature specs live in `features/OBJ-X-feature-name.md`
 - Feature IDs are sequential: check INDEX.md for the next available number
 - One feature per spec file (Single Responsibility)
 - Never combine multiple independent functionalities in one spec
 
 ## Git Conventions
-- Commit format: `type(PROJ-X): description`
+- Commit format: `type(OBJ-X): description`
 - Types: feat, fix, refactor, test, docs, deploy, chore
-- Check existing features before creating new ones: `ls features/ | grep PROJ-`
+- Check existing features before creating new ones: `ls features/ | grep OBJ-`
 - Check existing components before building: `git ls-files src/components/`
 - Check existing APIs before building: `git ls-files src/app/api/`
 
@@ -36,7 +36,7 @@ Before starting ANY work, check if the project has been initialized:
 ## Status Updates (MANDATORY - Write-Then-Verify)
 After completing work on any feature, you MUST update tracking files. Follow this exact sequence:
 
-1. **Read** the feature spec (`features/PROJ-X-*.md`) and `features/INDEX.md` BEFORE editing
+1. **Read** the feature spec (`features/OBJ-X-*.md`) and `features/INDEX.md` BEFORE editing
 2. **Write** your changes using the Edit tool — do NOT just describe what you would write
 3. **Re-read** the file AFTER editing to verify the changes are actually present
 4. **If changes are missing**, repeat step 2 — never claim updates were made without verifying

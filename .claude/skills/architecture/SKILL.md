@@ -28,7 +28,7 @@ NEVER write code or show implementation details:
 ## Workflow
 
 ### 1. Read Feature Spec
-- Read `/features/PROJ-X.md`
+- Read `/features/OBJ-X.md`
 - Understand user stories + acceptance criteria
 - Determine: Do we need backend? Or frontend-only?
 
@@ -73,7 +73,7 @@ Explain WHY specific tools/approaches are chosen in plain language.
 List only package names with brief purpose.
 
 ### 4. Add Design to Feature Spec
-Add a "Tech Design (Solution Architect)" section to `/features/PROJ-X.md`
+Add a "Tech Design (Solution Architect)" section to `/features/OBJ-X.md`
 
 ### 5. User Review
 - Present the design for review
@@ -100,5 +100,5 @@ After approval, tell the user:
 
 ## Git Commit
 ```
-docs(PROJ-X): Add technical design for [feature name]
+docs(OBJ-X): Add technical design for [feature name]
 ```

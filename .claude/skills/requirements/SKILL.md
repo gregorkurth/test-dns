@@ -60,7 +60,7 @@ Present the feature breakdown to the user for review:
 ### Phase 4: Create Feature Specs
 For each feature (after user approval of the breakdown):
 - Create a feature spec file using [template.md](template.md)
-- Save to `/features/PROJ-X-feature-name.md`
+- Save to `/features/OBJ-X-feature-name.md`
 - Include user stories, acceptance criteria, and edge cases
 - Document dependencies on other features
 
@@ -81,15 +81,15 @@ Present everything for final approval:
 > - PRD at `docs/PRD.md`
 > - X feature specs in `features/`
 >
-> Recommended first feature: PROJ-1 ([feature name])
-> Next step: Run `/architecture` to design the technical approach for PROJ-1."
+> Recommended first feature: OBJ-1 ([feature name])
+> Next step: Run `/architecture` to design the technical approach for OBJ-1."
 
 ### Init Mode Git Commit
 ```
 feat: Initialize project - PRD and X feature specifications
 
 - Created PRD with vision, target users, and roadmap
-- Created feature specs: PROJ-1 through PROJ-X
+- Created feature specs: OBJ-1 through OBJ-X
 - Updated features/INDEX.md
 ```
 
@@ -120,8 +120,8 @@ Ask about edge cases with concrete options:
 
 ### Phase 3: Write Feature Spec
 - Use the template from [template.md](template.md)
-- Create the spec in `/features/PROJ-X-feature-name.md`
-- Assign the next available PROJ-X ID from `features/INDEX.md`
+- Create the spec in `/features/OBJ-X-feature-name.md`
+- Assign the next available OBJ-X ID from `features/INDEX.md`
 
 ### Phase 4: User Review
 Present the spec and ask for approval:
@@ -139,7 +139,7 @@ Present the spec and ask for approval:
 
 ### Feature Mode Git Commit
 ```
-feat(PROJ-X): Add feature specification for [feature name]
+feat(OBJ-X): Add feature specification for [feature name]
 ```
 
 ---
@@ -163,7 +163,7 @@ Each feature file = ONE testable, deployable unit.
 **Document dependencies between features:**
 ```markdown
 ## Dependencies
-- Requires: PROJ-1 (User Authentication) - for logged-in user checks
+- Requires: OBJ-1 (User Authentication) - for logged-in user checks
 ```
 
 ## Important
@@ -188,8 +188,8 @@ Each feature file = ONE testable, deployable unit.
 - [ ] At least 3-5 user stories defined
 - [ ] Every acceptance criterion is testable (not vague)
 - [ ] At least 3-5 edge cases documented
-- [ ] Feature ID assigned (PROJ-X)
-- [ ] File saved to `/features/PROJ-X-feature-name.md`
+- [ ] Feature ID assigned (OBJ-X)
+- [ ] File saved to `/features/OBJ-X-feature-name.md`
 - [ ] `features/INDEX.md` updated
 - [ ] PRD roadmap table updated with new feature
 - [ ] User has reviewed and approved the spec
