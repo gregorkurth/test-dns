@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technische Struktur – AI Coding Starter Kit</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --bg2: #1a1d2e;
+    --bg3: #252840;
+    --accent: #6366f1;
+    --accent2: #818cf8;
+    --accent3: #a5b4fc;
+    --green: #34d399;
+    --yellow: #fbbf24;
+    --red: #f87171;
+    --blue: #60a5fa;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: rgba(99,102,241,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* SLIDE CONTAINER */
+  .deck { width: 100vw; height: 100vh; position: relative; }
+
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 80px;
+    opacity: 0;
+    transform: translateX(60px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .slide.prev {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  /* HEADER */
+  .slide-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .slide-num {
+    font-size: 12px;
+    color: var(--accent2);
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    min-width: 32px;
+  }
+
+  .slide-tag {
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(99,102,241,0.15);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #e2e8f0 0%, var(--accent3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--accent3);
+    margin-bottom: 12px;
+  }
+
+  p { font-size: 18px; color: var(--muted); line-height: 1.6; }
+
+  /* GRID LAYOUTS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; flex: 1; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; flex: 1; }
+
+  /* CARDS */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 16px 16px 0 0;
+  }
+
+  .card.green::before { background: linear-gradient(90deg, #10b981, var(--green)); }
+  .card.yellow::before { background: linear-gradient(90deg, #f59e0b, var(--yellow)); }
+  .card.red::before { background: linear-gradient(90deg, #ef4444, var(--red)); }
+  .card.blue::before { background: linear-gradient(90deg, #3b82f6, var(--blue)); }
+
+  .card-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  /* CODE */
+  .code-block {
+    background: #0d1117;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 20px 24px;
+    font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c9d1d9;
+    overflow: auto;
+    max-height: 100%;
+  }
+
+  .code-block .dir { color: #79c0ff; }
+  .code-block .file { color: #c9d1d9; }
+  .code-block .comment { color: #8b949e; }
+  .code-block .highlight { color: #ffa657; font-weight: 600; }
+  .code-block .green { color: var(--green); }
+  .code-block .yellow { color: var(--yellow); }
+  .code-block .red { color: var(--red); }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-nato { background: rgba(96,165,250,0.2); color: var(--blue); border: 1px solid rgba(96,165,250,0.4); }
+  .tag-arch { background: rgba(167,139,250,0.2); color: #c4b5fd; border: 1px solid rgba(167,139,250,0.4); }
+  .tag-cust { background: rgba(52,211,153,0.2); color: var(--green); border: 1px solid rgba(52,211,153,0.4); }
+  .tag-int  { background: rgba(251,191,36,0.2); color: var(--yellow); border: 1px solid rgba(251,191,36,0.4); }
+  .tag-muss { background: rgba(248,113,113,0.2); color: var(--red); border: 1px solid rgba(248,113,113,0.4); }
+  .tag-sollte { background: rgba(251,191,36,0.2); color: var(--yellow); border: 1px solid rgba(251,191,36,0.4); }
+  .tag-kann { background: rgba(99,102,241,0.2); color: var(--accent2); border: 1px solid rgba(99,102,241,0.4); }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { color: var(--accent2); font-weight: 600; text-align: left; padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+  td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td code { font-family: monospace; font-size: 13px; background: rgba(99,102,241,0.15); padding: 2px 6px; border-radius: 4px; color: var(--accent3); }
+
+  /* ARROW FLOW */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    justify-content: center;
+    flex: 1;
+    padding: 20px 0;
+  }
+
+  .flow-item {
+    background: var(--bg2);
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    text-align: center;
+    min-width: 140px;
+    position: relative;
+  }
+
+  .flow-item .icon { font-size: 28px; margin-bottom: 8px; display: block; }
+  .flow-item .label { font-size: 15px; font-weight: 700; color: var(--text); }
+  .flow-item .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  .flow-item.highlight-item {
+    border-color: var(--accent);
+    background: rgba(99,102,241,0.15);
+    box-shadow: 0 0 20px rgba(99,102,241,0.3);
+  }
+
+  .arrow {
+    font-size: 22px;
+    color: var(--accent2);
+    padding: 0 8px;
+    flex-shrink: 0;
+  }
+
+  /* LIST */
+  ul.styled { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  ul.styled li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 16px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  ul.styled li::before { content: '▸'; color: var(--accent2); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+  /* TITLE SLIDE */
+  .slide-title { justify-content: center; align-items: flex-start; }
+  .slide-title .pre { font-size: 13px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; }
+  .slide-title h1 { font-size: 56px; margin-bottom: 16px; }
+  .slide-title .subtitle { font-size: 22px; color: var(--muted); margin-bottom: 48px; }
+  .slide-title .pills { display: flex; gap: 12px; flex-wrap: wrap; }
+  .pill { background: var(--bg2); border: 1px solid var(--border); border-radius: 100px; padding: 8px 20px; font-size: 14px; color: var(--accent3); font-weight: 500; }
+
+  /* AGENDA */
+  .agenda-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .agenda-num {
+    width: 40px; height: 40px;
+    background: var(--accent);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px;
+    flex-shrink: 0;
+  }
+  .agenda-text { font-size: 20px; font-weight: 600; color: var(--text); }
+  .agenda-sub { font-size: 14px; color: var(--muted); margin-top: 2px; }
+
+  /* SAFE CHAIN */
+  .safe-chain {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    flex: 1;
+  }
+
+  .safe-level {
+    flex: 1;
+    border-radius: 14px;
+    padding: 24px 20px;
+    position: relative;
+  }
+
+  .safe-level .level-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .safe-level .level-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .safe-level .level-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .safe-level .level-items li {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  .safe-connector {
+    display: flex;
+    align-items: center;
+    color: var(--accent2);
+    font-size: 28px;
+    padding: 0 4px;
+    flex-shrink: 0;
+  }
+
+  /* PROGRESS */
+  .progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 0.4s ease;
+    z-index: 100;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed;
+    bottom: 28px;
+    right: 40px;
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+  }
+
+  .nav-btn {
+    width: 44px; height: 44px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+
+  .nav-btn:hover { background: var(--accent); border-color: var(--accent); }
+  .nav-btn:active { transform: scale(0.95); }
+
+  .slide-counter {
+    position: fixed;
+    bottom: 34px;
+    left: 40px;
+    font-size: 13px;
+    color: var(--muted);
+    z-index: 100;
+    font-family: monospace;
+  }
+
+  /* MAPPING BOX */
+  .mapping {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  .mapping-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .mapping-row:last-child { border-bottom: none; }
+
+  .mapping-left {
+    flex: 1;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .mapping-arrow { color: var(--accent2); font-size: 20px; }
+
+  .mapping-right {
+    flex: 1;
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .mapping-note {
+    font-size: 12px;
+    color: var(--accent2);
+    margin-left: 8px;
+    font-weight: 400;
+  }
+
+  /* DIVIDER TITLE */
+  .divider-slide {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(99,102,241,0.1) 0%, transparent 70%);
+  }
+
+  .divider-slide .section-num {
+    font-size: 80px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .divider-slide h2 { font-size: 42px; margin-bottom: 12px; }
+  .divider-slide p { font-size: 18px; max-width: 500px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- ===== SLIDE 1: TITLE ===== -->
+  <div class="slide slide-title active" id="s1">
+    <div class="pre">CHE NDP CORE · CWIX 2026</div>
+    <h1>Technische Struktur</h1>
+    <div class="subtitle">Features · Capabilities · Docs · SAFe-Integration</div>
+    <div class="pills">
+      <span class="pill">📁 Features / Objects</span>
+      <span class="pill">⚙️ Capabilities</span>
+      <span class="pill">📚 Docs</span>
+      <span class="pill">🔗 SAFe-Mapping</span>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 2: AGENDA ===== -->
+  <div class="slide" id="s2">
+    <div class="slide-header"><span class="slide-num">00</span><span class="slide-tag">Agenda</span></div>
+    <h2 style="margin-bottom:32px">Was behandeln wir heute?</h2>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:4px">
+      <div class="agenda-item">
+        <div class="agenda-num">1</div>
+        <div><div class="agenda-text">Features / Index / Objects</div><div class="agenda-sub">Wo was reinkommt – INDEX.md, OBJ-X, README</div></div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num">2</div>
+        <div><div class="agenda-text">Capabilities-Struktur</div><div class="agenda-sub">CAP → Service → SFN → Requirements → Tests (Auto + Manuell)</div></div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num">3</div>
+        <div><div class="agenda-text">Docs – Single Source of Truth</div><div class="agenda-sub">PRD, Capabilities, Features, Production-Guides</div></div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-num" style="background:var(--green)">4</div>
+        <div><div class="agenda-text">SAFe-Integration</div><div class="agenda-sub">Epic → Feature → Objectives → User Story: Wo landen diese bei uns?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 3: DIVIDER FEATURES ===== -->
+  <div class="slide divider-slide" id="s3">
+    <div class="section-num">01</div>
+    <h2>Features / Index / Objects</h2>
+    <p>Wo was reinkommt – das Feature-Verzeichnis als Steuerungsebene</p>
+  </div>
+
+  <!-- ===== SLIDE 4: VERZEICHNIS-ÜBERSICHT ===== -->
+  <div class="slide" id="s4">
+    <div class="slide-header"><span class="slide-num">01</span><span class="slide-tag">Features</span></div>
+    <h2 style="margin-bottom:28px">Das Feature-Verzeichnis</h2>
+    <div class="grid-2" style="align-items:start">
+      <div>
+        <div class="code-block">
+<span class="dir">features/</span>
+├── <span class="highlight">INDEX.md</span>         <span class="comment">← Gesamtübersicht</span>
+├── <span class="highlight">README.md</span>        <span class="comment">← Konventionen</span>
+├── <span class="green">OBJ-1-capabilities-dashboard.md</span>
+├── <span class="green">OBJ-2-participant-config-form.md</span>
+├── <span class="green">OBJ-3-dns-zone-file-generator.md</span>
+├── <span class="yellow">OBJ-4-traceability-view.md</span>
+└── <span class="yellow">OBJ-5-export-download.md</span>
+
+<span class="dir">docs/</span>
+└── <span class="highlight">PRD.md</span>           <span class="comment">← Produkt-Vision</span>
+
+<span class="dir">capabilities/</span>
+└── <span class="highlight">INDEX.md</span>         <span class="comment">← Technische CAPs</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card green">
+          <span class="card-icon">📋</span>
+          <h3>INDEX.md</h3>
+          <p style="font-size:14px">Tabelle aller Objects mit ID, Name, Status, Link zur Spec, Datum. Wird von Skills automatisch aktualisiert.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">📖</span>
+          <h3>README.md</h3>
+          <p style="font-size:14px">Erklärt die Konventionen: Namensschema OBJ-X, Status-Definitionen, Build-Reihenfolge.</p>
+        </div>
+        <div class="card yellow">
+          <span class="card-icon">🎯</span>
+          <h3>OBJ-X-name.md</h3>
+          <p style="font-size:14px">Eine Datei pro Feature/Objective. Enthält User Stories, Acceptance Criteria, Edge Cases.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 5: INDEX.md ===== -->
+  <div class="slide" id="s5">
+    <div class="slide-header"><span class="slide-num">01</span><span class="slide-tag">INDEX.md</span></div>
+    <h2 style="margin-bottom:28px">INDEX.md – Die Steuerungszentrale</h2>
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px">
+      <div class="code-block" style="max-height:200px">
+<span class="comment"># Feature Index</span>
+
+| ID      | Feature                       | Status      | Spec                          | Created    |
+|---------|-------------------------------|-------------|-------------------------------|------------|
+| <span class="highlight">OBJ-1</span>   | Capabilities Dashboard        | <span class="green">Planned</span>     | OBJ-1-capabilities-dashboard  | 2026-03-17 |
+| <span class="highlight">OBJ-2</span>   | Participant Configuration Form| <span class="green">Planned</span>     | OBJ-2-participant-config-form | 2026-03-17 |
+| <span class="highlight">OBJ-3</span>   | DNS Zone File Generator       | <span class="yellow">In Progress</span> | OBJ-3-dns-zone-file-generator | 2026-03-17 |
+
+<span class="comment">## Next Available ID: OBJ-4</span>
+      </div>
+      <div class="grid-4" style="flex:unset">
+        <div class="card" style="padding:16px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">🗂️</div>
+          <div style="font-size:13px;color:var(--accent2);font-weight:700">Planned</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px">Spec fertig, bereit für Umsetzung</div>
+        </div>
+        <div class="card" style="padding:16px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">⚡</div>
+          <div style="font-size:13px;color:var(--yellow);font-weight:700">In Progress</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px">Wird gerade gebaut</div>
+        </div>
+        <div class="card" style="padding:16px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">🔍</div>
+          <div style="font-size:13px;color:var(--blue);font-weight:700">In Review</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px">QA-Testing läuft</div>
+        </div>
+        <div class="card" style="padding:16px;text-align:center">
+          <div style="font-size:22px;margin-bottom:6px">✅</div>
+          <div style="font-size:13px;color:var(--green);font-weight:700">Deployed</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:4px">Live in Produktion</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 6: OBJ-X AUFBAU ===== -->
+  <div class="slide" id="s6">
+    <div class="slide-header"><span class="slide-num">01</span><span class="slide-tag">OBJ-X.md</span></div>
+    <h2 style="margin-bottom:28px">Was steht in einer Object-Spec?</h2>
+    <div class="grid-2" style="align-items:start">
+      <div class="code-block">
+<span class="comment"># OBJ-3: DNS Zone File Generator</span>
+
+<span class="highlight">## Status:</span> In Progress
+<span class="highlight">## Dependencies</span>
+- Requires: OBJ-2 (Participant Config Form)
+
+<span class="highlight">## User Stories</span>
+- Als Operator möchte ich Zone-Files generieren,
+  damit ich diese in BIND9 laden kann.
+
+<span class="highlight">## Acceptance Criteria</span>
+- [ ] Forward Zone-File wird generiert (SOA, NS, A)
+- [ ] Reverse Zone-File wird generiert (PTR)
+- [ ] Output ist BIND9-kompatibel (RFC 1035)
+
+<span class="highlight">## Edge Cases</span>
+- Keine Reverse-Zone → Nur Forward generiert
+
+<span class="highlight">## Tech Design</span>  <span class="comment">← /architecture</span>
+<span class="highlight">## QA Test Results</span> <span class="comment">← /qa</span>
+<span class="highlight">## Deployment</span>      <span class="comment">← /deploy</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="padding:18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+            <span style="font-size:18px">📌</span>
+            <h3 style="font-size:16px;margin:0">Status + Dependencies</h3>
+          </div>
+          <p style="font-size:13px">Aktueller Bearbeitungsstand und Abhängigkeiten zu anderen Objects.</p>
+        </div>
+        <div class="card green" style="padding:18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+            <span style="font-size:18px">👤</span>
+            <h3 style="font-size:16px;margin:0">User Stories</h3>
+          </div>
+          <p style="font-size:13px">«Als [Rolle] möchte ich [Aktion], damit [Ziel].» – Was der Benutzer braucht.</p>
+        </div>
+        <div class="card yellow" style="padding:18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+            <span style="font-size:18px">✅</span>
+            <h3 style="font-size:16px;margin:0">Acceptance Criteria</h3>
+          </div>
+          <p style="font-size:13px">Testbare Bedingungen. Jedes Kriterium muss verifizierbar sein.</p>
+        </div>
+        <div class="card red" style="padding:18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+            <span style="font-size:18px">⚠️</span>
+            <h3 style="font-size:16px;margin:0">Edge Cases</h3>
+          </div>
+          <p style="font-size:13px">Grenzfälle und Fehlerszenarien. Verhindert Lücken im Design.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 7: DIVIDER CAPABILITIES ===== -->
+  <div class="slide divider-slide" id="s7">
+    <div class="section-num">02</div>
+    <h2>Capabilities-Struktur</h2>
+    <p>CAP → Service → Service Functions → Requirements → Tests</p>
+  </div>
+
+  <!-- ===== SLIDE 8: CAPABILITIES HIERARCHIE ===== -->
+  <div class="slide" id="s8">
+    <div class="slide-header"><span class="slide-num">02</span><span class="slide-tag">Capabilities</span></div>
+    <h2 style="margin-bottom:24px">Die Capabilities-Hierarchie</h2>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:0">
+      <div style="display:flex;gap:0;align-items:center;justify-content:center">
+
+        <div class="flow-item" style="background:rgba(99,102,241,0.2);border-color:var(--accent);min-width:160px">
+          <span class="icon">🏛️</span>
+          <div class="label">Capability</div>
+          <div class="sub">CAP-001</div>
+          <div class="sub" style="margin-top:6px;font-size:11px;color:var(--accent2)">Domain Naming</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-item" style="min-width:160px">
+          <span class="icon">⚙️</span>
+          <div class="label">Service</div>
+          <div class="sub">SVC-AUTH</div>
+          <div class="sub" style="margin-top:6px;font-size:11px">Authoritative NS</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-item" style="min-width:160px">
+          <span class="icon">🔧</span>
+          <div class="label">Service Function</div>
+          <div class="sub">SFN-TIN26</div>
+          <div class="sub" style="margin-top:6px;font-size:11px">DNS Query</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-item" style="min-width:160px">
+          <span class="icon">📋</span>
+          <div class="label">Requirements</div>
+          <div class="sub">SREQ / CREQ</div>
+          <div class="sub" style="margin-top:6px;font-size:11px">35 total</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="flow-item" style="background:rgba(52,211,153,0.1);border-color:var(--green);min-width:160px">
+          <span class="icon">🧪</span>
+          <div class="label">Tests</div>
+          <div class="sub">Auto + Manuell</div>
+          <div class="sub" style="margin-top:6px;font-size:11px;color:var(--green)">106 Stubs</div>
+        </div>
+      </div>
+      <div style="margin-top:28px">
+        <div class="code-block" style="font-size:12px">
+<span class="dir">capabilities/domain-naming/services/authoritative-name-services/</span>
+└── <span class="dir">service-functions/SFN-TIN26-dns-query/</span>
+    ├── README.md
+    ├── <span class="dir">requirements/</span>   SREQ-234.md  SREQ-238.md  CREQ-001.md  <span class="comment">← 23 Requirements</span>
+    └── <span class="dir">tests/</span>
+        ├── <span class="dir">auto/</span>        TEST-SREQ-234-001.md  <span class="comment">← pytest-Stub</span>
+        └── <span class="dir">manual/</span>      TEST-SREQ-234-001-manual.md
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 9: REQUIREMENTS TYPEN ===== -->
+  <div class="slide" id="s9">
+    <div class="slide-header"><span class="slide-num">02</span><span class="slide-tag">Requirements</span></div>
+    <h2 style="margin-bottom:24px">Requirements – Typen und Prioritäten</h2>
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h3>Quellentypen</h3>
+        <table>
+          <tr><th>Tag</th><th>Typ</th><th>Präfix</th><th>Quelle</th></tr>
+          <tr><td><span class="tag tag-nato">[NATO]</span></td><td>NATO/FMN Spec</td><td><code>SREQ-</code></td><td>FMN Spiral 5</td></tr>
+          <tr><td><span class="tag tag-arch">[ARCH]</span></td><td>Architektur</td><td><code>RDTS-</code></td><td>Platform Arch Doc</td></tr>
+          <tr><td><span class="tag tag-cust">[CUST]</span></td><td>Kunde</td><td><code>CREQ-</code></td><td>CHE Config Form</td></tr>
+          <tr><td><span class="tag tag-int">[INT]</span></td><td>Intern</td><td><code>IREQ-</code></td><td>Engineering</td></tr>
+        </table>
+        <div style="margin-top:4px;padding:12px 16px;background:rgba(99,102,241,0.1);border-radius:10px;border:1px solid var(--border)">
+          <div style="font-size:13px;color:var(--muted)">Priorität bei Konflikten:</div>
+          <div style="font-size:14px;margin-top:4px"><span class="tag tag-nato">[NATO]</span> &gt; <span class="tag tag-arch">[ARCH]</span> &gt; <span class="tag tag-cust">[CUST]</span> &gt; <span class="tag tag-int">[INT]</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h3>Prioritätsstufen</h3>
+        <div class="card red" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:20px">🟥</span>
+            <div>
+              <div style="font-weight:700;font-size:16px">MUSS</div>
+              <div style="font-size:13px;color:var(--muted)">SHALL – Obligatorisch. Nicht verhandelbar.</div>
+            </div>
+          </div>
+        </div>
+        <div class="card yellow" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:20px">🟧</span>
+            <div>
+              <div style="font-weight:700;font-size:16px">SOLLTE</div>
+              <div style="font-size:13px;color:var(--muted)">SHOULD – Empfohlen, begründet abweichbar.</div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:20px">🟨</span>
+            <div>
+              <div style="font-weight:700;font-size:16px">KANN</div>
+              <div style="font-size:13px;color:var(--muted)">MAY – Optional, nach Bedarf implementierbar.</div>
+            </div>
+          </div>
+        </div>
+        <div class="card blue" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:20px">ℹ️</span>
+            <div>
+              <div style="font-weight:700;font-size:16px">INFO</div>
+              <div style="font-size:13px;color:var(--muted)">INFORMATIVE – Kein Muss, nur Kontext.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 10: TEST STRUKTUR ===== -->
+  <div class="slide" id="s10">
+    <div class="slide-header"><span class="slide-num">02</span><span class="slide-tag">Tests</span></div>
+    <h2 style="margin-bottom:24px">Test-Struktur – Auto & Manuell</h2>
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card green">
+          <h3>🤖 Automatischer Test (pytest)</h3>
+          <div class="code-block" style="margin-top:8px;font-size:12px">
+<span class="comment">TEST-SREQ-234-001.md</span>
+
+```python
+@pytest.mark.requirement(<span class="green">"SREQ-234"</span>)
+@pytest.mark.service_function(<span class="highlight">"SFN-TIN26"</span>)
+def test_sreq_234_mission_tld():
+    <span class="comment">"""DNS unterstützt Mission TLDs (.mission.)"""</span>
+    <span class="comment"># TODO: DNS-Query gegen .mission. TLD</span>
+    <span class="comment"># assert response.rcode == NOERROR</span>
+    pytest.skip(<span class="yellow">"Stub – nicht implementiert"</span>)
+```
+          </div>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)">Jedes Requirement = 1 pytest-Stub. Direkt lauffähig nach Implementierung.</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card yellow">
+          <h3>👤 Manueller Test</h3>
+          <div class="code-block" style="margin-top:8px;font-size:12px">
+<span class="comment">TEST-SREQ-234-001-manual.md</span>
+
+| Schritt | Aktion           | Erwartet     | OK? |
+|---------|-----------------|--------------|-----|
+| 1       | DNS-Query .mission. | NOERROR | ☐  |
+| 2       | nslookup prüfen  | A-Record OK  | ☐  |
+
+<span class="highlight">Testergebnis:</span>
+☐ Bestanden  ☐ Fehlgeschlagen  ☐ Blockiert
+          </div>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)">Für AV&V-Durchführung und Dokumentation.</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px">
+          <div style="font-size:14px;font-weight:600;color:var(--accent3);margin-bottom:10px">Zähler (CAP-001)</div>
+          <div style="display:flex;gap:16px">
+            <div style="text-align:center">
+              <div style="font-size:28px;font-weight:800;color:var(--green)">53</div>
+              <div style="font-size:12px;color:var(--muted)">Auto-Tests</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:28px;font-weight:800;color:var(--yellow)">53</div>
+              <div style="font-size:12px;color:var(--muted)">Manuelle Tests</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:28px;font-weight:800;color:var(--accent2)">35</div>
+              <div style="font-size:12px;color:var(--muted)">Requirements</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 11: DIVIDER DOCS ===== -->
+  <div class="slide divider-slide" id="s11">
+    <div class="section-num">03</div>
+    <h2>Docs – Single Source of Truth</h2>
+    <p>Wo wird was wie dokumentiert?</p>
+  </div>
+
+  <!-- ===== SLIDE 12: DOCS STRUKTUR ===== -->
+  <div class="slide" id="s12">
+    <div class="slide-header"><span class="slide-num">03</span><span class="slide-tag">Docs</span></div>
+    <h2 style="margin-bottom:24px">Wo steht was?</h2>
+    <div class="grid-2" style="align-items:start">
+      <div class="code-block">
+<span class="dir">docs/</span>
+├── <span class="highlight">PRD.md</span>            <span class="comment">← Vision, Roadmap, Zielgruppe</span>
+└── <span class="dir">production/</span>
+    ├── monitoring.md
+    ├── security.md
+    └── performance.md
+
+<span class="dir">features/</span>
+├── <span class="highlight">INDEX.md</span>          <span class="comment">← Feature-Status-Übersicht</span>
+└── <span class="highlight">OBJ-X-*.md</span>        <span class="comment">← Detailspecs pro Object</span>
+
+<span class="dir">capabilities/</span>
+└── <span class="dir">domain-naming/</span>
+    ├── <span class="highlight">README.md</span>      <span class="comment">← Capability-Steckbrief</span>
+    ├── <span class="highlight">maturity.md</span>   <span class="comment">← L0–L5 Maturität</span>
+    ├── <span class="highlight">products.md</span>   <span class="comment">← Produkte &amp; Lizenzen</span>
+    └── <span class="dir">services/</span>       <span class="comment">← SVC → SFN → REQ → Tests</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <table>
+          <tr><th>Dokument</th><th>Inhalt</th><th>Autor</th></tr>
+          <tr><td><code>docs/PRD.md</code></td><td>Vision, Warum, Zielgruppe, Roadmap</td><td>Product Owner</td></tr>
+          <tr><td><code>features/INDEX.md</code></td><td>Status aller Objects</td><td>Auto (Skills)</td></tr>
+          <tr><td><code>features/OBJ-X.md</code></td><td>User Stories, AC, Edge Cases, Design</td><td>Engineer</td></tr>
+          <tr><td><code>capabilities/*/README.md</code></td><td>Technische CAP-Spezifikation</td><td>RE/Architect</td></tr>
+          <tr><td><code>capabilities/.../SREQ-X.md</code></td><td>Ein atomares Requirement</td><td>RE</td></tr>
+          <tr><td><code>capabilities/.../TEST-X.md</code></td><td>Test-Stub (Auto/Manuell)</td><td>QA/RE</td></tr>
+        </table>
+        <div style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);border-radius:12px;padding:16px;margin-top:4px">
+          <div style="font-size:14px;font-weight:700;color:var(--green);margin-bottom:6px">✅ Single Source of Truth</div>
+          <div style="font-size:13px;color:var(--muted)">Kein Requirement existiert ausserhalb von <code>capabilities/</code>. Kein Feature-Status ausserhalb von <code>features/INDEX.md</code>. Git ist die einzige Wahrheit.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 13: SSOT PRINZIP ===== -->
+  <div class="slide" id="s13">
+    <div class="slide-header"><span class="slide-num">03</span><span class="slide-tag">Single Source of Truth</span></div>
+    <h2 style="margin-bottom:24px">Warum SSOT?</h2>
+    <div class="grid-3">
+      <div class="card green">
+        <span class="card-icon">📍</span>
+        <h3>Traceability</h3>
+        <ul class="styled" style="font-size:14px">
+          <li>Jedes Requirement hat eine eindeutige ID (SREQ-xxx)</li>
+          <li>Jeder Test verlinkt auf sein Requirement</li>
+          <li>Jedes Feature referenziert die zugehörigen Requirements</li>
+        </ul>
+      </div>
+      <div class="card yellow">
+        <span class="card-icon">🔄</span>
+        <h3>Automatisierung</h3>
+        <ul class="styled" style="font-size:14px">
+          <li>Skills aktualisieren INDEX.md automatisch</li>
+          <li>Tech Design wird direkt in OBJ-X.md geschrieben</li>
+          <li>QA-Ergebnisse fliessen in die Feature-Spec ein</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔒</span>
+        <h3>Git als Wahrheit</h3>
+        <ul class="styled" style="font-size:14px">
+          <li>Kein Word, kein Confluence, kein Jira</li>
+          <li>Alle Änderungen sind nachvollziehbar</li>
+          <li>Airgapped-fähig: funktioniert ohne Cloud</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:20px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:20px">
+      <span style="font-size:28px">💡</span>
+      <div style="font-size:15px;color:var(--text)">Neue Information gehört <strong>immer zuerst</strong> in eine Datei in diesem Repo. Nicht in E-Mails, nicht in Chats, nicht in Confluence. Wenn es nicht im Repo ist, existiert es nicht.</div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 14: DIVIDER SAFE ===== -->
+  <div class="slide divider-slide" id="s14">
+    <div class="section-num">04</div>
+    <h2>SAFe-Integration</h2>
+    <p>Wie der Kunde denkt – und wo wir andocken</p>
+  </div>
+
+  <!-- ===== SLIDE 15: SAFE CHAIN ===== -->
+  <div class="slide" id="s15">
+    <div class="slide-header"><span class="slide-num">04</span><span class="slide-tag">SAFe</span></div>
+    <h2 style="margin-bottom:24px">Die SAFe-Kette des Kunden</h2>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:0">
+      <div style="display:flex;gap:0;align-items:stretch">
+
+        <div class="safe-level" style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.3);margin-right:8px">
+          <div class="level-label" style="color:var(--red)">Portfolio</div>
+          <div class="level-title" style="color:var(--red)">Epic</div>
+          <ul class="level-items">
+            <li>◦ Grosses strategisches Thema</li>
+            <li>◦ Über mehrere PIs</li>
+            <li>◦ Z.B. «FMN Domain Services»</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;align-items:center;color:var(--muted);font-size:22px;padding:0 4px">→</div>
+
+        <div class="safe-level" style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.3);margin:0 8px">
+          <div class="level-label" style="color:var(--yellow)">Program</div>
+          <div class="level-title" style="color:var(--yellow)">Feature</div>
+          <ul class="level-items">
+            <li>◦ Lieferbare Funktionalität</li>
+            <li>◦ Über einen PI</li>
+            <li>◦ Z.B. «DNS-Konfiguration»</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;align-items:center;color:var(--muted);font-size:22px;padding:0 4px">→</div>
+
+        <div class="safe-level" style="background:rgba(99,102,241,0.15);border:2px solid var(--accent);margin:0 8px;box-shadow:0 0 20px rgba(99,102,241,0.2)">
+          <div class="level-label" style="color:var(--accent2)">⭐ Andockpunkt</div>
+          <div class="level-title" style="color:var(--accent3)">Objective</div>
+          <ul class="level-items">
+            <li>◦ Messbares Sprint-Ziel</li>
+            <li>◦ = <strong style="color:var(--accent2)">OBJ-X bei uns</strong></li>
+            <li>◦ Z.B. «Zone-File Generator»</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;align-items:center;color:var(--muted);font-size:22px;padding:0 4px">→</div>
+
+        <div class="safe-level" style="background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.3);margin-left:8px">
+          <div class="level-label" style="color:var(--green)">Team</div>
+          <div class="level-title" style="color:var(--green)">User Story</div>
+          <ul class="level-items">
+            <li>◦ Implementierungsschritt</li>
+            <li>◦ In OBJ-X.md enthalten</li>
+            <li>◦ Mit Acceptance Criteria</li>
+          </ul>
+        </div>
+
+      </div>
+      <div style="margin-top:24px;background:rgba(99,102,241,0.1);border:1px solid var(--border);border-radius:12px;padding:14px 24px;display:flex;align-items:center;gap:16px">
+        <span style="font-size:24px">🔗</span>
+        <div style="font-size:15px;color:var(--text)"><strong>Verbindungspunkt:</strong> Das <strong style="color:var(--accent3)">Objective des Kunden</strong> entspricht exakt dem <strong style="color:var(--accent3)">OBJ-X in unserem Feature-Verzeichnis</strong>. Gleiche ID, gleicher Scope, gleiche Akzeptanzkriterien.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 16: MAPPING TABELLE ===== -->
+  <div class="slide" id="s16">
+    <div class="slide-header"><span class="slide-num">04</span><span class="slide-tag">Mapping</span></div>
+    <h2 style="margin-bottom:28px">SAFe ↔ Unser Repo: Was geht wohin?</h2>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+      <div class="mapping">
+        <div class="mapping-row">
+          <div class="mapping-left" style="font-weight:700;color:var(--text);font-size:13px;text-transform:uppercase;letter-spacing:1px">KUNDE (SAFe)</div>
+          <div class="mapping-arrow" style="opacity:0"></div>
+          <div class="mapping-right" style="font-weight:700;color:var(--text);font-size:13px;text-transform:uppercase;letter-spacing:1px">WIR (Repository)</div>
+        </div>
+        <div class="mapping-row">
+          <div class="mapping-left">🏔️ <strong>Epic</strong> – Strategisches Thema</div>
+          <div class="mapping-arrow">→</div>
+          <div class="mapping-right"><code>docs/PRD.md</code> <span class="mapping-note">Vision + Roadmap</span></div>
+        </div>
+        <div class="mapping-row">
+          <div class="mapping-left">📦 <strong>Feature</strong> – Lieferbare Funktionalität</div>
+          <div class="mapping-arrow">→</div>
+          <div class="mapping-right"><code>features/INDEX.md</code> <span class="mapping-note">Feature-Kategorie</span></div>
+        </div>
+        <div class="mapping-row" style="background:rgba(99,102,241,0.08);border-radius:8px">
+          <div class="mapping-left">⭐ <strong>Objective</strong> – Messbares Sprint-Ziel</div>
+          <div class="mapping-arrow" style="color:var(--accent);font-size:24px">→</div>
+          <div class="mapping-right" style="color:var(--accent3)"><strong><code>features/OBJ-X-name.md</code></strong> <span class="mapping-note" style="color:var(--accent2)">1:1 Mapping!</span></div>
+        </div>
+        <div class="mapping-row">
+          <div class="mapping-left">👤 <strong>User Story</strong> – Schritt zur Umsetzung</div>
+          <div class="mapping-arrow">→</div>
+          <div class="mapping-right">Abschnitt <code>## User Stories</code> in OBJ-X.md</div>
+        </div>
+        <div class="mapping-row">
+          <div class="mapping-left">✅ <strong>Acceptance Test</strong> – Abnahmekriterium</div>
+          <div class="mapping-arrow">→</div>
+          <div class="mapping-right">Abschnitt <code>## Acceptance Criteria</code> in OBJ-X.md</div>
+        </div>
+        <div class="mapping-row">
+          <div class="mapping-left">🧪 <strong>Test Case</strong> – Technischer Test</div>
+          <div class="mapping-arrow">→</div>
+          <div class="mapping-right"><code>capabilities/.../tests/auto/</code> + <code>manual/</code></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 17: WO WERDEN DETAILS AUSGEARBEITET ===== -->
+  <div class="slide" id="s17">
+    <div class="slide-header"><span class="slide-num">04</span><span class="slide-tag">Umsetzung</span></div>
+    <h2 style="margin-bottom:24px">Wo wird ein Objective ausgearbeitet?</h2>
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h3>Das OBJ-X.md Lifecycle</h3>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg2);border-radius:10px;border-left:3px solid var(--accent)">
+            <span style="font-size:18px">1️⃣</span>
+            <div>
+              <div style="font-size:14px;font-weight:700">/requirements</div>
+              <div style="font-size:12px;color:var(--muted)">User Stories + Acceptance Criteria + Edge Cases erfassen</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg2);border-radius:10px;border-left:3px solid var(--blue)">
+            <span style="font-size:18px">2️⃣</span>
+            <div>
+              <div style="font-size:14px;font-weight:700">/architecture</div>
+              <div style="font-size:12px;color:var(--muted)">Tech Design wird in OBJ-X.md ergänzt</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg2);border-radius:10px;border-left:3px solid var(--yellow)">
+            <span style="font-size:18px">3️⃣</span>
+            <div>
+              <div style="font-size:14px;font-weight:700">/frontend + /backend</div>
+              <div style="font-size:12px;color:var(--muted)">Implementierung, Status → «In Progress»</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg2);border-radius:10px;border-left:3px solid var(--green)">
+            <span style="font-size:18px">4️⃣</span>
+            <div>
+              <div style="font-size:14px;font-weight:700">/qa</div>
+              <div style="font-size:12px;color:var(--muted)">QA-Ergebnisse werden in OBJ-X.md dokumentiert</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg2);border-radius:10px;border-left:3px solid var(--red)">
+            <span style="font-size:18px">5️⃣</span>
+            <div>
+              <div style="font-size:14px;font-weight:700">/deploy</div>
+              <div style="font-size:12px;color:var(--muted)">Deployment-Info → Status «Deployed»</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h3>User Stories &amp; Tests – Wo?</h3>
+        <div class="card" style="padding:18px">
+          <div style="font-size:14px;font-weight:700;color:var(--accent3);margin-bottom:8px">👤 User Story</div>
+          <div style="font-size:13px;color:var(--muted)">In <code>features/OBJ-X.md → ## User Stories</code></div>
+          <div style="margin-top:8px;font-size:13px;font-style:italic;color:var(--text)">"Als Operator möchte ich Zone-Files generieren, damit ich BIND9 direkt konfigurieren kann."</div>
+        </div>
+        <div class="card green" style="padding:18px">
+          <div style="font-size:14px;font-weight:700;color:var(--green);margin-bottom:8px">✅ Acceptance Criteria</div>
+          <div style="font-size:13px;color:var(--muted)">In <code>features/OBJ-X.md → ## Acceptance Criteria</code></div>
+          <div style="margin-top:8px;font-size:13px;color:var(--text)">Testbar, konkret, checklistenförmig. Direkt aus den SREQ-Requirements abgeleitet.</div>
+        </div>
+        <div class="card yellow" style="padding:18px">
+          <div style="font-size:14px;font-weight:700;color:var(--yellow);margin-bottom:8px">🧪 Test-Stubs</div>
+          <div style="font-size:13px;color:var(--muted)">In <code>capabilities/.../tests/auto/</code> und <code>manual/</code></div>
+          <div style="margin-top:8px;font-size:13px;color:var(--text)">Je ein Auto (pytest) und ein Manuell-Test pro Requirement. Direkt an SREQ-ID gebunden.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SLIDE 18: ZUSAMMENFASSUNG ===== -->
+  <div class="slide" id="s18">
+    <div class="slide-header"><span class="slide-num">05</span><span class="slide-tag">Summary</span></div>
+    <h2 style="margin-bottom:28px">Zusammenfassung</h2>
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px">
+          <div style="font-size:13px;color:var(--accent2);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">📁 Features / Objects</div>
+          <ul class="styled" style="font-size:14px;gap:6px">
+            <li><code>features/INDEX.md</code> = Gesamtübersicht aller Objects</li>
+            <li><code>OBJ-X.md</code> = Vollständige Spec eines Objectives</li>
+            <li>Enthält: Stories, ACs, Edge Cases, Tech Design, QA</li>
+          </ul>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px">
+          <div style="font-size:13px;color:var(--accent2);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">⚙️ Capabilities</div>
+          <ul class="styled" style="font-size:14px;gap:6px">
+            <li>CAP → SVC → SFN → Requirements → Tests</li>
+            <li>35 Requirements (30 NATO + 5 CUST)</li>
+            <li>106 Test-Stubs (Auto + Manuell)</li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 20px">
+          <div style="font-size:13px;color:var(--green);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">📚 Single Source of Truth</div>
+          <ul class="styled" style="font-size:14px;gap:6px">
+            <li>Alles im Git-Repo – keine parallelen Dokumente</li>
+            <li>PRD → Feature → Capability → Requirement → Test</li>
+            <li>Airgapped: kein Cloud, kein Confluence</li>
+          </ul>
+        </div>
+        <div style="background:rgba(99,102,241,0.1);border:1px solid var(--border);border-radius:12px;padding:16px 20px">
+          <div style="font-size:13px;color:var(--accent2);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">🔗 SAFe-Mapping</div>
+          <ul class="styled" style="font-size:14px;gap:6px">
+            <li>Kunde: Objective = Wir: <code>OBJ-X.md</code></li>
+            <li>User Stories → Abschnitt in OBJ-X.md</li>
+            <li>Tests → <code>capabilities/.../tests/</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;text-align:center;padding:16px;background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(52,211,153,0.1));border-radius:12px;border:1px solid var(--border)">
+      <div style="font-size:18px;font-weight:700;color:var(--text)">Nächster Schritt: <span style="color:var(--accent3)">/architecture</span> für OBJ-1 Capabilities Dashboard</div>
+    </div>
+  </div>
+
+</div><!-- end deck -->
+
+<!-- Progress + Nav -->
+<div class="progress-bar" id="progress"></div>
+<div class="slide-counter" id="counter">1 / 18</div>
+<div class="nav">
+  <button class="nav-btn" id="prev" onclick="navigate(-1)">←</button>
+  <button class="nav-btn" id="next" onclick="navigate(1)">→</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  function navigate(dir) {
+    const next = current + dir;
+    if (next < 0 || next >= total) return;
+
+    slides[current].classList.remove('active');
+    slides[current].classList.add(dir > 0 ? 'prev' : '');
+
+    setTimeout(() => {
+      if (dir > 0) slides[current].classList.remove('prev');
+    }, 400);
+
+    current = next;
+    slides[current].classList.add('active');
+    slides[current].classList.remove('prev');
+
+    updateUI();
+  }
+
+  function updateUI() {
+    document.getElementById('counter').textContent = `${current + 1} / ${total}`;
+    document.getElementById('progress').style.width = `${((current + 1) / total) * 100}%`;
+    document.getElementById('prev').style.opacity = current === 0 ? '0.3' : '1';
+    document.getElementById('next').style.opacity = current === total - 1 ? '0.3' : '1';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') navigate(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigate(-1);
+  });
+
+  // Touch support
+  let touchX = 0;
+  document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
+  });
+
+  updateUI();
+</script>
+</body>
+</html>
