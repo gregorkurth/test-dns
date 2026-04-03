@@ -1,5 +1,8 @@
 # TEST-SREQ-234-001: Automatischer Test
 
+`utest~sreq-234-001~1`
+Covers: req~sreq-234~1
+
 > **Testfall-ID:** TEST-SREQ-234-001
 > **Requirement:** [SREQ-234](../../requirements/SREQ-234.md)
 > **Typ:** Automatisch (pytest)

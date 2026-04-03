@@ -1,0 +1,140 @@
+# GitHub Actions CI Pipeline
+# Laeuft automatisch bei jedem Push auf main
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:  # Manueller Trigger (fuer pytest DNS-Tests)
+
+jobs:
+
+  # --- OFT Traceability ---
+  # Laeuft wenn Markdowns geaendert wurden
+  traceability:
+    name: Traceability Report (OFT)
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      contains(toJSON(github.event.head_commit.modified), 'capabilities/') ||
+      contains(toJSON(github.event.head_commit.modified), 'features/') ||
+      contains(toJSON(github.event.head_commit.modified), 'tests/')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Java einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: OFT JAR cachen
+        uses: actions/cache@v4
+        id: oft-cache
+        with:
+          path: tools/oft.jar
+          key: oft-jar-4.0.1
+
+      - name: OFT JAR herunterladen (falls nicht gecacht)
+        if: steps.oft-cache.outputs.cache-hit != 'true'
+        run: bash scripts/download-oft.sh
+
+      - name: Traceability-Report generieren
+        run: |
+          mkdir -p docs
+          java -jar tools/oft.jar trace \
+            --output-format html \
+            capabilities features tests src \
+            -o docs/traceability-report.html
+
+      - name: Report als Artifact speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: traceability-report
+          path: docs/traceability-report.html
+          retention-days: 90
+
+      - name: Report committen
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/traceability-report.html
+          git diff --staged --quiet || git commit -m "chore: traceability report aktualisiert [skip ci]"
+          git push
+
+  # --- Vitest (Web-App-Tests) ---
+  vitest:
+    name: Web-App Tests (Vitest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Abhaengigkeiten installieren
+        run: npm ci
+
+      - name: Tests ausfuehren
+        run: npm run test:run
+
+  # --- log4brains ADR-Site ---
+  adr-site:
+    name: ADR Dokumentation (log4brains)
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      contains(toJSON(github.event.head_commit.modified), 'docs/adr/')
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Abhaengigkeiten installieren
+        run: npm ci
+
+      - name: ADR-Site bauen
+        run: npm run adr:build
+
+      - name: ADR-Site als Artifact speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: adr-site
+          path: out/adr/
+          retention-days: 30
+
+  # --- pytest DNS-Tests ---
+  # Nur manuell ausfuehren: GitHub -> Actions -> "Run workflow"
+  # Benoetigt eine erreichbare BIND9-Instanz (Secret: DNS_SERVER_IP)
+  dns-tests:
+    name: DNS Auto-Tests (pytest)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Python-Abhaengigkeiten installieren
+        run: pip install -e ".[test]"
+
+      - name: pytest ausfuehren
+        run: pytest tests/auto/ -v --tb=short
+        env:
+          DNS_SERVER: ${{ secrets.DNS_SERVER_IP }}

@@ -1,5 +1,8 @@
 # TEST-SREQ-234-001-manual: Manueller Test
 
+`itest~sreq-234-001~1`
+Covers: req~sreq-234~1
+
 > **Testfall-ID:** TEST-SREQ-234-001-manual
 > **Requirement:** [SREQ-234](../../requirements/SREQ-234.md)
 > **Typ:** Manuell

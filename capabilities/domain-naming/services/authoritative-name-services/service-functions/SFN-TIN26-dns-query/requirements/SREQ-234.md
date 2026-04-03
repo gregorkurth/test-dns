@@ -1,5 +1,8 @@
 # SREQ-234: Mission Top-Level-Domains unterstützen
 
+`req~sreq-234~1`
+Needs: utest, itest
+
 ---
 
 ## Metadaten

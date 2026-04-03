@@ -1,0 +1,26 @@
+# OpenFastTrace Konfiguration
+# https://github.com/itsallcode/openfasttrace
+
+sources:
+  - path: capabilities
+    glob: "**/*.md"
+  - path: features
+    glob: "**/*.md"
+  - path: tests
+    glob: "**/*.md"
+  - path: src
+    glob: "**/*.{ts,tsx,py}"
+
+artifact-types:
+  req:
+    description: "Requirement (SREQ-xxx, CREQ-xxx)"
+    covering-artifact-types: [utest, itest]
+  feat:
+    description: "Feature Acceptance Criterion (OBJ-x-AC-y)"
+    covering-artifact-types: [utest]
+  utest:
+    description: "Automatischer Test (pytest / Vitest)"
+    covering-artifact-types: []
+  itest:
+    description: "Integrations-/Manueller Test"
+    covering-artifact-types: []
