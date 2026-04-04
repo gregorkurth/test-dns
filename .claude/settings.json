@@ -42,7 +42,19 @@
       "Bash(mkdir -p \"/Users/gregorkurth/Library/Mobile Documents/com~apple~CloudDocs/Dev/test-dns/capabilities/domain-naming/services/dns-security-logging/service-functions/SFN-DNS-LOGGING/tests/manual\")",
       "Skill(requirements)",
       "Skill(requirements:*)",
-      "Bash(open \"/Users/gregorkurth/Library/Mobile Documents/com~apple~CloudDocs/Dev/test-dns/presentation/index.html\")"
+      "Bash(open \"/Users/gregorkurth/Library/Mobile Documents/com~apple~CloudDocs/Dev/test-dns/presentation/index.html\")",
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "Bash(chmod +x /Users/gregorkurth/Documents/Dev/test-dns/scripts/download-oft.sh)",
+      "Bash(git add:*)",
+      "Skill(architecture)",
+      "Skill(architecture:*)",
+      "Bash(mv OBJ-12-cicd-pipeline.md           TEMP-1-cicd-pipeline.md)",
+      "Bash(mv OBJ-14-dokumentation.md           TEMP-2-dokumentation.md)",
+      "Bash(mv OBJ-8-rest-api.md                 TEMP-3-rest-api.md)",
+      "Bash(mv OBJ-1-capabilities-dashboard.md   TEMP-4-capabilities-dashboard.md)",
+      "Bash(mv OBJ-2-participant-configuration-form.md TEMP-5-participant-configuration-form.md)",
+      "Read(//Users/gregorkurth/Documents/Dev/test-dns/**)"
     ]
   }
 }

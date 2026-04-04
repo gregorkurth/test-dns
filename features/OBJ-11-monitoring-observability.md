@@ -1,0 +1,52 @@
+# OBJ-11: Monitoring & Observability (OpenTelemetry)
+
+## Status: Planned
+**Created:** 2026-04-03
+**Last Updated:** 2026-04-04
+
+## Dependencies
+- OBJ-10: Kubernetes Deployment (App läuft im Cluster)
+- OBJ-3: REST API (API-Metriken und Traces)
+- OBJ-13: Kubernetes Operator (Operator-Metriken)
+
+## User Stories
+- Als Platform Engineer möchte ich Metriken der DNS-Konfigurations-App in Prometheus abrufen können, damit ich betriebliche Kennzahlen überwachen kann.
+- Als Platform Engineer möchte ich strukturierte Logs der App und des Operators in einem zentralen Log-System (z. B. Loki) sehen, damit ich Probleme effizient diagnostizieren kann.
+- Als Entwickler möchte ich Traces für API-Anfragen einsehen können, damit ich Performance-Engpässe identifizieren kann.
+- Als Mission Network Operator möchte ich betriebsrelevante Zustände (z. B. fehlerhafte Zone-File-Generierung) als Metriken oder Alerts sehen, damit ich schnell reagieren kann.
+- Als Platform Engineer möchte ich das OTel-Collector-Ziel (Endpoint) konfigurieren können, damit ich die App in verschiedene Monitoring-Stacks integrieren kann.
+
+## Acceptance Criteria
+- [ ] OpenTelemetry SDK ist in die Next.js-App integriert (Metrics + Traces + Logs)
+- [ ] Metriken werden unter `/metrics` im Prometheus-Format exportiert
+- [ ] Folgende App-Metriken vorhanden: HTTP-Request-Count, HTTP-Latenz, Zone-File-Generierungen (Erfolg/Fehler), aktive Participants
+- [ ] Traces werden an einen konfigurierbaren OTel-Collector-Endpoint exportiert (OTLP über HTTP oder gRPC)
+- [ ] Logs sind strukturiert (JSON) mit Feldern: timestamp, level, service, traceId, message
+- [ ] Operator exportiert eigene Metriken (Reconcile-Count, Fehler-Count, Latenz)
+- [ ] OTel-Collector-Endpoint ist via Umgebungsvariable/ConfigMap konfigurierbar
+- [ ] Monitoring funktioniert ohne externe SaaS-Dienste (airgapped-kompatibel)
+- [ ] Beispiel-Prometheus-Scrape-Config und Grafana-Dashboard-JSON liegen im Repository unter `monitoring/`
+
+## Edge Cases
+- Was passiert wenn kein OTel-Collector konfiguriert ist? → App startet trotzdem; Traces werden verworfen; Warnung im Log
+- Was wenn der OTel-Collector nicht erreichbar ist? → Keine Auswirkung auf App-Funktionalität; Exportfehler im Log protokolliert
+- Was wenn Traces sensitiven Inhalt (z. B. TSIG-Key-Fragmente) enthalten könnten? → Sensitive Felder werden vor dem Export maskiert
+
+## Technical Requirements
+- OpenTelemetry SDK (JS/TS): `@opentelemetry/sdk-node`, `@opentelemetry/auto-instrumentations-node`
+- Prometheus-Export: `@opentelemetry/exporter-prometheus`
+- OTLP-Export: `@opentelemetry/exporter-trace-otlp-http`
+- Operator (Go): `go.opentelemetry.io/otel`
+- Keine Abhängigkeit zu externen Monitoring-SaaS-Diensten
+
+---
+<!-- Sections below are added by subsequent skills -->
+
+## Tech Design (Solution Architect)
+_To be added by /architecture_
+
+## QA Test Results
+_To be added by /qa_
+
+## Deployment
+_To be added by /deploy_
