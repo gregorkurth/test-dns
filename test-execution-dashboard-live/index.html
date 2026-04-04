@@ -22,6 +22,11 @@
 
       <section class="controls" aria-label="Filterbereich">
         <label>
+          OBJ
+          <select id="objectFilter"></select>
+        </label>
+
+        <label>
           Capability
           <select id="capabilityFilter"></select>
         </label>
@@ -64,6 +69,7 @@
 
       <section class="tabs" aria-label="Ansichtsmodus">
         <button class="tab-button is-active" data-tab-target="currentView">Aktueller Stand</button>
+        <button class="tab-button" data-tab-target="objectView">Pro OBJ</button>
         <button class="tab-button" data-tab-target="releaseView">Pro Release</button>
         <button class="tab-button" data-tab-target="runView">Pro Run</button>
         <button class="tab-button" data-tab-target="rulesView">Regeln & Quellen</button>
@@ -81,6 +87,7 @@
                   <thead>
                     <tr>
                       <th>Test</th>
+                      <th>OBJ</th>
                       <th>Requirement</th>
                       <th>Typ</th>
                       <th>Status</th>
@@ -100,6 +107,29 @@
               <div id="detailPanel" class="detail-panel"></div>
             </section>
           </div>
+        </section>
+
+        <section id="objectView" class="tab-panel">
+          <section class="panel">
+            <header class="panel-header">
+              <h2>OBJ-Snapshot</h2>
+            </header>
+            <div class="table-shell">
+              <table>
+                <thead>
+                  <tr>
+                    <th>OBJ</th>
+                    <th>Feature</th>
+                    <th>Passed</th>
+                    <th>Failed</th>
+                    <th>Never</th>
+                    <th>Gesamt</th>
+                  </tr>
+                </thead>
+                <tbody id="objectTableBody"></tbody>
+              </table>
+            </div>
+          </section>
         </section>
 
         <section id="releaseView" class="tab-panel">

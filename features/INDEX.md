@@ -57,7 +57,7 @@ Phase 4 – P1 (Erweiterte DNS-Features)
   OBJ-7  Requirements Traceability View
   OBJ-8  Export & Download
   OBJ-9  Manual Test Runner
-  OBJ-23 Test Execution Dashboard   ← Teststatus (Passed/Failed/Never) je Run/Release
+  OBJ-23 Test Execution Dashboard   ← Teststatus (Passed/Failed/Never) je OBJ/Run/Release
 
 Phase 5 – Plattform & Betrieb
   OBJ-10 Kubernetes Deployment     ← App containerisieren

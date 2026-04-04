@@ -21,6 +21,7 @@ export interface TestExecutionEntry {
   key: string
   testId: string
   tagId: string | null
+  objIds: string[]
   requirementId: string | null
   capabilityId: string
   capabilityName: string
@@ -59,6 +60,7 @@ export interface TestExecutionDashboardData {
     autoTests: number
   }
   filters: {
+    objects: Array<{ id: string; name: string }>
     capabilities: Array<{ id: string; name: string }>
     serviceFunctions: Array<{ id: string; name: string }>
   }
@@ -74,6 +76,11 @@ interface CapabilityCatalogEntry {
   name: string
 }
 
+interface ObjCatalogEntry {
+  id: string
+  name: string
+}
+
 interface ParsedTag {
   testType: TestType
   tagId: string
@@ -83,6 +90,7 @@ interface DraftExecutionEntry {
   key: string
   testId: string
   tagId: string | null
+  objIds: string[]
   requirementId: string | null
   capabilityId: string
   capabilityName: string
@@ -95,6 +103,8 @@ interface DraftExecutionEntry {
 
 const repoRoot = process.cwd()
 const capabilitiesRoot = path.join(repoRoot, 'capabilities')
+const capabilitiesIndexPath = path.join(capabilitiesRoot, 'INDEX.md')
+const featuresIndexPath = path.join(repoRoot, 'features', 'INDEX.md')
 const resultsRoot = path.join(repoRoot, 'tests', 'results')
 const executionsRoot = path.join(repoRoot, 'tests', 'executions')
 
@@ -279,6 +289,74 @@ async function loadCapabilityCatalog(): Promise<Map<string, CapabilityCatalogEnt
   return catalog
 }
 
+async function loadCapabilityToObjsMap(): Promise<Map<string, string[]>> {
+  const mapping = new Map<string, string[]>()
+  const content = await fs.readFile(capabilitiesIndexPath, 'utf8').catch(() => '')
+  if (!content) {
+    return mapping
+  }
+
+  const sectionMatch = content.match(
+    /## Capability → Feature Mapping([\s\S]*?)(?:\n##\s+[^\n]+|$)/,
+  )
+  if (!sectionMatch) {
+    return mapping
+  }
+
+  const lines = sectionMatch[1].split('\n')
+  for (const line of lines) {
+    if (!line.trim().startsWith('|')) {
+      continue
+    }
+    if (line.includes('Capability |') || line.includes('---')) {
+      continue
+    }
+
+    const cells = line
+      .split('|')
+      .map((cell) => cell.trim())
+      .filter((cell) => cell.length > 0)
+    if (cells.length < 2) {
+      continue
+    }
+
+    const capabilityId = cells[0].match(/(CAP-\d+)/i)?.[1]?.toUpperCase()
+    if (!capabilityId) {
+      continue
+    }
+
+    const objIds = Array.from(
+      new Set((cells[1].match(/OBJ-\d+/gi) ?? []).map((id) => id.toUpperCase())),
+    )
+    if (objIds.length > 0) {
+      mapping.set(capabilityId, objIds)
+    }
+  }
+
+  return mapping
+}
+
+async function loadObjCatalog(): Promise<Map<string, ObjCatalogEntry>> {
+  const catalog = new Map<string, ObjCatalogEntry>()
+  const content = await fs.readFile(featuresIndexPath, 'utf8').catch(() => '')
+  if (!content) {
+    return catalog
+  }
+
+  for (const line of content.split('\n')) {
+    const rowMatch = line.match(/^\|\s*(OBJ-\d+)\s*\|\s*([^|]+)\s*\|/i)
+    if (!rowMatch) {
+      continue
+    }
+
+    const id = rowMatch[1].toUpperCase()
+    const name = cleanText(rowMatch[2])
+    catalog.set(id, { id, name })
+  }
+
+  return catalog
+}
+
 function parseRequirementId(content: string): string | null {
   const coversMatch = content.match(/Covers:\s*req~([a-z0-9-]+)~\d+/i)
   if (coversMatch) {
@@ -310,6 +388,7 @@ function parseDefinitionEntry(
   absolutePath: string,
   content: string,
   capabilityCatalog: Map<string, CapabilityCatalogEntry>,
+  capabilityToObjs: Map<string, string[]>,
 ): DraftExecutionEntry | null {
   const relativePath = toPosixPath(path.relative(repoRoot, absolutePath))
   if (!relativePath.includes('/tests/manual/') && !relativePath.includes('/tests/auto/')) {
@@ -328,6 +407,7 @@ function parseDefinitionEntry(
   const capabilityInfo = capabilityCatalog.get(capabilitySlug)
   const capabilityId = capabilityInfo?.id ?? capabilitySlug.toUpperCase()
   const capabilityName = capabilityInfo?.name ?? slugToTitle(capabilitySlug)
+  const objIds = capabilityToObjs.get(capabilityId) ?? ['OBJ-UNASSIGNED']
 
   const serviceFunctionIndex = segments.indexOf('service-functions')
   const serviceFunctionFolder =
@@ -342,6 +422,7 @@ function parseDefinitionEntry(
     key: `${testType}:${identityPart}`,
     testId,
     tagId: tag?.tagId ?? null,
+    objIds,
     requirementId,
     capabilityId,
     capabilityName,
@@ -764,6 +845,8 @@ function buildReleaseSnapshots(entries: TestExecutionEntry[], totalTests: number
 
 export async function loadTestExecutionDashboardData(): Promise<TestExecutionDashboardData> {
   const capabilityCatalog = await loadCapabilityCatalog()
+  const capabilityToObjs = await loadCapabilityToObjsMap()
+  const objCatalog = await loadObjCatalog()
   const capabilityFiles = await listFilesRecursive(capabilitiesRoot)
   const definitionEntries: DraftExecutionEntry[] = []
 
@@ -780,7 +863,12 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
       continue
     }
 
-    const parsed = parseDefinitionEntry(filePath, content, capabilityCatalog)
+    const parsed = parseDefinitionEntry(
+      filePath,
+      content,
+      capabilityCatalog,
+      capabilityToObjs,
+    )
     if (parsed) {
       definitionEntries.push(parsed)
     }
@@ -821,6 +909,7 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
       key: orphanKey,
       testId: `ORPHAN-${orphanId}`,
       tagId: null,
+      objIds: ['OBJ-UNASSIGNED'],
       requirementId: null,
       capabilityId: 'CAP-UNBEKANNT',
       capabilityName: 'Unbekannt',
@@ -907,6 +996,20 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
     ).values(),
   ).sort((left, right) => left.id.localeCompare(right.id, 'de'))
 
+  const objects = Array.from(
+    new Map(
+      tests
+        .flatMap((test) => test.objIds)
+        .map((objId) => [
+          objId,
+          {
+            id: objId,
+            name: objCatalog.get(objId)?.name ?? 'Unzugeordnet',
+          },
+        ]),
+    ).values(),
+  ).sort((left, right) => left.id.localeCompare(right.id, 'de'))
+
   return {
     generatedAt: new Date().toISOString(),
     summary: {
@@ -918,6 +1021,7 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
       autoTests,
     },
     filters: {
+      objects,
       capabilities,
       serviceFunctions,
     },

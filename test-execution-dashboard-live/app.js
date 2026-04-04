@@ -3,6 +3,7 @@ const DATA_URL = './data/test-execution-dashboard.json'
 const dom = {
   summaryCards: document.querySelector('#summaryCards'),
   statusMessage: document.querySelector('#statusMessage'),
+  objectFilter: document.querySelector('#objectFilter'),
   capabilityFilter: document.querySelector('#capabilityFilter'),
   serviceFunctionFilter: document.querySelector('#serviceFunctionFilter'),
   testTypeFilter: document.querySelector('#testTypeFilter'),
@@ -11,6 +12,7 @@ const dom = {
   resetFilters: document.querySelector('#resetFilters'),
   testsTableBody: document.querySelector('#testsTableBody'),
   detailPanel: document.querySelector('#detailPanel'),
+  objectTableBody: document.querySelector('#objectTableBody'),
   releaseTableBody: document.querySelector('#releaseTableBody'),
   runTableBody: document.querySelector('#runTableBody'),
   statusRules: document.querySelector('#statusRules'),
@@ -24,6 +26,7 @@ const state = {
   selectedKey: null,
   activeTab: 'currentView',
   filters: {
+    object: 'ALL',
     capability: 'ALL',
     serviceFunction: 'ALL',
     testType: 'ALL',
@@ -176,11 +179,65 @@ function buildSnapshots(tests, mode) {
   return snapshots
 }
 
+function buildObjSnapshots(tests, objects, focusObjectId) {
+  const knownObjects = new Map((objects || []).map((entry) => [entry.id, entry.name]))
+  const byObject = new Map()
+
+  function ensureSnapshot(objId) {
+    const existing = byObject.get(objId)
+    if (existing) {
+      return existing
+    }
+
+    const created = {
+      id: objId,
+      name:
+        knownObjects.get(objId) ||
+        (objId === 'OBJ-UNASSIGNED' ? 'Unzugeordnet' : 'Unbekanntes Objekt'),
+      totalTests: 0,
+      passed: 0,
+      failed: 0,
+      neverExecuted: 0,
+    }
+    byObject.set(objId, created)
+    return created
+  }
+
+  for (const test of tests) {
+    const objectIds = Array.from(
+      new Set(
+        (Array.isArray(test.objIds) && test.objIds.length > 0
+          ? test.objIds
+          : ['OBJ-UNASSIGNED']
+        ).map((id) => String(id).toUpperCase()),
+      ),
+    )
+    const relevantObjectIds = focusObjectId
+      ? objectIds.filter((id) => id === focusObjectId)
+      : objectIds
+
+    for (const objId of relevantObjectIds) {
+      const snapshot = ensureSnapshot(objId)
+      snapshot.totalTests += 1
+      if (test.status === 'passed') snapshot.passed += 1
+      else if (test.status === 'failed') snapshot.failed += 1
+      else snapshot.neverExecuted += 1
+    }
+  }
+
+  return Array.from(byObject.values()).sort((left, right) =>
+    left.id.localeCompare(right.id, 'de'),
+  )
+}
+
 function getFilteredTests() {
   if (!state.rawData) return []
 
   const requirementNeedle = state.filters.requirement.trim().toLowerCase()
   return state.rawData.tests.filter((test) => {
+    if (state.filters.object !== 'ALL' && !(test.objIds || []).includes(state.filters.object)) {
+      return false
+    }
     if (
       state.filters.capability !== 'ALL' &&
       test.capabilityId !== state.filters.capability
@@ -226,6 +283,14 @@ function ensureSelectedKey(filteredTests) {
 }
 
 function populateFilters() {
+  const objectOptions = [
+    { value: 'ALL', label: 'Alle OBJs' },
+    ...(state.rawData.filters?.objects || []).map((item) => ({
+      value: item.id,
+      label: `${item.id} · ${item.name}`,
+    })),
+  ]
+
   const capabilityOptions = [
     { value: 'ALL', label: 'Alle Capabilities' },
     ...(state.rawData.filters?.capabilities || []).map((item) => ({
@@ -243,6 +308,7 @@ function populateFilters() {
   ]
 
   for (const [element, options, value] of [
+    [dom.objectFilter, objectOptions, state.filters.object],
     [dom.capabilityFilter, capabilityOptions, state.filters.capability],
     [dom.serviceFunctionFilter, serviceFunctionOptions, state.filters.serviceFunction],
   ]) {
@@ -297,7 +363,7 @@ function renderTestsTable(filteredTests) {
       null,
       'Keine Testfaelle fuer den aktuellen Filter gefunden.',
     )
-    cell.colSpan = 6
+    cell.colSpan = 7
     row.appendChild(cell)
     dom.testsTableBody.appendChild(row)
     return
@@ -311,6 +377,7 @@ function renderTestsTable(filteredTests) {
     })
 
     row.appendChild(createElement('td', null, test.testId))
+    row.appendChild(createElement('td', null, (test.objIds || []).join(', ')))
     row.appendChild(createElement('td', null, test.requirementId || '—'))
     row.appendChild(createElement('td', null, test.testType))
 
@@ -342,6 +409,7 @@ function renderDetailPanel(filteredTests) {
 
   const blocks = [
     ['Testfall', selected.testId],
+    ['OBJ', (selected.objIds || []).join(', ') || 'OBJ-UNASSIGNED'],
     ['Capability', `${selected.capabilityId} · ${selected.capabilityName}`],
     ['Service Function', `${selected.serviceFunctionId} · ${selected.serviceFunctionName}`],
     ['Requirement', selected.requirementId || '—'],
@@ -413,6 +481,30 @@ function renderSnapshotTable(targetBody, snapshots) {
   }
 }
 
+function renderObjTable(objSnapshots) {
+  clearElement(dom.objectTableBody)
+
+  if (objSnapshots.length === 0) {
+    const row = createElement('tr')
+    const cell = createElement('td', null, 'Keine Tests fuer den aktuellen Filter gefunden.')
+    cell.colSpan = 6
+    row.appendChild(cell)
+    dom.objectTableBody.appendChild(row)
+    return
+  }
+
+  for (const snapshot of objSnapshots) {
+    const row = createElement('tr')
+    row.appendChild(createElement('td', null, snapshot.id))
+    row.appendChild(createElement('td', null, snapshot.name))
+    row.appendChild(createElement('td', null, String(snapshot.passed)))
+    row.appendChild(createElement('td', null, String(snapshot.failed)))
+    row.appendChild(createElement('td', null, String(snapshot.neverExecuted)))
+    row.appendChild(createElement('td', null, String(snapshot.totalTests)))
+    dom.objectTableBody.appendChild(row)
+  }
+}
+
 function renderRules() {
   clearElement(dom.statusRules)
   clearElement(dom.dataSources)
@@ -446,6 +538,13 @@ function render() {
   renderSummaryCards(filteredTests)
   renderTestsTable(filteredTests)
   renderDetailPanel(filteredTests)
+  renderObjTable(
+    buildObjSnapshots(
+      filteredTests,
+      state.rawData.filters?.objects || [],
+      state.filters.object === 'ALL' ? null : state.filters.object,
+    ),
+  )
   renderSnapshotTable(dom.releaseTableBody, buildSnapshots(filteredTests, 'release'))
   renderSnapshotTable(dom.runTableBody, buildSnapshots(filteredTests, 'run'))
   renderRules()
@@ -455,6 +554,10 @@ function render() {
 }
 
 function bindEvents() {
+  dom.objectFilter.addEventListener('change', (event) => {
+    state.filters.object = event.target.value
+    render()
+  })
   dom.capabilityFilter.addEventListener('change', (event) => {
     state.filters.capability = event.target.value
     render()
@@ -477,12 +580,14 @@ function bindEvents() {
   })
 
   dom.resetFilters.addEventListener('click', () => {
+    state.filters.object = 'ALL'
     state.filters.capability = 'ALL'
     state.filters.serviceFunction = 'ALL'
     state.filters.testType = 'ALL'
     state.filters.status = 'ALL'
     state.filters.requirement = ''
 
+    dom.objectFilter.value = 'ALL'
     dom.capabilityFilter.value = 'ALL'
     dom.serviceFunctionFilter.value = 'ALL'
     dom.testTypeFilter.value = 'ALL'

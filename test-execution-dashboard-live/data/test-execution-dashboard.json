@@ -1,14 +1,96 @@
 {
-  "generatedAt": "2026-04-04T10:39:42.370Z",
+  "generatedAt": "2026-04-04T10:50:58.037Z",
   "summary": {
-    "totalTests": 206,
+    "totalTests": 208,
     "passed": 0,
     "failed": 0,
-    "neverExecuted": 206,
-    "manualTests": 103,
-    "autoTests": 103
+    "neverExecuted": 208,
+    "manualTests": 104,
+    "autoTests": 104
   },
   "filters": {
+    "objects": [
+      {
+        "id": "OBJ-1",
+        "name": "CI/CD Pipeline"
+      },
+      {
+        "id": "OBJ-10",
+        "name": "Kubernetes Deployment"
+      },
+      {
+        "id": "OBJ-11",
+        "name": "Monitoring & Observability (OpenTelemetry)"
+      },
+      {
+        "id": "OBJ-12",
+        "name": "Security & Authentifizierung"
+      },
+      {
+        "id": "OBJ-13",
+        "name": "Kubernetes Operator"
+      },
+      {
+        "id": "OBJ-14",
+        "name": "Release Management"
+      },
+      {
+        "id": "OBJ-15",
+        "name": "Produkt-Website"
+      },
+      {
+        "id": "OBJ-16",
+        "name": "Maturitätsstatus / Reifegradübersicht"
+      },
+      {
+        "id": "OBJ-17",
+        "name": "SBOM & Security-Scanning"
+      },
+      {
+        "id": "OBJ-19",
+        "name": "Zarf-Paket / Offline-Weitergabe"
+      },
+      {
+        "id": "OBJ-2",
+        "name": "Dokumentation"
+      },
+      {
+        "id": "OBJ-20",
+        "name": "Zielumgebung / Import / Rehydrierung"
+      },
+      {
+        "id": "OBJ-21",
+        "name": "GitOps / Argo CD / App-of-Apps"
+      },
+      {
+        "id": "OBJ-22",
+        "name": "Release-Artefaktprüfung / Publish-Gate"
+      },
+      {
+        "id": "OBJ-23",
+        "name": "Test Execution Dashboard"
+      },
+      {
+        "id": "OBJ-4",
+        "name": "Capabilities Dashboard"
+      },
+      {
+        "id": "OBJ-5",
+        "name": "Participant Configuration Form"
+      },
+      {
+        "id": "OBJ-6",
+        "name": "DNS Zone File Generator"
+      },
+      {
+        "id": "OBJ-7",
+        "name": "Requirements Traceability View"
+      },
+      {
+        "id": "OBJ-8",
+        "name": "Export & Download"
+      }
+    ],
     "capabilities": [
       {
         "id": "CAP-001",
@@ -187,6 +269,13 @@
       "key": "auto:test-sreq-309-001",
       "testId": "TEST-SREQ-309-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-309",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -206,6 +295,13 @@
       "key": "manual:test-sreq-309-001-manual",
       "testId": "TEST-SREQ-309-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-309",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -225,6 +321,13 @@
       "key": "auto:test-sreq-310-001",
       "testId": "TEST-SREQ-310-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-310",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -244,6 +347,13 @@
       "key": "manual:test-sreq-310-001-manual",
       "testId": "TEST-SREQ-310-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-310",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -263,6 +373,13 @@
       "key": "auto:test-sreq-53-001",
       "testId": "TEST-SREQ-53-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-53",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -282,6 +399,13 @@
       "key": "manual:test-sreq-53-001-manual",
       "testId": "TEST-SREQ-53-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-53",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -301,6 +425,13 @@
       "key": "auto:test-sreq-54-001",
       "testId": "TEST-SREQ-54-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-54",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -320,6 +451,13 @@
       "key": "manual:test-sreq-54-001-manual",
       "testId": "TEST-SREQ-54-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-54",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -339,6 +477,13 @@
       "key": "auto:test-sreq-240-001",
       "testId": "TEST-SREQ-240-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-240",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -358,6 +503,13 @@
       "key": "manual:test-sreq-240-001-manual",
       "testId": "TEST-SREQ-240-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-240",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -377,6 +529,13 @@
       "key": "auto:test-sreq-238-resolv-001",
       "testId": "TEST-SREQ-238-RESOLV-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-238",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -396,6 +555,13 @@
       "key": "manual:test-sreq-238-resolv-001-manual",
       "testId": "TEST-SREQ-238-RESOLV-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-238",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -415,6 +581,13 @@
       "key": "auto:test-sreq-611-resolv-001",
       "testId": "TEST-SREQ-611-RESOLV-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-611",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -434,6 +607,13 @@
       "key": "manual:test-sreq-611-resolv-001-manual",
       "testId": "TEST-SREQ-611-RESOLV-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-611",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -453,6 +633,13 @@
       "key": "auto:test-sreq-615-001",
       "testId": "TEST-SREQ-615-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-615",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -472,6 +659,13 @@
       "key": "manual:test-sreq-615-001-manual",
       "testId": "TEST-SREQ-615-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-615",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -491,6 +685,13 @@
       "key": "auto:test-creq-005-001",
       "testId": "TEST-CREQ-005-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-005",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -510,6 +711,13 @@
       "key": "manual:test-creq-005-001-manual",
       "testId": "TEST-CREQ-005-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-005",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -529,6 +737,13 @@
       "key": "auto:test-sreq-609-001",
       "testId": "TEST-SREQ-609-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-609",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -548,6 +763,13 @@
       "key": "manual:test-sreq-609-001-manual",
       "testId": "TEST-SREQ-609-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-609",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -567,6 +789,13 @@
       "key": "auto:test-sreq-610-001",
       "testId": "TEST-SREQ-610-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-610",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -586,6 +815,13 @@
       "key": "manual:test-sreq-610-001-manual",
       "testId": "TEST-SREQ-610-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-610",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -605,6 +841,13 @@
       "key": "auto:test-creq-001-001",
       "testId": "TEST-CREQ-001-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-001",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -624,6 +867,13 @@
       "key": "manual:test-creq-001-001-manual",
       "testId": "TEST-CREQ-001-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-001",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -643,6 +893,13 @@
       "key": "auto:test-creq-002-001",
       "testId": "TEST-CREQ-002-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-002",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -662,6 +919,13 @@
       "key": "manual:test-creq-002-001-manual",
       "testId": "TEST-CREQ-002-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-002",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -681,6 +945,13 @@
       "key": "auto:test-creq-003-001",
       "testId": "TEST-CREQ-003-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-003",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -700,6 +971,13 @@
       "key": "manual:test-creq-003-001-manual",
       "testId": "TEST-CREQ-003-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-003",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -719,6 +997,13 @@
       "key": "auto:test-sreq-1311-001",
       "testId": "TEST-SREQ-1311-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1311",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -738,6 +1023,13 @@
       "key": "manual:test-sreq-1311-001-manual",
       "testId": "TEST-SREQ-1311-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1311",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -757,6 +1049,13 @@
       "key": "auto:test-sreq-1312-001",
       "testId": "TEST-SREQ-1312-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1312",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -776,6 +1075,13 @@
       "key": "manual:test-sreq-1312-001-manual",
       "testId": "TEST-SREQ-1312-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1312",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -795,6 +1101,13 @@
       "key": "auto:test-sreq-1313-001",
       "testId": "TEST-SREQ-1313-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1313",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -814,6 +1127,13 @@
       "key": "manual:test-sreq-1313-001-manual",
       "testId": "TEST-SREQ-1313-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1313",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -833,6 +1153,13 @@
       "key": "auto:test-sreq-1314-001",
       "testId": "TEST-SREQ-1314-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1314",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -852,6 +1179,13 @@
       "key": "manual:test-sreq-1314-001-manual",
       "testId": "TEST-SREQ-1314-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1314",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -871,6 +1205,13 @@
       "key": "auto:test-sreq-1315-001",
       "testId": "TEST-SREQ-1315-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1315",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -890,6 +1231,13 @@
       "key": "manual:test-sreq-1315-001-manual",
       "testId": "TEST-SREQ-1315-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1315",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -909,6 +1257,13 @@
       "key": "auto:test-sreq-1316-001",
       "testId": "TEST-SREQ-1316-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1316",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -928,6 +1283,13 @@
       "key": "manual:test-sreq-1316-001-manual",
       "testId": "TEST-SREQ-1316-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1316",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -947,6 +1309,13 @@
       "key": "auto:test-sreq-1317-001",
       "testId": "TEST-SREQ-1317-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1317",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -966,6 +1335,13 @@
       "key": "manual:test-sreq-1317-001-manual",
       "testId": "TEST-SREQ-1317-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1317",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -985,6 +1361,13 @@
       "key": "auto:test-sreq-1318-001",
       "testId": "TEST-SREQ-1318-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1318",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1004,6 +1387,13 @@
       "key": "manual:test-sreq-1318-001-manual",
       "testId": "TEST-SREQ-1318-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1318",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1023,6 +1413,13 @@
       "key": "auto:test-sreq-1319-001",
       "testId": "TEST-SREQ-1319-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1319",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1042,6 +1439,13 @@
       "key": "manual:test-sreq-1319-001-manual",
       "testId": "TEST-SREQ-1319-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1319",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1061,6 +1465,13 @@
       "key": "auto:test-sreq-1320-001",
       "testId": "TEST-SREQ-1320-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1320",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1080,6 +1491,13 @@
       "key": "manual:test-sreq-1320-001-manual",
       "testId": "TEST-SREQ-1320-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1320",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1099,6 +1517,13 @@
       "key": "auto:sreq-234-001",
       "testId": "TEST-SREQ-234-001",
       "tagId": "sreq-234-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-234",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1118,6 +1543,13 @@
       "key": "manual:sreq-234-001",
       "testId": "TEST-SREQ-234-001-manual",
       "tagId": "sreq-234-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-234",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1137,6 +1569,13 @@
       "key": "auto:test-sreq-235-001",
       "testId": "TEST-SREQ-235-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-235",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1156,6 +1595,13 @@
       "key": "manual:test-sreq-235-001-manual",
       "testId": "TEST-SREQ-235-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-235",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1175,6 +1621,13 @@
       "key": "auto:test-sreq-238-001",
       "testId": "TEST-SREQ-238-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-238",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1194,6 +1647,13 @@
       "key": "manual:test-sreq-238-001-manual",
       "testId": "TEST-SREQ-238-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-238",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1213,6 +1673,13 @@
       "key": "auto:test-sreq-239-001",
       "testId": "TEST-SREQ-239-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-239",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1232,6 +1699,13 @@
       "key": "manual:test-sreq-239-001-manual",
       "testId": "TEST-SREQ-239-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-239",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1251,6 +1725,13 @@
       "key": "auto:test-sreq-378-001",
       "testId": "TEST-SREQ-378-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-378",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1270,6 +1751,13 @@
       "key": "manual:test-sreq-378-001-manual",
       "testId": "TEST-SREQ-378-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-378",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1289,6 +1777,13 @@
       "key": "auto:test-sreq-379-001",
       "testId": "TEST-SREQ-379-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-379",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1308,6 +1803,13 @@
       "key": "manual:test-sreq-379-001-manual",
       "testId": "TEST-SREQ-379-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-379",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1327,6 +1829,13 @@
       "key": "auto:test-sreq-380-001",
       "testId": "TEST-SREQ-380-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-380",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1346,6 +1855,13 @@
       "key": "manual:test-sreq-380-001-manual",
       "testId": "TEST-SREQ-380-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-380",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1365,6 +1881,13 @@
       "key": "auto:test-sreq-382-001",
       "testId": "TEST-SREQ-382-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-382",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1384,6 +1907,13 @@
       "key": "manual:test-sreq-382-001-manual",
       "testId": "TEST-SREQ-382-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-382",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1403,6 +1933,13 @@
       "key": "auto:test-sreq-611-001",
       "testId": "TEST-SREQ-611-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-611",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1422,6 +1959,13 @@
       "key": "manual:test-sreq-611-001-manual",
       "testId": "TEST-SREQ-611-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-611",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1441,6 +1985,13 @@
       "key": "auto:test-sreq-613-001",
       "testId": "TEST-SREQ-613-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-613",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1460,6 +2011,13 @@
       "key": "manual:test-sreq-613-001-manual",
       "testId": "TEST-SREQ-613-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-613",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1479,6 +2037,13 @@
       "key": "auto:test-sreq-614-001",
       "testId": "TEST-SREQ-614-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-614",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1498,6 +2063,13 @@
       "key": "manual:test-sreq-614-001-manual",
       "testId": "TEST-SREQ-614-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-614",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1517,6 +2089,13 @@
       "key": "auto:test-sreq-615-001",
       "testId": "TEST-SREQ-615-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-615",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1536,6 +2115,13 @@
       "key": "manual:test-sreq-615-001-manual",
       "testId": "TEST-SREQ-615-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-615",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1555,6 +2141,13 @@
       "key": "auto:test-sreq-616-001",
       "testId": "TEST-SREQ-616-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-616",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1574,6 +2167,13 @@
       "key": "manual:test-sreq-616-001-manual",
       "testId": "TEST-SREQ-616-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-616",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1593,6 +2193,13 @@
       "key": "auto:test-creq-004-001",
       "testId": "TEST-CREQ-004-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-004",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1612,6 +2219,13 @@
       "key": "manual:test-creq-004-001-manual",
       "testId": "TEST-CREQ-004-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "CREQ-004",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1631,6 +2245,13 @@
       "key": "auto:test-sreq-1159-001",
       "testId": "TEST-SREQ-1159-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1159",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1650,6 +2271,13 @@
       "key": "manual:test-sreq-1159-001-manual",
       "testId": "TEST-SREQ-1159-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1159",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1669,6 +2297,13 @@
       "key": "auto:test-sreq-1272-001",
       "testId": "TEST-SREQ-1272-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1272",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1688,6 +2323,13 @@
       "key": "manual:test-sreq-1272-001-manual",
       "testId": "TEST-SREQ-1272-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-1272",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1707,6 +2349,13 @@
       "key": "auto:test-sreq-242-001",
       "testId": "TEST-SREQ-242-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-242",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1726,6 +2375,13 @@
       "key": "manual:test-sreq-242-001-manual",
       "testId": "TEST-SREQ-242-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-242",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1745,6 +2401,13 @@
       "key": "auto:test-sreq-525-001",
       "testId": "TEST-SREQ-525-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-525",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1764,6 +2427,13 @@
       "key": "manual:test-sreq-525-001-manual",
       "testId": "TEST-SREQ-525-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-525",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1783,6 +2453,13 @@
       "key": "auto:test-sreq-617-001",
       "testId": "TEST-SREQ-617-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-617",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1802,6 +2479,13 @@
       "key": "manual:test-sreq-617-001-manual",
       "testId": "TEST-SREQ-617-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-617",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1821,6 +2505,13 @@
       "key": "auto:test-sreq-241-001",
       "testId": "TEST-SREQ-241-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-241",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1840,6 +2531,13 @@
       "key": "manual:test-sreq-241-001-manual",
       "testId": "TEST-SREQ-241-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-241",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1859,6 +2557,13 @@
       "key": "auto:test-sreq-529-001",
       "testId": "TEST-SREQ-529-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-529",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1878,6 +2583,13 @@
       "key": "manual:test-sreq-529-001-manual",
       "testId": "TEST-SREQ-529-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-529",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1897,6 +2609,13 @@
       "key": "auto:test-sreq-612-001",
       "testId": "TEST-SREQ-612-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-612",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1916,6 +2635,13 @@
       "key": "manual:test-sreq-612-001-manual",
       "testId": "TEST-SREQ-612-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8"
+      ],
       "requirementId": "SREQ-612",
       "capabilityId": "CAP-001",
       "capabilityName": "Domain Naming",
@@ -1935,6 +2661,10 @@
       "key": "auto:test-rdts-201-001",
       "testId": "TEST-RDTS-201-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -1954,6 +2684,10 @@
       "key": "manual:test-rdts-201-001-manual",
       "testId": "TEST-RDTS-201-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -1973,6 +2707,10 @@
       "key": "auto:test-rdts-202-001",
       "testId": "TEST-RDTS-202-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -1992,6 +2730,10 @@
       "key": "manual:test-rdts-202-001-manual",
       "testId": "TEST-RDTS-202-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2011,6 +2753,10 @@
       "key": "auto:test-rdts-203-001",
       "testId": "TEST-RDTS-203-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2030,6 +2776,10 @@
       "key": "manual:test-rdts-203-001-manual",
       "testId": "TEST-RDTS-203-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2049,6 +2799,10 @@
       "key": "auto:test-rdts-204-001",
       "testId": "TEST-RDTS-204-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2068,6 +2822,10 @@
       "key": "manual:test-rdts-204-001-manual",
       "testId": "TEST-RDTS-204-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2087,6 +2845,10 @@
       "key": "auto:test-rdts-205-001",
       "testId": "TEST-RDTS-205-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2106,6 +2868,10 @@
       "key": "manual:test-rdts-205-001-manual",
       "testId": "TEST-RDTS-205-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2125,6 +2891,10 @@
       "key": "auto:test-rdts-206-001",
       "testId": "TEST-RDTS-206-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2144,6 +2914,10 @@
       "key": "manual:test-rdts-206-001-manual",
       "testId": "TEST-RDTS-206-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2163,6 +2937,10 @@
       "key": "auto:test-rdts-207-001",
       "testId": "TEST-RDTS-207-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2182,6 +2960,10 @@
       "key": "manual:test-rdts-207-001-manual",
       "testId": "TEST-RDTS-207-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2201,6 +2983,10 @@
       "key": "auto:test-rdts-208-001",
       "testId": "TEST-RDTS-208-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2220,6 +3006,10 @@
       "key": "manual:test-rdts-208-001-manual",
       "testId": "TEST-RDTS-208-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2239,6 +3029,10 @@
       "key": "auto:test-rdts-209-001",
       "testId": "TEST-RDTS-209-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2258,6 +3052,10 @@
       "key": "manual:test-rdts-209-001-manual",
       "testId": "TEST-RDTS-209-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2277,6 +3075,10 @@
       "key": "auto:test-rdts-210-001",
       "testId": "TEST-RDTS-210-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2296,6 +3098,10 @@
       "key": "manual:test-rdts-210-001-manual",
       "testId": "TEST-RDTS-210-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2315,6 +3121,10 @@
       "key": "auto:test-rdts-211-001",
       "testId": "TEST-RDTS-211-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2334,6 +3144,10 @@
       "key": "manual:test-rdts-211-001-manual",
       "testId": "TEST-RDTS-211-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2353,6 +3167,10 @@
       "key": "auto:test-rdts-212-001",
       "testId": "TEST-RDTS-212-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2372,6 +3190,10 @@
       "key": "manual:test-rdts-212-001-manual",
       "testId": "TEST-RDTS-212-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-002",
       "capabilityName": "Kubernetes Platform",
@@ -2391,6 +3213,9 @@
       "key": "auto:test-rdts-301-001",
       "testId": "TEST-RDTS-301-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2410,6 +3235,9 @@
       "key": "manual:test-rdts-301-001-manual",
       "testId": "TEST-RDTS-301-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2429,6 +3257,9 @@
       "key": "auto:test-rdts-302-001",
       "testId": "TEST-RDTS-302-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2448,6 +3279,9 @@
       "key": "manual:test-rdts-302-001-manual",
       "testId": "TEST-RDTS-302-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2467,6 +3301,9 @@
       "key": "auto:test-rdts-303-001",
       "testId": "TEST-RDTS-303-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2486,6 +3323,9 @@
       "key": "manual:test-rdts-303-001-manual",
       "testId": "TEST-RDTS-303-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2505,6 +3345,9 @@
       "key": "auto:test-rdts-304-001",
       "testId": "TEST-RDTS-304-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2524,6 +3367,9 @@
       "key": "manual:test-rdts-304-001-manual",
       "testId": "TEST-RDTS-304-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2543,6 +3389,9 @@
       "key": "auto:test-rdts-305-001",
       "testId": "TEST-RDTS-305-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2562,6 +3411,9 @@
       "key": "manual:test-rdts-305-001-manual",
       "testId": "TEST-RDTS-305-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2581,6 +3433,9 @@
       "key": "auto:test-rdts-306-001",
       "testId": "TEST-RDTS-306-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2600,6 +3455,9 @@
       "key": "manual:test-rdts-306-001-manual",
       "testId": "TEST-RDTS-306-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2619,6 +3477,9 @@
       "key": "auto:test-rdts-307-001",
       "testId": "TEST-RDTS-307-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2638,6 +3499,9 @@
       "key": "manual:test-rdts-307-001-manual",
       "testId": "TEST-RDTS-307-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2657,6 +3521,9 @@
       "key": "auto:test-rdts-308-001",
       "testId": "TEST-RDTS-308-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2676,6 +3543,9 @@
       "key": "manual:test-rdts-308-001-manual",
       "testId": "TEST-RDTS-308-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-003",
       "capabilityName": "Observability",
@@ -2695,6 +3565,9 @@
       "key": "auto:test-rdts-401-001",
       "testId": "TEST-RDTS-401-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2714,6 +3587,9 @@
       "key": "manual:test-rdts-401-001-manual",
       "testId": "TEST-RDTS-401-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2733,6 +3609,9 @@
       "key": "auto:test-rdts-402-001",
       "testId": "TEST-RDTS-402-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2752,6 +3631,9 @@
       "key": "manual:test-rdts-402-001-manual",
       "testId": "TEST-RDTS-402-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2771,6 +3653,9 @@
       "key": "auto:test-rdts-403-001",
       "testId": "TEST-RDTS-403-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2790,6 +3675,9 @@
       "key": "manual:test-rdts-403-001-manual",
       "testId": "TEST-RDTS-403-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2809,6 +3697,9 @@
       "key": "auto:test-rdts-404-001",
       "testId": "TEST-RDTS-404-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2828,6 +3719,9 @@
       "key": "manual:test-rdts-404-001-manual",
       "testId": "TEST-RDTS-404-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2847,6 +3741,9 @@
       "key": "auto:test-rdts-405-001",
       "testId": "TEST-RDTS-405-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2866,6 +3763,9 @@
       "key": "manual:test-rdts-405-001-manual",
       "testId": "TEST-RDTS-405-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2885,6 +3785,9 @@
       "key": "auto:test-rdts-406-001",
       "testId": "TEST-RDTS-406-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2904,6 +3807,9 @@
       "key": "manual:test-rdts-406-001-manual",
       "testId": "TEST-RDTS-406-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2923,6 +3829,9 @@
       "key": "auto:test-rdts-407-001",
       "testId": "TEST-RDTS-407-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2942,6 +3851,9 @@
       "key": "manual:test-rdts-407-001-manual",
       "testId": "TEST-RDTS-407-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2961,6 +3873,9 @@
       "key": "auto:test-rdts-408-001",
       "testId": "TEST-RDTS-408-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2980,6 +3895,9 @@
       "key": "manual:test-rdts-408-001-manual",
       "testId": "TEST-RDTS-408-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -2999,6 +3917,9 @@
       "key": "auto:test-rdts-409-001",
       "testId": "TEST-RDTS-409-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -3018,6 +3939,9 @@
       "key": "manual:test-rdts-409-001-manual",
       "testId": "TEST-RDTS-409-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -3037,6 +3961,9 @@
       "key": "auto:test-rdts-410-001",
       "testId": "TEST-RDTS-410-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -3056,6 +3983,9 @@
       "key": "manual:test-rdts-410-001-manual",
       "testId": "TEST-RDTS-410-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-004",
       "capabilityName": "Security & Access Control",
@@ -3075,6 +4005,10 @@
       "key": "auto:test-rdts-501-001",
       "testId": "TEST-RDTS-501-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3094,6 +4028,10 @@
       "key": "manual:test-rdts-501-001-manual",
       "testId": "TEST-RDTS-501-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3113,6 +4051,10 @@
       "key": "auto:test-rdts-502-001",
       "testId": "TEST-RDTS-502-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3132,6 +4074,10 @@
       "key": "manual:test-rdts-502-001-manual",
       "testId": "TEST-RDTS-502-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3151,6 +4097,10 @@
       "key": "auto:test-rdts-503-001",
       "testId": "TEST-RDTS-503-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3170,6 +4120,10 @@
       "key": "manual:test-rdts-503-001-manual",
       "testId": "TEST-RDTS-503-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3189,6 +4143,10 @@
       "key": "auto:test-rdts-504-001",
       "testId": "TEST-RDTS-504-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3208,6 +4166,10 @@
       "key": "manual:test-rdts-504-001-manual",
       "testId": "TEST-RDTS-504-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3227,6 +4189,10 @@
       "key": "auto:test-rdts-505-001",
       "testId": "TEST-RDTS-505-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3246,6 +4212,10 @@
       "key": "manual:test-rdts-505-001-manual",
       "testId": "TEST-RDTS-505-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3265,6 +4235,10 @@
       "key": "auto:test-rdts-506-001",
       "testId": "TEST-RDTS-506-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3284,6 +4258,10 @@
       "key": "manual:test-rdts-506-001-manual",
       "testId": "TEST-RDTS-506-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3303,6 +4281,10 @@
       "key": "auto:test-rdts-507-001",
       "testId": "TEST-RDTS-507-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3322,6 +4304,10 @@
       "key": "manual:test-rdts-507-001-manual",
       "testId": "TEST-RDTS-507-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3341,6 +4327,10 @@
       "key": "auto:test-rdts-508-001",
       "testId": "TEST-RDTS-508-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3360,6 +4350,10 @@
       "key": "manual:test-rdts-508-001-manual",
       "testId": "TEST-RDTS-508-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3379,6 +4373,10 @@
       "key": "auto:test-rdts-509-001",
       "testId": "TEST-RDTS-509-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3398,6 +4396,10 @@
       "key": "manual:test-rdts-509-001-manual",
       "testId": "TEST-RDTS-509-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-005",
       "capabilityName": "DevOps",
@@ -3417,6 +4419,12 @@
       "key": "auto:test-rdts-601-001",
       "testId": "TEST-RDTS-601-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3436,6 +4444,12 @@
       "key": "manual:test-rdts-601-001-manual",
       "testId": "TEST-RDTS-601-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3455,6 +4469,12 @@
       "key": "auto:test-rdts-602-001",
       "testId": "TEST-RDTS-602-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3474,6 +4494,12 @@
       "key": "manual:test-rdts-602-001-manual",
       "testId": "TEST-RDTS-602-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3493,6 +4519,12 @@
       "key": "auto:test-rdts-603-001",
       "testId": "TEST-RDTS-603-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3512,6 +4544,12 @@
       "key": "manual:test-rdts-603-001-manual",
       "testId": "TEST-RDTS-603-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3531,6 +4569,12 @@
       "key": "auto:test-rdts-604-001",
       "testId": "TEST-RDTS-604-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3550,6 +4594,12 @@
       "key": "manual:test-rdts-604-001-manual",
       "testId": "TEST-RDTS-604-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3569,6 +4619,12 @@
       "key": "auto:test-rdts-605-001",
       "testId": "TEST-RDTS-605-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3588,6 +4644,12 @@
       "key": "manual:test-rdts-605-001-manual",
       "testId": "TEST-RDTS-605-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3607,6 +4669,12 @@
       "key": "auto:test-rdts-606-001",
       "testId": "TEST-RDTS-606-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3626,6 +4694,12 @@
       "key": "manual:test-rdts-606-001-manual",
       "testId": "TEST-RDTS-606-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3645,6 +4719,12 @@
       "key": "auto:test-rdts-607-001",
       "testId": "TEST-RDTS-607-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3664,6 +4744,12 @@
       "key": "manual:test-rdts-607-001-manual",
       "testId": "TEST-RDTS-607-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3683,6 +4769,12 @@
       "key": "auto:test-rdts-608-001",
       "testId": "TEST-RDTS-608-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3702,6 +4794,12 @@
       "key": "manual:test-rdts-608-001-manual",
       "testId": "TEST-RDTS-608-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3721,6 +4819,12 @@
       "key": "auto:test-rdts-609-001",
       "testId": "TEST-RDTS-609-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3740,6 +4844,12 @@
       "key": "manual:test-rdts-609-001-manual",
       "testId": "TEST-RDTS-609-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3759,6 +4869,12 @@
       "key": "auto:rdts-610-001",
       "testId": "TEST-RDTS-610-001",
       "tagId": "rdts-610-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": "RDTS-610",
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3778,6 +4894,12 @@
       "key": "manual:rdts-610-001",
       "testId": "TEST-RDTS-610-001-manual",
       "tagId": "rdts-610-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": "RDTS-610",
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3797,6 +4919,12 @@
       "key": "auto:rdts-611-001",
       "testId": "TEST-RDTS-611-001",
       "tagId": "rdts-611-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": "RDTS-611",
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3816,6 +4944,12 @@
       "key": "manual:rdts-611-001",
       "testId": "TEST-RDTS-611-001-manual",
       "tagId": "rdts-611-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
       "requirementId": "RDTS-611",
       "capabilityId": "CAP-006",
       "capabilityName": "Documentation & Quality",
@@ -3832,9 +4966,65 @@
       "lastEvidencePath": null
     },
     {
+      "key": "auto:rdts-612-001",
+      "testId": "TEST-RDTS-612-001",
+      "tagId": "rdts-612-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": "RDTS-612",
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-004-TESTING-CONCEPT",
+      "serviceFunctionName": "SFN DOC 004 Testing Concept",
+      "testType": "auto",
+      "sourcePath": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-004-testing-concept/tests/auto/TEST-RDTS-612-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null
+    },
+    {
+      "key": "manual:rdts-612-001",
+      "testId": "TEST-RDTS-612-001-manual",
+      "tagId": "rdts-612-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": "RDTS-612",
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-004-TESTING-CONCEPT",
+      "serviceFunctionName": "SFN DOC 004 Testing Concept",
+      "testType": "manual",
+      "sourcePath": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-004-testing-concept/tests/manual/TEST-RDTS-612-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null
+    },
+    {
       "key": "auto:test-rdts-701-001",
       "testId": "TEST-RDTS-701-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-17",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-007",
       "capabilityName": "Supply Chain Security",
@@ -3854,6 +5044,12 @@
       "key": "manual:test-rdts-701-001-manual",
       "testId": "TEST-RDTS-701-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-17",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-007",
       "capabilityName": "Supply Chain Security",
@@ -3873,6 +5069,12 @@
       "key": "auto:test-rdts-705-001",
       "testId": "TEST-RDTS-705-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-17",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-007",
       "capabilityName": "Supply Chain Security",
@@ -3892,6 +5094,12 @@
       "key": "manual:test-rdts-705-001-manual",
       "testId": "TEST-RDTS-705-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-17",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-007",
       "capabilityName": "Supply Chain Security",
@@ -3911,6 +5119,12 @@
       "key": "auto:test-rdts-707-001",
       "testId": "TEST-RDTS-707-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-17",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-007",
       "capabilityName": "Supply Chain Security",
@@ -3930,6 +5144,12 @@
       "key": "manual:test-rdts-707-001-manual",
       "testId": "TEST-RDTS-707-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-17",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-007",
       "capabilityName": "Supply Chain Security",
@@ -3949,6 +5169,10 @@
       "key": "auto:test-rdts-801-001",
       "testId": "TEST-RDTS-801-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-19",
+        "OBJ-20"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-008",
       "capabilityName": "Offline Delivery",
@@ -3968,6 +5192,10 @@
       "key": "manual:test-rdts-801-001-manual",
       "testId": "TEST-RDTS-801-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-19",
+        "OBJ-20"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-008",
       "capabilityName": "Offline Delivery",
@@ -3987,6 +5215,10 @@
       "key": "auto:test-rdts-805-001",
       "testId": "TEST-RDTS-805-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-19",
+        "OBJ-20"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-008",
       "capabilityName": "Offline Delivery",
@@ -4006,6 +5238,10 @@
       "key": "manual:test-rdts-805-001-manual",
       "testId": "TEST-RDTS-805-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-19",
+        "OBJ-20"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-008",
       "capabilityName": "Offline Delivery",
@@ -4025,6 +5261,11 @@
       "key": "auto:test-rdts-901-001",
       "testId": "TEST-RDTS-901-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-21",
+        "OBJ-19",
+        "OBJ-20"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-009",
       "capabilityName": "GitOps / Argo CD",
@@ -4044,6 +5285,11 @@
       "key": "manual:test-rdts-901-001-manual",
       "testId": "TEST-RDTS-901-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-21",
+        "OBJ-19",
+        "OBJ-20"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-009",
       "capabilityName": "GitOps / Argo CD",
@@ -4063,6 +5309,11 @@
       "key": "auto:test-rdts-905-001",
       "testId": "TEST-RDTS-905-001",
       "tagId": null,
+      "objIds": [
+        "OBJ-21",
+        "OBJ-19",
+        "OBJ-20"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-009",
       "capabilityName": "GitOps / Argo CD",
@@ -4082,6 +5333,11 @@
       "key": "manual:test-rdts-905-001-manual",
       "testId": "TEST-RDTS-905-001-manual",
       "tagId": null,
+      "objIds": [
+        "OBJ-21",
+        "OBJ-19",
+        "OBJ-20"
+      ],
       "requirementId": null,
       "capabilityId": "CAP-009",
       "capabilityName": "GitOps / Argo CD",
@@ -4102,10 +5358,10 @@
     {
       "id": "RUN-UNASSIGNED",
       "lastExecutedAt": null,
-      "totalTests": 206,
+      "totalTests": 208,
       "passed": 0,
       "failed": 0,
-      "neverExecuted": 206,
+      "neverExecuted": 208,
       "incomplete": true,
       "runCount": 0
     }
@@ -4114,10 +5370,10 @@
     {
       "id": "RELEASE-UNASSIGNED",
       "lastExecutedAt": null,
-      "totalTests": 206,
+      "totalTests": 208,
       "passed": 0,
       "failed": 0,
-      "neverExecuted": 206,
+      "neverExecuted": 208,
       "incomplete": true,
       "runCount": 0
     }

@@ -119,6 +119,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Automatisierte Tests müssen vorgesehen sein.
 - Zusätzlich müssen manuelle Testfälle dokumentiert werden, falls erforderlich.
 - Tests müssen Anforderungen und Akzeptanzkriterien nachvollziehbar abdecken.
+- Der Teststatus muss fuer Nicht-Entwickler mindestens pro Feature/OBJ, pro Run und pro Release sichtbar sein.
 - Ein Testergebnis muss reproduzierbar und dokumentierbar sein.
 - Die Tests müssen mindestens Build-, Unit-, Integrations-, API-, UI- und Deployability-Aspekte berücksichtigen, soweit fachlich relevant.
 

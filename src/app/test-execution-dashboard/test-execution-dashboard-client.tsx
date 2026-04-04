@@ -33,6 +33,15 @@ import type {
 type FilterValue = 'ALL' | DashboardStatus | 'manual' | 'auto'
 type SnapshotMode = 'run' | 'release'
 
+interface ObjSnapshot {
+  id: string
+  name: string
+  totalTests: number
+  passed: number
+  failed: number
+  neverExecuted: number
+}
+
 function formatDateTime(value: string | null): string {
   if (!value) {
     return '—'
@@ -178,12 +187,68 @@ function buildSnapshots(
   return snapshots
 }
 
+function buildObjSnapshots(
+  entries: TestExecutionEntry[],
+  objects: Array<{ id: string; name: string }>,
+  focusObjectId: string | null,
+): ObjSnapshot[] {
+  const knownObjects = new Map(objects.map((objectEntry) => [objectEntry.id, objectEntry.name]))
+  const byObject = new Map<string, ObjSnapshot>()
+
+  function ensureSnapshot(objId: string): ObjSnapshot {
+    const existing = byObject.get(objId)
+    if (existing) {
+      return existing
+    }
+
+    const created: ObjSnapshot = {
+      id: objId,
+      name:
+        knownObjects.get(objId) ??
+        (objId === 'OBJ-UNASSIGNED' ? 'Unzugeordnet' : 'Unbekanntes Objekt'),
+      totalTests: 0,
+      passed: 0,
+      failed: 0,
+      neverExecuted: 0,
+    }
+    byObject.set(objId, created)
+    return created
+  }
+
+  for (const entry of entries) {
+    const objectIds = Array.from(
+      new Set((entry.objIds.length > 0 ? entry.objIds : ['OBJ-UNASSIGNED']).map((id) => id.toUpperCase())),
+    )
+    const relevantObjectIds = focusObjectId
+      ? objectIds.filter((id) => id === focusObjectId)
+      : objectIds
+
+    for (const objId of relevantObjectIds) {
+      const snapshot = ensureSnapshot(objId)
+      snapshot.totalTests += 1
+
+      if (entry.status === 'passed') {
+        snapshot.passed += 1
+      } else if (entry.status === 'failed') {
+        snapshot.failed += 1
+      } else {
+        snapshot.neverExecuted += 1
+      }
+    }
+  }
+
+  return Array.from(byObject.values()).sort((left, right) =>
+    left.id.localeCompare(right.id, 'de'),
+  )
+}
+
 export function TestExecutionDashboardClient({
   initialData,
 }: {
   initialData: TestExecutionDashboardData
 }) {
   const [activeTab, setActiveTab] = useState('current')
+  const [objectFilter, setObjectFilter] = useState('ALL')
   const [capabilityFilter, setCapabilityFilter] = useState('ALL')
   const [serviceFunctionFilter, setServiceFunctionFilter] = useState('ALL')
   const [testTypeFilter, setTestTypeFilter] = useState<FilterValue>('ALL')
@@ -194,6 +259,9 @@ export function TestExecutionDashboardClient({
   const deferredRequirementFilter = useDeferredValue(requirementFilter.trim().toLowerCase())
 
   const filteredTests = initialData.tests.filter((test) => {
+    if (objectFilter !== 'ALL' && !test.objIds.includes(objectFilter)) {
+      return false
+    }
     if (capabilityFilter !== 'ALL' && test.capabilityId !== capabilityFilter) {
       return false
     }
@@ -242,9 +310,15 @@ export function TestExecutionDashboardClient({
 
   const filteredRunSnapshots = buildSnapshots(filteredTests, 'run')
   const filteredReleaseSnapshots = buildSnapshots(filteredTests, 'release')
+  const filteredObjSnapshots = buildObjSnapshots(
+    filteredTests,
+    initialData.filters.objects,
+    objectFilter === 'ALL' ? null : objectFilter,
+  )
 
   const resetFilters = () => {
     startTransition(() => {
+      setObjectFilter('ALL')
       setCapabilityFilter('ALL')
       setServiceFunctionFilter('ALL')
       setTestTypeFilter('ALL')
@@ -308,7 +382,21 @@ export function TestExecutionDashboardClient({
         </section>
 
         <section className="mb-6 rounded-xl border bg-white p-4 shadow-sm">
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-6">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-7">
+            <Select value={objectFilter} onValueChange={setObjectFilter}>
+              <SelectTrigger>
+                <SelectValue placeholder="OBJ" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="ALL">Alle OBJs</SelectItem>
+                {initialData.filters.objects.map((objectEntry) => (
+                  <SelectItem key={objectEntry.id} value={objectEntry.id}>
+                    {objectEntry.id} · {objectEntry.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
             <Select value={capabilityFilter} onValueChange={setCapabilityFilter}>
               <SelectTrigger>
                 <SelectValue placeholder="Capability" />
@@ -386,6 +474,7 @@ export function TestExecutionDashboardClient({
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList>
             <TabsTrigger value="current">Aktueller Stand</TabsTrigger>
+            <TabsTrigger value="object">Pro OBJ</TabsTrigger>
             <TabsTrigger value="release">Pro Release</TabsTrigger>
             <TabsTrigger value="run">Pro Run</TabsTrigger>
             <TabsTrigger value="rules">Regeln & Quellen</TabsTrigger>
@@ -402,6 +491,7 @@ export function TestExecutionDashboardClient({
                     <TableHeader>
                       <TableRow>
                         <TableHead>Test</TableHead>
+                        <TableHead>OBJ</TableHead>
                         <TableHead>Requirement</TableHead>
                         <TableHead>Typ</TableHead>
                         <TableHead>Status</TableHead>
@@ -412,7 +502,7 @@ export function TestExecutionDashboardClient({
                     <TableBody>
                       {filteredTests.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={6} className="text-slate-500">
+                          <TableCell colSpan={7} className="text-slate-500">
                             Keine Tests fuer den aktuellen Filter gefunden.
                           </TableCell>
                         </TableRow>
@@ -424,6 +514,7 @@ export function TestExecutionDashboardClient({
                             onClick={() => setSelectedTestKey(test.key)}
                           >
                             <TableCell className="font-medium">{test.testId}</TableCell>
+                            <TableCell>{test.objIds.join(', ')}</TableCell>
                             <TableCell>{test.requirementId ?? '—'}</TableCell>
                             <TableCell>{test.testType}</TableCell>
                             <TableCell>
@@ -454,6 +545,10 @@ export function TestExecutionDashboardClient({
                       <div>
                         <p className="text-sm text-slate-500">Testfall</p>
                         <p className="font-medium">{selectedTest.testId}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-slate-500">OBJ</p>
+                        <p>{selectedTest.objIds.join(', ')}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-3 text-sm">
                         <div>
@@ -523,6 +618,48 @@ export function TestExecutionDashboardClient({
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="object">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-base">OBJ-Snapshot</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>OBJ</TableHead>
+                      <TableHead>Feature</TableHead>
+                      <TableHead>Passed</TableHead>
+                      <TableHead>Failed</TableHead>
+                      <TableHead>Never</TableHead>
+                      <TableHead>Gesamt</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredObjSnapshots.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={6} className="text-slate-500">
+                          Keine Tests fuer den aktuellen Filter gefunden.
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      filteredObjSnapshots.map((snapshot) => (
+                        <TableRow key={snapshot.id}>
+                          <TableCell className="font-medium">{snapshot.id}</TableCell>
+                          <TableCell>{snapshot.name}</TableCell>
+                          <TableCell>{snapshot.passed}</TableCell>
+                          <TableCell>{snapshot.failed}</TableCell>
+                          <TableCell>{snapshot.neverExecuted}</TableCell>
+                          <TableCell>{snapshot.totalTests}</TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="release">

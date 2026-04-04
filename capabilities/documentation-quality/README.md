@@ -40,7 +40,7 @@ Traceability wird dabei ueber OFT/OpenFastTrace-kompatible IDs und Covers-Bezueg
 |--------|-------------|-----|-------------|
 | DPD-DOC-001 | Alle Features OBJ-1 bis OBJ-16 | Voraussetzung | Doku beschreibt das Gesamtsystem |
 | DPD-DOC-002 | OBJ-9 Manual Test Runner | Nutzer | Manuelle Testergebnisse fliessen in den Qualitaetsstatus |
-| DPD-DOC-003 | OBJ-23 Test Execution Dashboard | Nutzer | Kombinierte Sicht auf Passed/Failed/Never Executed pro Run und Release |
+| DPD-DOC-003 | OBJ-23 Test Execution Dashboard | Nutzer | Kombinierte Sicht auf Passed/Failed/Never Executed pro OBJ, Run und Release |
 
 ---
 
