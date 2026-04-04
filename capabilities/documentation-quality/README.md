@@ -10,6 +10,7 @@
 ## Beschreibung
 
 Die Documentation & Quality Capability stellt sicher, dass die DNS-Konfigurations-App vollständig dokumentiert ist und einen transparenten Maturitätsstatus aufweist. Sie umfasst technische Dokumentation (Quickstart, Betriebsdoku, ADRs), Architekturübersicht sowie Maturitaets- und Teststatus-Tracking inkl. Test-Execution-Dashboard.
+Traceability wird dabei ueber OFT/OpenFastTrace-kompatible IDs und Covers-Bezuege sichergestellt.
 
 ---
 

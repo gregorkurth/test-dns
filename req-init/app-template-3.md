@@ -206,6 +206,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
   - Whitebox-Sicht
   - Konfigurationsbeschreibung
   - ADRs / Architekturentscheide
+  - ADR-Uebersicht als eigenes Register `docs/adr/INDEX.md` (analog zu anderen INDEX-Dateien)
   - Release- und Übergabeprozess
   - Offline-Installationsanleitung
   - Zarf-Export- und Importbeschreibung

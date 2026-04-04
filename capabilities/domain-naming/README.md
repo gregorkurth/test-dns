@@ -43,6 +43,7 @@ Die Capability ermöglicht es FMN-Affiliates, eine unabhängige und robuste DNS-
 
 | DPD-ID | Abhängigkeit | Typ | Beschreibung |
 |--------|-------------|-----|-------------|
+| DPD-DNS-001 | OBJ-4 Capabilities Dashboard | Nutzer | CAP-001 wird im Dashboard als navigierbare Capability-Hierarchie fuer Operatoren sichtbar gemacht |
 | IDP-191 | Service Instructions for Communications (TIN-112) | Voraussetzung | DNS benötigt Kommunikationsdienste für Queries (TCP/UDP:53) |
 | IDP-194 | Service Instructions for Distributed Time (TIN-20) | Voraussetzung | DNSSEC benötigt Zeitsynchronisation für Zeitstempel in signierten Zonen |
 | IDP-1118 | DNS Root (TIN-370) | Voraussetzung | DNS Query benötigt DNS Root für rekursive Auflösung |

@@ -40,7 +40,7 @@
 | CAP-003 Observability | RDTS-301 bis RDTS-308 (8 Req) | [ARCH] |
 | CAP-004 Security & Access Control | RDTS-401 bis RDTS-410 (10 Req) | [ARCH] |
 | CAP-005 DevOps | RDTS-501 bis RDTS-509 (9 Req) | [ARCH] |
-| CAP-006 Documentation & Quality | RDTS-601 bis RDTS-609 (9 Req) | [ARCH] |
+| CAP-006 Documentation & Quality | RDTS-601 bis RDTS-611 (11 Req) | [ARCH] |
 | CAP-007 Supply Chain Security | RDTS-701 bis RDTS-715 (15 Req) | [ARCH] |
 | CAP-008 Offline Delivery | RDTS-801 bis RDTS-809 (9 Req) | [ARCH] |
 | CAP-009 GitOps / Argo CD | RDTS-901 bis RDTS-906 (6 Req) | [ARCH] |
