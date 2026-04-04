@@ -1,7 +1,19 @@
-# Dokumentations-Guide
+# Dokumentations-Guide (Technik)
 
 > Dieser Guide erklärt das gesamte Dokumentations- und Testsystem des DNS Tools.
 > Jede Rolle findet hier genau das, was sie wissen muss – nicht mehr.
+
+Wenn du eher Manager, Projektleiter oder Nicht-Entwickler bist, starte zuerst hier:
+- `docs/README.md`
+- `docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md`
+- `docs/arc42/README.md`
+- `docs/CONFLUENCE-EXPORT-GUIDE.md`
+- `docs/DEFINITION-OF-DONE-FEATURE.md`
+- `docs/ID-UND-BENENNUNGSREGELN.md`
+
+Hinweis:
+Diese Datei bleibt die technische Sicht (Tools, Befehle, Detailablaeufe).
+Die Management-Sicht bleibt im Quick Guide.
 
 ---
 
