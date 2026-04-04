@@ -62,7 +62,66 @@
 <!-- Sections below are added by subsequent skills -->
 
 ## Tech Design (Solution Architect)
-_To be added by /architecture_
+**Scope**
+
+OBJ-1 stellt sicher, dass jede Aenderung denselben sicheren und nachvollziehbaren Weg durchlaeuft:
+- Qualitaetspruefung bei jeder Aenderung
+- kontrollierte Integration auf `main`
+- dokumentierte Release-Freigabe
+- klare Abbruchregeln bei Sicherheits- oder Compliance-Verstoessen
+
+**Prozessstruktur (Visual Tree)**
+
+```
+Code Change
++-- Pull/Merge Request Gate
+|   +-- Lint / Type-Check / Tests / Build-Check
+|   +-- Ergebnis sichtbar fuer Team und Review
++-- Main Integration Gate
+|   +-- Artefakt-Build
+|   +-- Security-Checks
+|   +-- Registry-Bereitstellung
++-- Release Gate
+    +-- SBOM + Security-Berichte
+    +-- Zarf-Paket
+    +-- Finale Artefaktpruefung (OBJ-22)
+    +-- Freigabe oder Blockierung
+```
+
+**Datenmodell (in einfachen Worten)**
+
+Jeder Pipeline-Lauf erzeugt nachvollziehbare Arbeitsprodukte:
+- Build-Ergebnis (erfolgreich oder fehlgeschlagen)
+- Pruefberichte (Qualitaet, Security, Compliance)
+- Release-Artefakte (inkl. Version und Herkunft)
+- Freigabestatus (erlaubt / blockiert)
+
+**Technische Leitentscheidungen (fuer PM)**
+
+- Eine standardisierte Pipeline reduziert manuelle Fehler und Diskussionen.
+- Gleiche Gate-Logik fuer alle Teams sorgt fuer planbare Qualitaet.
+- Sicherheits- und Freigabepruefung vor Publish schuetzt vor spaeten Rueckrufen.
+- Vollstaendige Nachvollziehbarkeit unterstuetzt Audits und Abnahmen.
+
+**Requirements Engineer Input**
+
+- Jede neue Release-Regel wird als Requirement in der Capability-Struktur gefuehrt.
+- Requirements zu Build, Security, SBOM und Paketpruefung muessen eindeutig auf Feature und Testfaelle verlinkt sein.
+- Aenderungen an Freigaberegeln werden als Requirement-Aenderung behandelt, nicht nur als Pipeline-Notiz.
+
+**QA Engineer Input (Readiness)**
+
+- QA prueft nicht nur Produktfunktionen, sondern auch Freigabepfade und Blockierungsfaelle.
+- Pflichtnachweise: erfolgreicher Standardlauf, erwarteter Abbruch bei Fehlern, reproduzierbare Reports.
+- Release gilt nur als testbar, wenn Gate-Entscheid und Nachweise eindeutig sind.
+
+**Abhaengigkeiten / Werkzeuge**
+
+- `trivy` (Security-Scans)
+- `semgrep` (SAST)
+- `syft` (SBOM)
+- `cosign` (Signatur)
+- `zarf` (Offline-Paket)
 
 ## QA Test Results
 _To be added by /qa_

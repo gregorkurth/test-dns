@@ -54,7 +54,66 @@
 <!-- Sections below are added by subsequent skills -->
 
 ## Tech Design (Solution Architect)
-_To be added by /architecture_
+**Scope**
+
+OBJ-2 bildet das Dokumentations-Backbone des Projekts:
+- klare Trennung fuer Management-Sicht und technische Sicht
+- verbindliche Architektur- und Entscheidungsdokumentation
+- nachvollziehbarer Release- und Exportprozess
+- ein zentraler Source-of-Truth-Ansatz ohne Wiki-Drift
+
+**Dokustruktur (Visual Tree)**
+
+```
+Repository Documentation
++-- Produkt- und Roadmap-Sicht
+|   +-- PRD
+|   +-- Feature Index
++-- Feature- und Requirement-Sicht
+|   +-- Feature-Specs (OBJ)
+|   +-- Capability-/Requirement-Struktur
++-- Architektur-Sicht
+|   +-- ADRs
+|   +-- arc42 Kapitel 1-12
++-- Betriebs- und Release-Sicht
+|   +-- Operations / Security / Performance
+|   +-- Release- und Uebergabeprozess
++-- Export-Sicht
+    +-- Confluence Export Guide
+    +-- Zentrales Export-Log
+```
+
+**Datenmodell (in einfachen Worten)**
+
+Jede Doku-Einheit hat:
+- einen klaren Zweck
+- einen festen Ort im Repo
+- einen Verantwortungsbezug (wer pflegt)
+- einen Aktualisierungsanlass (wann nachziehen)
+
+**Technische Leitentscheidungen (fuer PM)**
+
+- Markdown im Repo bleibt langfristig wartbar und offline nutzbar.
+- arc42 als Kapitelstruktur macht Architektur exportierbar und auditsicher.
+- Ein zentrales Export-Log vermeidet widerspruechliche Confluence-Staende.
+- Definition of Done fuer Features verhindert, dass Doku erst spaet nachgezogen wird.
+
+**Requirements Engineer Input**
+
+- Neues Feature oder neues Requirement ist erst vollstaendig, wenn die zugehoerige Doku referenziert ist.
+- IDs und Benennung muessen einheitlich bleiben, damit Traceability funktioniert.
+- Anforderungen an Dokumentation (z. B. Release-Nachweise) werden wie andere Requirements behandelt.
+
+**QA Engineer Input (Readiness)**
+
+- QA prueft Dokumentationsvollstaendigkeit als Teil der Abnahme.
+- Pflichtpruefung: Sind AC, Edge Cases, Nachweise, ADR-Bezug und arc42-Updates konsistent?
+- Bei fehlenden Nachweisen bleibt ein Feature in Review, auch wenn UI/API technisch laeuft.
+
+**Abhaengigkeiten / Werkzeuge**
+
+- Keine zusaetzlichen Runtime-Abhaengigkeiten erforderlich.
+- Optional fuer Qualitaetssicherung: Markdown-Link-Check in CI.
 
 ## QA Test Results
 _To be added by /qa_

@@ -45,89 +45,65 @@
 <!-- Sections below are added by subsequent skills -->
 
 ## Tech Design (Solution Architect)
+**Scope**
 
-**Datum:** 2026-04-04
+OBJ-3 liefert eine einheitliche API als Integrationsschicht fuer:
+- Dashboard (OBJ-4)
+- Konfigurations-Workflow (OBJ-5)
+- Zone-Generierung (OBJ-6)
+- spaeteren Operator-Betrieb
 
-### Übersicht
+Die API ist bewusst versioniert und offline-faehig geplant.
 
-Die REST API ist eine **Next.js App Router API-Schicht**, die vollständig innerhalb der bestehenden Next.js-App läuft. Kein separater Service, kein externes DBMS. Web GUI und Kubernetes Operator greifen ausschliesslich über diese API auf Konfigurationsdaten zu.
-
-### Endpunkt-Struktur
-
-```
-/api/v1/
-  openapi.json                    GET  – OpenAPI-Spezifikation
-  capabilities/                   GET  – Alle Capabilities
-  capabilities/[id]               GET  – Capability-Detail
-  participants/                   GET  – Alle Participants
-                                  POST – Participant anlegen
-  participants/[id]               GET  – Participant-Detail
-                                  PUT  – Participant aktualisieren
-                                  DELETE – Participant löschen
-  zones/generate                  POST – Zone-File generieren
-```
-
-### Datenhaltung
-
-JSON-Dateien in `data/` (file-based, airgapped-kompatibel, kein DBMS):
-- `data/participants/{id}.json` – ein Participant pro Datei
-- `data/capabilities/index.json` – build-time aus `capabilities/**/*.md` generiert
-
-Participant-Felder: ID (UUID), Name, DNS-Server-IPs, Zone-Namen, TSIG-Key-Referenz, Zeitstempel.
-
-### Einheitliches Response-Format
-
-- Erfolg: `{ data: {...}, meta: { version, timestamp } }`
-- Fehler: `{ error: { code, message, field? }, meta: { version } }`
-- Status-Codes: 200, 201, 400, 404, 422, 500
-
-### Dateistruktur
+**API-Faehigkeiten (Visual Tree)**
 
 ```
-src/app/api/v1/
-  openapi.json/route.ts
-  capabilities/route.ts
-  capabilities/[id]/route.ts
-  participants/route.ts
-  participants/[id]/route.ts
-  zones/generate/route.ts
-
-src/lib/api/
-  participants.ts    ← Datei-Lese/Schreib-Logik
-  capabilities.ts    ← Datei-Lese-Logik
-  zone-generator.ts  ← Zone-File-Generierung
-  response.ts        ← Response-Format-Helfer
-
-data/
-  participants/      ← JSON-Dateien
-  capabilities/
-    index.json       ← build-time generiert
-
-docs/api/
-  openapi.yaml       ← OpenAPI-Spec (manuell gepflegt)
+API v1
++-- Katalog lesen
+|   +-- Capabilities Uebersicht
+|   +-- Capability-Detail
++-- Konfiguration verwalten
+|   +-- Participants lesen
+|   +-- Participants anlegen / aktualisieren / entfernen
++-- Generierung starten
+    +-- Zone-File Prozess ausloesen
++-- API-Vertrag
+    +-- OpenAPI-Spezifikation fuer Klarheit und Testbarkeit
 ```
 
-### Tech-Entscheide
+**Datenmodell (in einfachen Worten)**
 
-| Entscheidung | Gewählt | Begründung |
-|---|---|---|
-| Framework | Next.js App Router Route Handlers | Kein zusätzlicher Server |
-| Datenhaltung | JSON-Dateien in `data/` | Airgapped, versionierbar |
-| Validierung | Zod (bereits installiert) | Konsistent mit Frontend |
-| OpenAPI | Manuell gepflegte YAML | Zuverlässiger als Auto-Gen |
-| Versionierung | URL-Präfix `/api/v1/` | Rückwärtskompatibel |
+Die API verwaltet drei Kernobjekte:
+- Capability-Daten (strukturierte Lesedaten)
+- Participant-Konfigurationen (bearbeitbare Betriebsdaten)
+- Generierungsauftraege fuer Zone-Files
 
-### Neue Pakete
+Jede Antwort folgt einem konsistenten Muster, damit UI, Tests und Betrieb gleich damit arbeiten koennen.
 
-- `uuid` – UUID-Generierung für Participants (neu, klein)
+**Technische Leitentscheidungen (fuer PM)**
 
-### Verknüpfungen
+- Eine zentrale API verhindert doppelte Logik in UI und spaeteren Integrationen.
+- Versionierung (`v1`) reduziert Risiko bei spaeteren Erweiterungen.
+- Ein klarer API-Vertrag erleichtert Uebergabe, Tests und Doku.
+- Offline-First bleibt gewahrt, da keine externe Laufzeitabhaengigkeit notwendig ist.
 
-- OBJ-4 liest Capabilities via `GET /api/v1/capabilities`
-- OBJ-5 schreibt Participants via `POST/PUT /api/v1/participants`
-- OBJ-6 generiert Zone-Files via `POST /api/v1/zones/generate`
-- OBJ-13 Kubernetes Operator kommuniziert ausschliesslich über diese API
-- OBJ-12 Security sichert schreibende Endpunkte (POST/PUT/DELETE)
+**Requirements Engineer Input**
+
+- API-Anforderungen sind so formuliert, dass jede Funktion einem testbaren Requirement zugeordnet werden kann.
+- Fehlerfaelle (ungueltige Daten, nicht gefundene Objekte, Generierungsfehler) werden explizit als Requirement-Teile betrachtet.
+- OpenAPI-Dokumentation ist Teil der fachlichen Nachvollziehbarkeit, nicht nur technisches Beiwerk.
+
+**QA Engineer Input (Readiness)**
+
+- QA testet pro Endpunkt mindestens Erfolgsfall plus Fehlerfall.
+- Konsistenzpruefung: Antwortstruktur, Statuscodes, Fehlermeldungsqualitaet.
+- Regression-Gate: Dashboard-Datenfluss (OBJ-4) darf bei API-Aenderungen nicht brechen.
+
+**Abhaengigkeiten / Werkzeuge**
+
+- `zod` (konsistente Eingabevalidierung)
+- OpenAPI-Dokumentation (lesbarer API-Vertrag)
+- bestehendes Test-Setup fuer API-Happy- und Fehlerpfade
 
 ## QA Test Results
 _To be added by /qa_

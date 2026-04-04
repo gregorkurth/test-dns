@@ -26,7 +26,7 @@
 | CAP-003 Observability | OBJ-11 |
 | CAP-004 Security & Access Control | OBJ-12 |
 | CAP-005 DevOps | OBJ-1, OBJ-14 |
-| CAP-006 Documentation & Quality | OBJ-2, OBJ-15, OBJ-16 |
+| CAP-006 Documentation & Quality | OBJ-2, OBJ-15, OBJ-16, OBJ-23 |
 | CAP-007 Supply Chain Security | OBJ-17, OBJ-22, OBJ-1, OBJ-14 |
 | CAP-008 Offline Delivery | OBJ-19, OBJ-20 |
 | CAP-009 GitOps / Argo CD | OBJ-21, OBJ-19, OBJ-20 |
