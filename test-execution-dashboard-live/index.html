@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBJ-23 Test Execution Dashboard (Live Server)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">OBJ-23 - Live Server Mode</p>
+          <h1>Test Execution Dashboard</h1>
+          <p class="subtitle">
+            Kombinierte Sicht auf manuelle und automatische Tests fuer
+            Passed/Failed/Never Executed.
+          </p>
+        </div>
+        <div class="summary-cards" id="summaryCards"></div>
+      </header>
+
+      <section class="controls" aria-label="Filterbereich">
+        <label>
+          Capability
+          <select id="capabilityFilter"></select>
+        </label>
+
+        <label>
+          Service Function
+          <select id="serviceFunctionFilter"></select>
+        </label>
+
+        <label>
+          Testtyp
+          <select id="testTypeFilter">
+            <option value="ALL">Alle</option>
+            <option value="manual">Manual</option>
+            <option value="auto">Auto</option>
+          </select>
+        </label>
+
+        <label>
+          Status
+          <select id="statusFilter">
+            <option value="ALL">Alle</option>
+            <option value="passed">Passed</option>
+            <option value="failed">Failed</option>
+            <option value="never_executed">Never Executed</option>
+          </select>
+        </label>
+
+        <label>
+          Requirement / Test
+          <input id="requirementFilter" type="text" placeholder="SREQ-234 oder TEST-..." />
+        </label>
+
+        <button id="resetFilters" type="button">Filter zuruecksetzen</button>
+      </section>
+
+      <p id="statusMessage" class="status-message" role="status" aria-live="polite">
+        Lade Test-Execution-Daten...
+      </p>
+
+      <section class="tabs" aria-label="Ansichtsmodus">
+        <button class="tab-button is-active" data-tab-target="currentView">Aktueller Stand</button>
+        <button class="tab-button" data-tab-target="releaseView">Pro Release</button>
+        <button class="tab-button" data-tab-target="runView">Pro Run</button>
+        <button class="tab-button" data-tab-target="rulesView">Regeln & Quellen</button>
+      </section>
+
+      <main>
+        <section id="currentView" class="tab-panel is-active">
+          <div class="workspace">
+            <section class="panel">
+              <header class="panel-header">
+                <h2>Testfaelle</h2>
+              </header>
+              <div class="table-shell">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Test</th>
+                      <th>Requirement</th>
+                      <th>Typ</th>
+                      <th>Status</th>
+                      <th>Run</th>
+                      <th>Release</th>
+                    </tr>
+                  </thead>
+                  <tbody id="testsTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel">
+              <header class="panel-header">
+                <h2>Detailansicht</h2>
+              </header>
+              <div id="detailPanel" class="detail-panel"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="releaseView" class="tab-panel">
+          <section class="panel">
+            <header class="panel-header">
+              <h2>Release-Snapshots</h2>
+            </header>
+            <div class="table-shell">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Release</th>
+                    <th>Passed</th>
+                    <th>Failed</th>
+                    <th>Never</th>
+                    <th>Unvollstaendig</th>
+                    <th>Letzte Ausfuehrung</th>
+                  </tr>
+                </thead>
+                <tbody id="releaseTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section id="runView" class="tab-panel">
+          <section class="panel">
+            <header class="panel-header">
+              <h2>Run-Snapshots</h2>
+            </header>
+            <div class="table-shell">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Run</th>
+                    <th>Passed</th>
+                    <th>Failed</th>
+                    <th>Never</th>
+                    <th>Unvollstaendig</th>
+                    <th>Letzte Ausfuehrung</th>
+                  </tr>
+                </thead>
+                <tbody id="runTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section id="rulesView" class="tab-panel">
+          <div class="workspace">
+            <section class="panel">
+              <header class="panel-header">
+                <h2>Statusregeln</h2>
+              </header>
+              <div id="statusRules" class="text-list"></div>
+            </section>
+
+            <section class="panel">
+              <header class="panel-header">
+                <h2>Datenquellen</h2>
+              </header>
+              <div id="dataSources" class="text-list code-list"></div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

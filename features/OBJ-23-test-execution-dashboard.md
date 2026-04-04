@@ -32,6 +32,7 @@
 - [ ] `feat~obj-23-ac-9~1` Die Sicht funktioniert offline ohne externe Requests
 - [ ] `feat~obj-23-ac-10~1` Dokumentation beschreibt Datenquellen, Statusregeln und Interpretation fuer Nicht-Entwickler
 - [ ] `feat~obj-23-ac-11~1` Capability-Mapping ist aktualisiert, sodass OBJ-23 in CAP-006 (Documentation & Quality) nachvollziehbar verankert ist
+- [ ] `feat~obj-23-ac-12~1` Dashboard ist in VS Code per Rechtsklick auf `test-execution-dashboard-live/index.html` mit "Open with Live Server" startbar (ohne `npm run dev`)
 
 ## Statusregeln (fachlich verbindlich)
 - **Never Executed:** Es existiert kein gueltiger Ausfuehrungsnachweis fuer den Testfall im betrachteten Kontext (global, Release oder Run).
@@ -55,6 +56,7 @@
 - Verlinkung zu Requirement-IDs und Testnachweisen muss erhalten bleiben
 - Datenquellen bleiben repo-basiert und offline-faehig
 - Source of Truth bleibt Git: zuerst Repo-Update, danach ggf. Export in Confluence
+- Statische Laufzeit fuer Live-Server-Betrieb unter `test-execution-dashboard-live/` mit build-time JSON aus `scripts/build-obj23-live-data.mjs`
 
 ## Abgrenzung (Out of Scope fuer OBJ-23)
 - Keine automatische Testausfuehrung selbst (nur Sicht und Auswertung vorhandener Nachweise)

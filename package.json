@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
     "build:obj4-live-data": "node scripts/build-obj4-live-data.mjs",
+    "build:obj23-live-data": "node scripts/build-obj23-live-data.mjs",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
