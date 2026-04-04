@@ -21,7 +21,7 @@
 | OBJ-7 | Requirements Traceability View | 4 – P1 DNS | Planned | [OBJ-7-requirements-traceability-view.md](OBJ-7-requirements-traceability-view.md) | 2026-03-17 |
 | OBJ-8 | Export & Download | 4 – P1 DNS | Planned | [OBJ-8-export-download.md](OBJ-8-export-download.md) | 2026-03-17 |
 | OBJ-9 | Manual Test Runner | 4 – P1 DNS | Planned | [OBJ-9-manual-test-runner.md](OBJ-9-manual-test-runner.md) | 2026-04-03 |
-| OBJ-23 | Test Execution Dashboard | 4 – P1 DNS | In Progress | [OBJ-23-test-execution-dashboard.md](OBJ-23-test-execution-dashboard.md) | 2026-04-04 |
+| OBJ-23 | Test Execution Dashboard | 4 – P1 DNS | In Review | [OBJ-23-test-execution-dashboard.md](OBJ-23-test-execution-dashboard.md) | 2026-04-04 |
 | OBJ-10 | Kubernetes Deployment | 5 – Plattform | Planned | [OBJ-10-kubernetes-deployment.md](OBJ-10-kubernetes-deployment.md) | 2026-04-03 |
 | OBJ-11 | Monitoring & Observability (OpenTelemetry) | 5 – Plattform | Planned | [OBJ-11-monitoring-observability.md](OBJ-11-monitoring-observability.md) | 2026-04-03 |
 | OBJ-12 | Security & Authentifizierung | 5 – Plattform | Planned | [OBJ-12-security-authentifizierung.md](OBJ-12-security-authentifizierung.md) | 2026-04-03 |

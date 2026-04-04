@@ -13,7 +13,7 @@
 
 ## Start hier (2 Minuten Ueberblick)
 
-1. Produktziel und Scope: [docs/PRD.md](docs/PRD.md)
+1. Serviceziel und Scope: [docs/SVC.md](docs/SVC.md)
 2. Feature-Status und Reihenfolge: [features/INDEX.md](features/INDEX.md)
 3. Capability- und Requirement-Landschaft: [capabilities/INDEX.md](capabilities/INDEX.md)
 
@@ -21,7 +21,7 @@
 
 | Frage | Datei/Ordner |
 |---|---|
-| Was ist das Ziel des Produkts? | [docs/PRD.md](docs/PRD.md) |
+| Was ist das Serviceziel und der Scope? | [docs/SVC.md](docs/SVC.md) |
 | Welche Features gibt es und was ist ihr Status? | [features/INDEX.md](features/INDEX.md) |
 | Was soll ein einzelnes Feature genau koennen? | [features/](features/) |
 | Welche fachlichen/technischen Requirements gelten? | [capabilities/](capabilities/) |
@@ -39,7 +39,7 @@
 
 ## Schritt-fuer-Schritt bei neuem Requirement oder Feature
 
-1. Ziel klaeren und bei Bedarf im [PRD](docs/PRD.md) nachziehen.
+1. Ziel klaeren und bei Bedarf im [SVC](docs/SVC.md) nachziehen.
 2. Feature anlegen/aktualisieren in [features/](features/) und in [features/INDEX.md](features/INDEX.md) eintragen.
 3. Requirement in [capabilities/](capabilities/) unter der passenden Service Function erfassen.
 4. Testfaelle anlegen (auto/manual) und Requirement-Verknuepfung sicherstellen.

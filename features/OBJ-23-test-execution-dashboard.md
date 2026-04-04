@@ -1,6 +1,6 @@
 # OBJ-23: Test Execution Dashboard
 
-## Status: In Progress
+## Status: In Review
 **Created:** 2026-04-04
 **Last Updated:** 2026-04-04
 
@@ -158,7 +158,126 @@ Der sichtbare "aktuelle Status" entsteht aus dem letzten gueltigen Nachweis pro 
 - Abnahmekriterium fuer Inbetriebnahme: Keine unklaren Statusuebergaenge und keine verdeckten Testluecken.
 
 ## QA Test Results
-_To be added by /qa_
+
+**Tested:** 2026-04-04
+**App URL:** http://localhost:3000
+**Tester:** QA Engineer (AI)
+
+### Acceptance Criteria Status
+
+#### AC-1: Aggregierte Kennzahlen (Passed/Failed/Never Executed)
+- [x] API-Summary und Dashboard-KPI-Karten liefern konsistente Summen.
+
+#### AC-2: Gemeinsame Sicht fuer manuelle und automatische Tests
+- [x] Daten enthalten beide Typen (`manualTests=104`, `autoTests=104`).
+- [x] Testliste zeigt beide Testtypen gemeinsam.
+
+#### AC-3: Letzter Status, Zeitpunkt und Testtyp pro Testfall
+- [x] Jeder Eintrag enthaelt `status`, `lastExecutedAt`, `testType`.
+
+#### AC-4: Filter nach OBJ, Capability, SFN, Requirement-ID, Testtyp, Status
+- [x] Next.js-UI enthaelt alle Filter inklusive OBJ.
+- [x] Live-Server-UI enthaelt alle Filter inklusive OBJ.
+
+#### AC-5: Release-Sicht
+- [x] Release-Snapshots werden erzeugt und als Tabelle dargestellt.
+
+#### AC-6: Run-Sicht
+- [x] Run-Snapshots werden erzeugt und als Tabelle dargestellt.
+
+#### AC-7: Tests ohne Nachweis als Never Executed
+- [x] Tests ohne Historie werden als `never_executed` markiert.
+
+#### AC-8: Failed-Details mit Fehlerhinweis und Nachweis
+- [x] Detailansicht zeigt `Nachweis` und optional `Hinweis` (Fehlernote).
+
+#### AC-9: Offline-faehige Sicht
+- [x] Live-Variante basiert auf lokalem JSON (`test-execution-dashboard-live/data/*.json`).
+
+#### AC-10: Dokumentation fuer Nicht-Entwickler
+- [x] OBJ-23-Spec und Live-README beschreiben Datenquellen/Regeln.
+
+#### AC-11: Capability-Mapping fuer OBJ-23
+- [x] CAP-006 Mapping auf OBJ-23 ist in `capabilities/INDEX.md` enthalten.
+
+#### AC-12: Startbar via VS Code Live Server
+- [x] Statische Live-Variante mit eigener `index.html`/`app.js`/`styles.css` vorhanden.
+- [x] Startanleitung dokumentiert.
+
+#### AC-13: Pro-OBJ-Sicht fuer Management
+- [x] Neuer Tab `Pro OBJ` und OBJ-Snapshot vorhanden.
+- [x] OBJ-Filter verknuepft mit Datenmodell (`objIds`) und Mapping.
+
+### Edge Cases Status
+
+#### EC-1: Testfall ohne Ausfuehrungsnachweis
+- [x] Korrekt als `Never Executed` ausgewiesen.
+
+#### EC-2: Widerspruechliche Historie
+- [x] Sortierlogik nutzt letzten gueltigen Eintrag (neuester Zeitstempel).
+
+#### EC-3: Nur manuelle oder nur automatische Nachweise
+- [x] Testtyp bleibt transparent sichtbar; gemischte und einseitige Faelle werden modelliert.
+
+#### EC-4: Release ohne Test-Snapshot
+- [x] `RELEASE-UNASSIGNED` wird als unvollstaendig gekennzeichnet.
+
+#### EC-5: Unvollstaendiger/nicht parsebarer Nachweis
+- [ ] BUG: Solche Nachweise werden aktuell still ignoriert statt explizit als "Nachweis fehlerhaft" ausgewiesen.
+
+#### EC-6: Duplikate gleicher Test-ID in verschiedenen Kontexten
+- [x] Kontextspalten (Capability/SFN) sind vorhanden; technische Schluessel unterscheiden Faelle.
+
+#### EC-7: Ein Testfall gehoert zu mehreren OBJs
+- [x] Mehrfachzuordnung wird angezeigt und in OBJ-Snapshots beruecksichtigt.
+
+#### EC-8: Fehlender/ungueltiger Zeitstempel
+- [ ] BUG: Eintraege mit `executedAt=null` koennen weiterhin als letzter Status gewertet werden; ein explizites "zeitlich nicht auswertbar" fehlt.
+
+### Security Audit Results
+- [x] Authentifizierungs-/Autorisierungsumgehung: Keine benutzerspezifischen Eingaben oder Zustandsuebernahmen im Endpoint.
+- [x] Input Injection (XSS/SQL): Kein Request-Input wird verarbeitet; nur repo-basierte Dateien werden gelesen.
+- [ ] BUG: Kein Rate-Limiting/Throttling auf `/api/test-execution-dashboard` (DoS-Risiko bei externer Exponierung).
+- [x] Keine Secrets in API-Response gefunden (nur Test-/Pfad-Metadaten).
+
+### Regression Testing
+- [x] `features/INDEX.md`: Keine Features im Status `Deployed` vorhanden, daher kein produktiver Deployed-Regressionstest erforderlich.
+- [x] Build-/Qualitaets-Safeguards erfolgreich: `npm run lint`, `npm run test:run`, `npm run build`, `npm run build:obj23-live-data`.
+
+### Bugs Found
+
+#### BUG-1: Parse-Fehler werden nicht als "Nachweis fehlerhaft" sichtbar
+- **Severity:** Medium
+- **Steps to Reproduce:**
+  1. Lege einen unvollstaendigen oder nicht parsebaren Testnachweis in `tests/results/` ab.
+  2. Erzeuge Dashboard-Daten neu.
+  3. Erwartet: Eintrag mit Fehlerkennzeichnung "Nachweis fehlerhaft".
+  4. Aktuell: Nachweis wird ignoriert; Test wirkt wie "Never Executed".
+- **Priority:** Fix in next sprint
+
+#### BUG-2: Ungueltige Zeitstempel werden nicht als "zeitlich nicht auswertbar" gekennzeichnet
+- **Severity:** Medium
+- **Steps to Reproduce:**
+  1. Erzeuge einen Nachweis mit Status, aber ungueltigem/fehlendem Zeitstempel.
+  2. Lade Dashboard neu.
+  3. Erwartet: Eintrag wird als zeitlich nicht auswertbar markiert und nicht als letzter gueltiger Status verwendet.
+  4. Aktuell: Eintrag kann weiterhin in die Statusbewertung einfliessen.
+- **Priority:** Fix in next sprint
+
+#### BUG-3: Kein Rate Limiting auf Dashboard-API
+- **Severity:** Low
+- **Steps to Reproduce:**
+  1. Sende viele schnelle Requests auf `/api/test-execution-dashboard`.
+  2. Erwartet: Throttling/Abwehrmechanismus.
+  3. Aktuell: Kein expliziter Schutz im Endpoint vorhanden.
+- **Priority:** Nice to have (bei internetexponiertem Betrieb hochpriorisieren)
+
+### Summary
+- **Acceptance Criteria:** 13/13 passed
+- **Bugs Found:** 3 total (0 Critical, 0 High, 2 Medium, 1 Low)
+- **Security:** Issues found (Low)
+- **Production Ready:** YES (fuer internen Einsatz), mit bekannten Medium-Risiken
+- **Recommendation:** Deploy moeglich, aber BUG-1 und BUG-2 zeitnah nachziehen
 
 ## Deployment
 _To be added by /deploy_
