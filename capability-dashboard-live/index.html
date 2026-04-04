@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBJ-4 Capabilities Dashboard (Live Server)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">OBJ-4 - Live Server Mode</p>
+          <h1>Capabilities Dashboard</h1>
+          <p class="subtitle">
+            Offline-faehige Lesesicht aus lokalen Markdown-Quellen
+            (capabilities/).
+          </p>
+        </div>
+        <div class="summary-cards" id="summaryCards"></div>
+      </header>
+
+      <section class="controls" aria-label="Filterbereich">
+        <label>
+          Quellentyp
+          <select id="sourceFilter">
+            <option value="ALL">Alle</option>
+            <option value="NATO">[NATO]</option>
+            <option value="ARCH">[ARCH]</option>
+            <option value="CUST">[CUST]</option>
+            <option value="INT">[INT]</option>
+          </select>
+        </label>
+
+        <label>
+          Prioritaet
+          <select id="priorityFilter">
+            <option value="ALL">Alle</option>
+            <option value="MUSS">MUSS</option>
+            <option value="SOLLTE">SOLLTE</option>
+            <option value="KANN">KANN</option>
+          </select>
+        </label>
+
+        <button id="resetFilters" type="button">Filter zuruecksetzen</button>
+        <button id="expandAll" type="button" class="tree-action">Alle aufklappen</button>
+        <button id="collapseAll" type="button" class="tree-action">Alle zuklappen</button>
+      </section>
+
+      <p id="statusMessage" class="status-message" role="status" aria-live="polite">
+        Lade Capabilities-Daten...
+      </p>
+
+      <main class="workspace">
+        <section class="panel tree-panel" aria-label="Hierarchieansicht">
+          <header class="panel-header">
+            <h2>CAP -> Service -> SFN -> Requirement</h2>
+          </header>
+          <div id="treeContainer" class="tree-container"></div>
+        </section>
+
+        <section class="panel detail-panel" aria-label="Detailansicht">
+          <header class="panel-header">
+            <h2>Detailansicht</h2>
+          </header>
+          <div id="detailContainer" class="detail-container"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

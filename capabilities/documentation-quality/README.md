@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Die Documentation & Quality Capability stellt sicher, dass die DNS-Konfigurations-App vollständig dokumentiert ist und einen transparenten Maturitätsstatus aufweist. Sie umfasst technische Dokumentation (Quickstart, Betriebsdoku, ADRs), Architekturübersicht sowie Maturitäts- und Teststatus-Tracking.
+Die Documentation & Quality Capability stellt sicher, dass die DNS-Konfigurations-App vollständig dokumentiert ist und einen transparenten Maturitätsstatus aufweist. Sie umfasst technische Dokumentation (Quickstart, Betriebsdoku, ADRs), Architekturübersicht sowie Maturitaets- und Teststatus-Tracking inkl. Test-Execution-Dashboard.
 
 ---
 
@@ -38,7 +38,8 @@ Die Documentation & Quality Capability stellt sicher, dass die DNS-Konfiguration
 | DPD-ID | Abhängigkeit | Typ | Beschreibung |
 |--------|-------------|-----|-------------|
 | DPD-DOC-001 | Alle Features OBJ-1 bis OBJ-16 | Voraussetzung | Doku beschreibt das Gesamtsystem |
-| DPD-DOC-002 | OBJ-6 Manual Test Runner | Nutzer | Testergebnisse fliessen in Maturitätsstatus |
+| DPD-DOC-002 | OBJ-9 Manual Test Runner | Nutzer | Manuelle Testergebnisse fliessen in den Qualitaetsstatus |
+| DPD-DOC-003 | OBJ-23 Test Execution Dashboard | Nutzer | Kombinierte Sicht auf Passed/Failed/Never Executed pro Run und Release |
 
 ---
 

@@ -26,6 +26,7 @@ Ein airgapped-fähiges Web-Tool für Mission Network Operators, das die Verwaltu
 | 4 – P1 DNS | P1 | OBJ-7: Requirements Traceability View | Planned |
 | 4 – P1 DNS | P1 | OBJ-8: Export & Download | Planned |
 | 4 – P1 DNS | P1 | OBJ-9: Manual Test Runner | Planned |
+| 4 – P1 DNS | P1 | OBJ-23: Test Execution Dashboard | Planned |
 | 5 – Plattform | P1 | OBJ-10: Kubernetes Deployment | Planned |
 | 5 – Plattform | P1 | OBJ-11: Monitoring & Observability (OpenTelemetry) | Planned |
 | 5 – Plattform | P1 | OBJ-12: Security & Authentifizierung | Planned |
@@ -47,6 +48,7 @@ Ein airgapped-fähiges Web-Tool für Mission Network Operators, das die Verwaltu
 - Alle P0-Features funktionieren ohne Internetverbindung
 - Konfiguration deckt alle SREQ-xxx Requirements aus FMN Spiral 5 ab
 - Jedes freigegebene Release besteht eine dokumentierte Prüfung des tatsächlich erzeugten Release-Artefakts vor Publish, Export und Offline-Weitergabe
+- Pro Release ist der kombinierte Teststatus (manual + auto) transparent: Passed, Failed, Never Executed
 
 ## Constraints
 

@@ -1,0 +1,2767 @@
+{
+  "generatedAt": "2026-04-04T10:06:01.059Z",
+  "sourceRoot": "capabilities/",
+  "sourceIndex": "capabilities/INDEX.md",
+  "supportedSourceTypes": [
+    "NATO",
+    "ARCH",
+    "CUST",
+    "INT"
+  ],
+  "supportedPriorities": [
+    "MUSS",
+    "SOLLTE",
+    "KANN"
+  ],
+  "summary": {
+    "capabilityCount": 9,
+    "serviceCount": 17,
+    "serviceFunctionCount": 34,
+    "requirementCount": 124
+  },
+  "capabilities": [
+    {
+      "key": "capability:CAP-001",
+      "kind": "capability",
+      "id": "CAP-001",
+      "name": "Domain Naming",
+      "maturity": "L0 – Idea (Stand: 2026-03-16)",
+      "path": "capabilities/domain-naming/README.md",
+      "services": [
+        {
+          "key": "service:CAP-001:SVC-AUTH",
+          "kind": "service",
+          "id": "SVC-AUTH",
+          "name": "Authoritative Name Services",
+          "capabilityId": "CAP-001",
+          "path": "capabilities/domain-naming/services/authoritative-name-services/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-001:SVC-AUTH:SFN-TIN114",
+              "kind": "service-function",
+              "id": "SFN-TIN114",
+              "name": "Anycast DNS Advertising",
+              "capabilityId": "CAP-001",
+              "serviceId": "SVC-AUTH",
+              "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN114-anycast-dns/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN114:CREQ-005",
+                  "kind": "requirement",
+                  "id": "CREQ-005",
+                  "title": "Anycast Root DNS aktiviert – root-ns.core.ndp.che",
+                  "sourceType": "CUST",
+                  "priority": "MUSS",
+                  "originalText": "Anycast Root DNS Services activated. Unicast IP for Anycast Server assigned. FQDN: root-ns.core.ndp.che",
+                  "germanText": "Der Anycast Root DNS Service des CHE NDP CORE ist aktiviert. Eine dedizierte Unicast-IP-Adresse ist dem Anycast-Server zugewiesen. Der Anycast-Server ist unter dem FQDN root-ns.core.ndp.che erreichbar und betreibt den Root-DNS-Service über Anycast.",
+                  "acceptanceCriteria": [
+                    "Anycast Root DNS Service ist aktiv und erreichbar über die Anycast-Adresse.",
+                    "Bird2 kündigt die Anycast-Adresse via BGP korrekt an.",
+                    "Der FQDN root-ns.core.ndp.che löst auf die Anycast-IP auf.",
+                    "Bei Ausfall des Nameservers wird die Anycast-Route via BGP zurückgezogen."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN114",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN114-anycast-dns/requirements/CREQ-005.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN114:SREQ-609",
+                  "kind": "requirement",
+                  "id": "SREQ-609",
+                  "title": "Anycast mit konfigurierbarer Adresse unterstützen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall support anycast with a configurable address.",
+                  "germanText": "Der Domain Name Service muss Anycast mit einer konfigurierbaren IP-Adresse unterstützen. Die Anycast-Adresse muss frei konfigurierbar sein und darf nicht fest im System verankert sein.",
+                  "acceptanceCriteria": [
+                    "Eine Anycast-IP-Adresse ist auf dem Loopback-Interface des Nameservers konfiguriert.",
+                    "BIND9 lauscht auf der konfigurierten Anycast-IP-Adresse.",
+                    "Die Anycast-Adresse kann in der Konfiguration geändert werden, ohne den Service neu zu kompilieren."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN114",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN114-anycast-dns/requirements/SREQ-609.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN114:SREQ-610",
+                  "kind": "requirement",
+                  "id": "SREQ-610",
+                  "title": "Anycast-Anfragen über dieselbe Anycast-Adresse beantworten",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall respond the anycast queries using the same anycast address that it is listening on.",
+                  "germanText": "Der Domain Name Service muss Anycast-Anfragen mit derselben Anycast-Adresse beantworten, auf der er lauscht. Die Source-IP der Antwort muss die Anycast-IP-Adresse sein, an die die ursprüngliche Anfrage gerichtet war.",
+                  "acceptanceCriteria": [
+                    "DNS-Antworten auf Anycast-Anfragen haben die Anycast-IP als Source-IP.",
+                    "Das Betriebssystem ist so konfiguriert, dass Antworten über das Anycast-Interface gesendet werden.",
+                    "Netzwerk-Capture zeigt Source-IP = Anycast-IP für Queries an die Anycast-Adresse."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN114",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN114-anycast-dns/requirements/SREQ-610.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-001:SVC-AUTH:SFN-TIN26",
+              "kind": "service-function",
+              "id": "SFN-TIN26",
+              "name": "DNS Query (Authoritative)",
+              "capabilityId": "CAP-001",
+              "serviceId": "SVC-AUTH",
+              "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:CREQ-001",
+                  "kind": "requirement",
+                  "id": "CREQ-001",
+                  "title": "Delegierte Zone core.ndp.che und Reverse-Zone",
+                  "sourceType": "CUST",
+                  "priority": "MUSS",
+                  "originalText": "Delegated Zone: core.ndp.che and 109.<che>.<che>.in-addr.arpa",
+                  "germanText": "Der DNS-Service des CHE NDP CORE (CC-517) muss für die delegierten Zonen core.ndp.che und die zugehörige Reverse-Zone 109.x.x.in-addr.arpa autoritativ betrieben werden.",
+                  "acceptanceCriteria": [
+                    "Die Zone core.ndp.che ist in BIND9 konfiguriert und wird autoritativ bedient.",
+                    "Die Reverse-Zone 109.x.x.in-addr.arpa ist konfiguriert und wird autoritativ bedient.",
+                    "SOA-, NS- und A-Records für beide Zonen sind korrekt konfiguriert."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/CREQ-001.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:CREQ-002",
+                  "kind": "requirement",
+                  "id": "CREQ-002",
+                  "title": "Nameserver ns1.core.ndp.che und ns2.core.ndp.che",
+                  "sourceType": "CUST",
+                  "priority": "MUSS",
+                  "originalText": "Name servers: ns1.core.ndp.che and ns2.core.ndp.che",
+                  "germanText": "Die autoritativen Nameserver für die Zonen des CHE NDP CORE müssen unter den FQDNs ns1.core.ndp.che und ns2.core.ndp.che erreichbar sein. Beide Nameserver müssen konfiguriert und operativ sein.",
+                  "acceptanceCriteria": [
+                    "DNS-Queries an ns1.core.ndp.che werden erfolgreich beantwortet.",
+                    "DNS-Queries an ns2.core.ndp.che werden erfolgreich beantwortet.",
+                    "NS-Records für core.ndp.che zeigen auf ns1.core.ndp.che und ns2.core.ndp.che.",
+                    "A-Records für beide Nameserver sind in der Zone konfiguriert."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/CREQ-002.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:CREQ-003",
+                  "kind": "requirement",
+                  "id": "CREQ-003",
+                  "title": "Resolver rs1.core.ndp.che und rs2.core.ndp.che",
+                  "sourceType": "CUST",
+                  "priority": "MUSS",
+                  "originalText": "Resolvers: rs1.core.ndp.che and rs2.core.ndp.che",
+                  "germanText": "Die rekursiven Resolver des CHE NDP CORE müssen unter den FQDNs rs1.core.ndp.che und rs2.core.ndp.che erreichbar sein. Beide Resolver müssen als DNS-Resolver für MN-Clients konfiguriert und operativ sein.",
+                  "acceptanceCriteria": [
+                    "DNS-Resolver-Anfragen an rs1.core.ndp.che werden erfolgreich beantwortet.",
+                    "DNS-Resolver-Anfragen an rs2.core.ndp.che werden erfolgreich beantwortet.",
+                    "A-Records für beide Resolver sind in der Zone core.ndp.che konfiguriert.",
+                    "Die Resolver sind als separate Unbound-Instanzen von den autoritativen BIND9-Servern betrieben."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/CREQ-003.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1311",
+                  "kind": "requirement",
+                  "id": "SREQ-1311",
+                  "title": "Glue-IP-Adressen müssen mit autoritativen A-Records übereinstimmen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "For name servers that have IP addresses listed as glue, the IP addresses must match the authoritative A records for that host.",
+                  "germanText": "Für Nameserver, deren IP-Adressen als Glue Records in der Parent-Zone aufgeführt sind, müssen die Glue-IP-Adressen mit den autoritativen A-Records in der eigenen Zone übereinstimmen.",
+                  "acceptanceCriteria": [
+                    "Die IP-Adressen in den Glue Records der Parent-Zone stimmen exakt mit den A-Records in der eigenen Zone überein.",
+                    "Bei Änderung einer Nameserver-IP werden sowohl Glue Records als auch autoritative A-Records aktualisiert.",
+                    "Ein automatischer Check (z. B. via named-checkzone oder Testskript) meldet Inkonsistenzen."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1311.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1312",
+                  "kind": "requirement",
+                  "id": "SREQ-1312",
+                  "title": "NS-Records müssen mit Delegation im Parent übereinstimmen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The set of NS records served by the authoritative name servers must match those proposed for the delegation in the parent zone.",
+                  "germanText": "Die NS-Records, die von den autoritativen Nameservern für eine Zone zurückgegeben werden, müssen mit den NS-Records übereinstimmen, die im Parent-Zone für die Delegation dieser Zone eingetragen sind.",
+                  "acceptanceCriteria": [
+                    "NS-Records in der Child-Zone stimmen exakt mit den Delegation-NS-Records in der Parent-Zone überein.",
+                    "Änderungen an NS-Records in der Child-Zone werden zeitnah auch in der Parent-Zone reflektiert.",
+                    "Ein automatischer Vergleich (z. B. via dig) erkennt Abweichungen zwischen Child- und Parent-NS-Records."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1312.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1313",
+                  "kind": "requirement",
+                  "id": "SREQ-1313",
+                  "title": "Daten der autoritativen Nameserver müssen konsistent sein",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The data served by the authoritative name servers for the designated zone must be consistent.",
+                  "germanText": "Die Daten, die von den autoritativen Nameservern für eine bestimmte Zone geliefert werden, müssen konsistent sein. Alle NS-Server für eine Zone müssen dieselben Zone-Daten zurückgeben.",
+                  "acceptanceCriteria": [
+                    "Alle autoritativen Nameserver für eine Zone liefern identische Antworten für denselben DNS-Query.",
+                    "SOA-Serial-Nummern stimmen zwischen primärem und sekundären NS überein.",
+                    "Nach einem Zone Transfer ist der sekundäre NS mit dem primären NS synchronisiert (überprüfbar via SOA-Vergleich)."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1313.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1314",
+                  "kind": "requirement",
+                  "id": "SREQ-1314",
+                  "title": "Alle autoritativen NS müssen gleichen NS-Record-Set liefern",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "All authoritative name servers must serve the same NS record set for the designated domain.",
+                  "germanText": "Alle autoritativen Nameserver für eine bestimmte Domain müssen denselben NS-Record-Set zurückgeben. Die Menge der NS-Records muss auf allen Nameservern identisch sein.",
+                  "acceptanceCriteria": [
+                    "Eine NS-Anfrage an ns1.core.ndp.che und ns2.core.ndp.che für dieselbe Zone liefert identische NS-Record-Sets.",
+                    "Die NS-Records auf dem sekundären NS stimmen nach einem Zone Transfer mit dem primären NS überein.",
+                    "Ein automatischer Vergleich via dig @ns1... NS zone und dig @ns2... NS zone zeigt keine Abweichungen."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1314.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1315",
+                  "kind": "requirement",
+                  "id": "SREQ-1315",
+                  "title": "Alle autoritativen NS müssen gleichen SOA-Record liefern",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "All authoritative name servers must serve the same SOA record for the designated domain.",
+                  "germanText": "Alle autoritativen Nameserver für eine bestimmte Domain müssen denselben SOA-Record zurückgeben. Insbesondere die SOA-Serial-Nummer muss auf allen Nameservern identisch sein.",
+                  "acceptanceCriteria": [
+                    "Eine SOA-Anfrage an alle autoritativen NS für eine Zone liefert identische SOA-Records inkl. Serial-Nummer.",
+                    "Nach einem Zone Transfer stimmt die SOA-Serial auf dem sekundären NS mit dem primären NS überein.",
+                    "Unterschiede in der SOA-Serial werden im Monitoring als Warnung angezeigt."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1315.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1316",
+                  "kind": "requirement",
+                  "id": "SREQ-1316",
+                  "title": "DNS-Antwort-Payload darf 512 Oktett nicht überschreiten (Referral)",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "DNS response payload must not exceed 512 octets, where the delegation information in the referral is a complete set of NS records and one A record.",
+                  "germanText": "Der DNS-Antwort-Payload darf 512 Oktett nicht überschreiten, wenn die Delegationsinformation in einem Referral einen vollständigen Satz NS-Records und einen A-Record enthält.",
+                  "acceptanceCriteria": [
+                    "Referral-Antworten (mit NS-Records und einem A-Record als Glue) überschreiten 512 Bytes nicht.",
+                    "Die Anzahl der NS-Records pro delegierter Zone ist so begrenzt, dass die 512-Byte-Grenze eingehalten wird.",
+                    "Bei Überschreitung wird korrekt auf TC-Flag (truncated) gesetzt und TCP-Fallback ermöglicht."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1316.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1317",
+                  "kind": "requirement",
+                  "id": "SREQ-1317",
+                  "title": "Nicht-Anycast-Antworten: Source-IP = Destination-IP der initialen Anfrage",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "For any zones that are not anycasted, responses from the authoritative name servers must contain the same source IP address as the destination IP address of the initial query.",
+                  "germanText": "Für Zonen, die nicht über Anycast betrieben werden, müssen Antworten der autoritativen Nameserver dieselbe Source-IP-Adresse enthalten wie die Destination-IP-Adresse der ursprünglichen Anfrage. Die Antwort muss von derselben IP-Adresse kommen, an die die Anfrage gerichtet war.",
+                  "acceptanceCriteria": [
+                    "DNS-Antworten für Nicht-Anycast-Zonen haben als Source-IP dieselbe Adresse wie die Destination-IP der Anfrage.",
+                    "BIND9 ist so konfiguriert, dass es auf der Adresse antwortet, auf der die Anfrage empfangen wurde.",
+                    "Netzwerk-Capture zeigt Source-IP = Original-Destination-IP für Nicht-Anycast-Queries."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1317.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1318",
+                  "kind": "requirement",
+                  "id": "SREQ-1318",
+                  "title": "Trust Anchors müssen als vollständige DS-Records bereitgestellt werden",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "Trust anchors must be provided as complete DS records, including the key tag, the key algorithm, the digest hash type, and the digest hash.",
+                  "germanText": "Trust Anchors müssen als vollständige DS-Records bereitgestellt werden, einschliesslich: Key Tag, Key-Algorithmus, Digest-Hash-Typ und Digest-Hash. Unvollständige DS-Records werden nicht akzeptiert.",
+                  "acceptanceCriteria": [
+                    "Bereitgestellte DS-Records enthalten alle vier Pflichtfelder: Key Tag, Algorithmus, Digest-Typ, Digest.",
+                    "DS-Records können erfolgreich in die Parent-Zone eingetragen und durch Resolver validiert werden.",
+                    "DNSSEC-Validierung mit dem bereitgestellten DS-Record ist erfolgreich."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1318.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1319",
+                  "kind": "requirement",
+                  "id": "SREQ-1319",
+                  "title": "DNSKEY in Child-Zone muss zu jedem DS-Record passen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "At the time of the listing request there must be a DNSKEY present in the child zone that matches each DS record.",
+                  "germanText": "Zum Zeitpunkt der Listungsanfrage muss in der Child-Zone ein DNSKEY vorhanden sein, der jedem DS-Record in der Parent-Zone entspricht. Jeder DS-Record muss einem aktiven DNSKEY in der Child-Zone zugeordnet sein.",
+                  "acceptanceCriteria": [
+                    "Für jeden DS-Record in der Parent-Zone ist ein passender DNSKEY in der Child-Zone vorhanden.",
+                    "Der Key Tag im DS-Record stimmt mit dem Key Tag des DNSKEY überein.",
+                    "Der Digest im DS-Record ist korrekt berechnet aus dem DNSKEY."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1319.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-1320",
+                  "kind": "requirement",
+                  "id": "SREQ-1320",
+                  "title": "Validierung der Zone muss mit bereitgestelltem DS-Record-Set möglich sein",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "Validation of the zone must be possible using the DS record set that has been provided for listing in the parent zone.",
+                  "germanText": "Die Validierung der Zone muss mit dem DS-Record-Set möglich sein, das für die Listung in der Parent-Zone bereitgestellt wurde. Die gesamte DNSSEC-Vertrauenskette von der Root bis zur Zone muss validierbar sein.",
+                  "acceptanceCriteria": [
+                    "Ein DNSSEC-validierender Resolver kann die Zone erfolgreich mit dem bereitgestellten DS-Record validieren.",
+                    "Die DNSSEC-Validierungskette (Root → TLD → Zone) ist lückenlos und fehlerfrei.",
+                    "Tools wie delv oder dnssec-verify bestätigen die Validierbarkeit der Zone."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-1320.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-234",
+                  "kind": "requirement",
+                  "id": "SREQ-234",
+                  "title": "Mission Top-Level-Domains unterstützen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall support mission top level domains.",
+                  "germanText": "Der Domain Name Service muss Mission Top-Level-Domains unterstützen. Dazu zählt die TLD .mission. sowie weitere missionsspezifische Top-Level-Domains gemäss FMN-Konfiguration.",
+                  "acceptanceCriteria": [
+                    "Der autoritative Nameserver ist für mindestens eine Mission-TLD konfiguriert und beantwortet Queries korrekt.",
+                    "Delegation von Subzonen unterhalb der Mission-TLD ist möglich.",
+                    "NS-Records für die Mission-TLD sind korrekt konfiguriert und stimmig mit dem Parent."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-234.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-235",
+                  "kind": "requirement",
+                  "id": "SREQ-235",
+                  "title": "Country Code Top-Level-Domains unterstützen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall support country code top level domains.",
+                  "germanText": "Der Domain Name Service muss Country Code Top-Level-Domains (ccTLDs) unterstützen. Im FMN-Kontext entspricht dies nationalen Kürzeln wie .che, .deu, .fra usw., die als TLDs in der MN-Root-Zone delegiert werden.",
+                  "acceptanceCriteria": [
+                    "Der autoritative Nameserver ist für mindestens eine ccTLD konfiguriert (z. B. .che).",
+                    "Subzonen unterhalb der ccTLD (z. B. core.ndp.che) sind delegierbar.",
+                    "Queries für die ccTLD und ihre Subzonen werden korrekt beantwortet."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-235.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-238",
+                  "kind": "requirement",
+                  "id": "SREQ-238",
+                  "title": "Mindest-Record-Typen unterstützen (SOA, NS, A)",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service must support, at a minimum, the SOA-record, NS-record and A-record matching to the NS-records.",
+                  "germanText": "Der Domain Name Service muss mindestens folgende DNS-Record-Typen unterstützen: SOA-Record (Start of Authority), NS-Record (Name Server) sowie A-Record (IPv4-Adresse), wobei der A-Record mit den NS-Records übereinstimmen muss.",
+                  "acceptanceCriteria": [
+                    "Der Nameserver liefert korrekte SOA-Records für alle konfigurierten Zonen.",
+                    "NS-Records sind für alle Zonen konfiguriert und werden korrekt zurückgegeben.",
+                    "Für jeden NS-Record existiert ein korrespondierender A-Record (Glue Record, falls im Parent-Domain)."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-238.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-239",
+                  "kind": "requirement",
+                  "id": "SREQ-239",
+                  "title": "Reverse-Zonen mit PTR-Records unterstützen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service must support the reverse zone containing the matching PTR-records.",
+                  "germanText": "Der Domain Name Service muss Reverse-Zonen (in-addr.arpa) mit korrespondierenden PTR-Records unterstützen. Die PTR-Records müssen mit den Forward-A-Records übereinstimmen.",
+                  "acceptanceCriteria": [
+                    "Die Reverse-Zone (in-addr.arpa) ist konfiguriert und wird autoritativ bedient.",
+                    "PTR-Records für alle konfigurierten Hosts sind vorhanden.",
+                    "Jeder PTR-Record korrespondiert mit einem gültigen A-Record in der Forward-Zone."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-239.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-378",
+                  "kind": "requirement",
+                  "id": "SREQ-378",
+                  "title": "Eigene Zone-Datei pro signierter Zone",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "A distinct zone file shall be created for each signed zone.",
+                  "germanText": "Für jede signierte Zone muss eine separate Zone-Datei erstellt werden. Mehrere Zonen dürfen nicht in einer gemeinsamen Zone-Datei zusammengefasst werden.",
+                  "acceptanceCriteria": [
+                    "Für jede konfigurierte Zone existiert eine separate Zone-Datei im Dateisystem.",
+                    "Die BIND9-Konfiguration referenziert für jede Zone eine eigene file-Direktive.",
+                    "Zone-Dateien für signierte Zonen enthalten DNSSEC-spezifische Records (DNSKEY, RRSIG)."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-378.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-379",
+                  "kind": "requirement",
+                  "id": "SREQ-379",
+                  "title": "Unsignierte Zonen delegieren können",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Authoritative Name Services shall be able to delegate unsigned zones.",
+                  "germanText": "Die Authoritative Name Services müssen in der Lage sein, unsignierte Zonen zu delegieren. Nicht alle MNPs oder Subzonen müssen DNSSEC implementiert haben; die Delegation muss auch ohne DS-Record im Parent möglich sein.",
+                  "acceptanceCriteria": [
+                    "Eine signierte Zone kann Subzonen delegieren, für die kein DS-Record vorhanden ist.",
+                    "Die Delegation unsignierter Subzonen erzeugt keine DNSSEC-Validierungsfehler.",
+                    "Resolver können unsignierte Subdelegationen ohne Validierungsfehler auflösen."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-379.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-380",
+                  "kind": "requirement",
+                  "id": "SREQ-380",
+                  "title": "Signierung von Subdomains delegieren können",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall be able to delegate the signing of subdomains.",
+                  "germanText": "Der Domain Name Service muss in der Lage sein, die Signierung von Subdomains zu delegieren. Das bedeutet, dass ein DS-Record für eine signierte Subdelegation in der übergeordneten Zone platziert werden kann, um die DNSSEC-Vertrauenskette weiterzuführen.",
+                  "acceptanceCriteria": [
+                    "Die übergeordnete Zone kann DS-Records für signierte Subdelegationen enthalten.",
+                    "DS-Records werden korrekt in der Zone-Datei konfiguriert und zurückgegeben.",
+                    "Die DNSSEC-Vertrauenskette von der Root-Zone bis zur delegierten Zone ist valide."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-380.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-382",
+                  "kind": "requirement",
+                  "id": "SREQ-382",
+                  "title": "Signierte Zonen bedienen können",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall be able to serve signed zones.",
+                  "germanText": "Der Domain Name Service muss in der Lage sein, DNSSEC-signierte Zonen zu bedienen. Das bedeutet, dass RRSIG-, DNSKEY- und NSEC/NSEC3-Records in Antworten enthalten sein müssen, wenn der Anfragende DNSSEC-Daten anfordert (DO-Bit gesetzt).",
+                  "acceptanceCriteria": [
+                    "DNSSEC-signierte Zonen werden korrekt mit RRSIG-Records ausgeliefert (bei gesetztem DO-Bit).",
+                    "DNSKEY-Records sind in der Zone vorhanden und werden zurückgegeben.",
+                    "NSEC- oder NSEC3-Records werden für authenticated denial of existence zurückgegeben."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-382.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-611",
+                  "kind": "requirement",
+                  "id": "SREQ-611",
+                  "title": "Konfigurierte Unicast-IP für ausgehende Queries verwenden",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall use a configured unicast IP-address when queries are made to other servers.",
+                  "germanText": "Der Domain Name Service muss eine konfigurierte Unicast-IP-Adresse verwenden, wenn Anfragen an andere Server gestellt werden. Dies stellt sicher, dass ausgehende DNS-Queries immer von einer bekannten, konfigurierten Adresse stammen und nicht von einer Anycast-Adresse.",
+                  "acceptanceCriteria": [
+                    "In der BIND9-Konfiguration ist eine spezifische Unicast-IP als Query-Source konfiguriert (query-source address).",
+                    "Ausgehende DNS-Queries (z. B. NOTIFY, Zone-Transfer) verwenden die konfigurierte Unicast-Adresse als Source-IP.",
+                    "Die Anycast-Adresse wird nicht für ausgehende Verbindungen zu anderen Servern verwendet."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-611.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-613",
+                  "kind": "requirement",
+                  "id": "SREQ-613",
+                  "title": "Zwei unabhängige Nameserver pro delegierter Zone",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Authoritative Name Services shall support the provision of two independent name servers for each delegated zone.",
+                  "germanText": "Die Authoritative Name Services müssen für jede delegierte Zone mindestens zwei unabhängige Nameserver bereitstellen. Die Nameserver müssen physisch und logisch voneinander unabhängig sein, um Single Points of Failure zu vermeiden.",
+                  "acceptanceCriteria": [
+                    "Für jede delegierte Zone sind mindestens zwei NS-Records konfiguriert.",
+                    "Die beiden Nameserver sind auf unterschiedlichen Hosts (unterschiedliche IP-Adressen) erreichbar.",
+                    "Bei Ausfall eines Nameservers beantwortet der zweite weiterhin alle DNS-Queries korrekt."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-613.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-614",
+                  "kind": "requirement",
+                  "id": "SREQ-614",
+                  "title": "Delegation von Reverse-Lookup-Zonen für IPv4-Präfixe auf 8-Bit-Grenzen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Authoritative Name Services shall allow delegation of reverse lookup zones of IPv4 prefixes that align on full 8 bits.",
+                  "germanText": "Die Authoritative Name Services müssen die Delegation von Reverse-Lookup-Zonen für IPv4-Präfixe erlauben, die auf vollen 8-Bit-Grenzen ausgerichtet sind. Das bedeutet, Delegationen auf /8-, /16- und /24-Grenzen (entsprechend x.in-addr.arpa, x.y.in-addr.arpa, x.y.z.in-addr.arpa).",
+                  "acceptanceCriteria": [
+                    "Reverse-Zonen können auf /8-, /16- und /24-Präfixgrenzen delegiert werden.",
+                    "Delegations-NS-Records für die Reverse-Zone sind korrekt konfiguriert.",
+                    "PTR-Queries für die delegierten IP-Bereiche werden korrekt an den zuständigen NS weitergeleitet."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-614.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-615",
+                  "kind": "requirement",
+                  "id": "SREQ-615",
+                  "title": "Keine Forwarder für Zonen anderer MNPs",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall operate without using forwarders for zones hosted by other MNPs.",
+                  "germanText": "Der Domain Name Service muss ohne Forwarder für Zonen betrieben werden, die von anderen MNPs gehostet werden. Die Auflösung muss iterativ über die Root-Zone erfolgen, nicht durch Weiterleitungen an bekannte Nameserver anderer Teilnehmer.",
+                  "acceptanceCriteria": [
+                    "In der BIND9/Unbound-Konfiguration sind keine Forwarder für Zonen anderer MNPs konfiguriert.",
+                    "DNS-Queries für andere MNP-Zonen werden iterativ über Root-Server aufgelöst.",
+                    "Die BIND9-Konfiguration enthält keine forwarders-Direktive für MNP-spezifische Zonen."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-615.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN26:SREQ-616",
+                  "kind": "requirement",
+                  "id": "SREQ-616",
+                  "title": "Keine rekursiven DNS-Queries unterstützen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Authoritative Name Services shall not support Recursive DNS Queries.",
+                  "germanText": "Die Authoritative Name Services dürfen keine rekursiven DNS-Queries unterstützen. Autoritative Nameserver antworten nur auf Anfragen für Zonen, für die sie autoritativ sind, und leiten keine Anfragen für fremde Zonen iterativ auf.",
+                  "acceptanceCriteria": [
+                    "Der autoritative Nameserver ist mit recursion no; konfiguriert.",
+                    "Rekursive Queries (RD-Flag gesetzt) werden mit REFUSED beantwortet oder ignoriert.",
+                    "Der Nameserver antwortet nicht als Resolver für externe Zonen."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN26",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN26-dns-query/requirements/SREQ-616.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-001:SVC-AUTH:SFN-TIN370",
+              "kind": "service-function",
+              "id": "SFN-TIN370",
+              "name": "DNS Root Zone Hosting",
+              "capabilityId": "CAP-001",
+              "serviceId": "SVC-AUTH",
+              "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN370-dns-root/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN370:CREQ-004",
+                  "kind": "requirement",
+                  "id": "CREQ-004",
+                  "title": "Anycast Root DNS – root-ns.core.ndp.che",
+                  "sourceType": "CUST",
+                  "priority": "MUSS",
+                  "originalText": "Anycast Root DNS Services: Yes. Anycast Server FQDN: root-ns.core.ndp.che",
+                  "germanText": "Der CHE NDP CORE (CC-517) betreibt Anycast Root DNS Services. Der Anycast Root DNS Server ist unter dem FQDN root-ns.core.ndp.che erreichbar. Der Anycast-Service muss konfiguriert und operativ sein.",
+                  "acceptanceCriteria": [
+                    "Der FQDN root-ns.core.ndp.che ist in der Root-Zone als NS-Record konfiguriert.",
+                    "Der Anycast-Server beantwortet DNS-Queries für die Root-Zone über die Anycast-Adresse.",
+                    "Die Anycast-Adresse wird via BGP (Bird2) korrekt bekanntgemacht."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN370",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN370-dns-root/requirements/CREQ-004.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN370:SREQ-1159",
+                  "kind": "requirement",
+                  "id": "SREQ-1159",
+                  "title": "Root-Zone darf nur Top-Level-Domains delegieren",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The root zone shall only delegate top level domains (TLD).",
+                  "germanText": "Die Root-Zone darf ausschliesslich Top-Level-Domains (TLDs) delegieren. NS-Records in der Root-Zone dürfen nur für Zonen direkt unterhalb der Root (eine Ebene) konfiguriert sein, nicht für Subdomains zweiter oder weiterer Ebene.",
+                  "acceptanceCriteria": [
+                    "Die Root-Zone enthält ausschliesslich NS-Records für TLDs (eine Label-Ebene unterhalb der Root).",
+                    "NS-Records für Second-Level-Domains oder tiefere Ebenen sind nicht in der Root-Zone vorhanden.",
+                    "named-checkzone oder ein automatischer Validator erkennt TLD-übergreifende Delegationen als Fehler."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN370",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN370-dns-root/requirements/SREQ-1159.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN370:SREQ-1272",
+                  "kind": "requirement",
+                  "id": "SREQ-1272",
+                  "title": "Root-Zone muss mit zulässigem Algorithmus signiert sein",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The root zone shall be signed with one of the following algorithms: RSASHA256, RSASHA512, ECDSAP256SHA256, and ECDSAP384SHA384.",
+                  "germanText": "Die Root-Zone muss mit einem der folgenden DNSSEC-Algorithmen signiert sein: RSASHA256 (Algorithmus 8), RSASHA512 (Algorithmus 10), ECDSAP256SHA256 (Algorithmus 13) oder ECDSAP384SHA384 (Algorithmus 14). Andere Algorithmen sind nicht zulässig.",
+                  "acceptanceCriteria": [
+                    "Der DNSKEY-Record der Root-Zone enthält einen Algorithmus aus der erlaubten Liste.",
+                    "RRSIG-Records in der Root-Zone sind mit dem konfigurierten erlaubten Algorithmus erstellt.",
+                    "Ein Algorithmus-Check via dig . DNSKEY bestätigt die Verwendung eines zulässigen Algorithmus."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN370",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN370-dns-root/requirements/SREQ-1272.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN370:SREQ-242",
+                  "kind": "requirement",
+                  "id": "SREQ-242",
+                  "title": "Fähigkeit zur Bereitstellung der Root-Zone",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Authoritative Name Services must support the ability to provide the root zone.",
+                  "germanText": "Die Authoritative Name Services müssen die Fähigkeit unterstützen, die Root-Zone bereitzustellen. Der Nameserver muss so konfiguriert werden können, dass er als autoritativer Server für die Root-Zone (.) agiert.",
+                  "acceptanceCriteria": [
+                    "BIND9 ist als autoritativer Server für die Root-Zone (.) konfiguriert.",
+                    "Queries für die Root-Zone werden korrekt beantwortet (NS-Records für TLDs).",
+                    "Die Root-Zone enthält Delegationen für alle im MN verwendeten TLDs."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN370",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN370-dns-root/requirements/SREQ-242.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN370:SREQ-525",
+                  "kind": "requirement",
+                  "id": "SREQ-525",
+                  "title": "Die Root-Zone muss signiert sein",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The root zone shall be signed.",
+                  "germanText": "Die Root-Zone muss mit DNSSEC signiert sein. Die Signierung der Root-Zone ist die Grundlage der gesamten DNSSEC-Vertrauenskette im Mission Network.",
+                  "acceptanceCriteria": [
+                    "Die Root-Zone (.) enthält DNSKEY-, RRSIG- und NSEC/NSEC3-Records.",
+                    "Die Root-Zone ist mit einem der erlaubten Algorithmen (gemäss SREQ-1272) signiert.",
+                    "Ein DNSSEC-validierender Resolver kann die Root-Zone-Signatur verifizieren."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN370",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN370-dns-root/requirements/SREQ-525.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN370:SREQ-617",
+                  "kind": "requirement",
+                  "id": "SREQ-617",
+                  "title": "Bedienung der Root-Zone durch jeden MNP für eigene Resolver",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Authoritative Name Services shall support the serving of the root zone by each MNP to its own resolvers.",
+                  "germanText": "Die Authoritative Name Services müssen es jedem MNP ermöglichen, die Root-Zone für seine eigenen Resolver bereitzustellen. Jeder MNP betreibt eine lokale Kopie der Root-Zone, die seinen Resolvern als Startpunkt für iterative DNS-Auflösung dient.",
+                  "acceptanceCriteria": [
+                    "Die Root-Zone ist auf dem lokalen Nameserver konfiguriert und für eigene Resolver erreichbar.",
+                    "Die eigenen Resolver (rs1/rs2.core.ndp.che) verwenden den lokalen Root-Nameserver als Root-Hint.",
+                    "DNS-Auflösung funktioniert autonom ohne Verbindung zu anderen MNP-Root-Servern."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN370",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN370-dns-root/requirements/SREQ-617.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-001:SVC-AUTH:SFN-TIN43",
+              "kind": "service-function",
+              "id": "SFN-TIN43",
+              "name": "DNS Zone Transfer",
+              "capabilityId": "CAP-001",
+              "serviceId": "SVC-AUTH",
+              "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN43-zone-transfer/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN43:SREQ-241",
+                  "kind": "requirement",
+                  "id": "SREQ-241",
+                  "title": "Zonen-Updates via Zone Transfer unterstützen",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service must support zone updates via zone transfers.",
+                  "germanText": "Der Domain Name Service muss Zonen-Updates via Zone Transfers unterstützen. Zone Transfers ermöglichen die Synchronisation von Zone-Daten zwischen primären und sekundären Nameservern (AXFR für vollständige Transfers, IXFR für inkrementelle Transfers).",
+                  "acceptanceCriteria": [
+                    "AXFR-Zone-Transfers zwischen primärem und sekundärem Nameserver funktionieren fehlerfrei.",
+                    "IXFR-Zone-Transfers für inkrementelle Updates werden unterstützt.",
+                    "Nach einem Zone Transfer ist der sekundäre Nameserver mit dem primären synchronisiert (SOA-Serial gleich)."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN43",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN43-zone-transfer/requirements/SREQ-241.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN43:SREQ-529",
+                  "kind": "requirement",
+                  "id": "SREQ-529",
+                  "title": "DNS Zone Transfers mit TSIG sichern",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "Authoritative Name Services shall secure DNS Zone Transfers with Secret Key Transaction Authentication for DNS (TSIG).",
+                  "germanText": "Die Authoritative Name Services müssen DNS Zone Transfers mit TSIG (Transaction Signature, RFC 2845) absichern. Pflichtmässiger HMAC-Algorithmus ist hmac-sha384. Unsignierte Zone Transfers dürfen nicht akzeptiert werden.",
+                  "acceptanceCriteria": [
+                    "Zone Transfers sind mit TSIG-Schlüsseln konfiguriert (hmac-sha384).",
+                    "Zone Transfer-Anfragen ohne gültigen TSIG-Schlüssel werden abgewiesen (REFUSED).",
+                    "TSIG-Schlüssel werden sicher ausgetauscht und nicht im Klartext in Konfigurationsdateien gespeichert."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN43",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN43-zone-transfer/requirements/SREQ-529.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-AUTH:SFN-TIN43:SREQ-612",
+                  "kind": "requirement",
+                  "id": "SREQ-612",
+                  "title": "Hidden-Betrieb unterstützen (nicht erreichbar für normale DNS-Queries)",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Authoritative Name Services shall support being hidden (not accessible for normal DNS queries) when operating as a root server.",
+                  "germanText": "Die Authoritative Name Services müssen den Hidden-Master-Betrieb unterstützen: Der primäre Nameserver ist für normale DNS-Queries von aussen nicht erreichbar und erscheint nicht in den NS-Records der Zone. Er ist ausschliesslich für Zone Transfers an die sekundären Nameserver zugänglich.",
+                  "acceptanceCriteria": [
+                    "Der primäre Nameserver ist nicht in den NS-Records der Zone aufgeführt.",
+                    "Normale DNS-Queries an den Hidden Master werden abgewiesen oder nicht beantwortet.",
+                    "Zone Transfers vom Hidden Master an sekundäre Nameserver funktionieren korrekt."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-AUTH",
+                  "serviceFunctionId": "SFN-TIN43",
+                  "path": "capabilities/domain-naming/services/authoritative-name-services/service-functions/SFN-TIN43-zone-transfer/requirements/SREQ-612.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "service:CAP-001:SVC-LOG",
+          "kind": "service",
+          "id": "SVC-LOG",
+          "name": "DNS Security & Logging",
+          "capabilityId": "CAP-001",
+          "path": "capabilities/domain-naming/services/dns-security-logging/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-001:SVC-LOG:SFN-DNS-LOGGING",
+              "kind": "service-function",
+              "id": "SFN-DNS-LOGGING",
+              "name": "DNS Security & Event Logging",
+              "capabilityId": "CAP-001",
+              "serviceId": "SVC-LOG",
+              "path": "capabilities/domain-naming/services/dns-security-logging/service-functions/SFN-DNS-LOGGING/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-001:SVC-LOG:SFN-DNS-LOGGING:SREQ-309",
+                  "kind": "requirement",
+                  "id": "SREQ-309",
+                  "title": "Logs müssen Details zu fehlgeschlagenen Anfragen enthalten",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "Event logs shall include details of failed requests.",
+                  "germanText": "Event-Logs müssen Details zu fehlgeschlagenen DNS-Anfragen enthalten. Details umfassen: Zeitstempel, Quell-IP und -Port, Ziel-IP und -Port, angefragter FQDN, Query-Typ (A, AAAA, MX usw.), Fehlercode (SERVFAIL, REFUSED, NXDOMAIN usw.).",
+                  "acceptanceCriteria": [
+                    "Log-Einträge für fehlgeschlagene Anfragen enthalten: Zeitstempel, Quell-IP, Query-Name, Query-Typ, Fehlercode.",
+                    "BIND9-Logging-Kanal queries oder äquivalent ist konfiguriert.",
+                    "Logs zeigen unterschiedliche Fehlercodes für SERVFAIL, REFUSED und NXDOMAIN."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-LOG",
+                  "serviceFunctionId": "SFN-DNS-LOGGING",
+                  "path": "capabilities/domain-naming/services/dns-security-logging/service-functions/SFN-DNS-LOGGING/requirements/SREQ-309.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-LOG:SFN-DNS-LOGGING:SREQ-310",
+                  "kind": "requirement",
+                  "id": "SREQ-310",
+                  "title": "Logs müssen Details zu DNSSEC-Validierungsfehlern enthalten",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "Event logs shall include details of DNSSEC verification failures.",
+                  "germanText": "Event-Logs müssen Details zu DNSSEC-Validierungsfehlern enthalten. Details umfassen: Zeitstempel, betroffene Zone, DNSSEC-Fehlertyp (Signatur abgelaufen, ungültige Signatur, fehlender DNSKEY, fehlendes DS-Record usw.), und betroffener Resource Record.",
+                  "acceptanceCriteria": [
+                    "DNSSEC-Validierungsfehler werden in separaten Log-Einträgen mit Fehlertyp dokumentiert.",
+                    "Log-Einträge für DNSSEC-Fehler enthalten: Zeitstempel, betroffene Zone, Fehlertyp, betroffener Record.",
+                    "Unbound-Logging-Level ist so konfiguriert, dass DNSSEC-Fehler sichtbar sind (val-log-level: 2)."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-LOG",
+                  "serviceFunctionId": "SFN-DNS-LOGGING",
+                  "path": "capabilities/domain-naming/services/dns-security-logging/service-functions/SFN-DNS-LOGGING/requirements/SREQ-310.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-LOG:SFN-DNS-LOGGING:SREQ-53",
+                  "kind": "requirement",
+                  "id": "SREQ-53",
+                  "title": "DNS-Server und Resolver müssen Ereignisse protokollieren",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "Events shall be logged by DNS servers and resolvers.",
+                  "germanText": "DNS-Server (autoritative Nameserver) und Resolver müssen Ereignisse protokollieren. Das Logging gilt für alle DNS-Komponenten: BIND9-autoritative Server sowie Unbound-Resolver.",
+                  "acceptanceCriteria": [
+                    "BIND9 ist mit aktiviertem Logging konfiguriert (logging { ... }).",
+                    "Unbound ist mit aktiviertem Logging konfiguriert (verbosity-Direktive).",
+                    "Log-Dateien werden im definierten Verzeichnis geschrieben und sind lesbar.",
+                    "Log-Rotation ist konfiguriert, um Log-Überlauf zu verhindern."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-LOG",
+                  "serviceFunctionId": "SFN-DNS-LOGGING",
+                  "path": "capabilities/domain-naming/services/dns-security-logging/service-functions/SFN-DNS-LOGGING/requirements/SREQ-53.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-LOG:SFN-DNS-LOGGING:SREQ-54",
+                  "kind": "requirement",
+                  "id": "SREQ-54",
+                  "title": "Event-Logs müssen Mindest-Ereignistypen enthalten",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "Event logs must register at least: zone transfers; failed requests; and zone modifications.",
+                  "germanText": "Event-Logs müssen mindestens folgende Ereignistypen registrieren: Zone Transfers (erfolgreich und fehlgeschlagen), fehlgeschlagene Anfragen (SERVFAIL, REFUSED, NXDOMAIN), sowie Zonenmodifikationen (Zone-Reload, nsupdate).",
+                  "acceptanceCriteria": [
+                    "Zone Transfer-Ereignisse (AXFR/IXFR, erfolgreich und fehlgeschlagen) werden geloggt.",
+                    "Fehlgeschlagene DNS-Anfragen (SERVFAIL, REFUSED, NXDOMAIN) werden geloggt.",
+                    "Zonenmodifikationen (Zone-Reload, dynamische Updates) werden geloggt.",
+                    "Log-Einträge enthalten Zeitstempel, Quell-IP, Query-Typ und Ergebnis."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-LOG",
+                  "serviceFunctionId": "SFN-DNS-LOGGING",
+                  "path": "capabilities/domain-naming/services/dns-security-logging/service-functions/SFN-DNS-LOGGING/requirements/SREQ-54.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "service:CAP-001:SVC-RESOLV",
+          "kind": "service",
+          "id": "SVC-RESOLV",
+          "name": "Recursive Resolving Services",
+          "capabilityId": "CAP-001",
+          "path": "capabilities/domain-naming/services/recursive-resolving-services/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-001:SVC-RESOLV:SFN-RESOLV-DNSSEC",
+              "kind": "service-function",
+              "id": "SFN-RESOLV-DNSSEC",
+              "name": "DNSSEC Validation",
+              "capabilityId": "CAP-001",
+              "serviceId": "SVC-RESOLV",
+              "path": "capabilities/domain-naming/services/recursive-resolving-services/service-functions/SFN-RESOLV-dnssec/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-001:SVC-RESOLV:SFN-RESOLV-DNSSEC:SREQ-240",
+                  "kind": "requirement",
+                  "id": "SREQ-240",
+                  "title": "Statisch konfigurierte Zonen unterstützen (DNSSEC)",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Authoritative Name Services must support statically configured zones.",
+                  "germanText": "Der DNS-Service muss statisch konfigurierte Zonen unterstützen. Im DNSSEC-Kontext bedeutet dies, dass Trust Anchors für Zonen statisch konfiguriert werden können, um DNSSEC-Validierung auch ohne vollständige Vertrauenskette von der Root zu ermöglichen.",
+                  "acceptanceCriteria": [
+                    "Unbound unterstützt statisch konfigurierte Trust Anchors (trust-anchor Direktive).",
+                    "DNSSEC-Validierung ist für Zonen mit konfiguriertem Trust Anchor aktiv.",
+                    "Zonen ohne Trust Anchor werden nicht validiert (kein SERVFAIL bei fehlender DNSSEC-Signatur)."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-RESOLV",
+                  "serviceFunctionId": "SFN-RESOLV-DNSSEC",
+                  "path": "capabilities/domain-naming/services/recursive-resolving-services/service-functions/SFN-RESOLV-dnssec/requirements/SREQ-240.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-001:SVC-RESOLV:SFN-RESOLV-QUERY",
+              "kind": "service-function",
+              "id": "SFN-RESOLV-QUERY",
+              "name": "Recursive DNS Resolution",
+              "capabilityId": "CAP-001",
+              "serviceId": "SVC-RESOLV",
+              "path": "capabilities/domain-naming/services/recursive-resolving-services/service-functions/SFN-RESOLV-query/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-001:SVC-RESOLV:SFN-RESOLV-QUERY:SREQ-238",
+                  "kind": "requirement",
+                  "id": "SREQ-238",
+                  "title": "Mindest-Record-Typen unterstützen (SOA, NS, A) – Consumer-Seite",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service must support, at a minimum, the SOA-record, NS-record and A-record matching to the NS-records.",
+                  "germanText": "Der rekursive Resolver muss mindestens SOA-, NS- und A-Records verarbeiten und in Antworten an Clients zurückgeben können. Dies gilt für die Consumer-Seite des DNS-Query-Austauschs.",
+                  "acceptanceCriteria": [
+                    "Der Resolver verarbeitet SOA-Records korrekt und cacht sie entsprechend der TTL.",
+                    "NS-Records werden für die iterative Auflösung verwendet.",
+                    "A-Records für Nameserver werden korrekt aufgelöst und gecacht."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-RESOLV",
+                  "serviceFunctionId": "SFN-RESOLV-QUERY",
+                  "path": "capabilities/domain-naming/services/recursive-resolving-services/service-functions/SFN-RESOLV-query/requirements/SREQ-238.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-RESOLV:SFN-RESOLV-QUERY:SREQ-611",
+                  "kind": "requirement",
+                  "id": "SREQ-611",
+                  "title": "Konfigurierte Unicast-IP für ausgehende Queries (Resolver)",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall use a configured unicast IP-address when queries are made to other servers.",
+                  "germanText": "Der rekursive Resolver muss eine konfigurierte Unicast-IP-Adresse verwenden, wenn Anfragen an autoritative Nameserver gestellt werden. Die ausgehende Source-IP des Resolvers muss konfigurierbar und stabil sein.",
+                  "acceptanceCriteria": [
+                    "Unbound ist mit einer spezifischen Unicast-IP als ausgehende Adresse konfiguriert (outgoing-interface).",
+                    "Iterative Anfragen an autoritative Nameserver verwenden die konfigurierte Unicast-Adresse.",
+                    "Die konfigurierte Adresse ist nicht die Anycast-Adresse des Root-Servers."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-RESOLV",
+                  "serviceFunctionId": "SFN-RESOLV-QUERY",
+                  "path": "capabilities/domain-naming/services/recursive-resolving-services/service-functions/SFN-RESOLV-query/requirements/SREQ-611.md"
+                },
+                {
+                  "key": "requirement:CAP-001:SVC-RESOLV:SFN-RESOLV-QUERY:SREQ-615",
+                  "kind": "requirement",
+                  "id": "SREQ-615",
+                  "title": "Keine Forwarder für Zonen anderer MNPs (Resolver)",
+                  "sourceType": "NATO",
+                  "priority": "MUSS",
+                  "originalText": "The Domain Name Service shall operate without using forwarders for zones hosted by other MNPs.",
+                  "germanText": "Der rekursive Resolver muss ohne Forwarder für Zonen betrieben werden, die von anderen MNPs gehostet werden. Die Auflösung erfolgt iterativ über die Root-Zone, ohne Anfragen an bekannte Nameserver anderer MNPs weiterzuleiten.",
+                  "acceptanceCriteria": [
+                    "Die Unbound-Konfiguration enthält keine forward-zone-Direktiven für Zonen anderer MNPs.",
+                    "DNS-Auflösung für MNP-Zonen erfolgt iterativ über Root-Server.",
+                    "Der Resolver funktioniert autonom ohne Verbindung zu MNP-Forwardern."
+                  ],
+                  "capabilityId": "CAP-001",
+                  "serviceId": "SVC-RESOLV",
+                  "serviceFunctionId": "SFN-RESOLV-QUERY",
+                  "path": "capabilities/domain-naming/services/recursive-resolving-services/service-functions/SFN-RESOLV-query/requirements/SREQ-615.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "capability:CAP-002",
+      "kind": "capability",
+      "id": "CAP-002",
+      "name": "Kubernetes Platform",
+      "maturity": "L0 – Idea (Stand: 2026-04-03)",
+      "path": "capabilities/kubernetes-platform/README.md",
+      "services": [
+        {
+          "key": "service:CAP-002:SVC-K8S-DEPLOY",
+          "kind": "service",
+          "id": "SVC-K8S-DEPLOY",
+          "name": "Kubernetes Deployment",
+          "capabilityId": "CAP-002",
+          "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-001",
+              "kind": "service-function",
+              "id": "SFN-K8S-001",
+              "name": "Container Packaging",
+              "capabilityId": "CAP-002",
+              "serviceId": "SVC-K8S-DEPLOY",
+              "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-001-container-packaging/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-001:RDTS-201",
+                  "kind": "requirement",
+                  "id": "RDTS-201",
+                  "title": "Multi-Stage Dockerfile",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Die Applikation muss als Container-Image mit einem Multi-Stage Dockerfile gebaut werden, um eine optimale Imagegrösse zu erreichen (Build-Stage und Runtime-Stage getrennt).",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Dockerfile enthält mindestens zwei Stages (builder, runtime)",
+                    "Finales Image enthält keine Build-Tools (npm, node-gyp etc.)",
+                    "Image-Grösse < 500 MB",
+                    "docker build läuft ohne Netzwerkzugriff erfolgreich (nach initialem Layer-Cache)"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-001",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-001-container-packaging/requirements/RDTS-201.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-001:RDTS-202",
+                  "kind": "requirement",
+                  "id": "RDTS-202",
+                  "title": "Airgapped-fähiges Container-Image",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Das Container-Image muss alle Assets (HTML, CSS, JS, Schriften, Icons) enthalten. Zur Laufzeit darf kein Zugriff auf externe Registries, CDNs oder npm-Repositories erfolgen.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Container startet ohne Netzwerkverbindung erfolgreich",
+                    "Alle statischen Assets werden aus dem Container serviert",
+                    "Keine externen URLs in generierten HTML/CSS/JS-Dateien",
+                    "docker run --network=none zeigt App korrekt an"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-001",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-001-container-packaging/requirements/RDTS-202.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-001:RDTS-203",
+                  "kind": "requirement",
+                  "id": "RDTS-203",
+                  "title": "Image-Export für Offline-Transfer",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "Das Container-Image soll als tar-Archiv exportierbar sein, damit es in airgapped Umgebungen ohne Registry-Zugriff geladen werden kann (z. B. via docker save / docker load oder kind load).",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "docker save erzeugt ein funktionales tar-Archiv",
+                    "docker load / kind load docker-image lädt das Archiv erfolgreich",
+                    "Prozess ist dokumentiert (README oder ops-Doku)"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-001",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-001-container-packaging/requirements/RDTS-203.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-002",
+              "kind": "service-function",
+              "id": "SFN-K8S-002",
+              "name": "Manifest Management",
+              "capabilityId": "CAP-002",
+              "serviceId": "SVC-K8S-DEPLOY",
+              "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-002:RDTS-204",
+                  "kind": "requirement",
+                  "id": "RDTS-204",
+                  "title": "Deployment-Manifest mit Probes und Ressourcenlimits",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Ein Kubernetes Deployment-Manifest muss vorhanden sein mit mindestens 2 Replicas, Liveness/Readiness Probes und definierten Ressourcenlimits (CPU/Memory requests und limits).",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Deployment-Manifest definiert replicas: 2 (konfigurierbar)",
+                    "Liveness Probe auf /api/health konfiguriert",
+                    "Readiness Probe auf /api/ready konfiguriert",
+                    "CPU/Memory requests und limits definiert",
+                    "kubectl apply ist idempotent"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-002",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/requirements/RDTS-204.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-002:RDTS-205",
+                  "kind": "requirement",
+                  "id": "RDTS-205",
+                  "title": "Service- und Ingress-Manifest",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "K8s-Manifeste für Service (ClusterIP, optional NodePort) und Ingress (mit konfigurierbarem Hostname) müssen vorhanden sein.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Service-Manifest mit ClusterIP vorhanden",
+                    "Optional: NodePort-Variante für lokalen Betrieb ohne Ingress-Controller",
+                    "Ingress-Manifest mit konfigurierbarem host und ingressClassName",
+                    "Ingress unterstützt TLS-Termination (Verweis auf Secret)"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-002",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/requirements/RDTS-205.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-002:RDTS-206",
+                  "kind": "requirement",
+                  "id": "RDTS-206",
+                  "title": "ConfigMap für App-Konfiguration",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Eine Kubernetes ConfigMap muss alle nicht-sensiblen Konfigurationsparameter der App enthalten. Secrets dürfen nicht in der ConfigMap gespeichert werden.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "ConfigMap-Manifest vorhanden mit App-relevanten Parametern",
+                    "Keine Secrets (Passwörter, Keys, Tokens) in der ConfigMap",
+                    "Deployment referenziert ConfigMap via envFrom oder volumes",
+                    "Änderung der ConfigMap erfordert Pod-Neustart (dokumentiert)"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-002",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/requirements/RDTS-206.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "service:CAP-002:SVC-K8S-OPERATOR",
+          "kind": "service",
+          "id": "SVC-K8S-OPERATOR",
+          "name": "Kubernetes Operator",
+          "capabilityId": "CAP-002",
+          "path": "capabilities/kubernetes-platform/services/kubernetes-operator/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-002:SVC-K8S-OPERATOR:SFN-K8S-003",
+              "kind": "service-function",
+              "id": "SFN-K8S-003",
+              "name": "CRD Definition",
+              "capabilityId": "CAP-002",
+              "serviceId": "SVC-K8S-OPERATOR",
+              "path": "capabilities/kubernetes-platform/services/kubernetes-operator/service-functions/SFN-K8S-003-crd-definition/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-OPERATOR:SFN-K8S-003:RDTS-207",
+                  "kind": "requirement",
+                  "id": "RDTS-207",
+                  "title": "CRD DNSConfiguration definiert und installierbar",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Eine Custom Resource Definition DNSConfiguration (Gruppe: dns.fmn.mil, Version: v1alpha1) muss definiert und im Cluster installierbar sein.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "CRD-Manifest unter operator/crd.yaml vorhanden",
+                    "kubectl apply -f operator/crd.yaml installiert die CRD fehlerfrei",
+                    "kubectl get dnsconfiguration funktioniert nach Installation",
+                    "CRD-Schema enthält Spec-Felder für DNS-Konfiguration (Participants, Zones)"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-OPERATOR",
+                  "serviceFunctionId": "SFN-K8S-003",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-operator/service-functions/SFN-K8S-003-crd-definition/requirements/RDTS-207.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-OPERATOR:SFN-K8S-003:RDTS-208",
+                  "kind": "requirement",
+                  "id": "RDTS-208",
+                  "title": "Status-Subresource mit Phase, Message, LastUpdated",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Die CRD muss eine Status-Subresource bereitstellen mit den Feldern: phase (Pending/Applied/Error), message (Fehlerbeschreibung), lastUpdated (Zeitstempel).",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Status-Subresource ist in der CRD aktiviert",
+                    "Felder phase, message, lastUpdated sind definiert",
+                    "kubectl get dnsconfiguration -o wide zeigt Phase-Spalte",
+                    "Operator kann Status unabhängig von Spec aktualisieren"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-OPERATOR",
+                  "serviceFunctionId": "SFN-K8S-003",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-operator/service-functions/SFN-K8S-003-crd-definition/requirements/RDTS-208.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-OPERATOR:SFN-K8S-003:RDTS-209",
+                  "kind": "requirement",
+                  "id": "RDTS-209",
+                  "title": "OpenAPI-Validierung im CRD-Schema",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "Das CRD-Schema soll OpenAPI-basierte Validierung enthalten, damit ungültige Ressourcen beim Erstellen/Aktualisieren abgelehnt werden.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "CRD enthält OpenAPI v3 Schema mit Validierungsregeln",
+                    "Pflichtfelder sind als required markiert",
+                    "kubectl apply mit ungültigem Manifest wird abgelehnt",
+                    "Fehlermeldung benennt das ungültige Feld"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-OPERATOR",
+                  "serviceFunctionId": "SFN-K8S-003",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-operator/service-functions/SFN-K8S-003-crd-definition/requirements/RDTS-209.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-002:SVC-K8S-OPERATOR:SFN-K8S-004",
+              "kind": "service-function",
+              "id": "SFN-K8S-004",
+              "name": "Reconciliation Loop",
+              "capabilityId": "CAP-002",
+              "serviceId": "SVC-K8S-OPERATOR",
+              "path": "capabilities/kubernetes-platform/services/kubernetes-operator/service-functions/SFN-K8S-004-reconciliation-loop/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-OPERATOR:SFN-K8S-004:RDTS-210",
+                  "kind": "requirement",
+                  "id": "RDTS-210",
+                  "title": "Idempotenter Reconcile bei Create/Update/Delete",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Der Operator muss bei Create, Update und Delete von DNSConfiguration-Ressourcen reagieren. Jeder Reconcile-Aufruf muss idempotent sein: Mehrfaches Ausführen desselben Reconcile darf keinen unerwünschten Seiteneffekt haben.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Operator erkennt Create/Update/Delete-Events für DNSConfiguration",
+                    "Mehrfaches Reconcile führt zum identischen Endzustand",
+                    "Status wird nach jedem Reconcile korrekt aktualisiert",
+                    "Delete entfernt die zugehörige Konfiguration in der App"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-OPERATOR",
+                  "serviceFunctionId": "SFN-K8S-004",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-operator/service-functions/SFN-K8S-004-reconciliation-loop/requirements/RDTS-210.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-OPERATOR:SFN-K8S-004:RDTS-211",
+                  "kind": "requirement",
+                  "id": "RDTS-211",
+                  "title": "Exponentielles Retry-Backoff bei API-Fehlern",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Bei Fehlern in der Kommunikation mit der App-API muss der Operator ein exponentielles Retry-Backoff verwenden und den Status auf Error setzen. Es darf kein Crash-Loop entstehen.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Bei API-Fehler: Status wird auf phase: Error gesetzt mit Fehlermeldung",
+                    "Retry-Intervall steigt exponentiell (z. B. 1s, 2s, 4s, 8s, max 5min)",
+                    "Operator-Pod crasht nicht bei wiederholten Fehlern",
+                    "Nach Behebung des Fehlers: Reconcile erfolgreich, Status wechselt zu Applied"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-OPERATOR",
+                  "serviceFunctionId": "SFN-K8S-004",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-operator/service-functions/SFN-K8S-004-reconciliation-loop/requirements/RDTS-211.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-OPERATOR:SFN-K8S-004:RDTS-212",
+                  "kind": "requirement",
+                  "id": "RDTS-212",
+                  "title": "RBAC für Operator-ServiceAccount",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Der Operator muss mit einem dedizierten ServiceAccount laufen, der über RBAC nur die minimal notwendigen Berechtigungen (Least Privilege) für DNSConfiguration-Ressourcen besitzt.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "ServiceAccount-Manifest für den Operator vorhanden",
+                    "ClusterRole/Role mit minimalen Berechtigungen (get, list, watch, update auf DNSConfiguration)",
+                    "RoleBinding/ClusterRoleBinding verknüpft ServiceAccount und Role",
+                    "Operator kann keine anderen Ressourcen ausserhalb seiner Rolle modifizieren"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-OPERATOR",
+                  "serviceFunctionId": "SFN-K8S-004",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-operator/service-functions/SFN-K8S-004-reconciliation-loop/requirements/RDTS-212.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "capability:CAP-003",
+      "kind": "capability",
+      "id": "CAP-003",
+      "name": "Observability",
+      "maturity": "L0 – Idea (Stand: 2026-04-03)",
+      "path": "capabilities/observability/README.md",
+      "services": [
+        {
+          "key": "service:CAP-003:SVC-OBS-MON",
+          "kind": "service",
+          "id": "SVC-OBS-MON",
+          "name": "Monitoring & Tracing",
+          "capabilityId": "CAP-003",
+          "path": "capabilities/observability/services/monitoring-tracing/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-003:SVC-OBS-MON:SFN-OBS-001",
+              "kind": "service-function",
+              "id": "SFN-OBS-001",
+              "name": "Metrics Export",
+              "capabilityId": "CAP-003",
+              "serviceId": "SVC-OBS-MON",
+              "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-001:RDTS-301",
+                  "kind": "requirement",
+                  "id": "RDTS-301",
+                  "title": "Prometheus-Metriken-Endpoint",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Metriken unter /metrics im Prometheus-Format",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-001",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/requirements/RDTS-301.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-001:RDTS-302",
+                  "kind": "requirement",
+                  "id": "RDTS-302",
+                  "title": "App-spezifische Metriken",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "HTTP-Request-Count, Latenz, Zone-File-Generierungen, aktive Participants",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-001",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/requirements/RDTS-302.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-001:RDTS-303",
+                  "kind": "requirement",
+                  "id": "RDTS-303",
+                  "title": "Operator-Metriken",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "Operator exportiert Reconcile-Count, Fehler-Count, Latenz",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-001",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/requirements/RDTS-303.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-003:SVC-OBS-MON:SFN-OBS-002",
+              "kind": "service-function",
+              "id": "SFN-OBS-002",
+              "name": "Structured Logging",
+              "capabilityId": "CAP-003",
+              "serviceId": "SVC-OBS-MON",
+              "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-002:RDTS-304",
+                  "kind": "requirement",
+                  "id": "RDTS-304",
+                  "title": "JSON-strukturierte Logs",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Logs im JSON-Format mit timestamp, level, service, traceId, message",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-002",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/requirements/RDTS-304.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-002:RDTS-305",
+                  "kind": "requirement",
+                  "id": "RDTS-305",
+                  "title": "TraceId-Korrelation",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "Logs enthalten TraceId fuer Korrelation mit Traces",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-002",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/requirements/RDTS-305.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-003:SVC-OBS-MON:SFN-OBS-003",
+              "kind": "service-function",
+              "id": "SFN-OBS-003",
+              "name": "Distributed Tracing",
+              "capabilityId": "CAP-003",
+              "serviceId": "SVC-OBS-MON",
+              "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-003-distributed-tracing/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-003:RDTS-306",
+                  "kind": "requirement",
+                  "id": "RDTS-306",
+                  "title": "OTLP Trace-Export",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Traces via OTLP (HTTP/gRPC) an konfigurierbaren Endpoint",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-003",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-003-distributed-tracing/requirements/RDTS-306.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-003:RDTS-307",
+                  "kind": "requirement",
+                  "id": "RDTS-307",
+                  "title": "OTel-Collector-Endpoint konfigurierbar",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Endpoint via ENV oder ConfigMap konfigurierbar",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-003",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-003-distributed-tracing/requirements/RDTS-307.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-003:RDTS-308",
+                  "kind": "requirement",
+                  "id": "RDTS-308",
+                  "title": "Maskierung sensitiver Daten",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "TSIG-Keys und Credentials in Traces maskiert",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-003",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-003-distributed-tracing/requirements/RDTS-308.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "capability:CAP-004",
+      "kind": "capability",
+      "id": "CAP-004",
+      "name": "Security & Access Control",
+      "maturity": "L0 – Idea (Stand: 2026-04-03)",
+      "path": "capabilities/security-access-control/README.md",
+      "services": [
+        {
+          "key": "service:CAP-004:SVC-SEC-AUTH",
+          "kind": "service",
+          "id": "SVC-SEC-AUTH",
+          "name": "Authentifizierung",
+          "capabilityId": "CAP-004",
+          "path": "capabilities/security-access-control/services/authentication/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-004:SVC-SEC-AUTH:SFN-SEC-001",
+              "kind": "service-function",
+              "id": "SFN-SEC-001",
+              "name": "OIDC Authentication",
+              "capabilityId": "CAP-004",
+              "serviceId": "SVC-SEC-AUTH",
+              "path": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-001-oidc-authentication/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-AUTH:SFN-SEC-001:RDTS-401",
+                  "kind": "requirement",
+                  "id": "RDTS-401",
+                  "title": "OIDC/OAuth2 Authentifizierung",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Authentifizierung via OIDC/OAuth2 (Keycloak-kompatibel)",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-AUTH",
+                  "serviceFunctionId": "SFN-SEC-001",
+                  "path": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-001-oidc-authentication/requirements/RDTS-401.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-AUTH:SFN-SEC-001:RDTS-402",
+                  "kind": "requirement",
+                  "id": "RDTS-402",
+                  "title": "Lokale Fallback-Authentifizierung",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Lokale Benutzerverwaltung als Fallback ohne Keycloak",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-AUTH",
+                  "serviceFunctionId": "SFN-SEC-001",
+                  "path": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-001-oidc-authentication/requirements/RDTS-402.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-AUTH:SFN-SEC-001:RDTS-403",
+                  "kind": "requirement",
+                  "id": "RDTS-403",
+                  "title": "Session-Management",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Session-Tokens mit konfigurierbarer Gueltigkeit (default 8h)",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-AUTH",
+                  "serviceFunctionId": "SFN-SEC-001",
+                  "path": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-001-oidc-authentication/requirements/RDTS-403.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-004:SVC-SEC-AUTH:SFN-SEC-002",
+              "kind": "service-function",
+              "id": "SFN-SEC-002",
+              "name": "RBAC",
+              "capabilityId": "CAP-004",
+              "serviceId": "SVC-SEC-AUTH",
+              "path": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-002-rbac/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-AUTH:SFN-SEC-002:RDTS-404",
+                  "kind": "requirement",
+                  "id": "RDTS-404",
+                  "title": "RBAC-Rollen definiert",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Rollen: viewer (lesend), operator (lesen+schreiben), admin (voll)",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-AUTH",
+                  "serviceFunctionId": "SFN-SEC-002",
+                  "path": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-002-rbac/requirements/RDTS-404.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-AUTH:SFN-SEC-002:RDTS-405",
+                  "kind": "requirement",
+                  "id": "RDTS-405",
+                  "title": "API-Endpunkte geschuetzt",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Alle API-Endpunkte durch Auth-Middleware geschuetzt, 401/403 korrekt",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-AUTH",
+                  "serviceFunctionId": "SFN-SEC-002",
+                  "path": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-002-rbac/requirements/RDTS-405.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "service:CAP-004:SVC-SEC-SECRETS",
+          "kind": "service",
+          "id": "SVC-SEC-SECRETS",
+          "name": "Secrets Management",
+          "capabilityId": "CAP-004",
+          "path": "capabilities/security-access-control/services/secrets-management/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-004:SVC-SEC-SECRETS:SFN-SEC-003",
+              "kind": "service-function",
+              "id": "SFN-SEC-003",
+              "name": "Secrets Handling",
+              "capabilityId": "CAP-004",
+              "serviceId": "SVC-SEC-SECRETS",
+              "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-003:RDTS-406",
+                  "kind": "requirement",
+                  "id": "RDTS-406",
+                  "title": "Secrets als K8s Secrets",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "TSIG-Keys, OIDC-Secrets als K8s Secrets, nie in ConfigMap oder Code",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-003",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/requirements/RDTS-406.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-003:RDTS-407",
+                  "kind": "requirement",
+                  "id": "RDTS-407",
+                  "title": "HTTPS erzwungen",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "HTTPS im Ingress erzwungen, HTTP-zu-HTTPS-Redirect",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-003",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/requirements/RDTS-407.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-004:SVC-SEC-SECRETS:SFN-SEC-004",
+              "kind": "service-function",
+              "id": "SFN-SEC-004",
+              "name": "Audit Logging",
+              "capabilityId": "CAP-004",
+              "serviceId": "SVC-SEC-SECRETS",
+              "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-004:RDTS-408",
+                  "kind": "requirement",
+                  "id": "RDTS-408",
+                  "title": "Sicherheitsrelevante Ereignisse protokolliert",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Login, Logout, Fehlanmeldung, Rollenaenderung im Audit-Log",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-004",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/requirements/RDTS-408.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-004:RDTS-409",
+                  "kind": "requirement",
+                  "id": "RDTS-409",
+                  "title": "Audit-Log in OTel integriert",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "Audit-Events als strukturierte JSON-Logs ins OTel-System",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-004",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/requirements/RDTS-409.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-004:RDTS-410",
+                  "kind": "requirement",
+                  "id": "RDTS-410",
+                  "title": "Audit-Log nicht manipulierbar",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "Audit-Logs koennen nicht durch Benutzer geloescht werden",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-004",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/requirements/RDTS-410.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "capability:CAP-005",
+      "kind": "capability",
+      "id": "CAP-005",
+      "name": "DevOps",
+      "maturity": "L0 – Idea (Stand: 2026-04-03)",
+      "path": "capabilities/devops/README.md",
+      "services": [
+        {
+          "key": "service:CAP-005:SVC-DEV-CICD",
+          "kind": "service",
+          "id": "SVC-DEV-CICD",
+          "name": "CI/CD Pipeline",
+          "capabilityId": "CAP-005",
+          "path": "capabilities/devops/services/cicd-pipeline/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-005:SVC-DEV-CICD:SFN-DEV-001",
+              "kind": "service-function",
+              "id": "SFN-DEV-001",
+              "name": "PR Checks",
+              "capabilityId": "CAP-005",
+              "serviceId": "SVC-DEV-CICD",
+              "path": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-001-pr-checks/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-CICD:SFN-DEV-001:RDTS-501",
+                  "kind": "requirement",
+                  "id": "RDTS-501",
+                  "title": "PR-Check Workflow",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "GitHub Actions: Lint, Type-Check, Tests, Build-Check bei PRs",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-CICD",
+                  "serviceFunctionId": "SFN-DEV-001",
+                  "path": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-001-pr-checks/requirements/RDTS-501.md"
+                },
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-CICD:SFN-DEV-001:RDTS-502",
+                  "kind": "requirement",
+                  "id": "RDTS-502",
+                  "title": "Pipeline-Laufzeit unter 5min",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "PR-Check Pipeline laeuft in unter 5 Minuten",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-CICD",
+                  "serviceFunctionId": "SFN-DEV-001",
+                  "path": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-001-pr-checks/requirements/RDTS-502.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-005:SVC-DEV-CICD:SFN-DEV-002",
+              "kind": "service-function",
+              "id": "SFN-DEV-002",
+              "name": "Image Build",
+              "capabilityId": "CAP-005",
+              "serviceId": "SVC-DEV-CICD",
+              "path": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-002-image-build/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-CICD:SFN-DEV-002:RDTS-503",
+                  "kind": "requirement",
+                  "id": "RDTS-503",
+                  "title": "Multi-Stage Docker Build",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Container-Image wird bei Merge auf main gebaut und gepusht",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-CICD",
+                  "serviceFunctionId": "SFN-DEV-002",
+                  "path": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-002-image-build/requirements/RDTS-503.md"
+                },
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-CICD:SFN-DEV-002:RDTS-504",
+                  "kind": "requirement",
+                  "id": "RDTS-504",
+                  "title": "Image-Tagging mit Git-SHA und Tag",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Image wird mit Git-SHA und ggf. Git-Tag versioniert",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-CICD",
+                  "serviceFunctionId": "SFN-DEV-002",
+                  "path": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-002-image-build/requirements/RDTS-504.md"
+                },
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-CICD:SFN-DEV-002:RDTS-505",
+                  "kind": "requirement",
+                  "id": "RDTS-505",
+                  "title": "SBOM bei Release-Builds",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "Software Bill of Materials (SBOM) wird bei Releases generiert",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-CICD",
+                  "serviceFunctionId": "SFN-DEV-002",
+                  "path": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-002-image-build/requirements/RDTS-505.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "service:CAP-005:SVC-DEV-RELEASE",
+          "kind": "service",
+          "id": "SVC-DEV-RELEASE",
+          "name": "Release Management",
+          "capabilityId": "CAP-005",
+          "path": "capabilities/devops/services/release-management/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-005:SVC-DEV-RELEASE:SFN-DEV-003",
+              "kind": "service-function",
+              "id": "SFN-DEV-003",
+              "name": "Semantic Versioning",
+              "capabilityId": "CAP-005",
+              "serviceId": "SVC-DEV-RELEASE",
+              "path": "capabilities/devops/services/release-management/service-functions/SFN-DEV-003-semantic-versioning/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-RELEASE:SFN-DEV-003:RDTS-506",
+                  "kind": "requirement",
+                  "id": "RDTS-506",
+                  "title": "SemVer-Versionierung",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Versionierung folgt SemVer, Tags im Format v<MAJOR>.<MINOR>.<PATCH>",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-RELEASE",
+                  "serviceFunctionId": "SFN-DEV-003",
+                  "path": "capabilities/devops/services/release-management/service-functions/SFN-DEV-003-semantic-versioning/requirements/RDTS-506.md"
+                },
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-RELEASE:SFN-DEV-003:RDTS-507",
+                  "kind": "requirement",
+                  "id": "RDTS-507",
+                  "title": "Automatischer CHANGELOG",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "CHANGELOG wird aus Conventional Commits generiert",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-RELEASE",
+                  "serviceFunctionId": "SFN-DEV-003",
+                  "path": "capabilities/devops/services/release-management/service-functions/SFN-DEV-003-semantic-versioning/requirements/RDTS-507.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-005:SVC-DEV-RELEASE:SFN-DEV-004",
+              "kind": "service-function",
+              "id": "SFN-DEV-004",
+              "name": "Release Automation",
+              "capabilityId": "CAP-005",
+              "serviceId": "SVC-DEV-RELEASE",
+              "path": "capabilities/devops/services/release-management/service-functions/SFN-DEV-004-release-automation/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-RELEASE:SFN-DEV-004:RDTS-508",
+                  "kind": "requirement",
+                  "id": "RDTS-508",
+                  "title": "GitHub Release bei Tag-Push",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Release wird automatisch bei Tag-Push erstellt",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-RELEASE",
+                  "serviceFunctionId": "SFN-DEV-004",
+                  "path": "capabilities/devops/services/release-management/service-functions/SFN-DEV-004-release-automation/requirements/RDTS-508.md"
+                },
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-RELEASE:SFN-DEV-004:RDTS-509",
+                  "kind": "requirement",
+                  "id": "RDTS-509",
+                  "title": "Artefakt-Signing",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "Release-Artefakte werden mit cosign signiert",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-RELEASE",
+                  "serviceFunctionId": "SFN-DEV-004",
+                  "path": "capabilities/devops/services/release-management/service-functions/SFN-DEV-004-release-automation/requirements/RDTS-509.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "capability:CAP-006",
+      "kind": "capability",
+      "id": "CAP-006",
+      "name": "Documentation & Quality",
+      "maturity": "L0 – Idea (Stand: 2026-04-03)",
+      "path": "capabilities/documentation-quality/README.md",
+      "services": [
+        {
+          "key": "service:CAP-006:SVC-DOC-MAT",
+          "kind": "service",
+          "id": "SVC-DOC-MAT",
+          "name": "Maturity & Quality",
+          "capabilityId": "CAP-006",
+          "path": "capabilities/documentation-quality/services/maturity-quality/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-006:SVC-DOC-MAT:SFN-DOC-003",
+              "kind": "service-function",
+              "id": "SFN-DOC-003",
+              "name": "Maturity Tracking",
+              "capabilityId": "CAP-006",
+              "serviceId": "SVC-DOC-MAT",
+              "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-MAT:SFN-DOC-003:RDTS-606",
+                  "kind": "requirement",
+                  "id": "RDTS-606",
+                  "title": "Maturitaetsstatus-Seite",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Maturitaetsstatus im Web GUI unter /maturity sichtbar",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-MAT",
+                  "serviceFunctionId": "SFN-DOC-003",
+                  "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/requirements/RDTS-606.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-MAT:SFN-DOC-003:RDTS-607",
+                  "kind": "requirement",
+                  "id": "RDTS-607",
+                  "title": "Automatische Ableitung",
+                  "sourceType": "ARCH",
+                  "priority": "SOLLTE",
+                  "originalText": "Status aus features/INDEX.md und QA-Testergebnissen abgeleitet",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-MAT",
+                  "serviceFunctionId": "SFN-DOC-003",
+                  "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/requirements/RDTS-607.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-006:SVC-DOC-MAT:SFN-DOC-004",
+              "kind": "service-function",
+              "id": "SFN-DOC-004",
+              "name": "Testing Concept",
+              "capabilityId": "CAP-006",
+              "serviceId": "SVC-DOC-MAT",
+              "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-004-testing-concept/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-MAT:SFN-DOC-004:RDTS-608",
+                  "kind": "requirement",
+                  "id": "RDTS-608",
+                  "title": "Testkonzept vorhanden",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Automatisierte und manuelle Tests vorgesehen und dokumentiert",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-MAT",
+                  "serviceFunctionId": "SFN-DOC-004",
+                  "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-004-testing-concept/requirements/RDTS-608.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-MAT:SFN-DOC-004:RDTS-609",
+                  "kind": "requirement",
+                  "id": "RDTS-609",
+                  "title": "Testergebnisse reproduzierbar",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Testergebnisse sind reproduzierbar und dokumentierbar",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-MAT",
+                  "serviceFunctionId": "SFN-DOC-004",
+                  "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-004-testing-concept/requirements/RDTS-609.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "service:CAP-006:SVC-DOC-TECH",
+          "kind": "service",
+          "id": "SVC-DOC-TECH",
+          "name": "Technische Dokumentation",
+          "capabilityId": "CAP-006",
+          "path": "capabilities/documentation-quality/services/technical-documentation/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-006:SVC-DOC-TECH:SFN-DOC-001",
+              "kind": "service-function",
+              "id": "SFN-DOC-001",
+              "name": "Repo Documentation",
+              "capabilityId": "CAP-006",
+              "serviceId": "SVC-DOC-TECH",
+              "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-001:RDTS-601",
+                  "kind": "requirement",
+                  "id": "RDTS-601",
+                  "title": "Quickstart-Guide",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Quickstart von Klonen bis laufende App in unter 15 Minuten",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-001",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-601.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-001:RDTS-602",
+                  "kind": "requirement",
+                  "id": "RDTS-602",
+                  "title": "Betriebsdokumentation",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Operations-Doku: Start, Stop, Update, Backup, Troubleshooting",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-001",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-602.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-001:RDTS-603",
+                  "kind": "requirement",
+                  "id": "RDTS-603",
+                  "title": "Konfigurationsbeschreibung",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Alle ENV-Variablen und ConfigMap-Felder dokumentiert",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-001",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-603.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-006:SVC-DOC-TECH:SFN-DOC-002",
+              "kind": "service-function",
+              "id": "SFN-DOC-002",
+              "name": "Architecture Docs",
+              "capabilityId": "CAP-006",
+              "serviceId": "SVC-DOC-TECH",
+              "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-002-architecture-docs/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-002:RDTS-604",
+                  "kind": "requirement",
+                  "id": "RDTS-604",
+                  "title": "Architekturuebersicht Blackbox/Whitebox",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Blackbox-Sicht (Schnittstellen) und Whitebox-Sicht (Komponenten)",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-002",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-002-architecture-docs/requirements/RDTS-604.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-002:RDTS-605",
+                  "kind": "requirement",
+                  "id": "RDTS-605",
+                  "title": "ADRs vorhanden",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Mindestens ADR-0001 (Framework-Wahl) und ADR-0002 (Airgapped-Strategie)",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-002",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-002-architecture-docs/requirements/RDTS-605.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "capability:CAP-007",
+      "kind": "capability",
+      "id": "CAP-007",
+      "name": "Supply Chain Security",
+      "maturity": "L0 – Idea (Stand: 2026-04-03)",
+      "path": "capabilities/supply-chain-security/README.md",
+      "services": [
+        {
+          "key": "service:CAP-007:SVC-SCS-SBOM",
+          "kind": "service",
+          "id": "SVC-SCS-SBOM",
+          "name": "SBOM Generation (SVC-SCS-SBOM)",
+          "capabilityId": "CAP-007",
+          "path": "capabilities/supply-chain-security/services/sbom-generation/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-007:SVC-SCS-SBOM:SFN-SCS-001",
+              "kind": "service-function",
+              "id": "SFN-SCS-001",
+              "name": "SBOM Creation & Archivierung",
+              "capabilityId": "CAP-007",
+              "serviceId": "SVC-SCS-SBOM",
+              "path": "capabilities/supply-chain-security/services/sbom-generation/service-functions/SFN-SCS-001-sbom-creation/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SBOM:SFN-SCS-001:RDTS-701",
+                  "kind": "requirement",
+                  "id": "RDTS-701",
+                  "title": "RDTS-701",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Bei jedem Release-Build wird eine SBOM via syft erzeugt.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SBOM",
+                  "serviceFunctionId": "SFN-SCS-001",
+                  "path": "capabilities/supply-chain-security/services/sbom-generation/service-functions/SFN-SCS-001-sbom-creation/requirements/RDTS-701.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SBOM:SFN-SCS-001:RDTS-702",
+                  "kind": "requirement",
+                  "id": "RDTS-702",
+                  "title": "RDTS-702",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Die SBOM umfasst alle direkten und transitiven Abhängigkeiten (Frontend, Backend, Basis-Images).",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SBOM",
+                  "serviceFunctionId": "SFN-SCS-001",
+                  "path": "capabilities/supply-chain-security/services/sbom-generation/service-functions/SFN-SCS-001-sbom-creation/requirements/RDTS-702.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SBOM:SFN-SCS-001:RDTS-703",
+                  "kind": "requirement",
+                  "id": "RDTS-703",
+                  "title": "RDTS-703",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Die SBOM wird dem Release als Anhang zugeordnet und in der Artefakt-Registry archiviert.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SBOM",
+                  "serviceFunctionId": "SFN-SCS-001",
+                  "path": "capabilities/supply-chain-security/services/sbom-generation/service-functions/SFN-SCS-001-sbom-creation/requirements/RDTS-703.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SBOM:SFN-SCS-001:RDTS-704",
+                  "kind": "requirement",
+                  "id": "RDTS-704",
+                  "title": "RDTS-704",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Das SBOM-Format ist CycloneDX 1.4+ oder SPDX 2.3+.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SBOM",
+                  "serviceFunctionId": "SFN-SCS-001",
+                  "path": "capabilities/supply-chain-security/services/sbom-generation/service-functions/SFN-SCS-001-sbom-creation/requirements/RDTS-704.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "service:CAP-007:SVC-SCS-SCAN",
+          "kind": "service",
+          "id": "SVC-SCS-SCAN",
+          "name": "Security Scanning (SVC-SCS-SCAN)",
+          "capabilityId": "CAP-007",
+          "path": "capabilities/supply-chain-security/services/security-scanning/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-007:SVC-SCS-SCAN:SFN-SCS-002",
+              "kind": "service-function",
+              "id": "SFN-SCS-002",
+              "name": "SAST & SCA Scan",
+              "capabilityId": "CAP-007",
+              "serviceId": "SVC-SCS-SCAN",
+              "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-002-sast-scan/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-002:RDTS-705",
+                  "kind": "requirement",
+                  "id": "RDTS-705",
+                  "title": "RDTS-705",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "SAST-Scan via semgrep läuft bei jedem CI-Build; Ergebnisse im SARIF-Format.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-002",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-002-sast-scan/requirements/RDTS-705.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-002:RDTS-706",
+                  "kind": "requirement",
+                  "id": "RDTS-706",
+                  "title": "RDTS-706",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "SCA-Scan via npm audit / trivy fs läuft bei jedem CI-Build.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-002",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-002-sast-scan/requirements/RDTS-706.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-007:SVC-SCS-SCAN:SFN-SCS-003",
+              "kind": "service-function",
+              "id": "SFN-SCS-003",
+              "name": "Container & Config Scan",
+              "capabilityId": "CAP-007",
+              "serviceId": "SVC-SCS-SCAN",
+              "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-003-container-scan/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-003:RDTS-707",
+                  "kind": "requirement",
+                  "id": "RDTS-707",
+                  "title": "RDTS-707",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Container-CVE-Scan via trivy image läuft bei Release-Builds.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-003",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-003-container-scan/requirements/RDTS-707.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-003:RDTS-708",
+                  "kind": "requirement",
+                  "id": "RDTS-708",
+                  "title": "RDTS-708",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Konfigurationsscan via trivy config läuft bei Release-Builds auf K8s-Manifesten und Helm Charts.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-003",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-003-container-scan/requirements/RDTS-708.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-003:RDTS-709",
+                  "kind": "requirement",
+                  "id": "RDTS-709",
+                  "title": "RDTS-709",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Kritische Findings (CVSS ≥ 9.0) blockieren automatisch das Release bis zur dokumentierten Accept/Fix-Entscheidung.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-003",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-003-container-scan/requirements/RDTS-709.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-003:RDTS-710",
+                  "kind": "requirement",
+                  "id": "RDTS-710",
+                  "title": "RDTS-710",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Security-Ergebnisse werden versionsbezogen archiviert (als Release-Anhang im JSON- oder SARIF-Format).",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-003",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-003-container-scan/requirements/RDTS-710.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-007:SVC-SCS-SCAN:SFN-SCS-004",
+              "kind": "service-function",
+              "id": "SFN-SCS-004",
+              "name": "Release Artifact Audit",
+              "capabilityId": "CAP-007",
+              "serviceId": "SVC-SCS-SCAN",
+              "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-004-release-artifact-audit/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-004:RDTS-711",
+                  "kind": "requirement",
+                  "id": "RDTS-711",
+                  "title": "RDTS-711",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Final erzeugte Release- und Publish-Artefakte werden vor Veröffentlichung, Export oder Offline-Weitergabe inhaltlich geprüft; eine reine Prüfung des Repository-Inhalts ist nicht ausreichend.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-004",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-004-release-artifact-audit/requirements/RDTS-711.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-004:RDTS-712",
+                  "kind": "requirement",
+                  "id": "RDTS-712",
+                  "title": "RDTS-712",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Die Freigabe des Artefaktinhalts erfolgt über eine versionierte Allowlist-Richtlinie mit explizit freigegebenen Dateien, Pfaden und Ausnahmen; eine reine Ignore- oder Blocklist-Strategie genügt nicht.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-004",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-004-release-artifact-audit/requirements/RDTS-712.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-004:RDTS-713",
+                  "kind": "requirement",
+                  "id": "RDTS-713",
+                  "title": "RDTS-713",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Die Artefaktprüfung umfasst mindestens Dateitypen, Pfade, Top-Level-Struktur, Dateianzahl und Artefaktgrösse anhand definierter Grenzwerte.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-004",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-004-release-artifact-audit/requirements/RDTS-713.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-004:RDTS-714",
+                  "kind": "requirement",
+                  "id": "RDTS-714",
+                  "title": "RDTS-714",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Secrets, interne Entwicklungsartefakte, Testdaten, nicht freigegebene Konfigurationsdateien und Sourcemaps sind standardmässig von Release- und Publish-Artefakten ausgeschlossen.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-004",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-004-release-artifact-audit/requirements/RDTS-714.md"
+                },
+                {
+                  "key": "requirement:CAP-007:SVC-SCS-SCAN:SFN-SCS-004:RDTS-715",
+                  "kind": "requirement",
+                  "id": "RDTS-715",
+                  "title": "RDTS-715",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Wird ein Policy-Verstoss erkannt, muss der Build oder das Release fehlschlagen; das Ergebnis wird build- und versionsbezogen protokolliert und archiviert.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-007",
+                  "serviceId": "SVC-SCS-SCAN",
+                  "serviceFunctionId": "SFN-SCS-004",
+                  "path": "capabilities/supply-chain-security/services/security-scanning/service-functions/SFN-SCS-004-release-artifact-audit/requirements/RDTS-715.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "capability:CAP-008",
+      "kind": "capability",
+      "id": "CAP-008",
+      "name": "Offline Delivery",
+      "maturity": "L0 – Idea (Stand: 2026-04-03)",
+      "path": "capabilities/offline-delivery/README.md",
+      "services": [
+        {
+          "key": "service:CAP-008:SVC-OFD-IMPORT",
+          "kind": "service",
+          "id": "SVC-OFD-IMPORT",
+          "name": "Target Import (SVC-OFD-IMPORT)",
+          "capabilityId": "CAP-008",
+          "path": "capabilities/offline-delivery/services/target-import/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-008:SVC-OFD-IMPORT:SFN-OFD-002",
+              "kind": "service-function",
+              "id": "SFN-OFD-002",
+              "name": "Zarf Package Deploy",
+              "capabilityId": "CAP-008",
+              "serviceId": "SVC-OFD-IMPORT",
+              "path": "capabilities/offline-delivery/services/target-import/service-functions/SFN-OFD-002-zarf-deploy/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-IMPORT:SFN-OFD-002:RDTS-805",
+                  "kind": "requirement",
+                  "id": "RDTS-805",
+                  "title": "RDTS-805",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Der Import des Zarf-Pakets ist ohne Zugriff auf die Ursprungsumgebung möglich.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-IMPORT",
+                  "serviceFunctionId": "SFN-OFD-002",
+                  "path": "capabilities/offline-delivery/services/target-import/service-functions/SFN-OFD-002-zarf-deploy/requirements/RDTS-805.md"
+                },
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-IMPORT:SFN-OFD-002:RDTS-806",
+                  "kind": "requirement",
+                  "id": "RDTS-806",
+                  "title": "RDTS-806",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Container-Images werden aus dem Zarf-Paket in die Ziel-Registry (Harbor) geladen.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-IMPORT",
+                  "serviceFunctionId": "SFN-OFD-002",
+                  "path": "capabilities/offline-delivery/services/target-import/service-functions/SFN-OFD-002-zarf-deploy/requirements/RDTS-806.md"
+                },
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-IMPORT:SFN-OFD-002:RDTS-807",
+                  "kind": "requirement",
+                  "id": "RDTS-807",
+                  "title": "RDTS-807",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Ziel-spezifische Parameter (Registry-URL, Ingress-Hostname, Namespace) sind via Zarf-Variables konfigurierbar.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-IMPORT",
+                  "serviceFunctionId": "SFN-OFD-002",
+                  "path": "capabilities/offline-delivery/services/target-import/service-functions/SFN-OFD-002-zarf-deploy/requirements/RDTS-807.md"
+                },
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-IMPORT:SFN-OFD-002:RDTS-808",
+                  "kind": "requirement",
+                  "id": "RDTS-808",
+                  "title": "RDTS-808",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Der Import ist idempotent: Wiederholtes Ausführen führt zu keinen ungewollten Nebeneffekten.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-IMPORT",
+                  "serviceFunctionId": "SFN-OFD-002",
+                  "path": "capabilities/offline-delivery/services/target-import/service-functions/SFN-OFD-002-zarf-deploy/requirements/RDTS-808.md"
+                },
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-IMPORT:SFN-OFD-002:RDTS-809",
+                  "kind": "requirement",
+                  "id": "RDTS-809",
+                  "title": "RDTS-809",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Ein definierter Smoke-Test (Deployability-Test) wird nach dem Import ausgeführt.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-IMPORT",
+                  "serviceFunctionId": "SFN-OFD-002",
+                  "path": "capabilities/offline-delivery/services/target-import/service-functions/SFN-OFD-002-zarf-deploy/requirements/RDTS-809.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "service:CAP-008:SVC-OFD-PKG",
+          "kind": "service",
+          "id": "SVC-OFD-PKG",
+          "name": "Zarf Packaging (SVC-OFD-PKG)",
+          "capabilityId": "CAP-008",
+          "path": "capabilities/offline-delivery/services/zarf-packaging/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-008:SVC-OFD-PKG:SFN-OFD-001",
+              "kind": "service-function",
+              "id": "SFN-OFD-001",
+              "name": "Zarf Package Build",
+              "capabilityId": "CAP-008",
+              "serviceId": "SVC-OFD-PKG",
+              "path": "capabilities/offline-delivery/services/zarf-packaging/service-functions/SFN-OFD-001-zarf-build/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-PKG:SFN-OFD-001:RDTS-801",
+                  "kind": "requirement",
+                  "id": "RDTS-801",
+                  "title": "RDTS-801",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "zarf.yaml liegt im Repository-Root und ist versioniert.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-PKG",
+                  "serviceFunctionId": "SFN-OFD-001",
+                  "path": "capabilities/offline-delivery/services/zarf-packaging/service-functions/SFN-OFD-001-zarf-build/requirements/RDTS-801.md"
+                },
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-PKG:SFN-OFD-001:RDTS-802",
+                  "kind": "requirement",
+                  "id": "RDTS-802",
+                  "title": "RDTS-802",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Das Paket enthält: Container-Images, Helm Charts / K8s-Manifeste, Argo-CD-Application-Definitionen, Konfigurationsdateien.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-PKG",
+                  "serviceFunctionId": "SFN-OFD-001",
+                  "path": "capabilities/offline-delivery/services/zarf-packaging/service-functions/SFN-OFD-001-zarf-build/requirements/RDTS-802.md"
+                },
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-PKG:SFN-OFD-001:RDTS-803",
+                  "kind": "requirement",
+                  "id": "RDTS-803",
+                  "title": "RDTS-803",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Zarf-Paket-Build ist Bestandteil der Release-Pipeline und wird als Pipeline-Artefakt gespeichert.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-PKG",
+                  "serviceFunctionId": "SFN-OFD-001",
+                  "path": "capabilities/offline-delivery/services/zarf-packaging/service-functions/SFN-OFD-001-zarf-build/requirements/RDTS-803.md"
+                },
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-PKG:SFN-OFD-001:RDTS-804",
+                  "kind": "requirement",
+                  "id": "RDTS-804",
+                  "title": "RDTS-804",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Image-Referenzen in zarf.yaml verwenden SHA-Digest (kein latest) für Reproduzierbarkeit.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-PKG",
+                  "serviceFunctionId": "SFN-OFD-001",
+                  "path": "capabilities/offline-delivery/services/zarf-packaging/service-functions/SFN-OFD-001-zarf-build/requirements/RDTS-804.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "capability:CAP-009",
+      "kind": "capability",
+      "id": "CAP-009",
+      "name": "GitOps / Argo CD",
+      "maturity": "L0 – Idea (Stand: 2026-04-03)",
+      "path": "capabilities/gitops/README.md",
+      "services": [
+        {
+          "key": "service:CAP-009:SVC-GIT-ARGOCD",
+          "kind": "service",
+          "id": "SVC-GIT-ARGOCD",
+          "name": "Argo CD Installation (SVC-GIT-ARGOCD)",
+          "capabilityId": "CAP-009",
+          "path": "capabilities/gitops/services/argocd-installation/README.md",
+          "serviceFunctions": [
+            {
+              "key": "service-function:CAP-009:SVC-GIT-ARGOCD:SFN-GIT-001",
+              "kind": "service-function",
+              "id": "SFN-GIT-001",
+              "name": "App-of-Apps-Struktur",
+              "capabilityId": "CAP-009",
+              "serviceId": "SVC-GIT-ARGOCD",
+              "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-001-app-of-apps/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-009:SVC-GIT-ARGOCD:SFN-GIT-001:RDTS-901",
+                  "kind": "requirement",
+                  "id": "RDTS-901",
+                  "title": "RDTS-901",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Argo-CD-Ressourcen (Application, AppProject, ApplicationSet) liegen deklarativ im Repository (z.B. gitops/argocd/).",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-009",
+                  "serviceId": "SVC-GIT-ARGOCD",
+                  "serviceFunctionId": "SFN-GIT-001",
+                  "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-001-app-of-apps/requirements/RDTS-901.md"
+                },
+                {
+                  "key": "requirement:CAP-009:SVC-GIT-ARGOCD:SFN-GIT-001:RDTS-902",
+                  "kind": "requirement",
+                  "id": "RDTS-902",
+                  "title": "RDTS-902",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Eine Root-Application oder ein ApplicationSet als Einstiegspunkt für das App-of-Apps-Modell ist definiert.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-009",
+                  "serviceId": "SVC-GIT-ARGOCD",
+                  "serviceFunctionId": "SFN-GIT-001",
+                  "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-001-app-of-apps/requirements/RDTS-902.md"
+                },
+                {
+                  "key": "requirement:CAP-009:SVC-GIT-ARGOCD:SFN-GIT-001:RDTS-903",
+                  "kind": "requirement",
+                  "id": "RDTS-903",
+                  "title": "RDTS-903",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Alle App-Komponenten sind als separate Argo-CD-Applications strukturierbar.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-009",
+                  "serviceId": "SVC-GIT-ARGOCD",
+                  "serviceFunctionId": "SFN-GIT-001",
+                  "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-001-app-of-apps/requirements/RDTS-903.md"
+                },
+                {
+                  "key": "requirement:CAP-009:SVC-GIT-ARGOCD:SFN-GIT-001:RDTS-904",
+                  "kind": "requirement",
+                  "id": "RDTS-904",
+                  "title": "RDTS-904",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Projekte, Ziel-Namespaces, Quellen und Sync-Policy sind nachvollziehbar in den Manifesten definiert.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-009",
+                  "serviceId": "SVC-GIT-ARGOCD",
+                  "serviceFunctionId": "SFN-GIT-001",
+                  "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-001-app-of-apps/requirements/RDTS-904.md"
+                },
+                {
+                  "key": "requirement:CAP-009:SVC-GIT-ARGOCD:SFN-GIT-001:RDTS-906",
+                  "kind": "requirement",
+                  "id": "RDTS-906",
+                  "title": "RDTS-906",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Argo-CD-Definitionen sind Bestandteil des Zarf-Pakets (OBJ-19).",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-009",
+                  "serviceId": "SVC-GIT-ARGOCD",
+                  "serviceFunctionId": "SFN-GIT-001",
+                  "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-001-app-of-apps/requirements/RDTS-906.md"
+                }
+              ]
+            },
+            {
+              "key": "service-function:CAP-009:SVC-GIT-ARGOCD:SFN-GIT-002",
+              "kind": "service-function",
+              "id": "SFN-GIT-002",
+              "name": "Sync Management",
+              "capabilityId": "CAP-009",
+              "serviceId": "SVC-GIT-ARGOCD",
+              "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-002-sync-management/README.md",
+              "requirements": [
+                {
+                  "key": "requirement:CAP-009:SVC-GIT-ARGOCD:SFN-GIT-002:RDTS-905",
+                  "kind": "requirement",
+                  "id": "RDTS-905",
+                  "title": "RDTS-905",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Automated Sync (auto-sync + self-heal) ist konfigurierbar; Standard: manueller Sync.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-009",
+                  "serviceId": "SVC-GIT-ARGOCD",
+                  "serviceFunctionId": "SFN-GIT-002",
+                  "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-002-sync-management/requirements/RDTS-905.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
