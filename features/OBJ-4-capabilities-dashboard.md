@@ -201,4 +201,20 @@ Die Filter arbeiten auf Requirement-Ebene, beeinflussen aber die sichtbare Bauma
 - **Recommendation:** OBJ-4 ist QA-seitig abgeschlossen und bereit fuer den naechsten Schritt.
 
 ## Deployment
-_To be added by /deploy_
+
+**Deploy Date:** 2026-04-04
+**Git Branch:** `main`
+**Git Commit (main):** `016e736`
+**Deployment Trigger:** Push auf `origin/main` erfolgt.
+**Production URL:** Ausstehend (Vercel-URL noch nicht verifiziert)
+**Status:** Deploy angestossen, Verifikation der produktiven URL noch offen.
+
+### Deploy Checklist (aktuell)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] `npm run test:run` (Smoke-Test)
+- [x] `npm run build:obj4-live-data`
+- [x] QA-Freigabe ohne Critical/High-Bugs
+- [x] Code nach `main` gepusht
+- [ ] Direkter `npx vercel --prod --yes` Lauf (in dieser Session wegen verweigerter Netz-Freigabe nicht ausgefuehrt)
+- [ ] Produktions-URL + Laufzeitchecks (Browser/Logs) final bestaetigt
