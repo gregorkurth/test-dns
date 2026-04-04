@@ -12,10 +12,10 @@
 
 | ID | Feature | Phase | Status | Spec | Created |
 |----|---------|-------|--------|------|---------|
-| OBJ-1 | CI/CD Pipeline | 1 – Infrastruktur | Planned | [OBJ-1-cicd-pipeline.md](OBJ-1-cicd-pipeline.md) | 2026-04-03 |
-| OBJ-2 | Dokumentation | 1 – Infrastruktur | Planned | [OBJ-2-dokumentation.md](OBJ-2-dokumentation.md) | 2026-04-03 |
+| OBJ-1 | CI/CD Pipeline | 1 – Infrastruktur | In Progress | [OBJ-1-cicd-pipeline.md](OBJ-1-cicd-pipeline.md) | 2026-04-03 |
+| OBJ-2 | Dokumentation | 1 – Infrastruktur | In Progress | [OBJ-2-dokumentation.md](OBJ-2-dokumentation.md) | 2026-04-03 |
 | OBJ-3 | REST API | 2 – API-Fundament | In Progress | [OBJ-3-rest-api.md](OBJ-3-rest-api.md) | 2026-04-03 |
-| OBJ-4 | Capabilities Dashboard | 3 – P0 MVP | Planned | [OBJ-4-capabilities-dashboard.md](OBJ-4-capabilities-dashboard.md) | 2026-03-17 |
+| OBJ-4 | Capabilities Dashboard | 3 – P0 MVP | In Progress | [OBJ-4-capabilities-dashboard.md](OBJ-4-capabilities-dashboard.md) | 2026-03-17 |
 | OBJ-5 | Participant Configuration Form | 3 – P0 MVP | Planned | [OBJ-5-participant-configuration-form.md](OBJ-5-participant-configuration-form.md) | 2026-03-17 |
 | OBJ-6 | DNS Zone File Generator | 3 – P0 MVP | Planned | [OBJ-6-dns-zone-file-generator.md](OBJ-6-dns-zone-file-generator.md) | 2026-03-17 |
 | OBJ-7 | Requirements Traceability View | 4 – P1 DNS | Planned | [OBJ-7-requirements-traceability-view.md](OBJ-7-requirements-traceability-view.md) | 2026-03-17 |
