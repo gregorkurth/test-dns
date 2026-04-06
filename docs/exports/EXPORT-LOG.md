@@ -57,9 +57,9 @@ Wenn etwas nur in Confluence steht, gilt es nicht als abgeschlossen.
   - capability-dashboard-live/data/capabilities-dashboard.json
   - docs/QUICK-GUIDE-TESTING.md
 - Quelle in Git: f16041e (OBJ-4 Abschluss) und ec3cf06 (OBJ-23 Abschluss)
-- Ziel in Confluence: PENDING (Space/Seite beim Import ergaenzen)
-- Transport: PENDING (USB-Transfer ausstehend)
-- Durchgefuehrt von: PENDING
-- Geprueft von: PENDING
-- Ergebnis: Nacharbeit
-- Notizen: Repo-Stand ist abgeschlossen; physischer Copy-Job nach Confluence ist noch offen.
+- Ziel in Confluence: DNS Service Dokumentation / Feature-Abschluss OBJ-4-OBJ-23
+- Transport: USB-Stick EXPORT-20260406-01
+- Durchgefuehrt von: Gregor Kurth
+- Geprueft von: Gregor Kurth
+- Ergebnis: OK
+- Notizen: USB-Copy und manueller Confluence-Import fuer alle oben gelisteten Seiten abgeschlossen.
