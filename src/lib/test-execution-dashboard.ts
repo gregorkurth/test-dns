@@ -101,6 +101,15 @@ interface DraftExecutionEntry {
   history: TestExecutionRecord[]
 }
 
+export interface DashboardEntryFilters {
+  objectId?: string | null
+  capabilityId?: string | null
+  serviceFunctionId?: string | null
+  testType?: TestType | null
+  status?: DashboardStatus | null
+  requirementOrTestQuery?: string | null
+}
+
 const repoRoot = process.cwd()
 const capabilitiesRoot = path.join(repoRoot, 'capabilities')
 const capabilitiesIndexPath = path.join(capabilitiesRoot, 'INDEX.md')
@@ -745,6 +754,63 @@ function parseJsonEvidence(absolutePath: string, content: string): TestExecution
   return normalizedRecords
 }
 
+export function resolveLatestRecord(
+  history: TestExecutionRecord[],
+): TestExecutionRecord | null {
+  if (history.length === 0) {
+    return null
+  }
+
+  const sortedHistory = [...history].sort((left, right) =>
+    compareDatesDesc(left.executedAt, right.executedAt),
+  )
+  const latestWithValidTimestamp =
+    sortedHistory.find((record) => record.executedAt !== null) ?? null
+  const latestUndatedFailure =
+    sortedHistory.find(
+      (record) => record.executedAt === null && record.status === 'failed',
+    ) ?? null
+
+  return latestWithValidTimestamp ?? latestUndatedFailure ?? null
+}
+
+export function filterDashboardEntries(
+  entries: TestExecutionEntry[],
+  filters: DashboardEntryFilters,
+): TestExecutionEntry[] {
+  const requirementQuery = filters.requirementOrTestQuery?.trim().toLowerCase() ?? ''
+
+  return entries.filter((entry) => {
+    if (filters.objectId && !entry.objIds.includes(filters.objectId)) {
+      return false
+    }
+    if (filters.capabilityId && entry.capabilityId !== filters.capabilityId) {
+      return false
+    }
+    if (
+      filters.serviceFunctionId &&
+      entry.serviceFunctionId !== filters.serviceFunctionId
+    ) {
+      return false
+    }
+    if (filters.testType && entry.testType !== filters.testType) {
+      return false
+    }
+    if (filters.status && entry.status !== filters.status) {
+      return false
+    }
+    if (!requirementQuery) {
+      return true
+    }
+
+    const requirement = entry.requirementId?.toLowerCase() ?? ''
+    return (
+      requirement.includes(requirementQuery) ||
+      entry.testId.toLowerCase().includes(requirementQuery)
+    )
+  })
+}
+
 async function loadEvidenceRecords(): Promise<TestExecutionRecord[]> {
   const evidenceFiles = new Set<string>()
   for (const root of [resultsRoot, executionsRoot]) {
@@ -1016,13 +1082,7 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
 
   const tests: TestExecutionEntry[] = definitionEntries.map((entry) => {
     entry.history.sort((left, right) => compareDatesDesc(left.executedAt, right.executedAt))
-    const latestWithValidTimestamp =
-      entry.history.find((record) => record.executedAt !== null) ?? null
-    const latestUndatedFailure =
-      entry.history.find(
-        (record) => record.executedAt === null && record.status === 'failed',
-      ) ?? null
-    const latest = latestWithValidTimestamp ?? latestUndatedFailure ?? null
+    const latest = resolveLatestRecord(entry.history)
 
     return {
       ...entry,
@@ -1141,4 +1201,9 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
       'tests/executions/**/*.json',
     ],
   }
+}
+
+export const testExecutionDashboardInternals = {
+  normalizeStatus,
+  parseJsonEvidence,
 }

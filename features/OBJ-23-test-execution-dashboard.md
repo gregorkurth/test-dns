@@ -243,6 +243,7 @@ Der sichtbare "aktuelle Status" entsteht aus dem letzten gueltigen Nachweis pro 
 ### Regression Testing
 - [x] `features/INDEX.md`: Keine Features im Status `Deployed` vorhanden, daher kein produktiver Deployed-Regressionstest erforderlich.
 - [x] Build-/Qualitaets-Safeguards erfolgreich: `npm run lint`, `npm run test:run`, `npm run build`, `npm run build:obj23-live-data`.
+- [x] Test-Fundament verbreitert (2026-04-06): neue Unit-Tests fuer JSON-Evidence-Validierung, Zeitstempel-Regel bei Statusaufloesung und kombinierte Filterlogik (OBJ/Status/Requirement).
 
 ### Bugs Found
 

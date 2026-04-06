@@ -42,6 +42,15 @@ interface ObjSnapshot {
   neverExecuted: number
 }
 
+export interface ClientDashboardFilters {
+  objectFilter: string
+  capabilityFilter: string
+  serviceFunctionFilter: string
+  testTypeFilter: FilterValue
+  statusFilter: FilterValue
+  requirementFilter: string
+}
+
 function formatDateTime(value: string | null): string {
   if (!value) {
     return '—'
@@ -245,6 +254,43 @@ function buildObjSnapshots(
   )
 }
 
+export function filterTestExecutionEntries(
+  tests: TestExecutionEntry[],
+  filters: ClientDashboardFilters,
+): TestExecutionEntry[] {
+  const requirementQuery = filters.requirementFilter.trim().toLowerCase()
+
+  return tests.filter((test) => {
+    if (filters.objectFilter !== 'ALL' && !test.objIds.includes(filters.objectFilter)) {
+      return false
+    }
+    if (filters.capabilityFilter !== 'ALL' && test.capabilityId !== filters.capabilityFilter) {
+      return false
+    }
+    if (
+      filters.serviceFunctionFilter !== 'ALL' &&
+      test.serviceFunctionId !== filters.serviceFunctionFilter
+    ) {
+      return false
+    }
+    if (filters.testTypeFilter !== 'ALL' && test.testType !== filters.testTypeFilter) {
+      return false
+    }
+    if (filters.statusFilter !== 'ALL' && test.status !== filters.statusFilter) {
+      return false
+    }
+    if (!requirementQuery) {
+      return true
+    }
+
+    const requirement = test.requirementId?.toLowerCase() ?? ''
+    return (
+      requirement.includes(requirementQuery) ||
+      test.testId.toLowerCase().includes(requirementQuery)
+    )
+  })
+}
+
 export function TestExecutionDashboardClient({
   initialData,
 }: {
@@ -259,36 +305,15 @@ export function TestExecutionDashboardClient({
   const [requirementFilter, setRequirementFilter] = useState('')
   const [selectedTestKey, setSelectedTestKey] = useState<string | null>(null)
 
-  const deferredRequirementFilter = useDeferredValue(requirementFilter.trim().toLowerCase())
+  const deferredRequirementFilter = useDeferredValue(requirementFilter)
 
-  const filteredTests = initialData.tests.filter((test) => {
-    if (objectFilter !== 'ALL' && !test.objIds.includes(objectFilter)) {
-      return false
-    }
-    if (capabilityFilter !== 'ALL' && test.capabilityId !== capabilityFilter) {
-      return false
-    }
-    if (
-      serviceFunctionFilter !== 'ALL' &&
-      test.serviceFunctionId !== serviceFunctionFilter
-    ) {
-      return false
-    }
-    if (testTypeFilter !== 'ALL' && test.testType !== testTypeFilter) {
-      return false
-    }
-    if (statusFilter !== 'ALL' && test.status !== statusFilter) {
-      return false
-    }
-    if (!deferredRequirementFilter) {
-      return true
-    }
-
-    const requirement = test.requirementId?.toLowerCase() ?? ''
-    return (
-      requirement.includes(deferredRequirementFilter) ||
-      test.testId.toLowerCase().includes(deferredRequirementFilter)
-    )
+  const filteredTests = filterTestExecutionEntries(initialData.tests, {
+    objectFilter,
+    capabilityFilter,
+    serviceFunctionFilter,
+    testTypeFilter,
+    statusFilter,
+    requirementFilter: deferredRequirementFilter,
   })
 
   const effectiveSelectedKey =
