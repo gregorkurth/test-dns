@@ -84,8 +84,15 @@ jobs:
       - name: Abhaengigkeiten installieren
         run: npm ci
 
-      - name: Tests ausfuehren
-        run: npm run test:run
+      - name: Tests ausfuehren und Nachweis erzeugen
+        run: npm run test:report
+
+      - name: Vitest-Nachweis als Artifact speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitest-evidence
+          path: tests/executions/vitest-report.latest.json
+          retention-days: 90
 
   # --- Validation Matrix ---
   validation-matrix:
@@ -103,6 +110,12 @@ jobs:
 
       - name: Abhaengigkeiten installieren
         run: npm ci
+
+      - name: Vitest-Nachweis laden
+        uses: actions/download-artifact@v4
+        with:
+          name: vitest-evidence
+          path: tests/executions
 
       - name: Validation-Matrix generieren
         run: npm run build:validation-matrix

@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-04-06T14:49:25.535Z",
+  "generatedAt": "2026-04-06T15:42:35.874Z",
   "summary": {
-    "totalTests": 208,
-    "passed": 0,
+    "totalTests": 218,
+    "passed": 10,
     "failed": 0,
     "neverExecuted": 208,
     "manualTests": 104,
-    "autoTests": 104
+    "autoTests": 114
   },
   "filters": {
     "objects": [
@@ -71,6 +71,10 @@
         "name": "Test Execution Dashboard"
       },
       {
+        "id": "OBJ-3",
+        "name": "REST API"
+      },
+      {
         "id": "OBJ-4",
         "name": "Capabilities Dashboard"
       },
@@ -89,6 +93,10 @@
       {
         "id": "OBJ-8",
         "name": "Export & Download"
+      },
+      {
+        "id": "OBJ-9",
+        "name": "Manual Test Runner"
       }
     ],
     "capabilities": [
@@ -127,6 +135,10 @@
       {
         "id": "CAP-009",
         "name": "GitOps / Argo CD"
+      },
+      {
+        "id": "CAP-UNBEKANNT",
+        "name": "Unbekannt"
       }
     ],
     "serviceFunctions": [
@@ -261,6 +273,10 @@
       {
         "id": "SFN-TIN43-ZONE-TRANSFER",
         "name": "SFN TIN43 Zone Transfer"
+      },
+      {
+        "id": "SFN-UNBEKANNT",
+        "name": "Unbekannt"
       }
     ]
   },
@@ -5352,30 +5368,410 @@
       "lastReleaseId": null,
       "lastNote": null,
       "lastEvidencePath": null
+    },
+    {
+      "key": "auto:orphan-1",
+      "testId": "ORPHAN-1",
+      "tagId": null,
+      "objIds": [
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "test-execution-dashboard data validation marks malformed JSON evidence as failed with a validation note",
+          "objIds": [
+            "OBJ-23"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.662Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.662Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+    },
+    {
+      "key": "auto:orphan-10",
+      "testId": "ORPHAN-10",
+      "tagId": null,
+      "objIds": [
+        "OBJ-3"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "OBJ-3 API v1 rate limits repeated requests for same client on api-v1",
+          "objIds": [
+            "OBJ-3"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.739Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+    },
+    {
+      "key": "auto:orphan-2",
+      "testId": "ORPHAN-2",
+      "tagId": null,
+      "objIds": [
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "test-execution-dashboard status resolution prefers the latest valid timestamp evidence over undated failures",
+          "objIds": [
+            "OBJ-23"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.662Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.662Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+    },
+    {
+      "key": "auto:orphan-3",
+      "testId": "ORPHAN-3",
+      "tagId": null,
+      "objIds": [
+        "OBJ-9"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "loadManualTests loads manual tests from capabilities",
+          "objIds": [
+            "OBJ-9"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.676Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.676Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+    },
+    {
+      "key": "auto:orphan-4",
+      "testId": "ORPHAN-4",
+      "tagId": null,
+      "objIds": [
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "filterTestExecutionEntries applies combined object/status/query filters for critical triage views",
+          "objIds": [
+            "OBJ-23"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.753Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.753Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+    },
+    {
+      "key": "auto:orphan-5",
+      "testId": "ORPHAN-5",
+      "tagId": null,
+      "objIds": [
+        "OBJ-3"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "OBJ-3 API v1 serves capabilities list and capability detail",
+          "objIds": [
+            "OBJ-3"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.739Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+    },
+    {
+      "key": "auto:orphan-6",
+      "testId": "ORPHAN-6",
+      "tagId": null,
+      "objIds": [
+        "OBJ-3"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "OBJ-3 API v1 handles participants CRUD and invalid JSON body",
+          "objIds": [
+            "OBJ-3"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.739Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+    },
+    {
+      "key": "auto:orphan-7",
+      "testId": "ORPHAN-7",
+      "tagId": null,
+      "objIds": [
+        "OBJ-3"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "OBJ-3 API v1 validates zone generation payload and returns zone file on success",
+          "objIds": [
+            "OBJ-3"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.739Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+    },
+    {
+      "key": "auto:orphan-8",
+      "testId": "ORPHAN-8",
+      "tagId": null,
+      "objIds": [
+        "OBJ-3"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "OBJ-3 API v1 serves API root and OpenAPI contract",
+          "objIds": [
+            "OBJ-3"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.739Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+    },
+    {
+      "key": "auto:orphan-9",
+      "testId": "ORPHAN-9",
+      "tagId": null,
+      "objIds": [
+        "OBJ-3"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-UNBEKANNT",
+      "capabilityName": "Unbekannt",
+      "serviceFunctionId": "SFN-UNBEKANNT",
+      "serviceFunctionName": "Unbekannt",
+      "testType": "auto",
+      "sourcePath": "tests/executions/vitest-report.latest.json",
+      "history": [
+        {
+          "testType": "auto",
+          "tagId": null,
+          "testId": "OBJ-3 API v1 sanitizes participant fields to reduce stored XSS risk",
+          "objIds": [
+            "OBJ-3"
+          ],
+          "status": "passed",
+          "executedAt": "2026-04-06T15:41:29.739Z",
+          "runId": "LOCAL-20260406-154129",
+          "releaseId": "RELEASE-UNASSIGNED",
+          "note": null,
+          "evidencePath": "tests/executions/vitest-report.latest.json",
+          "source": "result_json"
+        }
+      ],
+      "status": "passed",
+      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
+      "lastRunId": "LOCAL-20260406-154129",
+      "lastReleaseId": "RELEASE-UNASSIGNED",
+      "lastNote": null,
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
     }
   ],
   "runSnapshots": [
     {
-      "id": "RUN-UNASSIGNED",
-      "lastExecutedAt": null,
-      "totalTests": 208,
-      "passed": 0,
+      "id": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:41:29.753Z",
+      "totalTests": 218,
+      "passed": 10,
       "failed": 0,
       "neverExecuted": 208,
       "incomplete": true,
-      "runCount": 0
+      "runCount": 1
     }
   ],
   "releaseSnapshots": [
     {
       "id": "RELEASE-UNASSIGNED",
-      "lastExecutedAt": null,
-      "totalTests": 208,
-      "passed": 0,
+      "lastExecutedAt": "2026-04-06T15:41:29.753Z",
+      "totalTests": 218,
+      "passed": 10,
       "failed": 0,
       "neverExecuted": 208,
       "incomplete": true,
-      "runCount": 0
+      "runCount": 1
     }
   ],
   "statusRules": [

@@ -44,6 +44,12 @@ Im Projektordner:
 npm run test:run
 ```
 
+Mit automatischem Testnachweis (Modultests -> Evidence-Datei):
+
+```bash
+npm run test:report
+```
+
 Optional vor Release:
 
 ```bash
@@ -64,6 +70,7 @@ Wichtig: Bei manuellen Tests immer notieren, ob Schritt bestanden hat oder nicht
 Nachweise (Evidence) kommen ins Repo, zum Beispiel nach:
 - `tests/results/`
 - `tests/executions/`
+- automatischer Modultest-Nachweis: `tests/executions/vitest-report.latest.json`
 
 Ziel: Spaeter muss jeder nachvollziehen koennen, **wann** und **warum** ein Teststatus entstanden ist.
 

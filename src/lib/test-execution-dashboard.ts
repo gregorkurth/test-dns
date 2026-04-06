@@ -8,6 +8,7 @@ export interface TestExecutionRecord {
   testType: TestType
   tagId: string | null
   testId: string | null
+  objIds?: string[]
   status: DashboardStatus
   executedAt: string | null
   runId: string | null
@@ -531,6 +532,30 @@ function inferTestTypeFromHints(
   return inferTestTypeFromPath(absolutePath, fallback)
 }
 
+function normalizeObjIds(
+  values: unknown,
+): string[] | null {
+  const input = Array.isArray(values)
+    ? values
+    : typeof values === 'string'
+      ? [values]
+      : null
+
+  if (!input) {
+    return null
+  }
+
+  const normalized = Array.from(
+    new Set(
+      input
+        .map((entry) => String(entry).trim().toUpperCase())
+        .filter((entry) => /^OBJ-\d+$/.test(entry)),
+    ),
+  )
+
+  return normalized.length > 0 ? normalized : null
+}
+
 function appendEvidenceIssue(
   note: string | null,
   issues: string[],
@@ -712,6 +737,11 @@ function parseJsonEvidence(absolutePath: string, content: string): TestExecution
         : typeof record.error === 'string'
           ? record.error
           : null
+    const objIds =
+      normalizeObjIds(record.objIds) ??
+      normalizeObjIds(record.objId) ??
+      normalizeObjIds(record.objectIds) ??
+      undefined
 
     const issues: string[] = []
     if (!testType) {
@@ -741,6 +771,7 @@ function parseJsonEvidence(absolutePath: string, content: string): TestExecution
       testType: resolvedTestType,
       tagId: tag?.tagId ?? null,
       testId: testId ? cleanText(testId) : null,
+      objIds,
       status: resolvedStatus,
       executedAt,
       runId,
@@ -1064,11 +1095,12 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
     const orphanId = orphanCounter
     const orphanKey = `${record.testType}:orphan-${orphanId}`
     orphanCounter += 1
+    const orphanObjIds = normalizeObjIds(record.objIds) ?? ['OBJ-UNASSIGNED']
     definitionEntries.push({
       key: orphanKey,
       testId: `ORPHAN-${orphanId}`,
       tagId: null,
-      objIds: ['OBJ-UNASSIGNED'],
+      objIds: orphanObjIds,
       requirementId: null,
       capabilityId: 'CAP-UNBEKANNT',
       capabilityName: 'Unbekannt',

@@ -1,0 +1,162 @@
+[
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "test-execution-dashboard data validation marks malformed JSON evidence as failed with a validation note",
+    "objIds": [
+      "OBJ-23"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.318Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-execution-dashboard.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "test-execution-dashboard status resolution prefers the latest valid timestamp evidence over undated failures",
+    "objIds": [
+      "OBJ-23"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.318Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-execution-dashboard.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "loadManualTests loads manual tests from capabilities",
+    "objIds": [
+      "OBJ-9"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.332Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-runner.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "filterTestExecutionEntries applies combined object/status/query filters for critical triage views",
+    "objIds": [
+      "OBJ-23"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.410Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/test-execution-dashboard/test-execution-dashboard-client.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 serves capabilities list and capability detail",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.397Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 handles participants CRUD and invalid JSON body",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.397Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 validates zone generation payload and returns zone file on success",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.397Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 serves API root and OpenAPI contract",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.397Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 sanitizes participant fields to reduce stored XSS risk",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.397Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 rate limits repeated requests for same client on api-v1",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-06T15:42:36.397Z",
+    "runId": "LOCAL-20260406-154236",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  }
+]
