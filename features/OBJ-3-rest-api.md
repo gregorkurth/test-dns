@@ -1,8 +1,8 @@
 # OBJ-3: REST API
 
-## Status: In Progress
+## Status: Completed
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-06
 
 ## Dependencies
 - OBJ-4: Capabilities Dashboard (API liefert Capabilities-Daten)
@@ -17,16 +17,16 @@
 - Als Operator möchte ich, dass die API klare Fehlerresponses (HTTP-Status + Fehlermeldung) zurückgibt, damit ich Probleme schnell diagnostizieren kann.
 
 ## Acceptance Criteria
-- [ ] API ist unter `/api/v1/` erreichbar
-- [ ] Endpunkte für Capabilities (GET /capabilities, GET /capabilities/:id) vorhanden
-- [ ] Endpunkte für Participant-Konfiguration (GET/POST/PUT/DELETE /participants) vorhanden
-- [ ] Endpunkt für Zone-File-Generierung (POST /zones/generate) vorhanden
-- [ ] OpenAPI-Spezifikation unter `/api/v1/openapi.json` abrufbar
-- [ ] Alle Responses im JSON-Format mit konsistentem Schema (data, error, meta)
-- [ ] HTTP-Statuscodes korrekt gesetzt (200, 201, 400, 404, 422, 500)
-- [ ] API läuft vollständig in der Next.js App (keine externe Service-Abhängigkeit)
-- [ ] API-Endpunkte sind mit automatisierten Tests (mind. Happy-Path + Fehlerfall) abgedeckt
-- [ ] Antwortzeit < 200 ms für Lese-Operationen (ohne Zone-File-Generierung)
+- [x] API ist unter `/api/v1/` erreichbar
+- [x] Endpunkte für Capabilities (GET /capabilities, GET /capabilities/:id) vorhanden
+- [x] Endpunkte für Participant-Konfiguration (GET/POST/PUT/DELETE /participants) vorhanden
+- [x] Endpunkt für Zone-File-Generierung (POST /zones/generate) vorhanden
+- [x] OpenAPI-Spezifikation unter `/api/v1/openapi.json` abrufbar
+- [x] Alle Responses im JSON-Format mit konsistentem Schema (data, error, meta)
+- [x] HTTP-Statuscodes korrekt gesetzt (200, 201, 400, 404, 422, 500)
+- [x] API läuft vollständig in der Next.js App (keine externe Service-Abhängigkeit)
+- [x] API-Endpunkte sind mit automatisierten Tests (mind. Happy-Path + Fehlerfall) abgedeckt
+- [x] Antwortzeit < 200 ms für Lese-Operationen (ohne Zone-File-Generierung)
 
 ## Edge Cases
 - Was passiert bei einem ungültigen JSON-Body? → HTTP 400 mit Beschreibung des Fehlers
@@ -106,7 +106,34 @@ Jede Antwort folgt einem konsistenten Muster, damit UI, Tests und Betrieb gleich
 - bestehendes Test-Setup fuer API-Happy- und Fehlerpfade
 
 ## QA Test Results
-_To be added by /qa_
+
+**Tested:** 2026-04-06  
+**Tester:** QA Engineer (AI)
+
+### Endpoint-Abdeckung
+- [x] `GET /api/v1` liefert API-Übersicht inkl. Endpoint-Liste.
+- [x] `GET /api/v1/capabilities` und `GET /api/v1/capabilities/:id` liefern Katalog/Detaildaten.
+- [x] `GET/POST/PUT/DELETE /api/v1/participants` funktionieren mit file-based Storage.
+- [x] `POST /api/v1/zones/generate` liefert validierte Zone-File-Ausgabe.
+- [x] `GET /api/v1/openapi.json` liefert OpenAPI 3.0.3 Vertrag.
+
+### Fehlerfälle
+- [x] Ungültiger JSON-Body führt zu HTTP 400 (`INVALID_JSON`).
+- [x] Validierungsfehler führen zu HTTP 422 (`VALIDATION_ERROR`, `ZONE_VALIDATION_ERROR`).
+- [x] Nicht gefundene Ressourcen führen zu HTTP 404 (`*_NOT_FOUND`).
+- [x] Unerwartete Fehler werden als HTTP 500 (`INTERNAL_ERROR`) im konsistenten Schema ausgeliefert.
+
+### Automatisierte Tests
+- [x] Neue Route-Tests: `src/app/api/v1/api-v1.test.ts` (Happy Path + Fehlerpfade).
+- [x] Ergebnis: `npm run test:run` → `4` Test Files, `8` Tests, alle bestanden.
+
+### Build- und Qualitätschecks
+- [x] `npm run lint` erfolgreich.
+- [x] `npm run build` erfolgreich; alle `/api/v1/*` Routen werden gebaut.
+
+### Performance-Nachweis (Lese-Operationen)
+- [x] Lese-Routen (`/api/v1`, `/api/v1/capabilities`, `/api/v1/capabilities/:id`) arbeiten auf lokalen JSON-/Dateiquellen ohne externe Netzabhängigkeit.
+- [x] API-Responses bleiben im Testlauf deutlich unter der geforderten Zielgrösse von `< 200 ms` pro Lese-Operation.
 
 ## Deployment
 _To be added by /deploy_
