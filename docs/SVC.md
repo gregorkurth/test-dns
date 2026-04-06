@@ -22,7 +22,7 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 2 – API-Fundament | P1 | OBJ-3: REST API | Completed |
 | 3 – P0 MVP | P0 | OBJ-4: Capabilities Dashboard | Completed |
 | 3 – P0 MVP | P0 | OBJ-5: Participant Configuration Form | Completed |
-| 3 – P0 MVP | P0 | OBJ-6: DNS Zone File Generator | Planned |
+| 3 – P0 MVP | P0 | OBJ-6: DNS Zone File Generator | In Progress |
 | 4 – P1 DNS | P1 | OBJ-7: Requirements Traceability View | Planned |
 | 4 – P1 DNS | P1 | OBJ-8: Export & Download | Planned |
 | 4 – P1 DNS | P1 | OBJ-9: Manual Test Runner | Planned |

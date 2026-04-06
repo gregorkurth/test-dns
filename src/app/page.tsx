@@ -2,6 +2,12 @@ import Link from 'next/link'
 
 const modules = [
   {
+    href: '/zone-generator',
+    title: 'OBJ-6 DNS Zone File Generator',
+    description:
+      'Forward- und Reverse-Zone-Files aus OBJ-5 Participant-Daten generieren.',
+  },
+  {
     href: '/participant-config',
     title: 'OBJ-5 Participant Configuration Form',
     description:
@@ -33,8 +39,8 @@ export default function Home() {
             DNS Management Service Workspace
           </h1>
           <p className="mt-2 text-sm text-slate-600">
-            Startseite fuer die wichtigsten Module. Fokus aktuell: OBJ-5
-            Participant Configuration Form.
+            Startseite fuer die wichtigsten Module. Fokus aktuell: OBJ-6 Zone
+            File Generator und OBJ-5 Participant Configuration Form.
           </p>
         </header>
 
