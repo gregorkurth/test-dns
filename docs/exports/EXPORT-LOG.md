@@ -45,4 +45,21 @@ Wenn etwas nur in Confluence steht, gilt es nicht als abgeschlossen.
 
 ## Export-Historie
 
-Noch keine Eintraege.
+### EXPORT-20260406-01
+
+- Datum: 2026-04-06
+- Anlass: Feature-Abschluss (OBJ-4 und OBJ-23)
+- Umfang:
+  - docs/SVC.md
+  - features/INDEX.md
+  - features/OBJ-4-capabilities-dashboard.md
+  - features/OBJ-23-test-execution-dashboard.md
+  - capability-dashboard-live/data/capabilities-dashboard.json
+  - docs/QUICK-GUIDE-TESTING.md
+- Quelle in Git: f16041e (OBJ-4 Abschluss) und ec3cf06 (OBJ-23 Abschluss)
+- Ziel in Confluence: PENDING (Space/Seite beim Import ergaenzen)
+- Transport: PENDING (USB-Transfer ausstehend)
+- Durchgefuehrt von: PENDING
+- Geprueft von: PENDING
+- Ergebnis: Nacharbeit
+- Notizen: Repo-Stand ist abgeschlossen; physischer Copy-Job nach Confluence ist noch offen.
