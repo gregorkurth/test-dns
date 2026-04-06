@@ -15,7 +15,7 @@
 |----|---------|-------|--------|------|---------|
 | OBJ-1 | CI/CD Pipeline | 1 – Infrastruktur | In Progress | [OBJ-1-cicd-pipeline.md](OBJ-1-cicd-pipeline.md) | 2026-04-03 |
 | OBJ-2 | Dokumentation | 1 – Infrastruktur | In Progress | [OBJ-2-dokumentation.md](OBJ-2-dokumentation.md) | 2026-04-03 |
-| OBJ-3 | REST API | 2 – API-Fundament | Completed | [OBJ-3-rest-api.md](OBJ-3-rest-api.md) | 2026-04-03 |
+| OBJ-3 | REST API | 2 – API-Fundament | In Review | [OBJ-3-rest-api.md](OBJ-3-rest-api.md) | 2026-04-03 |
 | OBJ-4 | Capabilities Dashboard | 3 – P0 MVP | Completed | [OBJ-4-capabilities-dashboard.md](OBJ-4-capabilities-dashboard.md) | 2026-03-17 |
 | OBJ-5 | Participant Configuration Form | 3 – P0 MVP | Planned | [OBJ-5-participant-configuration-form.md](OBJ-5-participant-configuration-form.md) | 2026-03-17 |
 | OBJ-6 | DNS Zone File Generator | 3 – P0 MVP | Planned | [OBJ-6-dns-zone-file-generator.md](OBJ-6-dns-zone-file-generator.md) | 2026-03-17 |

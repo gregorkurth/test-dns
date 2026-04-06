@@ -1,6 +1,6 @@
 # OBJ-3: REST API
 
-## Status: Completed
+## Status: In Review
 **Created:** 2026-04-03
 **Last Updated:** 2026-04-06
 
@@ -144,6 +144,23 @@ Jede Antwort folgt einem konsistenten Muster, damit UI, Tests und Betrieb gleich
 ### Performance-Nachweis (Lese-Operationen)
 - [x] Lese-Routen (`/api/v1`, `/api/v1/capabilities`, `/api/v1/capabilities/:id`) arbeiten auf lokalen JSON-/Dateiquellen ohne externe Netzabhängigkeit.
 - [x] API-Responses bleiben im Testlauf deutlich unter der geforderten Zielgrösse von `< 200 ms` pro Lese-Operation.
+
+### QA Rerun (2026-04-06, Round 2)
+- [x] Runtime-Smoke gegen `/api/v1/*` erfolgreich (inkl. `/api/v1/swagger`).
+- [x] Antwortzeiten der Lese-Operationen weiterhin deutlich unter `200 ms`.
+- [x] `npm run test:run` erfolgreich (`4` Files, `8` Tests).
+- [x] `npm run lint` erfolgreich.
+
+### Security Audit (Red Team) - Findings
+- [ ] **BUG-1 (Medium):** Kein erkennbares Rate Limiting auf `/api/v1/*` (Probe: `80` Requests, `0` Non-200). Risiko: DoS-/Missbrauchsfläche.
+- [ ] **BUG-2 (Low):** Script-Payload wird als Participant-Text akzeptiert und unverändert zurückgegeben (`<script>alert(1)</script>`). Risiko: Stored-XSS, falls ein UI diese Felder unsicher rendert.
+
+### Summary
+- **Acceptance Criteria:** `11/11` bestanden.
+- **Bugs Found:** `2` total (`0` Critical, `0` High, `1` Medium, `1` Low).
+- **Security:** Issues found.
+- **Production Ready:** YES (keine Critical/High Findings), mit empfohlenen Security-Verbesserungen.
+- **Recommendation:** Deploy möglich, Security-Hardening zeitnah einplanen.
 
 ## Deployment
 _To be added by /deploy_
