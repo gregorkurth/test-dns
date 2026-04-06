@@ -2,7 +2,7 @@
 
 ## Status: In Review
 **Created:** 2026-04-04
-**Last Updated:** 2026-04-05
+**Last Updated:** 2026-04-06
 
 ## Dependencies
 - OBJ-9: Manual Test Runner (liefert manuelle Testausfuehrungen)
@@ -290,6 +290,20 @@ Der sichtbare "aktuelle Status" entsteht aus dem letzten gueltigen Nachweis pro 
 - **Security:** Pass (Rate-Limiting vorhanden)
 - **Production Ready:** YES
 - **Recommendation:** Bereit fuer den naechsten Deploy-Schritt
+
+### QA Re-Run (2026-04-06)
+- [x] Vollstaendiger Technik-Check erneut erfolgreich: `npm run lint`, `npm run test:run`, `npm run build`, `npm run build:obj23-live-data`.
+- [x] API-Retest erfolgreich: Summary, OBJ-Filterdaten und Statusregeln (inkl. Zeitstempel-Regel) korrekt geliefert.
+- [x] UI-Retest erfolgreich: Tabs `Aktueller Stand`, `Pro OBJ`, `Pro Release`, `Pro Run`, `Regeln & Quellen` im gerenderten Markup vorhanden.
+- [x] Security-Retest erfolgreich: Rate-Limiter weiterhin aktiv (65 Requests -> 60x HTTP 200, 5x HTTP 429).
+- [x] Regression-Retest erfolgreich: keine neuen Findings gegenueber dem Re-Test vom 2026-04-05.
+
+### QA Re-Run Summary
+- **Acceptance Criteria:** 13/13 weiterhin bestanden
+- **Open Bugs:** 0 (0 Critical, 0 High, 0 Medium, 0 Low)
+- **Security:** Pass
+- **Production Ready:** YES
+- **Hinweis Testumgebung:** Browser-/Viewport-Pruefung erfolgte technisch ueber responsive Klassen/Media-Queries und HTML-Render-Check im lokalen QA-Setup; kein nativer Multi-Browser-GUI-Durchlauf im CLI.
 
 ## Deployment
 _To be added by /deploy_
