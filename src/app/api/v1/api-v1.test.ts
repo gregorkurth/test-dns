@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { GET as getCapabilityDetail } from './capabilities/[id]/route'
 import { GET as getCapabilities } from './capabilities/route'
 import { GET as getOpenApi } from './openapi.json/route'
+import { GET as getSwaggerUi } from './swagger/route'
 import {
   DELETE as deleteParticipant,
   GET as getParticipants,
@@ -167,6 +168,7 @@ describe('OBJ-3 API v1', () => {
       version: 'v1',
     })
     expect(rootBody.data.endpoints).toContain('/api/v1/openapi.json')
+    expect(rootBody.data.endpoints).toContain('/api/v1/swagger')
 
     const openApiResponse = await getOpenApi()
     expect(openApiResponse.status).toBe(200)
@@ -176,5 +178,11 @@ describe('OBJ-3 API v1', () => {
     })
     expect(openApiBody.data.paths).toHaveProperty('/participants')
     expect(openApiBody.data.paths).toHaveProperty('/zones/generate')
+
+    const swaggerResponse = await getSwaggerUi()
+    expect(swaggerResponse.status).toBe(200)
+    expect(swaggerResponse.headers.get('content-type')).toContain('text/html')
+    const swaggerBody = await swaggerResponse.text()
+    expect(swaggerBody).toContain('/api/v1/openapi.json')
   })
 })

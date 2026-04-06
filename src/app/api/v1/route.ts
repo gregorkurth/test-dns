@@ -13,6 +13,7 @@ export async function GET() {
       '/api/v1/participants/{id}',
       '/api/v1/zones/generate',
       '/api/v1/openapi.json',
+      '/api/v1/swagger',
     ],
   })
 }

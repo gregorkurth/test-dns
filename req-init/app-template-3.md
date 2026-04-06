@@ -82,6 +82,9 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Jede Applikation stellt eine klar definierte API bereit.
 - Die API dient als stabile Schnittstelle für Web GUI, Operator und externe Systeme.
 - Schnittstellen müssen dokumentiert, versionierbar und testbar sein.
+- Die API muss maschinenlesbar als OpenAPI bereitgestellt werden (z. B. `/api/v1/openapi.json`).
+- Zusätzlich muss eine lesbare Swagger-Webseite als Doku-Hilfsmittel bereitstehen (z. B. `/api/v1/swagger`).
+- Swagger dient der besseren Lesbarkeit, ist aber nicht die Primärquelle; die führende Quelle bleibt die versionierte Doku im Git-Repository.
 
 ### 3. Web GUI
 - Jede Applikation besitzt ein Web GUI.

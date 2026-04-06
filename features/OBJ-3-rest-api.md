@@ -14,6 +14,7 @@
 - Als Mission Network Operator möchte ich Konfigurationsdaten über die API abrufen und speichern können, damit externe Tools (z. B. Skripte) die Daten nutzen können.
 - Als Platform Engineer möchte ich die API-Version in der URL sehen (`/api/v1/...`), damit ich Änderungen rückwärtskompatibel einführen kann.
 - Als Entwickler möchte ich eine OpenAPI-Spezifikation (Swagger) abrufen können, damit ich die API automatisch testen und dokumentieren kann.
+- Als Fachbereich möchte ich eine lesbare Swagger-Webseite für die API haben, damit ich Endpunkte ohne Entwickler-Setup nachvollziehen kann.
 - Als Operator möchte ich, dass die API klare Fehlerresponses (HTTP-Status + Fehlermeldung) zurückgibt, damit ich Probleme schnell diagnostizieren kann.
 
 ## Acceptance Criteria
@@ -22,6 +23,7 @@
 - [x] Endpunkte für Participant-Konfiguration (GET/POST/PUT/DELETE /participants) vorhanden
 - [x] Endpunkt für Zone-File-Generierung (POST /zones/generate) vorhanden
 - [x] OpenAPI-Spezifikation unter `/api/v1/openapi.json` abrufbar
+- [x] Swagger-Dokuansicht unter `/api/v1/swagger` verfügbar (nur Doku-Hilfsmittel)
 - [x] Alle Responses im JSON-Format mit konsistentem Schema (data, error, meta)
 - [x] HTTP-Statuscodes korrekt gesetzt (200, 201, 400, 404, 422, 500)
 - [x] API läuft vollständig in der Next.js App (keine externe Service-Abhängigkeit)
@@ -39,6 +41,7 @@
 - Implementierung als Next.js API Routes (App Router: `src/app/api/v1/...`)
 - Datenhaltung in v1: file-based (JSON-Dateien), kein externes DBMS
 - OpenAPI-Spec automatisch generiert (z. B. via `next-swagger-doc` oder manuell gepflegt)
+- Swagger-UI als lesbare API-Dokumentation unter `/api/v1/swagger` (Doku-Hilfsmittel, keine Fachlogik)
 - Keine externen API-Calls aus den Endpunkten heraus (airgapped)
 
 ---
@@ -116,6 +119,7 @@ Jede Antwort folgt einem konsistenten Muster, damit UI, Tests und Betrieb gleich
 - [x] `GET/POST/PUT/DELETE /api/v1/participants` funktionieren mit file-based Storage.
 - [x] `POST /api/v1/zones/generate` liefert validierte Zone-File-Ausgabe.
 - [x] `GET /api/v1/openapi.json` liefert OpenAPI 3.0.3 Vertrag.
+- [x] `GET /api/v1/swagger` liefert eine lesbare Swagger-Dokuansicht auf Basis der OpenAPI-Spec.
 
 ### Fehlerfälle
 - [x] Ungültiger JSON-Body führt zu HTTP 400 (`INVALID_JSON`).
