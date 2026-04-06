@@ -121,6 +121,11 @@ Jede Antwort folgt einem konsistenten Muster, damit UI, Tests und Betrieb gleich
 - [x] `GET /api/v1/openapi.json` liefert OpenAPI 3.0.3 Vertrag.
 - [x] `GET /api/v1/swagger` liefert eine lesbare Swagger-Dokuansicht auf Basis der OpenAPI-Spec.
 
+### Swagger-Dokucheck (Hilfsmittel)
+- [x] `GET /api/v1/swagger` liefert im Runtime-Smoke-Test HTTP `200` mit `text/html`.
+- [x] Swagger-HTML referenziert `/api/v1/openapi.json` als Quelle.
+- [x] Fallback-Hinweis bei fehlender CDN-Ladung vorhanden; in diesem Fall bleibt `/api/v1/openapi.json` die verlässliche Dokuquelle.
+
 ### Fehlerfälle
 - [x] Ungültiger JSON-Body führt zu HTTP 400 (`INVALID_JSON`).
 - [x] Validierungsfehler führen zu HTTP 422 (`VALIDATION_ERROR`, `ZONE_VALIDATION_ERROR`).
@@ -133,7 +138,8 @@ Jede Antwort folgt einem konsistenten Muster, damit UI, Tests und Betrieb gleich
 
 ### Build- und Qualitätschecks
 - [x] `npm run lint` erfolgreich.
-- [x] `npm run build` erfolgreich; alle `/api/v1/*` Routen werden gebaut.
+- [x] `npm run build` erfolgreich; alle `/api/v1/*` Routen werden gebaut (inkl. `/api/v1/swagger`).
+- [x] `npm run test:run` erfolgreich (`4` Test Files, `8` Tests).
 
 ### Performance-Nachweis (Lese-Operationen)
 - [x] Lese-Routen (`/api/v1`, `/api/v1/capabilities`, `/api/v1/capabilities/:id`) arbeiten auf lokalen JSON-/Dateiquellen ohne externe Netzabhängigkeit.
