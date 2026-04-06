@@ -20,11 +20,11 @@
 
 ## Anforderungstext (Original)
 
-> Das Container-Image muss alle Assets (HTML, CSS, JS, Schriften, Icons) enthalten. Zur Laufzeit darf kein Zugriff auf externe Registries, CDNs oder npm-Repositories erfolgen.
+> Das Container-Image muss alle Assets (HTML, CSS, JS, Schriften, Icons) enthalten und als gehaertetes Minimal-Runtime-Image gebaut sein. Zur Laufzeit darf kein Zugriff auf externe Registries, CDNs oder npm-Repositories erfolgen.
 
 ## Anforderungstext (Erläuterung)
 
-Das Image ist vollständig selbstständig. Kein `npm install`, kein CDN-Fetch, kein externer Font-Download zur Laufzeit.
+Das Image ist vollstaendig selbststaendig. Kein `npm install`, kein CDN-Fetch, kein externer Font-Download zur Laufzeit. Der Runtime-Container enthaelt nur den minimal benoetigten Umfang.
 
 ---
 
@@ -40,6 +40,8 @@ Mission Networks sind oft airgapped. Jeder externe Zugriff zur Laufzeit würde d
 2. Alle statischen Assets werden aus dem Container serviert
 3. Keine externen URLs in generierten HTML/CSS/JS-Dateien
 4. `docker run --network=none` zeigt App korrekt an
+5. Runtime-Image enthaelt keine Build-Toolchain und keinen zur Laufzeit unnoetigen Paketmanager
+6. Bei BIND9-only Workloads enthaelt das Image nur BIND9-relevante Binaries/Konfigurationen
 
 ---
 

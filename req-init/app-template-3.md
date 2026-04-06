@@ -132,6 +132,10 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Artefakte müssen versioniert erzeugt und für Deployments bereitgestellt werden.
 - Die Pipeline ist Bestandteil des Repositories und nicht nur extern konfiguriert.
 - Die Pipeline muss den Übergang von Quellcode zu Release-Artefakten und Zarf-Paket nachvollziehbar abbilden.
+- Container-Images muessen aus einem gehaerteten, minimalen Runtime-Image gebaut werden.
+- Die Runtime-Stage darf nur die zur Ausfuehrung benoetigten Binaries, Libraries, Konfigurationen und Assets enthalten.
+- Build-Tools, Package-Manager, Compiler und nicht benoetigte Shell-Tools duerfen im finalen Runtime-Image nicht enthalten sein, sofern keine dokumentierte Ausnahme vorliegt.
+- Falls die Applikation funktional nur BIND9 bereitstellt, ist ein BIND9-spezifisches Minimal-Image zu verwenden, das nur `named` und die benoetigten Laufzeitbestandteile enthaelt.
 
 ### 10. Release Management
 - Jede App benötigt ein geregeltes Release Management.
@@ -168,6 +172,8 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Standardmässig sind Harbor für Container-Images und Nexus und/oder Harbor für weitere Artefakte zu berücksichtigen.
 - Das Template muss die Zuordnung von Artefakten, Versionen und Herkunft eindeutig machen.
 - Für die Offline-Weitergabe muss definiert sein, welche Artefakte aus welcher Quelle in das Zarf-Paket übernommen werden.
+- Fuer Container-Images muss die Basis-Image-Herkunft nachvollziehbar dokumentiert sein (Image-Name, Digest, Hardening-Stand).
+- Es duerfen nur freigegebene gehaertete Basis-Images verwendet werden; generische Full-OS-Images ohne Hardening-Freigabe sind nicht zulaessig.
 
 ### 13. Zarf-Paket / Offline-Weitergabe
 - Jede App muss als **Zarf-Paket** exportierbar sein.
@@ -262,6 +268,9 @@ Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle
 - [ ] Paket-/Publish-Audit des finalen Artefakts ist erfolgreich durchlaufen
 - [ ] Allowlist- bzw. Inhaltsfreigabe für veröffentlichte Artefakte ist definiert
 - [ ] verbotene Inhalte wie interne Source-Dateien, Testdaten, Secrets oder unerlaubte Sourcemaps sind ausgeschlossen
+- [ ] Runtime-Container-Image basiert auf gehaertetem Minimal-Base-Image (inkl. dokumentiertem Digest)
+- [ ] Runtime-Container enthaelt nur benoetigte Laufzeitkomponenten; keine Build-Toolchain im finalen Image
+- [ ] Fuer BIND9-only Workloads ist ein BIND9-spezifisches Minimal-Image nachgewiesen
 - [ ] SBOM ist erzeugt und dem Release zugeordnet
 - [ ] Security-Scans sind durchgeführt und bewertet
 - [ ] benötigte Images und Artefakte liegen nachvollziehbar in Harbor, Nexus oder den vorgesehenen Registries
@@ -291,6 +300,8 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Release Management eingerichtet ist
 - [ ] Definition of Done für Build-/Release-Artefakte umgesetzt ist
 - [ ] finales Release-Artefakt wird in der Pipeline geprüft
+- [ ] gehaertetes Minimal-Container-Image ist als Runtime-Standard umgesetzt
+- [ ] bei BIND9-only Umfang ist ein BIND9-spezifisches Minimal-Image umgesetzt
 - [ ] SBOM und Security-Scanning eingebunden sind
 - [ ] Harbor-/Nexus-/Artifact-Ablage definiert ist
 - [ ] Zarf-Paket erzeugbar ist

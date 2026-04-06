@@ -14,7 +14,7 @@
 
 ## Anforderungstext
 
-> Container-Image wird bei Merge auf main gebaut und gepusht
+> Container-Image wird bei Merge auf main gebaut und gepusht. Das Runtime-Image basiert auf einem freigegebenen gehaerteten Minimal-Base-Image und enthaelt nur die benoetigten Laufzeitkomponenten. Falls der Service ausschliesslich BIND9 bereitstellt, ist ein BIND9-spezifisches Minimal-Image zu verwenden, das nur `named` und die notwendigen Laufzeitdateien beinhaltet.
 
 ## Tests
 

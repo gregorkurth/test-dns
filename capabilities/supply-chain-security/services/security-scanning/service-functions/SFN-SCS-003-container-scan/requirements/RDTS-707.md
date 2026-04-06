@@ -7,7 +7,7 @@
 
 ## Anforderungstext
 
-Container-CVE-Scan via trivy image läuft bei Release-Builds.
+Container-CVE-Scan via trivy image laeuft bei Release-Builds. Der Scan umfasst explizit das verwendete Runtime-Base-Image (inkl. Digest) und prueft, ob ein freigegebenes gehaertetes Minimal-Base-Image eingesetzt wird.
 
 ## Verknüpfte Features
 

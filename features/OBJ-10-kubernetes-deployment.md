@@ -21,6 +21,8 @@
 - [ ] K8s-Manifest für Ingress (mit konfigurierbarem Hostname) vorhanden
 - [ ] K8s-Manifest für ConfigMap (App-Konfiguration ohne Secrets) vorhanden
 - [ ] Container-Image enthält alle Assets; kein Pull aus externen Registries zur Laufzeit
+- [ ] Container-Image basiert auf gehaertetem Minimal-Base-Image; Runtime enthaelt nur benoetigte Komponenten
+- [ ] Falls Workload nur BIND9 bereitstellt: BIND9-spezifisches Minimal-Image wird verwendet
 - [ ] Namespace-Manifest vorhanden, Name konfigurierbar (default: `dns-config`)
 - [ ] Ressourcenlimits (CPU/Memory requests und limits) definiert
 - [ ] App ist nach `kubectl apply -f k8s/` vollständig betriebsbereit
@@ -39,6 +41,7 @@
 - Manifeste liegen unter `k8s/` im Repository (Kustomize-Struktur: `k8s/base/`, `k8s/overlays/`)
 - Container-Image muss airgapped ladbar sein (tar-Export / lokale Registry)
 - Kein Zugriff auf externe Quellen (CDN, npm, etc.) zur Laufzeit des Containers
+- Runtime-Image basiert auf freigegebenem gehaertetem Minimal-Base-Image (inkl. dokumentiertem Digest)
 
 ---
 <!-- Sections below are added by subsequent skills -->

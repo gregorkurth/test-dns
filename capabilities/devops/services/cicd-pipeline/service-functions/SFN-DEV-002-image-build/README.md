@@ -15,7 +15,7 @@ Image Build - Bestandteil der DevOps Capability.
 
 ## Requirements
 
-| [RDTS-503](requirements/RDTS-503.md) | [ARCH] | App-Template | Multi-Stage Docker Build | MUSS |
+| [RDTS-503](requirements/RDTS-503.md) | [ARCH] | App-Template | Multi-Stage Build mit gehaertetem Minimal-Runtime-Image | MUSS |
 | [RDTS-504](requirements/RDTS-504.md) | [ARCH] | App-Template | Image-Tagging mit Git-SHA und Tag | MUSS |
 | [RDTS-505](requirements/RDTS-505.md) | [ARCH] | App-Template | SBOM bei Release-Builds | MUSS |
 

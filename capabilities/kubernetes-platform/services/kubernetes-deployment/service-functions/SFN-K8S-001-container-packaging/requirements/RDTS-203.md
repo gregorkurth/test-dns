@@ -20,7 +20,7 @@
 
 ## Anforderungstext (Original)
 
-> Das Container-Image soll als tar-Archiv exportierbar sein, damit es in airgapped Umgebungen ohne Registry-Zugriff geladen werden kann (z. B. via `docker save` / `docker load` oder `kind load`).
+> Das gehaertete Minimal-Container-Image soll als tar-Archiv exportierbar sein, damit es in airgapped Umgebungen ohne Registry-Zugriff geladen werden kann (z. B. via `docker save` / `docker load` oder `kind load`).
 
 ## Anforderungstext (Erläuterung)
 

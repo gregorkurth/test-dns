@@ -24,6 +24,7 @@
 - [ ] SAST-Scan (Code-Ebene via `semgrep`) läuft bei jedem CI-Build; Ergebnisse im SARIF-Format
 - [ ] SCA-Scan (Dependency-Ebene via `npm audit` / `trivy fs`) läuft bei jedem CI-Build
 - [ ] Container-Image-Scan (CVE via `trivy image`) läuft bei Release-Builds
+- [ ] Container-Image-Scan umfasst Runtime-Base-Image (inkl. Digest) und prueft freigegebenes gehaertetes Minimal-Base
 - [ ] Konfigurations-Scan (Misconfiguration via `trivy config`) läuft bei Release-Builds auf K8s-Manifesten und Helm Charts
 - [ ] Kritische Findings (CVSS ≥ 9.0) blockieren automatisch das Release bis zur dokumentierten Accept/Fix-Entscheidung
 - [ ] Security-Ergebnisse werden versionsbezogen archiviert (als Release-Anhang im JSON- oder SARIF-Format)
