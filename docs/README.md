@@ -76,7 +76,7 @@ Wenn etwas wichtig ist, muss es an mindestens einem dieser Orte stehen:
 | Was soll ein Feature genau koennen? | `features/OBJ-*.md` |
 | Welche fachliche Anforderung gilt genau? | `capabilities/**/requirements/*.md` |
 | Wie pruefen wir die Anforderung? | `capabilities/**/tests/` |
-| Was kam beim Test heraus? | Testnachweis im Repo, QA-Abschnitt im Feature |
+| Was kam beim Test heraus? | `docs/testing/VALIDATION-MATRIX.md`, Testnachweis im Repo, QA-Abschnitt im Feature |
 | Warum wurde eine Architekturentscheidung getroffen? | `docs/adr/*.md` |
 | Wie ist die Architektur im Ganzen? | `docs/arc42/` |
 | Was wurde released? | Release-Doku, Pipeline, Artefakte, `features/OBJ-14-*.md` |

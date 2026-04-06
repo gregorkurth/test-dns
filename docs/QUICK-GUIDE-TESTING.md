@@ -72,6 +72,8 @@ Ziel: Spaeter muss jeder nachvollziehen koennen, **wann** und **warum** ein Test
 Teststatus-Sicht:
 - `http://localhost:3000/test-execution-dashboard`
 - oder Live-Variante: `test-execution-dashboard-live/index.html`
+- repo-weite Management-Matrix: `docs/testing/VALIDATION-MATRIX.md` (generiert via `npm run build:validation-matrix`)
+- Pipeline-Report: GitHub Actions Artifact `validation-matrix` (Job: `Validation Matrix Report`)
 
 Hier sieht man:
 - Aktueller Stand
@@ -94,6 +96,7 @@ Im Feature-Dokument (`features/OBJ-*.md`) den Abschnitt `QA Test Results` aktual
 | Welche Tests gibt es? | `capabilities/**/tests/` |
 | Was kam raus? | `tests/results/`, `tests/executions/` |
 | Wie ist der Gesamtstatus? | `test-execution-dashboard` (OBJ-23) |
+| Wie ist der Management-Testnachweis? | `docs/testing/VALIDATION-MATRIX.md` |
 | Ist das Feature QA-abgenommen? | `features/OBJ-*.md` unter `QA Test Results` |
 | Ist es im Review? | `features/INDEX.md` |
 

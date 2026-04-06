@@ -26,6 +26,7 @@
 | Was soll ein einzelnes Feature genau koennen? | [features/](features/) |
 | Welche fachlichen/technischen Requirements gelten? | [capabilities/](capabilities/) |
 | Wie werden Requirements getestet? | [capabilities/**/tests/](capabilities/) |
+| Wo ist der repo-weite Testnachweis als Matrix? | [docs/testing/VALIDATION-MATRIX.md](docs/testing/VALIDATION-MATRIX.md) |
 | Wo stehen Architekturentscheidungen (Warum)? | [docs/adr/](docs/adr/) |
 | Wo steht die Gesamtarchitektur nach arc42? | [docs/arc42/README.md](docs/arc42/README.md) |
 | Wie sieht die Definition of Done aus? | [docs/DEFINITION-OF-DONE-FEATURE.md](docs/DEFINITION-OF-DONE-FEATURE.md) |
