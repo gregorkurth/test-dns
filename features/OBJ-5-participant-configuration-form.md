@@ -1,6 +1,6 @@
 # OBJ-5: Participant Configuration Form
 
-## Status: In Review
+## Status: Completed
 **Created:** 2026-03-17
 **Last Updated:** 2026-04-06
 
