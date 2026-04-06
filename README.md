@@ -35,6 +35,7 @@
 | Management-Sicht auf die Doku | [docs/README.md](docs/README.md) |
 | Technischer Doku-Guide | [docs/DOCUMENTATION-GUIDE.md](docs/DOCUMENTATION-GUIDE.md) |
 | Quick Guide fuer neues Feature/Requirement | [docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md](docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md) |
+| Quick Guide fuer Testing | [docs/QUICK-GUIDE-TESTING.md](docs/QUICK-GUIDE-TESTING.md) |
 | OBJ-4 Live Server Start | [capability-dashboard-live/README.md](capability-dashboard-live/README.md) |
 
 ## Schritt-fuer-Schritt bei neuem Requirement oder Feature

@@ -46,6 +46,7 @@ Sie ist fuer:
 
 Wenn ein neues Thema kommt, beginne hier:
 - Neues Requirement oder neues Feature: `docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md`
+- Testing Schritt fuer Schritt: `docs/QUICK-GUIDE-TESTING.md`
 - Architektur dokumentieren: `docs/arc42/README.md`
 - Nach Confluence exportieren: `docs/CONFLUENCE-EXPORT-GUIDE.md`
 - Feature-Abschluss pruefen: `docs/DEFINITION-OF-DONE-FEATURE.md`
