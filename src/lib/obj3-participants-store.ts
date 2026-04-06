@@ -41,6 +41,60 @@ export interface ParticipantRecord {
 type ParticipantCreateInput = z.infer<typeof participantCreateSchema>
 type ParticipantUpdateInput = z.infer<typeof participantUpdateSchema>
 
+const htmlEscapeMap: Record<string, string> = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '`': '&#96;',
+}
+
+function sanitizeText(value: string): string {
+  return value.replace(/[&<>"'`]/g, (match) => htmlEscapeMap[match] ?? match)
+}
+
+function sanitizeUnknownValue(value: unknown): unknown {
+  if (typeof value === 'string') {
+    return sanitizeText(value)
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((entry) => sanitizeUnknownValue(entry))
+  }
+
+  if (value && typeof value === 'object') {
+    const objectValue = value as Record<string, unknown>
+    return Object.fromEntries(
+      Object.entries(objectValue).map(([key, entry]) => [
+        key,
+        sanitizeUnknownValue(entry),
+      ]),
+    )
+  }
+
+  return value
+}
+
+function sanitizeOptionalText(value: string | null): string | null {
+  if (!value) {
+    return null
+  }
+  return sanitizeText(value)
+}
+
+function sanitizeParticipantRecord(record: ParticipantRecord): ParticipantRecord {
+  return {
+    ...record,
+    name: sanitizeText(record.name),
+    fqdn: sanitizeOptionalText(record.fqdn),
+    ipv4: sanitizeOptionalText(record.ipv4),
+    role: sanitizeOptionalText(record.role),
+    notes: sanitizeOptionalText(record.notes),
+    metadata: sanitizeUnknownValue(record.metadata) as Record<string, unknown>,
+  }
+}
+
 function getParticipantsFilePath(): string {
   const baseDir =
     process.env.OBJ3_DATA_DIR?.trim() || path.join(process.cwd(), 'data', 'obj3')
@@ -90,7 +144,9 @@ function createParticipantId(name: string): string {
 
 export async function listParticipants(): Promise<ParticipantRecord[]> {
   const participants = await readAllParticipants()
-  return participants.sort((left, right) => left.id.localeCompare(right.id, 'de'))
+  return participants
+    .map((participant) => sanitizeParticipantRecord(participant))
+    .sort((left, right) => left.id.localeCompare(right.id, 'de'))
 }
 
 export async function getParticipantById(id: string): Promise<ParticipantRecord | null> {
@@ -100,7 +156,9 @@ export async function getParticipantById(id: string): Promise<ParticipantRecord 
   }
 
   const participants = await readAllParticipants()
-  return participants.find((participant) => participant.id === normalized) ?? null
+  const participant =
+    participants.find((entry) => entry.id === normalized) ?? null
+  return participant ? sanitizeParticipantRecord(participant) : null
 }
 
 export async function createParticipant(
@@ -128,7 +186,7 @@ export async function createParticipant(
 
   participants.push(participant)
   await writeAllParticipants(participants)
-  return participant
+  return sanitizeParticipantRecord(participant)
 }
 
 export async function updateParticipant(
@@ -145,17 +203,32 @@ export async function updateParticipant(
   const updated: ParticipantRecord = {
     ...current,
     name: input.name?.trim() ?? current.name,
-    fqdn: input.fqdn === undefined ? current.fqdn : input.fqdn?.trim() || null,
-    ipv4: input.ipv4 === undefined ? current.ipv4 : input.ipv4?.trim() || null,
-    role: input.role === undefined ? current.role : input.role?.trim() || null,
-    notes: input.notes === undefined ? current.notes : input.notes?.trim() || null,
-    metadata: input.metadata === undefined ? current.metadata : input.metadata,
+    fqdn:
+      input.fqdn === undefined
+        ? current.fqdn
+        : input.fqdn?.trim() || null,
+    ipv4:
+      input.ipv4 === undefined
+        ? current.ipv4
+        : input.ipv4?.trim() || null,
+    role:
+      input.role === undefined
+        ? current.role
+        : input.role?.trim() || null,
+    notes:
+      input.notes === undefined
+        ? current.notes
+        : input.notes?.trim() || null,
+    metadata:
+      input.metadata === undefined
+        ? current.metadata
+        : input.metadata,
     updatedAt: new Date().toISOString(),
   }
 
   participants[index] = updated
   await writeAllParticipants(participants)
-  return updated
+  return sanitizeParticipantRecord(updated)
 }
 
 export async function deleteParticipant(id: string): Promise<boolean> {

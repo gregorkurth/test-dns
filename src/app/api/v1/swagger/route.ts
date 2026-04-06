@@ -1,3 +1,5 @@
+import { enforceRateLimit } from '@/lib/obj3-api'
+
 export const dynamic = 'force-dynamic'
 
 const swaggerHtml = `<!doctype html>
@@ -43,7 +45,12 @@ const swaggerHtml = `<!doctype html>
   </body>
 </html>`
 
-export async function GET() {
+export async function GET(request: Request) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   return new Response(swaggerHtml, {
     headers: {
       'content-type': 'text/html; charset=utf-8',

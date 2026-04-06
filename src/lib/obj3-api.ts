@@ -19,6 +19,16 @@ export interface ApiResponseShape<TData> {
   meta: ApiMeta
 }
 
+interface RateLimitBucket {
+  windowStart: number
+  count: number
+  expiresAt: number
+}
+
+const DEFAULT_RATE_LIMIT_WINDOW_MS = 60_000
+const DEFAULT_RATE_LIMIT_MAX_REQUESTS = 60
+const rateLimitStore = new Map<string, RateLimitBucket>()
+
 function createRequestId(): string {
   return `req_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`
 }
@@ -54,6 +64,7 @@ export function apiError(
   error: ApiErrorShape,
   options?: {
     meta?: Record<string, unknown>
+    headers?: HeadersInit
   },
 ): NextResponse<ApiResponseShape<null>> {
   return NextResponse.json(
@@ -62,7 +73,10 @@ export function apiError(
       error,
       meta: createMeta(options?.meta),
     },
-    { status },
+    {
+      status,
+      headers: options?.headers,
+    },
   )
 }
 
@@ -125,4 +139,86 @@ export function handleUnexpectedApiError(
     code: 'INTERNAL_ERROR',
     message,
   })
+}
+
+function getClientId(request: Request): string {
+  const forwarded = request.headers.get('x-forwarded-for')
+  if (forwarded) {
+    const first = forwarded.split(',')[0]?.trim()
+    if (first) {
+      return first
+    }
+  }
+
+  const realIp = request.headers.get('x-real-ip')?.trim()
+  if (realIp) {
+    return realIp
+  }
+
+  return 'unknown-client'
+}
+
+function cleanupRateLimitStore(now: number): void {
+  for (const [key, bucket] of rateLimitStore) {
+    if (now >= bucket.expiresAt) {
+      rateLimitStore.delete(key)
+    }
+  }
+}
+
+export function enforceRateLimit(
+  request: Request,
+  options?: {
+    namespace?: string
+    windowMs?: number
+    maxRequests?: number
+  },
+): NextResponse<ApiResponseShape<null>> | null {
+  const now = Date.now()
+  cleanupRateLimitStore(now)
+
+  const namespace = options?.namespace ?? 'global'
+  const windowMs = options?.windowMs ?? DEFAULT_RATE_LIMIT_WINDOW_MS
+  const maxRequests = options?.maxRequests ?? DEFAULT_RATE_LIMIT_MAX_REQUESTS
+
+  const clientId = getClientId(request)
+  const key = `${namespace}:${clientId}`
+  const existing = rateLimitStore.get(key)
+
+  if (!existing || now - existing.windowStart >= windowMs) {
+    rateLimitStore.set(key, {
+      windowStart: now,
+      count: 1,
+      expiresAt: now + windowMs * 2,
+    })
+    return null
+  }
+
+  if (existing.count >= maxRequests) {
+    const retryAfterSeconds = Math.max(
+      1,
+      Math.ceil((windowMs - (now - existing.windowStart)) / 1000),
+    )
+    return apiError(
+      429,
+      {
+        code: 'RATE_LIMITED',
+        message: 'Zu viele Anfragen. Bitte in kurzer Zeit erneut versuchen.',
+        details: {
+          limit: maxRequests,
+          windowMs,
+        },
+      },
+      {
+        headers: {
+          'Retry-After': String(retryAfterSeconds),
+        },
+      },
+    )
+  }
+
+  existing.count += 1
+  existing.expiresAt = now + windowMs * 2
+  rateLimitStore.set(key, existing)
+  return null
 }

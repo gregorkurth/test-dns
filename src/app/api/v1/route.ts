@@ -1,8 +1,13 @@
-import { apiSuccess } from '@/lib/obj3-api'
+import { apiSuccess, enforceRateLimit } from '@/lib/obj3-api'
 
 export const dynamic = 'force-dynamic'
 
-export async function GET() {
+export async function GET(request: Request) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   return apiSuccess({
     name: 'DNS Management Service API',
     version: 'v1',

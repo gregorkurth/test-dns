@@ -17,6 +17,18 @@ import {
 import { GET as getApiRoot } from './route'
 import { POST as generateZone } from './zones/generate/route'
 
+function createRequest(pathname: string, init?: RequestInit): Request {
+  const headers = new Headers(init?.headers)
+  if (!headers.has('x-forwarded-for')) {
+    headers.set('x-forwarded-for', 'vitest-default-client')
+  }
+
+  return new Request(`http://localhost${pathname}`, {
+    ...init,
+    headers,
+  })
+}
+
 describe('OBJ-3 API v1', () => {
   let tmpDataDir = ''
 
@@ -34,7 +46,7 @@ describe('OBJ-3 API v1', () => {
 
   it('serves capabilities list and capability detail', async () => {
     const startedAt = Date.now()
-    const listResponse = await getCapabilities()
+    const listResponse = await getCapabilities(createRequest('/api/v1/capabilities'))
     const durationMs = Date.now() - startedAt
     expect(listResponse.status).toBe(200)
     expect(durationMs).toBeLessThan(200)
@@ -45,9 +57,12 @@ describe('OBJ-3 API v1', () => {
     expect(listBody.meta).toMatchObject({ apiVersion: 'v1' })
 
     const firstId = String(listBody.data[0].id)
-    const detailResponse = await getCapabilityDetail(new Request(`http://localhost/api/v1/capabilities/${firstId}`), {
-      params: Promise.resolve({ id: firstId }),
-    })
+    const detailResponse = await getCapabilityDetail(
+      createRequest(`/api/v1/capabilities/${firstId}`),
+      {
+        params: Promise.resolve({ id: firstId }),
+      },
+    )
 
     expect(detailResponse.status).toBe(200)
     const detailBody = await detailResponse.json()
@@ -57,7 +72,7 @@ describe('OBJ-3 API v1', () => {
 
   it('handles participants CRUD and invalid JSON body', async () => {
     const invalidCreateResponse = await createParticipant(
-      new Request('http://localhost/api/v1/participants', {
+      createRequest('/api/v1/participants', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: '{ invalid-json',
@@ -69,7 +84,7 @@ describe('OBJ-3 API v1', () => {
     expect(invalidCreateBody.error).toMatchObject({ code: 'INVALID_JSON' })
 
     const createResponse = await createParticipant(
-      new Request('http://localhost/api/v1/participants', {
+      createRequest('/api/v1/participants', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
@@ -89,13 +104,13 @@ describe('OBJ-3 API v1', () => {
     })
     expect(createBody.error).toBeNull()
 
-    const listResponse = await getParticipants()
+    const listResponse = await getParticipants(createRequest('/api/v1/participants'))
     expect(listResponse.status).toBe(200)
     const listBody = await listResponse.json()
     expect(listBody.data).toHaveLength(1)
 
     const updateResponse = await updateParticipant(
-      new Request('http://localhost/api/v1/participants?id=participant-alpha', {
+      createRequest('/api/v1/participants?id=participant-alpha', {
         method: 'PUT',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ notes: 'updated' }),
@@ -110,7 +125,7 @@ describe('OBJ-3 API v1', () => {
     })
 
     const deleteResponse = await deleteParticipant(
-      new Request('http://localhost/api/v1/participants?id=participant-alpha', {
+      createRequest('/api/v1/participants?id=participant-alpha', {
         method: 'DELETE',
       }),
     )
@@ -125,7 +140,7 @@ describe('OBJ-3 API v1', () => {
 
   it('validates zone generation payload and returns zone file on success', async () => {
     const invalidResponse = await generateZone(
-      new Request('http://localhost/api/v1/zones/generate', {
+      createRequest('/api/v1/zones/generate', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
@@ -140,7 +155,7 @@ describe('OBJ-3 API v1', () => {
     expect(invalidBody.error).toMatchObject({ code: 'ZONE_VALIDATION_ERROR' })
 
     const successResponse = await generateZone(
-      new Request('http://localhost/api/v1/zones/generate', {
+      createRequest('/api/v1/zones/generate', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
@@ -161,7 +176,7 @@ describe('OBJ-3 API v1', () => {
   })
 
   it('serves API root and OpenAPI contract', async () => {
-    const rootResponse = await getApiRoot()
+    const rootResponse = await getApiRoot(createRequest('/api/v1'))
     expect(rootResponse.status).toBe(200)
     const rootBody = await rootResponse.json()
     expect(rootBody.data).toMatchObject({
@@ -170,7 +185,7 @@ describe('OBJ-3 API v1', () => {
     expect(rootBody.data.endpoints).toContain('/api/v1/openapi.json')
     expect(rootBody.data.endpoints).toContain('/api/v1/swagger')
 
-    const openApiResponse = await getOpenApi()
+    const openApiResponse = await getOpenApi(createRequest('/api/v1/openapi.json'))
     expect(openApiResponse.status).toBe(200)
     const openApiBody = await openApiResponse.json()
     expect(openApiBody.data).toMatchObject({
@@ -178,11 +193,73 @@ describe('OBJ-3 API v1', () => {
     })
     expect(openApiBody.data.paths).toHaveProperty('/participants')
     expect(openApiBody.data.paths).toHaveProperty('/zones/generate')
+    expect(openApiBody.data.paths).toHaveProperty('/swagger')
 
-    const swaggerResponse = await getSwaggerUi()
+    const swaggerResponse = await getSwaggerUi(createRequest('/api/v1/swagger'))
     expect(swaggerResponse.status).toBe(200)
     expect(swaggerResponse.headers.get('content-type')).toContain('text/html')
     const swaggerBody = await swaggerResponse.text()
     expect(swaggerBody).toContain('/api/v1/openapi.json')
+  })
+
+  it('sanitizes participant fields to reduce stored XSS risk', async () => {
+    const createResponse = await createParticipant(
+      createRequest('/api/v1/participants', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          id: 'participant-xss',
+          name: '<script>alert(1)</script>',
+          notes: '<img src=x onerror=alert(1)>',
+          metadata: {
+            nested: {
+              value: '<b>unsafe</b>',
+            },
+          },
+        }),
+      }),
+    )
+
+    expect(createResponse.status).toBe(201)
+    const createBody = await createResponse.json()
+    expect(createBody.data.name).toBe('&lt;script&gt;alert(1)&lt;/script&gt;')
+    expect(createBody.data.notes).toBe('&lt;img src=x onerror=alert(1)&gt;')
+    expect(createBody.data.metadata.nested.value).toBe('&lt;b&gt;unsafe&lt;/b&gt;')
+
+    const listResponse = await getParticipants(createRequest('/api/v1/participants'))
+    expect(listResponse.status).toBe(200)
+    const listBody = await listResponse.json()
+    const participant = listBody.data.find((entry: { id: string }) => entry.id === 'participant-xss')
+    expect(participant.name).toBe('&lt;script&gt;alert(1)&lt;/script&gt;')
+
+    const deleteResponse = await deleteParticipant(
+      createRequest('/api/v1/participants?id=participant-xss', {
+        method: 'DELETE',
+      }),
+    )
+    expect(deleteResponse.status).toBe(200)
+  })
+
+  it('rate limits repeated requests for same client on api-v1', async () => {
+    const limitedClientHeader = { 'x-forwarded-for': 'vitest-rate-limit-client' }
+
+    for (let index = 0; index < 60; index += 1) {
+      const response = await getApiRoot(
+        createRequest('/api/v1', {
+          headers: limitedClientHeader,
+        }),
+      )
+      expect(response.status).toBe(200)
+    }
+
+    const limitedResponse = await getApiRoot(
+      createRequest('/api/v1', {
+        headers: limitedClientHeader,
+      }),
+    )
+    expect(limitedResponse.status).toBe(429)
+    expect(limitedResponse.headers.get('Retry-After')).toBeTruthy()
+    const limitedBody = await limitedResponse.json()
+    expect(limitedBody.error).toMatchObject({ code: 'RATE_LIMITED' })
   })
 })

@@ -1,6 +1,7 @@
 import {
   apiError,
   apiSuccess,
+  enforceRateLimit,
   handleUnexpectedApiError,
   parseJsonBody,
   toValidationIssues,
@@ -15,9 +16,14 @@ import {
 export const dynamic = 'force-dynamic'
 
 export async function GET(
-  _request: Request,
+  request: Request,
   context: { params: Promise<{ id: string }> },
 ) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   try {
     const { id } = await context.params
     const participant = await getParticipantById(id)
@@ -41,6 +47,11 @@ export async function PUT(
   request: Request,
   context: { params: Promise<{ id: string }> },
 ) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   try {
     const { id } = await context.params
     const parsedBody = await parseJsonBody<unknown>(request)
@@ -75,9 +86,14 @@ export async function PUT(
 }
 
 export async function DELETE(
-  _request: Request,
+  request: Request,
   context: { params: Promise<{ id: string }> },
 ) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   try {
     const { id } = await context.params
     const deleted = await deleteParticipant(id)

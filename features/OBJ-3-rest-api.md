@@ -1,6 +1,6 @@
 # OBJ-3: REST API
 
-## Status: In Review
+## Status: Completed
 **Created:** 2026-04-03
 **Last Updated:** 2026-04-06
 
@@ -151,16 +151,22 @@ Jede Antwort folgt einem konsistenten Muster, damit UI, Tests und Betrieb gleich
 - [x] `npm run test:run` erfolgreich (`4` Files, `8` Tests).
 - [x] `npm run lint` erfolgreich.
 
-### Security Audit (Red Team) - Findings
-- [ ] **BUG-1 (Medium):** Kein erkennbares Rate Limiting auf `/api/v1/*` (Probe: `80` Requests, `0` Non-200). Risiko: DoS-/Missbrauchsfläche.
-- [ ] **BUG-2 (Low):** Script-Payload wird als Participant-Text akzeptiert und unverändert zurückgegeben (`<script>alert(1)</script>`). Risiko: Stored-XSS, falls ein UI diese Felder unsicher rendert.
+### Security Audit (Red Team) - Findings Status
+- [x] **BUG-1 (Medium) behoben:** Rate-Limiting ist fuer `/api/v1/*` aktiv (Rerun-Probe: `80` Requests, `20` Non-200 durch `429`).
+- [x] **BUG-2 (Low) behoben:** Script-Payload in Participant-Textfeldern wird im API-Output HTML-escaped zur XSS-Risikoreduktion.
+
+### QA Rerun (2026-04-06, Round 3 - Bugfix Verification)
+- [x] Runtime-Check: `POST/GET /api/v1/participants` gibt XSS-Payload escaped zurueck (z. B. `&lt;script&gt;...`).
+- [x] Runtime-Check: Rate-Limit greift fuer wiederholte Requests desselben Clients (`429` + `Retry-After`).
+- [x] Automatisierte Regression erweitert: `npm run test:run` jetzt `4` Files / `10` Tests (alle bestanden).
+- [x] `npm run lint` und `npm run build` erfolgreich.
 
 ### Summary
 - **Acceptance Criteria:** `11/11` bestanden.
-- **Bugs Found:** `2` total (`0` Critical, `0` High, `1` Medium, `1` Low).
-- **Security:** Issues found.
-- **Production Ready:** YES (keine Critical/High Findings), mit empfohlenen Security-Verbesserungen.
-- **Recommendation:** Deploy möglich, Security-Hardening zeitnah einplanen.
+- **Bugs Open:** `0` (`0` Critical, `0` High, `0` Medium, `0` Low).
+- **Security:** Pass (keine offenen Critical/High-Risiken nach Fix-Rerun).
+- **Production Ready:** YES.
+- **Recommendation:** Deploy möglich.
 
 ## Deployment
 _To be added by /deploy_

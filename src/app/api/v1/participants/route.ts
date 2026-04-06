@@ -3,6 +3,7 @@ import { ZodError } from 'zod'
 import {
   apiError,
   apiSuccess,
+  enforceRateLimit,
   handleUnexpectedApiError,
   parseJsonBody,
   toValidationIssues,
@@ -27,7 +28,12 @@ function idFromUrl(request: Request): string | null {
   return trimmed.length > 0 ? trimmed : null
 }
 
-export async function GET() {
+export async function GET(request: Request) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   try {
     const participants = await listParticipants()
     return apiSuccess(participants, {
@@ -42,6 +48,11 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   try {
     const parsedBody = await parseJsonBody<unknown>(request)
     if (!parsedBody.ok) {
@@ -75,6 +86,11 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   try {
     const parsedBody = await parseJsonBody<unknown>(request)
     if (!parsedBody.ok) {
@@ -135,6 +151,11 @@ export async function PUT(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   try {
     let id = idFromUrl(request)
 

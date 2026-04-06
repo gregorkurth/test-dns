@@ -1,6 +1,7 @@
 import {
   apiError,
   apiSuccess,
+  enforceRateLimit,
   handleUnexpectedApiError,
   parseJsonBody,
   toValidationIssues,
@@ -10,6 +11,11 @@ import { generateZoneFile, zoneGenerationSchema } from '@/lib/obj3-zone-generato
 export const dynamic = 'force-dynamic'
 
 export async function POST(request: Request) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   try {
     const parsedBody = await parseJsonBody<unknown>(request)
     if (!parsedBody.ok) {

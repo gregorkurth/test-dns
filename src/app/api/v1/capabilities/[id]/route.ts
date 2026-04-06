@@ -1,6 +1,7 @@
 import {
   apiError,
   apiSuccess,
+  enforceRateLimit,
   handleUnexpectedApiError,
 } from '@/lib/obj3-api'
 import { getCapabilityById } from '@/lib/obj3-capabilities'
@@ -8,9 +9,14 @@ import { getCapabilityById } from '@/lib/obj3-capabilities'
 export const dynamic = 'force-dynamic'
 
 export async function GET(
-  _request: Request,
+  request: Request,
   context: { params: Promise<{ id: string }> },
 ) {
+  const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
+  if (rateLimited) {
+    return rateLimited
+  }
+
   try {
     const { id } = await context.params
     const capability = await getCapabilityById(id)
