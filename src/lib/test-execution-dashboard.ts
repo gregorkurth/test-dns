@@ -489,21 +489,66 @@ function inferReleaseId(record: TestExecutionRecord): string {
   return 'RELEASE-UNASSIGNED'
 }
 
+function inferTestTypeFromPath(absolutePath: string, fallback: TestType): TestType {
+  const normalizedPath = toPosixPath(absolutePath).toLowerCase()
+  if (normalizedPath.includes('/manual/')) {
+    return 'manual'
+  }
+  if (normalizedPath.includes('/auto/')) {
+    return 'auto'
+  }
+
+  return fallback
+}
+
+function inferTestTypeFromHints(
+  absolutePath: string,
+  hints: Array<string | null | undefined>,
+  fallback: TestType,
+): TestType {
+  for (const hint of hints) {
+    if (!hint) {
+      continue
+    }
+    const normalizedHint = hint.toLowerCase()
+    if (normalizedHint.includes('manual') || normalizedHint.includes('itest')) {
+      return 'manual'
+    }
+    if (normalizedHint.includes('auto') || normalizedHint.includes('utest')) {
+      return 'auto'
+    }
+  }
+
+  return inferTestTypeFromPath(absolutePath, fallback)
+}
+
+function appendEvidenceIssue(
+  note: string | null,
+  issues: string[],
+): string | null {
+  if (issues.length === 0) {
+    return note
+  }
+
+  const issueText = `Nachweis fehlerhaft: ${issues.join('; ')}`
+  if (!note) {
+    return issueText
+  }
+
+  return `${note}; ${issueText}`
+}
+
 function parseMarkdownEvidence(
   absolutePath: string,
   content: string,
-  fileMtimeIso: string | null,
 ): TestExecutionRecord[] {
+  const evidencePath = toPosixPath(path.relative(repoRoot, absolutePath))
   const { meta, body } = parseFrontmatter(content)
   const tag = parseTag(body)
   const status =
     normalizeStatus(meta.status) ??
     normalizeStatus(meta.result) ??
     inferStatusFromMarkdownBody(body)
-
-  if (!tag || !status) {
-    return []
-  }
 
   const testId =
     cleanText(body.match(/\*\*Testfall-ID:\*\*\s*([^\n]+)/i)?.[1] ?? '') ||
@@ -531,31 +576,59 @@ function parseMarkdownEvidence(
     normalizeDate(meta.timestamp) ??
     normalizeDate(meta.date) ??
     normalizeDate(meta.datum) ??
-    inferDateFromMarkdownBody(body) ??
-    fileMtimeIso
+    inferDateFromMarkdownBody(body)
+
+  const issues: string[] = []
+  if (!tag) {
+    issues.push('fehlender OFT-Test-Tag (itest/utest)')
+  }
+  if (!status) {
+    issues.push('fehlender oder ungueltiger Status')
+  }
+  if (!executedAt) {
+    issues.push('zeitlich nicht auswertbar (fehlender/ungueltiger Zeitstempel)')
+  }
+
+  const testType = tag?.testType ?? inferTestTypeFromPath(absolutePath, 'manual')
+  const resolvedStatus: DashboardStatus = issues.length > 0 ? 'failed' : status ?? 'failed'
+  const resolvedNote = appendEvidenceIssue(note ? cleanText(note) : null, issues)
 
   return [
     {
-      testType: tag.testType,
-      tagId: tag.tagId,
+      testType,
+      tagId: tag?.tagId ?? null,
       testId,
-      status,
+      status: resolvedStatus,
       executedAt,
       runId,
       releaseId,
-      note: note ? cleanText(note) : null,
-      evidencePath: toPosixPath(path.relative(repoRoot, absolutePath)),
+      note: resolvedNote,
+      evidencePath,
       source: 'result_markdown',
     },
   ]
 }
 
 function parseJsonEvidence(absolutePath: string, content: string): TestExecutionRecord[] {
+  const evidencePath = toPosixPath(path.relative(repoRoot, absolutePath))
   let parsed: unknown
   try {
     parsed = JSON.parse(content)
   } catch {
-    return []
+    return [
+      {
+        testType: inferTestTypeFromPath(absolutePath, 'auto'),
+        tagId: null,
+        testId: null,
+        status: 'failed',
+        executedAt: null,
+        runId: null,
+        releaseId: null,
+        note: 'Nachweis fehlerhaft: JSON nicht parsebar',
+        evidencePath,
+        source: 'result_json',
+      },
+    ]
   }
 
   const records: Record<string, unknown>[] = []
@@ -596,10 +669,8 @@ function parseJsonEvidence(absolutePath: string, content: string): TestExecution
     const tag = parseTag(`\`${tagFromField}\``)
     const testType: TestType | null =
       rawType === 'manual' || rawType === 'auto' ? rawType : tag?.testType ?? null
-
-    const status = normalizeStatus(
-      String(record.status ?? record.result ?? record.outcome ?? ''),
-    )
+    const rawStatus = String(record.status ?? record.result ?? record.outcome ?? '')
+    const status = normalizeStatus(rawStatus)
     const testId =
       typeof record.testId === 'string'
         ? record.testId
@@ -608,14 +679,8 @@ function parseJsonEvidence(absolutePath: string, content: string): TestExecution
           : typeof record.name === 'string'
             ? record.name
             : null
-
-    if (!testType || !status) {
-      continue
-    }
-
-    const executedAt = normalizeDate(
-      String(record.executedAt ?? record.timestamp ?? record.date ?? ''),
-    )
+    const rawTimestamp = String(record.executedAt ?? record.timestamp ?? record.date ?? '')
+    const executedAt = normalizeDate(rawTimestamp)
     const runId =
       typeof record.runId === 'string'
         ? record.runId
@@ -635,20 +700,44 @@ function parseJsonEvidence(absolutePath: string, content: string): TestExecution
         ? record.note
         : typeof record.message === 'string'
           ? record.message
-          : typeof record.error === 'string'
-            ? record.error
-            : null
+        : typeof record.error === 'string'
+          ? record.error
+          : null
+
+    const issues: string[] = []
+    if (!testType) {
+      issues.push('fehlender oder ungueltiger Testtyp')
+    }
+    if (!status) {
+      issues.push('fehlender oder ungueltiger Status')
+    }
+    if (!executedAt) {
+      issues.push('zeitlich nicht auswertbar (fehlender/ungueltiger Zeitstempel)')
+    }
+    if (!tag && !testId) {
+      issues.push('fehlende Test-ID/OFT-Referenz')
+    }
+
+    const resolvedTestType =
+      testType ??
+      inferTestTypeFromHints(
+        absolutePath,
+        [testId, tagFromField],
+        'auto',
+      )
+    const resolvedStatus: DashboardStatus = issues.length > 0 ? 'failed' : status ?? 'failed'
+    const resolvedNote = appendEvidenceIssue(note ? cleanText(note) : null, issues)
 
     normalizedRecords.push({
-      testType,
+      testType: resolvedTestType,
       tagId: tag?.tagId ?? null,
       testId: testId ? cleanText(testId) : null,
-      status,
+      status: resolvedStatus,
       executedAt,
       runId,
       releaseId,
-      note: note ? cleanText(note) : null,
-      evidencePath: toPosixPath(path.relative(repoRoot, absolutePath)),
+      note: resolvedNote,
+      evidencePath,
       source: 'result_json',
     })
   }
@@ -676,9 +765,7 @@ async function loadEvidenceRecords(): Promise<TestExecutionRecord[]> {
     }
 
     if (filePath.endsWith('.md')) {
-      const stat = await fs.stat(filePath).catch(() => null)
-      const fileMtimeIso = stat ? stat.mtime.toISOString() : null
-      records.push(...parseMarkdownEvidence(filePath, content, fileMtimeIso))
+      records.push(...parseMarkdownEvidence(filePath, content))
       continue
     }
 
@@ -693,6 +780,9 @@ function buildRunSnapshots(entries: TestExecutionEntry[], totalTests: number): D
 
   for (const entry of entries) {
     for (const record of entry.history) {
+      if (!record.executedAt) {
+        continue
+      }
       const runId = inferRunId(record)
       const list = byRun.get(runId) ?? []
       list.push({ testKey: entry.key, record })
@@ -769,6 +859,9 @@ function buildReleaseSnapshots(entries: TestExecutionEntry[], totalTests: number
 
   for (const entry of entries) {
     for (const record of entry.history) {
+      if (!record.executedAt) {
+        continue
+      }
       const releaseId = inferReleaseId(record)
       const list = byRelease.get(releaseId) ?? []
       list.push({ testKey: entry.key, record })
@@ -923,7 +1016,13 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
 
   const tests: TestExecutionEntry[] = definitionEntries.map((entry) => {
     entry.history.sort((left, right) => compareDatesDesc(left.executedAt, right.executedAt))
-    const latest = entry.history[0] ?? null
+    const latestWithValidTimestamp =
+      entry.history.find((record) => record.executedAt !== null) ?? null
+    const latestUndatedFailure =
+      entry.history.find(
+        (record) => record.executedAt === null && record.status === 'failed',
+      ) ?? null
+    const latest = latestWithValidTimestamp ?? latestUndatedFailure ?? null
 
     return {
       ...entry,
@@ -1032,6 +1131,7 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
       'Never Executed: kein gueltiger Ausfuehrungsnachweis vorhanden.',
       'Passed: letzter gueltiger Nachweis ist erfolgreich.',
       'Failed: letzter gueltiger Nachweis ist fehlgeschlagen oder fehlerhaft.',
+      'Zeitstempel-Regel: Nachweise ohne gueltigen Zeitstempel gelten nicht als gueltiger letzter Nachweis.',
     ],
     dataSources: [
       'capabilities/**/tests/manual/*.md',

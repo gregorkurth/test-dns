@@ -109,6 +109,9 @@ function buildSnapshots(tests, mode) {
 
   for (const test of tests) {
     for (const record of test.history || []) {
+      if (!record.executedAt) {
+        continue
+      }
       const id = mode === 'run' ? normalizeRunId(record) : normalizeReleaseId(record)
       const list = buckets.get(id) ?? []
       list.push({ testKey: test.key, record })

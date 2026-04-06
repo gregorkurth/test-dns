@@ -2,7 +2,7 @@
 
 ## Status: In Review
 **Created:** 2026-04-04
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-05
 
 ## Dependencies
 - OBJ-9: Manual Test Runner (liefert manuelle Testausfuehrungen)
@@ -278,6 +278,18 @@ Der sichtbare "aktuelle Status" entsteht aus dem letzten gueltigen Nachweis pro 
 - **Security:** Issues found (Low)
 - **Production Ready:** YES (fuer internen Einsatz), mit bekannten Medium-Risiken
 - **Recommendation:** Deploy moeglich, aber BUG-1 und BUG-2 zeitnah nachziehen
+
+### Re-Test nach Bugfix (2026-04-05)
+- [x] BUG-1 geschlossen: Nicht parsebare Nachweise werden als `Failed` mit Hinweis `Nachweis fehlerhaft` sichtbar.
+- [x] BUG-2 geschlossen: Nachweise ohne gueltigen Zeitstempel zaehlen nicht mehr als gueltiger letzter Nachweis; Hinweis `zeitlich nicht auswertbar` wird gesetzt.
+- [x] BUG-3 geschlossen: API-Rate-Limiter aktiv (60 Requests/Minute je Client, danach HTTP 429 mit `Retry-After`).
+
+### Re-Test Summary
+- **Acceptance Criteria:** 13/13 passed
+- **Open Bugs:** 0 (0 Critical, 0 High, 0 Medium, 0 Low)
+- **Security:** Pass (Rate-Limiting vorhanden)
+- **Production Ready:** YES
+- **Recommendation:** Bereit fuer den naechsten Deploy-Schritt
 
 ## Deployment
 _To be added by /deploy_
