@@ -204,8 +204,8 @@ Mehr dazu:
 
 So haengt alles zusammen:
 
-1. PRD
-   sagt, warum das Produkt existiert
+1. SVC
+   sagt, warum der Service existiert
 
 2. Feature
    sagt, was ein Arbeitspaket liefern soll

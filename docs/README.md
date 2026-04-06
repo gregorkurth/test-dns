@@ -17,15 +17,15 @@ Diese Dokumentation ist absichtlich einfach geschrieben.
 Sie ist fuer:
 - Projektleiter
 - Manager
-- Product Owner
+- Service Owner
 - Tester
 - Architekten
 - Entwickler
 
 ## Die 6 wichtigsten Orte
 
-1. `docs/PRD.md`
-   Hier steht, was das Produkt insgesamt erreichen soll.
+1. `docs/SVC.md`
+   Hier steht, was der Service insgesamt erreichen soll.
 
 2. `features/INDEX.md`
    Hier sieht man alle Features und ihren Status.
@@ -58,7 +58,7 @@ Wenn ein neues Thema kommt, beginne hier:
 Nichts ist "nur im Kopf".
 
 Wenn etwas wichtig ist, muss es an mindestens einem dieser Orte stehen:
-- PRD
+- SVC
 - Feature-Spec
 - Requirement
 - Testfall
@@ -71,7 +71,7 @@ Wenn etwas wichtig ist, muss es an mindestens einem dieser Orte stehen:
 
 | Frage | Datei / Ordner |
 |------|-----------------|
-| Warum bauen wir das? | `docs/PRD.md` |
+| Warum bauen wir das? | `docs/SVC.md` |
 | Was ist das naechste Feature? | `features/INDEX.md` |
 | Was soll ein Feature genau koennen? | `features/OBJ-*.md` |
 | Welche fachliche Anforderung gilt genau? | `capabilities/**/requirements/*.md` |
@@ -87,7 +87,7 @@ Wenn etwas wichtig ist, muss es an mindestens einem dieser Orte stehen:
 Man kann sich das Repo wie 5 Schubladen merken:
 
 1. Idee
-   `docs/PRD.md`
+   `docs/SVC.md`
 
 2. Arbeitspaket
    `features/OBJ-*.md`
@@ -104,7 +104,7 @@ Man kann sich das Repo wie 5 Schubladen merken:
 ## Pflicht bei jeder Aenderung
 
 Wenn ein Feature oder Requirement neu ist oder sich aendert, dann muss jemand pruefen:
-- Muss das PRD angepasst werden?
+- Muss das SVC angepasst werden?
 - Muss ein Feature angepasst oder neu angelegt werden?
 - Muss ein Requirement angepasst oder neu angelegt werden?
 - Muss ein Testfall angepasst oder neu angelegt werden?

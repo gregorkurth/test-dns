@@ -21,6 +21,6 @@ Hier stehen die wichtigsten Qualitaetsziele der Applikation.
 
 ## Quelle im Repo
 
-- `docs/PRD.md`
+- `docs/SVC.md`
 - `features/OBJ-17-sbom-security-scanning.md`
 - `features/OBJ-22-release-artefaktpruefung-publish-gate.md`

@@ -21,7 +21,7 @@ Hier stehen feste Regeln, an die wir uns halten muessen.
 
 ## Quelle im Repo
 
-- `docs/PRD.md`
+- `docs/SVC.md`
 - `features/OBJ-14-release-management.md`
 - `features/OBJ-19-zarf-paket-offline-weitergabe.md`
 - `features/OBJ-21-gitops-argocd.md`

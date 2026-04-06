@@ -9,18 +9,18 @@ Hier steht in einfachen Worten:
 
 ## Was hier hinein gehoert
 
-- kurze Produktbeschreibung
+- kurze Servicebeschreibung
 - wichtigste Stakeholder
 - Hauptziele
 - Erfolgsbild
 
 ## Wann pflegen?
 
-- bei Aenderungen im Produktziel
+- bei Aenderungen im Serviceziel
 - bei neuen Stakeholdern
 - bei geaendertem Nutzenversprechen
 
 ## Quelle im Repo
 
-- `docs/PRD.md`
+- `docs/SVC.md`
 - `features/INDEX.md`

@@ -6,7 +6,7 @@
 
 | Level | Name | Kriterien | Nachweis |
 |-------|------|-----------|---------|
-| **L0** | Idea | Konzept dokumentiert, PRD vorhanden | PRD.md, Capability README |
+| **L0** | Idea | Konzept dokumentiert, SVC vorhanden | docs/SVC.md, Capability README |
 | **L1** | PoC | Lokaler Testlauf möglich, Grundfunktionalität demonstriert | {{L1_NACHWEIS}} |
 | **L2** | Functional Prototype | Deployment in Testumgebung, alle Kern-SFNs erfüllt | {{L2_NACHWEIS}} |
 | **L3** | Platform Ready | Kubernetes-Deployment, GitOps aktiv, Tests grün | {{L3_NACHWEIS}} |
@@ -16,7 +16,7 @@
 ## Aktueller Status
 
 ```
-L0 [✓] IDEA           {{DATUM}}  PRD + Capability-Struktur erstellt
+L0 [✓] IDEA           {{DATUM}}  SVC + Capability-Struktur erstellt
 L1 [ ] POC             -          Ausstehend
 L2 [ ] FUNCTIONAL      -          Ausstehend
 L3 [ ] PLATFORM READY  -          Ausstehend

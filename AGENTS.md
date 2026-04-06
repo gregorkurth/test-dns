@@ -23,7 +23,7 @@ src/
 features/           Feature specifications (OBJ-X-name.md)
   INDEX.md          Feature status overview
 docs/
-  PRD.md            Product Requirements Document
+  SVC.md            Service Vision & Scope
   production/       Production guides (Sentry, security, performance)
 ```
 
@@ -57,9 +57,9 @@ npm run lint       # ESLint
 npm run start      # Production server
 ```
 
-## Product Context
+## Service Context
 
-@docs/PRD.md
+@docs/SVC.md
 
 ## Feature Overview
 

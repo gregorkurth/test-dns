@@ -24,7 +24,7 @@ arc42 ist gut fuer dieses Repo, weil:
 
 | Kapitel | Datei | Wann aktualisieren? |
 |--------|-------|---------------------|
-| 1. Einfuehrung und Ziele | `01-introduction-and-goals.md` | wenn sich Produktziel oder Stakeholder aendern |
+| 1. Einfuehrung und Ziele | `01-introduction-and-goals.md` | wenn sich Serviceziel oder Stakeholder aendern |
 | 2. Randbedingungen | `02-constraints.md` | bei neuen Rahmenbedingungen, Vorgaben, Airgap, Security, Compliance |
 | 3. Kontextabgrenzung | `03-context-and-scope.md` | bei neuen Umsystemen, Schnittstellen, Rollen |
 | 4. Loesungsstrategie | `04-solution-strategy.md` | wenn sich Grundansatz oder Leitentscheidungen aendern |

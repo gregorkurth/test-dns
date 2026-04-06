@@ -67,4 +67,4 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 
 ---
 
-Hinweis: `docs/PRD.md` bleibt aus Kompatibilitaetsgruenden bestehen; `docs/SVC.md` ist die bevorzugte Management-Referenz.
+_Zuletzt aktualisiert: 2026-04-06_

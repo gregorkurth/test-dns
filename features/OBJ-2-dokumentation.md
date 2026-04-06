@@ -66,8 +66,8 @@ OBJ-2 bildet das Dokumentations-Backbone des Projekts:
 
 ```
 Repository Documentation
-+-- Produkt- und Roadmap-Sicht
-|   +-- PRD
++-- Service- und Roadmap-Sicht
+|   +-- SVC
 |   +-- Feature Index
 +-- Feature- und Requirement-Sicht
 |   +-- Feature-Specs (OBJ)

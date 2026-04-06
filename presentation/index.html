@@ -467,7 +467,7 @@
       </div>
       <div class="agenda-item">
         <div class="agenda-num">3</div>
-        <div><div class="agenda-text">Docs – Single Source of Truth</div><div class="agenda-sub">PRD, Capabilities, Features, Production-Guides</div></div>
+        <div><div class="agenda-text">Docs – Single Source of Truth</div><div class="agenda-sub">SVC, Capabilities, Features, Production-Guides</div></div>
       </div>
       <div class="agenda-item">
         <div class="agenda-num" style="background:var(--green)">4</div>
@@ -500,7 +500,7 @@
 └── <span class="yellow">OBJ-5-export-download.md</span>
 
 <span class="dir">docs/</span>
-└── <span class="highlight">PRD.md</span>           <span class="comment">← Produkt-Vision</span>
+└── <span class="highlight">SVC.md</span>           <span class="comment">← Service-Vision</span>
 
 <span class="dir">capabilities/</span>
 └── <span class="highlight">INDEX.md</span>         <span class="comment">← Technische CAPs</span>
@@ -827,7 +827,7 @@ def test_sreq_234_mission_tld():
     <div class="grid-2" style="align-items:start">
       <div class="code-block">
 <span class="dir">docs/</span>
-├── <span class="highlight">PRD.md</span>            <span class="comment">← Vision, Roadmap, Zielgruppe</span>
+├── <span class="highlight">SVC.md</span>            <span class="comment">← Vision, Roadmap, Zielgruppe</span>
 └── <span class="dir">production/</span>
     ├── monitoring.md
     ├── security.md
@@ -847,7 +847,7 @@ def test_sreq_234_mission_tld():
       <div style="display:flex;flex-direction:column;gap:12px">
         <table>
           <tr><th>Dokument</th><th>Inhalt</th><th>Autor</th></tr>
-          <tr><td><code>docs/PRD.md</code></td><td>Vision, Warum, Zielgruppe, Roadmap</td><td>Product Owner</td></tr>
+          <tr><td><code>docs/SVC.md</code></td><td>Vision, Warum, Zielgruppe, Roadmap</td><td>Service Owner</td></tr>
           <tr><td><code>features/INDEX.md</code></td><td>Status aller Objects</td><td>Auto (Skills)</td></tr>
           <tr><td><code>features/OBJ-X.md</code></td><td>User Stories, AC, Edge Cases, Design</td><td>Engineer</td></tr>
           <tr><td><code>capabilities/*/README.md</code></td><td>Technische CAP-Spezifikation</td><td>RE/Architect</td></tr>
@@ -983,7 +983,7 @@ def test_sreq_234_mission_tld():
         <div class="mapping-row">
           <div class="mapping-left">🏔️ <strong>Epic</strong> – Strategisches Thema</div>
           <div class="mapping-arrow">→</div>
-          <div class="mapping-right"><code>docs/PRD.md</code> <span class="mapping-note">Vision + Roadmap</span></div>
+          <div class="mapping-right"><code>docs/SVC.md</code> <span class="mapping-note">Vision + Roadmap</span></div>
         </div>
         <div class="mapping-row">
           <div class="mapping-left">📦 <strong>Feature</strong> – Lieferbare Funktionalität</div>
@@ -1108,7 +1108,7 @@ def test_sreq_234_mission_tld():
           <div style="font-size:13px;color:var(--green);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px">📚 Single Source of Truth</div>
           <ul class="styled" style="font-size:14px;gap:6px">
             <li>Alles im Git-Repo – keine parallelen Dokumente</li>
-            <li>PRD → Feature → Capability → Requirement → Test</li>
+            <li>SVC → Feature → Capability → Requirement → Test</li>
             <li>Airgapped: kein Cloud, kein Confluence</li>
           </ul>
         </div>

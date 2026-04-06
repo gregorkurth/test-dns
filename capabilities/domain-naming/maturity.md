@@ -6,7 +6,7 @@
 
 | Level | Name | Kriterien | Nachweis |
 |-------|------|-----------|---------|
-| **L0** | Idea | Konzept dokumentiert, PRD vorhanden | PRD.md, Capability README |
+| **L0** | Idea | Konzept dokumentiert, SVC vorhanden | docs/SVC.md, Capability README |
 | **L1** | PoC | Lokaler Testlauf möglich, Grundfunktionalität demonstriert | Lokaler BIND9-Test mit core.ndp.che |
 | **L2** | Functional Prototype | Deployment in Testumgebung, alle Kern-SFNs erfüllt | BIND9 + Anycast in Testumgebung |
 | **L3** | Platform Ready | Kubernetes-Deployment, GitOps aktiv, Tests grün | Helm Chart, CI/CD Pipeline |
@@ -16,7 +16,7 @@
 ## Aktueller Status
 
 ```
-L0 [✓] IDEA           2026-03-16  PRD + Capability-Struktur erstellt
+L0 [✓] IDEA           2026-03-16  SVC + Capability-Struktur erstellt
 L1 [ ] POC             -          Ausstehend
 L2 [ ] FUNCTIONAL      -          Ausstehend
 L3 [ ] PLATFORM READY  -          Ausstehend

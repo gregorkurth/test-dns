@@ -20,7 +20,7 @@ Darum gilt:
 ## Was wird exportiert?
 
 Diese Inhalte sind fuer Confluence geeignet:
-- `docs/PRD.md`
+- `docs/SVC.md`
 - `features/INDEX.md`
 - wichtige `features/OBJ-*.md`
 - `docs/adr/*.md`
@@ -59,7 +59,7 @@ Nach einem Release:
 - Release-relevante Features exportieren
 - neue ADRs exportieren
 - alle geaenderten arc42-Kapitel exportieren
-- falls noetig PRD- oder Statusseiten exportieren
+- falls noetig SVC- oder Statusseiten exportieren
 
 ## Schritt-fuer-Schritt Export
 
@@ -74,7 +74,7 @@ Nach einem Release:
 
 ## Export-Checkliste
 
-- [ ] PRD betroffen?
+- [ ] SVC betroffen?
 - [ ] Feature betroffen?
 - [ ] Requirement betroffen?
 - [ ] Testnachweis betroffen?

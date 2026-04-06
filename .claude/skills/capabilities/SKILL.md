@@ -84,7 +84,7 @@ Alle beitragenden MN-Teilnehmer müssen konsistente Zeitstempel verwenden.
 
 1. `capabilities/INDEX.md` lesen um bestehende Capabilities und die nächste CAP-ID zu kennen
 2. Falls `capabilities/INDEX.md` noch nicht existiert: wird neu erstellt
-3. `docs/PRD.md` lesen um den Projektkontext zu verstehen
+3. `docs/SVC.md` lesen um den Projektkontext zu verstehen
 
 ---
 

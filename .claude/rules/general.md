@@ -2,7 +2,7 @@
 
 ## New Project Detection (MANDATORY)
 Before starting ANY work, check if the project has been initialized:
-1. Read `docs/PRD.md` - if it still contains placeholder text like "_Describe what you are building_", the project is NOT initialized
+1. Read `docs/SVC.md` - if it still contains placeholder text like "_Describe what you are building_", the project is NOT initialized
 2. Read `features/INDEX.md` - if the features table is empty, no features have been defined
 
 **If the project is not initialized:**

@@ -6,7 +6,7 @@
 
 | Level | Name | Kriterien | Nachweis |
 |-------|------|-----------|---------|
-| **L0** | Idea | Konzept dokumentiert, PRD vorhanden | PRD.md, Capability README |
+| **L0** | Idea | Konzept dokumentiert, SVC vorhanden | docs/SVC.md, Capability README |
 | **L1** | PoC | Lokaler K8s-Cluster (kind/minikube), App startet als Pod | Deployment-Manifest, kubectl-Ausgabe |
 | **L2** | Functional Prototype | Alle Manifeste (Deployment, Service, Ingress, ConfigMap) funktional | Test in Testcluster, alle Pods running |
 | **L3** | Platform Ready | Kustomize-Overlays, Operator-CRD installierbar, GitOps-ready | CI-Pipeline deployt, Operator reconcilt |
@@ -16,7 +16,7 @@
 ## Aktueller Status
 
 ```
-L0 [✓] IDEA           2026-04-03  PRD + Capability-Struktur erstellt
+L0 [✓] IDEA           2026-04-03  SVC + Capability-Struktur erstellt
 L1 [ ] POC             -          Ausstehend
 L2 [ ] FUNCTIONAL      -          Ausstehend
 L3 [ ] PLATFORM READY  -          Ausstehend

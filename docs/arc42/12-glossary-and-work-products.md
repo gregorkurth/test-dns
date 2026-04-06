@@ -15,7 +15,7 @@ Hier sammeln wir Begriffe und wichtige Arbeitsprodukte.
 
 | Arbeitsprodukt | Ort im Repo |
 |---------------|-------------|
-| PRD | `docs/PRD.md` |
+| SVC | `docs/SVC.md` |
 | Feature-Liste | `features/INDEX.md` |
 | Feature-Spec | `features/OBJ-*.md` |
 | Requirement | `capabilities/**/requirements/*.md` |

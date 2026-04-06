@@ -30,7 +30,7 @@ Wenn etwas nur in Confluence steht, gilt es nicht als abgeschlossen.
 - Datum: YYYY-MM-DD
 - Anlass: Feature-Abschluss | Release | ADR | arc42-Update
 - Umfang:
-  - docs/PRD.md
+  - docs/SVC.md
   - features/OBJ-XX-....
   - docs/adr/00XX-....
   - docs/arc42/0X-....md
