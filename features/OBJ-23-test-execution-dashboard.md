@@ -1,6 +1,6 @@
 # OBJ-23: Test Execution Dashboard
 
-## Status: In Review
+## Status: Completed
 **Created:** 2026-04-04
 **Last Updated:** 2026-04-06
 
@@ -306,4 +306,4 @@ Der sichtbare "aktuelle Status" entsteht aus dem letzten gueltigen Nachweis pro 
 - **Hinweis Testumgebung:** Browser-/Viewport-Pruefung erfolgte technisch ueber responsive Klassen/Media-Queries und HTML-Render-Check im lokalen QA-Setup; kein nativer Multi-Browser-GUI-Durchlauf im CLI.
 
 ## Deployment
-_To be added by /deploy_
+Feature in Git abgeschlossen und nach `main` ueberfuehrt.
