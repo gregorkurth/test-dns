@@ -17,16 +17,16 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 
 | Phase | Priority | Feature | Status |
 |-------|----------|---------|--------|
-| 1 – Infrastruktur | P1 | OBJ-1: CI/CD Pipeline | Planned |
-| 1 – Infrastruktur | P1 | OBJ-2: Dokumentation | Planned |
+| 1 – Infrastruktur | P1 | OBJ-1: CI/CD Pipeline | In Progress |
+| 1 – Infrastruktur | P1 | OBJ-2: Dokumentation | In Progress |
 | 2 – API-Fundament | P1 | OBJ-3: REST API | In Progress |
-| 3 – P0 MVP | P0 | OBJ-4: Capabilities Dashboard | Planned |
+| 3 – P0 MVP | P0 | OBJ-4: Capabilities Dashboard | Completed |
 | 3 – P0 MVP | P0 | OBJ-5: Participant Configuration Form | Planned |
 | 3 – P0 MVP | P0 | OBJ-6: DNS Zone File Generator | Planned |
 | 4 – P1 DNS | P1 | OBJ-7: Requirements Traceability View | Planned |
 | 4 – P1 DNS | P1 | OBJ-8: Export & Download | Planned |
 | 4 – P1 DNS | P1 | OBJ-9: Manual Test Runner | Planned |
-| 4 – P1 DNS | P1 | OBJ-23: Test Execution Dashboard | In Review |
+| 4 – P1 DNS | P1 | OBJ-23: Test Execution Dashboard | Completed |
 | 5 – Plattform | P1 | OBJ-10: Kubernetes Deployment | Planned |
 | 5 – Plattform | P1 | OBJ-11: Monitoring & Observability (OpenTelemetry) | Planned |
 | 5 – Plattform | P1 | OBJ-12: Security & Authentifizierung | Planned |

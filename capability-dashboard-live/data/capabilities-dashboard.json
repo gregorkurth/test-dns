@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T10:06:01.059Z",
+  "generatedAt": "2026-04-06T10:04:46.139Z",
   "sourceRoot": "capabilities/",
   "sourceIndex": "capabilities/INDEX.md",
   "supportedSourceTypes": [
@@ -17,7 +17,7 @@
     "capabilityCount": 9,
     "serviceCount": 17,
     "serviceFunctionCount": 34,
-    "requirementCount": 124
+    "requirementCount": 127
   },
   "capabilities": [
     {
@@ -2031,6 +2031,51 @@
                   "serviceId": "SVC-DOC-MAT",
                   "serviceFunctionId": "SFN-DOC-004",
                   "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-004-testing-concept/requirements/RDTS-609.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-MAT:SFN-DOC-004:RDTS-610",
+                  "kind": "requirement",
+                  "id": "RDTS-610",
+                  "title": "Statuslogik fuer Testausfuehrungen verbindlich",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Die Statuslogik fuer Testausfuehrungen ist fachlich einheitlich definiert und dokumentiert. Zulässige Status sind Passed, Failed und Never Executed. Der aktuelle Status eines Testfalls wird durch den letzten gueltigen Nachweis bestimmt.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-MAT",
+                  "serviceFunctionId": "SFN-DOC-004",
+                  "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-004-testing-concept/requirements/RDTS-610.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-MAT:SFN-DOC-004:RDTS-611",
+                  "kind": "requirement",
+                  "id": "RDTS-611",
+                  "title": "Run- und Release-Snapshots mit OFT-Traceability",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Der Teststand wird sowohl pro Test-Run als auch pro Release als Snapshot dokumentiert. Jeder Snapshot ist auf Testnachweise und Requirement-Bezuege rueckfuehrbar. OFT/OpenFastTrace-kompatible Tags und Covers-Verknuepfungen werden fuer die Nachvollziehbarkeit verwendet.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-MAT",
+                  "serviceFunctionId": "SFN-DOC-004",
+                  "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-004-testing-concept/requirements/RDTS-611.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-MAT:SFN-DOC-004:RDTS-612",
+                  "kind": "requirement",
+                  "id": "RDTS-612",
+                  "title": "Pro-OBJ-Teststatussicht fuer Management",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Das Test-Execution-Dashboard muss den Teststatus je OBJ-ID (Passed, Failed, Never Executed, Gesamt) ausweisen. Die Sicht muss fuer Nicht-Entwickler lesbar sein und eine Filterung nach OBJ erlauben. Die OBJ-Zuordnung wird versioniert aus dem Capability-zu-Feature-Mapping im Repository abgeleitet.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-MAT",
+                  "serviceFunctionId": "SFN-DOC-004",
+                  "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-004-testing-concept/requirements/RDTS-612.md"
                 }
               ]
             }

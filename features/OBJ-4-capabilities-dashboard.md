@@ -1,8 +1,8 @@
 # OBJ-4: Capabilities Dashboard
 
-## Status: In Review
+## Status: Completed
 **Created:** 2026-03-17
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-06
 
 ## Dependencies
 - OBJ-3: REST API (liefert Capability-Daten vertraglich und versioniert)
@@ -116,9 +116,17 @@ Die Filter arbeiten auf Requirement-Ebene, beeinflussen aber die sichtbare Bauma
 
 ## QA Test Results
 
-**Tested:** 2026-04-04
+**Tested:** 2026-04-06
 **App URL:** `capability-dashboard-live/index.html` (Live Server, z. B. `http://127.0.0.1:5500/capability-dashboard-live/index.html`)
 **Tester:** QA Engineer (AI)
+
+### Abschluss-Re-Check (2026-04-06)
+- [x] `npm run build:obj4-live-data` erfolgreich (Daten neu erzeugt, `9` Capabilities / `17` Services / `34` SFNs / `127` Requirements).
+- [x] `node --check capability-dashboard-live/app.js` erfolgreich.
+- [x] `node --check scripts/build-obj4-live-data.mjs` erfolgreich.
+- [x] `npm run lint` erfolgreich.
+- [x] `npm run test:run` erfolgreich (`1` Testdatei, `1` Test bestanden).
+- [x] `npm run build` erfolgreich.
 
 ### Re-Test nach Fix 1 und Fix 2 (2026-04-04)
 - [x] Fix 1 verifiziert: Build-Skript bricht ohne `capabilities/INDEX.md` deterministisch ab und schreibt `sourceIndex` in das exportierte JSON.
@@ -151,7 +159,7 @@ Die Filter arbeiten auf Requirement-Ebene, beeinflussen aber die sichtbare Bauma
 - [x] Keine externen API-Calls; Daten werden lokal aus `./data/capabilities-dashboard.json` geladen.
 
 #### AC-8: Build-time Datenladung aus `capabilities/`
-- [x] Build-Skript `npm run build:obj4-live-data` erzeugt Daten erfolgreich (`9` Capabilities, `124` Requirements).
+- [x] Build-Skript `npm run build:obj4-live-data` erzeugt Daten erfolgreich (`9` Capabilities, `127` Requirements).
 
 #### AC-9: Start via VS Code Live Server ohne `npm run dev`
 - [x] Statische Struktur mit `index.html`, `app.js`, `styles.css` und Datenfile vorhanden; fuer Live Server geeignet.
@@ -164,7 +172,7 @@ Die Filter arbeiten auf Requirement-Ebene, beeinflussen aber die sichtbare Bauma
 
 #### EC-2: Requirement ohne Uebersetzung
 - [x] Fallback-Text vorhanden ("Keine deutsche Uebersetzung vorhanden.").
-- [x] Datenseitig validiert: `78` Requirements ohne deutsche Uebersetzung vorhanden.
+- [x] Datenseitig validiert: `81` Requirements ohne deutsche Uebersetzung vorhanden.
 
 #### EC-3: Fehlende Capabilities-Daten
 - [x] Fehlerzustand vorhanden: "Capabilities-Daten nicht gefunden."
@@ -172,7 +180,7 @@ Die Filter arbeiten auf Requirement-Ebene, beeinflussen aber die sichtbare Bauma
 
 #### EC-4: Sehr lange Requirement-Texte mit Toggle
 - [x] "Mehr anzeigen/Weniger anzeigen" ist implementiert.
-- [x] Hinweis: Aktuelle Daten enthalten keine Texte > 360 Zeichen (`0` Treffer), daher nur codebasiert verifiziert.
+- [x] Datenseitig validiert: `5` Texte > 360 Zeichen vorhanden; Toggle-Verhalten ist reproduzierbar.
 
 ### Security Audit Results
 - [x] Authentifizierung: Nicht anwendbar (read-only Dashboard ohne Login).
