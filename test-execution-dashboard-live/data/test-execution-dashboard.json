@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-06T15:42:35.874Z",
+  "generatedAt": "2026-04-06T15:46:46.520Z",
   "summary": {
     "totalTests": 218,
     "passed": 10,
@@ -5392,8 +5392,8 @@
             "OBJ-23"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.662Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.318Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5401,8 +5401,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.662Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.318Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5430,8 +5430,8 @@
             "OBJ-3"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.739Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.397Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5439,8 +5439,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.397Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5468,8 +5468,8 @@
             "OBJ-23"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.662Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.318Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5477,8 +5477,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.662Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.318Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5506,8 +5506,8 @@
             "OBJ-9"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.676Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.332Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5515,8 +5515,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.676Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.332Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5544,8 +5544,8 @@
             "OBJ-23"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.753Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.410Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5553,8 +5553,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.753Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.410Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5582,8 +5582,8 @@
             "OBJ-3"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.739Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.397Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5591,8 +5591,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.397Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5620,8 +5620,8 @@
             "OBJ-3"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.739Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.397Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5629,8 +5629,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.397Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5658,8 +5658,8 @@
             "OBJ-3"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.739Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.397Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5667,8 +5667,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.397Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5696,8 +5696,8 @@
             "OBJ-3"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.739Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.397Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5705,8 +5705,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.397Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5734,8 +5734,8 @@
             "OBJ-3"
           ],
           "status": "passed",
-          "executedAt": "2026-04-06T15:41:29.739Z",
-          "runId": "LOCAL-20260406-154129",
+          "executedAt": "2026-04-06T15:42:36.397Z",
+          "runId": "LOCAL-20260406-154236",
           "releaseId": "RELEASE-UNASSIGNED",
           "note": null,
           "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -5743,8 +5743,8 @@
         }
       ],
       "status": "passed",
-      "lastExecutedAt": "2026-04-06T15:41:29.739Z",
-      "lastRunId": "LOCAL-20260406-154129",
+      "lastExecutedAt": "2026-04-06T15:42:36.397Z",
+      "lastRunId": "LOCAL-20260406-154236",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
       "lastEvidencePath": "tests/executions/vitest-report.latest.json"
@@ -5752,8 +5752,8 @@
   ],
   "runSnapshots": [
     {
-      "id": "LOCAL-20260406-154129",
-      "lastExecutedAt": "2026-04-06T15:41:29.753Z",
+      "id": "LOCAL-20260406-154236",
+      "lastExecutedAt": "2026-04-06T15:42:36.410Z",
       "totalTests": 218,
       "passed": 10,
       "failed": 0,
@@ -5765,7 +5765,7 @@
   "releaseSnapshots": [
     {
       "id": "RELEASE-UNASSIGNED",
-      "lastExecutedAt": "2026-04-06T15:41:29.753Z",
+      "lastExecutedAt": "2026-04-06T15:42:36.410Z",
       "totalTests": 218,
       "passed": 10,
       "failed": 0,

@@ -1,6 +1,6 @@
 # Validation Matrix (Repo-Testnachweis)
 
-**Generiert am:** 2026-04-06T15:42:35.879Z
+**Generiert am:** 2026-04-06T15:46:46.524Z
 **Commit:** local
 **Quelle:** Git Repository (Single Source of Truth)
 
@@ -21,14 +21,14 @@
 |---|---|---|---|---|---|---|---|
 | OBJ-1 | CI/CD Pipeline | In Progress | Nein | - | 24/0/0/24 | - | Teilweise validiert |
 | OBJ-2 | Dokumentation | In Progress | Nein | - | 24/0/0/24 | - | Teilweise validiert |
-| OBJ-3 | REST API | Completed | Ja (2026-04-06) | YES | 6/6/0/0 | 2026-04-06T15:41:29Z | Validiert |
+| OBJ-3 | REST API | Completed | Ja (2026-04-06) | YES | 6/6/0/0 | 2026-04-06T15:42:36Z | Validiert |
 | OBJ-4 | Capabilities Dashboard | Completed | Ja (2026-04-06) | YES | 92/0/0/92 | - | Teilweise validiert |
 | OBJ-5 | Participant Configuration Form | Planned | Nein | - | 92/0/0/92 | - | Teilweise validiert |
 | OBJ-6 | DNS Zone File Generator | Planned | Nein | - | 92/0/0/92 | - | Teilweise validiert |
 | OBJ-7 | Requirements Traceability View | Planned | Nein | - | 92/0/0/92 | - | Teilweise validiert |
 | OBJ-8 | Export & Download | Planned | Nein | - | 92/0/0/92 | - | Teilweise validiert |
-| OBJ-9 | Manual Test Runner | Planned | Nein | - | 1/1/0/0 | 2026-04-06T15:41:29Z | In Arbeit |
-| OBJ-23 | Test Execution Dashboard | Completed | Ja (2026-04-04) | YES | 27/3/0/24 | 2026-04-06T15:41:29Z | Teilweise validiert |
+| OBJ-9 | Manual Test Runner | Planned | Nein | - | 1/1/0/0 | 2026-04-06T15:42:36Z | In Arbeit |
+| OBJ-23 | Test Execution Dashboard | Completed | Ja (2026-04-04) | YES | 27/3/0/24 | 2026-04-06T15:42:36Z | Teilweise validiert |
 | OBJ-10 | Kubernetes Deployment | Planned | Nein | - | 24/0/0/24 | - | Teilweise validiert |
 | OBJ-11 | Monitoring & Observability (OpenTelemetry) | Planned | Nein | - | 16/0/0/16 | - | Teilweise validiert |
 | OBJ-12 | Security & Authentifizierung | Planned | Nein | - | 20/0/0/20 | - | Teilweise validiert |
