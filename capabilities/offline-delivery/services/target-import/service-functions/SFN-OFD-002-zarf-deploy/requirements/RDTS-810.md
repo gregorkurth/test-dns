@@ -1,4 +1,4 @@
-# Requirement: RDTS-807
+# Requirement: RDTS-810
 
 > **Typ:** [ARCH] Architektur-Anforderung
 > **Priorität:** 🟥 MUSS
@@ -7,9 +7,10 @@
 
 ## Anforderungstext
 
-Ziel-spezifische Parameter (Registry-URL, Ingress-Hostname, Namespace, Gitea-Projektnamen fuer Release und Konfiguration) sind via Zarf-Variables oder deklarative Zielkonfiguration konfigurierbar.
+Nach dem Transfer wird der deploybare Release-Stand in ein lokales Gitea-Release-Projekt importiert; zusaetzlich ist ein separates Gitea-Konfigurationsprojekt fuer Parameter, Helm Values und Overlays bereitzustellen.
 
 ## Verknüpfte Features
 
 - OBJ-20: Zielumgebung / Import / Rehydrierung
+- OBJ-21: GitOps / Argo CD / App-of-Apps
 - OBJ-19: Zarf-Paket / Offline-Weitergabe

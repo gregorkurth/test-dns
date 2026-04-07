@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Die Security & Access Control Capability stellt sicher, dass die DNS-Konfigurations-App authentifizierte und autorisierte Zugriffe erzwingt. Sie umfasst OIDC-basierte Authentifizierung (Keycloak-kompatibel), ein RBAC-Rollenmodell, sicheres Secrets-Management und Audit-Logging für sicherheitsrelevante Ereignisse.
+Die Security & Access Control Capability stellt sicher, dass die DNS-Konfigurations-App authentifizierte und autorisierte Zugriffe erzwingt. Sie umfasst OIDC-basierte Authentifizierung (Keycloak-kompatibel), ein RBAC-Rollenmodell, sicheres Secrets-Management, Zero-Trust-Netzwerkprinzipien (Cilium inkl. mTLS), Policy-as-Code mit OPA, Netzwerktransparenz ueber Hubble und Audit-/Runtime-Logging fuer sicherheitsrelevante Ereignisse (inkl. Tetragon-Events).
 
 ---
 
@@ -38,7 +38,7 @@ Die Security & Access Control Capability stellt sicher, dass die DNS-Konfigurati
 | DPD-ID | Abhängigkeit | Typ | Beschreibung |
 |--------|-------------|-----|-------------|
 | DPD-SEC-001 | CAP-002 Kubernetes Platform | Voraussetzung | K8s Secrets benötigen Cluster |
-| DPD-SEC-002 | OBJ-8 REST API | Voraussetzung | API-Endpunkte müssen geschützt werden |
+| DPD-SEC-002 | OBJ-3 REST API | Voraussetzung | API-Endpunkte müssen geschützt werden |
 | DPD-SEC-003 | CAP-003 Observability | Nutzer | Audit-Logs fliessen in OTel |
 
 ---

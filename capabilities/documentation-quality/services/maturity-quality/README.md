@@ -2,13 +2,13 @@
 
 > **Service ID:** SVC-DOC-MAT
 > **Capability:** Documentation & Quality (CAP-006)
-> **Quelldokument:** App-Template-Anweisung, Abschnitte 8 und 13
+> **Quelldokument:** App-Template-Anweisung, Abschnitte 8, 13 und 17
 
 ---
 
 ## Beschreibung
 
-Der Maturity & Quality Service stellt den Maturitätsstatus der App transparent dar und definiert das Testing-Konzept. Der Maturitätsstatus wird idealerweise automatisch aus Feature-Status und Testergebnissen abgeleitet.
+Der Maturity & Quality Service stellt den Maturitätsstatus der App transparent dar und definiert das Testing-Konzept. Der Maturitätsstatus wird idealerweise automatisch aus Feature-Status und Testergebnissen abgeleitet. Dazu gehoert auch die klare Kennzeichnung des Release-Kanals je Feature (Released/GA, Beta, Preview/Experimental) im GUI.
 
 ---
 
@@ -25,4 +25,5 @@ Der Maturity & Quality Service stellt den Maturitätsstatus der App transparent 
 
 - App-Template-Anweisung, Abschnitt 8: Testing
 - App-Template-Anweisung, Abschnitt 13: Maturitätsstatus
+- App-Template-Anweisung, Abschnitt 17: Allgemeine Website (Release-/Beta-Kennzeichnung)
 - Feature-Spec OBJ-16: Maturitätsstatus / Reifegradübersicht

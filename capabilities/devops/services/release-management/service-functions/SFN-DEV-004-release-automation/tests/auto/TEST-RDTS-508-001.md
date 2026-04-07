@@ -1,4 +1,4 @@
-# TEST-RDTS-508-001: GitHub Release bei Tag-Push
+# TEST-RDTS-508-001: GitLab Release bei Tag-Push
 
 | Feld | Wert |
 |------|------|

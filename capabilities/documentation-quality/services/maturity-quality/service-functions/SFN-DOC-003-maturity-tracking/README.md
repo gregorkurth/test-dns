@@ -17,6 +17,7 @@ Maturity Tracking - Bestandteil der Documentation & Quality Capability.
 
 | [RDTS-606](requirements/RDTS-606.md) | [ARCH] | App-Template | Maturitaetsstatus-Seite | MUSS |
 | [RDTS-607](requirements/RDTS-607.md) | [ARCH] | App-Template | Automatische Ableitung | MUSS |
+| [RDTS-617](requirements/RDTS-617.md) | [ARCH] | App-Template | GUI-Statuskennzeichnung fuer Released/Beta/Preview | MUSS |
 
 ---
 
@@ -26,3 +27,5 @@ Maturity Tracking - Bestandteil der Documentation & Quality Capability.
 | [TEST-RDTS-606-001-manual](tests/manual/TEST-RDTS-606-001-manual.md) | Manuell | RDTS-606 |
 | [TEST-RDTS-607-001](tests/auto/TEST-RDTS-607-001.md) | Automatisch | RDTS-607 |
 | [TEST-RDTS-607-001-manual](tests/manual/TEST-RDTS-607-001-manual.md) | Manuell | RDTS-607 |
+| [TEST-RDTS-617-001](tests/auto/TEST-RDTS-617-001.md) | Automatisch | RDTS-617 |
+| [TEST-RDTS-617-001-manual](tests/manual/TEST-RDTS-617-001-manual.md) | Manuell | RDTS-617 |

@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-07
 
 ## Dependencies
 - OBJ-1: CI/CD Pipeline (Zarf-Paket-Build ist Bestandteil der Release-Pipeline)
@@ -17,6 +17,7 @@
 - Als Platform Engineer möchte ich sicherstellen, dass das Zarf-Paket alle notwendigen Bestandteile enthält, damit keine manuelle Nacharbeit in der Zielumgebung nötig ist.
 - Als Entwickler möchte ich die Zarf-Paketdefinition (`zarf.yaml`) im Repository versionieren, damit der Paket-Build reproduzierbar ist.
 - Als Platform Engineer möchte ich das Zarf-Paket in eine Ziel-Registry (Harbor) laden können, ohne externe Quellen zu kontaktieren.
+- Als Platform Engineer moechte ich den Release-Stand als importierbares Ziel-Gitea-Projekt aus dem Zarf-Prozess bereitstellen koennen, damit Argo CD lokal ohne Quellzugriff arbeiten kann.
 
 ## Acceptance Criteria
 - [ ] `zarf.yaml` (Paketdefinition) liegt im Repository-Root und ist versioniert
@@ -24,6 +25,8 @@
 - [ ] Zarf-Paket enthält optional: trivy-Offline-Datenbank für Security-Scans in der Zielumgebung (OBJ-17)
 - [ ] Zarf-Paket-Build ist Bestandteil der Release-Pipeline (OBJ-1) und wird als Pipeline-Artefakt gespeichert
 - [ ] Zarf-Paket wird als Release-Artefakt dem Release zugeordnet (OBJ-14)
+- [ ] Zarf-Release enthaelt den deploybaren Release-Stand fuer den Import in ein lokales Gitea-Release-Projekt
+- [ ] Das separate Gitea-Konfigurationsprojekt (Helm Values, Parameter, Overlays) ist als Pflichtquelle fuer das spaetere App-of-Apps-Deployment dokumentiert und versioniert
 - [ ] Das tatsächlich erzeugte Zarf-Paket liefert einen prüfbaren finalen Paketinhalt für die nachgelagerte Artefaktprüfung vor Publish oder Übergabe (OBJ-22)
 - [ ] Paket-Import in einer getrennten Zielumgebung ist vollständig dokumentiert (`docs/offline-install.md`, OBJ-2)
 - [ ] Paket ist in einer Zielumgebung ohne Internetzugang reproduzierbar importierbar (OBJ-20)
@@ -44,6 +47,7 @@
 - Image-Referenzen: Mit SHA-Digest (nicht `latest`) für Reproduzierbarkeit
 - Paket-Build: `zarf package create` in der CI-Pipeline (OBJ-1)
 - Paket-Inhalt: Container-Images (aus Harbor, OBJ-18), Helm Charts / K8s-Manifeste (OBJ-10), Argo-CD-Definitionen (OBJ-21)
+- Git-Zielmodell: Release-Projekt (aus Zarf-Release importierbar) und separates Konfigurationsprojekt in Gitea
 - Dokumentation: `docs/zarf.md` (Paketstruktur, Build, Import) und `docs/offline-install.md` (Schritt-für-Schritt-Anleitung, OBJ-2)
 - Offline-DB: trivy-Datenbankdump als optionaler Bestandteil für Security-Scans in Zielumgebung
 

@@ -8,7 +8,7 @@
 
 ## Beschreibung
 
-Die Technische Dokumentation umfasst alle Repo-Dokumente: Quickstart, Betriebsdokumentation, Architekturübersicht (Blackbox/Whitebox), Konfigurationsbeschreibung und ADRs. Die Dokumentation liegt vollständig im Repository und wächst mit der Implementierung mit.
+Die Technische Dokumentation umfasst alle Repo-Dokumente: Quickstart, Betriebsdokumentation, Architekturuebersicht (Blackbox/Whitebox), Konfigurationsbeschreibung und ADRs. Die Dokumentation liegt vollstaendig im Repository, waechst mit der Implementierung mit und wird zusaetzlich als versionierte MkDocs-Website und E-Book pro Release bereitgestellt.
 
 ---
 
@@ -24,4 +24,4 @@ Die Technische Dokumentation umfasst alle Repo-Dokumente: Quickstart, Betriebsdo
 ## Quelldokumente
 
 - App-Template-Anweisung, Abschnitt 11: Dokumentation
-- Feature-Spec OBJ-14: Dokumentation
+- Feature-Spec OBJ-2: Dokumentation

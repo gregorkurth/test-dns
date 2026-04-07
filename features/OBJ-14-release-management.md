@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-07
 
 ## Dependencies
 - OBJ-1: CI/CD Pipeline (Pipeline erstellt Release-Artefakte bei Tags)
@@ -13,7 +13,7 @@
 
 ## User Stories
 - Als Entwickler möchte ich ein Release durch das Setzen eines Git-Tags (`v1.2.3`) auslösen können, damit der Release-Prozess reproduzierbar und einfach ist.
-- Als Mission Network Operator möchte ich im GitHub-Releases-Bereich alle Versionen mit Changelog und Download-Links finden.
+- Als Mission Network Operator möchte ich im GitLab-Release-Bereich alle Versionen mit Changelog und Download-Links finden.
 - Als Platform Engineer möchte ich wissen, welche Änderungen in einem Release enthalten sind, damit ich entscheide, ob ein Update nötig ist.
 - Als Entwickler möchte ich, dass der CHANGELOG automatisch aus Commit-Messages generiert wird.
 - Als Platform Engineer möchte ich Release-Artefakte als signierte Artefakte herunterladen können, damit ich deren Integrität verifizieren kann.
@@ -26,8 +26,8 @@
 - [ ] Git-Tags folgen dem Format `v<MAJOR>.<MINOR>.<PATCH>` (z. B. `v1.0.0`)
 - [ ] `CHANGELOG.md` im Repository-Root vorhanden und aktuell
 - [ ] CHANGELOG wird automatisch aus Conventional Commits generiert
-- [ ] GitHub Release wird automatisch via CI/CD Pipeline (OBJ-1) bei Tag-Push erstellt
-- [ ] GitHub Release enthält: Release Notes (aus CHANGELOG), Container-Image-Referenz, K8s-Manifest-Bundle als ZIP-Anhang
+- [ ] GitLab Release wird automatisch via CI/CD Pipeline (OBJ-1) bei Tag-Push erstellt
+- [ ] GitLab Release enthält: Release Notes (aus CHANGELOG), Container-Image-Referenz, K8s-Manifest-Bundle als ZIP-Anhang
 - [ ] Container-Image wird mit dem Release-Tag und `latest` getaggt
 - [ ] Release-Artefakte werden mit cosign signiert
 - [ ] Pre-Release-Versionen folgen dem Format `v1.0.0-rc.1` oder `v1.0.0-beta.1`
@@ -36,6 +36,8 @@
 - [ ] Container-Image wird nach erfolgreichen Security-Scans in Harbor veröffentlicht (OBJ-18)
 - [ ] Weitere Build-Artefakte (Helm Charts, K8s-Manifeste) werden in Nexus oder Harbor abgelegt (OBJ-18)
 - [ ] Zarf-Paket wird als Release-Artefakt erzeugt und dem Release zugeordnet (OBJ-19)
+- [ ] Release enthaelt ein importierbares Artefakt fuer das Ziel-Gitea-Release-Projekt (Deployment-Stand)
+- [ ] Das zugehoerige Konfigurationsprojekt fuer Helm-Values und Parameter ist als separates Gitea-Projekt referenziert
 - [ ] Release-Checkliste enthält: SBOM vorhanden, Security-Scans bestanden, Zarf-Paket verfügbar, Dokumentation aktuell
 - [ ] Release-Artefakte sind vollständig dokumentiert: Versionsnummer, SHA-256-Prüfsummen, Artefakt-URLs
 
@@ -52,7 +54,7 @@
 - Commit-Konvention: Conventional Commits (`feat:`, `fix:`, `chore:`, etc.)
 - CHANGELOG-Generator: `release-please` (Google) oder `conventional-changelog-cli`
 - Artefakt-Signing: cosign (Keyless oder Key-basiert)
-- Primäre Git-Plattform: GitLab (Releases via GitLab Releases API); sekundär: GitHub Releases via `gh` CLI
+- Primaere Git-Plattform: GitLab (Releases via GitLab Releases API); Zielumgebungs-Git: Gitea (Import des Release-Projekts + separates Konfigurationsprojekt)
 - Image-Registry: Harbor (primär), Nexus für weitere Artefakte (OBJ-18)
 - Offline-Paket: Zarf-CLI in Pipeline-Umgebung verfügbar; `zarf.yaml` im Repository (OBJ-19)
 - SBOM-Tool: syft; Format: CycloneDX oder SPDX (OBJ-17)

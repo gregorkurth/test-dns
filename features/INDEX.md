@@ -43,7 +43,7 @@
 
 ```
 Phase 1 – Infrastruktur (vor dem ersten Code)
-  OBJ-1  CI/CD Pipeline            ← GitHub Actions aufsetzen
+  OBJ-1  CI/CD Pipeline            ← GitLab CI aufsetzen (optional GitHub Spiegelbetrieb)
   OBJ-2  Dokumentation             ← Struktur anlegen, wächst mit
 
 Phase 2 – API-Fundament

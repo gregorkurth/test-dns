@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-07
 
 ## Dependencies
 - OBJ-10: Kubernetes Deployment (Pipeline deployt K8s-Manifeste)
@@ -21,12 +21,14 @@
 - Als Entwickler möchte ich, dass die Pipeline-Konfiguration im Repository liegt, damit sie versioniert und nachvollziehbar ist.
 - Als Security-Verantwortlicher möchte ich, dass die Pipeline automatisch Security-Scans und eine SBOM erzeugt, damit Schwachstellen frühzeitig erkannt werden.
 - Als Platform Engineer möchte ich, dass die Pipeline ein Zarf-Paket für die Offline-Weitergabe erzeugt, damit die App in getrennten Zielumgebungen installiert werden kann.
+- Als Platform Engineer möchte ich, dass der freigegebene Release-Stand aus GitLab als importierbares Release-Projekt fuer Gitea bereitgestellt wird und die Zielkonfiguration als separates Projekt geführt werden kann.
 
 ## Acceptance Criteria
 - [ ] CI/CD-Pipeline-Konfiguration liegt vollständig im Repository (`.github/workflows/` für GitHub Actions, `.gitlab-ci.yml` für GitLab CI)
 - [ ] Pipeline für Merge/Pull Requests: Lint, Type-Check, Tests, Build-Check
 - [ ] Pipeline für `main`-Branch: alle PR-Checks + Docker-Image-Build + Push in Harbor/Nexus
 - [ ] Pipeline für Tags (`v*`): alle main-Checks + Release-Erzeugung + SBOM + Security-Scans + Zarf-Paket-Build
+- [ ] Tag-Pipeline erstellt ein versioniertes GitLab-Release als Fuehrungsrelease
 - [ ] Container-Image wird mit Multi-Stage-Dockerfile gebaut (Build-Stage + Runtime-Stage)
 - [ ] Image wird getaggt mit Git-SHA und Git-Tag (falls vorhanden)
 - [ ] Pipeline-Laufzeit für PR/MR-Check < 5 Minuten
@@ -38,6 +40,8 @@
 - [ ] Container-Images werden nach erfolgreichen Scans in Harbor veröffentlicht
 - [ ] Weitere Build-Artefakte (Helm Charts, Manifeste) werden in Nexus oder Harbor abgelegt
 - [ ] Zarf-Paket wird bei Release-Builds erzeugt und als Pipeline-Artefakt gespeichert
+- [ ] Release-Artefakte enthalten ein importierbares Bundle fuer das Ziel-Gitea-Release-Projekt
+- [ ] Pipeline dokumentiert die Trennung zwischen Release-Projekt (Artefakte) und Konfigurationsprojekt (Values/Parameter) fuer den spaeteren App-of-Apps-Deploy
 - [ ] Delivery-Kette ist im Repository dokumentiert: Code → Build → Test → Scan → Registry → Zarf → Release
 
 ## Edge Cases
@@ -48,6 +52,7 @@
 - Was wenn die Artefaktprüfung unerlaubte Inhalte erkennt? → Pipeline schlägt fehl; Artefakt wird weder publiziert noch exportiert
 - Was wenn der Zarf-Build fehlschlägt? → Release-Pipeline bricht ab; kein unvollständiges Release wird veröffentlicht
 - Was wenn GitLab CI und GitHub Actions beide verwendet werden? → Gemeinsame Pipeline-Logik in Scripts; CI-spezifische Trigger-Dateien getrennt
+- Was wenn der Import des Release-Projekts nach Gitea fehlschlaegt? → Übergabe gilt als unvollstaendig; Release bleibt in Status "nicht zielumgebungsbereit"
 
 ## Technical Requirements
 - CI/CD primär: GitLab CI (`.gitlab-ci.yml`); sekundär: GitHub Actions (`.github/workflows/*.yml`)
@@ -57,6 +62,7 @@
 - SBOM-Tool: syft (bei Release-Builds)
 - Security-Scanning: trivy (Container, Filesystem), semgrep (SAST) – konfigurierbar
 - Zarf-CLI: in Pipeline-Umgebung verfügbar; zarf.yaml im Repository
+- Git-Plattformen: GitLab als Quell-/Release-Plattform, Gitea als Zielumgebungs-Git fuer App-of-Apps-Deployment
 
 ---
 <!-- Sections below are added by subsequent skills -->

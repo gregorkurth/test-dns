@@ -2,7 +2,7 @@
 
 > **Capability ID:** CAP-007
 > **NATO C3 Taxonomie:** Communication and Information Services > Security Services > Supply Chain Security
-> **FMN-Referenz:** App-Template-Anweisung v3 (intern)
+> **FMN-Referenz:** App-Template-Anweisung (intern)
 > **Maturität:** L0 – Idea (Stand: 2026-04-03)
 
 ---
@@ -48,4 +48,4 @@ Die Supply-Chain-Security-Capability stellt sicher, dass für jede releasefähig
 
 - [Maturity Status](maturity.md)
 - [Products & Licenses](products.md)
-- [App-Template-Anweisung v3](../../req-init/app-template-3.md)
+- [App-Template-Anweisung](../../req-init/app-template.md)

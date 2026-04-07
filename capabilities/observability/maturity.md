@@ -8,8 +8,8 @@
 |-------|------|-----------|---------|
 | **L0** | Idea | Konzept dokumentiert | Capability README |
 | **L1** | PoC | OTel SDK integriert, erste Metriken sichtbar | Prometheus-Scrape funktioniert |
-| **L2** | Functional Prototype | Alle App-Metriken, strukturierte Logs, Traces | Grafana-Dashboard zeigt Daten |
-| **L3** | Platform Ready | OTel Collector konfiguriert, Operator-Metriken | CI prüft Metriken-Export |
+| **L2** | Functional Prototype | Alle App-Metriken, strukturierte Logs, Traces | Grafana-Dashboard (ClickHouse) zeigt Daten |
+| **L3** | Platform Ready | OTel Collector konfiguriert, Operator-Metriken | CI prueft Metriken-Export + ClickHouse-Weitergabe |
 | **L4** | Mission Ready | Alerting-Regeln, airgapped-validiert | Alert-Tests bestanden |
 | **L5** | Federated Ready | Cross-Namespace Observability, FMN-kompatibel | Interop-Test |
 
@@ -36,6 +36,7 @@ L5 [ ] FEDERATED READY -          Ausstehend
 - [ ] Strukturierte JSON-Logs mit traceId
 - [ ] Traces für API-Requests sichtbar
 - [ ] Beispiel-Grafana-Dashboard vorhanden
+- [ ] ClickHouse-Weitergabe fuer Logs/Metriken/Traces nachgewiesen
 
 ## L2 → L3 (Platform Ready) Checkliste
 

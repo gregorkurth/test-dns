@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-07
 
 ## Dependencies
 - OBJ-10: Kubernetes Deployment (App läuft im Cluster)
@@ -15,6 +15,9 @@
 - Als Entwickler möchte ich Traces für API-Anfragen einsehen können, damit ich Performance-Engpässe identifizieren kann.
 - Als Mission Network Operator möchte ich betriebsrelevante Zustände (z. B. fehlerhafte Zone-File-Generierung) als Metriken oder Alerts sehen, damit ich schnell reagieren kann.
 - Als Platform Engineer möchte ich das OTel-Collector-Ziel (Endpoint) konfigurieren können, damit ich die App in verschiedene Monitoring-Stacks integrieren kann.
+- Als Platform Engineer moechte ich Logs, Metriken und Traces in ClickHouse speichern, damit alle Telemetrie zentral auswertbar ist.
+- Als Operator moechte ich Grafana ueber ClickHouse als Datenquelle verwenden, damit Dashboards ohne direkte Abhaengigkeit von Einzelsystemen funktionieren.
+- Als DNS-Verantwortlicher moechte ich eine versionierte DNS-Grafana-Dashboard-Vorlage im Repository haben, damit ich die gleiche Sicht reproduzierbar ausrollen kann.
 
 ## Acceptance Criteria
 - [ ] OpenTelemetry SDK ist in die Next.js-App integriert (Metrics + Traces + Logs)
@@ -25,18 +28,25 @@
 - [ ] Operator exportiert eigene Metriken (Reconcile-Count, Fehler-Count, Latenz)
 - [ ] OTel-Collector-Endpoint ist via Umgebungsvariable/ConfigMap konfigurierbar
 - [ ] Monitoring funktioniert ohne externe SaaS-Dienste (airgapped-kompatibel)
-- [ ] Beispiel-Prometheus-Scrape-Config und Grafana-Dashboard-JSON liegen im Repository unter `monitoring/`
+- [ ] Logs, Metriken und Traces werden in ClickHouse persistiert (inkl. dokumentiertem Schema/Tabellenkonzept)
+- [ ] Grafana verwendet ClickHouse als primaere Datenquelle fuer Observability-Dashboards
+- [ ] Eine versionierte DNS-Grafana-Dashboard-Vorlage (JSON) liegt im Repository unter `monitoring/grafana/dashboards/`
+- [ ] Beispiel-Prometheus-Scrape-Config und Grafana-/ClickHouse-Konfiguration liegen im Repository unter `monitoring/`
 
 ## Edge Cases
 - Was passiert wenn kein OTel-Collector konfiguriert ist? → App startet trotzdem; Traces werden verworfen; Warnung im Log
 - Was wenn der OTel-Collector nicht erreichbar ist? → Keine Auswirkung auf App-Funktionalität; Exportfehler im Log protokolliert
 - Was wenn Traces sensitiven Inhalt (z. B. TSIG-Key-Fragmente) enthalten könnten? → Sensitive Felder werden vor dem Export maskiert
+- Was wenn ClickHouse nicht erreichbar ist? → Telemetrie-Export wird gepuffert oder verworfen nach definierter Strategie; App-Funktion bleibt stabil
+- Was wenn ClickHouse-Schema und Dashboard-Queries nicht zueinander passen? → Versionierte Migrations-/Schema-Regeln und Dashboard-Versionen muessen gemeinsam gepflegt werden
 
 ## Technical Requirements
 - OpenTelemetry SDK (JS/TS): `@opentelemetry/sdk-node`, `@opentelemetry/auto-instrumentations-node`
 - Prometheus-Export: `@opentelemetry/exporter-prometheus`
 - OTLP-Export: `@opentelemetry/exporter-trace-otlp-http`
 - Operator (Go): `go.opentelemetry.io/otel`
+- Telemetrie-Storage: ClickHouse (Logs, Metriken, Traces) via OTel-Collector-Pipeline
+- Dashboarding: Grafana mit ClickHouse-Data-Source
 - Keine Abhängigkeit zu externen Monitoring-SaaS-Diensten
 
 ---

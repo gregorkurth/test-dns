@@ -8,7 +8,7 @@
 
 ## Beschreibung
 
-Die CI/CD Pipeline automatisiert Build, Test und Deployment der App via GitHub Actions oder GitLab CI. PR-Checks laufen bei jedem Push, Container-Images werden bei Merge auf `main` gebaut, Releases werden bei Tag-Push erstellt und finale Artefakte werden vor Publish gegen eine Freigaberichtlinie geprüft.
+Die CI/CD Pipeline automatisiert Build, Test und Deployment der App via GitLab CI (fuehrend) und optional GitHub Actions fuer Spiegelbetrieb. PR-/MR-Checks laufen bei jedem Push, Container-Images werden bei Merge auf `main` gebaut, Releases werden bei Tag-Push erstellt und finale Artefakte werden vor Publish gegen eine Freigaberichtlinie geprueft.
 
 ---
 

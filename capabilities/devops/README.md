@@ -2,14 +2,14 @@
 
 > **Capability ID:** CAP-005
 > **NATO C3 Taxonomie:** Communication and Information Services > Platform Services > DevOps
-> **FMN-Referenz:** App-Template-Anweisung v3 (intern)
+> **FMN-Referenz:** App-Template-Anweisung (intern)
 > **Maturität:** L0 – Idea (Stand: 2026-04-03)
 
 ---
 
 ## Beschreibung
 
-Die DevOps-Capability stellt sicher, dass die DNS-Konfigurations-App über automatisierte CI/CD Pipelines gebaut, getestet und deployt wird. Sie umfasst GitHub Actions oder GitLab CI Workflows, Container-Image-Build, Release Management mit SemVer-Versionierung, automatisierter CHANGELOG-Generierung und kontrollierter Freigabe von Release-Artefakten.
+Die DevOps-Capability stellt sicher, dass die DNS-Konfigurations-App ueber automatisierte CI/CD Pipelines gebaut, getestet und deployt wird. Sie umfasst GitLab CI als fuehrenden Workflow (optional GitHub Actions fuer Spiegelbetrieb), Container-Image-Build, Release Management mit SemVer-Versionierung, automatisierter CHANGELOG-Generierung und kontrollierter Freigabe von Release-Artefakten.
 
 ---
 
@@ -17,7 +17,7 @@ Die DevOps-Capability stellt sicher, dass die DNS-Konfigurations-App über autom
 
 | ID | Service | Beschreibung | Spec |
 |----|---------|-------------|------|
-| SVC-DEV-CICD | CI/CD Pipeline | GitHub Actions für Build, Test, Deployment | [README](services/cicd-pipeline/README.md) |
+| SVC-DEV-CICD | CI/CD Pipeline | GitLab CI (fuehrend), optional GitHub Actions fuer Spiegelbetrieb | [README](services/cicd-pipeline/README.md) |
 | SVC-DEV-RELEASE | Release Management | SemVer, CHANGELOG, Artefakt-Signing | [README](services/release-management/README.md) |
 
 ---
@@ -46,4 +46,4 @@ Die DevOps-Capability stellt sicher, dass die DNS-Konfigurations-App über autom
 
 - [Maturity Status](maturity.md)
 - [Products & Licenses](products.md)
-- [App-Template-Anweisung v3](../../req-init/app-template-3.md)
+- [App-Template-Anweisung](../../req-init/app-template.md)

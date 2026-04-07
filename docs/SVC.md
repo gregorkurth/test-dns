@@ -49,12 +49,17 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 - Konfiguration deckt alle SREQ-xxx Requirements aus FMN Spiral 5 ab
 - Jedes freigegebene Release besteht eine dokumentierte Pruefung des tatsaechlich erzeugten Release-Artefakts vor Publish, Export und Offline-Weitergabe
 - Pro Release ist der kombinierte Teststatus (manual + auto) transparent: Passed, Failed, Never Executed
+- Pro Feature ist der Release-Kanal im GUI transparent ausgewiesen (Released/GA, Beta, Preview/Experimental) inkl. Legende
+- Der Lieferpfad GitLab -> Zarf-Transfer -> Gitea-Import -> ArgoCD App-of-Apps ist reproduzierbar nachgewiesen
+- Zero-Trust-Absicherung zwischen Pods ist durch Richtlinien und Runtime-Monitoring nachgewiesen
 
 ## Rahmenbedingungen
 
 - **Airgapped:** Keine externen APIs, kein CDN, keine Cloud-Dienste
 - **Deployment:** Next.js Web-App, lokal oder auf einem internen Server betreibbar
 - **Template-Konformitaet:** Release- und Publish-Artefakte muessen vor Freigabe gegen eine versionierte Inhaltsrichtlinie geprueft werden
+- **Git-Modell:** Quelle in GitLab, Zielumgebungs-Git in Gitea (Release-Projekt + separates Konfigurationsprojekt)
+- **Zero Trust:** Pod-zu-Pod-Regeln mit Cilium und mTLS; Policy Enforcement mit OPA; Runtime-Erkennung mit Tetragon; Netzwerksicht mit Hubble
 - **Zieltermin:** Betriebsbereit fuer CWIX 2026
 - **Team:** Kleines Team, iteratives Vorgehen
 
@@ -67,4 +72,4 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 
 ---
 
-_Zuletzt aktualisiert: 2026-04-06_
+_Zuletzt aktualisiert: 2026-04-07_

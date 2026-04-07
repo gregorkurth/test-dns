@@ -6,7 +6,7 @@
 
 ## Beschreibung
 
-Importiert das Zarf-Paket in die Zielumgebung, stellt Container-Images bereit und konfiguriert ziel-spezifische Parameter.
+Importiert das Zarf-Paket in die Zielumgebung, stellt Container-Images bereit, konfiguriert ziel-spezifische Parameter und bereitet lokale Gitea-Quellen fuer den App-of-Apps-Deploy vor.
 
 ## Requirements
 
@@ -17,3 +17,4 @@ Importiert das Zarf-Paket in die Zielumgebung, stellt Container-Images bereit un
 | RDTS-807 | [ARCH] | 🟥 MUSS |
 | RDTS-808 | [ARCH] | 🟥 MUSS |
 | RDTS-809 | [ARCH] | 🟥 MUSS |
+| RDTS-810 | [ARCH] | 🟥 MUSS |

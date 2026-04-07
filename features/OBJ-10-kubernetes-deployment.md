@@ -2,11 +2,12 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-07
 
 ## Dependencies
 - OBJ-3: REST API (API muss vorhanden sein, bevor das Deployment vollständig getestet werden kann)
 - OBJ-1: CI/CD Pipeline (Pipeline baut und pusht das Container-Image)
+- OBJ-12: Security & Authentifizierung (Zero-Trust-Netzwerkregeln und Runtime-Schutz)
 
 ## User Stories
 - Als Platform Engineer möchte ich die DNS-Konfigurations-App mit einem einzigen `kubectl apply` in einem Kubernetes-Cluster deployen, damit ich keine manuelle Installation durchführen muss.
@@ -14,6 +15,7 @@
 - Als Platform Engineer möchte ich alle K8s-Ressourcen deklarativ und versioniert im Repository vorfinden, damit der Deploymentstand jederzeit nachvollziehbar ist.
 - Als Platform Engineer möchte ich die App in einen definierten Namespace deployen können, damit sie sauber von anderen Workloads getrennt ist.
 - Als Operator möchte ich, dass die App nach einem Pod-Neustart automatisch wieder verfügbar ist, damit kein manueller Eingriff nötig ist.
+- Als Security-Verantwortlicher moechte ich Pod-zu-Pod-Kommunikation strikt regeln (Zero Trust), damit nur explizit erlaubte Verbindungen moeglich sind.
 
 ## Acceptance Criteria
 - [ ] K8s-Manifest für Deployment (mind. 2 Replicas, Liveness/Readiness Probes) vorhanden
@@ -25,6 +27,8 @@
 - [ ] Falls Workload nur BIND9 bereitstellt: BIND9-spezifisches Minimal-Image wird verwendet
 - [ ] Namespace-Manifest vorhanden, Name konfigurierbar (default: `dns-config`)
 - [ ] Ressourcenlimits (CPU/Memory requests und limits) definiert
+- [ ] Cilium Network Policies (oder CiliumClusterwideNetworkPolicies) sind vorhanden: Default-Deny und explizite Pod-zu-Pod-Allow-Regeln
+- [ ] Pod-zu-Pod-Verkehr ist TLS-verschluesselt (mTLS) und die Zertifikats-/Trust-Strategie ist dokumentiert
 - [ ] App ist nach `kubectl apply -f k8s/` vollständig betriebsbereit
 - [ ] Pod-Neustart ohne Datenverlust (stateless Design)
 - [ ] Alle Manifeste sind mit `kubectl --dry-run=client` validierbar
@@ -35,6 +39,8 @@
 - Was wenn das lokale Container-Image nicht gefunden wird? → Klare Fehlermeldung mit Anleitung zum lokalen Image-Load
 - Was wenn Ressourcenlimits zu knapp gesetzt sind? → OOM-Kill führt zu Pod-Neustart; Richtwerte sind dokumentiert und anpassbar
 - Was wenn der Cluster keine Ingress-Klasse hat? → Ingress-Klasse ist konfigurierbar; Fallback auf NodePort dokumentiert
+- Was wenn eine Zero-Trust-Policy legitimen Traffic blockiert? → Runbook mit erlaubten Kommunikationspfaden und gezielter Policy-Anpassung
+- Was wenn mTLS-Zertifikate fuer Pod-zu-Pod-Verkehr ablaufen? → Zertifikatsrotation als Betriebsprozess dokumentieren und pruefbar machen
 
 ## Technical Requirements
 - Kubernetes-Version: ≥ 1.28
@@ -42,6 +48,8 @@
 - Container-Image muss airgapped ladbar sein (tar-Export / lokale Registry)
 - Kein Zugriff auf externe Quellen (CDN, npm, etc.) zur Laufzeit des Containers
 - Runtime-Image basiert auf freigegebenem gehaertetem Minimal-Base-Image (inkl. dokumentiertem Digest)
+- Netzwerksegmentierung: Cilium als CNI mit policy enforcement fuer Pod-zu-Pod-Traffic
+- Pod-zu-Pod-Traffic: TLS-verschluesselt (mTLS) mit nachvollziehbarer Trust-/CA-Konfiguration
 
 ---
 <!-- Sections below are added by subsequent skills -->

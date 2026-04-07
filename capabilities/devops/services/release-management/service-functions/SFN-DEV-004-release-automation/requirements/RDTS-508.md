@@ -1,4 +1,4 @@
-# RDTS-508: GitHub Release bei Tag-Push
+# RDTS-508: GitLab Release bei Tag-Push
 
 ## Metadaten
 
@@ -14,7 +14,7 @@
 
 ## Anforderungstext
 
-> Release wird automatisch bei Tag-Push erstellt
+> GitLab Release wird automatisch bei Tag-Push erstellt
 
 ## Tests
 

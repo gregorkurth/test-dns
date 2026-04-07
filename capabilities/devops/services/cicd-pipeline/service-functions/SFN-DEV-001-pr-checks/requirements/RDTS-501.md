@@ -14,7 +14,7 @@
 
 ## Anforderungstext
 
-> GitHub Actions: Lint, Type-Check, Tests, Build-Check bei PRs
+> GitLab CI (fuehrend) und optional GitHub Actions: Lint, Type-Check, Tests, Build-Check bei PRs/MRs
 
 ## Tests
 

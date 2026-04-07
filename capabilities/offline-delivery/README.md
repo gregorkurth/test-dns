@@ -2,14 +2,14 @@
 
 > **Capability ID:** CAP-008
 > **NATO C3 Taxonomie:** Communication and Information Services > Platform Services > Offline Delivery
-> **FMN-Referenz:** App-Template-Anweisung v3 (intern)
+> **FMN-Referenz:** App-Template-Anweisung (intern)
 > **Maturität:** L0 – Idea (Stand: 2026-04-03)
 
 ---
 
 ## Beschreibung
 
-Die Offline-Delivery-Capability stellt sicher, dass die App als vollständiges Zarf-Paket exportiert und in einer getrennten Zielumgebung ohne Zugriff auf die Ursprungsumgebung importiert und installiert werden kann. Sie umfasst Paketdefinition, Build, Transfer, Import und Rehydrierung aller notwendigen Artefakte in der Zielumgebung.
+Die Offline-Delivery-Capability stellt sicher, dass die App als vollstaendiges Zarf-Paket exportiert und in einer getrennten Zielumgebung ohne Zugriff auf die Ursprungsumgebung importiert und installiert werden kann. Sie umfasst Paketdefinition, Build, Transfer, Import und Rehydrierung aller notwendigen Artefakte in der Zielumgebung inklusive Bereitstellung eines lokalen Gitea-Release-Projekts und eines separaten Konfigurationsprojekts.
 
 ---
 
@@ -39,6 +39,7 @@ Die Offline-Delivery-Capability stellt sicher, dass die App als vollständiges Z
 | DPD-OFD-001a | CAP-007 Supply Chain Security | Voraussetzung | Artefaktprüfung blockiert ungeprüfte Offline-Pakete |
 | DPD-OFD-002 | OBJ-18 Artefakt-Registry | Voraussetzung | Zarf liest Container-Images aus Harbor |
 | DPD-OFD-003 | CAP-009 GitOps | Nutzer | Argo-CD-Definitionen sind Bestandteil des Zarf-Pakets |
+| DPD-OFD-003a | CAP-009 GitOps | Nutzer | Release- und Konfigurationsprojekt werden als getrennte GitOps-Quellen bereitgestellt |
 | DPD-OFD-004 | OBJ-19 Zarf-Paket | Feature | Feature-Spezifikation für Zarf-Build |
 | DPD-OFD-005 | OBJ-20 Zielumgebung | Feature | Feature-Spezifikation für Import/Rehydrierung |
 
@@ -48,4 +49,4 @@ Die Offline-Delivery-Capability stellt sicher, dass die App als vollständiges Z
 
 - [Maturity Status](maturity.md)
 - [Products & Licenses](products.md)
-- [App-Template-Anweisung v3](../../req-init/app-template-3.md)
+- [App-Template-Anweisung](../../req-init/app-template.md)

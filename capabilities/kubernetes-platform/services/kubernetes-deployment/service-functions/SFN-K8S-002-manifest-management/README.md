@@ -20,6 +20,7 @@ Manifest Management umfasst alle Kubernetes-Manifeste (Deployment, Service, Ingr
 | [RDTS-204](requirements/RDTS-204.md) | [ARCH] | App-Template | Deployment-Manifest mit Replicas, Probes, Ressourcenlimits | 🟥 MUSS |
 | [RDTS-205](requirements/RDTS-205.md) | [ARCH] | App-Template | Service- und Ingress-Manifest | 🟥 MUSS |
 | [RDTS-206](requirements/RDTS-206.md) | [ARCH] | App-Template | ConfigMap für App-Konfiguration (keine Secrets) | 🟥 MUSS |
+| [RDTS-213](requirements/RDTS-213.md) | [ARCH] | App-Template | Zero-Trust Pod-zu-Pod-Richtlinien mit Cilium und mTLS | 🟥 MUSS |
 
 > **Quelle-Typen:** `[NATO]` FMN/NATO-Spec · `[ARCH]` Architektur · `[CUST]` Kunde · `[INT]` Intern
 > **Priorität:** 🟥 MUSS · 🟧 SOLLTE · 🟨 KANN · ℹ️ INFO

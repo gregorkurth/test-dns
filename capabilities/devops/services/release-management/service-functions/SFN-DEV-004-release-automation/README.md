@@ -15,7 +15,7 @@ Release Automation - Bestandteil der DevOps Capability.
 
 ## Requirements
 
-| [RDTS-508](requirements/RDTS-508.md) | [ARCH] | App-Template | GitHub Release bei Tag-Push | MUSS |
+| [RDTS-508](requirements/RDTS-508.md) | [ARCH] | App-Template | GitLab Release bei Tag-Push | MUSS |
 | [RDTS-509](requirements/RDTS-509.md) | [ARCH] | App-Template | Artefakt-Signing | MUSS |
 
 ---

@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-07
 
 ## Dependencies
 - OBJ-10: Kubernetes Deployment (Secrets-Management via K8s Secrets)
@@ -21,6 +21,12 @@
 - Als Security-Verantwortlicher möchte ich, dass automatisch Security-Scans auf Code-, Dependency-, Container- und Konfigurations-Ebene durchgeführt werden, damit Schwachstellen frühzeitig erkannt werden.
 - Als Security-Verantwortlicher möchte ich, dass kritische Security-Findings vor einer Freigabe bewertet und dokumentiert werden, damit keine ungeklärten Risiken in Produktion gelangen.
 - Als Auditor möchte ich Security-Ergebnisse versionsbezogen archiviert finden, damit ich für jedes Release nachvollziehen kann, welche Scans durchgeführt wurden und was ihre Ergebnisse waren.
+- Als Security-Verantwortlicher moechte ich Zero-Trust-Netzwerkregeln auf Pod-Ebene erzwingen, damit seitliche Bewegungen zwischen Pods verhindert werden.
+- Als Security-Verantwortlicher moechte ich Runtime-Anomalien mit Tetragon erkennen, damit sicherheitskritische Ereignisse in Echtzeit sichtbar sind.
+- Als Security-Verantwortlicher moechte ich Policy-as-Code mit OPA erzwingen, damit Sicherheits- und Compliance-Regeln zentral durchgesetzt werden.
+- Als Platform Engineer moechte ich Pod-zu-Pod-Kommunikation TLS-verschluesselt (mTLS) betreiben, damit seitliche Angriffe erschwert werden.
+- Als Platform Engineer moechte ich Netzwerkfluesse mit Hubble einsehen koennen, damit ich Regeln und Verkehrswege nachvollziehen kann.
+- Als Produktverantwortlicher moechte ich Feature-Flags standardisiert ueber OpenFeature integrieren, damit Releases sicher gesteuert werden koennen.
 
 ## Acceptance Criteria
 - [ ] Authentifizierung via OIDC/OAuth2 (Keycloak-kompatibel) ist implementiert
@@ -31,6 +37,13 @@
 - [ ] Unberechtigte Aktionen (falsche Rolle) erhalten HTTP 403
 - [ ] Secrets (TSIG-Keys, OIDC-Client-Secret) werden als K8s Secrets verwaltet, nie als ConfigMap oder in Code
 - [ ] Sicherheitsrelevante Ereignisse (Login, Logout, Fehlanmeldung, Rollenänderung) werden im Audit-Log protokolliert
+- [ ] Pod-zu-Pod-Kommunikation ist durch Cilium-Richtlinien als Default-Deny mit explizitem Allowlisting umgesetzt
+- [ ] Pod-zu-Pod-Kommunikation ist TLS-verschluesselt (mTLS), inkl. Nachweis der Zertifikats-/Trust-Strategie
+- [ ] OPA ist mit verbindlichen Security-/Compliance-Policies aktiv (z. B. deny-by-default fuer unerlaubte Workload- und Netzwerkmuster)
+- [ ] Tetragon ist mit verbindlichen Runtime-Regeln aktiv (mindestens Privilege-Escalation, unautorisierte Shell-Execs, verdaechtige Namespace-/Network-Aktivitaet)
+- [ ] Tetragon-Events werden in die Audit-/Observability-Kette integriert
+- [ ] Hubble ist aktiviert und stellt nachvollziehbare Pod-Kommunikationsfluesse bereit
+- [ ] OpenFeature ist als Feature-Flag-Standard integriert oder als verbindliche Integrationsschnittstelle vorbereitet
 - [ ] Session-Tokens haben eine konfigurierbare Gültigkeitsdauer (default: 8h)
 - [ ] HTTPS ist im K8s-Ingress erzwungen (HTTP → HTTPS-Redirect)
 - [ ] SBOM wird für jede releasefähige Version erzeugt (via `syft`) und dem Release zugeordnet (OBJ-17)
@@ -50,6 +63,11 @@
 - Was wenn ein Security-Scan ein kritisches Finding meldet? → Release wird geblockt; Finding muss mit Risikoakzeptanz oder Fix dokumentiert werden
 - Was wenn die SBOM unvollständig ist (z.B. Transitiv-Abhängigkeiten fehlen)? → syft-Konfiguration prüfen; SBOM-Vollständigkeit ist Teil des Review-Kriteriums
 - Was wenn trivy-Datenbanken in einer airgapped Umgebung nicht aktualisierbar sind? → Offline-Datenbankupdate via Zarf-Paket dokumentieren
+- Was wenn Cilium-Policies legitimen Traffic blockieren? → Policy-Troubleshooting mit dokumentierter Kommunikationsmatrix und abgestuften Freigaben
+- Was wenn mTLS-Handshakes zwischen Pods fehlschlagen? → Zertifikatskette/Trust-Domain pruefen; Fallback-Runbook fuer kontrollierte Wiederherstellung
+- Was wenn OPA legitime Deployments blockiert? → Policy-Ausnahmeprozess mit Review und versionierter Begruendung
+- Was wenn Tetragon zu viele False Positives meldet? → Regel-Tuning versioniert dokumentieren; kritische Kernregeln bleiben verpflichtend aktiv
+- Was wenn OpenFeature-Provider in der Zielumgebung nicht erreichbar ist? → deterministische Default-Flag-Werte und dokumentierter Degradationsmodus
 
 ## Technical Requirements
 - OIDC-Library: `next-auth` (NextAuth.js) mit Keycloak-Provider
@@ -61,6 +79,11 @@
 - Security-Scanning-Tools: `trivy` (Container, Filesystem, Konfiguration), `semgrep` (SAST), `npm audit` / `pip audit` (SCA)
 - Security-Ergebnisse: Archivierung als Release-Anhang im SARIF- oder JSON-Format
 - Kritische Findings-Bewertung: Dokumentierter Review-Prozess mit Accept/Fix-Entscheid
+- Zero Trust Networking: Cilium (CiliumNetworkPolicy / CiliumClusterwideNetworkPolicy) inkl. mTLS fuer Pod-zu-Pod-Traffic
+- Network Visibility: Cilium Hubble fuer Flow-Analyse und Policy-Diagnose
+- Policy as Code: Open Policy Agent (OPA) mit versionierten Rego-Regeln
+- Runtime Detection: Tetragon mit regelbasierter Event-Erkennung und Weiterleitung in zentrales Logging
+- Feature Flags: OpenFeature API als standardisierte Integrationsschicht
 
 ---
 <!-- Sections below are added by subsequent skills -->

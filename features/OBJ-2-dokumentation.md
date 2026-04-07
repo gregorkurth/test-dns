@@ -2,13 +2,14 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-07
 
 ## Dependencies
 - OBJ-1 bis OBJ-21: Alle Features (Dokumentation beschreibt das Gesamtsystem)
 - OBJ-3: REST API (API muss dokumentiert sein, inkl. OpenAPI-Spec)
 - OBJ-19: Zarf-Paket (Offline-Installations- und Export-/Import-Beschreibung)
 - OBJ-21: GitOps/Argo CD (App-of-Apps-Installationsablauf dokumentieren)
+- OBJ-14: Release Management (Doku-Versionen folgen den Release-Versionen)
 
 ## User Stories
 - Als neuer Mission Network Operator möchte ich einen Quickstart-Guide lesen, damit ich die App in unter 15 Minuten in Betrieb nehmen kann.
@@ -19,6 +20,9 @@
 - Als Platform Engineer in einer Zielumgebung möchte ich eine Schritt-für-Schritt-Anleitung für den Offline-Import und die Installation via Zarf finden, damit ich ohne Rückfragen ans Entwicklerteam installieren kann.
 - Als Platform Engineer möchte ich die Argo-CD-/App-of-Apps-Installationsdokumentation lesen, damit ich die App korrekt in meiner GitOps-Umgebung einrichten kann.
 - Als Übergabe-Verantwortlicher möchte ich einen dokumentierten Release- und Übergabeprozess finden, damit ich weiss welche Artefakte mit welchem Release mitgeliefert werden müssen.
+- Als Platform Engineer moechte ich den Ablauf GitLab-Release -> Zarf-Transfer -> Gitea-Import (Release-Projekt + Konfigurationsprojekt) dokumentiert haben.
+- Als Manager moechte ich die komplette Doku als Website, E-Book und Benutzerhandbuch nutzen koennen, damit ich ohne Entwicklerzugriff arbeiten kann.
+- Als Nutzer moechte ich zwischen Doku-Versionen (z. B. v1, v2) umschalten koennen, damit ich zur passenden Release-Version lesen kann.
 
 ## Acceptance Criteria
 - [ ] `README.md` im Repository-Root vorhanden: Quickstart, Links zu weiterführender Doku, Build-Badges
@@ -28,10 +32,17 @@
 - [ ] `docs/configuration.md`: Vollständige Beschreibung aller Konfigurationsparameter (ENV-Variablen, ConfigMap-Felder)
 - [ ] `docs/adr/` Verzeichnis vorhanden mit mindestens ADR-0001 (Auswahl Framework), ADR-0002 (Airgapped-Strategie)
 - [ ] OpenAPI-Spezifikation der REST API ist abrufbar und aktuell (OBJ-3)
-- [ ] `docs/offline-install.md`: Schritt-für-Schritt-Anleitung für Zarf-Export, Transfer und Import in Zielumgebung
+- [ ] `docs/offline-install.md`: Schritt-für-Schritt-Anleitung für Zarf-Export, Transfer und Import in Zielumgebung inkl. Gitea-Import (Release-Projekt + Konfigurationsprojekt)
 - [ ] `docs/zarf.md`: Beschreibung der zarf.yaml-Struktur, welche Artefakte enthalten sind, wie das Paket gebaut und importiert wird
-- [ ] `docs/argocd.md`: Argo-CD-Installationsablauf im App-of-Apps-Modell; Beschreibung der Root-Application und Teilkomponenten
+- [ ] `docs/argocd.md`: Argo-CD-Installationsablauf im App-of-Apps-Modell; Beschreibung der Root-Application und der zwei Gitea-Quellen (Release + Konfiguration)
+- [ ] Security-Doku beschreibt Zero-Trust-Richtlinien mit Cilium (inkl. mTLS), OPA-Policies, Hubble-Sicht und Runtime-Erkennung mit Tetragon
 - [ ] `docs/release-process.md`: Dokumentierter Release- und Übergabeprozess inkl. Pflichtartefakte (SBOM, Zarf-Paket, Security-Bericht)
+- [ ] MkDocs-Doku-Website ist im Repository konfiguriert und erzeugbar (`mkdocs.yml` + Build-Anleitung)
+- [ ] Die Doku-Website bietet Versionsumschaltung pro Release (mindestens aktuelle und vorherige Version)
+- [ ] Die Doku ist pro Release als E-Book exportierbar (z. B. PDF) und versioniert abgelegt
+- [ ] Ein Benutzerhandbuch ist vorhanden und in drei Themenbereiche gegliedert: Management, Betrieb, Umsetzung
+- [ ] Website und E-Book enthalten ein klar strukturiertes Inhaltsverzeichnis
+- [ ] Pro Release ist eine nachvollziehbare Doku-Aenderungssicht vorhanden (Changes, Bugfixes, Version)
 - [ ] Dokumentation ist auf Deutsch (Schweizer Schreibweise), technische Begriffe können Englisch bleiben
 - [ ] Dokumentation liegt vollständig im Repository (kein externes Wiki)
 - [ ] Dokumentation wächst mit der Implementierung mit: jedes neue Feature hat einen Doku-Abschnitt
@@ -43,12 +54,15 @@
 - Was wenn die OpenAPI-Spec nicht mit der Implementierung übereinstimmt? → CI-Test prüft Konsistenz (Contract-Test)
 - Was wenn die Offline-Installationsanleitung nicht mehr mit dem aktuellen Zarf-Paket übereinstimmt? → Doku-Update ist Teil der Release-Checkliste (OBJ-14)
 - Was wenn Argo-CD-Versionen zwischen Entwicklungs- und Zielumgebung abweichen? → Kompatibilitätshinweise in `docs/argocd.md` dokumentiert
+- Was wenn fuer eine alte Release-Version keine Doku-Version vorhanden ist? → Release gilt als unvollstaendig dokumentiert; Version wird nachgezogen
+- Was wenn E-Book-Export fehlschlaegt? → Release-Checkliste blockiert Abschluss bis Export oder dokumentierte Ausnahme vorliegt
 
 ## Technical Requirements
 - Dokumentationsformat: Markdown (GitHub-kompatibel)
 - ADR-Format: MADR (Markdown Any Decision Records) oder leichtes Eigenformat
-- Kein externes Dokumentations-Hosting nötig (Markdown im Repo genügt für v1)
-- Optional: MkDocs oder Docusaurus für generierte Doku-Website (v2)
+- Doku-Publishing: MkDocs als Website-Generator, Versionierung ueber releasebezogene Doku-Staende (z. B. mit `mike`)
+- E-Book-Export je Release (z. B. PDF) inkl. Inhaltsverzeichnis und Versionslabel
+- Benutzerhandbuch-Struktur als eigener Doku-Bereich mit drei Zielgruppenpfaden
 
 ---
 <!-- Sections below are added by subsequent skills -->

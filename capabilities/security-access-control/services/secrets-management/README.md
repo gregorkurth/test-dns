@@ -8,7 +8,7 @@
 
 ## Beschreibung
 
-Der Secrets Management Service stellt sicher, dass sensible Daten (TSIG-Keys, OIDC-Credentials, API-Keys) sicher über Kubernetes Secrets verwaltet werden. Sicherheitsrelevante Ereignisse werden über Audit-Logging protokolliert.
+Der Secrets Management Service stellt sicher, dass sensible Daten (TSIG-Keys, OIDC-Credentials, API-Keys) sicher ueber Kubernetes Secrets verwaltet werden. Sicherheitsrelevante Ereignisse werden ueber Audit-Logging protokolliert; Runtime-Events aus Tetragon fliessen als zusaetzliche Security-Auditquelle ein.
 
 ---
 
@@ -24,4 +24,4 @@ Der Secrets Management Service stellt sicher, dass sensible Daten (TSIG-Keys, OI
 ## Quelldokumente
 
 - App-Template-Anweisung, Abschnitt 6: Security / Authentifizierung
-- Feature-Spec OBJ-11: Security & Authentifizierung
+- Feature-Spec OBJ-12: Security & Authentifizierung

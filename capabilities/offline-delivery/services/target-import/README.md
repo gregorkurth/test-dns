@@ -22,3 +22,4 @@ Dieser Service stellt den Import und die Rehydrierung des Zarf-Pakets in einer g
 | RDTS-807 | [ARCH] | 🟥 MUSS | Ziel-spezifische Parameter via Zarf-Variables konfigurierbar |
 | RDTS-808 | [ARCH] | 🟥 MUSS | Import ist idempotent (wiederholbar ohne Nebeneffekte) |
 | RDTS-809 | [ARCH] | 🟥 MUSS | Smoke-Test nach Import nachweist Funktionsfähigkeit |
+| RDTS-810 | [ARCH] | 🟥 MUSS | Release- und Konfigurationsprojekt in Gitea werden bereitgestellt |

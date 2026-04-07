@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-07
 
 ## Dependencies
 - OBJ-4: Capabilities Dashboard (Maturitätsstufen L0–L5 pro Capability)
@@ -22,6 +22,7 @@
 - Als Security-Verantwortlicher möchte ich den Security-Status (SBOM vorhanden, Scans bestanden, kritische Findings offen) im Maturitätsstatus sehen.
 - Als Platform Engineer möchte ich sehen, ob die App als Zarf-Paket verfügbar und für den Offline-Einsatz bereit ist.
 - Als Platform Engineer möchte ich sehen, ob die App via Argo CD (App-of-Apps) bereitgestellt werden kann.
+- Als Nutzer moechte ich pro Feature sehen, ob es Released/GA oder Beta ist, damit ich den Einsatzstatus korrekt einschätzen kann.
 
 ## Acceptance Criteria
 - [ ] Maturitätsstatus-Seite ist im Web GUI erreichbar (Route `/maturity` oder als Tab)
@@ -31,6 +32,9 @@
 - [ ] Offene Punkte (Features nicht deployed, Tests nicht bestanden) werden als Liste dargestellt
 - [ ] Nächste Meilensteine (z. B. CWIX 2026) sind konfigurierbar und werden angezeigt
 - [ ] Maturitätsstatus wird aus `features/INDEX.md` und QA-Testergebnissen abgeleitet (keine manuelle Pflegeerfordernis)
+- [ ] Feature-Liste zeigt pro Feature einen klaren Release-Status (Released, Beta, Preview/Experimental)
+- [ ] Beta-Status wird visuell hervorgehoben und in einer Legende erklaert
+- [ ] Dieselbe Statuslogik (Released/Beta/Preview) wird im gesamten Web GUI konsistent verwendet (keine abweichenden Bezeichnungen je Seite)
 - [ ] Exportierbar als PDF oder druckfreundliche Ansicht
 - [ ] Seite funktioniert vollständig offline
 - [ ] Security-Status wird als eigener Indikator angezeigt: SBOM vorhanden (ja/nein), letzte Scans bestanden (ja/nein/ausstehend), kritische Findings offen (Anzahl)
@@ -45,6 +49,7 @@
 - Was wenn keine SBOM-Daten vorhanden sind? → Security-Indikator zeigt "SBOM nicht verfügbar"; Maturitätslevel bleibt tief
 - Was wenn Zarf-Paket-Informationen nicht auslesbar sind? → Indikator zeigt "Nicht getestet"; kein Fehler
 - Was wenn Argo-CD-Sync-Status nicht aus dem Repository ablesbar ist? → Indikator zeigt "Status unbekannt" mit Hinweis auf manuelle Prüfung
+- Was wenn der Beta-Status fuer ein Feature fehlt? → Standardwert "Status unbekannt" mit Warnhinweis statt stillschweigender Released-Annahme
 
 ## Technical Requirements
 - Datenquelle: `features/INDEX.md` (build-time geparst) + QA-Testresultate (aus Feature-Specs)
@@ -54,6 +59,8 @@
 - Security-Indikatoren: Statische Metadaten aus Release-Artefakten (z.B. SBOM-Existenz, Scan-Ergebnisdateien) – build-time geladen
 - Zarf-Indikator: Metadaten aus `zarf.yaml` (Version, letztes Build-Datum) – build-time geladen
 - Argo-CD-Indikator: Metadaten aus Argo-CD-Manifestdateien – build-time geladen
+- Feature-Release-Status: Versionierte Feature-Metadaten im Repository (Released/Beta/Preview)
+- Statusdarstellung im GUI wird ausschliesslich aus versionierten Metadaten abgeleitet (Git als Primärquelle)
 
 ---
 <!-- Sections below are added by subsequent skills -->

@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Die Documentation & Quality Capability stellt sicher, dass die DNS-Konfigurations-App vollständig dokumentiert ist und einen transparenten Maturitätsstatus aufweist. Sie umfasst technische Dokumentation (Quickstart, Betriebsdoku, ADRs), Architekturübersicht sowie Maturitaets- und Teststatus-Tracking inkl. Test-Execution-Dashboard.
+Die Documentation & Quality Capability stellt sicher, dass die DNS-Konfigurations-App vollstaendig dokumentiert ist und einen transparenten Maturitaetsstatus aufweist. Sie umfasst technische Dokumentation (Quickstart, Betriebsdoku, ADRs), Architekturuebersicht sowie Maturitaets- und Teststatus-Tracking inkl. Test-Execution-Dashboard. Zusaetzlich ist die Doku als versionierte MkDocs-Website, als E-Book je Release und als Benutzerhandbuch mit drei Themenpfaden verfuegbar.
 Traceability wird dabei ueber OFT/OpenFastTrace-kompatible IDs und Covers-Bezuege sichergestellt.
 
 ---
@@ -38,7 +38,7 @@ Traceability wird dabei ueber OFT/OpenFastTrace-kompatible IDs und Covers-Bezueg
 
 | DPD-ID | Abhängigkeit | Typ | Beschreibung |
 |--------|-------------|-----|-------------|
-| DPD-DOC-001 | Alle Features OBJ-1 bis OBJ-16 | Voraussetzung | Doku beschreibt das Gesamtsystem |
+| DPD-DOC-001 | Alle Features OBJ-1 bis OBJ-23 | Voraussetzung | Doku beschreibt das Gesamtsystem |
 | DPD-DOC-002 | OBJ-9 Manual Test Runner | Nutzer | Manuelle Testergebnisse fliessen in den Qualitaetsstatus |
 | DPD-DOC-003 | OBJ-23 Test Execution Dashboard | Nutzer | Kombinierte Sicht auf Passed/Failed/Never Executed pro OBJ, Run und Release |
 

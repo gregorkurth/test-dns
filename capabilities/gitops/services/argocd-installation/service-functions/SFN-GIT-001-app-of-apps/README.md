@@ -6,7 +6,7 @@
 
 ## Beschreibung
 
-Definiert und konfiguriert die App-of-Apps-Struktur mit Root-Application, AppProject und ApplicationSets für alle Teilkomponenten.
+Definiert und konfiguriert die App-of-Apps-Struktur mit Root-Application, AppProject und ApplicationSets fuer alle Teilkomponenten inklusive getrennter Release- und Konfigurationsquellen in Gitea.
 
 ## Requirements
 
@@ -17,3 +17,4 @@ Definiert und konfiguriert die App-of-Apps-Struktur mit Root-Application, AppPro
 | RDTS-903 | [ARCH] | 🟥 MUSS |
 | RDTS-904 | [ARCH] | 🟥 MUSS |
 | RDTS-906 | [ARCH] | 🟥 MUSS |
+| RDTS-907 | [ARCH] | 🟥 MUSS |

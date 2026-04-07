@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Die Observability-Capability stellt sicher, dass die DNS-Konfigurations-App und der Kubernetes Operator vollständig überwachbar sind. Monitoring, Logging und Tracing werden nativ mit OpenTelemetry umgesetzt und sind in Standard-Backends (Prometheus, Loki, Jaeger) exportierbar. Betriebsrelevante Zustände sind jederzeit sichtbar.
+Die Observability-Capability stellt sicher, dass die DNS-Konfigurations-App und der Kubernetes Operator vollständig ueberwachbar sind. Monitoring, Logging und Tracing werden nativ mit OpenTelemetry umgesetzt; Logs, Metriken und Traces werden zentral nach ClickHouse uebergeben und in Grafana visualisiert. Betriebsrelevante Zustaende sind jederzeit sichtbar; fuer DNS wird eine versionierte Dashboard-Vorlage im Repository gefuehrt.
 
 ---
 
@@ -36,7 +36,7 @@ Die Observability-Capability stellt sicher, dass die DNS-Konfigurations-App und 
 | DPD-ID | Abhängigkeit | Typ | Beschreibung |
 |--------|-------------|-----|-------------|
 | DPD-OBS-001 | CAP-002 Kubernetes Platform | Voraussetzung | App muss im Cluster laufen für Monitoring |
-| DPD-OBS-002 | OBJ-8 REST API | Voraussetzung | API-Metriken und Traces setzen API voraus |
+| DPD-OBS-002 | OBJ-3 REST API | Voraussetzung | API-Metriken und Traces setzen API voraus |
 
 ---
 

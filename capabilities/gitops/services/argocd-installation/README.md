@@ -5,7 +5,7 @@
 
 ## Beschreibung
 
-Dieser Service stellt die deklarative Installation der App via Argo CD im App-of-Apps-Modell sicher. Alle Argo-CD-Ressourcen liegen versioniert im Repository.
+Dieser Service stellt die deklarative Installation der App via Argo CD im App-of-Apps-Modell sicher. Alle Argo-CD-Ressourcen liegen versioniert im Repository. Fuer Zielumgebungen werden ein Release-Projekt und ein separates Konfigurationsprojekt als Git-Quellen unterstuetzt.
 
 ## Service Functions
 
@@ -24,3 +24,4 @@ Dieser Service stellt die deklarative Installation der App via Argo CD im App-of
 | RDTS-904 | [ARCH] | 🟥 MUSS | Projekte, Namespaces, Quellen und Sync-Policy nachvollziehbar definiert |
 | RDTS-905 | [ARCH] | 🟧 SOLLTE | Automated Sync konfigurierbar (auto-sync + self-heal optional) |
 | RDTS-906 | [ARCH] | 🟥 MUSS | Argo-CD-Definitionen sind Bestandteil des Zarf-Pakets |
+| RDTS-907 | [ARCH] | 🟥 MUSS | Root-App bindet Release- und Konfigurationsprojekt (Gitea) als getrennte Quellen ein |

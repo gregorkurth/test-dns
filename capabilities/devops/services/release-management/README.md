@@ -17,7 +17,7 @@ Release Management stellt sicher, dass Releases einer SemVer-Logik folgen, der C
 | ID | Service Function | Beschreibung |
 |----|-----------------|-------------|
 | SFN-DEV-003 | Semantic Versioning | SemVer-Tags und automatischer CHANGELOG |
-| SFN-DEV-004 | Release Automation | GitHub Releases mit signierten Artefakten |
+| SFN-DEV-004 | Release Automation | GitLab Releases mit signierten Artefakten |
 
 ---
 

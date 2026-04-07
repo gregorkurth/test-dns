@@ -2,14 +2,14 @@
 
 > **Capability ID:** CAP-009
 > **NATO C3 Taxonomie:** Communication and Information Services > Platform Services > GitOps
-> **FMN-Referenz:** App-Template-Anweisung v2 (intern)
+> **FMN-Referenz:** App-Template-Anweisung (intern)
 > **Maturität:** L0 – Idea (Stand: 2026-04-03)
 
 ---
 
 ## Beschreibung
 
-Die GitOps-Capability stellt sicher, dass die App deklarativ via Argo CD im App-of-Apps-Modell installiert werden kann. Alle Argo-CD-Ressourcen (Application, AppProject, ApplicationSet) liegen versioniert im Repository. Die Capability unterstützt die kontrollierte Synchronisation von Konfigurationsänderungen in Ziel-Kubernetes-Umgebungen.
+Die GitOps-Capability stellt sicher, dass die App deklarativ via Argo CD im App-of-Apps-Modell installiert werden kann. Alle Argo-CD-Ressourcen (Application, AppProject, ApplicationSet) liegen versioniert im Repository. Die Capability unterstuetzt die kontrollierte Synchronisation von Konfigurationsaenderungen in Ziel-Kubernetes-Umgebungen und die Trennung von Release- und Konfigurationsquellen in Gitea.
 
 ---
 
@@ -44,4 +44,4 @@ Die GitOps-Capability stellt sicher, dass die App deklarativ via Argo CD im App-
 
 - [Maturity Status](maturity.md)
 - [Products & Licenses](products.md)
-- [App-Template-Anweisung v2](../../req-init/app-template-2.md)
+- [App-Template-Anweisung](../../req-init/app-template.md)

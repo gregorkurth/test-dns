@@ -15,7 +15,7 @@ L5 [ ] FEDERATED READY -          Ausstehend
 
 ## L0 → L1 (PoC) Checkliste
 
-- [ ] GitHub Actions PR-Workflow (Lint + Build) läuft
+- [ ] GitLab CI PR-/MR-Workflow (Lint + Build) laeuft
 - [ ] Dockerfile für Multi-Stage Build vorhanden
 
 ## L1 → L2 (Functional Prototype) Checkliste

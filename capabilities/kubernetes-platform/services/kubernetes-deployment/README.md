@@ -43,4 +43,4 @@ Der Kubernetes Deployment Service stellt sicher, dass die DNS-Konfigurations-App
 ## Quelldokumente
 
 - App-Template-Anweisung (req-init/app-template.md), Abschnitt 2: Kubernetes als Zielplattform
-- Feature-Spec OBJ-7: Kubernetes Deployment
+- Feature-Spec OBJ-10: Kubernetes Deployment

@@ -14,7 +14,11 @@ kontrolliert installiert werden kann.
 
 1. **Git als Single Source of Truth**
    - Jede Applikation besitzt ein eigenes Git-Repository.
-   - In der Entwicklungsumgebung wird dafür standardmässig GitLab verwendet.
+   - In der Entwicklungs- und Produktionsquelle wird dafuer standardmaessig GitLab verwendet.
+   - In der Offline-Zielumgebung wird Gitea als lokale Git-Plattform verwendet.
+   - Fuer den Zielbetrieb werden zwei getrennte Gitea-Projekte gefuehrt:
+     - ein Release-Projekt (deploybare Artefakte aus dem Zarf-Release)
+     - ein Konfigurationsprojekt (Parameter, Helm Values, Overlays, Environment-Werte)
    - Alle Spezifikationen, Architekturdokumente, Deployments, Pipelines, Tests, Releases und Paketdefinitionen werden versioniert im Repository verwaltet.
    - Git ist die führende Quelle für Anforderungen, Implementierungsstand und Änderungsverlauf.
 
@@ -28,21 +32,28 @@ kontrolliert installiert werden kann.
    - Für den Zielbetrieb ist Argo CD als bevorzugter GitOps-Mechanismus zu berücksichtigen.
    - Die Applikation muss eine Installation im **App-of-Apps**-Modell unterstützen.
    - Die für Argo CD benötigten Application-, Project- und gegebenenfalls ApplicationSet-Ressourcen müssen deklarativ bereitgestellt werden.
+   - Die App-of-Apps-Root-Application muss mindestens das Release-Projekt und das separate Konfigurationsprojekt als Quellen beruecksichtigen.
 
 4. **Offline- und Transferfähigkeit**
    - Jede Applikation muss nach dem Build und der Freigabe offline weitergegeben werden können.
    - Die Weitergabe erfolgt über ein **Zarf-Paket / Zarf-File**.
    - Das Paket muss so aufgebaut sein, dass es in einer getrennten Zielumgebung reproduzierbar importiert und installiert werden kann.
+   - Der Transport in die Zielumgebung kann per Datentraeger (z. B. USB) erfolgen; nach dem Transport muessen Import und Deployment reproduzierbar sein.
 
 5. **Pflicht-Bausteine jeder Applikation**
    Jede Applikation muss mindestens folgende Bestandteile enthalten:
-   - Git Repository / GitLab Projekt
+   - Git Repository (GitLab als Quelle, Gitea in der Zielumgebung)
    - Kubernetes Deployment
    - Web GUI
    - API
    - Kubernetes Operator
    - Monitoring und Observability mit OpenTelemetry
    - Security und Authentifizierung
+   - Zero-Trust-Netzwerksegmentierung (Cilium)
+   - Policy Enforcement mit Open Policy Agent (OPA)
+   - Runtime Threat Detection mit Tetragon
+   - Netzwerkbeobachtbarkeit mit Cilium Hubble
+   - Feature-Flag-Standard mit OpenFeature
    - Rollen- und Rechtemodell
    - Keycloak-Anbindbarkeit
    - Testing-Konzept
@@ -52,31 +63,39 @@ kontrolliert installiert werden kann.
    - Zarf-Paket für Offline-Weitergabe
    - App-of-Apps-fähige Installation mit Argo CD
    - Dokumentation
+   - Dokumentationsportal als MkDocs-Website mit Versionsumschaltung
+   - E-Book-Export der Dokumentation (pro Release-Version)
+   - Benutzerhandbuch mit drei getrennten Themenbereichen
    - allgemeine Produkt-/Projekt-Website
+   - Grafana-Dashboard-Vorlage fuer DNS-Observability
    - Maturitätsstatus / Reifegradübersicht
 
 ## Zielbild der Delivery-Kette
 
 Die Standard-Delivery-Kette einer App ist wie folgt:
 
-1. Entwicklung und Versionierung im GitLab-Repository
+1. Entwicklung und Versionierung im GitLab-Repository (Quellumgebung)
 2. Automatischer Build, Test und Qualitätssicherung in der CI/CD-Pipeline
 3. Erzeugung und Veröffentlichung der Build-Artefakte
 4. Ablage von Container-Images und weiteren Artefakten in Registry-/Artifact-Systemen wie Harbor und/oder Nexus
 5. Erzeugung von SBOM und Durchführung von Security-Scans
-6. Versionierte Freigabe eines Releases
+6. Versionierte Freigabe eines Releases in GitLab
 7. Erzeugung eines Zarf-Pakets für die Offline-Weitergabe
 8. Transfer des Zarf-Pakets in eine Zielumgebung, z. B. via Datenträger oder kontrollierte Übergabe
-9. Import der benötigten Artefakte in die Zielumgebung
-10. Installation der Applikation in Kubernetes, bevorzugt über Argo CD im App-of-Apps-Modell
+9. Import der benoetigten Artefakte in die Zielumgebung, inklusive Import des Release-Projekts nach Gitea
+10. Bereitstellung oder Aktualisierung des separaten Konfigurationsprojekts in Gitea (Parameter, Helm Values, Overlays)
+11. Installation der Applikation in Kubernetes ueber Argo CD im App-of-Apps-Modell, mit beiden Gitea-Projekten als Quellen
+12. Aktivierung von Zero-Trust-Richtlinien (Cilium + mTLS), Runtime-Ueberwachung (Tetragon) und Policy Enforcement (OPA)
 
 ## Verbindliche Anforderungen je Baustein
 
-### 1. Repository / Git / GitLab
+### 1. Repository / Git / GitLab / Gitea
 - Das Repository enthält Quellcode, Deployments, Dokumentation, Tests, Release-Informationen und Paketdefinitionen.
 - Feature-Spezifikationen werden in Markdown gepflegt.
 - Änderungen müssen über nachvollziehbare Commits, Merge Requests und Releases dokumentiert sein.
 - Die Repository-Struktur muss klar zwischen Source Code, Deployments, Docs, Tests, CI/CD und Packaging unterscheiden.
+- Das produktive Quell-Repository liegt in GitLab; fuer Zielumgebungen wird ein lokales Gitea-Repository verwendet.
+- Release-Inhalte (deploybare Artefakte) und Zielkonfiguration (Parameter/Helm-Values) muessen als getrennte Git-Projekte fuehrbar sein.
 
 ### 2. API
 - Jede Applikation stellt eine klar definierte API bereit.
@@ -101,6 +120,9 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Metriken, Logs und, falls sinnvoll, Traces müssen exportierbar sein.
 - Die Lösung darf nicht optional "irgendwie Monitoring" haben, sondern muss OpenTelemetry nativ einplanen.
 - Betriebsrelevante Zustände müssen im Monitoring sichtbar sein.
+- Logs, Metriken und Traces muessen in der Zielarchitektur an ClickHouse uebergeben werden.
+- Grafana soll die Auswertung ueber ClickHouse als Datenquelle durchfuehren.
+- Eine versionierte DNS-Grafana-Dashboard-Vorlage (JSON) muss im Repository bereitgestellt und pflegbar sein.
 
 ### 6. Security / Authentifizierung
 - Security ist Pflichtbestandteil jeder App.
@@ -108,6 +130,12 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Secrets dürfen niemals im Git-Repository gespeichert werden.
 - Sicherheitsrelevante Ereignisse müssen protokolliert werden.
 - Die App muss so aufgebaut sein, dass Sicherheitsprüfungen sowohl im verbundenen Entwicklungsumfeld als auch für die Offline-Weitergabe nachvollziehbar sind.
+- Fuer Zero Trust muessen Pod-zu-Pod-Kommunikationsregeln explizit definiert werden (Default-Deny, explizites Allowlisting), bevorzugt mit Cilium-Richtlinien.
+- Pod-zu-Pod-Kommunikation muss TLS-verschluesselt sein (mTLS) und darf nur fuer freigegebene Kommunikationspfade erlaubt werden.
+- Runtime-Sicherheitsereignisse muessen ueber Tetragon-Regeln erkannt und in die Audit-/Observability-Kette uebernommen werden.
+- Sicherheits- und Compliance-Regeln muessen als Policy-as-Code ueber OPA (Open Policy Agent) durchsetzbar sein.
+- Fuer Netzwerktransparenz und Fehleranalyse soll Cilium Hubble eingesetzt werden.
+- Feature-Flags muessen ueber den OpenFeature-Standard integrierbar und dokumentiert sein.
 
 ### 7. Rollenmodell und Authentifizierung
 - Jede App benötigt ein definiertes Rollen- und Rechtemodell.
@@ -194,7 +222,8 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Dazu gehören insbesondere:
   - Bereitstellung der Container-Images in der Ziel-Registry, z. B. Harbor
   - Bereitstellung der Deployments, Charts oder Manifeste an der vorgesehenen Stelle
-  - Bereitstellung der GitOps-Definitionen für Argo CD
+  - Bereitstellung der GitOps-Definitionen fuer Argo CD in einem lokalen Gitea-Release-Projekt
+  - Bereitstellung bzw. Aktualisierung eines separaten Gitea-Konfigurationsprojekts fuer Parameter, Helm Values und Umgebungswerte
   - Nachvollziehbare Anpassung oder Parametrisierung von Ziel-URLs, Zugangsdaten und Umgebungswerten
 - Die Zielinstallation darf nicht auf Artefakte aus der Ursprungsumgebung angewiesen sein.
 
@@ -205,6 +234,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Falls mehrere Teilkomponenten vorhanden sind, müssen diese als logisch getrennte Argo-CD-Applications strukturierbar sein.
 - Die App-of-Apps-Struktur muss deklarativ im Repository beschrieben sein.
 - Projekte, Ziel-Namespaces, Quellen und Synchronisationslogik müssen nachvollziehbar definiert sein.
+- Das App-of-Apps-Modell muss mindestens zwei Git-Quellen unterstuetzen: Release-Projekt (Artefakte) und separates Konfigurationsprojekt (parameterisierte Zielkonfiguration).
 
 ### 16. Dokumentation
 - Jede App benötigt vollständige Dokumentation im Repository.
@@ -218,14 +248,28 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
   - ADRs / Architekturentscheide
   - ADR-Uebersicht als eigenes Register `docs/adr/INDEX.md` (analog zu anderen INDEX-Dateien)
   - Release- und Übergabeprozess
+  - versionierte Release-/Bugfix-/Change-Uebersicht je Version
   - Offline-Installationsanleitung
   - Zarf-Export- und Importbeschreibung
   - Argo-CD- / App-of-Apps-Installationsablauf
+- Die Dokumentation muss in drei Darstellungsformen verfuegbar sein:
+  - als Markdown-Quelle im Repository
+  - als MkDocs-basierte Website
+  - als E-Book (z. B. PDF) pro freigegebener Version
+- Die MkDocs-Website muss eine Versionsumschaltung pro Release (z. B. v1, v2) unterstuetzen.
+- Website und E-Book muessen ein klar sichtbares Inhaltsverzeichnis enthalten.
+- Ein Benutzerhandbuch muss vorhanden sein und drei getrennte Themenbereiche enthalten:
+  - Management / Ueberblick
+  - Betrieb / Operations
+  - Umsetzung / Engineering
 - Dokumentation muss mit der Implementierung mitwachsen.
 
 ### 17. Allgemeine Website
 - Jede App besitzt eine allgemeine Website bzw. eine zentrale Informationsseite.
 - Diese dient als Einstiegsseite für Produktbeschreibung, Dokumentation, Status, Releases und Links zu weiterführenden Artefakten.
+- Der Reife-/Release-Status von Features muss fuer Nutzer klar sichtbar sein (mindestens Released/GA, Beta, Preview/Experimental).
+- Beta- oder Preview-Funktionen muessen im GUI eindeutig gekennzeichnet und kurz erklaert sein.
+- Die Statuswerte muessen im gesamten GUI einheitlich benannt werden und aus versionierten Repository-Metadaten stammen (Git als Primaerquelle).
 
 ### 18. Maturitätsstatus
 - Jede App muss einen Maturitätsstatus / Reifegrad ausweisen.
@@ -276,16 +320,31 @@ Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle
 - [ ] benötigte Images und Artefakte liegen nachvollziehbar in Harbor, Nexus oder den vorgesehenen Registries
 - [ ] Zarf-Paket ist erzeugt
 - [ ] Zarf-Paket ist in einer Zielumgebung testweise importierbar
+- [ ] Release-Projekt ist in Gitea in der Zielumgebung importiert und versioniert
+- [ ] Separates Konfigurationsprojekt ist in Gitea vorhanden und fuer die Zielumgebung gepflegt
 - [ ] Installation in der Zielumgebung funktioniert ohne Zugriff auf die Ursprungsumgebung
 - [ ] Argo-CD-Installation im App-of-Apps-Modell ist möglich
+- [ ] Argo-CD Root-Application referenziert Release-Projekt und Konfigurationsprojekt
+- [ ] Cilium-Richtlinien fuer Pod-zu-Pod-Verkehr sind aktiv (Default-Deny + explizite Freigaben)
+- [ ] Pod-zu-Pod-Kommunikation ist TLS-verschluesselt (mTLS)
+- [ ] OPA-Policies fuer Sicherheits- und Compliance-Regeln sind aktiv
+- [ ] Tetragon-Regeln fuer Runtime-Erkennung sind aktiv und liefern Ereignisse
+- [ ] Cilium-Hubble-Sicht auf Netzwerkfluesse ist verfuegbar
+- [ ] OpenFeature-Integration fuer Feature-Flags ist dokumentiert und nutzbar
 - [ ] Offline-Installationsdokumentation ist vollständig
+- [ ] MkDocs-Dokumentationswebsite ist gebaut und fuer die aktuelle Release-Version vorhanden
+- [ ] Versionsumschaltung fuer Doku-Releases ist gepflegt (mindestens aktuelle + vorherige Version)
+- [ ] E-Book-Dokumentation fuer die Release-Version ist erzeugt und ablegbar
+- [ ] Benutzerhandbuch mit drei Themenbereichen ist vollstaendig
+- [ ] DNS-Grafana-Dashboard-Vorlage ist vorhanden und auf ClickHouse-Datenmodell abgestimmt
 
 ## Mindest-Definition of Done für jede App
 
 Eine App gilt erst dann als vollständig template-konform, wenn:
 
 - [ ] Git-Repository vorhanden und strukturiert ist
-- [ ] GitLab-Projekt bzw. Ziel-Git-Struktur festgelegt ist
+- [ ] GitLab-Quellprojekt und Ziel-Gitea-Struktur festgelegt sind
+- [ ] Release- und Konfigurationsprojekt als getrennte Git-Projekte modelliert sind
 - [ ] Kubernetes-Deployment vorhanden ist
 - [ ] API implementiert und dokumentiert ist
 - [ ] Web GUI vorhanden ist
@@ -307,8 +366,18 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Zarf-Paket erzeugbar ist
 - [ ] Zielumgebungs-Import beschrieben ist
 - [ ] Argo-CD-App-of-Apps-Installation unterstützt wird
+- [ ] Cilium-basierte Zero-Trust-Richtlinien fuer Pod-zu-Pod-Traffic umgesetzt sind
+- [ ] Pod-zu-Pod-mTLS im Cluster durchgaengig umgesetzt ist
+- [ ] OPA-basierte Policy-Durchsetzung umgesetzt ist
+- [ ] Tetragon-basierte Runtime-Detektion mit Audit-Anbindung umgesetzt ist
+- [ ] Cilium-Hubble fuer Netzwerkbeobachtbarkeit eingebunden ist
+- [ ] OpenFeature-basierte Feature-Flag-Anbindung vorgesehen oder umgesetzt ist
 - [ ] Dokumentation vollständig ist
+- [ ] Dokumentation als MkDocs-Website und E-Book releasefaehig bereitgestellt ist
+- [ ] Doku-Versionsumschaltung pro Release gepflegt ist
+- [ ] Benutzerhandbuch mit drei Themenbereichen vorhanden ist
 - [ ] allgemeine Website vorhanden ist
+- [ ] DNS-Grafana-Dashboard-Vorlage im Repository vorhanden ist
 - [ ] Maturitätsstatus sichtbar ist
 
 ## Qualitätsanspruch

@@ -18,6 +18,7 @@ Audit Logging - Bestandteil der Security & Access Control Capability.
 | [RDTS-408](requirements/RDTS-408.md) | [ARCH] | App-Template | Sicherheitsrelevante Ereignisse protokolliert | MUSS |
 | [RDTS-409](requirements/RDTS-409.md) | [ARCH] | App-Template | Audit-Log in OTel integriert | MUSS |
 | [RDTS-410](requirements/RDTS-410.md) | [ARCH] | App-Template | Audit-Log nicht manipulierbar | MUSS |
+| [RDTS-411](requirements/RDTS-411.md) | [ARCH] | App-Template | Tetragon Runtime-Events werden als Security-Auditquelle eingebunden | MUSS |
 
 ---
 
