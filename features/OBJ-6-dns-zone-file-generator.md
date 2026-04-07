@@ -1,8 +1,8 @@
 # OBJ-6: DNS Zone File Generator
 
-## Status: In Progress
+## Status: In Review
 **Created:** 2026-03-17
-**Last Updated:** 2026-04-06
+**Last Updated:** 2026-04-07
 
 ## Dependencies
 - OBJ-5 (Participant Configuration Form) - Konfigurationsdaten werden als Input verwendet
@@ -90,7 +90,105 @@ Zone Generator Page
 - API-Schnittstelle bleibt ueber Swagger/OpenAPI sichtbar fuer Nachvollziehbarkeit.
 
 ## QA Test Results
-_To be added by /qa_
+**Tested:** 2026-04-07
+**App URL:** http://localhost:3000/zone-generator
+**Tester:** QA Engineer (AI)
+
+### Acceptance Criteria Status
+
+#### AC-1: Forward Zone-File aus Konfigurationsdaten (SOA, NS, A, Anycast A)
+- [ ] BUG: NS-Records werden aktuell aus allen Host-Listen gebaut (inkl. Resolver/Anycast), nicht nur aus dedizierten Nameservern.
+- [x] API kann gueltige Forward-Zone mit SOA/NS/A erzeugen (`POST /api/v1/zones/generate`, HTTP 200).
+
+#### AC-2: Reverse Zone-File je delegierter Reverse-Zone (SOA, NS, PTR)
+- [x] Reverse-Zone-Generierung mit PTR-Records erfolgreich (`0.0.10.in-addr.arpa`, HTTP 200).
+- [x] SOA- und NS-Eintrag sind im generierten Reverse-Zone-File enthalten.
+
+#### AC-3: SOA-Parameter konfigurierbar
+- [x] `serial`, `primaryNs`, `adminMail`, `refresh`, `retry`, `expire`, `minimum` werden vom API-Endpunkt akzeptiert und im Zone-File korrekt gerendert.
+- [x] Ungueltiger `serial` wird mit `ZONE_VALIDATION_ERROR` abgelehnt.
+
+#### AC-4: Read-Only Ausgabe (Forward/Reverse getrennt)
+- [x] Forward- und Reverse-Ausgabe sind in separaten Bereichen vorhanden.
+- [x] Ausgabe erfolgt in `Textarea`-Komponenten mit `readOnly`.
+
+#### AC-5: Copy-to-Clipboard je generierter Zone
+- [x] Copy-Button fuer Forward-Zone vorhanden.
+- [x] Copy-Button fuer jede Reverse-Zone vorhanden.
+
+#### AC-6: Generierung nutzt `/api/v1/zones/generate`
+- [x] UI ruft den Endpunkt fuer Forward und Reverse explizit auf.
+- [x] Endpunkt liefert erwartete Erfolgs- und Fehlerantworten.
+
+#### AC-7: BIND9-kompatibles Output-Format
+- [ ] BUG: Typ-spezifische Record-Validierung fehlt; ungueltige A-Record-Werte (z. B. `<script>...`) werden akzeptiert und als Zone-File ausgegeben.
+
+#### AC-8: Validierungsfehler aus OBJ-5 blockieren Generierung
+- [x] Fehlende/ungueltige OBJ-5-Metadaten werden in der Vorverarbeitung mit klarer Fehlermeldung blockiert.
+- [x] API-validierungsfehler werden als strukturierte Fehlermeldung zurueckgegeben.
+
+### Edge Cases Status
+
+#### EC-1: Keine Reverse-Zone konfiguriert
+- [x] Vorverarbeitung erzeugt Hinweis und generiert nur Forward-Zone.
+
+#### EC-2: Konfiguration geaendert nach Generierung
+- [x] UI zeigt Hinweis-Badge "Konfiguration geaendert - bitte neu generieren".
+
+#### EC-3: Serial-Override leer
+- [x] API verwendet automatisch den Standard-Serial (zeitbasiert).
+
+#### EC-4: Reverse-Zone passt nicht zu vorhandenen IPs
+- [x] Reverse-Zone wird uebersprungen und als Hinweis gemeldet.
+
+#### EC-5: Sehr grosse Zonen (>100 Records)
+- [x] Performance-Smoke mit 120 Records erfolgreich (`HTTP 200`, ca. `62ms`).
+
+### Security Audit Results
+- [x] Authentication: Endpunkte sind ohne Login erreichbar (entspricht aktuellem v1-Scope, aber kein Schutz gegen unautorisierte Nutzung).
+- [x] Authorization: Keine Multi-User-Scope-Trennung im aktuellen Stand; kein tenant-spezifischer Zugriffsschutz.
+- [ ] BUG: Input Validation ist fuer DNS-Record-Typen zu schwach (A/AAAA/PTR/NS/CNAME/TXT/MX nicht typspezifisch validiert).
+- [x] Rate limiting aktiv: 70 Requests auf `/api/v1/zones/generate` -> `60x 200`, `10x 429`.
+- [x] Keine Secrets in geprueften API-Responses festgestellt.
+
+### Regression Testing
+- [x] `npm run lint` erfolgreich.
+- [x] `npm run test:run` erfolgreich (`6` Testdateien, `15` Tests).
+- [x] `npm run build` erfolgreich.
+- [x] Related routes erreichbar: `/participant-config`, `/test-execution-dashboard`, `/api/v1/swagger`, `/api/v1/openapi.json` jeweils HTTP 200.
+- [x] Features mit Status `Deployed` in `features/INDEX.md`: aktuell keine Eintraege.
+
+### Bugs Found
+
+#### BUG-1: DNS Record-Type Validation unvollstaendig (ungueltige Zone-Files moeglich)
+- **Severity:** High
+- **Steps to Reproduce:**
+  1. Sende `POST /api/v1/zones/generate` mit Record `{"type":"A","value":"<script>alert(1)</script>"}`.
+  2. Expected: API lehnt Request mit 4xx ab (ungueltiger A-Record-Wert).
+  3. Actual: API antwortet `200` und schreibt den ungueltigen Wert in das Zone-File.
+- **Evidence:** Laufzeit-Smoke erfolgreich reproduziert, Antwort enthielt `bad 3600 IN A <script>alert(1)</script>`.
+- **Priority:** Fix before deployment
+
+#### BUG-2: Forward-NS-Records enthalten Resolver/Anycast statt nur Nameserver
+- **Severity:** Medium
+- **Steps to Reproduce:**
+  1. Nutze OBJ-5 Daten mit mindestens 2 Nameservern plus Resolver/Anycast.
+  2. Starte Generierung ueber OBJ-6.
+  3. Expected: NS-Records nur fuer Nameserver.
+  4. Actual: NS-Records werden fuer alle Hosts erzeugt (Resolver/Anycast eingeschlossen).
+- **Evidence:** `buildForwardRecords(...)` erzeugt NS fuer jedes Element in `hosts`; Aufruf uebergibt `hostsForARecords` (Nameserver + Resolver) und optional Anycast.
+- **Priority:** Fix before deployment
+
+### Summary
+- **Acceptance Criteria:** 6/8 passed, 2 failed
+- **Bugs Found:** 2 total (0 Critical, 1 High, 1 Medium, 0 Low)
+- **Security:** Issues found
+- **Production Ready:** NO
+- **Recommendation:** Fix bugs first, then run `/qa` again.
+
+### QA Limitations
+- Cross-Browser-Tests (Chrome/Firefox/Safari) und echte responsive Interaktion (375/768/1440) konnten in dieser CLI-Session nicht vollumfaenglich visuell ausgefuehrt werden.
+- Teile der UI-Pruefung wurden ueber SSR-Ausgabe plus Codepfad-Validierung abgesichert; finaler visueller Browser-Check bleibt empfohlen.
 
 ## Deployment
 _To be added by /deploy_
