@@ -67,7 +67,7 @@ kontrolliert installiert werden kann.
    - E-Book-Export der Dokumentation (pro Release-Version)
    - Benutzerhandbuch mit drei getrennten Themenbereichen
    - allgemeine Produkt-/Projekt-Website
-   - Grafana-Dashboard-Vorlage fuer DNS-Observability
+   - Grafana-Dashboard-Vorlage fuer Service-Observability
    - Maturitätsstatus / Reifegradübersicht
 
 ## Zielbild der Delivery-Kette
@@ -122,7 +122,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Betriebsrelevante Zustände müssen im Monitoring sichtbar sein.
 - Logs, Metriken und Traces muessen in der Zielarchitektur an ClickHouse uebergeben werden.
 - Grafana soll die Auswertung ueber ClickHouse als Datenquelle durchfuehren.
-- Eine versionierte DNS-Grafana-Dashboard-Vorlage (JSON) muss im Repository bereitgestellt und pflegbar sein.
+- Eine versionierte Grafana-Dashboard-Vorlage (JSON) muss im Repository bereitgestellt und pflegbar sein.
 
 ### 6. Security / Authentifizierung
 - Security ist Pflichtbestandteil jeder App.
@@ -163,7 +163,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Container-Images muessen aus einem gehaerteten, minimalen Runtime-Image gebaut werden.
 - Die Runtime-Stage darf nur die zur Ausfuehrung benoetigten Binaries, Libraries, Konfigurationen und Assets enthalten.
 - Build-Tools, Package-Manager, Compiler und nicht benoetigte Shell-Tools duerfen im finalen Runtime-Image nicht enthalten sein, sofern keine dokumentierte Ausnahme vorliegt.
-- Falls die Applikation funktional nur BIND9 bereitstellt, ist ein BIND9-spezifisches Minimal-Image zu verwenden, das nur `named` und die benoetigten Laufzeitbestandteile enthaelt.
+- Falls die Applikation funktional nur einen einzelnen Dienstprozess bereitstellt, ist ein dienstspezifisches Minimal-Image zu verwenden, das nur den benoetigten Prozess und die benoetigten Laufzeitbestandteile enthaelt.
 
 ### 10. Release Management
 - Jede App benötigt ein geregeltes Release Management.
@@ -314,7 +314,7 @@ Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle
 - [ ] verbotene Inhalte wie interne Source-Dateien, Testdaten, Secrets oder unerlaubte Sourcemaps sind ausgeschlossen
 - [ ] Runtime-Container-Image basiert auf gehaertetem Minimal-Base-Image (inkl. dokumentiertem Digest)
 - [ ] Runtime-Container enthaelt nur benoetigte Laufzeitkomponenten; keine Build-Toolchain im finalen Image
-- [ ] Fuer BIND9-only Workloads ist ein BIND9-spezifisches Minimal-Image nachgewiesen
+- [ ] Fuer Single-Service-Workloads ist ein dienstspezifisches Minimal-Image nachgewiesen
 - [ ] SBOM ist erzeugt und dem Release zugeordnet
 - [ ] Security-Scans sind durchgeführt und bewertet
 - [ ] benötigte Images und Artefakte liegen nachvollziehbar in Harbor, Nexus oder den vorgesehenen Registries
@@ -336,7 +336,7 @@ Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle
 - [ ] Versionsumschaltung fuer Doku-Releases ist gepflegt (mindestens aktuelle + vorherige Version)
 - [ ] E-Book-Dokumentation fuer die Release-Version ist erzeugt und ablegbar
 - [ ] Benutzerhandbuch mit drei Themenbereichen ist vollstaendig
-- [ ] DNS-Grafana-Dashboard-Vorlage ist vorhanden und auf ClickHouse-Datenmodell abgestimmt
+- [ ] Grafana-Dashboard-Vorlage ist vorhanden und auf das ClickHouse-Datenmodell abgestimmt
 
 ## Mindest-Definition of Done für jede App
 
@@ -360,7 +360,7 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Definition of Done für Build-/Release-Artefakte umgesetzt ist
 - [ ] finales Release-Artefakt wird in der Pipeline geprüft
 - [ ] gehaertetes Minimal-Container-Image ist als Runtime-Standard umgesetzt
-- [ ] bei BIND9-only Umfang ist ein BIND9-spezifisches Minimal-Image umgesetzt
+- [ ] bei Single-Service-Umfang ist ein dienstspezifisches Minimal-Image umgesetzt
 - [ ] SBOM und Security-Scanning eingebunden sind
 - [ ] Harbor-/Nexus-/Artifact-Ablage definiert ist
 - [ ] Zarf-Paket erzeugbar ist
@@ -377,7 +377,7 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Doku-Versionsumschaltung pro Release gepflegt ist
 - [ ] Benutzerhandbuch mit drei Themenbereichen vorhanden ist
 - [ ] allgemeine Website vorhanden ist
-- [ ] DNS-Grafana-Dashboard-Vorlage im Repository vorhanden ist
+- [ ] Grafana-Dashboard-Vorlage im Repository vorhanden ist
 - [ ] Maturitätsstatus sichtbar ist
 
 ## Qualitätsanspruch
