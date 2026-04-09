@@ -120,8 +120,13 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Metriken, Logs und, falls sinnvoll, Traces müssen exportierbar sein.
 - Die Lösung darf nicht optional "irgendwie Monitoring" haben, sondern muss OpenTelemetry nativ einplanen.
 - Betriebsrelevante Zustände müssen im Monitoring sichtbar sein.
+- Es muessen zwei Betriebsvarianten unterstuetzt werden:
+  - `local`: lokale, persistente Zwischenspeicherung ohne externen Zielspeicher
+  - `clickhouse`: zentrale Speicherung und Auswertung ueber ClickHouse
 - Logs, Metriken und Traces muessen in der Zielarchitektur an ClickHouse uebergeben werden.
 - Grafana soll die Auswertung ueber ClickHouse als Datenquelle durchfuehren.
+- Bei Ausfall oder Nichtverfuegbarkeit des Zielspeichers muessen Telemetriedaten lokal gepuffert und spaeter nachlieferbar gehalten werden.
+- Das Umschalten zwischen `local` und `clickhouse` muss ueber versionierte Konfigurationen (z. B. Helm Values oder Config-Profile) nachvollziehbar gesteuert werden.
 - Eine versionierte Grafana-Dashboard-Vorlage (JSON) muss im Repository bereitgestellt und pflegbar sein.
 
 ### 6. Security / Authentifizierung
@@ -172,6 +177,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Release-Artefakte, Tags und Versionsstände müssen nachvollziehbar sein.
 - Ein Release ist erst vollständig, wenn die zugehörigen Sicherheits- und Paketierungsartefakte mitgeführt werden.
 - Publish- und Release-Konfigurationen sind als security-relevanter Bestandteil der Supply Chain zu behandeln.
+- Update-Hinweise fuer Nutzer muessen pro Release geplant und versioniert bereitgestellt werden (z. B. als Release-Notiz-Quelle im Repository).
 
 ### 10a. Definition of Done für Build und Release
 - Ein Build oder Release gilt nur dann als freigabefähig, wenn das tatsächlich erzeugte Veröffentlichungsartefakt geprüft wurde.
@@ -256,6 +262,12 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
   - als Markdown-Quelle im Repository
   - als MkDocs-basierte Website
   - als E-Book (z. B. PDF) pro freigegebener Version
+- Architektur- und Prozessdiagramme muessen mit `draw.io` erstellt werden.
+- Diagramm-Dateien muessen in einer festen Struktur gepflegt werden:
+  - Quellen: `docs/diagrams/source/*.drawio`
+  - Exporte: `docs/diagrams/export/*.svg` und `docs/diagrams/export/*.png` (PNG als E-Book-/Fallback-Format)
+- In Markdown und E-Book-Quellen sollen nur Exportdateien (`.svg`/`.png`) referenziert werden, nicht die `.drawio`-Quelldateien.
+- Bei jeder Diagramm-Aenderung muessen Quelle und Export gemeinsam versioniert und committed werden.
 - Die MkDocs-Website muss eine Versionsumschaltung pro Release (z. B. v1, v2) unterstuetzen.
 - Website und E-Book muessen ein klar sichtbares Inhaltsverzeichnis enthalten.
 - Ein Benutzerhandbuch muss vorhanden sein und drei getrennte Themenbereiche enthalten:
@@ -270,6 +282,9 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Der Reife-/Release-Status von Features muss fuer Nutzer klar sichtbar sein (mindestens Released/GA, Beta, Preview/Experimental).
 - Beta- oder Preview-Funktionen muessen im GUI eindeutig gekennzeichnet und kurz erklaert sein.
 - Die Statuswerte muessen im gesamten GUI einheitlich benannt werden und aus versionierten Repository-Metadaten stammen (Git als Primaerquelle).
+- Das GUI muss Update-Hinweise anzeigen koennen (mindestens globaler Hinweis im Dashboard und optional modulbezogene Hinweise).
+- Kritische Updates muessen als hervorgehobener Hinweis mit Handlungsoptionen darstellbar sein (z. B. jetzt ausfuehren oder spaeter planen).
+- Die Quelle fuer Update-Hinweise muss versioniert im Repository gepflegt werden; lokale Quittierung/ausblenden je Nutzer ist zulaessig.
 
 ### 18. Maturitätsstatus
 - Jede App muss einen Maturitätsstatus / Reifegrad ausweisen.
@@ -331,11 +346,16 @@ Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle
 - [ ] Tetragon-Regeln fuer Runtime-Erkennung sind aktiv und liefern Ereignisse
 - [ ] Cilium-Hubble-Sicht auf Netzwerkfluesse ist verfuegbar
 - [ ] OpenFeature-Integration fuer Feature-Flags ist dokumentiert und nutzbar
+- [ ] OTel-Betriebsvarianten `local` und `clickhouse` sind dokumentiert und pruefbar
+- [ ] Lokale Telemetrie-Pufferung bei nicht verfuegbarem Zielspeicher ist nachgewiesen
 - [ ] Offline-Installationsdokumentation ist vollständig
 - [ ] MkDocs-Dokumentationswebsite ist gebaut und fuer die aktuelle Release-Version vorhanden
 - [ ] Versionsumschaltung fuer Doku-Releases ist gepflegt (mindestens aktuelle + vorherige Version)
 - [ ] E-Book-Dokumentation fuer die Release-Version ist erzeugt und ablegbar
 - [ ] Benutzerhandbuch mit drei Themenbereichen ist vollstaendig
+- [ ] Diagramme sind mit `draw.io` gepflegt und als `SVG`/`PNG` exportiert
+- [ ] Diagramm-Quellen und Diagramm-Exporte sind gemeinsam versioniert
+- [ ] Update-Hinweise fuer die aktuelle Release-Version sind im GUI sichtbar und mit Release-Notizen verknuepft
 - [ ] Grafana-Dashboard-Vorlage ist vorhanden und auf das ClickHouse-Datenmodell abgestimmt
 
 ## Mindest-Definition of Done für jede App
@@ -372,11 +392,17 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Tetragon-basierte Runtime-Detektion mit Audit-Anbindung umgesetzt ist
 - [ ] Cilium-Hubble fuer Netzwerkbeobachtbarkeit eingebunden ist
 - [ ] OpenFeature-basierte Feature-Flag-Anbindung vorgesehen oder umgesetzt ist
+- [ ] OTel-Modusumschaltung (`local`/`clickhouse`) ueber versionierte Konfiguration vorhanden ist
+- [ ] lokale Telemetrie-Zwischenspeicherung mit spaeterer Nachlieferung vorgesehen oder umgesetzt ist
 - [ ] Dokumentation vollständig ist
 - [ ] Dokumentation als MkDocs-Website und E-Book releasefaehig bereitgestellt ist
 - [ ] Doku-Versionsumschaltung pro Release gepflegt ist
 - [ ] Benutzerhandbuch mit drei Themenbereichen vorhanden ist
+- [ ] Diagramm-Standard mit `draw.io` sowie `source`/`export`-Ablage umgesetzt ist
+- [ ] Markdown-/E-Book-Referenzen auf Diagramm-Exportdateien (`SVG`/`PNG`) zeigen
 - [ ] allgemeine Website vorhanden ist
+- [ ] GUI-Mechanismus fuer globale und modulbezogene Update-Hinweise vorhanden ist
+- [ ] Update-Hinweis-Quelle versioniert im Repository gepflegt wird
 - [ ] Grafana-Dashboard-Vorlage im Repository vorhanden ist
 - [ ] Maturitätsstatus sichtbar ist
 

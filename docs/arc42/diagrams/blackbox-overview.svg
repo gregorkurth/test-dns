@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-label="Blackbox Uebersicht der Service-Plattform">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 z" fill="#374151" />
+    </marker>
+    <style>
+      .title { font: 700 24px Arial, sans-serif; fill: #111827; }
+      .boxText { font: 600 14px Arial, sans-serif; fill: #111827; }
+      .lineText { font: 12px Arial, sans-serif; fill: #374151; }
+      .box { stroke-width: 2; rx: 10; ry: 10; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="820" fill="#f9fafb" />
+  <text class="title" x="40" y="44">Blackbox-Uebersicht (arc42)</text>
+
+  <rect class="box" x="360" y="230" width="460" height="240" fill="#fff2cc" stroke="#d6b656" />
+  <text class="boxText" x="390" y="285">Service-Plattform</text>
+  <text class="lineText" x="390" y="318">Web GUI | API | Operator</text>
+  <text class="lineText" x="390" y="340">Dokumentation | Testsicht</text>
+
+  <rect class="box" x="70" y="280" width="220" height="90" fill="#dae8fc" stroke="#6c8ebf" />
+  <text class="boxText" x="94" y="320">Benutzer</text>
+  <text class="lineText" x="94" y="342">(Operator / Manager)</text>
+
+  <rect class="box" x="360" y="70" width="220" height="80" fill="#dae8fc" stroke="#6c8ebf" />
+  <text class="boxText" x="388" y="116">OIDC / Keycloak</text>
+
+  <rect class="box" x="930" y="110" width="250" height="90" fill="#f8cecc" stroke="#b85450" />
+  <text class="boxText" x="958" y="148">GitLab</text>
+  <text class="lineText" x="958" y="170">(Source of Truth)</text>
+
+  <rect class="box" x="930" y="235" width="250" height="90" fill="#f8cecc" stroke="#b85450" />
+  <text class="boxText" x="958" y="272">Gitea</text>
+  <text class="lineText" x="958" y="294">(Zielumgebung)</text>
+
+  <rect class="box" x="960" y="365" width="190" height="80" fill="#ffe6cc" stroke="#d79b00" />
+  <text class="boxText" x="1016" y="410">Argo CD</text>
+
+  <rect class="box" x="930" y="485" width="250" height="90" fill="#ffe6cc" stroke="#d79b00" />
+  <text class="boxText" x="968" y="525">Kubernetes Cluster</text>
+
+  <rect class="box" x="90" y="585" width="200" height="80" fill="#d5e8d4" stroke="#82b366" />
+  <text class="boxText" x="120" y="630">Harbor / Nexus</text>
+
+  <rect class="box" x="930" y="620" width="250" height="90" fill="#d5e8d4" stroke="#82b366" />
+  <text class="boxText" x="960" y="658">ClickHouse + Grafana</text>
+
+  <line x1="290" y1="325" x2="360" y2="325" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+  <text class="lineText" x="300" y="312">Nutzung / Steuerung</text>
+
+  <line x1="470" y1="150" x2="520" y2="230" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+  <text class="lineText" x="475" y="195">AuthN/AuthZ</text>
+
+  <line x1="820" y1="275" x2="930" y2="150" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+  <text class="lineText" x="820" y="190">Quell-Repo + Release</text>
+
+  <line x1="820" y1="330" x2="930" y2="280" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+  <text class="lineText" x="822" y="300">Release + Konfiguration</text>
+
+  <line x1="1055" y1="325" x2="1055" y2="365" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+  <text class="lineText" x="1070" y="350">GitOps Sync</text>
+
+  <line x1="1055" y1="445" x2="1055" y2="485" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+  <text class="lineText" x="1070" y="470">Deployment</text>
+
+  <line x1="420" y1="470" x2="260" y2="595" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+  <text class="lineText" x="300" y="520">Images / Artefakte</text>
+
+  <line x1="740" y1="470" x2="960" y2="620" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+  <text class="lineText" x="755" y="545">Logs / Metriken / Traces</text>
+
+  <line x1="820" y1="415" x2="930" y2="520" stroke="#374151" stroke-width="2" marker-end="url(#arrow)" />
+  <text class="lineText" x="828" y="455">Runtime (K8s)</text>
+</svg>
