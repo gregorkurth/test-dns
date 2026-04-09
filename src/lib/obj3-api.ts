@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 
+import { emitSecuritySignal, createObservabilityRequestId } from '@/lib/obj11-observability'
+
 export interface ApiMeta {
   apiVersion: 'v1'
   timestamp: string
@@ -195,6 +197,20 @@ export function enforceRateLimit(
   }
 
   if (existing.count >= maxRequests) {
+    void emitSecuritySignal({
+      name: 'dns.api.rate_limit.blocked',
+      route: namespace,
+      operation: 'rate-limit',
+      requestId: createObservabilityRequestId(),
+      severity: 'WARN',
+      statusCode: 429,
+      outcome: 'blocked',
+      attributes: {
+        'client.id': getClientId(request),
+        'rate_limit.namespace': namespace,
+        'rate_limit.limit': maxRequests,
+      },
+    })
     const retryAfterSeconds = Math.max(
       1,
       Math.ceil((windowMs - (now - existing.windowStart)) / 1000),

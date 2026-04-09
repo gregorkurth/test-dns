@@ -17,6 +17,7 @@ export async function GET(request: Request) {
       '/api/v1/participants',
       '/api/v1/participants/{id}',
       '/api/v1/zones/generate',
+      '/api/v1/telemetry',
       '/api/v1/openapi.json',
       '/api/v1/swagger',
     ],

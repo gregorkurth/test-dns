@@ -111,6 +111,14 @@ const openApiSpec = {
         },
       },
     },
+    '/telemetry': {
+      get: {
+        summary: 'Observability-Probe abrufen',
+        responses: {
+          '200': { description: 'Observability-Probe erfolgreich geladen.' },
+        },
+      },
+    },
     '/openapi.json': {
       get: {
         summary: 'OpenAPI-Spezifikation abrufen',

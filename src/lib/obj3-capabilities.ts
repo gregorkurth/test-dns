@@ -1,6 +1,8 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
+import { emitFailureSignal, emitSuccessSignal } from '@/lib/obj11-observability'
+
 interface CapabilityRequirementNode {
   id: string
 }
@@ -68,7 +70,7 @@ function countRequirements(services: CapabilityServiceNode[]): number {
 
 export async function listCapabilities() {
   const data = await loadCapabilitiesRaw()
-  return data.capabilities.map((capability) => ({
+  const capabilities = data.capabilities.map((capability) => ({
     id: capability.id,
     name: capability.name,
     maturity: capability.maturity ?? null,
@@ -76,6 +78,18 @@ export async function listCapabilities() {
     serviceFunctionCount: countServiceFunctions(capability.services ?? []),
     requirementCount: countRequirements(capability.services ?? []),
   }))
+
+  await emitSuccessSignal({
+    name: 'dns.capabilities.listed',
+    operation: 'capabilities.list',
+    route: '/api/v1/capabilities',
+    statusCode: 200,
+    attributes: {
+      'capability.count': capabilities.length,
+    },
+  })
+
+  return capabilities
 }
 
 export async function getCapabilityById(
@@ -87,9 +101,34 @@ export async function getCapabilityById(
   }
 
   const data = await loadCapabilitiesRaw()
-  return (
+  const capability =
     data.capabilities.find(
       (capability) => capability.id.toUpperCase() === normalizedId,
     ) ?? null
-  )
+
+  if (capability) {
+    await emitSuccessSignal({
+      name: 'dns.capability.loaded',
+      operation: 'capabilities.detail',
+      route: `/api/v1/capabilities/${normalizedId}`,
+      statusCode: 200,
+      attributes: {
+        capability_id: capability.id,
+      },
+    })
+  } else {
+    await emitFailureSignal({
+      name: 'dns.capability.missing',
+      operation: 'capabilities.detail',
+      route: `/api/v1/capabilities/${normalizedId}`,
+      statusCode: 404,
+      severity: 'WARN',
+      outcome: 'failure',
+      attributes: {
+        capability_id: normalizedId,
+      },
+    })
+  }
+
+  return capability
 }

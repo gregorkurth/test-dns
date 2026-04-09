@@ -1,6 +1,8 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
+import { emitSuccessSignal } from '@/lib/obj11-observability'
+
 export type TestType = 'manual' | 'auto'
 export type DashboardStatus = 'passed' | 'failed' | 'never_executed'
 
@@ -1201,7 +1203,7 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
     ).values(),
   ).sort((left, right) => left.id.localeCompare(right.id, 'de'))
 
-  return {
+  const data = {
     generatedAt: new Date().toISOString(),
     summary: {
       totalTests: tests.length,
@@ -1233,6 +1235,21 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
       'tests/executions/**/*.json',
     ],
   }
+
+  await emitSuccessSignal({
+    name: 'dns.test_execution_dashboard.loaded',
+    operation: 'dashboard.load',
+    route: '/api/test-execution-dashboard',
+    statusCode: 200,
+    attributes: {
+      test_count: data.summary.totalTests,
+      passed_count: data.summary.passed,
+      failed_count: data.summary.failed,
+      never_executed_count: data.summary.neverExecuted,
+    },
+  })
+
+  return data
 }
 
 export const testExecutionDashboardInternals = {

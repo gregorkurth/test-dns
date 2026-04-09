@@ -1,0 +1,50 @@
+{
+  "timeUnixNano": "1773369600000000000",
+  "severityNumber": 17,
+  "severityText": "ERROR",
+  "body": "OPA deny: service account attempted disallowed zone mutation",
+  "attributes": [
+    {
+      "key": "event.domain",
+      "value": {
+        "stringValue": "security"
+      }
+    },
+    {
+      "key": "event.name",
+      "value": {
+        "stringValue": "policy.deny"
+      }
+    },
+    {
+      "key": "security.severity",
+      "value": {
+        "stringValue": "high"
+      }
+    },
+    {
+      "key": "service.name",
+      "value": {
+        "stringValue": "dns-management-service"
+      }
+    },
+    {
+      "key": "k8s.namespace.name",
+      "value": {
+        "stringValue": "dns-prod"
+      }
+    },
+    {
+      "key": "trace_id",
+      "value": {
+        "stringValue": "1ac88f8a7d0f64f6b2f7ddaaef59e921"
+      }
+    },
+    {
+      "key": "siem.forward",
+      "value": {
+        "boolValue": true
+      }
+    }
+  ]
+}

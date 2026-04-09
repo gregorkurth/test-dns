@@ -2,12 +2,13 @@ import { promises as fs } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { GET as getCapabilityDetail } from './capabilities/[id]/route'
 import { GET as getCapabilities } from './capabilities/route'
 import { GET as getOpenApi } from './openapi.json/route'
 import { GET as getSwaggerUi } from './swagger/route'
+import { GET as getTelemetry } from './telemetry/route'
 import {
   DELETE as deleteParticipant,
   GET as getParticipants,
@@ -217,6 +218,7 @@ describe('OBJ-3 API v1', () => {
     })
     expect(rootBody.data.endpoints).toContain('/api/v1/openapi.json')
     expect(rootBody.data.endpoints).toContain('/api/v1/swagger')
+    expect(rootBody.data.endpoints).toContain('/api/v1/telemetry')
 
     const openApiResponse = await getOpenApi(createRequest('/api/v1/openapi.json'))
     expect(openApiResponse.status).toBe(200)
@@ -226,6 +228,7 @@ describe('OBJ-3 API v1', () => {
     })
     expect(openApiBody.data.paths).toHaveProperty('/participants')
     expect(openApiBody.data.paths).toHaveProperty('/zones/generate')
+    expect(openApiBody.data.paths).toHaveProperty('/telemetry')
     expect(openApiBody.data.paths).toHaveProperty('/swagger')
 
     const swaggerResponse = await getSwaggerUi(createRequest('/api/v1/swagger'))
@@ -233,6 +236,63 @@ describe('OBJ-3 API v1', () => {
     expect(swaggerResponse.headers.get('content-type')).toContain('text/html')
     const swaggerBody = await swaggerResponse.text()
     expect(swaggerBody).toContain('/api/v1/openapi.json')
+  })
+
+  it('serves a telemetry probe with structured observability metadata', async () => {
+    const previousEnv = {
+      OTEL_SERVICE_NAME: process.env.OTEL_SERVICE_NAME,
+      OTEL_EXPORT_MODE: process.env.OTEL_EXPORT_MODE,
+      OTEL_EXPORT_ENDPOINT: process.env.OTEL_EXPORT_ENDPOINT,
+      OBSERVABILITY_GRAFANA_DASHBOARD_VERSION:
+        process.env.OBSERVABILITY_GRAFANA_DASHBOARD_VERSION,
+      NODE_ENV: process.env.NODE_ENV,
+    }
+    const mutableEnv = process.env as NodeJS.ProcessEnv & {
+      NODE_ENV?: string
+    }
+
+    mutableEnv.OTEL_SERVICE_NAME = 'dns-management-service'
+    mutableEnv.OTEL_EXPORT_MODE = 'clickhouse'
+    mutableEnv.OTEL_EXPORT_ENDPOINT =
+      'http://otel-collector.monitoring.svc.cluster.local:4318'
+    mutableEnv.OBSERVABILITY_GRAFANA_DASHBOARD_VERSION = 'dns-observability-v1'
+    mutableEnv.NODE_ENV = 'production'
+
+    const consoleSpy = vi.spyOn(console, 'info').mockImplementation(() => {})
+
+    try {
+      const response = await getTelemetry(createRequest('/api/v1/telemetry'))
+
+      expect(response.status).toBe(200)
+      const body = await response.json()
+      expect(body.data.probe).toMatchObject({
+        serviceName: 'dns-management-service',
+        exportMode: 'clickhouse',
+        dashboardVersion: 'dns-observability-v1',
+        environment: 'production',
+      })
+      expect(body.data.routing).toMatchObject({
+        local: 'spool',
+        clickhouse: 'clickhouse',
+        siem: 'otel_security_events',
+      })
+      expect(body.data.transport).toBe('otlp/http')
+      expect(body.data.probe.signals).toEqual(
+        expect.arrayContaining(['metrics', 'logs', 'traces', 'security-events']),
+      )
+      expect(consoleSpy).toHaveBeenCalledTimes(1)
+
+      const [message] = consoleSpy.mock.calls[0] ?? []
+      expect(() => JSON.parse(String(message))).not.toThrow()
+      expect(JSON.parse(String(message))).toMatchObject({
+        event: 'observability-probe',
+        serviceName: 'dns-management-service',
+        exportMode: 'clickhouse',
+      })
+    } finally {
+      consoleSpy.mockRestore()
+      Object.assign(mutableEnv, previousEnv)
+    }
   })
 
   it('sanitizes participant fields to reduce stored XSS risk', async () => {

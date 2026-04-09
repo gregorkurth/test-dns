@@ -3,6 +3,8 @@ import path from 'node:path'
 
 import { z } from 'zod'
 
+import { emitFailureSignal, emitSuccessSignal } from '@/lib/obj11-observability'
+
 const participantIdRegex = /^[A-Za-z0-9_-]{2,64}$/
 
 export const participantCreateSchema = z.object({
@@ -144,9 +146,21 @@ function createParticipantId(name: string): string {
 
 export async function listParticipants(): Promise<ParticipantRecord[]> {
   const participants = await readAllParticipants()
-  return participants
+  const sanitized = participants
     .map((participant) => sanitizeParticipantRecord(participant))
     .sort((left, right) => left.id.localeCompare(right.id, 'de'))
+
+  await emitSuccessSignal({
+    name: 'dns.participants.listed',
+    operation: 'participants.list',
+    route: '/api/v1/participants',
+    statusCode: 200,
+    attributes: {
+      'participant.count': sanitized.length,
+    },
+  })
+
+  return sanitized
 }
 
 export async function getParticipantById(id: string): Promise<ParticipantRecord | null> {
@@ -158,7 +172,33 @@ export async function getParticipantById(id: string): Promise<ParticipantRecord 
   const participants = await readAllParticipants()
   const participant =
     participants.find((entry) => entry.id === normalized) ?? null
-  return participant ? sanitizeParticipantRecord(participant) : null
+  const sanitized = participant ? sanitizeParticipantRecord(participant) : null
+
+  if (sanitized) {
+    await emitSuccessSignal({
+      name: 'dns.participant.loaded',
+      operation: 'participants.detail',
+      route: `/api/v1/participants/${normalized}`,
+      statusCode: 200,
+      attributes: {
+        participant_id: normalized,
+      },
+    })
+  } else {
+    await emitFailureSignal({
+      name: 'dns.participant.missing',
+      operation: 'participants.detail',
+      route: `/api/v1/participants/${normalized}`,
+      statusCode: 404,
+      severity: 'WARN',
+      outcome: 'failure',
+      attributes: {
+        participant_id: normalized,
+      },
+    })
+  }
+
+  return sanitized
 }
 
 export async function createParticipant(
@@ -186,7 +226,18 @@ export async function createParticipant(
 
   participants.push(participant)
   await writeAllParticipants(participants)
-  return sanitizeParticipantRecord(participant)
+  const sanitized = sanitizeParticipantRecord(participant)
+  await emitSuccessSignal({
+    name: 'dns.participant.created',
+    operation: 'participants.create',
+    route: '/api/v1/participants',
+    statusCode: 201,
+    attributes: {
+      participant_id: sanitized.id,
+    },
+  })
+
+  return sanitized
 }
 
 export async function updateParticipant(
@@ -196,6 +247,17 @@ export async function updateParticipant(
   const participants = await readAllParticipants()
   const index = participants.findIndex((participant) => participant.id === id)
   if (index < 0) {
+    await emitFailureSignal({
+      name: 'dns.participant.update_missing',
+      operation: 'participants.update',
+      route: `/api/v1/participants/${id}`,
+      statusCode: 404,
+      severity: 'WARN',
+      outcome: 'failure',
+      attributes: {
+        participant_id: id,
+      },
+    })
     return null
   }
 
@@ -228,16 +290,47 @@ export async function updateParticipant(
 
   participants[index] = updated
   await writeAllParticipants(participants)
-  return sanitizeParticipantRecord(updated)
+  const sanitized = sanitizeParticipantRecord(updated)
+  await emitSuccessSignal({
+    name: 'dns.participant.updated',
+    operation: 'participants.update',
+    route: `/api/v1/participants/${id}`,
+    statusCode: 200,
+    attributes: {
+      participant_id: sanitized.id,
+    },
+  })
+
+  return sanitized
 }
 
 export async function deleteParticipant(id: string): Promise<boolean> {
   const participants = await readAllParticipants()
   const next = participants.filter((participant) => participant.id !== id)
   if (next.length === participants.length) {
+    await emitFailureSignal({
+      name: 'dns.participant.delete_missing',
+      operation: 'participants.delete',
+      route: `/api/v1/participants/${id}`,
+      statusCode: 404,
+      severity: 'WARN',
+      outcome: 'failure',
+      attributes: {
+        participant_id: id,
+      },
+    })
     return false
   }
 
   await writeAllParticipants(next)
+  await emitSuccessSignal({
+    name: 'dns.participant.deleted',
+    operation: 'participants.delete',
+    route: `/api/v1/participants/${id}`,
+    statusCode: 200,
+    attributes: {
+      participant_id: id,
+    },
+  })
   return true
 }

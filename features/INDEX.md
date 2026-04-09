@@ -24,8 +24,9 @@
 | OBJ-9 | Manual Test Runner | 4 – P1 DNS | In Review | [OBJ-9-manual-test-runner.md](OBJ-9-manual-test-runner.md) | 2026-04-03 |
 | OBJ-23 | Test Execution Dashboard | 4 – P1 DNS | Completed | [OBJ-23-test-execution-dashboard.md](OBJ-23-test-execution-dashboard.md) | 2026-04-04 |
 | OBJ-24 | DNS Baseline Config Repository & Change History | 4 – P1 DNS | Planned | [OBJ-24-dns-baseline-config-repository.md](OBJ-24-dns-baseline-config-repository.md) | 2026-04-09 |
-| OBJ-10 | Kubernetes Deployment | 5 – Plattform | Planned | [OBJ-10-kubernetes-deployment.md](OBJ-10-kubernetes-deployment.md) | 2026-04-03 |
-| OBJ-11 | Monitoring & Observability (OpenTelemetry) | 5 – Plattform | Planned | [OBJ-11-monitoring-observability.md](OBJ-11-monitoring-observability.md) | 2026-04-03 |
+| OBJ-10 | Kubernetes Deployment | 5 – Plattform | In Review | [OBJ-10-kubernetes-deployment.md](OBJ-10-kubernetes-deployment.md) | 2026-04-03 |
+| OBJ-11 | Monitoring & Observability (OpenTelemetry) | 5 – Plattform | In Review | [OBJ-11-monitoring-observability.md](OBJ-11-monitoring-observability.md) | 2026-04-03 |
+| OBJ-25 | Helm Charts fuer Kubernetes Deployment | 5 – Plattform | In Progress | [OBJ-25-helm-charts.md](OBJ-25-helm-charts.md) | 2026-04-09 |
 | OBJ-12 | Security & Authentifizierung | 5 – Plattform | Planned | [OBJ-12-security-authentifizierung.md](OBJ-12-security-authentifizierung.md) | 2026-04-03 |
 | OBJ-13 | Kubernetes Operator | 5 – Plattform | Planned | [OBJ-13-kubernetes-operator.md](OBJ-13-kubernetes-operator.md) | 2026-04-03 |
 | OBJ-14 | Release Management | 6 – Produktabschluss | Planned | [OBJ-14-release-management.md](OBJ-14-release-management.md) | 2026-04-03 |
@@ -65,6 +66,7 @@ Phase 4 – P1 (Erweiterte DNS-Features)
 Phase 5 – Plattform & Betrieb
   OBJ-10 Kubernetes Deployment     ← App containerisieren
   OBJ-11 Monitoring & Observability ← OTel hinzufügen
+  OBJ-25 Helm Charts               ← Deployment standardisieren, Upgrade/Rollback vereinfachen
   OBJ-12 Security & Authentifizierung ← Auth + RBAC
   OBJ-13 Kubernetes Operator       ← braucht OBJ-10 + OBJ-3 + OBJ-12
 
@@ -80,4 +82,4 @@ Phase 6 – Produktabschluss
   OBJ-20 Zielumgebung / Import     ← braucht OBJ-19 (Paket), OBJ-21 (Argo)
 ```
 
-## Next Available ID: OBJ-25
+## Next Available ID: OBJ-26
