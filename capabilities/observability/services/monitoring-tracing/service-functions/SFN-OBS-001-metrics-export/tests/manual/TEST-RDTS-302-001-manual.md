@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-302-001-manual: App-spezifische Metriken
 
 | Feld | Wert |

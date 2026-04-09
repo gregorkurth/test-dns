@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-SREQ-242-001-manual: Manueller Test
 
 > **Testfall-ID:** TEST-SREQ-242-001-manual

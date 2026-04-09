@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-305-001-manual: TraceId-Korrelation
 
 | Feld | Wert |

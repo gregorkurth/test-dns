@@ -1,3 +1,7 @@
+---
+category: API
+---
+
 # TEST-RDTS-307-001-manual: OTel-Collector-Endpoint konfigurierbar
 
 | Feld | Wert |

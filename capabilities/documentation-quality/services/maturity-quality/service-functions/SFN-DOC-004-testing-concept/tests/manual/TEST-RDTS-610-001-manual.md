@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-610-001-manual: Statuslogik fuer Testausfuehrungen
 
 `itest~rdts-610-001~1`

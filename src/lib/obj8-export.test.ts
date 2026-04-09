@@ -17,6 +17,23 @@ import {
   type Obj3ParticipantRecord,
 } from './obj5-participant-config'
 
+interface Obj5TestMetadata {
+  ccNumber: string
+  delegatedZones: {
+    forward: string[]
+    reverse: string[]
+  }
+  nameservers: Array<{ fqdn: string; ipv4: string }>
+}
+
+function getObj5Metadata(record: Obj3ParticipantRecord): Obj5TestMetadata {
+  const obj5 = (record.metadata as { obj5?: Obj5TestMetadata }).obj5
+  if (!obj5) {
+    throw new Error('Test participant metadata.obj5 fehlt.')
+  }
+  return obj5
+}
+
 function createValidParticipant(): Obj3ParticipantRecord {
   const configuration = {
     ...createDefaultParticipantFormValues(),
@@ -92,9 +109,10 @@ describe('export draft and manifest', () => {
 
   it('blocks export when the configuration is incomplete', () => {
     const participant = createValidParticipant()
+    const obj5 = getObj5Metadata(participant)
     participant.metadata = {
       obj5: {
-        ...participant.metadata.obj5,
+        ...obj5,
         nameservers: [{ fqdn: 'ns1.core.ndp.che', ipv4: '10.0.0.11' }],
       },
     }
@@ -166,7 +184,8 @@ describe('JSON import validation', () => {
       }),
     ).toThrow()
 
-    expect(configuration.metadata.obj5.ccNumber).toBe('CC 999')
+    const obj5 = (configuration.metadata as { obj5: Obj5TestMetadata }).obj5
+    expect(obj5.ccNumber).toBe('CC 999')
   })
 })
 
@@ -215,6 +234,7 @@ describe('document builder', () => {
 
     expect(document.schemaVersion).toBe(1)
     expect(document.participant.ccNumber).toBe('CC 517 / Alpha')
-    expect(configuration.metadata.obj5.delegatedZones.forward).toEqual(['core.ndp.che'])
+    const obj5 = (configuration.metadata as { obj5: Obj5TestMetadata }).obj5
+    expect(obj5.delegatedZones.forward).toEqual(['core.ndp.che'])
   })
 })

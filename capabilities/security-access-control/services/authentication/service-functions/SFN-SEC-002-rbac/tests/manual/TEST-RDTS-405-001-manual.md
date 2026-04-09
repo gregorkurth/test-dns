@@ -1,3 +1,7 @@
+---
+category: API
+---
+
 # TEST-RDTS-405-001-manual: API-Endpunkte geschuetzt
 
 | Feld | Wert |

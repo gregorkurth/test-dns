@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-617-001-manual: GUI-Statuskennzeichnung fuer Released/Beta/Preview
 
 | Feld | Wert |

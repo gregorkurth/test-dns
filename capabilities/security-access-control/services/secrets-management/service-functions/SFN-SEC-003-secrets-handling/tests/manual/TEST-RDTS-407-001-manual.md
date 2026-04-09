@@ -1,3 +1,7 @@
+---
+category: API
+---
+
 # TEST-RDTS-407-001-manual: HTTPS erzwungen
 
 | Feld | Wert |

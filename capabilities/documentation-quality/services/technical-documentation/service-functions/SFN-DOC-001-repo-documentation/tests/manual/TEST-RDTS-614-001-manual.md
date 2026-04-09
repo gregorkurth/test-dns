@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-614-001-manual: E-Book-Export je Release-Version
 
 | Feld | Wert |

@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-616-001-manual: Release-/Bugfix-/Change-Uebersicht je Version
 
 | Feld | Wert |

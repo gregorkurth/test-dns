@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-215-001-manual: FMN/NATO Kommunikationsmatrix als versionierte Policy-Quelle
 
 ## Metadaten

@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-603-001-manual: Konfigurationsbeschreibung
 
 | Feld | Wert |

@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-609-001-manual: Testergebnisse reproduzierbar
 
 | Feld | Wert |

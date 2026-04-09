@@ -1,19 +1,171 @@
 # GitHub Actions CI Pipeline
-# Laeuft automatisch bei jedem Push auf main
+# Laeuft automatisch bei Push, PR und optional manuell.
 
 name: CI
 
 on:
   push:
     branches: [main]
+    tags: ['v*']
   pull_request:
     branches: [main]
-  workflow_dispatch:  # Manueller Trigger (fuer pytest DNS-Tests)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
+  quality:
+    name: Quality Gate (Lint, Typecheck, Build, Tests)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-  # --- OFT Traceability ---
-  # Laeuft wenn Markdowns geaendert wurden
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Abhaengigkeiten installieren
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Tests ausfuehren und Nachweis erzeugen
+        run: npm run test:report
+
+      - name: Vitest-Nachweis als Artifact speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitest-evidence
+          path: tests/executions/vitest-report.latest.json
+          retention-days: 90
+
+  runtime-smoke:
+    name: Runtime Smoke (next start)
+    runs-on: ubuntu-latest
+    needs: [quality]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Abhaengigkeiten installieren
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Start + Smoke pruefen
+        run: |
+          npm run start &
+          APP_PID=$!
+          sleep 3
+          curl -fsS -I http://127.0.0.1:3000/
+          curl -fsS -I http://127.0.0.1:3000/participant-config
+          curl -fsS -I http://127.0.0.1:3000/test-execution-dashboard
+          curl -fsS -I http://127.0.0.1:3000/api/v1
+          curl -fsS -I http://127.0.0.1:3000/api/v1/swagger
+          kill $APP_PID
+
+  image-build:
+    name: Container Build + GHCR Publish (main/tags)
+    runs-on: ubuntu-latest
+    needs: [quality]
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Buildx einrichten
+        uses: docker/setup-buildx-action@v3
+
+      - name: GHCR Login
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker-Metadaten erzeugen
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=sha,format=long
+            type=ref,event=tag
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build und Push nach GHCR
+        id: build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Image-Metadaten als Artifact speichern
+        run: |
+          mkdir -p .tmp
+          echo "${{ steps.build.outputs.digest }}" > .tmp/ghcr-image-digest.txt
+          printf '%s\n' "${{ steps.meta.outputs.tags }}" > .tmp/ghcr-image-tags.txt
+
+      - name: GHCR-Metadaten hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghcr-image-metadata
+          path: .tmp/ghcr-image-*.txt
+          retention-days: 90
+
+  validation-matrix:
+    name: Validation Matrix Report
+    runs-on: ubuntu-latest
+    needs: [quality]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Abhaengigkeiten installieren
+        run: npm ci
+
+      - name: Vitest-Nachweis laden
+        uses: actions/download-artifact@v4
+        with:
+          name: vitest-evidence
+          path: tests/executions
+
+      - name: Validation-Matrix generieren
+        run: npm run build:validation-matrix
+
+      - name: Report als Artifact speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-matrix
+          path: docs/testing/VALIDATION-MATRIX.md
+          retention-days: 90
+
+      - name: Report in Job Summary anzeigen
+        run: cat docs/testing/VALIDATION-MATRIX.md >> "$GITHUB_STEP_SUMMARY"
+
   traceability:
     name: Traceability Report (OFT)
     runs-on: ubuntu-latest
@@ -68,69 +220,6 @@ jobs:
           git diff --staged --quiet || git commit -m "chore: traceability report aktualisiert [skip ci]"
           git push
 
-  # --- Vitest (Web-App-Tests) ---
-  vitest:
-    name: Web-App Tests (Vitest)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Node.js einrichten
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Abhaengigkeiten installieren
-        run: npm ci
-
-      - name: Tests ausfuehren und Nachweis erzeugen
-        run: npm run test:report
-
-      - name: Vitest-Nachweis als Artifact speichern
-        uses: actions/upload-artifact@v4
-        with:
-          name: vitest-evidence
-          path: tests/executions/vitest-report.latest.json
-          retention-days: 90
-
-  # --- Validation Matrix ---
-  validation-matrix:
-    name: Validation Matrix Report
-    runs-on: ubuntu-latest
-    needs: [vitest]
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Node.js einrichten
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Abhaengigkeiten installieren
-        run: npm ci
-
-      - name: Vitest-Nachweis laden
-        uses: actions/download-artifact@v4
-        with:
-          name: vitest-evidence
-          path: tests/executions
-
-      - name: Validation-Matrix generieren
-        run: npm run build:validation-matrix
-
-      - name: Report als Artifact speichern
-        uses: actions/upload-artifact@v4
-        with:
-          name: validation-matrix
-          path: docs/testing/VALIDATION-MATRIX.md
-          retention-days: 90
-
-      - name: Report in Job Summary anzeigen
-        run: cat docs/testing/VALIDATION-MATRIX.md >> "$GITHUB_STEP_SUMMARY"
-
-  # --- log4brains ADR-Site ---
   adr-site:
     name: ADR Dokumentation (log4brains)
     runs-on: ubuntu-latest
@@ -159,9 +248,43 @@ jobs:
           path: out/adr/
           retention-days: 30
 
-  # --- pytest DNS-Tests ---
-  # Nur manuell ausfuehren: GitHub -> Actions -> "Run workflow"
-  # Benoetigt eine erreichbare BIND9-Instanz (Secret: DNS_SERVER_IP)
+  release-gate:
+    name: Release Gate (Tag v*)
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [quality, runtime-smoke, image-build]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pflichtdateien pruefen
+        run: |
+          test -f .gitlab-ci.yml
+          test -f mkdocs.yml
+          if [ ! -f zarf.yaml ] && [ ! -f zarf.yml ]; then
+            echo "Missing zarf.yaml/zarf.yml"
+            exit 1
+          fi
+          if [ ! -f Dockerfile ] && [ ! -f docker/Dockerfile ]; then
+            echo "Missing Dockerfile"
+            exit 1
+          fi
+
+      - name: SBOM erzeugen (Syft)
+        uses: anchore/sbom-action@v0
+        with:
+          artifact-name: sbom-spdx
+          format: spdx-json
+          output-file: sbom.spdx.json
+          upload-artifact: true
+
+      - name: Security Scan (Trivy Filesystem)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          format: table
+          severity: CRITICAL,HIGH
+
   dns-tests:
     name: DNS Auto-Tests (pytest)
     runs-on: ubuntu-latest

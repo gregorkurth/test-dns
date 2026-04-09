@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-409-001-manual: Audit-Log in OTel integriert
 
 | Feld | Wert |

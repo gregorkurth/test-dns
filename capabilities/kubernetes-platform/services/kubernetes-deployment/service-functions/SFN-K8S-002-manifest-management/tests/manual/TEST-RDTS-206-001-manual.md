@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-206-001-manual: ConfigMap App-Konfiguration
 
 ## Metadaten

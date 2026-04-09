@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-608-001-manual: Testkonzept vorhanden
 
 | Feld | Wert |

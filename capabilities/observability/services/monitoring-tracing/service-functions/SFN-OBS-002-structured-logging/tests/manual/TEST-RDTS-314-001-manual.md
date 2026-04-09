@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-314-001-manual: SIEM-geeignete OTel-Weiterleitung fuer Security-Events (`clickhouse`/`local`)
 
 | Feld | Wert |

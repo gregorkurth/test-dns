@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-502-001-manual: Pipeline-Laufzeit unter 5min
 
 | Feld | Wert |

@@ -175,6 +175,39 @@ describe('OBJ-3 API v1', () => {
     expect(String(successBody.data.zoneFile)).toContain('ns1 3600 IN A 10.0.0.1')
   })
 
+  it('rejects type-specific invalid DNS record values during zone generation', async () => {
+    const cases = [
+      { type: 'A', value: '<script>alert(1)</script>' },
+      { type: 'AAAA', value: 'not-an-ipv6' },
+      { type: 'CNAME', value: 'not-a-valid-host' },
+      { type: 'MX', value: '10 not-a-valid-host' },
+      { type: 'TXT', value: '' },
+    ] as const
+
+    for (const testCase of cases) {
+      const response = await generateZone(
+        createRequest('/api/v1/zones/generate', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            zoneName: 'core.ndp.che',
+            records: [
+              {
+                name: 'record1',
+                type: testCase.type,
+                value: testCase.value,
+              },
+            ],
+          }),
+        }),
+      )
+
+      expect(response.status).toBe(422)
+      const body = await response.json()
+      expect(body.error).toMatchObject({ code: 'ZONE_VALIDATION_ERROR' })
+    }
+  })
+
   it('serves API root and OpenAPI contract', async () => {
     const rootResponse = await getApiRoot(createRequest('/api/v1'))
     expect(rootResponse.status).toBe(200)

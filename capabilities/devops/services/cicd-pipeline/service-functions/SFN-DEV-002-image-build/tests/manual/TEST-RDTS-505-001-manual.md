@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-505-001-manual: SBOM bei Release-Builds
 
 | Feld | Wert |

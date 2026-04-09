@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-618-001-manual: Draw.io als Diagrammstandard mit source/export-Ablage
 
 | Feld | Wert |

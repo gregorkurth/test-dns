@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-605-001-manual: ADRs vorhanden
 
 | Feld | Wert |

@@ -1,0 +1,8 @@
+.git
+.github
+.gitlab
+.gitlab-ci.yml
+.next
+node_modules
+npm-debug.log*
+coverage

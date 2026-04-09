@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-411-001-manual: Tetragon Runtime-Events als Security-Auditquelle
 
 | Feld | Wert |

@@ -124,10 +124,14 @@ function buildUniqueHostEntries(input: HostEntry[]): HostEntry[] {
   return result
 }
 
-function buildForwardRecords(zoneName: string, hosts: HostEntry[]): ZoneGenerationApiPayload['records'] {
+function buildForwardRecords(
+  zoneName: string,
+  nameservers: HostEntry[],
+  hostsForARecords: HostEntry[],
+): ZoneGenerationApiPayload['records'] {
   const records: ZoneGenerationApiPayload['records'] = []
 
-  for (const host of hosts) {
+  for (const host of nameservers) {
     records.push({
       name: '@',
       type: 'NS',
@@ -135,7 +139,7 @@ function buildForwardRecords(zoneName: string, hosts: HostEntry[]): ZoneGenerati
     })
   }
 
-  for (const host of hosts) {
+  for (const host of hostsForARecords) {
     records.push({
       name: zoneRecordNameForFqdn(zoneName, host.fqdn),
       type: 'A',
@@ -256,6 +260,7 @@ export function prepareZoneGenerationInputFromParticipant(
 
   const forwardRecords = buildForwardRecords(
     forwardZone,
+    nameservers,
     anycastEntry ? [...hostsForARecords, anycastEntry] : hostsForARecords,
   )
 

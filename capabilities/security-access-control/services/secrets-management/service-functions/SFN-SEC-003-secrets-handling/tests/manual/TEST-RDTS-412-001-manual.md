@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-412-001-manual: OpenBao als Standard, `local` nur als degradierter Modus mit Ausnahmehinweis
 
 | Feld | Wert |

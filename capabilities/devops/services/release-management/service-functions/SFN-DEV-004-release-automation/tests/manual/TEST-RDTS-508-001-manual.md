@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-508-001-manual: GitLab Release bei Tag-Push
 
 | Feld | Wert |

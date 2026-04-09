@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-310-001-manual: Versionierte DNS-Grafana-Dashboard-Vorlage (ClickHouse)
 
 | Feld | Wert |

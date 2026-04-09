@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-201-001-manual: Multi-Stage Dockerfile
 
 ## Metadaten

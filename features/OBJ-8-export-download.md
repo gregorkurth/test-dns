@@ -1,6 +1,6 @@
 # OBJ-8: Export & Download
 
-## Status: In Progress
+## Status: In Review
 **Created:** 2026-03-17
 **Last Updated:** 2026-04-09
 
@@ -97,7 +97,117 @@ Ein Exportlauf erzeugt:
 - Abnahmekriterium: ein Operator kann ohne Entwicklerhilfe ein korrektes Exportpaket erzeugen und wieder einlesen.
 
 ## QA Test Results
-_To be added by /qa_
+**Tested:** 2026-04-09
+**App URL:** http://localhost:3000/export-download
+**Tester:** QA Engineer (AI)
+
+### Acceptance Criteria Status
+
+#### AC-1: ZIP mit Forward/Reverse/named.conf/TSIG
+- [x] Export-Draft erzeugt Forward- und Reverse-Zones, `named.conf.local.snippet`, `tsig-keygen.sh` sowie JSON.
+- [x] ZIP-Archiv wird lokal erzeugt und enthaelt zusaetzlich `export-manifest.json`.
+
+#### AC-2: Sprechende Dateinamen
+- [x] Dateinamensregeln sind umgesetzt (`{zone}.zone`, `{zone}.reverse.zone`, `named.conf.local.snippet`, `tsig-keygen.sh`).
+- [x] Sonderzeichen werden ueber `sanitizeObj8FileNameSegment` bereinigt.
+
+#### AC-3: Einzel-Download je Datei
+- [x] Einzel-Buttons fuer Forward, Reverse, named.conf, TSIG und JSON sind vorhanden.
+- [x] Paketinhalt zeigt jede Datei zusaetzlich mit eigenem Download-Button.
+
+#### AC-4: JSON Export (`{cc-number}-dns-config.json`)
+- [x] JSON-Exportdatei wird im Draft erstellt.
+- [x] Dateiname folgt dem Schema `${ccNumber}-dns-config.json` (normalisiert).
+
+#### AC-5: JSON Import befuellt Formular wieder
+- [ ] BUG: JSON-Import setzt aktuell nur den Export-Kontext in OBJ-8; das OBJ-5 Formular wird nicht wiederbefuellt.
+
+#### AC-6: Vollstaendig offline (kein externer Server)
+- [x] ZIP/JSON/Manifest-Erzeugung laeuft lokal im Browser ohne externe Services.
+- [x] Hinweis: Participant-Auswahl nutzt die interne API; fuer "nur lokal ohne API" ist JSON-Import als Fallback nutzbar.
+
+#### AC-7: Export-Buttons bei unvollstaendiger Konfiguration deaktiviert + Tooltip
+- [x] Aktionen sind bei `ready=false` deaktiviert.
+- [x] Tooltip `Bitte zuerst alle Pflichtfelder ausfuellen` ist auf den Buttons gesetzt.
+
+### Edge Cases Status
+
+#### EC-1: Viele Zonen (asynchron/Progress)
+- [ ] BUG: Kein expliziter Fortschrittsindikator fuer grosse Exportmengen vorhanden.
+
+#### EC-2: Browser blockiert Download
+- [ ] BUG: Kein dedizierter Fallback-Flow (z. B. Direktlink/Retry-Hinweis) fuer blockierte Downloads implementiert.
+
+#### EC-3: JSON-Import mit veralteter Schema-Version
+- [x] Ungueltiges/inkompatibles JSON wird mit klarer Fehlermeldung abgelehnt.
+
+#### EC-4: Sonderzeichen in Dateinamen
+- [x] Dateinamen werden sanitisiert und sind ZIP-sicher.
+
+### Security Audit Results
+- [x] Input Validation: JSON-Import hat Schema- und CC-Number-Validierung.
+- [x] Injection Surface: Keine unsichere HTML-Ausgabe fuer importierte Daten erkannt.
+- [x] Secrets: In geprueften Export-Artefakten keine offensichtlichen Credentials-Hardcodes gefunden.
+- [x] Hinweis: APIs sind ohne Auth erreichbar (aktueller v1-Scope).
+
+### Regression Testing
+- [x] `npm run lint` erfolgreich.
+- [x] `npm run build` erfolgreich.
+- [x] `npm run test:run` erfolgreich (`8` Dateien, `33` Tests).
+- [x] Gezielte OBJ-8 Tests erfolgreich (`src/lib/obj8-export.test.ts`).
+
+### Bugs Found
+
+#### BUG-1: JSON-Import repopuliert OBJ-5 Formular nicht
+- **Severity:** High
+- **Steps to Reproduce:**
+  1. JSON in `/export-download` importieren.
+  2. Zu `/participant-config` wechseln.
+  3. Erwartet: Formular ist mit importierten Werten befuellt.
+  4. Ist: Import wirkt nur in OBJ-8, Formular bleibt unveraendert.
+- **Priority:** Fix before deployment
+
+#### BUG-2: Kein Fortschrittsindikator fuer grosse Exportmengen
+- **Severity:** Low
+- **Steps to Reproduce:**
+  1. Konfiguration mit vielen Zonen/Records laden.
+  2. ZIP-Export starten.
+  3. Erwartet: Sichtbarer Fortschritt/Busy-Zustand fuer den Lauf.
+  4. Ist: Kein dedizierter Progress-Status.
+- **Priority:** Fix in next sprint
+
+#### BUG-3: Kein Fallback bei browserseitig blockiertem Download
+- **Severity:** Medium
+- **Steps to Reproduce:**
+  1. Browser so konfigurieren, dass Download blockiert wird.
+  2. Einzel- oder ZIP-Download ausloesen.
+  3. Erwartet: Klarer Fallback-Hinweis/Direktlink.
+  4. Ist: Kein eigener Fallback-Flow sichtbar.
+- **Priority:** Fix in next sprint
+
+### Summary
+- **Acceptance Criteria:** 6/7 passed
+- **Bugs Found:** 3 total (0 Critical, 1 High, 1 Medium, 1 Low)
+- **Security:** Pass
+- **Production Ready:** NO
+- **Recommendation:** BUG-1 vor Deployment beheben; BUG-2/3 zeitnah nachziehen.
+
+### QA Limitations
+- Echte Browser-Downloadblocker- und Cross-Browser-Pruefung wurden in dieser CLI-Session nicht vollumfaenglich interaktiv verifiziert.
+- UI-Verhalten wurde ueber Build-Artefakte, Codepfad-Review und automatisierte Tests abgesichert.
+
+### Re-Test nach Bugfixes (2026-04-09)
+- [x] AC-5 geschlossen: JSON-Import schreibt jetzt den OBJ-5-Draft in LocalStorage (`obj5.participant-form.draft.v1`) und kann in `/participant-config` direkt weiterbearbeitet werden.
+- [x] EC-1 geschlossen: ZIP-Export zeigt jetzt einen expliziten Busy-/Progress-Zustand (`ZIP wird erstellt...`).
+- [x] EC-2 geschlossen: Manueller Fallback-Download-Link wird nach jeder Download-Ausloesung angezeigt.
+- [x] Regression: `npm run lint`, `npm run test:run`, `npm run build` erfolgreich.
+
+### Re-Test Summary
+- **Acceptance Criteria:** 7/7 passed
+- **Bugs Found:** 0 open
+- **Security:** Pass
+- **Production Ready:** YES
+- **Recommendation:** Deployment-freigabe moeglich.
 
 ## Deployment
 _To be added by /deploy_

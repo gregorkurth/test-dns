@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-309-001-manual: ClickHouse-Weitergabe fuer Logs, Metriken und Traces
 
 | Feld | Wert |

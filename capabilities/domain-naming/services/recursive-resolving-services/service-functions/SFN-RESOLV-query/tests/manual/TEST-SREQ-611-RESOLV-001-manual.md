@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-SREQ-611-RESOLV-001-manual: Manueller Test
 
 > **Testfall-ID:** TEST-SREQ-611-RESOLV-001-manual

@@ -9,7 +9,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import type { Obj3ParticipantRecord } from '@/lib/obj5-participant-config'
+import {
+  createDraftEnvelope,
+  coerceParticipantFormValues,
+  OBJ5_DRAFT_STORAGE_KEY,
+  type Obj3ParticipantRecord,
+} from '@/lib/obj5-participant-config'
 import {
   OBJ8_EXPORT_MANIFEST_FILE_NAME,
   buildObj8ArchiveEntries,
@@ -27,6 +32,11 @@ interface ApiErrorShape {
 interface ApiEnvelope<TData> {
   data: TData | null
   error: ApiErrorShape | null
+}
+
+interface DownloadFallback {
+  fileName: string
+  url: string
 }
 
 const EMPTY_SELECT_VALUE = '__none'
@@ -72,32 +82,6 @@ async function apiRequest<TData>(
   }
 }
 
-function downloadBytes(filename: string, bytes: Uint8Array, mimeType: string): void {
-  const blob = new Blob([bytes], { type: mimeType })
-  const url = URL.createObjectURL(blob)
-  const anchor = document.createElement('a')
-  anchor.href = url
-  anchor.download = filename
-  anchor.rel = 'noopener'
-  document.body.appendChild(anchor)
-  anchor.click()
-  document.body.removeChild(anchor)
-  URL.revokeObjectURL(url)
-}
-
-function downloadText(filename: string, content: string, mimeType: string): void {
-  const blob = new Blob([content], { type: mimeType })
-  const url = URL.createObjectURL(blob)
-  const anchor = document.createElement('a')
-  anchor.href = url
-  anchor.download = filename
-  anchor.rel = 'noopener'
-  document.body.appendChild(anchor)
-  anchor.click()
-  document.body.removeChild(anchor)
-  URL.revokeObjectURL(url)
-}
-
 function formatDateTime(value: string): string {
   const parsed = new Date(value)
   if (Number.isNaN(parsed.getTime())) {
@@ -138,9 +122,12 @@ export function ExportDownloadClient() {
   const [loadingImport, setLoadingImport] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
+  const [isPreparingZip, setIsPreparingZip] = useState(false)
+  const [downloadFallback, setDownloadFallback] = useState<DownloadFallback | null>(null)
   const [importedDraft, setImportedDraft] = useState<Obj8ExportDraft | null>(null)
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
+  const fallbackUrlRef = useRef<string | null>(null)
 
   const selectedDraft = useMemo(() => {
     if (!selectedParticipant) {
@@ -210,6 +197,52 @@ export function ExportDownloadClient() {
     })
   }, [loadParticipant, selectedParticipantId])
 
+  useEffect(
+    () => () => {
+      if (fallbackUrlRef.current) {
+        URL.revokeObjectURL(fallbackUrlRef.current)
+        fallbackUrlRef.current = null
+      }
+    },
+    [],
+  )
+
+  function createDownloadLink(blob: Blob, fileName: string): string {
+    const nextUrl = URL.createObjectURL(blob)
+    if (fallbackUrlRef.current) {
+      URL.revokeObjectURL(fallbackUrlRef.current)
+    }
+    fallbackUrlRef.current = nextUrl
+    setDownloadFallback({
+      fileName,
+      url: nextUrl,
+    })
+    return nextUrl
+  }
+
+  function triggerDownload(blob: Blob, fileName: string): void {
+    const url = createDownloadLink(blob, fileName)
+    const anchor = document.createElement('a')
+    anchor.href = url
+    anchor.download = fileName
+    anchor.rel = 'noopener'
+    document.body.appendChild(anchor)
+    anchor.click()
+    document.body.removeChild(anchor)
+  }
+
+  function persistImportedDraftForObj5(draft: Obj8ExportDraft): void {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const envelope = createDraftEnvelope(
+      draft.participant.id,
+      coerceParticipantFormValues(draft.configuration),
+    )
+    window.localStorage.setItem(OBJ5_DRAFT_STORAGE_KEY, JSON.stringify(envelope))
+  }
+
   async function handleImportJson(file: File): Promise<void> {
     setLoadingImport(true)
     setErrorMessage('')
@@ -218,9 +251,10 @@ export function ExportDownloadClient() {
     try {
       const raw = await file.text()
       const imported = createObj8ExportDraftFromImport(JSON.parse(raw))
+      persistImportedDraftForObj5(imported)
       setImportedDraft(imported)
       setSuccessMessage(
-        `JSON-Import erfolgreich: ${imported.participant.ccNumber} ist nun aktiv.`,
+        `JSON-Import erfolgreich: ${imported.participant.ccNumber} ist aktiv und fuer OBJ-5 vorgemerkt.`,
       )
     } catch (error) {
       setImportedDraft(null)
@@ -236,21 +270,43 @@ export function ExportDownloadClient() {
   }
 
   function handleDownloadFile(file: Obj8DownloadFile): void {
-    downloadText(file.fileName, file.content, file.mimeType)
-    setSuccessMessage(`${file.fileName} wurde heruntergeladen.`)
+    const blob = new Blob([file.content], { type: file.mimeType })
+    triggerDownload(blob, file.fileName)
+    setSuccessMessage(
+      `${file.fileName} wurde angestossen. Falls blockiert, nutze den manuellen Download-Link unten.`,
+    )
   }
 
   function handleDownloadZip(): void {
-    if (!activeDraft || !activeDraft.ready) {
+    if (!activeDraft || !activeDraft.ready || isPreparingZip) {
       return
     }
 
-    const archiveEntries = buildObj8ArchiveEntries(activeDraft)
-    const archiveBytes = buildZipArchive(archiveEntries)
-    downloadBytes(activeDraft.zipFileName, archiveBytes, 'application/zip')
-    setSuccessMessage(
-      `${activeDraft.zipFileName} wurde lokal im Browser erzeugt und heruntergeladen.`,
-    )
+    setIsPreparingZip(true)
+    setErrorMessage('')
+    setSuccessMessage('ZIP wird vorbereitet...')
+
+    window.setTimeout(() => {
+      try {
+        const archiveEntries = buildObj8ArchiveEntries(activeDraft)
+        const archiveBytes = buildZipArchive(archiveEntries)
+        const normalized = archiveBytes.buffer.slice(
+          archiveBytes.byteOffset,
+          archiveBytes.byteOffset + archiveBytes.byteLength,
+        ) as ArrayBuffer
+        const blob = new Blob([normalized], { type: 'application/zip' })
+        triggerDownload(blob, activeDraft.zipFileName)
+        setSuccessMessage(
+          `${activeDraft.zipFileName} wurde lokal erzeugt. Falls blockiert, nutze den manuellen Download-Link unten.`,
+        )
+      } catch (error) {
+        setErrorMessage(
+          error instanceof Error ? error.message : 'ZIP-Export fehlgeschlagen.',
+        )
+      } finally {
+        setIsPreparingZip(false)
+      }
+    }, 0)
   }
 
   function clearImportedDraft(): void {
@@ -286,6 +342,7 @@ export function ExportDownloadClient() {
                 <Badge variant={readyToExport ? 'default' : 'destructive'}>
                   {readyToExport ? 'Exportbereit' : 'Blockiert'}
                 </Badge>
+                {isPreparingZip ? <Badge variant="secondary">ZIP wird gebaut...</Badge> : null}
                 <Badge variant="outline">{sourceBadgeLabel}</Badge>
               </div>
             </div>
@@ -326,6 +383,24 @@ export function ExportDownloadClient() {
           <Alert>
             <AlertTitle>Hinweis</AlertTitle>
             <AlertDescription>{successMessage}</AlertDescription>
+          </Alert>
+        ) : null}
+
+        {downloadFallback ? (
+          <Alert>
+            <AlertTitle>Fallback bei Download-Blockade</AlertTitle>
+            <AlertDescription className="space-y-2">
+              <p>
+                Wenn der Browser den Download blockiert, kannst du diese Datei manuell laden:
+              </p>
+              <a
+                href={downloadFallback.url}
+                download={downloadFallback.fileName}
+                className="inline-flex items-center rounded-md border border-slate-300 px-3 py-1 text-sm text-slate-700 hover:bg-slate-50"
+              >
+                {downloadFallback.fileName} manuell herunterladen
+              </a>
+            </AlertDescription>
           </Alert>
         ) : null}
 
@@ -471,9 +546,17 @@ export function ExportDownloadClient() {
                 {importedDraft ? (
                   <Alert>
                     <AlertTitle>Import aktiv</AlertTitle>
-                    <AlertDescription>
+                    <AlertDescription className="space-y-2">
+                      <p>
                       {importedDraft.participant.ccNumber} wurde geladen. Der Import
                       ueberschreibt den aktiven Participant, bis er verworfen wird.
+                      </p>
+                      <a
+                        href="/participant-config"
+                        className="inline-flex items-center rounded-md border border-slate-300 px-3 py-1 text-sm text-slate-700 hover:bg-slate-50"
+                      >
+                        Zu OBJ-5 wechseln und Werte uebernehmen
+                      </a>
                     </AlertDescription>
                   </Alert>
                 ) : (
@@ -499,7 +582,7 @@ export function ExportDownloadClient() {
                 type="button"
                 variant="secondary"
                 onClick={() => forwardFile && handleDownloadFile(forwardFile)}
-                disabled={!readyToExport || !forwardFile}
+                disabled={!readyToExport || !forwardFile || isPreparingZip}
                 title={
                   !readyToExport
                     ? 'Bitte zuerst alle Pflichtfelder ausfuellen'
@@ -517,7 +600,7 @@ export function ExportDownloadClient() {
                   }
                   reverseFiles.forEach((file) => handleDownloadFile(file))
                 }}
-                disabled={!readyToExport || reverseFiles.length === 0}
+                disabled={!readyToExport || reverseFiles.length === 0 || isPreparingZip}
                 title={
                   !readyToExport
                     ? 'Bitte zuerst alle Pflichtfelder ausfuellen'
@@ -530,7 +613,7 @@ export function ExportDownloadClient() {
                 type="button"
                 variant="secondary"
                 onClick={() => namedConfFile && handleDownloadFile(namedConfFile)}
-                disabled={!readyToExport || !namedConfFile}
+                disabled={!readyToExport || !namedConfFile || isPreparingZip}
                 title={
                   !readyToExport
                     ? 'Bitte zuerst alle Pflichtfelder ausfuellen'
@@ -543,7 +626,7 @@ export function ExportDownloadClient() {
                 type="button"
                 variant="secondary"
                 onClick={() => tsigFile && handleDownloadFile(tsigFile)}
-                disabled={!readyToExport || !tsigFile}
+                disabled={!readyToExport || !tsigFile || isPreparingZip}
                 title={
                   !readyToExport
                     ? 'Bitte zuerst alle Pflichtfelder ausfuellen'
@@ -556,7 +639,7 @@ export function ExportDownloadClient() {
                 type="button"
                 variant="outline"
                 onClick={() => jsonFile && handleDownloadFile(jsonFile)}
-                disabled={!readyToExport || !jsonFile}
+                disabled={!readyToExport || !jsonFile || isPreparingZip}
                 title={
                   !readyToExport
                     ? 'Bitte zuerst alle Pflichtfelder ausfuellen'
@@ -568,14 +651,14 @@ export function ExportDownloadClient() {
               <Button
                 type="button"
                 onClick={handleDownloadZip}
-                disabled={!readyToExport}
+                disabled={!readyToExport || isPreparingZip}
                 title={
                   !readyToExport
                     ? 'Bitte zuerst alle Pflichtfelder ausfuellen'
                     : undefined
                 }
               >
-                Alles herunterladen als ZIP
+                {isPreparingZip ? 'ZIP wird erstellt...' : 'Alles herunterladen als ZIP'}
               </Button>
             </div>
 

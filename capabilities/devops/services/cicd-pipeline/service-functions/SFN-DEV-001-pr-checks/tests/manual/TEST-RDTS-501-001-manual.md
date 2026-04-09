@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-501-001-manual: PR-Check Workflow
 
 | Feld | Wert |

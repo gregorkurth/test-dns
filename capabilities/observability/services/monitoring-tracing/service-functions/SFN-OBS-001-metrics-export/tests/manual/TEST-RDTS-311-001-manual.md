@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-311-001-manual: OTel-Betriebsmodus local mit persistenter Zwischenspeicherung
 
 | Feld | Wert |

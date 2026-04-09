@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-06T14:49:25.401Z",
+  "generatedAt": "2026-04-09T12:11:56.948Z",
   "sourceRoot": "capabilities/",
   "sourceIndex": "capabilities/INDEX.md",
   "supportedSourceTypes": [
@@ -17,7 +17,7 @@
     "capabilityCount": 9,
     "serviceCount": 17,
     "serviceFunctionCount": 34,
-    "requirementCount": 127
+    "requirementCount": 155
   },
   "capabilities": [
     {
@@ -1048,13 +1048,15 @@
                   "title": "Multi-Stage Dockerfile",
                   "sourceType": "ARCH",
                   "priority": "MUSS",
-                  "originalText": "Die Applikation muss als Container-Image mit einem Multi-Stage Dockerfile gebaut werden, um eine optimale Imagegrösse zu erreichen (Build-Stage und Runtime-Stage getrennt).",
+                  "originalText": "Die Applikation muss als Container-Image mit einem Multi-Stage Dockerfile gebaut werden, um eine optimale Imagegroesse und einen gehaerteten Runtime-Umfang zu erreichen (Build-Stage und Runtime-Stage getrennt). Die Runtime-Stage muss auf einem freigegebenen gehaerteten Minimal-Base-Image basieren.",
                   "germanText": "",
                   "acceptanceCriteria": [
                     "Dockerfile enthält mindestens zwei Stages (builder, runtime)",
                     "Finales Image enthält keine Build-Tools (npm, node-gyp etc.)",
                     "Image-Grösse < 500 MB",
-                    "docker build läuft ohne Netzwerkzugriff erfolgreich (nach initialem Layer-Cache)"
+                    "docker build läuft ohne Netzwerkzugriff erfolgreich (nach initialem Layer-Cache)",
+                    "Runtime-Stage basiert auf einem dokumentierten gehaerteten Minimal-Base-Image (Image + Digest)",
+                    "Bei BIND9-only Workloads enthaelt das Runtime-Image nur named und die notwendigen Laufzeitdateien"
                   ],
                   "capabilityId": "CAP-002",
                   "serviceId": "SVC-K8S-DEPLOY",
@@ -1068,13 +1070,15 @@
                   "title": "Airgapped-fähiges Container-Image",
                   "sourceType": "ARCH",
                   "priority": "MUSS",
-                  "originalText": "Das Container-Image muss alle Assets (HTML, CSS, JS, Schriften, Icons) enthalten. Zur Laufzeit darf kein Zugriff auf externe Registries, CDNs oder npm-Repositories erfolgen.",
+                  "originalText": "Das Container-Image muss alle Assets (HTML, CSS, JS, Schriften, Icons) enthalten und als gehaertetes Minimal-Runtime-Image gebaut sein. Zur Laufzeit darf kein Zugriff auf externe Registries, CDNs oder npm-Repositories erfolgen.",
                   "germanText": "",
                   "acceptanceCriteria": [
                     "Container startet ohne Netzwerkverbindung erfolgreich",
                     "Alle statischen Assets werden aus dem Container serviert",
                     "Keine externen URLs in generierten HTML/CSS/JS-Dateien",
-                    "docker run --network=none zeigt App korrekt an"
+                    "docker run --network=none zeigt App korrekt an",
+                    "Runtime-Image enthaelt keine Build-Toolchain und keinen zur Laufzeit unnoetigen Paketmanager",
+                    "Bei BIND9-only Workloads enthaelt das Image nur BIND9-relevante Binaries/Konfigurationen"
                   ],
                   "capabilityId": "CAP-002",
                   "serviceId": "SVC-K8S-DEPLOY",
@@ -1088,7 +1092,7 @@
                   "title": "Image-Export für Offline-Transfer",
                   "sourceType": "ARCH",
                   "priority": "SOLLTE",
-                  "originalText": "Das Container-Image soll als tar-Archiv exportierbar sein, damit es in airgapped Umgebungen ohne Registry-Zugriff geladen werden kann (z. B. via docker save / docker load oder kind load).",
+                  "originalText": "Das gehaertete Minimal-Container-Image soll als tar-Archiv exportierbar sein, damit es in airgapped Umgebungen ohne Registry-Zugriff geladen werden kann (z. B. via docker save / docker load oder kind load).",
                   "germanText": "",
                   "acceptanceCriteria": [
                     "docker save erzeugt ein funktionales tar-Archiv",
@@ -1171,6 +1175,87 @@
                   "serviceId": "SVC-K8S-DEPLOY",
                   "serviceFunctionId": "SFN-K8S-002",
                   "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/requirements/RDTS-206.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-002:RDTS-213",
+                  "kind": "requirement",
+                  "id": "RDTS-213",
+                  "title": "Zero-Trust Pod-zu-Pod-Richtlinien mit Cilium und mTLS",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Pod-zu-Pod-Kommunikation muss nach Zero-Trust-Prinzip umgesetzt werden (Default-Deny, explizites Allowlisting) und TLS-verschluesselt sein (mTLS), bevorzugt mit Cilium-Richtlinien.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Default-Deny-Regel fuer relevante Namespaces ist vorhanden",
+                    "Explizite Allow-Regeln fuer notwendige App-Pfade sind vorhanden",
+                    "Pod-zu-Pod-Traffic auf freigegebenen Pfaden ist TLS-verschluesselt (mTLS)",
+                    "Richtlinien und mTLS-Konfiguration sind versioniert im Repository hinterlegt",
+                    "Dokumentierte Kommunikationsmatrix entspricht den deployten Regeln"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-002",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/requirements/RDTS-213.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-002:RDTS-214",
+                  "kind": "requirement",
+                  "id": "RDTS-214",
+                  "title": "Cilium North-South Ingress/Egress Default-Deny mit explizitem Allowlisting",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Fuer extern bereitgestellte Services (North-South Traffic) MUESSEN Ingress- und Egress-Regeln mit Cilium umgesetzt werden (Default-Deny, explizite Freigaben, nur notwendige Ports/Protokolle).",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Default-Deny fuer North-South Ingress und Egress ist aktiv",
+                    "Externe Allow-Regeln sind explizit und minimal (CIDR, Port, Protokoll)",
+                    "DNS-Freigaben sind auf fachlich notwendige DNS-Endpunkte begrenzt",
+                    "Nicht freigegebene externe Flows werden blockiert"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-002",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/requirements/RDTS-214.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-002:RDTS-215",
+                  "kind": "requirement",
+                  "id": "RDTS-215",
+                  "title": "FMN/NATO Kommunikationsmatrix als versionierte Policy-Quelle",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Fuer FMN/NATO-Exposition MUSS eine versionierte Kommunikationsmatrix gepflegt werden (Quelle, Ziel, Port, Protokoll, Zweck, Owner, Freigabe-ID).",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Versionierte Kommunikationsmatrix ist im Repository vorhanden",
+                    "Jeder aktive externe Flow hat Freigabe-ID und Owner",
+                    "Cilium-Allow-Regeln sind auf Matrix-Eintraege rueckfuehrbar",
+                    "Nicht dokumentierte Flows sind nicht freigegeben"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-002",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/requirements/RDTS-215.md"
+                },
+                {
+                  "key": "requirement:CAP-002:SVC-K8S-DEPLOY:SFN-K8S-002:RDTS-216",
+                  "kind": "requirement",
+                  "id": "RDTS-216",
+                  "title": "Nachweis fuer Allow-/Deny-Wirkung externer Cilium-Flows",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Cilium Allow-/Deny-Regeln fuer externe Flows muessen testbar und nachvollziehbar nachgewiesen werden.",
+                  "germanText": "",
+                  "acceptanceCriteria": [
+                    "Pro aktivem externem Flow existiert ein Allow-Test",
+                    "Es existiert mindestens ein Deny-Test fuer nicht freigegebenen externen Traffic",
+                    "Testnachweise sind versioniert und releasebezogen verlinkt",
+                    "Hubble-/OTel-Daten zeigen die erwarteten Entscheidungen"
+                  ],
+                  "capabilityId": "CAP-002",
+                  "serviceId": "SVC-K8S-DEPLOY",
+                  "serviceFunctionId": "SFN-K8S-002",
+                  "path": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/requirements/RDTS-216.md"
                 }
               ]
             }
@@ -1399,6 +1484,66 @@
                   "serviceId": "SVC-OBS-MON",
                   "serviceFunctionId": "SFN-OBS-001",
                   "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/requirements/RDTS-303.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-001:RDTS-309",
+                  "kind": "requirement",
+                  "id": "RDTS-309",
+                  "title": "ClickHouse-Weitergabe fuer Logs, Metriken und Traces",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Logs, Metriken und Traces muessen ueber die OTel-Pipeline in ClickHouse uebergeben und dort auswertbar abgelegt werden.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-001",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/requirements/RDTS-309.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-001:RDTS-310",
+                  "kind": "requirement",
+                  "id": "RDTS-310",
+                  "title": "Versionierte DNS-Grafana-Dashboard-Vorlage (ClickHouse)",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Eine versionierte DNS-Grafana-Dashboard-Vorlage (JSON) fuer ClickHouse muss im Repository gepflegt und releasebezogen nachweisbar sein.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-001",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/requirements/RDTS-310.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-001:RDTS-311",
+                  "kind": "requirement",
+                  "id": "RDTS-311",
+                  "title": "OTel-Betriebsmodus local mit persistenter Zwischenspeicherung",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Die OTel-Pipeline MUSS einen lokalen Betriebsmodus (local) bereitstellen, in dem Logs, Metriken und Traces ohne externen Zielspeicher persistent zwischengespeichert werden.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-001",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/requirements/RDTS-311.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-001:RDTS-312",
+                  "kind": "requirement",
+                  "id": "RDTS-312",
+                  "title": "Umschaltung local/clickhouse mit Retry und Nachlieferung",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Die OTel-Pipeline MUSS zwischen den Betriebsmodi local und clickhouse ueber versionierte Konfigurationen umschaltbar sein; bei Zielausfall sind Retry-Mechanismus und spaetere Nachlieferung (Replay) sicherzustellen.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-001",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/requirements/RDTS-312.md"
                 }
               ]
             },
@@ -1440,6 +1585,36 @@
                   "serviceId": "SVC-OBS-MON",
                   "serviceFunctionId": "SFN-OBS-002",
                   "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/requirements/RDTS-305.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-002:RDTS-313",
+                  "kind": "requirement",
+                  "id": "RDTS-313",
+                  "title": "Security-Events mit standardisierten Netzwerk-/Policy-Feldern",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Sicherheits- und Policy-Events MUESSEN strukturierte OTel-Felder fuer Netzwerk- und Durchsetzungsinformationen enthalten (u. a. security.policy.id, network.direction, network.peer.cidr, network.transport, network.port, security.profile, security.exception.id).",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-002",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/requirements/RDTS-313.md"
+                },
+                {
+                  "key": "requirement:CAP-003:SVC-OBS-MON:SFN-OBS-002:RDTS-314",
+                  "kind": "requirement",
+                  "id": "RDTS-314",
+                  "title": "SIEM-geeignete OTel-Weiterleitung fuer Security-Events (clickhouse/local)",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Security-Events MUESSEN ueber die OTel-Pipeline SIEM-geeignet weitergeleitet werden. Der Standardmodus ist clickhouse; local ist nur als degradierter Modus zulaessig und muss als Sicherheitsereignis markiert werden.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-003",
+                  "serviceId": "SVC-OBS-MON",
+                  "serviceFunctionId": "SFN-OBS-002",
+                  "path": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/requirements/RDTS-314.md"
                 }
               ]
             },
@@ -1613,6 +1788,21 @@
                   "serviceId": "SVC-SEC-AUTH",
                   "serviceFunctionId": "SFN-SEC-002",
                   "path": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-002-rbac/requirements/RDTS-405.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-AUTH:SFN-SEC-002:RDTS-416",
+                  "kind": "requirement",
+                  "id": "RDTS-416",
+                  "title": "MCP-/Agent-Zugriffe nur ueber freigegebene Tool- und API-Whitelist",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "MCP-/Agent-Zugriffe duerfen nur freigegebene Tools und API-Endpunkte verwenden; nicht freigegebene Operationen muessen blockiert und als Security-Event protokolliert werden.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-AUTH",
+                  "serviceFunctionId": "SFN-SEC-002",
+                  "path": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-002-rbac/requirements/RDTS-416.md"
                 }
               ]
             }
@@ -1664,6 +1854,36 @@
                   "serviceId": "SVC-SEC-SECRETS",
                   "serviceFunctionId": "SFN-SEC-003",
                   "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/requirements/RDTS-407.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-003:RDTS-412",
+                  "kind": "requirement",
+                  "id": "RDTS-412",
+                  "title": "OpenBao als Standard, local nur als degradierter Modus mit Ausnahmehinweis",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Secrets-Management MUSS standardmaessig ueber OpenBao erfolgen. local ist nur als degradierter Modus mit gueltiger Ausnahme-ID und sichtbarem Sicherheitshinweis zulaessig.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-003",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/requirements/RDTS-412.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-003:RDTS-413",
+                  "kind": "requirement",
+                  "id": "RDTS-413",
+                  "title": "Strikte Credential-Rotation fuer Agenten-Identitaeten (30-90 Tage)",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Zugangsdaten fuer Agenten-Identitaeten muessen mit verkuerztem Zyklus rotiert werden (30 bis 90 Tage; fuer hochkritische Workloads <=30 Tage).",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-003",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/requirements/RDTS-413.md"
                 }
               ]
             },
@@ -1720,6 +1940,51 @@
                   "serviceId": "SVC-SEC-SECRETS",
                   "serviceFunctionId": "SFN-SEC-004",
                   "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/requirements/RDTS-410.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-004:RDTS-411",
+                  "kind": "requirement",
+                  "id": "RDTS-411",
+                  "title": "Tetragon Runtime-Events als Security-Auditquelle",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Tetragon-Regeln fuer Runtime-Erkennung (z. B. unautorisierte Execs, Privilege Escalation, verdaechtige Netzwerkaktivitaet) muessen aktiv sein und ihre Events in die Audit-/Observability-Kette einspeisen.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-004",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/requirements/RDTS-411.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-004:RDTS-414",
+                  "kind": "requirement",
+                  "id": "RDTS-414",
+                  "title": "SIEM-Weiterleitung ueber OTel mit Modus clickhouse/local",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Security-Events muessen ueber OTel an SIEM weitergeleitet werden. Unterstuetzte Modi sind clickhouse und local; in prod ist clickhouse verpflichtend.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-004",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/requirements/RDTS-414.md"
+                },
+                {
+                  "key": "requirement:CAP-004:SVC-SEC-SECRETS:SFN-SEC-004:RDTS-415",
+                  "kind": "requirement",
+                  "id": "RDTS-415",
+                  "title": "Degradierter local-Modus erzeugt sichtbaren Security-Hinweis und Event",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Wenn secrets-mode=local oder siem-mode=local aktiv ist, MUSS ein sichtbarer Security-Hinweis angezeigt und ein Event security.posture.degraded erzeugt werden.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-004",
+                  "serviceId": "SVC-SEC-SECRETS",
+                  "serviceFunctionId": "SFN-SEC-004",
+                  "path": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/requirements/RDTS-415.md"
                 }
               ]
             }
@@ -1759,7 +2024,7 @@
                   "title": "PR-Check Workflow",
                   "sourceType": "ARCH",
                   "priority": "MUSS",
-                  "originalText": "GitHub Actions: Lint, Type-Check, Tests, Build-Check bei PRs",
+                  "originalText": "GitLab CI (fuehrend) und optional GitHub Actions: Lint, Type-Check, Tests, Build-Check bei PRs/MRs",
                   "germanText": "",
                   "acceptanceCriteria": [],
                   "capabilityId": "CAP-005",
@@ -1781,6 +2046,21 @@
                   "serviceId": "SVC-DEV-CICD",
                   "serviceFunctionId": "SFN-DEV-001",
                   "path": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-001-pr-checks/requirements/RDTS-502.md"
+                },
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-CICD:SFN-DEV-001:RDTS-511",
+                  "kind": "requirement",
+                  "id": "RDTS-511",
+                  "title": "Security-/FMN-Policy-Gate fuer prod und externe Flows",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Die CI/CD-Pipeline MUSS einen verpflichtenden Policy-Gate-Schritt enthalten, der fuer prod und fuer externe FMN-/North-South-Flows die Security-Parameter (security-profile=strict, secrets-mode=openbao, siem-mode=clickhouse) sowie die Cilium-/Kommunikationsmatrix-Konformitaet prueft und bei Verstoessen den Lauf blockiert.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-CICD",
+                  "serviceFunctionId": "SFN-DEV-001",
+                  "path": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-001-pr-checks/requirements/RDTS-511.md"
                 }
               ]
             },
@@ -1800,7 +2080,7 @@
                   "title": "Multi-Stage Docker Build",
                   "sourceType": "ARCH",
                   "priority": "MUSS",
-                  "originalText": "Container-Image wird bei Merge auf main gebaut und gepusht",
+                  "originalText": "Container-Image wird bei Merge auf main gebaut und gepusht. Das Runtime-Image basiert auf einem freigegebenen gehaerteten Minimal-Base-Image und enthaelt nur die benoetigten Laufzeitkomponenten. Falls der Service ausschliesslich BIND9 bereitstellt, ist ein BIND9-spezifisches Minimal-Image zu verwenden, das nur named und die notwendigen Laufzeitdateien beinhaltet.",
                   "germanText": "",
                   "acceptanceCriteria": [],
                   "capabilityId": "CAP-005",
@@ -1904,10 +2184,10 @@
                   "key": "requirement:CAP-005:SVC-DEV-RELEASE:SFN-DEV-004:RDTS-508",
                   "kind": "requirement",
                   "id": "RDTS-508",
-                  "title": "GitHub Release bei Tag-Push",
+                  "title": "GitLab Release bei Tag-Push",
                   "sourceType": "ARCH",
                   "priority": "MUSS",
-                  "originalText": "Release wird automatisch bei Tag-Push erstellt",
+                  "originalText": "GitLab Release wird automatisch bei Tag-Push erstellt",
                   "germanText": "",
                   "acceptanceCriteria": [],
                   "capabilityId": "CAP-005",
@@ -1929,6 +2209,21 @@
                   "serviceId": "SVC-DEV-RELEASE",
                   "serviceFunctionId": "SFN-DEV-004",
                   "path": "capabilities/devops/services/release-management/service-functions/SFN-DEV-004-release-automation/requirements/RDTS-509.md"
+                },
+                {
+                  "key": "requirement:CAP-005:SVC-DEV-RELEASE:SFN-DEV-004:RDTS-510",
+                  "kind": "requirement",
+                  "id": "RDTS-510",
+                  "title": "Versionierte Update-Hinweisquelle pro Release",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Jeder Release-Lauf MUSS eine versionierte Update-Hinweisquelle im Repository erzeugen oder aktualisieren, damit GUI-Hinweise und Release-Notizen konsistent bleiben.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-005",
+                  "serviceId": "SVC-DEV-RELEASE",
+                  "serviceFunctionId": "SFN-DEV-004",
+                  "path": "capabilities/devops/services/release-management/service-functions/SFN-DEV-004-release-automation/requirements/RDTS-510.md"
                 }
               ]
             }
@@ -1990,6 +2285,36 @@
                   "serviceId": "SVC-DOC-MAT",
                   "serviceFunctionId": "SFN-DOC-003",
                   "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/requirements/RDTS-607.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-MAT:SFN-DOC-003:RDTS-617",
+                  "kind": "requirement",
+                  "id": "RDTS-617",
+                  "title": "GUI-Statuskennzeichnung fuer Released/Beta/Preview",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Das GUI MUSS den Release-Status je Feature klar kennzeichnen (mindestens Released/GA, Beta, Preview/Experimental) und eine kurze Legende bereitstellen.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-MAT",
+                  "serviceFunctionId": "SFN-DOC-003",
+                  "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/requirements/RDTS-617.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-MAT:SFN-DOC-003:RDTS-620",
+                  "kind": "requirement",
+                  "id": "RDTS-620",
+                  "title": "GUI-Update-Hinweise je Release und Modul",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Das GUI MUSS releasebezogene Update-Hinweise bereitstellen (global und optional modulbezogen), inklusive Hinweis auf Kritikalitaet und Verknuepfung zu den Release-Notizen.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-MAT",
+                  "serviceFunctionId": "SFN-DOC-003",
+                  "path": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/requirements/RDTS-620.md"
                 }
               ]
             },
@@ -2142,6 +2467,96 @@
                   "serviceId": "SVC-DOC-TECH",
                   "serviceFunctionId": "SFN-DOC-001",
                   "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-603.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-001:RDTS-613",
+                  "kind": "requirement",
+                  "id": "RDTS-613",
+                  "title": "Versionierte MkDocs-Website mit Release-Switch",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Die Dokumentation ist als MkDocs-Website verfuegbar und bietet pro Release eine Versionsumschaltung.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-001",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-613.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-001:RDTS-614",
+                  "kind": "requirement",
+                  "id": "RDTS-614",
+                  "title": "E-Book-Export je Release-Version",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Fuer jede freigegebene Version ist ein E-Book-Export der Dokumentation (z. B. PDF) mit Inhaltsverzeichnis verfuegbar.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-001",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-614.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-001:RDTS-615",
+                  "kind": "requirement",
+                  "id": "RDTS-615",
+                  "title": "Benutzerhandbuch mit drei Themenbereichen",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Ein Benutzerhandbuch ist vorhanden und in drei waehlbare Themenbereiche gegliedert: Management, Betrieb, Umsetzung.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-001",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-615.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-001:RDTS-616",
+                  "kind": "requirement",
+                  "id": "RDTS-616",
+                  "title": "Release-/Bugfix-/Change-Uebersicht je Version",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Die Dokumentation MUSS pro Release-Version eine nachvollziehbare Uebersicht ueber Features, Bugfixes und weitere Changes enthalten.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-001",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-616.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-001:RDTS-618",
+                  "kind": "requirement",
+                  "id": "RDTS-618",
+                  "title": "Draw.io als Diagrammstandard mit source/export-Ablage",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Architektur- und Prozessdiagramme MUESSEN mit draw.io gepflegt werden; die Ablage erfolgt verbindlich als Quelle (docs/diagrams/source/.drawio) und Export (docs/diagrams/export/.svg|*.png).",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-001",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-618.md"
+                },
+                {
+                  "key": "requirement:CAP-006:SVC-DOC-TECH:SFN-DOC-001:RDTS-619",
+                  "kind": "requirement",
+                  "id": "RDTS-619",
+                  "title": "Diagramm-Exporte als Referenz fuer Markdown und E-Book",
+                  "sourceType": "ARCH",
+                  "priority": "MUSS",
+                  "originalText": "Markdown- und E-Book-Dokumente MUESSEN Diagramm-Exporte (.svg/.png) referenzieren; bei Diagrammaenderungen sind Quelle und Export gemeinsam versioniert zu aktualisieren.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-006",
+                  "serviceId": "SVC-DOC-TECH",
+                  "serviceFunctionId": "SFN-DOC-001",
+                  "path": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/requirements/RDTS-619.md"
                 }
               ]
             },
@@ -2344,7 +2759,7 @@
                   "title": "RDTS-707",
                   "sourceType": "INT",
                   "priority": "MUSS",
-                  "originalText": "Container-CVE-Scan via trivy image läuft bei Release-Builds.",
+                  "originalText": "Container-CVE-Scan via trivy image laeuft bei Release-Builds. Der Scan umfasst explizit das verwendete Runtime-Base-Image (inkl. Digest) und prueft, ob ein freigegebenes gehaertetes Minimal-Base-Image eingesetzt wird.",
                   "germanText": "",
                   "acceptanceCriteria": [],
                   "capabilityId": "CAP-007",
@@ -2551,7 +2966,7 @@
                   "title": "RDTS-807",
                   "sourceType": "INT",
                   "priority": "MUSS",
-                  "originalText": "Ziel-spezifische Parameter (Registry-URL, Ingress-Hostname, Namespace) sind via Zarf-Variables konfigurierbar.",
+                  "originalText": "Ziel-spezifische Parameter (Registry-URL, Ingress-Hostname, Namespace, Gitea-Projektnamen fuer Release und Konfiguration) sind via Zarf-Variables oder deklarative Zielkonfiguration konfigurierbar.",
                   "germanText": "",
                   "acceptanceCriteria": [],
                   "capabilityId": "CAP-008",
@@ -2588,6 +3003,21 @@
                   "serviceId": "SVC-OFD-IMPORT",
                   "serviceFunctionId": "SFN-OFD-002",
                   "path": "capabilities/offline-delivery/services/target-import/service-functions/SFN-OFD-002-zarf-deploy/requirements/RDTS-809.md"
+                },
+                {
+                  "key": "requirement:CAP-008:SVC-OFD-IMPORT:SFN-OFD-002:RDTS-810",
+                  "kind": "requirement",
+                  "id": "RDTS-810",
+                  "title": "RDTS-810",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Nach dem Transfer wird der deploybare Release-Stand in ein lokales Gitea-Release-Projekt importiert; zusaetzlich ist ein separates Gitea-Konfigurationsprojekt fuer Parameter, Helm Values und Overlays bereitzustellen.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-008",
+                  "serviceId": "SVC-OFD-IMPORT",
+                  "serviceFunctionId": "SFN-OFD-002",
+                  "path": "capabilities/offline-delivery/services/target-import/service-functions/SFN-OFD-002-zarf-deploy/requirements/RDTS-810.md"
                 }
               ]
             }
@@ -2753,7 +3183,7 @@
                   "title": "RDTS-904",
                   "sourceType": "INT",
                   "priority": "MUSS",
-                  "originalText": "Projekte, Ziel-Namespaces, Quellen und Sync-Policy sind nachvollziehbar in den Manifesten definiert.",
+                  "originalText": "Projekte, Ziel-Namespaces, Quellen und Sync-Policy sind nachvollziehbar in den Manifesten definiert. Fuer Zielumgebungen sind mindestens zwei getrennte Git-Quellen zu modellieren: Release-Projekt und Konfigurationsprojekt.",
                   "germanText": "",
                   "acceptanceCriteria": [],
                   "capabilityId": "CAP-009",
@@ -2775,6 +3205,21 @@
                   "serviceId": "SVC-GIT-ARGOCD",
                   "serviceFunctionId": "SFN-GIT-001",
                   "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-001-app-of-apps/requirements/RDTS-906.md"
+                },
+                {
+                  "key": "requirement:CAP-009:SVC-GIT-ARGOCD:SFN-GIT-001:RDTS-907",
+                  "kind": "requirement",
+                  "id": "RDTS-907",
+                  "title": "RDTS-907",
+                  "sourceType": "INT",
+                  "priority": "MUSS",
+                  "originalText": "Die Root-Application im App-of-Apps-Modell bindet das lokale Gitea-Release-Projekt und das separate Gitea-Konfigurationsprojekt als getrennte Quellen ein.",
+                  "germanText": "",
+                  "acceptanceCriteria": [],
+                  "capabilityId": "CAP-009",
+                  "serviceId": "SVC-GIT-ARGOCD",
+                  "serviceFunctionId": "SFN-GIT-001",
+                  "path": "capabilities/gitops/services/argocd-installation/service-functions/SFN-GIT-001-app-of-apps/requirements/RDTS-907.md"
                 }
               ]
             },

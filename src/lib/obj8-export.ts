@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { generateZoneFile, type ZoneGenerationResult } from '@/lib/obj3-zone-generator'
 import {
   buildParticipantUpsertPayload,
+  normalizeParticipantFormValues,
   participantFormSchema,
   participantFormValuesFromRecord,
   type Obj3ParticipantRecord,
@@ -218,7 +219,7 @@ export function buildObj8ConfigExportDocument(
   configuration: ParticipantFormValues,
   exportedAt = new Date().toISOString(),
 ): Obj8ConfigExportDocument {
-  const payload = buildParticipantUpsertPayload(configuration)
+  const normalized = normalizeParticipantFormValues(configuration)
 
   return {
     schemaVersion: OBJ8_EXPORT_SCHEMA_VERSION,
@@ -229,11 +230,11 @@ export function buildObj8ConfigExportDocument(
       ccNumber: configuration.ccNumber,
     },
     configuration: {
-      ...configuration,
-      nameservers: payload.metadata.obj5.nameservers,
-      resolvers: payload.metadata.obj5.resolvers,
-      forwardZones: payload.metadata.obj5.delegatedZones.forward.map((value) => ({ value })),
-      reverseZones: payload.metadata.obj5.delegatedZones.reverse.map((value) => ({ value })),
+      ...normalized,
+      forwardZones: normalized.forwardZones.map((entry) => ({ value: entry.value })),
+      reverseZones: normalized.reverseZones.map((entry) => ({ value: entry.value })),
+      nameservers: normalized.nameservers.map((entry) => ({ ...entry })),
+      resolvers: normalized.resolvers.map((entry) => ({ ...entry })),
     },
   }
 }
@@ -367,11 +368,17 @@ function buildManifest(
     exportedAt,
     participant,
     source,
-    files: files.map((file) => ({
+    files: files
+      .filter(
+        (file): file is Obj8DownloadFile & {
+          kind: Exclude<Obj8ArtifactKind, 'manifest'>
+        } => file.kind !== 'manifest',
+      )
+      .map((file) => ({
       kind: file.kind,
       fileName: file.fileName,
       generatedAt: file.generatedAt,
-    })),
+      })),
     warnings,
   }
 }

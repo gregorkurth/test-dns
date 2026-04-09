@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-503-001-manual: Multi-Stage Docker Build
 
 | Feld | Wert |

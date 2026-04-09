@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-408-001-manual: Sicherheitsrelevante Ereignisse protokolliert
 
 | Feld | Wert |

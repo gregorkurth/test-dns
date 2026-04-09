@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-601-001-manual: Quickstart-Guide
 
 | Feld | Wert |

@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-620-001-manual: GUI-Update-Hinweise je Release und Modul
 
 | Feld | Wert |

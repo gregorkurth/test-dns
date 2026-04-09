@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-212-001-manual: RBAC ServiceAccount
 
 ## Metadaten

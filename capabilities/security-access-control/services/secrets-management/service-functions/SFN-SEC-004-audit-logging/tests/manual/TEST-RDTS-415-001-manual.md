@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-415-001-manual: Degradierter `local`-Modus erzeugt sichtbaren Security-Hinweis und Event
 
 | Feld | Wert |

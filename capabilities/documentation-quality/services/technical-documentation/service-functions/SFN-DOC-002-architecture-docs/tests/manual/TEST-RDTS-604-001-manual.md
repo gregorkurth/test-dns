@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-604-001-manual: Architekturuebersicht Blackbox/Whitebox
 
 | Feld | Wert |

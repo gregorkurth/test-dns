@@ -1,3 +1,7 @@
+---
+category: API
+---
+
 # TEST-RDTS-209-001-manual: OpenAPI-Validierung
 
 ## Metadaten

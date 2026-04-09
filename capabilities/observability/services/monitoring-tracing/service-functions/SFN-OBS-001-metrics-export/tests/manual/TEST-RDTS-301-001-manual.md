@@ -1,3 +1,7 @@
+---
+category: API
+---
+
 # TEST-RDTS-301-001-manual: Prometheus-Metriken-Endpoint
 
 | Feld | Wert |

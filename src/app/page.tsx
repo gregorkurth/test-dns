@@ -19,6 +19,18 @@ const modules = [
     description: 'Teststatus (Passed/Failed/Never Executed) ueberblicken.',
   },
   {
+    href: '/requirements-traceability',
+    title: 'OBJ-7 Requirements Traceability View',
+    description:
+      'Requirement-Abdeckung aus Capabilities und OBJ-5-Konfiguration nachvollziehen.',
+  },
+  {
+    href: '/export-download',
+    title: 'OBJ-8 Export & Download',
+    description:
+      'DNS-Artefakte einzeln oder als ZIP offline exportieren und JSON importieren.',
+  },
+  {
     href: '/test-runner',
     title: 'OBJ-9 Manual Test Runner',
     description: 'Manuelle Testfaelle direkt im Browser durchlaufen.',
@@ -39,8 +51,8 @@ export default function Home() {
             DNS Management Service Workspace
           </h1>
           <p className="mt-2 text-sm text-slate-600">
-            Startseite fuer die wichtigsten Module. Fokus aktuell: OBJ-6 Zone
-            File Generator und OBJ-5 Participant Configuration Form.
+            Startseite fuer die wichtigsten Module rund um Konfiguration,
+            Traceability, Export und Testdurchfuehrung.
           </p>
         </header>
 

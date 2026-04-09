@@ -19,10 +19,11 @@
 | OBJ-4 | Capabilities Dashboard | 3 – P0 MVP | Completed | [OBJ-4-capabilities-dashboard.md](OBJ-4-capabilities-dashboard.md) | 2026-03-17 |
 | OBJ-5 | Participant Configuration Form | 3 – P0 MVP | Completed | [OBJ-5-participant-configuration-form.md](OBJ-5-participant-configuration-form.md) | 2026-03-17 |
 | OBJ-6 | DNS Zone File Generator | 3 – P0 MVP | In Review | [OBJ-6-dns-zone-file-generator.md](OBJ-6-dns-zone-file-generator.md) | 2026-03-17 |
-| OBJ-7 | Requirements Traceability View | 4 – P1 DNS | In Progress | [OBJ-7-requirements-traceability-view.md](OBJ-7-requirements-traceability-view.md) | 2026-03-17 |
-| OBJ-8 | Export & Download | 4 – P1 DNS | In Progress | [OBJ-8-export-download.md](OBJ-8-export-download.md) | 2026-03-17 |
-| OBJ-9 | Manual Test Runner | 4 – P1 DNS | In Progress | [OBJ-9-manual-test-runner.md](OBJ-9-manual-test-runner.md) | 2026-04-03 |
+| OBJ-7 | Requirements Traceability View | 4 – P1 DNS | In Review | [OBJ-7-requirements-traceability-view.md](OBJ-7-requirements-traceability-view.md) | 2026-03-17 |
+| OBJ-8 | Export & Download | 4 – P1 DNS | In Review | [OBJ-8-export-download.md](OBJ-8-export-download.md) | 2026-03-17 |
+| OBJ-9 | Manual Test Runner | 4 – P1 DNS | In Review | [OBJ-9-manual-test-runner.md](OBJ-9-manual-test-runner.md) | 2026-04-03 |
 | OBJ-23 | Test Execution Dashboard | 4 – P1 DNS | Completed | [OBJ-23-test-execution-dashboard.md](OBJ-23-test-execution-dashboard.md) | 2026-04-04 |
+| OBJ-24 | DNS Baseline Config Repository & Change History | 4 – P1 DNS | Planned | [OBJ-24-dns-baseline-config-repository.md](OBJ-24-dns-baseline-config-repository.md) | 2026-04-09 |
 | OBJ-10 | Kubernetes Deployment | 5 – Plattform | Planned | [OBJ-10-kubernetes-deployment.md](OBJ-10-kubernetes-deployment.md) | 2026-04-03 |
 | OBJ-11 | Monitoring & Observability (OpenTelemetry) | 5 – Plattform | Planned | [OBJ-11-monitoring-observability.md](OBJ-11-monitoring-observability.md) | 2026-04-03 |
 | OBJ-12 | Security & Authentifizierung | 5 – Plattform | Planned | [OBJ-12-security-authentifizierung.md](OBJ-12-security-authentifizierung.md) | 2026-04-03 |
@@ -59,6 +60,7 @@ Phase 4 – P1 (Erweiterte DNS-Features)
   OBJ-8  Export & Download
   OBJ-9  Manual Test Runner
   OBJ-23 Test Execution Dashboard   ← Teststatus (Passed/Failed/Never) je OBJ/Run/Release
+  OBJ-24 DNS Baseline Config Repo   ← Baseline laden, Aenderungshistorie, gezieltes Rollback
 
 Phase 5 – Plattform & Betrieb
   OBJ-10 Kubernetes Deployment     ← App containerisieren
@@ -78,4 +80,4 @@ Phase 6 – Produktabschluss
   OBJ-20 Zielumgebung / Import     ← braucht OBJ-19 (Paket), OBJ-21 (Argo)
 ```
 
-## Next Available ID: OBJ-24
+## Next Available ID: OBJ-25

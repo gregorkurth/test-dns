@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-401-001-manual: OIDC/OAuth2 Authentifizierung
 
 | Feld | Wert |

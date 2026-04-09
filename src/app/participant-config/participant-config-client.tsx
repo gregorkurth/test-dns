@@ -25,14 +25,13 @@ import {
   coerceParticipantFormValues,
   createDefaultParticipantFormValues,
   createDraftEnvelope,
+  OBJ5_DRAFT_STORAGE_KEY,
   participantFormSchema,
   participantFormValuesFromRecord,
   type Obj3ParticipantRecord,
   type ParticipantDraftEnvelope,
   type ParticipantFormValues,
 } from '@/lib/obj5-participant-config'
-
-const DRAFT_STORAGE_KEY = 'obj5.participant-form.draft.v1'
 const EMPTY_SELECT_VALUE = '__none'
 
 interface ApiErrorShape {
@@ -69,7 +68,7 @@ function readDraftFromStorage(): ParticipantDraftEnvelope | null {
     return null
   }
 
-  const raw = window.localStorage.getItem(DRAFT_STORAGE_KEY)
+  const raw = window.localStorage.getItem(OBJ5_DRAFT_STORAGE_KEY)
   if (!raw) {
     return null
   }
@@ -100,7 +99,7 @@ function writeDraftToStorage(envelope: ParticipantDraftEnvelope): void {
     return
   }
 
-  window.localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(envelope))
+  window.localStorage.setItem(OBJ5_DRAFT_STORAGE_KEY, JSON.stringify(envelope))
 }
 
 async function apiRequest<TData>(
@@ -281,7 +280,7 @@ export function ParticipantConfigClient() {
       return
     }
 
-    window.localStorage.removeItem(DRAFT_STORAGE_KEY)
+    window.localStorage.removeItem(OBJ5_DRAFT_STORAGE_KEY)
     setHasDraft(false)
     setLastDraftSavedAt(null)
   }

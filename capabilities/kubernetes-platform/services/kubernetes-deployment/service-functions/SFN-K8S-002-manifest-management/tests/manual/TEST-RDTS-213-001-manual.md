@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-213-001-manual: Zero-Trust Pod-zu-Pod-Richtlinien mit Cilium und mTLS
 
 ## Metadaten

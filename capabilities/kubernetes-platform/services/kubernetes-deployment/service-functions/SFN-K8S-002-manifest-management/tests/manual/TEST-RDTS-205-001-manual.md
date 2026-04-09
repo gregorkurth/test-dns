@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-205-001-manual: Service und Ingress
 
 ## Metadaten

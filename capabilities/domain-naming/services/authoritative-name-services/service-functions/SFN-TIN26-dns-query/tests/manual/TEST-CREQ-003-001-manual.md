@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-CREQ-003-001-manual: Manueller Test
 
 > **Testfall-ID:** TEST-CREQ-003-001-manual

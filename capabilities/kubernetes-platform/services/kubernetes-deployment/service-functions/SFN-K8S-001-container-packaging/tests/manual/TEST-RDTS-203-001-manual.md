@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-203-001-manual: Image-Export Offline-Transfer
 
 ## Metadaten

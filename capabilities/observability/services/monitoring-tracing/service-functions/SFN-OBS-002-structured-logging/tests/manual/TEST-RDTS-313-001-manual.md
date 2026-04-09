@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-313-001-manual: Security-Events mit standardisierten Netzwerk-/Policy-Feldern
 
 | Feld | Wert |

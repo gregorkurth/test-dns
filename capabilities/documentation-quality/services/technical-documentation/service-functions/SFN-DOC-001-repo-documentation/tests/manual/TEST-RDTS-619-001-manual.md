@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-619-001-manual: Diagramm-Exporte als Referenz fuer Markdown und E-Book
 
 | Feld | Wert |

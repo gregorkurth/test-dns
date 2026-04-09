@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-511-001-manual: Security-/FMN-Policy-Gate fuer `prod` und externe Flows
 
 | Feld | Wert |

@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-607-001-manual: Automatische Ableitung
 
 | Feld | Wert |

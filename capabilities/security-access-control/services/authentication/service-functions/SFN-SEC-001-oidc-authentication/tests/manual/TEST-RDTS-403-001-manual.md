@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-403-001-manual: Session-Management
 
 | Feld | Wert |

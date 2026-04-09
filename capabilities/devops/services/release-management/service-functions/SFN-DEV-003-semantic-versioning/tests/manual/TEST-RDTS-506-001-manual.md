@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-506-001-manual: SemVer-Versionierung
 
 | Feld | Wert |

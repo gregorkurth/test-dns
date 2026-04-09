@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-204-001-manual: Deployment-Manifest Probes
 
 ## Metadaten

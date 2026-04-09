@@ -1,5 +1,34 @@
 import { z } from 'zod'
 
+import { isValidFqdn, isValidIpv4 } from '@/lib/obj5-participant-config'
+
+function isValidIpv6(value: string): boolean {
+  const input = value.trim()
+  if (!input || !/^[0-9a-fA-F:.]+$/.test(input)) {
+    return false
+  }
+
+  const doubleColonCount = input.split('::').length - 1
+  if (doubleColonCount > 1) {
+    return false
+  }
+
+  const [leftPart = '', rightPart = ''] = input.split('::')
+  const leftGroups = leftPart ? leftPart.split(':').filter(Boolean) : []
+  const rightGroups = rightPart ? rightPart.split(':').filter(Boolean) : []
+  const allGroups = [...leftGroups, ...rightGroups]
+
+  if (allGroups.some((group) => !/^[0-9a-fA-F]{1,4}$/.test(group))) {
+    return false
+  }
+
+  if (doubleColonCount === 0) {
+    return allGroups.length === 8
+  }
+
+  return allGroups.length < 8
+}
+
 const dnsRecordSchema = z.object({
   name: z.string().trim().min(1, 'record.name ist erforderlich.'),
   type: z
@@ -9,9 +38,72 @@ const dnsRecordSchema = z.object({
     .refine(
       (value) => ['A', 'AAAA', 'CNAME', 'MX', 'NS', 'TXT', 'PTR'].includes(value),
       'record.type muss A, AAAA, CNAME, MX, NS, TXT oder PTR sein.',
-    ),
+  ),
   value: z.string().trim().min(1, 'record.value ist erforderlich.'),
   ttl: z.number().int().positive().optional(),
+}).superRefine((record, context) => {
+  const value = record.value.trim()
+
+  switch (record.type) {
+    case 'A':
+      if (!isValidIpv4(value)) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['value'],
+          message: 'record.value muss eine gueltige IPv4-Adresse sein.',
+        })
+      }
+      break
+    case 'AAAA':
+      if (!isValidIpv6(value)) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['value'],
+          message: 'record.value muss eine gueltige IPv6-Adresse sein.',
+        })
+      }
+      break
+    case 'CNAME':
+    case 'NS':
+    case 'PTR':
+      if (!isValidFqdn(value)) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['value'],
+          message: 'record.value muss ein gueltiger Hostname oder eine Domain sein.',
+        })
+      }
+      break
+    case 'MX': {
+      const match = value.match(/^(\d{1,5})\s+(.+)$/)
+      const priority = match ? Number(match[1]) : Number.NaN
+      const host = match ? match[2].trim() : ''
+
+      if (
+        !match ||
+        !Number.isInteger(priority) ||
+        priority < 0 ||
+        priority > 65535 ||
+        !isValidFqdn(host)
+      ) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['value'],
+          message: 'record.value muss im Format "<prio> <host>" vorliegen.',
+        })
+      }
+      break
+    }
+    case 'TXT':
+      if (!value.length) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['value'],
+          message: 'record.value darf fuer TXT nicht leer sein.',
+        })
+      }
+      break
+  }
 })
 
 export const zoneGenerationSchema = z.object({

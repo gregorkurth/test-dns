@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-402-001-manual: Lokale Fallback-Authentifizierung
 
 | Feld | Wert |

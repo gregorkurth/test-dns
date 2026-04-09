@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-306-001-manual: OTLP Trace-Export
 
 | Feld | Wert |

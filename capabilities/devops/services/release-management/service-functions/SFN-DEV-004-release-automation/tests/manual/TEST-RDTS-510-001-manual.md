@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-510-001-manual: Versionierte Update-Hinweisquelle pro Release
 
 | Feld | Wert |

@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-602-001-manual: Betriebsdokumentation
 
 | Feld | Wert |

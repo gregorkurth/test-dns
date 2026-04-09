@@ -1,0 +1,67 @@
+stages:
+  - quality
+  - runtime_smoke
+  - docs
+  - release_gate
+
+default:
+  image: node:20
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+
+quality:
+  stage: quality
+  script:
+    - npm ci
+    - npm run lint
+    - npm run typecheck
+    - npm run build
+    - npm run test:report
+  artifacts:
+    when: always
+    paths:
+      - tests/executions/vitest-report.latest.json
+    expire_in: 14 days
+
+runtime_smoke:
+  stage: runtime_smoke
+  needs: ["quality"]
+  script:
+    - npm ci
+    - npm run build
+    - npm run start &
+    - APP_PID=$!
+    - sleep 3
+    - curl -fsS -I http://127.0.0.1:3000/
+    - curl -fsS -I http://127.0.0.1:3000/participant-config
+    - curl -fsS -I http://127.0.0.1:3000/test-execution-dashboard
+    - curl -fsS -I http://127.0.0.1:3000/api/v1
+    - curl -fsS -I http://127.0.0.1:3000/api/v1/swagger
+    - kill $APP_PID
+
+traceability:
+  stage: docs
+  image: eclipse-temurin:21
+  script:
+    - mkdir -p docs
+    - java -jar tools/oft.jar trace --output-format html capabilities features tests src -o docs/traceability-report.html
+  artifacts:
+    when: always
+    paths:
+      - docs/traceability-report.html
+    expire_in: 14 days
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+release_gate:
+  stage: release_gate
+  script:
+    - test -f mkdocs.yml
+    - test -f .gitlab-ci.yml
+    - test -f zarf.yaml || test -f zarf.yml
+    - test -f Dockerfile || test -f docker/Dockerfile
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v.*/'

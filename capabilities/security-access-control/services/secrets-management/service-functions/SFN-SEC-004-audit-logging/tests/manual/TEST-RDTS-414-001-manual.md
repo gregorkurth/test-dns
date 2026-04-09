@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-414-001-manual: SIEM-Weiterleitung ueber OTel mit Modus `clickhouse`/`local`
 
 | Feld | Wert |

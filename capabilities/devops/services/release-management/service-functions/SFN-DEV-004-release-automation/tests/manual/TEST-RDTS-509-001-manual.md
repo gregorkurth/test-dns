@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-509-001-manual: Artefakt-Signing
 
 | Feld | Wert |

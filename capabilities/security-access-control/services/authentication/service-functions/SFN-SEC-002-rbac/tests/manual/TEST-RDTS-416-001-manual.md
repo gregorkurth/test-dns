@@ -1,3 +1,7 @@
+---
+category: API
+---
+
 # TEST-RDTS-416-001-manual: MCP-/Agent-Zugriffe nur ueber freigegebene Tool- und API-Whitelist
 
 | Feld | Wert |

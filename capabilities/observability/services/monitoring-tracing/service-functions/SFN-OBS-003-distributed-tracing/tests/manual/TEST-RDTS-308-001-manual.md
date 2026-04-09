@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-308-001-manual: Maskierung sensitiver Daten
 
 | Feld | Wert |

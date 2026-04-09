@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-413-001-manual: Strikte Credential-Rotation fuer Agenten-Identitaeten (30-90 Tage)
 
 | Feld | Wert |

@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-613-001-manual: Versionierte MkDocs-Website mit Release-Switch
 
 | Feld | Wert |

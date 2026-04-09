@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-507-001-manual: Automatischer CHANGELOG
 
 | Feld | Wert |

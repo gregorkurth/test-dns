@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-504-001-manual: Image-Tagging mit Git-SHA und Tag
 
 | Feld | Wert |

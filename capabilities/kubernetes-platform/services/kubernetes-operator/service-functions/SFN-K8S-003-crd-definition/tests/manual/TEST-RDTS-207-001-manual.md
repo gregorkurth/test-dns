@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-207-001-manual: CRD DNSConfiguration
 
 ## Metadaten

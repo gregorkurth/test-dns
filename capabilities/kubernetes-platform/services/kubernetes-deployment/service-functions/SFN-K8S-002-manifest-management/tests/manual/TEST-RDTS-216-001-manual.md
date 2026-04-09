@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-216-001-manual: Nachweis fuer Allow-/Deny-Wirkung externer Cilium-Flows
 
 ## Metadaten

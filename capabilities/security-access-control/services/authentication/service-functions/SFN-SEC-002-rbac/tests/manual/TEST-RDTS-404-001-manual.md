@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-404-001-manual: RBAC-Rollen definiert
 
 | Feld | Wert |

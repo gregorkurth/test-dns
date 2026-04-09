@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-214-001-manual: Cilium North-South Ingress/Egress Default-Deny mit explizitem Allowlisting
 
 ## Metadaten

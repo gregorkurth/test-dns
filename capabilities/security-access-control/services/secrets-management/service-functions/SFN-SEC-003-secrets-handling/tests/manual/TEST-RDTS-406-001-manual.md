@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-406-001-manual: Secrets als K8s Secrets
 
 | Feld | Wert |

@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-611-001-manual: Run- und Release-Snapshots mit Traceability
 
 `itest~rdts-611-001~1`

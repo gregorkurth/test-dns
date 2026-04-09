@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-303-001-manual: Operator-Metriken
 
 | Feld | Wert |

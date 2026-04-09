@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-312-001-manual: Umschaltung local/clickhouse mit Retry und Nachlieferung
 
 | Feld | Wert |

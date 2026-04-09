@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-SREQ-234-001-manual: Manueller Test
 
 `itest~sreq-234-001~1`

@@ -1,7 +1,13 @@
 'use client'
 
-import { useState, useMemo, useCallback } from 'react'
-import type { ManualTest, StepStatus, TestStep } from '@/lib/test-runner'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import type {
+  ManualTest,
+  OverallResult,
+  StepStatus,
+  TestCategory,
+  TestRunState,
+} from '@/lib/test-runner'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
@@ -12,25 +18,51 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Separator } from '@/components/ui/separator'
 
-type OverallResult = 'passed' | 'failed' | 'na' | null
+type TestState = TestRunState
+const DEFAULT_TEST_DATE = new Date().toISOString().split('T')[0]
 
-interface TestState {
-  steps: TestStep[]
-  preparations: boolean[]
-  currentStep: number
-  overallResult: OverallResult
-  testerName: string
-  testDate: string
+const TEST_CATEGORIES: TestCategory[] = [
+  'Build',
+  'Unit',
+  'Integration',
+  'API',
+  'UI',
+  'Deployability',
+  'Unkategorisiert',
+]
+
+function validateTestRun(test: ManualTest, state: TestRunState): { errors: string[]; warnings: string[] } {
+  const errors: string[] = []
+  const warnings: string[] = []
+
+  if (!state.overallResult) {
+    errors.push('Eine Gesamtbewertung ist erforderlich, bevor das Ergebnis gespeichert wird.')
+  }
+  if (!state.testDate || Number.isNaN(Date.parse(state.testDate))) {
+    errors.push('Ein gueltiges Datum ist erforderlich.')
+  }
+  if (!state.steps.some((step) => step.status !== 'open')) {
+    errors.push('Mindestens ein Schritt muss bewertet sein.')
+  }
+
+  if (!state.testerName.trim()) {
+    warnings.push('Testername ist optional, aber fuer die Nachvollziehbarkeit empfohlen.')
+  }
+  if (!test.steps.length) {
+    warnings.push('Der Testfall enthaelt keine Schritte und kann nur eingeschraenkt ausgewertet werden.')
+  }
+
+  return { errors, warnings }
 }
 
 function getInitialTestState(test: ManualTest): TestState {
   return {
-    steps: test.steps.map((s) => ({ ...s })),
+    steps: test.steps.map((step) => ({ ...step })),
     preparations: test.preparations.map(() => false),
     currentStep: 0,
     overallResult: null,
     testerName: '',
-    testDate: new Date().toISOString().split('T')[0],
+    testDate: DEFAULT_TEST_DATE,
   }
 }
 
@@ -112,39 +144,158 @@ function stepStatusMd(status: StepStatus): string {
   }
 }
 
-function generateResultMarkdown(
-  test: ManualTest,
-  state: TestState
-): string {
+function escapeMarkdownCell(value: string): string {
+  return value.replace(/\|/g, '\\|').replace(/\n/g, '<br />')
+}
+
+function getObjHint(test: ManualTest): string {
+  const hintMatch =
+    test.filePath.match(/(OBJ-\d+)/i) ?? test.requirementId.match(/(OBJ-\d+)/i)
+  return hintMatch ? hintMatch[1].toUpperCase() : ''
+}
+
+function slugifyForOft(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9-]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+function resolveOftTag(test: ManualTest): string {
+  const existing = test.oftTag.trim()
+  if (existing) {
+    return existing
+  }
+
+  const fallbackId = slugifyForOft(
+    test.id.replace(/^test-/i, '') || test.requirementId || 'manual-test'
+  )
+  return `itest~${fallbackId || 'manual-test'}~1`
+}
+
+function resolveOftCovers(test: ManualTest): string {
+  const existing = test.oftCovers.trim()
+  if (existing) {
+    return existing
+  }
+
+  const requirement = slugifyForOft(test.requirementId)
+  return requirement ? `req~${requirement}~1` : 'req~unknown~1'
+}
+
+function hasUnsavedRunChanges(state: TestState): boolean {
+  if (state.overallResult !== null) {
+    return true
+  }
+  if (state.testerName.trim().length > 0) {
+    return true
+  }
+  if (state.testDate !== DEFAULT_TEST_DATE) {
+    return true
+  }
+  if (state.preparations.some((prep) => prep)) {
+    return true
+  }
+
+  return state.steps.some(
+    (step) => step.status !== 'open' || step.observation.trim().length > 0
+  )
+}
+
+function buildResultMarkdown(test: ManualTest, state: TestState): string {
   const date = state.testDate
+  const tester = state.testerName.trim() || 'Nicht angegeben'
+  const objHint = getObjHint(test)
+  const hasStepExpectation = state.steps.some((step) => step.expectedResult)
+  const oftTag = resolveOftTag(test)
+  const oftCovers = resolveOftCovers(test)
+
   const lines: string[] = []
 
-  lines.push(`# TEST-RESULT-${test.id} \u2013 ${date}`)
+  lines.push('---')
+  lines.push(`test_id: ${test.id}`)
+  lines.push(`requirement_id: ${test.requirementId || 'unknown'}`)
+  lines.push(`service_function_id: ${test.serviceFunctionId || 'unknown'}`)
+  lines.push(`service_function_name: ${test.serviceFunctionName || 'unknown'}`)
+  lines.push(`category: ${test.category}`)
+  lines.push(`tester: ${state.testerName.trim() || ''}`)
+  lines.push(`date: ${date}`)
+  if (objHint) {
+    lines.push(`obj_hint: ${objHint}`)
+  }
+  lines.push('---')
+  lines.push('')
+  lines.push(`# TEST-RESULT-${test.id} - ${date}`)
   lines.push('')
 
-  if (test.oftTag) {
-    lines.push(`\`${test.oftTag}~result~1\``)
+  lines.push(`\`${oftTag}\``)
+  lines.push(`Covers: ${oftCovers}`)
+  lines.push('')
+
+  lines.push('## Ausfuehrungsmetadaten')
+  lines.push('')
+  lines.push('| Feld | Wert |')
+  lines.push('|------|------|')
+  lines.push(`| Test-ID | ${escapeMarkdownCell(test.id)} |`)
+  lines.push(`| Requirement | ${escapeMarkdownCell(test.requirementId || 'n/a')} |`)
+  lines.push(`| Kategorie | ${escapeMarkdownCell(test.category)} |`)
+  lines.push(
+    `| Service Function | ${escapeMarkdownCell(
+      `${test.serviceFunctionId || 'n/a'} - ${test.serviceFunctionName || 'n/a'}`
+    )} |`
+  )
+  lines.push(`| Tester | ${escapeMarkdownCell(tester)} |`)
+  lines.push(`| Datum | ${escapeMarkdownCell(date)} |`)
+  lines.push(
+    `| Gesamtbewertung | ${escapeMarkdownCell(overallResultMd(state.overallResult))} |`
+  )
+  if (objHint) {
+    lines.push(`| OBJ-Hinweis | ${escapeMarkdownCell(objHint)} |`)
   }
-  if (test.oftCovers) {
-    lines.push(`Covers: ${test.oftCovers}`)
-  }
-  if (test.oftTag || test.oftCovers) {
+  lines.push(`| OFT-Tag | ${escapeMarkdownCell(oftTag)} |`)
+  lines.push(`| Covers | ${escapeMarkdownCell(oftCovers)} |`)
+  lines.push('')
+
+  if (!state.testerName.trim()) {
+    lines.push(
+      '> Hinweis: Der Testername ist optional, aber fuer die Nachvollziehbarkeit empfohlen.'
+    )
     lines.push('')
   }
 
-  lines.push('| Schritt | Status | Beobachtung |')
-  lines.push('|---------|--------|-------------|')
-  for (const step of state.steps) {
-    const obs = step.observation || '\u2013'
-    lines.push(`| ${step.number} | ${stepStatusMd(step.status)} | ${obs} |`)
-  }
+  lines.push('## Schrittprotokoll')
   lines.push('')
-  lines.push(`**Gesamtbewertung:** ${overallResultMd(state.overallResult)}`)
-  lines.push(`**Getestet von:** ${state.testerName || '_________________'}`)
-  lines.push(`**Datum:** ${date}`)
+
+  if (hasStepExpectation) {
+    lines.push('| Schritt | Status | Erwartung | Beobachtung |')
+    lines.push('|---------|--------|-----------|-------------|')
+  } else {
+    lines.push('| Schritt | Status | Beobachtung |')
+    lines.push('|---------|--------|-------------|')
+  }
+
+  for (const step of state.steps) {
+    const observation = step.observation || '\u2013'
+    if (hasStepExpectation) {
+      lines.push(
+        `| ${step.number} | ${stepStatusMd(step.status)} | ${
+          escapeMarkdownCell(step.expectedResult ?? '\u2013')
+        } | ${escapeMarkdownCell(observation)} |`
+      )
+    } else {
+      lines.push(
+        `| ${step.number} | ${stepStatusMd(step.status)} | ${escapeMarkdownCell(
+          observation
+        )} |`
+      )
+    }
+  }
+
   lines.push('')
   lines.push('---')
-  lines.push('_Generiert durch DNS Tool Manual Test Runner_')
+  lines.push('_Generiert durch den Manual Test Runner_')
   lines.push(
     `_Datei committen nach: tests/results/TEST-RESULT-${test.id}-${date}.md_`
   )
@@ -165,18 +316,16 @@ function downloadFile(filename: string, content: string) {
   URL.revokeObjectURL(url)
 }
 
-// -------------------------------------------------------------------
-// Components
-// -------------------------------------------------------------------
-
 interface TestRunnerClientProps {
   tests: ManualTest[]
 }
 
 export function TestRunnerClient({ tests }: TestRunnerClientProps) {
   const [selectedTestId, setSelectedTestId] = useState<string | null>(
-    tests.length > 0 ? tests[0].id : null
+    tests[0]?.id ?? null
   )
+  const [activeCategories, setActiveCategories] =
+    useState<TestCategory[]>(TEST_CATEGORIES)
   const [testStates, setTestStates] = useState<Record<string, TestState>>(() => {
     const initial: Record<string, TestState> = {}
     for (const test of tests) {
@@ -185,28 +334,62 @@ export function TestRunnerClient({ tests }: TestRunnerClientProps) {
     return initial
   })
 
+  const activeCategorySet = useMemo(
+    () => new Set(activeCategories),
+    [activeCategories]
+  )
+
+  const categoryCounts = useMemo(() => {
+    const counts = Object.fromEntries(
+      TEST_CATEGORIES.map((category) => [category, 0])
+    ) as Record<TestCategory, number>
+
+    for (const test of tests) {
+      counts[test.category] += 1
+    }
+
+    return counts
+  }, [tests])
+
+  const visibleTests = useMemo(
+    () => tests.filter((test) => activeCategorySet.has(test.category)),
+    [tests, activeCategorySet]
+  )
+
   const grouped = useMemo(() => {
     const groups: Record<string, ManualTest[]> = {}
-    for (const test of tests) {
+    for (const test of visibleTests) {
       const key = test.serviceFunctionName
       if (!groups[key]) groups[key] = []
       groups[key].push(test)
     }
     return groups
-  }, [tests])
+  }, [visibleTests])
 
-  const selectedTest = tests.find((t) => t.id === selectedTestId) ?? null
-  const state = selectedTestId ? testStates[selectedTestId] : null
+  const selectedTest = visibleTests.find((t) => t.id === selectedTestId) ?? null
+  const effectiveSelectedTest = selectedTest ?? visibleTests[0] ?? null
+  const effectiveSelectedTestId = effectiveSelectedTest?.id ?? null
+  const state = effectiveSelectedTestId ? testStates[effectiveSelectedTestId] : null
 
   const updateState = useCallback(
     (testId: string, updater: (prev: TestState) => TestState) => {
+      const fallbackTest = tests[0] as ManualTest
       setTestStates((prev) => ({
         ...prev,
-        [testId]: updater(prev[testId]),
+        [testId]: updater(prev[testId] ?? getInitialTestState(fallbackTest)),
       }))
     },
-    []
+    [tests]
   )
+
+  const toggleCategory = (category: TestCategory) => {
+    setActiveCategories((prev) => {
+      if (prev.includes(category)) {
+        return prev.filter((value) => value !== category)
+      }
+      return [...prev, category]
+    })
+  }
 
   if (tests.length === 0) {
     return (
@@ -232,87 +415,138 @@ export function TestRunnerClient({ tests }: TestRunnerClientProps) {
 
   return (
     <div className="flex h-screen bg-background">
-      {/* Sidebar */}
       <aside className="w-80 shrink-0 border-r bg-muted/30 flex flex-col">
-        <div className="p-4 border-b">
-          <h1 className="text-lg font-semibold">Manual Test Runner</h1>
-          <p className="text-sm text-muted-foreground mt-1">
-            {tests.length} Tests
-          </p>
+        <div className="p-4 border-b space-y-3">
+          <div>
+            <h1 className="text-lg font-semibold">Manual Test Runner</h1>
+            <p className="text-sm text-muted-foreground mt-1">
+              {visibleTests.length} von {tests.length} Tests sichtbar
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <Button
+              type="button"
+              size="sm"
+              variant={
+                activeCategories.length === TEST_CATEGORIES.length
+                  ? 'default'
+                  : 'outline'
+              }
+              className="h-8"
+              onClick={() => setActiveCategories(TEST_CATEGORIES)}
+            >
+              Alle
+            </Button>
+            {TEST_CATEGORIES.map((category) => {
+              const active = activeCategorySet.has(category)
+              return (
+                <Button
+                  key={category}
+                  type="button"
+                  size="sm"
+                  variant={active ? 'default' : 'outline'}
+                  className="h-8"
+                  onClick={() => toggleCategory(category)}
+                >
+                  <span className="mr-2">{category}</span>
+                  <Badge variant="secondary" className="h-5 px-1.5 text-[10px]">
+                    {categoryCounts[category]}
+                  </Badge>
+                </Button>
+              )
+            })}
+          </div>
         </div>
+
         <ScrollArea className="flex-1">
           <nav className="p-2" aria-label="Test list">
-            {Object.entries(grouped).map(([sfName, sfTests]) => (
-              <div key={sfName} className="mb-4">
-                <div className="flex items-center gap-2 px-2 py-1">
-                  <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide truncate">
-                    {sfName}
-                  </span>
-                  <Badge variant="secondary" className="text-xs shrink-0">
-                    {sfTests.length}
-                  </Badge>
-                </div>
-                <ul className="space-y-0.5">
-                  {sfTests.map((test) => {
-                    const ts = testStates[test.id]
-                    const completedSteps = ts.steps.filter(
-                      (s) => s.status !== 'open'
-                    ).length
-                    const isSelected = test.id === selectedTestId
-                    return (
-                      <li key={test.id}>
-                        <button
-                          onClick={() => setSelectedTestId(test.id)}
-                          className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
-                            isSelected
-                              ? 'bg-primary text-primary-foreground'
-                              : 'hover:bg-muted'
-                          }`}
-                          aria-current={isSelected ? 'page' : undefined}
-                        >
-                          <span className="block font-mono text-xs truncate">
-                            {test.id}
-                          </span>
-                          <span
-                            className={`block text-xs mt-0.5 ${
-                              isSelected
-                                ? 'text-primary-foreground/70'
-                                : 'text-muted-foreground'
-                            }`}
-                          >
-                            {test.requirementId} &middot; {completedSteps}/
-                            {ts.steps.length}
-                          </span>
-                        </button>
-                      </li>
-                    )
-                  })}
-                </ul>
+            {visibleTests.length === 0 ? (
+              <div className="px-3 py-4 text-sm text-muted-foreground">
+                Keine Tests entsprechen den aktiven Filtern.
               </div>
-            ))}
+            ) : (
+              Object.entries(grouped).map(([sfName, sfTests]) => (
+                <div key={sfName} className="mb-4">
+                  <div className="flex items-center gap-2 px-2 py-1">
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide truncate">
+                      {sfName}
+                    </span>
+                    <Badge variant="secondary" className="text-xs shrink-0">
+                      {sfTests.length}
+                    </Badge>
+                  </div>
+                  <ul className="space-y-0.5">
+                    {sfTests.map((test) => {
+                      const ts = testStates[test.id]
+                      const completedSteps = ts.steps.filter(
+                        (step) => step.status !== 'open'
+                      ).length
+                      const isSelected = test.id === effectiveSelectedTestId
+                      return (
+                        <li key={test.id}>
+                          <button
+                            onClick={() => setSelectedTestId(test.id)}
+                            className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                              isSelected
+                                ? 'bg-primary text-primary-foreground'
+                                : 'hover:bg-muted'
+                            }`}
+                            aria-current={isSelected ? 'page' : undefined}
+                          >
+                            <span className="flex items-center justify-between gap-2">
+                              <span className="block font-mono text-xs truncate">
+                                {test.id}
+                              </span>
+                              <Badge
+                                variant={isSelected ? 'secondary' : 'outline'}
+                                className="shrink-0 text-[10px]"
+                              >
+                                {test.category}
+                              </Badge>
+                            </span>
+                            <span
+                              className={`block text-xs mt-0.5 ${
+                                isSelected
+                                  ? 'text-primary-foreground/70'
+                                  : 'text-muted-foreground'
+                              }`}
+                            >
+                              {test.requirementId || 'n/a'} &middot; {completedSteps}/
+                              {ts.steps.length}
+                            </span>
+                          </button>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              ))
+            )}
           </nav>
         </ScrollArea>
       </aside>
 
-      {/* Main panel */}
       <main className="flex-1 overflow-y-auto">
-        {selectedTest && state ? (
+        {effectiveSelectedTest && state ? (
           <TestPanel
-            test={selectedTest}
+            test={effectiveSelectedTest}
             state={state}
-            onUpdate={(updater) => updateState(selectedTest.id, updater)}
+            onUpdate={(updater) =>
+              updateState(effectiveSelectedTest.id, updater)
+            }
           />
         ) : (
           <div className="flex items-center justify-center h-full text-muted-foreground">
-            Waehlen Sie einen Test aus der Seitenleiste.
+            {visibleTests.length === 0
+              ? 'Keine Tests entsprechen den aktiven Filtern.'
+              : 'Waehlen Sie einen Test aus der Seitenleiste.'}
           </div>
         )}
       </main>
     </div>
   )
 }
-
-// -------------------------------------------------------------------
 
 interface TestPanelProps {
   test: ManualTest
@@ -321,16 +555,34 @@ interface TestPanelProps {
 }
 
 function TestPanel({ test, state, onUpdate }: TestPanelProps) {
-  const completedSteps = state.steps.filter((s) => s.status !== 'open').length
+  const validation = useMemo(() => validateTestRun(test, state), [test, state])
+  const completedSteps = state.steps.filter((step) => step.status !== 'open').length
   const totalSteps = state.steps.length
   const progressPercent = totalSteps > 0 ? (completedSteps / totalSteps) * 100 : 0
   const allStepsDone = completedSteps === totalSteps && totalSteps > 0
   const currentStep = state.steps[state.currentStep] ?? null
+  const canDownload = validation.errors.length === 0
+  const hasUnsavedChanges = useMemo(() => hasUnsavedRunChanges(state), [state])
+
+  useEffect(() => {
+    if (!hasUnsavedChanges) {
+      return
+    }
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault()
+      event.returnValue =
+        'Ungespeicherte Testeingaben vorhanden. Bei Verlassen gehen diese verloren.'
+    }
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [hasUnsavedChanges])
 
   const setStepStatus = (index: number, status: StepStatus) => {
     onUpdate((prev) => {
-      const steps = prev.steps.map((s, i) =>
-        i === index ? { ...s, status } : s
+      const steps = prev.steps.map((step, i) =>
+        i === index ? { ...step, status } : step
       )
       return { ...prev, steps }
     })
@@ -338,8 +590,8 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
 
   const setStepObservation = (index: number, observation: string) => {
     onUpdate((prev) => {
-      const steps = prev.steps.map((s, i) =>
-        i === index ? { ...s, observation } : s
+      const steps = prev.steps.map((step, i) =>
+        i === index ? { ...step, observation } : step
       )
       return { ...prev, steps }
     })
@@ -360,19 +612,23 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
   }
 
   const handleDownload = () => {
-    const md = generateResultMarkdown(test, state)
+    if (!canDownload) {
+      return
+    }
+
+    const md = buildResultMarkdown(test, state)
     const filename = `TEST-RESULT-${test.id}-${state.testDate}.md`
     downloadFile(filename, md)
   }
 
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-6">
-      {/* Header */}
       <div>
         <h2 className="text-xl font-semibold font-mono">{test.id}</h2>
         <div className="flex flex-wrap items-center gap-2 mt-2">
-          <Badge variant="outline">{test.requirementId}</Badge>
-          <Badge variant="secondary">{test.serviceFunctionId}</Badge>
+          <Badge variant="outline">{test.requirementId || 'n/a'}</Badge>
+          <Badge variant="secondary">{test.serviceFunctionId || 'n/a'}</Badge>
+          <Badge variant="outline">{test.category}</Badge>
           {test.estimatedDuration && (
             <Badge variant="secondary">{test.estimatedDuration}</Badge>
           )}
@@ -386,7 +642,6 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
 
       <Separator />
 
-      {/* Preparations */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Testvorbereitung</CardTitle>
@@ -397,22 +652,19 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
               Keine Vorbereitungsschritte definiert.
             </p>
           ) : (
-            test.preparations.map((prep, i) => (
-              <label
-                key={i}
-                className="flex items-start gap-3 cursor-pointer"
-              >
+            test.preparations.map((prep, index) => (
+              <label key={index} className="flex items-start gap-3 cursor-pointer">
                 <Checkbox
-                  checked={state.preparations[i]}
+                  checked={state.preparations[index]}
                   onCheckedChange={(checked) =>
-                    setPreparation(i, checked === true)
+                    setPreparation(index, checked === true)
                   }
                   aria-label={`Vorbereitung: ${prep}`}
                   className="mt-0.5"
                 />
                 <span
                   className={`text-sm ${
-                    state.preparations[i]
+                    state.preparations[index]
                       ? 'line-through text-muted-foreground'
                       : ''
                   }`}
@@ -425,7 +677,6 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
         </CardContent>
       </Card>
 
-      {/* Progress */}
       <div className="space-y-2">
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium">Fortschritt</span>
@@ -434,18 +685,20 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
           </span>
         </div>
         <Progress value={progressPercent} aria-label="Testfortschritt" />
+        {hasUnsavedChanges ? (
+          <p className="text-xs text-amber-700 dark:text-amber-400">
+            Ungespeicherte Aenderungen vorhanden. Bitte Ergebnis herunterladen, bevor du die Seite verlaesst.
+          </p>
+        ) : null}
       </div>
 
-      {/* Step overview mini-bar */}
       <div className="flex gap-1" role="group" aria-label="Schritte">
-        {state.steps.map((step, i) => (
+        {state.steps.map((step, index) => (
           <button
-            key={i}
-            onClick={() => goToStep(i)}
+            key={index}
+            onClick={() => goToStep(index)}
             className={`h-8 flex-1 rounded text-xs font-medium transition-colors border ${
-              i === state.currentStep
-                ? 'ring-2 ring-primary ring-offset-1'
-                : ''
+              index === state.currentStep ? 'ring-2 ring-primary ring-offset-1' : ''
             } ${
               step.status === 'open'
                 ? 'bg-muted text-muted-foreground border-border'
@@ -462,24 +715,27 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
         ))}
       </div>
 
-      {/* Current step detail */}
       {currentStep && (
         <Card>
           <CardHeader className="pb-3">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-3">
               <CardTitle className="text-base">
                 Schritt {currentStep.number} von {totalSteps}
               </CardTitle>
               <span className={`text-sm font-medium ${statusColor(currentStep.status)}`}>
-                {statusIcon(currentStep.status)}{' '}
-                {statusLabel(currentStep.status)}
+                {statusIcon(currentStep.status)} {statusLabel(currentStep.status)}
               </span>
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm">{currentStep.description}</p>
 
-            {/* Status buttons */}
+            {currentStep.expectedResult && (
+              <p className="text-sm text-muted-foreground">
+                Erwartung: {currentStep.expectedResult}
+              </p>
+            )}
+
             <div className="flex flex-wrap gap-2">
               <Button
                 size="sm"
@@ -528,12 +784,8 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
               )}
             </div>
 
-            {/* Observation */}
             <div className="space-y-1.5">
-              <label
-                htmlFor="step-observation"
-                className="text-sm font-medium"
-              >
+              <label htmlFor="step-observation" className="text-sm font-medium">
                 Beobachtung
               </label>
               <Textarea
@@ -547,7 +799,6 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
               />
             </div>
 
-            {/* Navigation */}
             <div className="flex justify-between pt-2">
               <Button
                 variant="outline"
@@ -570,21 +821,17 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
         </Card>
       )}
 
-      {/* Expected result */}
       {test.expectedResult && (
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-base">Erwartetes Ergebnis</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">
-              {test.expectedResult}
-            </p>
+            <p className="text-sm text-muted-foreground">{test.expectedResult}</p>
           </CardContent>
         </Card>
       )}
 
-      {/* Overall result (shown when all steps are done) */}
       {allStepsDone && (
         <Card className="border-primary/50">
           <CardHeader className="pb-3">
@@ -635,7 +882,6 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
 
             <Separator />
 
-            {/* Tester name + date */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label htmlFor="tester-name" className="text-sm font-medium">
@@ -671,13 +917,45 @@ function TestPanel({ test, state, onUpdate }: TestPanelProps) {
               </div>
             </div>
 
-            {/* Download */}
+            {(validation.errors.length > 0 || validation.warnings.length > 0) && (
+              <div className="rounded-md border bg-muted/30 p-3 text-sm space-y-2">
+                {validation.errors.length > 0 && (
+                  <div className="space-y-1">
+                    <p className="font-medium text-red-700 dark:text-red-400">
+                      Vor dem Download muessen diese Punkte erfuellt sein:
+                    </p>
+                    <ul className="list-disc pl-5 text-red-700 dark:text-red-400 space-y-1">
+                      {validation.errors.map((error) => (
+                        <li key={error}>{error}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {validation.warnings.length > 0 && (
+                  <div className="space-y-1">
+                    <p className="font-medium text-amber-700 dark:text-amber-400">
+                      Hinweis
+                    </p>
+                    <ul className="list-disc pl-5 text-amber-700 dark:text-amber-400 space-y-1">
+                      {validation.warnings.map((warning) => (
+                        <li key={warning}>{warning}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+
             {state.overallResult && (
               <div className="pt-2">
                 <p className="text-sm text-muted-foreground mb-3">
                   {overallResultLabel(state.overallResult)}
                 </p>
-                <Button onClick={handleDownload} className="w-full sm:w-auto">
+                <Button
+                  onClick={handleDownload}
+                  className="w-full sm:w-auto"
+                  disabled={!canDownload}
+                >
                   Ergebnis herunterladen
                 </Button>
               </div>

@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-606-001-manual: Maturitaetsstatus-Seite
 
 | Feld | Wert |

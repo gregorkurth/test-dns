@@ -1,6 +1,7 @@
 import { z } from 'zod'
 
 export const MIN_NAMESERVERS = 2
+export const OBJ5_DRAFT_STORAGE_KEY = 'obj5.participant-form.draft.v1'
 
 const ipv4Regex =
   /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}$/

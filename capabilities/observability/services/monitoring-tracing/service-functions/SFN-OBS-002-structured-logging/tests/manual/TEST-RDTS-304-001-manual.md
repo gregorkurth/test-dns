@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-304-001-manual: JSON-strukturierte Logs
 
 | Feld | Wert |

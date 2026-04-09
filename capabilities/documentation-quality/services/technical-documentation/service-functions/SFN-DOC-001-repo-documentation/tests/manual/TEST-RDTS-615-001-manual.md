@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-615-001-manual: Benutzerhandbuch mit drei Themenbereichen
 
 | Feld | Wert |

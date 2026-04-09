@@ -47,10 +47,30 @@ describe('prepareZoneGenerationInputFromParticipant', () => {
     )
 
     expect(prepared.forward.zoneName).toBe('core.ndp.che')
-    expect(prepared.forward.records.some((record) => record.type === 'NS')).toBe(true)
+    const nsRecords = prepared.forward.records.filter((record) => record.type === 'NS')
+    expect(nsRecords).toHaveLength(2)
+    expect(nsRecords.map((record) => record.value).sort()).toEqual([
+      'ns1.core.ndp.che',
+      'ns2.core.ndp.che',
+    ])
     expect(
       prepared.forward.records.some(
         (record) => record.type === 'A' && record.value === '10.0.0.53',
+      ),
+    ).toBe(true)
+    expect(
+      prepared.forward.records.some(
+        (record) => record.type === 'A' && record.value === '10.0.0.21',
+      ),
+    ).toBe(true)
+    expect(
+      prepared.forward.records.some(
+        (record) => record.type === 'A' && record.value === '10.0.0.11',
+      ),
+    ).toBe(true)
+    expect(
+      prepared.forward.records.some(
+        (record) => record.type === 'A' && record.value === '10.0.0.12',
       ),
     ).toBe(true)
 

@@ -1,0 +1,49 @@
+site_name: FMN DNS Tool Dokumentation
+site_description: Repository-Dokumentation fuer Betrieb, Architektur, Release und Benutzerhandbuch
+docs_dir: docs
+theme:
+  name: mkdocs
+nav:
+  - Startseite: README.md
+  - Quickstart: quickstart.md
+  - Betrieb: operations.md
+  - Architektur: architecture.md
+  - Konfiguration: configuration.md
+  - Offline-Installation: offline-install.md
+  - Zarf-Paket: zarf.md
+  - Argo CD: argocd.md
+  - Release-Prozess: release-process.md
+  - Benutzerhandbuch:
+      - Uebersicht: user-manual/README.md
+      - Management: user-manual/management.md
+      - Betrieb: user-manual/operations.md
+      - Umsetzung: user-manual/implementation.md
+  - arc42:
+      - Uebersicht: arc42/README.md
+      - Kapitel 1: arc42/01-introduction-and-goals.md
+      - Kapitel 2: arc42/02-constraints.md
+      - Kapitel 3: arc42/03-context-and-scope.md
+      - Kapitel 4: arc42/04-solution-strategy.md
+      - Kapitel 5: arc42/05-building-block-view.md
+      - Kapitel 6: arc42/06-runtime-view.md
+      - Kapitel 7: arc42/07-deployment-view.md
+      - Kapitel 8: arc42/08-cross-cutting-concepts.md
+      - Kapitel 9: arc42/09-architecture-decisions.md
+      - Kapitel 10: arc42/10-quality-requirements.md
+      - Kapitel 11: arc42/11-risks-and-technical-debt.md
+      - Kapitel 12: arc42/12-glossary-and-work-products.md
+  - ADRs:
+      - Uebersicht: adr/INDEX.md
+  - Security: security/README.md
+  - Export und Nachweise:
+      - Confluence-Export: CONFLUENCE-EXPORT-GUIDE.md
+      - Export-Log: exports/EXPORT-LOG.md
+      - Validation Matrix: testing/VALIDATION-MATRIX.md
+markdown_extensions:
+  - admonition
+  - tables
+  - fenced_code
+  - toc:
+      permalink: true
+plugins:
+  - search

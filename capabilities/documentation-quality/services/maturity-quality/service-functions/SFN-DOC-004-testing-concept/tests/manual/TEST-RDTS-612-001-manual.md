@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-612-001-manual: Pro-OBJ-Teststatussicht
 
 `itest~rdts-612-001~1`

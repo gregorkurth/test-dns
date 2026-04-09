@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-208-001-manual: Status-Subresource
 
 ## Metadaten

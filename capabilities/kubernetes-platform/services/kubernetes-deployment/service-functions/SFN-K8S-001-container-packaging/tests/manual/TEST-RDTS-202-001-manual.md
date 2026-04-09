@@ -1,3 +1,7 @@
+---
+category: Deployability
+---
+
 # TEST-RDTS-202-001-manual: Airgapped Container-Image
 
 ## Metadaten

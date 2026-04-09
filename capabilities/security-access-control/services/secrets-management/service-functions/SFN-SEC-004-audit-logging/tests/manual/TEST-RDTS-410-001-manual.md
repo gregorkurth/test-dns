@@ -1,3 +1,7 @@
+---
+category: UI
+---
+
 # TEST-RDTS-410-001-manual: Audit-Log nicht manipulierbar
 
 | Feld | Wert |
