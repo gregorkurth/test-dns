@@ -1,0 +1,6 @@
+- op: replace
+  path: /metadata/name
+  value: dns-management-local
+- op: add
+  path: /metadata/labels/environment.fmn.dev~1name
+  value: local

@@ -20,6 +20,7 @@ category: Deployability
 | Schritt | Aktion | Erwartetes Ergebnis | Bestanden? |
 |---------|--------|--------------------|-----------:|
 | 1 | Requirement-Kriterien pruefen | Alle Akzeptanzkriterien erfuellt | ☐ |
+| 2 | OCI-Manifest pruefen (z. B. `docker manifest inspect <image>`) | Manifest/Media Types sind OCI-konform | ☐ |
 
 ## Testergebnis
 

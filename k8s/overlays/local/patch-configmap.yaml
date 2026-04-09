@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dns-management-config
+data:
+  APP_BASE_URL: "http://dns.localtest.me"
+  OTEL_EXPORT_MODE: "local"
+  OTEL_EXPORT_ENDPOINT: "http://host.docker.internal:4318"
+  LOG_LEVEL: "debug"

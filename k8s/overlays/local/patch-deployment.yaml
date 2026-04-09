@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dns-management-service
+spec:
+  template:
+    metadata:
+      labels:
+        environment.fmn.dev/name: local
+    spec:
+      containers:
+        - name: app
+          image: test-dns:dev
+          imagePullPolicy: Never

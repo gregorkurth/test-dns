@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dns-management-service
+  labels:
+    app.kubernetes.io/name: dns-management-service
+    app.kubernetes.io/part-of: dns-management-service
+    app.kubernetes.io/component: ingress
+    policy.openpolicyagent.org/profile: restricted
+  annotations:
+    kubernetes.io/ingress.class: internal-nginx
+    security.fmn.dev/opa-note: "OPA should require an approved hostname, ingress class, and TLS policy for this route."
+spec:
+  ingressClassName: internal-nginx
+  rules:
+    - host: dns.internal.example.mil
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dns-management-service
+                port:
+                  name: http

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dns-management-config
+  labels:
+    app.kubernetes.io/name: dns-management-service
+    app.kubernetes.io/part-of: dns-management-service
+    app.kubernetes.io/component: configuration
+    policy.openpolicyagent.org/profile: restricted
+data:
+  NODE_ENV: "production"
+  PORT: "3000"
+  APP_BASE_URL: "https://dns.internal.example.mil"
+  SERVICE_NAME: "dns-management-service"
+  OTEL_SERVICE_NAME: "dns-management-service"
+  OTEL_EXPORT_MODE: "local"
+  OTEL_EXPORT_ENDPOINT: "http://otel-collector.observability.svc.cluster.local:4318"
+  OTEL_EXPORT_TIMEOUT_MS: "5000"
+  OBSERVABILITY_SPOOL_DIR: "/tmp/otel/spool"
+  OBSERVABILITY_QUEUE_DIR: "/tmp/otel/queue"
+  LOG_LEVEL: "info"

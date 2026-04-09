@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dns-management
+  labels:
+    app.kubernetes.io/name: dns-management-service
+    app.kubernetes.io/part-of: dns-management-service
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/warn: restricted
+    policy.openpolicyagent.org/profile: restricted
+    policy.openpolicyagent.org/review: required
+  annotations:
+    security.fmn.dev/namespace-purpose: "dns-management-service"
+    security.fmn.dev/opa-note: "OPA or Gatekeeper should enforce approved labels, pinned images, and restricted pod security."

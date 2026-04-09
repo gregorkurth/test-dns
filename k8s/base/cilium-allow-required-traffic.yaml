@@ -1,0 +1,54 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: dns-management-allow-required-traffic
+  labels:
+    app.kubernetes.io/name: dns-management-service
+    app.kubernetes.io/part-of: dns-management-service
+    networking.fmn.dev/policy-tier: application
+    networking.fmn.dev/egress-profile: deny-all-except-kube-dns
+    policy.openpolicyagent.org/profile: restricted
+  annotations:
+    security.fmn.dev/mtls-required: "true"
+    security.fmn.dev/mtls-note: "Tighten ingress selectors to your concrete ingress controller namespace before production go-live."
+    observability.fmn.dev/hubble-note: "Use Hubble to verify only approved north-south and kube-dns flows are observed."
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: dns-management-service
+  ingress:
+    - fromEntities:
+        - host
+      toPorts:
+        - ports:
+            - port: "3000"
+              protocol: TCP
+    - fromEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: ingress-nginx
+      authentication:
+        mode: required
+      toPorts:
+        - ports:
+            - port: "3000"
+              protocol: TCP
+    - fromEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: kube-system
+      authentication:
+        mode: required
+      toPorts:
+        - ports:
+            - port: "3000"
+              protocol: TCP
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: kube-system
+            k8s:k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+            - port: "53"
+              protocol: TCP

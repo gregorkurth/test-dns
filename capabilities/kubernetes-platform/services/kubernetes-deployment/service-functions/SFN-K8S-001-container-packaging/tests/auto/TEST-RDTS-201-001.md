@@ -18,6 +18,6 @@ import pytest
 @pytest.mark.requirement("RDTS-201")
 @pytest.mark.service_function("SFN-K8S-001")
 def test_rdts_201_001():
-    """Testet: Multi-Stage Dockerfile"""
+    """Testet: Multi-Stage Dockerfile inkl. OCI-Konformitaet"""
     pytest.skip("Stub - noch nicht implementiert")
 ```

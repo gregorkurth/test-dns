@@ -1,0 +1,18 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: dns-management-default-deny
+  labels:
+    app.kubernetes.io/name: dns-management-service
+    app.kubernetes.io/part-of: dns-management-service
+    networking.fmn.dev/policy-tier: baseline
+    policy.openpolicyagent.org/profile: restricted
+  annotations:
+    security.fmn.dev/mtls-required: "true"
+    security.fmn.dev/opa-note: "OPA should require a default-deny policy on every workload namespace."
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: dns-management-service
+  ingress: []
+  egress: []

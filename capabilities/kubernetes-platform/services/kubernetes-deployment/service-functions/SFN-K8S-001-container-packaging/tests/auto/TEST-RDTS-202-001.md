@@ -18,6 +18,6 @@ import pytest
 @pytest.mark.requirement("RDTS-202")
 @pytest.mark.service_function("SFN-K8S-001")
 def test_rdts_202_001():
-    """Testet: Airgapped Container-Image"""
+    """Testet: Airgapped Container-Image inkl. OCI-Konformitaet"""
     pytest.skip("Stub - noch nicht implementiert")
 ```

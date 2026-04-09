@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dns-management-service
+  labels:
+    app.kubernetes.io/name: dns-management-service
+    app.kubernetes.io/part-of: dns-management-service
+    app.kubernetes.io/component: web
+    policy.openpolicyagent.org/profile: restricted
+  annotations:
+    security.fmn.dev/mtls-required: "true"
+    security.fmn.dev/mtls-profile: "cilium-auth-spiffe"
+    security.fmn.dev/opa-note: "OPA should reject containers that are privileged, mutable, or not pinned to an approved image source."
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dns-management-service
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dns-management-service
+        app.kubernetes.io/part-of: dns-management-service
+        app.kubernetes.io/component: web
+        app.kubernetes.io/version: stable
+        security.fmn.dev/mtls-required: "true"
+        observability.fmn.dev/hubble-visible: "true"
+        observability.fmn.dev/tetragon-profile: default
+        policy.openpolicyagent.org/profile: restricted
+      annotations:
+        security.fmn.dev/mtls-note: "Enable Cilium service-to-service authentication before production release."
+        observability.fmn.dev/otel-events: "forward security and audit events to the configured OTEL pipeline"
+    spec:
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: app
+          image: ghcr.io/gregorkurth/test-dns@sha256:1111111111111111111111111111111111111111111111111111111111111111
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: dns-management-config
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /api/v1
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}

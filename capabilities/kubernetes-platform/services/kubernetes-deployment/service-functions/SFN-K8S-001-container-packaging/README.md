@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Container Packaging stellt sicher, dass die DNS-Konfigurations-App als gehaertetes Minimal-Container-Image gebaut, exportiert und in einer airgapped Umgebung geladen werden kann. Das Image enthaelt alle Assets und hat keine Laufzeitabhaengigkeit zu externen Registries oder CDNs.
+Container Packaging stellt sicher, dass die DNS-Konfigurations-App als gehaertetes Minimal-Container-Image gebaut, exportiert und in einer airgapped Umgebung geladen werden kann. Das Image enthaelt alle Assets, ist OCI-konform und hat keine Laufzeitabhaengigkeit zu externen Registries oder CDNs.
 
 ---
 
@@ -17,8 +17,8 @@ Container Packaging stellt sicher, dass die DNS-Konfigurations-App als gehaertet
 
 | ID | Typ | Quelle | Beschreibung | Priorität |
 |----|-----|--------|-------------|-----------|
-| [RDTS-201](requirements/RDTS-201.md) | [ARCH] | App-Template | Multi-Stage Dockerfile mit gehaertetem Minimal-Runtime-Base | 🟥 MUSS |
-| [RDTS-202](requirements/RDTS-202.md) | [ARCH] | App-Template | Airgapped-fähiges Image ohne Laufzeit-Downloads | 🟥 MUSS |
+| [RDTS-201](requirements/RDTS-201.md) | [ARCH] | App-Template | Multi-Stage Dockerfile mit gehaertetem Minimal-Runtime-Base und OCI-Konformitaet | 🟥 MUSS |
+| [RDTS-202](requirements/RDTS-202.md) | [ARCH] | App-Template | Airgapped-fähiges, OCI-konformes Image ohne Laufzeit-Downloads | 🟥 MUSS |
 | [RDTS-203](requirements/RDTS-203.md) | [ARCH] | App-Template | Image-Export als tar für Offline-Transfer | 🟧 SOLLTE |
 
 > **Quelle-Typen:** `[NATO]` FMN/NATO-Spec · `[ARCH]` Architektur · `[CUST]` Kunde · `[INT]` Intern

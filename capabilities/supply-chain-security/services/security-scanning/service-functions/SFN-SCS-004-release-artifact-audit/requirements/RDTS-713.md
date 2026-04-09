@@ -7,7 +7,7 @@
 
 ## Anforderungstext
 
-Die Artefaktprüfung umfasst mindestens Dateitypen, Pfade, Top-Level-Struktur, Dateianzahl und Artefaktgrösse anhand definierter Grenzwerte.
+Die Artefaktprüfung umfasst mindestens Dateitypen, Pfade, Top-Level-Struktur, Dateianzahl und Artefaktgrösse anhand definierter Grenzwerte. Fuer Container-Images beinhaltet die Prüfung zusaetzlich die OCI-Konformitaet von Manifest und Media Types.
 
 ## Verknüpfte Features
 

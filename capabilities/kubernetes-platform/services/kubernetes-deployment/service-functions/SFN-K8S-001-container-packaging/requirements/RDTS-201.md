@@ -21,10 +21,12 @@
 ## Anforderungstext (Original)
 
 > Die Applikation muss als Container-Image mit einem Multi-Stage Dockerfile gebaut werden, um eine optimale Imagegroesse und einen gehaerteten Runtime-Umfang zu erreichen (Build-Stage und Runtime-Stage getrennt). Die Runtime-Stage muss auf einem freigegebenen gehaerteten Minimal-Base-Image basieren.
+> Container-Images muessen den Spezifikationen der Open Container Initiative (OCI) entsprechen.
 
 ## Anforderungstext (Erläuterung)
 
 Das Dockerfile trennt Build-Abhaengigkeiten (Node.js, npm) von der Laufzeitumgebung. Das finale Image enthaelt nur die benoetigte Runtime. Falls der Workload ausschliesslich BIND9 bereitstellt, wird statt einer allgemeinen App-Runtime ein BIND9-spezifisches Minimal-Image verwendet.
+Zusaetzlich wird sichergestellt, dass Image-Manifest und Media Types OCI-konform sind.
 
 ---
 
@@ -42,6 +44,7 @@ Airgapped-Umgebungen erfordern kleine, vollständige Images. Multi-Stage Builds 
 4. `docker build` läuft ohne Netzwerkzugriff erfolgreich (nach initialem Layer-Cache)
 5. Runtime-Stage basiert auf einem dokumentierten gehaerteten Minimal-Base-Image (Image + Digest)
 6. Bei BIND9-only Workloads enthaelt das Runtime-Image nur `named` und die notwendigen Laufzeitdateien
+7. Das gebaute Image ist OCI-konform (Manifest/Media Types gemaess OCI-Spezifikation)
 
 ---
 

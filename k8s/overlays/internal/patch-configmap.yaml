@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dns-management-config
+data:
+  APP_BASE_URL: "https://dns.internal.example.mil"
+  OTEL_EXPORT_MODE: "clickhouse"
+  OTEL_EXPORT_ENDPOINT: "http://otel-collector.observability.svc.cluster.local:4318"
+  LOG_LEVEL: "info"

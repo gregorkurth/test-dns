@@ -20,6 +20,7 @@ category: Deployability
 | Schritt | Aktion | Erwartetes Ergebnis | Bestanden? |
 |---------|--------|--------------------|-----------:|
 | 1 | Requirement-Kriterien pruefen | Alle Akzeptanzkriterien erfuellt | ☐ |
+| 2 | OCI-Distribution pruefen (Push/Pull oder Manifest-Inspect) | Image bleibt OCI-konform im Registry-Flow | ☐ |
 
 ## Testergebnis
 

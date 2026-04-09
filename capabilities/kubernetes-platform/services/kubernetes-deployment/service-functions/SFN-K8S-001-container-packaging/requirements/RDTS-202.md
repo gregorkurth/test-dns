@@ -21,10 +21,12 @@
 ## Anforderungstext (Original)
 
 > Das Container-Image muss alle Assets (HTML, CSS, JS, Schriften, Icons) enthalten und als gehaertetes Minimal-Runtime-Image gebaut sein. Zur Laufzeit darf kein Zugriff auf externe Registries, CDNs oder npm-Repositories erfolgen.
+> Das Container-Image und seine Distribution muessen OCI-konform sein.
 
 ## Anforderungstext (Erläuterung)
 
 Das Image ist vollstaendig selbststaendig. Kein `npm install`, kein CDN-Fetch, kein externer Font-Download zur Laufzeit. Der Runtime-Container enthaelt nur den minimal benoetigten Umfang.
+Die OCI-Konformitaet stellt sicher, dass Registry-Push, Offline-Transfer und Zielimport konsistent funktionieren.
 
 ---
 
@@ -42,6 +44,7 @@ Mission Networks sind oft airgapped. Jeder externe Zugriff zur Laufzeit würde d
 4. `docker run --network=none` zeigt App korrekt an
 5. Runtime-Image enthaelt keine Build-Toolchain und keinen zur Laufzeit unnoetigen Paketmanager
 6. Bei BIND9-only Workloads enthaelt das Image nur BIND9-relevante Binaries/Konfigurationen
+7. Image-Manifeste und Media Types sind OCI-konform und im Build-/Publish-Prozess validierbar
 
 ---
 

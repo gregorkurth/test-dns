@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dns-management-service
+  labels:
+    app.kubernetes.io/name: dns-management-service
+    app.kubernetes.io/part-of: dns-management-service
+    app.kubernetes.io/component: service
+    policy.openpolicyagent.org/profile: restricted
+  annotations:
+    security.fmn.dev/mtls-required: "true"
+    security.fmn.dev/mtls-note: "Downstream clients should use authenticated pod-to-pod transport before production enablement."
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: dns-management-service
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP

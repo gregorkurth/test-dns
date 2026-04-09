@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dns-management-service
+  annotations:
+    kubernetes.io/ingress.class: internal-nginx
+spec:
+  ingressClassName: internal-nginx
+  rules:
+    - host: dns.internal.example.mil
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dns-management-service
+                port:
+                  name: http
