@@ -2,13 +2,13 @@
 
 > **Service ID:** SVC-DOC-TECH
 > **Capability:** Documentation & Quality (CAP-006)
-> **Quelldokument:** App-Template-Anweisung, Abschnitt 11
+> **Quelldokument:** App-Template-Anweisung, Abschnitt 16
 
 ---
 
 ## Beschreibung
 
-Die Technische Dokumentation umfasst alle Repo-Dokumente: Quickstart, Betriebsdokumentation, Architekturuebersicht (Blackbox/Whitebox), Konfigurationsbeschreibung und ADRs. Die Dokumentation liegt vollstaendig im Repository, waechst mit der Implementierung mit und wird zusaetzlich als versionierte MkDocs-Website und E-Book pro Release bereitgestellt.
+Die Technische Dokumentation umfasst alle Repo-Dokumente: Quickstart, Betriebsdokumentation, Architekturuebersicht (Blackbox/Whitebox), Konfigurationsbeschreibung und ADRs. Die Dokumentation liegt vollstaendig im Repository, waechst mit der Implementierung mit und wird zusaetzlich als versionierte MkDocs-Website und E-Book pro Release bereitgestellt. Diagramme werden standardisiert ueber draw.io-Quellen plus SVG/PNG-Exporte gepflegt.
 
 ---
 
@@ -23,5 +23,5 @@ Die Technische Dokumentation umfasst alle Repo-Dokumente: Quickstart, Betriebsdo
 
 ## Quelldokumente
 
-- App-Template-Anweisung, Abschnitt 11: Dokumentation
+- App-Template-Anweisung, Abschnitt 16: Dokumentation
 - Feature-Spec OBJ-2: Dokumentation

@@ -20,3 +20,10 @@
 
 - OBJ-12: Security & Authentifizierung
 - OBJ-10: Kubernetes Deployment
+
+## Tests
+
+| Testfall | Typ |
+|----------|-----|
+| [TEST-RDTS-411-001](../tests/auto/TEST-RDTS-411-001.md) | Automatisch |
+| [TEST-RDTS-411-001-manual](../tests/manual/TEST-RDTS-411-001-manual.md) | Manuell |

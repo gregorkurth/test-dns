@@ -19,6 +19,7 @@
     "test:coverage": "vitest run --coverage",
     "trace": "java -jar tools/oft.jar trace --output-format html capabilities features tests src -o docs/traceability-report.html",
     "trace:text": "java -jar tools/oft.jar trace capabilities features tests src",
+    "mcp:dns": "node tools/mcp-dns-crud-server.mjs",
     "adr:new": "log4brains adr new",
     "adr:preview": "log4brains preview",
     "adr:build": "log4brains build"

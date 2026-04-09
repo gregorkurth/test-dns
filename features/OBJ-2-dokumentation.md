@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-07
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-1 bis OBJ-21: Alle Features (Dokumentation beschreibt das Gesamtsystem)
@@ -23,6 +23,9 @@
 - Als Platform Engineer moechte ich den Ablauf GitLab-Release -> Zarf-Transfer -> Gitea-Import (Release-Projekt + Konfigurationsprojekt) dokumentiert haben.
 - Als Manager moechte ich die komplette Doku als Website, E-Book und Benutzerhandbuch nutzen koennen, damit ich ohne Entwicklerzugriff arbeiten kann.
 - Als Nutzer moechte ich zwischen Doku-Versionen (z. B. v1, v2) umschalten koennen, damit ich zur passenden Release-Version lesen kann.
+- Als Architekt moechte ich Diagramme einheitlich mit draw.io pflegen, damit Aenderungen reproduzierbar und releasefaehig dokumentiert sind.
+- Als Operator moechte ich die OTel-Betriebsvarianten (`local`/`clickhouse`) in der Betriebsdoku klar beschrieben haben, damit ich den passenden Modus sicher betreiben kann.
+- Als Nutzer moechte ich erklaerte Update-Hinweise in der Doku finden, damit ich GUI-Hinweise und Release-Notizen korrekt einordnen kann.
 
 ## Acceptance Criteria
 - [ ] `README.md` im Repository-Root vorhanden: Quickstart, Links zu weiterführender Doku, Build-Badges
@@ -43,6 +46,10 @@
 - [ ] Ein Benutzerhandbuch ist vorhanden und in drei Themenbereiche gegliedert: Management, Betrieb, Umsetzung
 - [ ] Website und E-Book enthalten ein klar strukturiertes Inhaltsverzeichnis
 - [ ] Pro Release ist eine nachvollziehbare Doku-Aenderungssicht vorhanden (Changes, Bugfixes, Version)
+- [ ] Diagrammstandard ist dokumentiert: draw.io als Quelle plus Export nach SVG/PNG (`docs/diagrams/source` und `docs/diagrams/export`)
+- [ ] Markdown- und E-Book-Quellen referenzieren Diagramm-Exporte (SVG/PNG), nicht die draw.io-Quelldateien
+- [ ] `docs/operations.md` beschreibt OTel-Betriebsvarianten `local` und `clickhouse` inkl. Umschaltlogik, Pufferung und Nachlieferung
+- [ ] Dokumentation der GUI-Update-Hinweise ist vorhanden (global/modulbezogen, Kritikalitaet, Quittierung, Verknuepfung zu Release-Notizen)
 - [ ] Dokumentation ist auf Deutsch (Schweizer Schreibweise), technische Begriffe können Englisch bleiben
 - [ ] Dokumentation liegt vollständig im Repository (kein externes Wiki)
 - [ ] Dokumentation wächst mit der Implementierung mit: jedes neue Feature hat einen Doku-Abschnitt
@@ -56,6 +63,8 @@
 - Was wenn Argo-CD-Versionen zwischen Entwicklungs- und Zielumgebung abweichen? → Kompatibilitätshinweise in `docs/argocd.md` dokumentiert
 - Was wenn fuer eine alte Release-Version keine Doku-Version vorhanden ist? → Release gilt als unvollstaendig dokumentiert; Version wird nachgezogen
 - Was wenn E-Book-Export fehlschlaegt? → Release-Checkliste blockiert Abschluss bis Export oder dokumentierte Ausnahme vorliegt
+- Was wenn ein Diagramm nur als `.drawio` ohne Export vorliegt? → Doku gilt als unvollstaendig; SVG/PNG-Export muss vor Release nachgezogen werden
+- Was wenn GUI-Update-Hinweise von den Release-Notizen abweichen? → Release wird blockiert bis Hinweisquelle und Release-Notiz konsistent sind
 
 ## Technical Requirements
 - Dokumentationsformat: Markdown (GitHub-kompatibel)
@@ -63,6 +72,8 @@
 - Doku-Publishing: MkDocs als Website-Generator, Versionierung ueber releasebezogene Doku-Staende (z. B. mit `mike`)
 - E-Book-Export je Release (z. B. PDF) inkl. Inhaltsverzeichnis und Versionslabel
 - Benutzerhandbuch-Struktur als eigener Doku-Bereich mit drei Zielgruppenpfaden
+- Diagramm-Standard: draw.io-Quellen plus SVG/PNG-Exporte, gemeinsam versioniert
+- Betriebsdoku muss OTel-Modi (`local`/`clickhouse`) und Fallback-Verhalten explizit dokumentieren
 
 ---
 <!-- Sections below are added by subsequent skills -->

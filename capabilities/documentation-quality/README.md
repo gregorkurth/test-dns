@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Die Documentation & Quality Capability stellt sicher, dass die DNS-Konfigurations-App vollstaendig dokumentiert ist und einen transparenten Maturitaetsstatus aufweist. Sie umfasst technische Dokumentation (Quickstart, Betriebsdoku, ADRs), Architekturuebersicht sowie Maturitaets- und Teststatus-Tracking inkl. Test-Execution-Dashboard. Zusaetzlich ist die Doku als versionierte MkDocs-Website, als E-Book je Release und als Benutzerhandbuch mit drei Themenpfaden verfuegbar.
+Die Documentation & Quality Capability stellt sicher, dass die DNS-Konfigurations-App vollstaendig dokumentiert ist und einen transparenten Maturitaetsstatus aufweist. Sie umfasst technische Dokumentation (Quickstart, Betriebsdoku, ADRs), Architekturuebersicht sowie Maturitaets- und Teststatus-Tracking inkl. Test-Execution-Dashboard. Zusaetzlich ist die Doku als versionierte MkDocs-Website, als E-Book je Release und als Benutzerhandbuch mit drei Themenpfaden verfuegbar. Diagramme werden standardisiert mit draw.io plus SVG/PNG-Export gepflegt; GUI-Update-Hinweise werden releasebezogen dokumentiert und nachvollziehbar verlinkt.
 Traceability wird dabei ueber OFT/OpenFastTrace-kompatible IDs und Covers-Bezuege sichergestellt.
 
 ---

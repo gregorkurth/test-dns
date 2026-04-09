@@ -8,7 +8,7 @@
 
 ## Beschreibung
 
-Der Authentifizierungs-Service stellt OIDC-basierte Authentifizierung (Keycloak-kompatibel) und rollenbasierte Zugriffskontrolle (RBAC) bereit. Eine lokale Fallback-Authentifizierung ermöglicht den Betrieb ohne externen Identity Provider.
+Der Authentifizierungs-Service stellt OIDC-basierte Authentifizierung (Keycloak-kompatibel) und rollenbasierte Zugriffskontrolle (RBAC) bereit. Eine lokale Fallback-Authentifizierung ermöglicht den Betrieb ohne externen Identity Provider. Fuer AI-Agenten/MCP-Zugriffe erzwingt der Service eine explizite Endpunkt- und Tool-Whitelist.
 
 ---
 

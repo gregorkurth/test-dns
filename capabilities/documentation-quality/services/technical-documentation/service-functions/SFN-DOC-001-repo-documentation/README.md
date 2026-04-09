@@ -22,6 +22,8 @@ Repo Documentation - Bestandteil der Documentation & Quality Capability.
 | [RDTS-614](requirements/RDTS-614.md) | [ARCH] | App-Template | E-Book-Export je Release-Version | MUSS |
 | [RDTS-615](requirements/RDTS-615.md) | [ARCH] | App-Template | Benutzerhandbuch mit drei Themenbereichen | MUSS |
 | [RDTS-616](requirements/RDTS-616.md) | [ARCH] | App-Template | Release-/Bugfix-/Change-Uebersicht je Version | MUSS |
+| [RDTS-618](requirements/RDTS-618.md) | [ARCH] | App-Template | Draw.io als Diagrammstandard mit source/export-Ablage | MUSS |
+| [RDTS-619](requirements/RDTS-619.md) | [ARCH] | App-Template | Diagramm-Exporte (SVG/PNG) als Referenz fuer Markdown/E-Book | MUSS |
 
 ---
 
@@ -41,3 +43,7 @@ Repo Documentation - Bestandteil der Documentation & Quality Capability.
 | [TEST-RDTS-615-001-manual](tests/manual/TEST-RDTS-615-001-manual.md) | Manuell | RDTS-615 |
 | [TEST-RDTS-616-001](tests/auto/TEST-RDTS-616-001.md) | Automatisch | RDTS-616 |
 | [TEST-RDTS-616-001-manual](tests/manual/TEST-RDTS-616-001-manual.md) | Manuell | RDTS-616 |
+| [TEST-RDTS-618-001](tests/auto/TEST-RDTS-618-001.md) | Automatisch | RDTS-618 |
+| [TEST-RDTS-618-001-manual](tests/manual/TEST-RDTS-618-001-manual.md) | Manuell | RDTS-618 |
+| [TEST-RDTS-619-001](tests/auto/TEST-RDTS-619-001.md) | Automatisch | RDTS-619 |
+| [TEST-RDTS-619-001-manual](tests/manual/TEST-RDTS-619-001-manual.md) | Manuell | RDTS-619 |

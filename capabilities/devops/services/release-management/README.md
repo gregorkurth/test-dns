@@ -8,7 +8,7 @@
 
 ## Beschreibung
 
-Release Management stellt sicher, dass Releases einer SemVer-Logik folgen, der CHANGELOG automatisch generiert wird, Release-Artefakte signiert und nachvollziehbar sind und ein Publish erst nach erfolgreicher Prüfung des finalen Artefaktinhalts erfolgt.
+Release Management stellt sicher, dass Releases einer SemVer-Logik folgen, der CHANGELOG automatisch generiert wird, Release-Artefakte signiert und nachvollziehbar sind und ein Publish erst nach erfolgreicher Prüfung des finalen Artefaktinhalts erfolgt. Zusaetzlich wird pro Release eine versionierte Update-Hinweisquelle fuer das GUI bereitgestellt.
 
 ---
 

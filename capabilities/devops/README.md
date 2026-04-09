@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Die DevOps-Capability stellt sicher, dass die DNS-Konfigurations-App ueber automatisierte CI/CD Pipelines gebaut, getestet und deployt wird. Sie umfasst GitLab CI als fuehrenden Workflow (optional GitHub Actions fuer Spiegelbetrieb), Container-Image-Build, Release Management mit SemVer-Versionierung, automatisierter CHANGELOG-Generierung und kontrollierter Freigabe von Release-Artefakten.
+Die DevOps-Capability stellt sicher, dass die DNS-Konfigurations-App ueber automatisierte CI/CD Pipelines gebaut, getestet und deployt wird. Sie umfasst GitLab CI als fuehrenden Workflow (optional GitHub Actions fuer Spiegelbetrieb), Container-Image-Build, Release Management mit SemVer-Versionierung, automatisierter CHANGELOG-Generierung und kontrollierter Freigabe von Release-Artefakten. Zusaetzlich erzwingt sie Sicherheitsprofile und Policy-Gates fuer `prod` (u. a. `strict`/OpenBao/ClickHouse und FMN-Kommunikationsmatrix-Pruefung).
 
 ---
 

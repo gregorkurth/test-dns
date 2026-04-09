@@ -8,7 +8,7 @@
 
 ## Beschreibung
 
-Der Secrets Management Service stellt sicher, dass sensible Daten (TSIG-Keys, OIDC-Credentials, API-Keys) sicher ueber Kubernetes Secrets verwaltet werden. Sicherheitsrelevante Ereignisse werden ueber Audit-Logging protokolliert; Runtime-Events aus Tetragon fliessen als zusaetzliche Security-Auditquelle ein.
+Der Secrets Management Service stellt sicher, dass sensible Daten (TSIG-Keys, OIDC-Credentials, API-Keys) sicher verwaltet werden. Standard ist OpenBao als zentraler Secrets-Service; ein lokaler Modus ist nur als kontrollierter degradierten Betrieb zulaessig. Sicherheitsrelevante Ereignisse werden ueber Audit-Logging protokolliert; Runtime-Events aus Tetragon fliessen als zusaetzliche Security-Auditquelle ein.
 
 ---
 

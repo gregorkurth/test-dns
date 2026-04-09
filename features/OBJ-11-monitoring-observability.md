@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-07
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-10: Kubernetes Deployment (App läuft im Cluster)
@@ -18,6 +18,8 @@
 - Als Platform Engineer moechte ich Logs, Metriken und Traces in ClickHouse speichern, damit alle Telemetrie zentral auswertbar ist.
 - Als Operator moechte ich Grafana ueber ClickHouse als Datenquelle verwenden, damit Dashboards ohne direkte Abhaengigkeit von Einzelsystemen funktionieren.
 - Als DNS-Verantwortlicher moechte ich eine versionierte DNS-Grafana-Dashboard-Vorlage im Repository haben, damit ich die gleiche Sicht reproduzierbar ausrollen kann.
+- Als Platform Engineer moechte ich auch ohne verfuegbaren Zielspeicher einen lokalen OTel-Modus nutzen, damit Telemetrie in Entwicklungs- und Offline-Phasen nicht verloren geht.
+- Als Platform Engineer moechte ich zwischen `local` und `clickhouse` per Konfiguration umschalten koennen, damit kein Codewechsel fuer Betriebsmodi noetig ist.
 
 ## Acceptance Criteria
 - [ ] OpenTelemetry SDK ist in die Next.js-App integriert (Metrics + Traces + Logs)
@@ -32,6 +34,10 @@
 - [ ] Grafana verwendet ClickHouse als primaere Datenquelle fuer Observability-Dashboards
 - [ ] Eine versionierte DNS-Grafana-Dashboard-Vorlage (JSON) liegt im Repository unter `monitoring/grafana/dashboards/`
 - [ ] Beispiel-Prometheus-Scrape-Config und Grafana-/ClickHouse-Konfiguration liegen im Repository unter `monitoring/`
+- [ ] OTel-Betriebsmodus `local` ist verfuegbar: Telemetrie wird lokal persistent zwischengespeichert (ohne externes Zielsystem)
+- [ ] OTel-Betriebsmodus `clickhouse` ist verfuegbar und fuer produktive Zielarchitektur dokumentiert
+- [ ] Umschaltung zwischen `local` und `clickhouse` erfolgt ueber versionierte Konfiguration (z. B. Helm Values oder Collector-Profil), ohne Codeaenderung
+- [ ] Bei nicht verfuegbarem ClickHouse werden Daten lokal gepuffert und spaeter nachlieferbar gehalten (Queue/Retry-Strategie dokumentiert)
 
 ## Edge Cases
 - Was passiert wenn kein OTel-Collector konfiguriert ist? → App startet trotzdem; Traces werden verworfen; Warnung im Log
@@ -39,6 +45,8 @@
 - Was wenn Traces sensitiven Inhalt (z. B. TSIG-Key-Fragmente) enthalten könnten? → Sensitive Felder werden vor dem Export maskiert
 - Was wenn ClickHouse nicht erreichbar ist? → Telemetrie-Export wird gepuffert oder verworfen nach definierter Strategie; App-Funktion bleibt stabil
 - Was wenn ClickHouse-Schema und Dashboard-Queries nicht zueinander passen? → Versionierte Migrations-/Schema-Regeln und Dashboard-Versionen muessen gemeinsam gepflegt werden
+- Was wenn lokaler Puffer voll laeuft? → Rotations-/Retention-Regeln greifen; Warnung wird im Monitoring sichtbar
+- Was wenn versehentlich beide Modi gleichzeitig aktiviert werden? → Validierung blockiert ungueltige Konfiguration, App startet mit klarer Fehlermeldung
 
 ## Technical Requirements
 - OpenTelemetry SDK (JS/TS): `@opentelemetry/sdk-node`, `@opentelemetry/auto-instrumentations-node`
@@ -46,6 +54,8 @@
 - OTLP-Export: `@opentelemetry/exporter-trace-otlp-http`
 - Operator (Go): `go.opentelemetry.io/otel`
 - Telemetrie-Storage: ClickHouse (Logs, Metriken, Traces) via OTel-Collector-Pipeline
+- OTel-Collector mit zwei Betriebsprofilen (`local`, `clickhouse`) und versionierter Umschaltkonfiguration
+- Lokaler Persistenzspeicher fuer Telemetrie-Queue (Buffer + Retry + Replay)
 - Dashboarding: Grafana mit ClickHouse-Data-Source
 - Keine Abhängigkeit zu externen Monitoring-SaaS-Diensten
 

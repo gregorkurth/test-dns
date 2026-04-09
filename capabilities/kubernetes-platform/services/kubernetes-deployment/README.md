@@ -8,7 +8,7 @@
 
 ## Beschreibung
 
-Der Kubernetes Deployment Service stellt sicher, dass die DNS-Konfigurations-App als Container-Workload auf Kubernetes deployt werden kann. Alle Manifeste (Deployment, Service, Ingress, ConfigMap) liegen deklarativ und versioniert im Repository. Der Service unterstützt airgapped-Deployment ohne externe Registry-Zugriffe zur Laufzeit.
+Der Kubernetes Deployment Service stellt sicher, dass die DNS-Konfigurations-App als Container-Workload auf Kubernetes deployt werden kann. Alle Manifeste (Deployment, Service, Ingress, ConfigMap) liegen deklarativ und versioniert im Repository. Fuer externe Erreichbarkeit werden Cilium-basierte North-South-Ingress-/Egress-Regeln gemass FMN/NATO mitgefuehrt. Der Service unterstützt airgapped-Deployment ohne externe Registry-Zugriffe zur Laufzeit.
 
 ---
 
@@ -17,7 +17,7 @@ Der Kubernetes Deployment Service stellt sicher, dass die DNS-Konfigurations-App
 | ID | Service Function | Beschreibung | Requirements | Tests |
 |----|-----------------|-------------|-------------|-------|
 | SFN-K8S-001 | Container Packaging | Multi-Stage Dockerfile, airgapped Image | [Requirements](service-functions/SFN-K8S-001-container-packaging/README.md) | 3 Auto, 3 Manuell |
-| SFN-K8S-002 | Manifest Management | K8s-Manifeste (Deployment, Service, Ingress, ConfigMap, Namespace) | [Requirements](service-functions/SFN-K8S-002-manifest-management/README.md) | 3 Auto, 3 Manuell |
+| SFN-K8S-002 | Manifest Management | K8s-Manifeste (Deployment, Service, Ingress, ConfigMap, Namespace, Cilium North-South Policies) | [Requirements](service-functions/SFN-K8S-002-manifest-management/README.md) | 7 Auto, 7 Manuell |
 
 ---
 

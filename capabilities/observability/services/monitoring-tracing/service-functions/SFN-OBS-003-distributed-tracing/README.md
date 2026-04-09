@@ -27,4 +27,4 @@ Distributed Tracing ermöglicht die End-to-End-Nachverfolgung von API-Anfragen d
 
 | Von | Nach | Typ |
 |-----|------|-----|
-| SFN-OBS-003 | OBJ-8 REST API | Voraussetzung (API-Instrumentation) |
+| SFN-OBS-003 | OBJ-3 REST API | Voraussetzung (API-Instrumentation) |

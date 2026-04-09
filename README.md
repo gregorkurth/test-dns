@@ -38,6 +38,7 @@
 | Quick Guide fuer neues Feature/Requirement | [docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md](docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md) |
 | Quick Guide fuer Testing | [docs/QUICK-GUIDE-TESTING.md](docs/QUICK-GUIDE-TESTING.md) |
 | OBJ-4 Live Server Start | [capability-dashboard-live/README.md](capability-dashboard-live/README.md) |
+| MCP fuer DNS CRUD (AI-Agent Zugriff) | [docs/MCP-DNS-CRUD.md](docs/MCP-DNS-CRUD.md) |
 
 ## Schritt-fuer-Schritt bei neuem Requirement oder Feature
 

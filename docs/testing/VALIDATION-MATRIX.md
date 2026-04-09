@@ -1,6 +1,6 @@
 # Validation Matrix (Repo-Testnachweis)
 
-**Generiert am:** 2026-04-06T15:52:33.546Z
+**Generiert am:** 2026-04-09T07:56:25.106Z
 **Commit:** local
 **Quelle:** Git Repository (Single Source of Truth)
 
@@ -8,34 +8,34 @@
 
 | Kennzahl | Wert |
 |---|---:|
-| Testfaelle gesamt | 218 |
+| Testfaelle gesamt | 244 |
 | Passed | 10 |
 | Failed | 0 |
-| Never Executed | 208 |
-| Manuell | 104 |
-| Automatisch | 114 |
+| Never Executed | 234 |
+| Manuell | 117 |
+| Automatisch | 127 |
 
 ## OBJ Validation Matrix
 
 | OBJ | Feature | Status | QA | Prod Ready | Tests (T/P/F/N) | Letzter Nachweis | Validierung |
 |---|---|---|---|---|---|---|---|
-| OBJ-1 | CI/CD Pipeline | In Progress | Nein | - | 24/0/0/24 | - | Teilweise validiert |
-| OBJ-2 | Dokumentation | In Progress | Nein | - | 24/0/0/24 | - | Teilweise validiert |
+| OBJ-1 | CI/CD Pipeline | In Progress | Nein | - | 26/0/0/26 | - | Teilweise validiert |
+| OBJ-2 | Dokumentation | In Progress | Nein | - | 40/0/0/40 | - | Teilweise validiert |
 | OBJ-3 | REST API | Completed | Ja (2026-04-06) | YES | 6/6/0/0 | 2026-04-06T15:52:19Z | Validiert |
 | OBJ-4 | Capabilities Dashboard | Completed | Ja (2026-04-06) | YES | 92/0/0/92 | - | Teilweise validiert |
-| OBJ-5 | Participant Configuration Form | Planned | Nein | - | 92/0/0/92 | - | Teilweise validiert |
-| OBJ-6 | DNS Zone File Generator | Planned | Nein | - | 92/0/0/92 | - | Teilweise validiert |
+| OBJ-5 | Participant Configuration Form | Completed | Ja (2026-04-06) | YES | 92/0/0/92 | - | Teilweise validiert |
+| OBJ-6 | DNS Zone File Generator | In Review | Ja (2026-04-07) | NO | 92/0/0/92 | - | Teilweise validiert |
 | OBJ-7 | Requirements Traceability View | Planned | Nein | - | 92/0/0/92 | - | Teilweise validiert |
 | OBJ-8 | Export & Download | Planned | Nein | - | 92/0/0/92 | - | Teilweise validiert |
 | OBJ-9 | Manual Test Runner | Planned | Nein | - | 1/1/0/0 | 2026-04-06T15:52:19Z | In Arbeit |
-| OBJ-23 | Test Execution Dashboard | Completed | Ja (2026-04-04) | YES | 27/3/0/24 | 2026-04-06T15:52:19Z | Teilweise validiert |
+| OBJ-23 | Test Execution Dashboard | Completed | Ja (2026-04-04) | YES | 43/3/0/40 | 2026-04-06T15:52:19Z | Teilweise validiert |
 | OBJ-10 | Kubernetes Deployment | Planned | Nein | - | 24/0/0/24 | - | Teilweise validiert |
-| OBJ-11 | Monitoring & Observability (OpenTelemetry) | Planned | Nein | - | 16/0/0/16 | - | Teilweise validiert |
+| OBJ-11 | Monitoring & Observability (OpenTelemetry) | Planned | Nein | - | 24/0/0/24 | - | Teilweise validiert |
 | OBJ-12 | Security & Authentifizierung | Planned | Nein | - | 20/0/0/20 | - | Teilweise validiert |
 | OBJ-13 | Kubernetes Operator | Planned | Nein | - | 24/0/0/24 | - | Teilweise validiert |
-| OBJ-14 | Release Management | Planned | Nein | - | 24/0/0/24 | - | Teilweise validiert |
-| OBJ-15 | Produkt-Website | Planned | Nein | - | 24/0/0/24 | - | Teilweise validiert |
-| OBJ-16 | Maturitätsstatus / Reifegradübersicht | Planned | Nein | - | 24/0/0/24 | - | Teilweise validiert |
+| OBJ-14 | Release Management | Planned | Nein | - | 26/0/0/26 | - | Teilweise validiert |
+| OBJ-15 | Produkt-Website | Planned | Nein | - | 40/0/0/40 | - | Teilweise validiert |
+| OBJ-16 | Maturitätsstatus / Reifegradübersicht | Planned | Nein | - | 40/0/0/40 | - | Teilweise validiert |
 | OBJ-17 | SBOM & Security-Scanning | Planned | Nein | - | 6/0/0/6 | - | Teilweise validiert |
 | OBJ-22 | Release-Artefaktprüfung / Publish-Gate | Planned | Nein | - | 6/0/0/6 | - | Teilweise validiert |
 | OBJ-18 | Artefakt-Registry (Harbor / Nexus) | Planned | Nein | - | 0/0/0/0 | - | Kein Testfall verknuepft |

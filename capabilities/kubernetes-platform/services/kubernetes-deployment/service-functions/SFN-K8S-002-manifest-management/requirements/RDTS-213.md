@@ -41,3 +41,12 @@ Kubernetes-Manifeste enthalten Cilium-basierte Netzwerkregeln (CiliumNetworkPoli
 
 - OBJ-10: Kubernetes Deployment
 - OBJ-12: Security & Authentifizierung
+
+---
+
+## Tests
+
+| Testfall | Typ |
+|----------|-----|
+| [TEST-RDTS-213-001](../tests/auto/TEST-RDTS-213-001.md) | Automatisch (pytest) |
+| [TEST-RDTS-213-001-manual](../tests/manual/TEST-RDTS-213-001-manual.md) | Manuell |

@@ -8,7 +8,7 @@
 
 ## Beschreibung
 
-Die CI/CD Pipeline automatisiert Build, Test und Deployment der App via GitLab CI (fuehrend) und optional GitHub Actions fuer Spiegelbetrieb. PR-/MR-Checks laufen bei jedem Push, Container-Images werden bei Merge auf `main` gebaut, Releases werden bei Tag-Push erstellt und finale Artefakte werden vor Publish gegen eine Freigaberichtlinie geprueft.
+Die CI/CD Pipeline automatisiert Build, Test und Deployment der App via GitLab CI (fuehrend) und optional GitHub Actions fuer Spiegelbetrieb. PR-/MR-Checks laufen bei jedem Push, Container-Images werden bei Merge auf `main` gebaut, Releases werden bei Tag-Push erstellt und finale Artefakte werden vor Publish gegen eine Freigaberichtlinie geprueft. Policy-Gates pruefen zusaetzlich Sicherheitsprofile und FMN-relevante Netzwerkfreigaben.
 
 ---
 

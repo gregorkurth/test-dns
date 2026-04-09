@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-07
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-4: Capabilities Dashboard (Teil des Web GUI, Navigation zur Produkt-Website)
@@ -15,6 +15,7 @@
 - Als Platform Engineer möchte ich Links zu Dokumentation, Repository und Releases auf einer Seite finden.
 - Als Operator in einer airgapped Umgebung möchte ich die Produkt-Website lokal aufrufen können.
 - Als Nutzer moechte ich klar sehen, welche Funktionen oder Bereiche Beta sind, damit ich Risiken bei der Nutzung einschätzen kann.
+- Als Nutzer moechte ich bei neuen Releases klar sichtbare Update-Hinweise bekommen, damit ich weiss, was sich geaendert hat und ob eine Aktion noetig ist.
 
 ## Acceptance Criteria
 - [ ] Produkt-Website ist als Teil des Web GUI erreichbar (Route `/`, oder als separate statische Seite)
@@ -24,6 +25,10 @@
 - [ ] Beta-Funktionen sind im GUI eindeutig markiert (Badge/Label + Hinweistext)
 - [ ] Eine kurze Legende erklaert die Statuswerte (Released, Beta, Preview/Experimental)
 - [ ] Statuswerte werden aus einer versionierten Quelle im Repository gelesen (kein manuelles Überschreiben in der GUI)
+- [ ] Globaler Update-Hinweisbereich auf der Startseite zeigt aktuelle Release-Hinweise an
+- [ ] Modulbezogene Update-Hinweise koennen je Feature-/Seitenkontext dargestellt werden
+- [ ] Kritische Updates werden visuell hervorgehoben und bieten Handlungsoptionen (z. B. "Jetzt ansehen" / "Spaeter")
+- [ ] Nutzer kann nicht-kritische Hinweise quittieren oder ausblenden (lokale Persistenz ist ausreichend)
 - [ ] Startseite zeigt: Maturitätsstatus (eingebettet oder Link zu OBJ-16)
 - [ ] Navigationselemente vorhanden: Zur App, Dokumentation, GitHub-Repository (nur wenn nicht airgapped), Releases
 - [ ] Seite ist vollständig ohne Internetverbindung nutzbar (keine externen Ressourcen)
@@ -35,11 +40,14 @@
 - Was wenn der GitHub-Link in einer airgapped Umgebung nicht aufrufbar ist? → Link ist konfigurierbar; in airgapped Modus deaktivierbar via ENV-Variable
 - Was wenn kein Maturitätsstatus berechnet werden kann? → Fallback-Anzeige "Status nicht verfügbar" statt Fehler
 - Was wenn ein Feature fälschlich als Released statt Beta gekennzeichnet ist? → Status-Quelle ist versioniert, QA prueft Statusmapping je Release
+- Was wenn keine Update-Hinweise fuer die aktuelle Version vorhanden sind? → Fallback "Keine neuen Hinweise" statt leerem Bereich
+- Was wenn ein kritischer Hinweis aus Versehen quittiert wird? → Kritische Hinweise bleiben sichtbar bis aktiv geschlossen oder releasebedingt ersetzt
 
 ## Technical Requirements
 - Implementierung als Next.js-Seite (Route `/`)
 - Versionsnummer wird zur Build-Zeit via ENV-Variable injiziert (`NEXT_PUBLIC_APP_VERSION`)
 - Release-/Feature-Statuswerte werden aus einer versionierten Datenquelle geladen (z. B. Feature-Metadaten im Repo)
+- Update-Hinweise werden aus einer versionierten Release-Hinweisquelle im Repository gelesen
 - Keine externen Schriften, Icons oder Bibliotheken (airgapped)
 - Styling: Tailwind CSS + shadcn/ui (konsistent mit dem restlichen Web GUI)
 

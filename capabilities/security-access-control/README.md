@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Die Security & Access Control Capability stellt sicher, dass die DNS-Konfigurations-App authentifizierte und autorisierte Zugriffe erzwingt. Sie umfasst OIDC-basierte Authentifizierung (Keycloak-kompatibel), ein RBAC-Rollenmodell, sicheres Secrets-Management, Zero-Trust-Netzwerkprinzipien (Cilium inkl. mTLS), Policy-as-Code mit OPA, Netzwerktransparenz ueber Hubble und Audit-/Runtime-Logging fuer sicherheitsrelevante Ereignisse (inkl. Tetragon-Events).
+Die Security & Access Control Capability stellt sicher, dass die DNS-Konfigurations-App authentifizierte und autorisierte Zugriffe erzwingt. Sie umfasst OIDC-basierte Authentifizierung (Keycloak-kompatibel), ein RBAC-Rollenmodell, OpenBao-basiertes Secrets-Management mit kontrolliertem `local`-Fallback, Zero-Trust-Netzwerkprinzipien (Cilium inkl. mTLS), Policy-as-Code mit OPA, Netzwerktransparenz ueber Hubble und Audit-/Runtime-Logging fuer sicherheitsrelevante Ereignisse (inkl. Tetragon-Events). Fuer AI-Agenten werden zusaetzlich MCP-Whitelisting, dedizierte Agent-Identitaeten und SIEM-Anbindung via OTel erzwungen.
 
 ---
 

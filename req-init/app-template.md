@@ -46,7 +46,9 @@ kontrolliert installiert werden kann.
    - Kubernetes Deployment
    - Web GUI
    - API
+   - MCP-Adapter fuer AI-Agenten (wenn AI-Agent-Nutzung vorgesehen ist)
    - Kubernetes Operator
+   - Externe Service-Nutzbarkeit gemaess FMN/NATO-Vorgaben (falls Service extern bereitgestellt wird)
    - Monitoring und Observability mit OpenTelemetry
    - Security und Authentifizierung
    - Zero-Trust-Netzwerksegmentierung (Cilium)
@@ -104,6 +106,8 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Die API muss maschinenlesbar als OpenAPI bereitgestellt werden (z. B. `/api/v1/openapi.json`).
 - Zusätzlich muss eine lesbare Swagger-Webseite als Doku-Hilfsmittel bereitstehen (z. B. `/api/v1/swagger`).
 - Swagger dient der besseren Lesbarkeit, ist aber nicht die Primärquelle; die führende Quelle bleibt die versionierte Doku im Git-Repository.
+- Falls AI-Agenten vorgesehen sind, MUSS ein MCP-Adapter bereitgestellt werden, der CRUD-Funktionen kontrolliert ueber die API exponiert und die Security-Baseline (`req-init/security-baseline.md`) erzwingt.
+- MCP-Tools duerfen nur freigegebene API-Endpunkte nutzen (Whitelisting), muessen rate-limited sein und Security-Events ueber OTel/SIEM melden.
 
 ### 3. Web GUI
 - Jede Applikation besitzt ein Web GUI.
@@ -131,11 +135,23 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 
 ### 6. Security / Authentifizierung
 - Security ist Pflichtbestandteil jeder App.
+- Das verbindliche Security-Baseline-Konzept ist in `req-init/security-baseline.md` dokumentiert und muss fuer Architektur, Umsetzung und QA angewendet werden.
 - Authentifizierung und Autorisierung müssen eingeplant werden.
 - Secrets dürfen niemals im Git-Repository gespeichert werden.
 - Sicherheitsrelevante Ereignisse müssen protokolliert werden.
 - Die App muss so aufgebaut sein, dass Sicherheitsprüfungen sowohl im verbundenen Entwicklungsumfeld als auch für die Offline-Weitergabe nachvollziehbar sind.
+- Fuer KI-Agenten gelten zusaetzlich verpflichtende Hardening-Regeln gemaess `req-init/security-baseline.md` (Isolation, Skill-Whitelisting, SIEM, Credential-Rotation).
+- Fuer KI-Workloads ist ein 9-Zonen-Sicherheitsmodell (Z0-Z8) anzuwenden; Zonenuebergaenge muessen explizit kontrolliert und auditierbar sein.
+- Secrets-Management erfolgt standardmaessig ueber OpenBao als eigenen Service; eine lokale Variante ist nur als degradierter Modus mit verpflichtendem Sicherheitshinweis und dokumentierter Ausnahme zulaessig.
+- SIEM-Reporting fuer Agent-Aktionen erfolgt ueber OTel im Modus `clickhouse` (Standard); `local` ist nur als degradierter Modus mit Warnhinweis zulaessig.
 - Fuer Zero Trust muessen Pod-zu-Pod-Kommunikationsregeln explizit definiert werden (Default-Deny, explizites Allowlisting), bevorzugt mit Cilium-Richtlinien.
+- Fuer extern bereitgestellte Services (North-South Traffic) MUESSEN Ingress- und Egress-Regeln mit Cilium umgesetzt werden (Default-Deny, explizite Freigaben, nur notwendige Ports/Protokolle).
+- Externe Erreichbarkeit gemaess FMN/NATO darf nur ueber freigegebene Netzsegmente, CIDRs und Schnittstellen erfolgen; alle anderen Quellen/Ziele sind zu blockieren.
+- DNS-bezogene North-South-Kommunikation muss nur auf den freigegebenen DNS-Endpunkten/Ports (insb. UDP/TCP 53, falls fachlich noetig) zugelassen werden.
+- Egress aus DNS-Workloads darf nur zu explizit freigegebenen Zielen erfolgen (z. B. Upstream-DNS, Identity, Telemetrie, Registry/Git); kein unkontrollierter Internet-Egress.
+- Fuer FMN/NATO-Exposition MUSS eine versionierte Kommunikationsmatrix gepflegt werden (z. B. `docs/security/fmn-communication-matrix.md`, Felder: Quelle, Ziel, Port, Protokoll, Zweck, Owner, Freigabe-ID).
+- In `prod` sind `security-profile=strict`, `secrets-mode=openbao` und `siem-mode=clickhouse` verpflichtend.
+- `local`-Modi (`secrets-mode`/`siem-mode`) sind nur fuer `dev`/`test` oder dokumentierte Offline-Phasen zulaessig und MUESSEN einen sichtbaren Sicherheits-Hinweis ausloesen.
 - Pod-zu-Pod-Kommunikation muss TLS-verschluesselt sein (mTLS) und darf nur fuer freigegebene Kommunikationspfade erlaubt werden.
 - Runtime-Sicherheitsereignisse muessen ueber Tetragon-Regeln erkannt und in die Audit-/Observability-Kette uebernommen werden.
 - Sicherheits- und Compliance-Regeln muessen als Policy-as-Code ueber OPA (Open Policy Agent) durchsetzbar sein.
@@ -341,11 +357,20 @@ Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle
 - [ ] Argo-CD-Installation im App-of-Apps-Modell ist möglich
 - [ ] Argo-CD Root-Application referenziert Release-Projekt und Konfigurationsprojekt
 - [ ] Cilium-Richtlinien fuer Pod-zu-Pod-Verkehr sind aktiv (Default-Deny + explizite Freigaben)
+- [ ] Cilium-Ingress-/Egress-Richtlinien fuer North-South-Traffic sind aktiv (Default-Deny + explizite Freigaben nach FMN-Vorgaben)
+- [ ] FMN/NATO-Kommunikationsmatrix (z. B. `docs/security/fmn-communication-matrix.md`) fuer externe Erreichbarkeit ist versioniert vorhanden und aktuell
+- [ ] Security-Exception-Register (z. B. `docs/security/policy-exceptions.md`) ist gepflegt und mit Ausnahme-IDs verknuepft
+- [ ] Incident-Response-Leitfaden (z. B. `docs/security/incident-response.md`) ist vorhanden und releasebezogen aktualisiert
+- [ ] AI-Zonenmodell Z0-Z8 (z. B. `docs/security/ai-zones-z0-z8.md`) ist dokumentiert und den Workloads zugeordnet
+- [ ] Cilium Allow-/Deny-Testnachweise fuer North-South-Traffic liegen vor (inkl. Blockierung nicht freigegebener Flows)
 - [ ] Pod-zu-Pod-Kommunikation ist TLS-verschluesselt (mTLS)
 - [ ] OPA-Policies fuer Sicherheits- und Compliance-Regeln sind aktiv
 - [ ] Tetragon-Regeln fuer Runtime-Erkennung sind aktiv und liefern Ereignisse
 - [ ] Cilium-Hubble-Sicht auf Netzwerkfluesse ist verfuegbar
 - [ ] OpenFeature-Integration fuer Feature-Flags ist dokumentiert und nutzbar
+- [ ] MCP-Adapter fuer AI-Agenten ist vorhanden, dokumentiert und gegen die freigegebenen API-Endpunkte abgesichert (wenn AI-Agent-Nutzung vorgesehen ist)
+- [ ] In `prod` sind `security-profile=strict`, `secrets-mode=openbao` und `siem-mode=clickhouse` nachweisbar gesetzt
+- [ ] Bei `degraded-local` ist ein sichtbarer Warnhinweis aktiv und eine gueltige Ausnahme dokumentiert
 - [ ] OTel-Betriebsvarianten `local` und `clickhouse` sind dokumentiert und pruefbar
 - [ ] Lokale Telemetrie-Pufferung bei nicht verfuegbarem Zielspeicher ist nachgewiesen
 - [ ] Offline-Installationsdokumentation ist vollständig
@@ -367,6 +392,7 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Release- und Konfigurationsprojekt als getrennte Git-Projekte modelliert sind
 - [ ] Kubernetes-Deployment vorhanden ist
 - [ ] API implementiert und dokumentiert ist
+- [ ] MCP-Adapter fuer AI-Agenten umgesetzt ist (wenn AI-Agent-Nutzung vorgesehen ist)
 - [ ] Web GUI vorhanden ist
 - [ ] Operator / CRD-Konzept vorhanden ist
 - [ ] OpenTelemetry-Monitoring integriert ist
@@ -387,12 +413,18 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Zielumgebungs-Import beschrieben ist
 - [ ] Argo-CD-App-of-Apps-Installation unterstützt wird
 - [ ] Cilium-basierte Zero-Trust-Richtlinien fuer Pod-zu-Pod-Traffic umgesetzt sind
+- [ ] Cilium-basierte North-South-Ingress-/Egress-Regeln fuer externe Service-Nutzbarkeit umgesetzt und getestet sind
+- [ ] FMN/NATO-Kommunikationsmatrix umgesetzt und als Policy-Quelle nachweisbar ist
+- [ ] Security-Exception-Prozess mit versioniertem Register (`docs/security/policy-exceptions.md`) umgesetzt ist
+- [ ] Incident-Response-Dokumentation (`docs/security/incident-response.md`) fuer Betrieb und Forensik vorhanden ist
+- [ ] AI-Zonenmodell (`docs/security/ai-zones-z0-z8.md`) dokumentiert und fuer KI-Workloads angewendet ist
 - [ ] Pod-zu-Pod-mTLS im Cluster durchgaengig umgesetzt ist
 - [ ] OPA-basierte Policy-Durchsetzung umgesetzt ist
 - [ ] Tetragon-basierte Runtime-Detektion mit Audit-Anbindung umgesetzt ist
 - [ ] Cilium-Hubble fuer Netzwerkbeobachtbarkeit eingebunden ist
 - [ ] OpenFeature-basierte Feature-Flag-Anbindung vorgesehen oder umgesetzt ist
 - [ ] OTel-Modusumschaltung (`local`/`clickhouse`) ueber versionierte Konfiguration vorhanden ist
+- [ ] `prod` laeuft im Sicherheitsprofil `strict` mit OpenBao und SIEM via ClickHouse
 - [ ] lokale Telemetrie-Zwischenspeicherung mit spaeterer Nachlieferung vorgesehen oder umgesetzt ist
 - [ ] Dokumentation vollständig ist
 - [ ] Dokumentation als MkDocs-Website und E-Book releasefaehig bereitgestellt ist

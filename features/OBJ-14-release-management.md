@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-07
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-1: CI/CD Pipeline (Pipeline erstellt Release-Artefakte bei Tags)
@@ -20,6 +20,7 @@
 - Als Security-Verantwortlicher möchte ich, dass jedes Release eine SBOM enthält, damit ich die Abhängigkeiten vollständig kenne.
 - Als Platform Engineer möchte ich, dass Container-Images bei jedem Release in Harbor veröffentlicht werden, damit ich sie in der Zielumgebung verfügbar habe.
 - Als Platform Engineer in einer Zielumgebung möchte ich ein Zarf-Paket als Bestandteil des Releases erhalten, damit ich die App ohne Internetzugang installieren kann.
+- Als Nutzer moechte ich pro Release eine versionierte Update-Hinweisquelle haben, damit GUI-Hinweise und Release-Notizen konsistent sind.
 
 ## Acceptance Criteria
 - [ ] Versionierung folgt SemVer (MAJOR.MINOR.PATCH)
@@ -38,6 +39,8 @@
 - [ ] Zarf-Paket wird als Release-Artefakt erzeugt und dem Release zugeordnet (OBJ-19)
 - [ ] Release enthaelt ein importierbares Artefakt fuer das Ziel-Gitea-Release-Projekt (Deployment-Stand)
 - [ ] Das zugehoerige Konfigurationsprojekt fuer Helm-Values und Parameter ist als separates Gitea-Projekt referenziert
+- [ ] Release erzeugt oder aktualisiert eine versionierte Update-Hinweisquelle im Repository (z. B. `docs/releases/UPDATE-NOTICES.json`)
+- [ ] Release Notes und Update-Hinweise sind inhaltlich konsistent (Version, Kritikalitaet, Kernaenderungen)
 - [ ] Release-Checkliste enthält: SBOM vorhanden, Security-Scans bestanden, Zarf-Paket verfügbar, Dokumentation aktuell
 - [ ] Release-Artefakte sind vollständig dokumentiert: Versionsnummer, SHA-256-Prüfsummen, Artefakt-URLs
 
@@ -49,6 +52,7 @@
 - Was wenn Harbor nicht erreichbar ist? → Pipeline-Schritt schlägt fehl; kein Release wird abgeschlossen
 - Was wenn die SBOM nicht generiert werden kann? → Release wird geblockt; SBOM ist Pflichtbestandteil
 - Was wenn die Artefaktprüfung interne Dateien oder Sourcemaps im Release findet? → Release wird blockiert bis das Paket bereinigt oder die Ausnahme dokumentiert ist
+- Was wenn Update-Hinweise fuer ein Release fehlen? → Release gilt als unvollstaendig und wird nicht freigegeben
 
 ## Technical Requirements
 - Commit-Konvention: Conventional Commits (`feat:`, `fix:`, `chore:`, etc.)
@@ -58,6 +62,7 @@
 - Image-Registry: Harbor (primär), Nexus für weitere Artefakte (OBJ-18)
 - Offline-Paket: Zarf-CLI in Pipeline-Umgebung verfügbar; `zarf.yaml` im Repository (OBJ-19)
 - SBOM-Tool: syft; Format: CycloneDX oder SPDX (OBJ-17)
+- Update-Hinweisquelle: versionierte Datei im Repository, releasebezogen erzeugt/geprueft
 
 ---
 <!-- Sections below are added by subsequent skills -->

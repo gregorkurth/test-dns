@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Die Kubernetes-Platform-Capability stellt sicher, dass die DNS-Konfigurations-App als Cloud-native Applikation auf Kubernetes betrieben werden kann. Sie umfasst deklarative Deployment-Manifeste, einen Kubernetes Operator mit CRD-basierter Steuerung und eine standardisierte Namespace-Struktur. Alle Artefakte müssen airgapped-fähig sein.
+Die Kubernetes-Platform-Capability stellt sicher, dass die DNS-Konfigurations-App als Cloud-native Applikation auf Kubernetes betrieben werden kann. Sie umfasst deklarative Deployment-Manifeste, einen Kubernetes Operator mit CRD-basierter Steuerung und eine standardisierte Namespace-Struktur. Fuer extern bereitgestellte DNS-Services umfasst sie zusaetzlich Cilium-basierte North-South-Ingress-/Egress-Regeln gemaess FMN/NATO-Vorgaben inkl. Kommunikationsmatrix und Nachweisfuehrung. Alle Artefakte müssen airgapped-fähig sein.
 
 ---
 

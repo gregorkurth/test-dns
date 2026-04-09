@@ -9,7 +9,7 @@
 
 ## Beschreibung
 
-Die Observability-Capability stellt sicher, dass die DNS-Konfigurations-App und der Kubernetes Operator vollständig ueberwachbar sind. Monitoring, Logging und Tracing werden nativ mit OpenTelemetry umgesetzt; Logs, Metriken und Traces werden zentral nach ClickHouse uebergeben und in Grafana visualisiert. Betriebsrelevante Zustaende sind jederzeit sichtbar; fuer DNS wird eine versionierte Dashboard-Vorlage im Repository gefuehrt.
+Die Observability-Capability stellt sicher, dass die DNS-Konfigurations-App und der Kubernetes Operator vollständig ueberwachbar sind. Monitoring, Logging und Tracing werden nativ mit OpenTelemetry umgesetzt; Logs, Metriken und Traces werden zentral nach ClickHouse uebergeben und in Grafana visualisiert. Zusaetzlich wird ein lokaler OTel-Betriebsmodus mit persistenter Zwischenspeicherung unterstuetzt, um auch ohne verfuegbaren Zielspeicher lauffaehig zu bleiben. Betriebsrelevante Zustaende sind jederzeit sichtbar; fuer DNS wird eine versionierte Dashboard-Vorlage im Repository gefuehrt.
 
 ---
 

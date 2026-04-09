@@ -42,12 +42,17 @@ Sie ist fuer:
 6. `docs/arc42/`
    Hier steht die Architektur der Applikation nach arc42.
 
+7. `docs/security/`
+   Hier stehen Security-Baseline-Dokumente wie Kommunikationsmatrix, Exceptions, Incidents und AI-Zonenmodell.
+
 ## Wenn etwas Neues kommt, wo starte ich?
 
 Wenn ein neues Thema kommt, beginne hier:
 - Neues Requirement oder neues Feature: `docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md`
 - Testing Schritt fuer Schritt: `docs/QUICK-GUIDE-TESTING.md`
+- AI-Agent Anbindung ueber MCP (DNS CRUD): `docs/MCP-DNS-CRUD.md`
 - Architektur dokumentieren: `docs/arc42/README.md`
+- Security-Baseline umsetzen: `docs/security/README.md`
 - Nach Confluence exportieren: `docs/CONFLUENCE-EXPORT-GUIDE.md`
 - Feature-Abschluss pruefen: `docs/DEFINITION-OF-DONE-FEATURE.md`
 - IDs und Benennung: `docs/ID-UND-BENENNUNGSREGELN.md`
