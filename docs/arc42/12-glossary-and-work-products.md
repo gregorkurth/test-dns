@@ -22,6 +22,7 @@ Hier sammeln wir Begriffe und wichtige Arbeitsprodukte.
 | Testfall | `capabilities/**/tests/` |
 | ADR | `docs/adr/*.md` |
 | arc42 | `docs/arc42/*.md` |
+| Helm Chart | `helm/**` |
 | Export-Anleitung | `docs/CONFLUENCE-EXPORT-GUIDE.md` |
 
 ## Begriffe
@@ -43,6 +44,9 @@ Hier sammeln wir Begriffe und wichtige Arbeitsprodukte.
 
 - arc42
   Das Architektur-Handbuch der Applikation.
+
+- Helm Chart
+  Paketierte, versionierte Installationslogik fuer Kubernetes.
 
 - Source of Truth
   Der Ort, der immer als richtig gilt. Hier ist das Git-Repository der Source of Truth.

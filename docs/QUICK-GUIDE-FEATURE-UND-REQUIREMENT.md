@@ -23,7 +23,7 @@ Wenn etwas Neues kommt, arbeite in dieser Reihenfolge:
 5. Architektur dokumentieren
 6. Implementieren
 7. Testnachweise erfassen
-8. Release-Doku nachziehen
+8. Doku-Pflichtteile nachziehen (arc42 + Benutzerhandbuch + Betriebsdoku)
 9. Confluence-Export vorbereiten
 
 Wenn das Feature fertig ist, nutze immer:
@@ -120,6 +120,11 @@ Wann braucht es ein ADR?
 Wann muss arc42 nachgezogen werden?
 - wenn sich Kontext, Bausteine, Schnittstellen, Betriebsablauf oder Risiken aendern
 
+Pflicht bei Architektur- oder Deployment-Aenderungen:
+- arc42 aktualisieren
+- Benutzerhandbuch aktualisieren
+- Betriebsdoku aktualisieren
+
 Merksatz:
 ADR = einzelne wichtige Entscheidung
 arc42 = grosses Architektur-Handbuch
@@ -171,6 +176,9 @@ Wenn ein Feature fertig ist oder etwas fuer ein Release wichtig ist, dann nachzi
 - Deployment-Status
 - Release-Hinweise
 - falls noetig Changelog oder Release-Notizen
+- arc42-Kapitel (betroffene Kapitel)
+- Benutzerhandbuch (`docs/user-manual/`)
+- Betriebsdoku (`docs/operations.md`, `docs/architecture.md`, `docs/release-process.md`)
 
 Change Management bedeutet bei uns:
 - Aenderung im Git
@@ -182,6 +190,20 @@ Wenn man spaeter nicht mehr versteht, was geaendert wurde, war die Doku nicht fe
 
 Pflicht zum Abschluss:
 - Definition of Done pruefen: `docs/DEFINITION-OF-DONE-FEATURE.md`
+
+## Welche Skills verwende ich wann?
+
+Kurzregel:
+- `requirements` fuer neue oder geaenderte Features/Requirements
+- `architecture` fuer Tech-Design und arc42-Wirkung
+- `frontend` fuer GUI-Umsetzung
+- `backend` fuer API, Daten, Serverlogik
+- `qa` fuer Abnahme inkl. Doku-Qualitaetscheck
+- `deploy` fuer Release/Deployment-Schritte
+
+Wichtig:
+- `frontend` und `backend` sind fuer Implementierung, nicht fuer den gesamten Doku-Prozess.
+- Fuer verpflichtendes Nachziehen von arc42 + Benutzerhandbuch ist ein eigener Doku-Workflow sinnvoll (optional als eigener Skill, z. B. `documentation`).
 
 ## Schritt 9: Confluence-Export vorbereiten
 

@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-04
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-1: CI/CD Pipeline (führt den Gate-Schritt automatisiert aus)
@@ -23,6 +23,7 @@
 - [ ] Die Freigaberichtlinie liegt versioniert im Repository und beschreibt erlaubte Dateien, Pfade, Dateitypen und Ausnahmen
 - [ ] Eine Allowlist-Strategie ist der Standard; eine reine Ignore- oder Blocklist-Strategie ohne Artefaktinspektion ist nicht zulässig
 - [ ] Der Gate-Schritt prüft mindestens Top-Level-Struktur, Dateitypen, Pfade, Dateianzahl und Artefaktgrösse gegen definierte Grenzwerte
+- [ ] Für Container-Images prüft der Gate-Schritt OCI-Konformität (Manifest/Media Types gemäss OCI-Spezifikation)
 - [ ] Verbotene Inhalte werden erkannt und blockiert, mindestens: Secrets, interne Entwicklungsartefakte, Testdaten, nicht freigegebene Konfigurationsdateien und unnötige Source-Artefakte
 - [ ] Sourcemaps sind standardmässig ausgeschlossen und nur per expliziter, dokumentierter Ausnahme zulässig
 - [ ] Bei einem Verstoss schlägt der Build oder das Release fehl; das Artefakt wird weder publiziert noch exportiert
@@ -42,6 +43,7 @@
 - Die Prüfung muss auf dem final erzeugten Artefakt oder dessen entpacktem Inhalt arbeiten, nicht nur auf dem Workspace
 - Der Bericht enthält mindestens: geprüftes Artefakt, Version oder SHA, Ergebnis, Regelverstösse und Zeitstempel
 - Die Richtlinie unterstützt explizite Grenzwerte für Dateianzahl, Artefaktgrösse und zugelassene Pfadmuster
+- Für Container-Images sind OCI-Merkmale (Manifest/Media Types) maschinenlesbar validierbar hinterlegt
 
 ---
 <!-- Sections below are added by subsequent skills -->

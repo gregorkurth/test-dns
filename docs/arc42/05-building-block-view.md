@@ -11,6 +11,7 @@ Hier zeigen wir, aus welchen grossen Teilen die Applikation besteht.
 - Test Runner
 - Doku-Bausteine
 - GitOps- und Release-Bausteine
+- Helm-Chart-Baustein fuer standardisierte Installation
 - Capability-Struktur
 
 ## Wann pflegen?
@@ -23,4 +24,5 @@ Hier zeigen wir, aus welchen grossen Teilen die Applikation besteht.
 - `src/`
 - `features/OBJ-3-rest-api.md`
 - `features/OBJ-9-manual-test-runner.md`
+- `features/OBJ-25-helm-charts.md`
 - `capabilities/INDEX.md`

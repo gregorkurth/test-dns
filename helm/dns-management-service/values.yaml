@@ -1,0 +1,115 @@
+namespace:
+  create: true
+  name: dns-management
+  labels:
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/warn: restricted
+    policy.openpolicyagent.org/profile: restricted
+    policy.openpolicyagent.org/review: required
+  annotations:
+    security.fmn.dev/namespace-purpose: dns-management-service
+    security.fmn.dev/opa-note: OPA or Gatekeeper should enforce approved labels, pinned images, and restricted pod security.
+
+image:
+  repository: ghcr.io/gregorkurth/test-dns
+  tag: ""
+  digest: sha256:1111111111111111111111111111111111111111111111111111111111111111
+  pullPolicy: IfNotPresent
+
+replicaCount: 2
+
+podAnnotations:
+  security.fmn.dev/mtls-note: Enable Cilium service-to-service authentication before production release.
+  observability.fmn.dev/otel-events: forward security and audit events to the configured OTEL pipeline
+
+labels:
+  app.kubernetes.io/part-of: dns-management-service
+  policy.openpolicyagent.org/profile: restricted
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+  nodePort: null
+  annotations:
+    security.fmn.dev/mtls-required: "true"
+    security.fmn.dev/mtls-note: Downstream clients should use authenticated pod-to-pod transport before production enablement.
+
+ingress:
+  enabled: true
+  className: internal-nginx
+  host: dns.internal.example.mil
+  path: /
+  pathType: Prefix
+  annotations:
+    kubernetes.io/ingress.class: internal-nginx
+    security.fmn.dev/opa-note: OPA should require an approved hostname, ingress class, and TLS policy for this route.
+
+config:
+  NODE_ENV: production
+  PORT: "3000"
+  APP_BASE_URL: https://dns.internal.example.mil
+  SERVICE_NAME: dns-management-service
+  OTEL_SERVICE_NAME: dns-management-service
+  OTEL_EXPORT_MODE: local
+  OTEL_EXPORT_ENDPOINT: http://otel-collector.observability.svc.cluster.local:4318
+  OTEL_EXPORT_TIMEOUT_MS: "5000"
+  OBSERVABILITY_SPOOL_DIR: /tmp/otel/spool
+  OBSERVABILITY_QUEUE_DIR: /tmp/otel/queue
+  LOG_LEVEL: info
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+probes:
+  readiness:
+    path: /api/v1
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 3
+    failureThreshold: 3
+  liveness:
+    path: /
+    initialDelaySeconds: 20
+    periodSeconds: 20
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+securityContext:
+  pod:
+    runAsNonRoot: true
+    runAsUser: 1001
+    runAsGroup: 1001
+    fsGroup: 1001
+    seccompProfile:
+      type: RuntimeDefault
+  container:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    capabilities:
+      drop:
+        - ALL
+
+cilium:
+  enabled: true
+  defaultDeny:
+    ingress: true
+    egress: true
+  allowRequiredTraffic:
+    allowHostEntity: true
+    ingressNamespaces:
+      - ingress-nginx
+      - kube-system
+    egressKubeDns:
+      namespace: kube-system
+      label: kube-dns
+    annotations:
+      security.fmn.dev/mtls-required: "true"
+      security.fmn.dev/mtls-note: Tighten ingress selectors to your concrete ingress controller namespace before production go-live.
+      observability.fmn.dev/hubble-note: Use Hubble to verify only approved north-south and kube-dns flows are observed.

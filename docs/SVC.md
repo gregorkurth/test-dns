@@ -28,8 +28,9 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 4 – P1 DNS | P1 | OBJ-9: Manual Test Runner | Planned |
 | 4 – P1 DNS | P1 | OBJ-23: Test Execution Dashboard | Completed |
 | 4 – P1 DNS | P1 | OBJ-24: DNS Baseline Config Repository & Change History | Planned |
-| 5 – Plattform | P1 | OBJ-10: Kubernetes Deployment | Planned |
-| 5 – Plattform | P1 | OBJ-11: Monitoring & Observability (OpenTelemetry) | Planned |
+| 5 – Plattform | P1 | OBJ-10: Kubernetes Deployment | In Progress |
+| 5 – Plattform | P1 | OBJ-11: Monitoring & Observability (OpenTelemetry) | In Progress |
+| 5 – Plattform | P1 | OBJ-25: Helm Charts fuer Kubernetes Deployment | In Progress |
 | 5 – Plattform | P1 | OBJ-12: Security & Authentifizierung | Planned |
 | 5 – Plattform | P2 | OBJ-13: Kubernetes Operator | Planned |
 | 6 – Abschluss | P1 | OBJ-14: Release Management | Planned |

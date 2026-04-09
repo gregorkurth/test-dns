@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-1: CI/CD Pipeline (Pipeline pusht Images und Artefakte in die Registry)
@@ -20,6 +20,7 @@
 ## Acceptance Criteria
 - [ ] Container-Images werden in Harbor (primär) nach jedem erfolgreichen Build auf `main` oder bei Release-Tags gespeichert
 - [ ] Images werden mit Git-SHA und Git-Tag getaggt (z.B. `image:sha-abc123`, `image:v1.2.0`, `image:latest`)
+- [ ] Container-Images und Push/Distribution sind OCI-konform (Open Container Initiative)
 - [ ] Container-Images werden erst nach bestandenen Security-Scans (OBJ-17) in Harbor veröffentlicht
 - [ ] Weitere Release-Artefakte (Helm Charts, K8s-Manifest-Bundles, SBOMs, Security-Reports) werden in Nexus oder Harbor abgelegt
 - [ ] Publishbare Artefakte werden nur nach erfolgreicher Artefaktprüfung veröffentlicht; der Prüfbericht ist mit Artefakt oder Release verknüpft (OBJ-22)
@@ -41,6 +42,7 @@
 - Container-Registry: Harbor (primär, OCI-kompatibel)
 - Artefakt-Repository: Nexus Repository Manager (für Helm Charts, NPM-Pakete, Maven-Artefakte etc.) oder Harbor OCI-Artefakte
 - Image-Tagging: Git-SHA (immer) + Git-Tag (bei Release) + `latest` (bei `main`-Merge)
+- OCI-Spezifikation: Image-Manifeste und Media Types muessen OCI-Spec-konform sein
 - Zugangsdaten: CI/CD-Secrets (GitLab CI Variables / GitHub Actions Secrets)
 - Retention Policy: Konfigurierbar (z.B. letzte 10 Tags pro Repository behalten, `latest` immer)
 - Zarf-Artefaktliste: In `zarf.yaml` definiert; muss mit tatsächlichen Registry-Pfaden übereinstimmen (OBJ-19)

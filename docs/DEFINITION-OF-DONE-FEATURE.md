@@ -16,6 +16,9 @@ Ein Feature gilt erst als abgeschlossen, wenn alle Punkte geprueft sind.
 - [ ] Wenn ADR noetig: ADR erstellt oder aktualisiert (`docs/adr/`)
 - [ ] arc42 geprueft: betroffene Kapitel identifiziert
 - [ ] Betroffene arc42-Kapitel nachgezogen (`docs/arc42/`)
+- [ ] Benutzerhandbuch geprueft und falls betroffen nachgezogen (`docs/user-manual/`)
+- [ ] Betriebs-/Technikdoku geprueft und falls betroffen nachgezogen (`docs/operations.md`, `docs/architecture.md`, `docs/release-process.md`)
+- [ ] QA hat Dokumentationsqualitaet mitgeprueft (vollstaendige Links, konsistente Begriffe, nachvollziehbare Ergebnisse)
 - [ ] Confluence-Export durchgefuehrt (falls gefordert)
 - [ ] Export im zentralen Log dokumentiert (`docs/exports/EXPORT-LOG.md`)
 

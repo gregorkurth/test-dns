@@ -1,0 +1,49 @@
+{{- if .Values.cilium.enabled }}
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: {{ include "dns-management-service.fullname" . }}-allow-required-traffic
+  namespace: {{ .Values.namespace.name }}
+  labels:
+{{ include "dns-management-service.labels" . | indent 4 }}
+    networking.fmn.dev/policy-tier: application
+    networking.fmn.dev/egress-profile: deny-all-except-kube-dns
+  annotations:
+{{ toYaml .Values.cilium.allowRequiredTraffic.annotations | indent 4 }}
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "dns-management-service.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  ingress:
+{{- if .Values.cilium.allowRequiredTraffic.allowHostEntity }}
+    - fromEntities:
+        - host
+      toPorts:
+        - ports:
+            - port: {{ .Values.service.targetPort | quote }}
+              protocol: TCP
+{{- end }}
+{{- range $ns := .Values.cilium.allowRequiredTraffic.ingressNamespaces }}
+    - fromEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: {{ $ns | quote }}
+      authentication:
+        mode: required
+      toPorts:
+        - ports:
+            - port: {{ $.Values.service.targetPort | quote }}
+              protocol: TCP
+{{- end }}
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: {{ .Values.cilium.allowRequiredTraffic.egressKubeDns.namespace | quote }}
+            k8s:k8s-app: {{ .Values.cilium.allowRequiredTraffic.egressKubeDns.label | quote }}
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+            - port: "53"
+              protocol: TCP
+{{- end }}

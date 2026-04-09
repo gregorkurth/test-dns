@@ -2,7 +2,7 @@
 
 ## Status: Planned
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-04
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-10: Kubernetes Deployment (App muss im Cluster laufen)
@@ -26,6 +26,7 @@
 - [ ] RBAC-Manifest für den Operator-ServiceAccount liegt im Repository
 - [ ] Operator-Image ist airgapped ladbar (kein Pull zur Laufzeit)
 - [ ] Operator läuft als eigener Deployment im Namespace `dns-config-system`
+- [ ] Falls ein eigener Operator benoetigt ist, ist er in Go (controller-runtime/kubebuilder) implementiert
 
 ## Edge Cases
 - Was passiert wenn die App-API nicht erreichbar ist? → Operator setzt Status `Error`, exponentielles Retry-Backoff, kein Crash
@@ -34,7 +35,7 @@
 - Was wenn zwei CRs dieselbe Zone definieren? → Konflikt im Status beider CRs vermerkt; erste CR bleibt aktiv
 
 ## Technical Requirements
-- Implementierungssprache: Go (controller-runtime / kubebuilder)
+- Implementierungssprache: Go ist verpflichtend, wenn ein eigener Operator umgesetzt wird (controller-runtime / kubebuilder)
 - CRD-Schemadefinition mittels kubebuilder-Markers, generierter OpenAPI-Validierung
 - Operator-Manifest unter `operator/` im Repository (Deployment, RBAC, CRD)
 - Unit-Tests für Reconcile-Logik vorhanden

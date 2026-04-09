@@ -1,0 +1,18 @@
+namespace:
+  name: dns-management
+
+ingress:
+  className: internal-nginx
+  host: dns.internal.example.mil
+  annotations:
+    kubernetes.io/ingress.class: internal-nginx
+    security.fmn.dev/opa-note: OPA should require an approved hostname, ingress class, and TLS policy for this route.
+
+service:
+  type: ClusterIP
+  nodePort: null
+
+config:
+  APP_BASE_URL: https://dns.internal.example.mil
+  OTEL_EXPORT_MODE: clickhouse
+

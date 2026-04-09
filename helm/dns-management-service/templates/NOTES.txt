@@ -1,0 +1,13 @@
+1. DNS Management Service wurde installiert.
+
+2. Namespace:
+   {{ .Values.namespace.name }}
+
+3. Rendering testen:
+   helm template {{ .Release.Name }} {{ .Chart.Name }} -f values.yaml
+
+4. Lokaler Modus:
+   helm upgrade --install {{ .Release.Name }} {{ .Chart.Name }} -f values.yaml -f values-local.yaml
+
+5. Interner Modus:
+   helm upgrade --install {{ .Release.Name }} {{ .Chart.Name }} -f values.yaml -f values-internal.yaml

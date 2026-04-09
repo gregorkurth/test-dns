@@ -25,6 +25,7 @@ kontrolliert installiert werden kann.
 2. **Kubernetes als Zielplattform**
    - Die Applikation muss für den Betrieb auf Kubernetes vorgesehen sein.
    - Deployment-Artefakte müssen deklarativ und versioniert vorliegen.
+   - Fuer standardisierte Installation muss mindestens ein versioniertes Helm Chart bereitgestellt werden (Kustomize optional zusaetzlich).
    - Die App muss in eine standardisierte Plattform-/Namespace-Struktur integrierbar sein.
 
 3. **GitOps und deklarative Installation**
@@ -47,7 +48,7 @@ kontrolliert installiert werden kann.
    - Web GUI
    - API
    - MCP-Adapter fuer AI-Agenten (wenn AI-Agent-Nutzung vorgesehen ist)
-   - Kubernetes Operator
+   - Kubernetes Operator (falls benoetigt in Go)
    - Externe Service-Nutzbarkeit gemaess FMN/NATO-Vorgaben (falls Service extern bereitgestellt wird)
    - Monitoring und Observability mit OpenTelemetry
    - Security und Authentifizierung
@@ -118,6 +119,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Jede Applikation besitzt einen Operator oder ein gleichwertiges Kubernetes-natives Steuerungskonzept.
 - Der Operator verwaltet die Applikationskonfiguration über CRDs.
 - Der Operator soll Status, Konfiguration, Automatisierungen und betrieblich relevante Aktionen steuern können.
+- Falls ein eigener Operator implementiert wird, ist Go (controller-runtime/kubebuilder) der verpflichtende Technologie-Stack.
 
 ### 5. Monitoring / OpenTelemetry
 - Monitoring und Observability müssen mit OpenTelemetry umgesetzt werden.
@@ -182,6 +184,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Die Pipeline ist Bestandteil des Repositories und nicht nur extern konfiguriert.
 - Die Pipeline muss den Übergang von Quellcode zu Release-Artefakten und Zarf-Paket nachvollziehbar abbilden.
 - Container-Images muessen aus einem gehaerteten, minimalen Runtime-Image gebaut werden.
+- Container-Images muessen den Spezifikationen der Open Container Initiative (OCI) entsprechen (Image-Format, Manifest/Media Types, Distribution-Kompatibilitaet).
 - Die Runtime-Stage darf nur die zur Ausfuehrung benoetigten Binaries, Libraries, Konfigurationen und Assets enthalten.
 - Build-Tools, Package-Manager, Compiler und nicht benoetigte Shell-Tools duerfen im finalen Runtime-Image nicht enthalten sein, sofern keine dokumentierte Ausnahme vorliegt.
 - Falls die Applikation funktional nur einen einzelnen Dienstprozess bereitstellt, ist ein dienstspezifisches Minimal-Image zu verwenden, das nur den benoetigten Prozess und die benoetigten Laufzeitbestandteile enthaelt.
@@ -223,6 +226,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Das Template muss die Zuordnung von Artefakten, Versionen und Herkunft eindeutig machen.
 - Für die Offline-Weitergabe muss definiert sein, welche Artefakte aus welcher Quelle in das Zarf-Paket übernommen werden.
 - Fuer Container-Images muss die Basis-Image-Herkunft nachvollziehbar dokumentiert sein (Image-Name, Digest, Hardening-Stand).
+- Container-Images und Artefakt-Distribution muessen OCI-konform sein; nicht-OCI-konforme Image-Layouts sind fuer Release/Publish nicht zulaessig.
 - Es duerfen nur freigegebene gehaertete Basis-Images verwendet werden; generische Full-OS-Images ohne Hardening-Freigabe sind nicht zulaessig.
 
 ### 13. Zarf-Paket / Offline-Weitergabe
@@ -337,6 +341,7 @@ Jeder relevante Baustein oder jedes Feature wird als Markdown-Spezifikation besc
 Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle folgenden Punkte erfüllt sind:
 
 - [ ] Service ist eigenständig aus dem Repository heraus deploybar
+- [ ] Helm Chart fuer die Applikation ist versioniert vorhanden und renderbar (`helm lint`, `helm template`)
 - [ ] alle Kernfunktionen sind erfolgreich getestet
 - [ ] Release-Version ist festgelegt und dokumentiert
 - [ ] finales Release-Artefakt wurde tatsächlich erzeugt und geprüft
@@ -344,6 +349,7 @@ Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle
 - [ ] Allowlist- bzw. Inhaltsfreigabe für veröffentlichte Artefakte ist definiert
 - [ ] verbotene Inhalte wie interne Source-Dateien, Testdaten, Secrets oder unerlaubte Sourcemaps sind ausgeschlossen
 - [ ] Runtime-Container-Image basiert auf gehaertetem Minimal-Base-Image (inkl. dokumentiertem Digest)
+- [ ] Runtime-Container-Image ist OCI-konform und verwendet gueltige OCI-Manifest-/Media-Types
 - [ ] Runtime-Container enthaelt nur benoetigte Laufzeitkomponenten; keine Build-Toolchain im finalen Image
 - [ ] Fuer Single-Service-Workloads ist ein dienstspezifisches Minimal-Image nachgewiesen
 - [ ] SBOM ist erzeugt und dem Release zugeordnet
@@ -391,10 +397,12 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] GitLab-Quellprojekt und Ziel-Gitea-Struktur festgelegt sind
 - [ ] Release- und Konfigurationsprojekt als getrennte Git-Projekte modelliert sind
 - [ ] Kubernetes-Deployment vorhanden ist
+- [ ] Helm Chart als Standard-Deploymentpfad vorhanden und pruefbar ist
 - [ ] API implementiert und dokumentiert ist
 - [ ] MCP-Adapter fuer AI-Agenten umgesetzt ist (wenn AI-Agent-Nutzung vorgesehen ist)
 - [ ] Web GUI vorhanden ist
 - [ ] Operator / CRD-Konzept vorhanden ist
+- [ ] bei eigenem Operator ist die Implementierung in Go umgesetzt oder begruendet als nicht erforderlich dokumentiert
 - [ ] OpenTelemetry-Monitoring integriert ist
 - [ ] Security-Konzept umgesetzt ist
 - [ ] Rollen- und Rechtemodell umgesetzt ist
@@ -406,6 +414,7 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Definition of Done für Build-/Release-Artefakte umgesetzt ist
 - [ ] finales Release-Artefakt wird in der Pipeline geprüft
 - [ ] gehaertetes Minimal-Container-Image ist als Runtime-Standard umgesetzt
+- [ ] OCI-Konformitaet fuer Container-Images ist technisch geprueft und dokumentiert
 - [ ] bei Single-Service-Umfang ist ein dienstspezifisches Minimal-Image umgesetzt
 - [ ] SBOM und Security-Scanning eingebunden sind
 - [ ] Harbor-/Nexus-/Artifact-Ablage definiert ist
