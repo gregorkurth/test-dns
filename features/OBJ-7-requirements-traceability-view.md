@@ -1,8 +1,8 @@
 # OBJ-7: Requirements Traceability View
 
-## Status: Planned
+## Status: In Progress
 **Created:** 2026-03-17
-**Last Updated:** 2026-03-17
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-4 (Capabilities Dashboard) – Requirements-Daten
@@ -15,12 +15,12 @@
 - Als Requirements Engineer möchte ich die Traceability-Matrix als Übersicht für AV&V-Vorbereitung nutzen, damit ich Compliance dokumentieren kann.
 
 ## Acceptance Criteria
-- [ ] Für jedes Requirement (SREQ-xxx / CREQ-xxx) wird angezeigt, ob es durch die aktuelle Konfiguration (OBJ-5) abgedeckt ist
-- [ ] Status: ✅ Erfüllt / ⚠️ Teilweise / ❌ Nicht erfüllt / ℹ️ Nicht prüfbar (manuell)
-- [ ] Nicht-erfüllte MUSS-Requirements sind rot hervorgehoben
-- [ ] Klick auf ein Requirement öffnet den Detail-View aus OBJ-4
-- [ ] Filter: "Nur offene Requirements" zeigt ausschliesslich nicht-erfüllte Einträge
-- [ ] Zusammenfassung oben: "X/Y Requirements erfüllt (Z MUSS-Anforderungen offen)"
+- [ ] `feat~obj-7-ac-1~1` Fuer jedes Requirement (SREQ-xxx / CREQ-xxx) wird angezeigt, ob es durch die aktuelle Konfiguration (OBJ-5) abgedeckt ist
+- [ ] `feat~obj-7-ac-2~1` Status: Erfuellt / Teilweise / Nicht erfuellt / Nicht pruefbar (manuell)
+- [ ] `feat~obj-7-ac-3~1` Nicht-erfuellte MUSS-Requirements sind rot hervorgehoben
+- [ ] `feat~obj-7-ac-4~1` Klick auf ein Requirement oeffnet den Detail-View aus OBJ-4
+- [ ] `feat~obj-7-ac-5~1` Filter "Nur offene Requirements" zeigt ausschliesslich nicht-erfuellte Eintraege
+- [ ] `feat~obj-7-ac-6~1` Zusammenfassung oben: "X/Y Requirements erfuellt (Z MUSS-Anforderungen offen)"
 
 ## Edge Cases
 - Konfiguration noch nicht ausgefüllt (OBJ-5 leer) → Alle Requirements als "Nicht erfüllt" angezeigt mit Hinweis "Bitte zuerst Konfiguration erfassen"
@@ -28,14 +28,77 @@
 - Neue Requirements werden zu `capabilities/` hinzugefügt → Automatisch bei nächstem Build in Traceability-View sichtbar
 
 ## Technical Requirements
-- Compliance-Prüfung passiert client-seitig auf Basis der LocalStorage-Konfiguration (OBJ-5)
-- Keine externe API nötig
+- Compliance-Pruefung erfolgt offline-faehig auf Basis der OBJ-5 Konfigurationsdaten plus Requirement-Metadaten aus `capabilities/`
+- Bewertungslogik fuer Status (Erfuellt/Teilweise/Nicht erfuellt/Nicht pruefbar) ist versioniert und nachvollziehbar
+- Requirement-Detailnavigation verwendet die bestehende Requirement-Datenstruktur aus OBJ-4 (kein Duplikatmodell)
+- Keine externen APIs; optionaler interner Next.js-Endpunkt fuer konsistente Auswertung ist zulaessig
 
 ---
 <!-- Sections below are added by subsequent skills -->
 
 ## Tech Design (Solution Architect)
-_To be added by /architecture_
+**Scope**
+
+OBJ-7 liefert die operative Nachvollziehbarkeit zwischen Requirement und konkreter DNS-Konfiguration.
+Die Sicht beantwortet fuer Operatoren und QA in einem Bildschirm:
+- Was ist gefordert?
+- Was ist in der aktuellen Konfiguration vorhanden?
+- Wo sind offene MUSS-Luecken?
+
+**Komponentenstruktur (Visual Tree)**
+
+```
+Requirements Traceability Page
++-- Header / Summary
+|   +-- Erfuellt-Quote (X/Y)
+|   +-- Offene MUSS-Anforderungen
++-- Filterleiste
+|   +-- Quelle (NATO/ARCH/CUST/INT)
+|   +-- Prioritaet (MUSS/SOLLTE/KANN)
+|   +-- Status (Erfuellt/Teilweise/Nicht erfuellt/Nicht pruefbar)
+|   +-- Toggle "Nur offene Requirements"
++-- Traceability-Tabelle
+|   +-- Requirement-ID + Titel
+|   +-- Status-Badge
+|   +-- Zuordnung zu Konfigurationsfeldern
+|   +-- Link zur Requirement-Detailansicht (OBJ-4)
++-- Detailpanel
+    +-- Originaltext + Akzeptanzkriterien
+    +-- Bewertungserklaerung
+    +-- Empfohlene naechste Aktion
+```
+
+**Datenmodell (in einfachen Worten)**
+
+Jeder Traceability-Eintrag enthaelt:
+- Requirement-ID, Prioritaet, Quelle
+- Bewertungsstatus (`fulfilled`, `partial`, `open`, `manual`)
+- Mapping auf relevante Konfigurationsfelder aus OBJ-5
+- Begruendung der Bewertung
+- Deep-Link zum Requirement-Detail
+
+**Technische Leitentscheidungen (fuer PM)**
+
+- Eine einheitliche Statuslogik senkt Interpretationsspielraum in Reviews.
+- Fokus auf MUSS-Luecken reduziert fachliches Risiko fuer Mission-Betrieb.
+- Verlinkung auf Requirement-Details vermeidet Doppelpflege in mehreren UIs.
+- Offline-Auswertung stellt sicher, dass die Sicht auch in airgapped Umgebungen nutzbar bleibt.
+
+**Dependencies (Packages)**
+
+- Keine neuen Pflicht-Pakete; Reuse von bestehendem Next.js/React-Stack und OBJ-4 Datenmodell.
+
+**Requirements Engineer Input**
+
+- Jede Regel fuer den Bewertungsstatus ist als testbare Fachregel zu dokumentieren.
+- `Nicht pruefbar (manuell)` darf nur genutzt werden, wenn die Automatisierung fachlich wirklich nicht moeglich ist.
+- Neue Requirements muessen ohne Codeaenderung in der Liste sichtbar werden, sobald sie in `capabilities/` versioniert sind.
+
+**QA Engineer Input (Readiness)**
+
+- Pflichttests: Statusberechnung pro Requirement-Typ, Filterlogik, MUSS-Hervorhebung, Detailnavigation.
+- Regressionstest: Aenderungen in OBJ-5 duerfen die Statusberechnung nicht verfalschen.
+- Abnahmekriterium: Offene MUSS-Luecken sind eindeutig identifizierbar und reproduzierbar.
 
 ## QA Test Results
 _To be added by /qa_

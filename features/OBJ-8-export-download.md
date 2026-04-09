@@ -1,8 +1,8 @@
 # OBJ-8: Export & Download
 
-## Status: Planned
+## Status: In Progress
 **Created:** 2026-03-17
-**Last Updated:** 2026-03-17
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-5 (Participant Configuration Form) – Konfigurationsdaten
@@ -15,13 +15,13 @@
 - Als Operator möchte ich eine TSIG-Key-Vorlage herunterladen, damit ich die Zone-Transfer-Sicherheit (SREQ-529) konfigurieren kann.
 
 ## Acceptance Criteria
-- [ ] "Alles herunterladen"-Button generiert ZIP-Archiv mit: Forward Zone-File(s), Reverse Zone-File(s), named.conf-Snippet, TSIG-Key-Vorlage (als Shell-Kommandobeispiel)
-- [ ] Dateinamen im ZIP sind sprechend: `{zone-name}.zone`, `{zone-name}.reverse.zone`, `named.conf.local.snippet`, `tsig-keygen.sh`
-- [ ] Einzeln-Download für jede Datei ist ebenfalls möglich
-- [ ] Konfiguration als JSON exportierbar (`{cc-number}-dns-config.json`)
-- [ ] JSON-Konfiguration kann wieder importiert werden (Formular wird befüllt)
-- [ ] Export funktioniert vollständig offline (kein Server)
-- [ ] Wenn Konfiguration unvollständig → Button deaktiviert mit Tooltip "Bitte zuerst alle Pflichtfelder ausfüllen"
+- [ ] `feat~obj-8-ac-1~1` "Alles herunterladen"-Button generiert ZIP-Archiv mit Forward Zone-File(s), Reverse Zone-File(s), named.conf-Snippet und TSIG-Key-Vorlage (Shell-Kommandobeispiel)
+- [ ] `feat~obj-8-ac-2~1` Dateinamen im ZIP sind sprechend: `{zone-name}.zone`, `{zone-name}.reverse.zone`, `named.conf.local.snippet`, `tsig-keygen.sh`
+- [ ] `feat~obj-8-ac-3~1` Einzeln-Download fuer jede Datei ist ebenfalls moeglich
+- [ ] `feat~obj-8-ac-4~1` Konfiguration ist als JSON exportierbar (`{cc-number}-dns-config.json`)
+- [ ] `feat~obj-8-ac-5~1` JSON-Konfiguration kann wieder importiert werden (Formular wird befuellt)
+- [ ] `feat~obj-8-ac-6~1` Export funktioniert vollstaendig offline (kein Server)
+- [ ] `feat~obj-8-ac-7~1` Wenn Konfiguration unvollstaendig ist, bleibt der Exportbutton deaktiviert mit Tooltip "Bitte zuerst alle Pflichtfelder ausfuellen"
 
 ## Edge Cases
 - ZIP-Generierung bei sehr vielen Zonen → Fortschritts-Indikator oder asynchrone Generierung
@@ -32,13 +32,69 @@
 ## Technical Requirements
 - ZIP-Generierung via `jszip` (lokal gebundelt für Offline)
 - PDF-Export via `@react-pdf/renderer` oder `html2pdf.js` (lokal gebundelt)
-- Kein Server-Aufruf für Export-Funktionen
+- Exportfunktionen arbeiten ohne externe Dienste und ohne Cloud-Abhaengigkeit
+- Exportmanifest (Dateiname, Zeitstempel, Quelle, Version) wird mit dem Paket gespeichert
+- Importvalidierung fuer JSON muss Schema-Version und Pflichtfelder pruefen
 
 ---
 <!-- Sections below are added by subsequent skills -->
 
 ## Tech Design (Solution Architect)
-_To be added by /architecture_
+**Scope**
+
+OBJ-8 stellt sicher, dass Operatoren aus einem fertigen Konfigurationsstand sofort transportfaehige Artefakte erzeugen koennen: einzeln oder als Gesamtpaket.
+Die Funktion ist voll offlinefaehig und unterstuetzt sowohl technische Uebergabe als auch Abstimmung mit Fachstellen.
+
+**Komponentenstruktur (Visual Tree)**
+
+```
+Export & Download Page
++-- Header / Kontext
+|   +-- Aktiver Participant + Stand
++-- Export-Aktionen
+|   +-- "Alles herunterladen" (ZIP)
+|   +-- Einzel-Download je Datei
+|   +-- JSON Export
+|   +-- JSON Import
+|   +-- FMN-Formular PDF Export
++-- Ergebnis / Validierung
+|   +-- Export-Status
+|   +-- Fehlermeldungen bei unvollstaendiger Konfiguration
++-- Manifest-Vorschau
+    +-- enthaltene Dateien
+    +-- Versions- und Zeitstempel
+```
+
+**Datenmodell (in einfachen Worten)**
+
+Ein Exportlauf erzeugt:
+- `files[]`: Liste aller zu exportierenden Inhalte (Zone, Reverse, TSIG, Snippet, JSON, optional PDF)
+- `manifest`: Metadaten mit Participant-ID, Version, Erstellzeit, Schema-Version
+- `validation`: Ergebnis vor Export (`ok`/`error` + Hinweise)
+
+**Technische Leitentscheidungen (fuer PM)**
+
+- ZIP als Standard reduziert Fehler bei manueller Datei-Zusammenstellung.
+- JSON Export/Import ermoeglicht kontrollierten Geraetewechsel ohne Datenverlust.
+- PDF-Export deckt Abstimmungs- und Freigabeprozesse ausserhalb der Entwicklungswerkzeuge ab.
+- Dateinamenstandard und Manifest verbessern Nachvollziehbarkeit in Audits.
+
+**Dependencies (Packages)**
+
+- `jszip` fuer ZIP-Buendelung im Browser.
+- `@react-pdf/renderer` (oder `html2pdf.js`) fuer den lokalen PDF-Export.
+
+**Requirements Engineer Input**
+
+- Jeder Exporttyp benoetigt klare Pflichtfelder und eine definierte Fehlermeldung bei Luecken.
+- Import ist nur gueltig, wenn Schema-Version und Mindestdaten kompatibel sind.
+- Dateinamensregeln muessen fest beschrieben sein, damit automatisierte Pruefungen moeglich sind.
+
+**QA Engineer Input (Readiness)**
+
+- Pflichttests: ZIP-Inhalt, Dateinamensschema, Offline-Export, JSON Roundtrip (Export -> Import).
+- Edge-Case-Tests: alte Schema-Version, Sonderzeichen in Zonenamen, unvollstaendige Konfiguration.
+- Abnahmekriterium: ein Operator kann ohne Entwicklerhilfe ein korrektes Exportpaket erzeugen und wieder einlesen.
 
 ## QA Test Results
 _To be added by /qa_

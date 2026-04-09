@@ -2,7 +2,7 @@
 
 ## Status: In Review
 **Created:** 2026-03-17
-**Last Updated:** 2026-04-07
+**Last Updated:** 2026-04-09
 
 ## Dependencies
 - OBJ-5 (Participant Configuration Form) - Konfigurationsdaten werden als Input verwendet
@@ -16,14 +16,14 @@
 - Als Operator moechte ich, dass die SOA-Werte (Serial, Refresh, Retry, Expire, TTL) konfigurierbar sind, damit ich sie an meine Mission-Anforderungen anpassen kann.
 
 ## Acceptance Criteria
-- [ ] Forward Zone-File wird aus Konfigurationsdaten generiert mit SOA-Record, NS-Records, A-Records fuer Nameserver und Resolver sowie Anycast-A-Record (falls aktiv).
-- [ ] Reverse Zone-File wird fuer jede delegierte Reverse-Zone generiert mit SOA-Record, NS-Record und PTR-Records.
-- [ ] SOA-Parameter sind konfigurierbar: Serial (optional manuell), Primary NS, Admin Mail, Refresh, Retry, Expire, Minimum TTL.
-- [ ] Generated Output wird in einer Read-Only Ansicht angezeigt (Forward und Reverse getrennt).
-- [ ] "Kopieren"-Button (Copy to Clipboard) ist fuer jede generierte Zone vorhanden.
-- [ ] Generierung nutzt den bestehenden API-Endpunkt `/api/v1/zones/generate` (keine externe Abhaengigkeit).
-- [ ] Zone-File-Format ist BIND9-kompatibel (RFC 1035).
-- [ ] Validierungsfehler aus OBJ-5 blockieren die Generierung mit klarer Fehlermeldung.
+- [ ] `feat~obj-6-ac-1~1` Forward Zone-File wird aus Konfigurationsdaten generiert mit SOA-Record, NS-Records, A-Records fuer Nameserver und Resolver sowie Anycast-A-Record (falls aktiv).
+- [ ] `feat~obj-6-ac-2~1` Reverse Zone-File wird fuer jede delegierte Reverse-Zone generiert mit SOA-Record, NS-Record und PTR-Records.
+- [ ] `feat~obj-6-ac-3~1` SOA-Parameter sind konfigurierbar: Serial (optional manuell), Primary NS, Admin Mail, Refresh, Retry, Expire, Minimum TTL.
+- [ ] `feat~obj-6-ac-4~1` Generated Output wird in einer Read-Only Ansicht angezeigt (Forward und Reverse getrennt).
+- [ ] `feat~obj-6-ac-5~1` "Kopieren"-Button (Copy to Clipboard) ist fuer jede generierte Zone vorhanden.
+- [ ] `feat~obj-6-ac-6~1` Generierung nutzt den bestehenden API-Endpunkt `/api/v1/zones/generate` (keine externe Abhaengigkeit).
+- [ ] `feat~obj-6-ac-7~1` Zone-File-Format ist BIND9-kompatibel (RFC 1035).
+- [ ] `feat~obj-6-ac-8~1` Validierungsfehler aus OBJ-5 blockieren die Generierung mit klarer Fehlermeldung.
 
 ## Edge Cases
 - Konfiguration enthaelt keine Reverse-Zone -> Nur Forward-Zone wird generiert, Hinweis wird angezeigt.
@@ -76,6 +76,10 @@ Zone Generator Page
 - API-first statt reinem Browser-Generator, damit ein einheitlicher Generatorkern genutzt wird.
 - Reuse des bestehenden OBJ-3 Schemas reduziert Implementierungsrisiko und Doppel-Logik.
 - Vorverarbeitung in `src/lib/obj6-zone-generation.ts` kapselt Mapping/Validierung fuer spaetere Export- oder Batch-Flows.
+
+**Dependencies (Packages)**
+
+- Keine neuen Laufzeit-Pakete zwingend; Reuse des bestehenden Next.js/React-Stacks und der vorhandenen API-Routen.
 
 **Requirements Engineer Input**
 
