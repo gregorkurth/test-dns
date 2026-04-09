@@ -1,0 +1,143 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: dnsconfigurations.dns.fmn.mil
+spec:
+  group: dns.fmn.mil
+  scope: Namespaced
+  names:
+    plural: dnsconfigurations
+    singular: dnsconfiguration
+    kind: DNSConfiguration
+    shortNames:
+      - dnscfg
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - name: Phase
+          type: string
+          jsonPath: .status.phase
+        - name: Revision
+          type: string
+          jsonPath: .status.lastAppliedRevision
+        - name: Updated
+          type: string
+          jsonPath: .status.lastUpdated
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            apiVersion:
+              type: string
+            kind:
+              type: string
+            metadata:
+              type: object
+            spec:
+              type: object
+              required:
+                - zoneName
+              properties:
+                zoneName:
+                  type: string
+                  minLength: 1
+                baseline:
+                  type: object
+                  properties:
+                    repository:
+                      type: string
+                    revision:
+                      type: string
+                    path:
+                      type: string
+                desiredRecords:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                      - type
+                      - value
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      value:
+                        type: string
+                      ttl:
+                        type: integer
+                        format: int32
+                        minimum: 0
+                delivery:
+                  type: object
+                  properties:
+                    apiBaseUrl:
+                      type: string
+                    authSecretRef:
+                      type: string
+                    configurationSet:
+                      type: string
+                rollback:
+                  type: object
+                  properties:
+                    targetRevision:
+                      type: string
+                    reason:
+                      type: string
+                    requestedBy:
+                      type: string
+                mcpIntegration:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                    policyRef:
+                      type: string
+                    serviceLabel:
+                      type: string
+            status:
+              type: object
+              properties:
+                phase:
+                  type: string
+                  enum:
+                    - Pending
+                    - Applied
+                    - Error
+                message:
+                  type: string
+                lastUpdated:
+                  type: string
+                  format: date-time
+                observedGeneration:
+                  type: integer
+                  format: int64
+                lastAppliedRevision:
+                  type: string
+                lastAttemptedRevision:
+                  type: string
+                lastAppliedHash:
+                  type: string
+                history:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      revision:
+                        type: string
+                      action:
+                        type: string
+                      outcome:
+                        type: string
+                      message:
+                        type: string
+                      timestamp:
+                        type: string
+                        format: date-time
+                      triggeredBy:
+                        type: string

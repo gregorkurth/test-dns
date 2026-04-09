@@ -16,6 +16,7 @@ import {
   participantUpdateSchema,
   updateParticipant,
 } from '@/lib/obj3-participants-store'
+import { requireSession } from '@/lib/obj12-auth'
 
 export const dynamic = 'force-dynamic'
 
@@ -32,6 +33,11 @@ export async function GET(request: Request) {
   const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
   if (rateLimited) {
     return rateLimited
+  }
+
+  const authResult = await requireSession(request, 'viewer')
+  if (!authResult.ok) {
+    return authResult.response
   }
 
   try {
@@ -51,6 +57,11 @@ export async function POST(request: Request) {
   const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
   if (rateLimited) {
     return rateLimited
+  }
+
+  const authResult = await requireSession(request, 'operator')
+  if (!authResult.ok) {
+    return authResult.response
   }
 
   try {
@@ -89,6 +100,11 @@ export async function PUT(request: Request) {
   const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
   if (rateLimited) {
     return rateLimited
+  }
+
+  const authResult = await requireSession(request, 'operator')
+  if (!authResult.ok) {
+    return authResult.response
   }
 
   try {
@@ -154,6 +170,11 @@ export async function DELETE(request: Request) {
   const rateLimited = enforceRateLimit(request, { namespace: 'api-v1' })
   if (rateLimited) {
     return rateLimited
+  }
+
+  const authResult = await requireSession(request, 'operator')
+  if (!authResult.ok) {
+    return authResult.response
   }
 
   try {

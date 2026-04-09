@@ -1,7 +1,6 @@
 import { z } from 'zod'
 
 import { isValidFqdn, isValidIpv4 } from '@/lib/obj5-participant-config'
-import { emitSuccessSignal } from '@/lib/obj11-observability'
 
 function isValidIpv6(value: string): boolean {
   const input = value.trim()
@@ -216,18 +215,6 @@ export function generateZoneFile(input: ZoneGenerationInput): ZoneGenerationResu
     recordCount: input.records.length,
     zoneFile: `${lines.join('\n')}\n`,
   }
-
-  void emitSuccessSignal({
-    name: 'dns.zone.generated',
-    operation: 'zones.generate',
-    route: '/api/v1/zones/generate',
-    statusCode: 200,
-    attributes: {
-      zone_name: result.zoneName,
-      record_count: result.recordCount,
-      serial: result.serial,
-    },
-  })
 
   return result
 }

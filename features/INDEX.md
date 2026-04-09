@@ -27,9 +27,9 @@
 | OBJ-10 | Kubernetes Deployment | 5 – Plattform | In Review | [OBJ-10-kubernetes-deployment.md](OBJ-10-kubernetes-deployment.md) | 2026-04-03 |
 | OBJ-11 | Monitoring & Observability (OpenTelemetry) | 5 – Plattform | In Review | [OBJ-11-monitoring-observability.md](OBJ-11-monitoring-observability.md) | 2026-04-03 |
 | OBJ-25 | Helm Charts fuer Kubernetes Deployment | 5 – Plattform | In Progress | [OBJ-25-helm-charts.md](OBJ-25-helm-charts.md) | 2026-04-09 |
-| OBJ-12 | Security & Authentifizierung | 5 – Plattform | Planned | [OBJ-12-security-authentifizierung.md](OBJ-12-security-authentifizierung.md) | 2026-04-03 |
-| OBJ-13 | Kubernetes Operator | 5 – Plattform | Planned | [OBJ-13-kubernetes-operator.md](OBJ-13-kubernetes-operator.md) | 2026-04-03 |
-| OBJ-14 | Release Management | 6 – Produktabschluss | Planned | [OBJ-14-release-management.md](OBJ-14-release-management.md) | 2026-04-03 |
+| OBJ-12 | Security & Authentifizierung | 5 – Plattform | In Review | [OBJ-12-security-authentifizierung.md](OBJ-12-security-authentifizierung.md) | 2026-04-03 |
+| OBJ-13 | Kubernetes Operator | 5 – Plattform | In Review | [OBJ-13-kubernetes-operator.md](OBJ-13-kubernetes-operator.md) | 2026-04-03 |
+| OBJ-14 | Release Management | 6 – Produktabschluss | In Review | [OBJ-14-release-management.md](OBJ-14-release-management.md) | 2026-04-03 |
 | OBJ-15 | Produkt-Website | 6 – Produktabschluss | Planned | [OBJ-15-produkt-website.md](OBJ-15-produkt-website.md) | 2026-04-03 |
 | OBJ-16 | Maturitätsstatus / Reifegradübersicht | 6 – Produktabschluss | Planned | [OBJ-16-maturitaetsstatus.md](OBJ-16-maturitaetsstatus.md) | 2026-04-03 |
 | OBJ-17 | SBOM & Security-Scanning | 6 – Produktabschluss | Planned | [OBJ-17-sbom-security-scanning.md](OBJ-17-sbom-security-scanning.md) | 2026-04-03 |

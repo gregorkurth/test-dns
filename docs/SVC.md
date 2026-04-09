@@ -31,9 +31,9 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 5 – Plattform | P1 | OBJ-10: Kubernetes Deployment | In Progress |
 | 5 – Plattform | P1 | OBJ-11: Monitoring & Observability (OpenTelemetry) | In Progress |
 | 5 – Plattform | P1 | OBJ-25: Helm Charts fuer Kubernetes Deployment | In Progress |
-| 5 – Plattform | P1 | OBJ-12: Security & Authentifizierung | Planned |
-| 5 – Plattform | P2 | OBJ-13: Kubernetes Operator | Planned |
-| 6 – Abschluss | P1 | OBJ-14: Release Management | Planned |
+| 5 – Plattform | P1 | OBJ-12: Security & Authentifizierung | In Review |
+| 5 – Plattform | P2 | OBJ-13: Kubernetes Operator | In Review |
+| 6 – Abschluss | P1 | OBJ-14: Release Management | In Review |
 | 6 – Abschluss | P1 | OBJ-15: Produkt-Website | Planned |
 | 6 – Abschluss | P1 | OBJ-16: Maturitaetsstatus / Reifegraduebersicht | Planned |
 | 6 – Abschluss | P1 | OBJ-17: SBOM & Security-Scanning | Planned |

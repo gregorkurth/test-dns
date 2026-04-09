@@ -18,18 +18,61 @@ const openApiSpec = {
       url: '/api/v1',
     },
   ],
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'OBJ12 Session Token',
+      },
+    },
+  },
   paths: {
+    '/auth/login': {
+      post: {
+        summary: 'Lokale oder OIDC-kompatible Anmeldung',
+        responses: {
+          '200': { description: 'Session-Token erfolgreich ausgestellt.' },
+          '401': { description: 'Authentifizierung fehlgeschlagen.' },
+          '403': { description: 'Anmeldemodus ist deaktiviert.' },
+          '422': { description: 'Ungueltige Authentifizierungsdaten.' },
+        },
+      },
+    },
+    '/auth/session': {
+      get: {
+        summary: 'Aktuelle Session pruefen',
+        security: [{ bearerAuth: [] }],
+        responses: {
+          '200': { description: 'Session ist gueltig.' },
+          '401': { description: 'Token fehlt oder ist ungueltig.' },
+        },
+      },
+    },
+    '/auth/logout': {
+      post: {
+        summary: 'Session beenden',
+        security: [{ bearerAuth: [] }],
+        responses: {
+          '200': { description: 'Logout erfolgreich quittiert.' },
+          '401': { description: 'Token fehlt oder ist ungueltig.' },
+        },
+      },
+    },
     '/capabilities': {
       get: {
         summary: 'Capabilities auflisten',
+        security: [{ bearerAuth: [] }],
         responses: {
           '200': { description: 'Capabilities erfolgreich geladen.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
         },
       },
     },
     '/capabilities/{id}': {
       get: {
         summary: 'Capability-Detail laden',
+        security: [{ bearerAuth: [] }],
         parameters: [
           {
             in: 'path',
@@ -40,6 +83,7 @@ const openApiSpec = {
         ],
         responses: {
           '200': { description: 'Capability erfolgreich geladen.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
           '404': { description: 'Capability nicht gefunden.' },
         },
       },
@@ -47,32 +91,43 @@ const openApiSpec = {
     '/participants': {
       get: {
         summary: 'Participants auflisten',
+        security: [{ bearerAuth: [] }],
         responses: {
           '200': { description: 'Participant-Liste erfolgreich geladen.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
         },
       },
       post: {
         summary: 'Participant erstellen',
+        security: [{ bearerAuth: [] }],
         responses: {
           '201': { description: 'Participant erstellt.' },
           '400': { description: 'Ungueltiger Request-Body.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
+          '403': { description: 'Operator oder Admin erforderlich.' },
           '422': { description: 'Validierungsfehler.' },
         },
       },
       put: {
         summary: 'Participant aktualisieren (id in Query oder Body)',
+        security: [{ bearerAuth: [] }],
         responses: {
           '200': { description: 'Participant aktualisiert.' },
           '400': { description: 'Fehlende oder ungueltige Daten.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
+          '403': { description: 'Operator oder Admin erforderlich.' },
           '404': { description: 'Participant nicht gefunden.' },
           '422': { description: 'Validierungsfehler.' },
         },
       },
       delete: {
         summary: 'Participant loeschen (id in Query oder Body)',
+        security: [{ bearerAuth: [] }],
         responses: {
           '200': { description: 'Participant geloescht.' },
           '400': { description: 'Fehlende oder ungueltige Daten.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
+          '403': { description: 'Operator oder Admin erforderlich.' },
           '404': { description: 'Participant nicht gefunden.' },
         },
       },
@@ -80,23 +135,31 @@ const openApiSpec = {
     '/participants/{id}': {
       get: {
         summary: 'Participant-Detail laden',
+        security: [{ bearerAuth: [] }],
         responses: {
           '200': { description: 'Participant erfolgreich geladen.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
           '404': { description: 'Participant nicht gefunden.' },
         },
       },
       put: {
         summary: 'Participant via ID aktualisieren',
+        security: [{ bearerAuth: [] }],
         responses: {
           '200': { description: 'Participant aktualisiert.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
+          '403': { description: 'Operator oder Admin erforderlich.' },
           '422': { description: 'Validierungsfehler.' },
           '404': { description: 'Participant nicht gefunden.' },
         },
       },
       delete: {
         summary: 'Participant via ID loeschen',
+        security: [{ bearerAuth: [] }],
         responses: {
           '200': { description: 'Participant geloescht.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
+          '403': { description: 'Operator oder Admin erforderlich.' },
           '404': { description: 'Participant nicht gefunden.' },
         },
       },
@@ -104,10 +167,23 @@ const openApiSpec = {
     '/zones/generate': {
       post: {
         summary: 'Zone-File generieren',
+        security: [{ bearerAuth: [] }],
         responses: {
           '200': { description: 'Zone-File erfolgreich erzeugt.' },
           '400': { description: 'Ungueltiger Request-Body.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
+          '403': { description: 'Operator oder Admin erforderlich.' },
           '422': { description: 'Validierungs- oder Generierungsfehler.' },
+        },
+      },
+    },
+    '/operator': {
+      get: {
+        summary: 'Operator-Status und Baseline-/Rollback-Informationen abrufen',
+        security: [{ bearerAuth: [] }],
+        responses: {
+          '200': { description: 'Operator-Status erfolgreich geladen.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
         },
       },
     },
@@ -116,6 +192,41 @@ const openApiSpec = {
         summary: 'Observability-Probe abrufen',
         responses: {
           '200': { description: 'Observability-Probe erfolgreich geladen.' },
+        },
+      },
+    },
+    '/releases': {
+      get: {
+        summary: 'Release-Hinweise und Update-Notices abrufen',
+        parameters: [
+          {
+            in: 'query',
+            name: 'version',
+            required: false,
+            schema: { type: 'string' },
+          },
+          {
+            in: 'query',
+            name: 'channel',
+            required: false,
+            schema: { type: 'string', enum: ['ga', 'beta', 'rc'] },
+          },
+          {
+            in: 'query',
+            name: 'includeDrafts',
+            required: false,
+            schema: { type: 'boolean' },
+          },
+          {
+            in: 'query',
+            name: 'limit',
+            required: false,
+            schema: { type: 'integer', minimum: 1 },
+          },
+        ],
+        responses: {
+          '200': { description: 'Release-Hinweise erfolgreich geladen.' },
+          '404': { description: 'Release-Hinweis nicht gefunden.' },
         },
       },
     },

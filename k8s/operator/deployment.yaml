@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dns-operator-controller-manager
+  namespace: dns-config-system
+  labels:
+    app.kubernetes.io/name: dns-operator
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/part-of: dns-management-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dns-operator
+      app.kubernetes.io/component: controller
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dns-operator
+        app.kubernetes.io/component: controller
+        app.kubernetes.io/part-of: dns-management-service
+    spec:
+      serviceAccountName: dns-operator-controller-manager
+      automountServiceAccountToken: true
+      containers:
+        - name: manager
+          image: ghcr.io/gregorkurth/test-dns-operator:obj13-skeleton
+          imagePullPolicy: IfNotPresent
+          command:
+            - /manager
+          args:
+            - --leader-elect
+          env:
+            - name: DNS_OPERATOR_APP_API_BASE_URL
+              value: http://dns-management-service.dns.svc.cluster.local:3000/api/v1
+            - name: DNS_OPERATOR_BASELINE_REPOSITORY
+              value: ssh://gitea.internal.example/dns/baselines.git
+            - name: DNS_OPERATOR_CHANGE_HISTORY_MODE
+              value: file-example
+          ports:
+            - containerPort: 8080
+              name: metrics
+            - containerPort: 8081
+              name: probes
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: probes
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: probes
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault

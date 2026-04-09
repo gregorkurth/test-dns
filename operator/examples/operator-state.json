@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-04-09T11:30:00Z",
+  "mode": "skeleton",
+  "currentPhase": "Pending",
+  "message": "OBJ-13 provides a real operator scaffold. External Git fetch, durable history persistence and secured API delivery remain follow-up runtime steps.",
+  "lastUpdated": "2026-04-09T11:30:00Z",
+  "baseline": {
+    "repository": "ssh://gitea.internal.example/dns/baselines.git",
+    "revision": "refs/tags/2026.04.0",
+    "path": "services/dns/core",
+    "sourceOfTruth": "Separate Gitea project"
+  },
+  "rollback": {
+    "supported": true,
+    "workflow": "Set spec.rollback.targetRevision and reconcile the controlled revert.",
+    "limitations": [
+      "Durable change log backend is not implemented in this skeleton.",
+      "Rollback target validation is defined in artifacts but still needs runtime enforcement."
+    ]
+  },
+  "mcpIntegration": {
+    "enabled": false,
+    "mode": "optional-secured",
+    "guardrails": [
+      "No direct write path around the CRD.",
+      "Role-based access and policy reference are mandatory before enabling MCP.",
+      "All MCP writes must result in a normal reconcile and change-history event."
+    ]
+  }
+}

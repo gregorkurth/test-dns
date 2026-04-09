@@ -22,6 +22,14 @@ Wenn etwas nur in Confluence steht, gilt es nicht als abgeschlossen.
 - Geprueft von
 - Ergebnis (OK / Nacharbeit)
 
+## Release-Regel
+
+Bei Release-bezogenen Exporten gilt zusaetzlich:
+- Update-Hinweise in `docs/releases/UPDATE-NOTICES.json` zuerst aktualisieren
+- Release-Check (`npm run check:obj14`) vor dem Kopieren ausfuehren
+- Exportstatus im Release-Hinweis pflegen (`pending` oder `completed`)
+- Export-ID aus diesem Log bei abgeschlossenem Release wieder in den Release-Hinweis zuruecktragen
+
 ## Eintragsvorlage
 
 ```markdown
@@ -63,3 +71,20 @@ Wenn etwas nur in Confluence steht, gilt es nicht als abgeschlossen.
 - Geprueft von: Gregor Kurth
 - Ergebnis: OK
 - Notizen: USB-Copy und manueller Confluence-Import fuer alle oben gelisteten Seiten abgeschlossen.
+
+### EXPORT-20260409-OBJ14-TEMPLATE
+
+- Datum: 2026-04-09
+- Anlass: Release
+- Umfang:
+  - docs/releases/UPDATE-NOTICES.json
+  - docs/releases/README.md
+  - docs/arc42/
+  - docs/benutzerhandbuch/
+- Quelle in Git: <tag oder commit>
+- Ziel in Confluence: DNS Service Dokumentation / Release Notes
+- Transport: USB-Stick <Bezeichnung>
+- Durchgefuehrt von: <Name>
+- Geprueft von: <Name>
+- Ergebnis: Nacharbeit
+- Notizen: Vorlage fuer OBJ-14. Nach abgeschlossener Kopie als echter Eintrag uebernehmen und `UPDATE-NOTICES.json` auf `completed` setzen.

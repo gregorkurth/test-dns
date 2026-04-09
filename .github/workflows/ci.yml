@@ -43,6 +43,9 @@ jobs:
       - name: Tests ausfuehren und Nachweis erzeugen
         run: npm run test:report
 
+      - name: Release Preflight (OBJ-14)
+        run: npm run check:obj14
+
       - name: Vitest-Nachweis als Artifact speichern
         uses: actions/upload-artifact@v4
         with:
@@ -268,6 +271,9 @@ jobs:
             echo "Missing Dockerfile"
             exit 1
           fi
+
+      - name: Release Preflight (OBJ-14)
+        run: npm run check:obj14
 
       - name: SBOM erzeugen (Syft)
         uses: anchore/sbom-action@v0

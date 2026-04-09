@@ -1,0 +1,32 @@
+[
+  {
+    "id": "chg-2026-04-09-001",
+    "timestamp": "2026-04-09T11:05:00Z",
+    "configurationName": "mission-core-zone",
+    "revision": "refs/tags/2026.04.0",
+    "action": "Apply",
+    "outcome": "Pending",
+    "message": "Baseline revision resolved and queued for first delivery.",
+    "triggeredBy": "platform-engineer@example.local"
+  },
+  {
+    "id": "chg-2026-04-09-002",
+    "timestamp": "2026-04-09T11:18:00Z",
+    "configurationName": "mission-core-zone",
+    "revision": "refs/tags/2026.04.0",
+    "action": "Apply",
+    "outcome": "Error",
+    "message": "OBJ-3 delivery endpoint not configured yet. Requeue scheduled.",
+    "triggeredBy": "operator"
+  },
+  {
+    "id": "chg-2026-04-09-003",
+    "timestamp": "2026-04-09T11:26:00Z",
+    "configurationName": "mission-core-zone",
+    "revision": "refs/tags/2026.03.5",
+    "action": "Rollback",
+    "outcome": "Planned",
+    "message": "Rollback prepared but waiting for runtime validation of target revision.",
+    "triggeredBy": "mission-ops@example.local"
+  }
+]

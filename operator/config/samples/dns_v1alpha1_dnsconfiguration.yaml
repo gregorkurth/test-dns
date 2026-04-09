@@ -1,0 +1,44 @@
+apiVersion: dns.fmn.mil/v1alpha1
+kind: DNSConfiguration
+metadata:
+  name: mission-core-zone
+  namespace: dns-config-system
+  annotations:
+    dns.fmn.mil/triggered-by: platform-engineer@example.local
+spec:
+  zoneName: core.fmn.local
+  baseline:
+    repository: ssh://gitea.internal.example/dns/baselines.git
+    revision: refs/tags/2026.04.0
+    path: services/dns/core
+  desiredRecords:
+    - name: ns1
+      type: A
+      value: 10.10.0.10
+      ttl: 3600
+    - name: www
+      type: CNAME
+      value: edge-gateway.core.fmn.local.
+      ttl: 300
+  delivery:
+    apiBaseUrl: http://dns-management-service.dns.svc.cluster.local:3000/api/v1
+    authSecretRef: dns-operator-api-token
+    configurationSet: core-fmn
+  mcpIntegration:
+    enabled: false
+    policyRef: dns-mcp-readonly
+    serviceLabel: dns-mcp-bridge
+status:
+  phase: Pending
+  message: Skeleton resource staged for first reconcile.
+  lastUpdated: "2026-04-09T11:00:00Z"
+  observedGeneration: 1
+  lastAppliedRevision: ""
+  lastAttemptedRevision: refs/tags/2026.04.0
+  history:
+    - revision: refs/tags/2026.04.0
+      action: Apply
+      outcome: Pending
+      message: Awaiting operator reconciliation.
+      timestamp: "2026-04-09T11:00:00Z"
+      triggeredBy: platform-engineer@example.local

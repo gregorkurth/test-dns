@@ -1,0 +1,95 @@
+{
+  "service": "DNS Management Service",
+  "sourceOfTruth": "git",
+  "updatedAt": "2026-04-09T10:00:00Z",
+  "releases": [
+    {
+      "version": "v1.0.0-beta.1",
+      "channel": "beta",
+      "status": "planned",
+      "publishedAt": null,
+      "severity": "medium",
+      "title": "Release-Management Baseline mit Update-Hinweisen",
+      "summary": "Der Release-Kandidat fuehrt versionierte Update-Hinweise, einen reproduzierbaren Release-Check und einen dokumentierten Exportpfad fuer Confluence-Kopien ein.",
+      "changes": [
+        "Versionierte Update-Hinweise werden zentral in Git gepflegt.",
+        "Der Release-Check prueft SemVer, OCI-Nachweis-Pfad, Dokumentationsstand und Exportfluss.",
+        "GUI und API koennen denselben Hinweisstand fuer Beta- und Release-Kommunikation verwenden."
+      ],
+      "breakingChanges": [],
+      "artifactChecklist": [
+        "OCI-Image-Referenz mit Digest dokumentiert",
+        "SBOM- und Security-Scan-Nachweise vorhanden",
+        "Doku-Exportpaket fuer arc42 und Benutzerhandbuch vorbereitet",
+        "EXPORT-LOG fuer Confluence-Kopie aktualisiert"
+      ],
+      "artifacts": [
+        {
+          "name": "OCI Container Image",
+          "type": "oci-image",
+          "reference": "ghcr.io/gregorkurth/test-dns:v1.0.0-beta.1",
+          "verification": "Digest, OCI-Media-Type und Cosign-Nachweis vor Publish pruefen"
+        },
+        {
+          "name": "Dokumentationspaket fuer Confluence-Kopie",
+          "type": "documentation-bundle",
+          "reference": "docs/releases/export-package-v1.0.0-beta.1.zip",
+          "verification": "USB-Kopie und EXPORT-LOG-Eintrag vor Release-Abschluss bestaetigen"
+        }
+      ],
+      "documentation": {
+        "exportRequired": true,
+        "exportStatus": "pending",
+        "exportLogId": null,
+        "confluenceTarget": "DNS Service Dokumentation / Release Notes",
+        "copyMechanism": "USB"
+      },
+      "ui": {
+        "showBanner": true,
+        "callToActionLabel": "Release-Hinweise pruefen",
+        "betaFeatures": [
+          "Kubernetes Operator (OBJ-13)",
+          "Release Management Automation (OBJ-14)"
+        ]
+      }
+    },
+    {
+      "version": "v0.9.0",
+      "channel": "ga",
+      "status": "released",
+      "publishedAt": "2026-04-06",
+      "severity": "low",
+      "title": "Dokumentations- und Dashboard-Basisstand",
+      "summary": "Basis-Release fuer Capabilities-, Testing- und Export-Dokumentation als nachvollziehbarer Referenzstand.",
+      "changes": [
+        "Capabilities Dashboard und Test Execution Dashboard sind dokumentiert und verlinkt.",
+        "Export-Log ist als zentraler Nachweis fuer manuelle Confluence-Kopien eingefuehrt."
+      ],
+      "breakingChanges": [],
+      "artifactChecklist": [
+        "Basisdokumentation im Git aktualisiert",
+        "Export-Nachweis fuer Offline-Kopie vorhanden"
+      ],
+      "artifacts": [
+        {
+          "name": "Dokumentationsstand OBJ-4/OBJ-23",
+          "type": "documentation-bundle",
+          "reference": "docs/exports/EXPORT-20260406-01",
+          "verification": "Confluence-Kopie im Export-Log bestaetigt"
+        }
+      ],
+      "documentation": {
+        "exportRequired": true,
+        "exportStatus": "completed",
+        "exportLogId": "EXPORT-20260406-01",
+        "confluenceTarget": "DNS Service Dokumentation / Feature-Abschluss OBJ-4-OBJ-23",
+        "copyMechanism": "USB"
+      },
+      "ui": {
+        "showBanner": false,
+        "callToActionLabel": "Release-Hinweise anzeigen",
+        "betaFeatures": []
+      }
+    }
+  ]
+}

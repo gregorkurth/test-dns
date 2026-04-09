@@ -27,6 +27,11 @@ kontrolliert installiert werden kann.
    - Deployment-Artefakte müssen deklarativ und versioniert vorliegen.
    - Fuer standardisierte Installation muss mindestens ein versioniertes Helm Chart bereitgestellt werden (Kustomize optional zusaetzlich).
    - Die App muss in eine standardisierte Plattform-/Namespace-Struktur integrierbar sein.
+   - Persistente Daten muessen ueber Kubernetes-Storage deklarativ abbildbar sein (Claims, Klassen, Policies).
+   - Falls in der Zielplattform Rook-Ceph vorhanden ist, muss die App per versionierter Konfiguration mit folgenden Storage-Profilen betreibbar sein:
+     - Block-Storage (z. B. Ceph RBD)
+     - File-Storage (z. B. CephFS)
+     - S3-kompatibles Object-Storage (z. B. Ceph RGW)
 
 3. **GitOps und deklarative Installation**
    - Die Installation soll GitOps-fähig sein.
@@ -228,6 +233,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Fuer Container-Images muss die Basis-Image-Herkunft nachvollziehbar dokumentiert sein (Image-Name, Digest, Hardening-Stand).
 - Container-Images und Artefakt-Distribution muessen OCI-konform sein; nicht-OCI-konforme Image-Layouts sind fuer Release/Publish nicht zulaessig.
 - Es duerfen nur freigegebene gehaertete Basis-Images verwendet werden; generische Full-OS-Images ohne Hardening-Freigabe sind nicht zulaessig.
+- Falls Rook-Ceph in der Zielplattform vorhanden ist, muessen benoetigte Storage-Klassen und Claims fuer Block/File/S3-Profil deklarativ konfigurierbar sein (z. B. via Helm Values).
 
 ### 13. Zarf-Paket / Offline-Weitergabe
 - Jede App muss als **Zarf-Paket** exportierbar sein.
@@ -342,6 +348,7 @@ Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle
 
 - [ ] Service ist eigenständig aus dem Repository heraus deploybar
 - [ ] Helm Chart fuer die Applikation ist versioniert vorhanden und renderbar (`helm lint`, `helm template`)
+- [ ] Storage-Profil ist dokumentiert; bei vorhandenem Rook-Ceph sind Block (RBD), File (CephFS) oder S3 (RGW) konfigurierbar
 - [ ] alle Kernfunktionen sind erfolgreich getestet
 - [ ] Release-Version ist festgelegt und dokumentiert
 - [ ] finales Release-Artefakt wurde tatsächlich erzeugt und geprüft
@@ -398,6 +405,7 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Release- und Konfigurationsprojekt als getrennte Git-Projekte modelliert sind
 - [ ] Kubernetes-Deployment vorhanden ist
 - [ ] Helm Chart als Standard-Deploymentpfad vorhanden und pruefbar ist
+- [ ] Storage-Konfiguration ist vorgesehen; bei vorhandenem Rook-Ceph sind Block-, File- oder S3-Profile ueber versionierte Konfiguration waehlbar
 - [ ] API implementiert und dokumentiert ist
 - [ ] MCP-Adapter fuer AI-Agenten umgesetzt ist (wenn AI-Agent-Nutzung vorgesehen ist)
 - [ ] Web GUI vorhanden ist

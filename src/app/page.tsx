@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import { ReleaseUpdateNotice } from '@/components/release-update-notice'
+
 const modules = [
   {
     href: '/zone-generator',
@@ -40,12 +42,19 @@ const modules = [
     title: 'OBJ-3 API Swagger',
     description: 'API-Dokumentation fuer die REST-Endpunkte anzeigen.',
   },
+  {
+    href: '/api/v1/releases',
+    title: 'OBJ-14 Release Notices API',
+    description: 'Versionierte Update-Hinweise und Exportstatus als JSON abrufen.',
+  },
 ]
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-8 md:px-8">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6">
+        <ReleaseUpdateNotice />
+
         <header className="rounded-xl border border-slate-200 bg-white p-6">
           <h1 className="text-2xl font-semibold text-slate-900">
             DNS Management Service Workspace

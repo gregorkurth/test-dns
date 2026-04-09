@@ -1,6 +1,6 @@
 'use client'
 
-import { startTransition, useEffect, useMemo, useRef, useState } from 'react'
+import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useFieldArray, useForm, useWatch } from 'react-hook-form'
@@ -32,6 +32,7 @@ import {
   type ParticipantDraftEnvelope,
   type ParticipantFormValues,
 } from '@/lib/obj5-participant-config'
+import { useObj12Auth, withObj12Authorization } from '@/lib/obj12-client-auth'
 const EMPTY_SELECT_VALUE = '__none'
 
 interface ApiErrorShape {
@@ -105,6 +106,7 @@ function writeDraftToStorage(envelope: ParticipantDraftEnvelope): void {
 async function apiRequest<TData>(
   path: string,
   init?: RequestInit,
+  accessToken?: string,
 ): Promise<
   | { ok: true; data: TData }
   | { ok: false; message: string }
@@ -112,9 +114,7 @@ async function apiRequest<TData>(
   try {
     const response = await fetch(path, {
       ...init,
-      headers: {
-        ...(init?.headers ?? {}),
-      },
+      headers: withObj12Authorization(init?.headers, accessToken ?? ''),
       cache: 'no-store',
     })
 
@@ -150,6 +150,20 @@ async function apiRequest<TData>(
 }
 
 export function ParticipantConfigClient() {
+  const {
+    accessToken,
+    authMode,
+    currentSession,
+    errorMessage: authErrorMessage,
+    exchangeOidcToken,
+    expiresAt,
+    hydrated,
+    loading: authLoading,
+    loginLocal,
+    logout,
+    refreshSession,
+    setTokenManually,
+  } = useObj12Auth()
   const form = useForm<ParticipantFormValues>({
     resolver: zodResolver(participantFormSchema),
     defaultValues: createDefaultParticipantFormValues(),
@@ -199,6 +213,9 @@ export function ParticipantConfigClient() {
   const [hasDraft, setHasDraft] = useState(false)
   const [lastDraftSavedAt, setLastDraftSavedAt] = useState<string | null>(null)
   const [draftSyncReady, setDraftSyncReady] = useState(false)
+  const [authUsername, setAuthUsername] = useState('operator')
+  const [authPassword, setAuthPassword] = useState('operator-demo')
+  const [authTokenInput, setAuthTokenInput] = useState('')
 
   const draftDebounceRef = useRef<number | null>(null)
 
@@ -219,11 +236,13 @@ export function ParticipantConfigClient() {
     return <Badge variant="outline">Entwurf</Badge>
   }, [syncState])
 
-  async function loadParticipants(preferredId?: string): Promise<void> {
+  const loadParticipants = useCallback(async (preferredId?: string): Promise<void> => {
     setLoadingParticipants(true)
 
     const response = await apiRequest<Obj3ParticipantRecord[]>(
       '/api/v1/participants',
+      undefined,
+      accessToken,
     )
     setLoadingParticipants(false)
 
@@ -246,7 +265,7 @@ export function ParticipantConfigClient() {
         setSelectedParticipantId(preferredId)
       }
     })
-  }
+  }, [accessToken])
 
   async function loadParticipantById(id: string): Promise<void> {
     if (!id) {
@@ -256,6 +275,8 @@ export function ParticipantConfigClient() {
     setLoadingParticipant(true)
     const response = await apiRequest<Obj3ParticipantRecord>(
       `/api/v1/participants/${encodeURIComponent(id)}`,
+      undefined,
+      accessToken,
     )
     setLoadingParticipant(false)
 
@@ -348,7 +369,7 @@ export function ParticipantConfigClient() {
         'content-type': 'application/json',
       },
       body: JSON.stringify(payload),
-    })
+    }, accessToken)
 
     if (!response.ok) {
       setSyncState('error')
@@ -369,11 +390,26 @@ export function ParticipantConfigClient() {
   })
 
   useEffect(() => {
+    setAuthTokenInput(accessToken)
+  }, [accessToken])
+
+  useEffect(() => {
+    if (!hydrated) {
+      return
+    }
+
+    if (!accessToken) {
+      setParticipants([])
+      setSyncState('idle')
+      setSyncMessage('Bitte zuerst anmelden oder ein Bearer-Token hinterlegen.')
+      return
+    }
+
     loadParticipants().catch(() => {
       setSyncState('error')
       setSyncMessage('Participant-Liste konnte nicht geladen werden.')
     })
-  }, [])
+  }, [accessToken, hydrated, loadParticipants])
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -432,6 +468,144 @@ export function ParticipantConfigClient() {
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-8 md:px-8">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6">
+        <Card className="border-amber-200 bg-amber-50/60">
+          <CardHeader>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <CardTitle className="text-xl">OBJ-12 Sicherheitskontext</CardTitle>
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="outline">Modus: {authMode}</Badge>
+                <Badge variant={currentSession ? 'secondary' : 'outline'}>
+                  {currentSession
+                    ? `${currentSession.role} · ${currentSession.provider}`
+                    : 'Nicht angemeldet'}
+                </Badge>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="grid gap-4 lg:grid-cols-2">
+            <div className="space-y-3">
+              <div className="grid gap-2 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="obj12-username">Benutzername</Label>
+                  <Input
+                    id="obj12-username"
+                    value={authUsername}
+                    onChange={(event) => setAuthUsername(event.target.value)}
+                    placeholder="operator"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="obj12-password">Passwort</Label>
+                  <Input
+                    id="obj12-password"
+                    type="password"
+                    value={authPassword}
+                    onChange={(event) => setAuthPassword(event.target.value)}
+                    placeholder="operator-demo"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  type="button"
+                  disabled={authLoading}
+                  onClick={() => {
+                    loginLocal(authUsername, authPassword).then((success) => {
+                      if (success) {
+                        setSyncMessage('Lokale Session erfolgreich geladen.')
+                      }
+                    })
+                  }}
+                >
+                  Lokal anmelden
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  disabled={authLoading || !accessToken}
+                  onClick={() => {
+                    refreshSession().then((success) => {
+                      if (success) {
+                        setSyncMessage('Session erfolgreich geprueft.')
+                      }
+                    })
+                  }}
+                >
+                  Session pruefen
+                </Button>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  disabled={authLoading || !accessToken}
+                  onClick={() => {
+                    logout().then(() => {
+                      setSyncMessage('Session lokal entfernt.')
+                    })
+                  }}
+                >
+                  Abmelden
+                </Button>
+              </div>
+              <p className="text-xs text-slate-600">
+                Demo-Zugaenge ohne Zusatzinfrastruktur: `viewer/viewer-demo`,
+                `operator/operator-demo`, `admin/admin-demo`.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <div className="space-y-2">
+                <Label htmlFor="obj12-token">Bearer-Token oder OIDC-Token</Label>
+                <Textarea
+                  id="obj12-token"
+                  value={authTokenInput}
+                  onChange={(event) => setAuthTokenInput(event.target.value)}
+                  placeholder="Token einfuegen oder via Login erzeugen"
+                  rows={4}
+                />
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  disabled={authLoading || !authTokenInput.trim()}
+                  onClick={() => {
+                    setTokenManually(authTokenInput)
+                    setSyncMessage('Token lokal gespeichert. Bitte Session pruefen.')
+                  }}
+                >
+                  Token speichern
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  disabled={authLoading || !authTokenInput.trim()}
+                  onClick={() => {
+                    exchangeOidcToken(authTokenInput).then((success) => {
+                      if (success) {
+                        setSyncMessage('OIDC-kompatibles Token uebernommen.')
+                      }
+                    })
+                  }}
+                >
+                  OIDC-Token tauschen
+                </Button>
+              </div>
+              <p className="text-xs text-slate-600">
+                Aktive Session:{' '}
+                {currentSession
+                  ? `${currentSession.displayName} bis ${formatDateTime(expiresAt)}`
+                  : 'keine'}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {authErrorMessage ? (
+          <Alert variant="destructive">
+            <AlertTitle>Authentifizierung</AlertTitle>
+            <AlertDescription>{authErrorMessage}</AlertDescription>
+          </Alert>
+        ) : null}
+
         <Card className="border-slate-200">
           <CardHeader className="space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
