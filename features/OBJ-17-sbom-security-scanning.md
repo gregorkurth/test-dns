@@ -1,61 +1,146 @@
 # OBJ-17: SBOM & Security-Scanning
 
-## Status: Planned
+## Status: In Review
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-03
+**Last Updated:** 2026-04-09
 
 ## Dependencies
-- OBJ-1: CI/CD Pipeline (Pipeline erzeugt SBOM und führt Security-Scans durch)
-- OBJ-14: Release Management (Release enthält SBOM als Pflichtbestandteil)
-- OBJ-18: Artefakt-Registry (Security-Ergebnisse werden in Harbor/Nexus archiviert)
+- OBJ-1: CI/CD Pipeline (Pipeline erzeugt SBOM und fuehrt Security-Scans durch)
+- OBJ-14: Release Management (Release enthaelt Security-Nachweise als Pflichtbestandteil)
+- OBJ-22: Release-Artefaktpruefung / Publish-Gate (Security-Gate entscheidet ueber Freigabe)
+- OBJ-18: Artefakt-Registry (Security-Artefakte werden in GHCR/Harbor/Nexus archiviert)
+- OBJ-19: Zarf-Paket / Offline-Weitergabe (Offline-Scanner-Datenbank wird transportiert)
+- OBJ-16: Maturitaetsstatus / Reifegraduebersicht (Security-Status wird sichtbar gemacht)
 
 ## User Stories
-- Als Security-Verantwortlicher möchte ich für jede releasefähige Version eine SBOM vorliegen haben, damit ich die Softwareabhängigkeiten vollständig kenne und nachvollziehen kann.
-- Als Security-Verantwortlicher möchte ich, dass automatisch Security-Scans auf Code-, Dependency-, Container- und Konfigurations-Ebene durchgeführt werden, damit Schwachstellen frühzeitig erkannt werden.
-- Als Security-Verantwortlicher möchte ich, dass kritische Security-Findings vor einer Freigabe bewertet und dokumentiert werden, damit keine ungeklärten Risiken in Produktion gelangen.
-- Als Auditor möchte ich Security-Ergebnisse versionsbezogen archiviert finden, damit ich für jedes Release nachvollziehen kann, welche Scans durchgeführt wurden und was ihre Ergebnisse waren.
-- Als Platform Engineer möchte ich SBOM und Security-Ergebnisse als Bestandteil der Übergabe- und Freigabeunterlagen erhalten, damit ich die App in der Zielumgebung ohne offene Sicherheitsfragen installieren kann.
-- Als Entwickler möchte ich bei jedem Build sofortiges Feedback zu bekannten Schwachstellen erhalten, damit ich Probleme noch vor dem Release beheben kann.
+- Als Security-Verantwortlicher moechte ich pro releasefaehiger Version eine vollstaendige SBOM sehen, damit Abhaengigkeiten transparent und revisionssicher nachvollziehbar sind.
+- Als Security-Verantwortlicher moechte ich, dass SAST-, SCA-, Container- und Konfigurations-Scans standardisiert pro Build/Release laufen, damit Risiken frueh erkannt werden.
+- Als Release Manager moechte ich einen klaren Security-Gate-Entscheid (pass/fail/accepted-risk), damit Releases nur mit dokumentierter Risikolage freigegeben werden.
+- Als Auditor moechte ich versionsbezogene Security-Nachweise inklusive Scan-Metadaten und Entscheidungsprotokoll einsehen, damit Compliance-Pruefungen ohne Medienbruch moeglich sind.
+- Als Plattform-Team moechte ich dieselbe Security-Pruefung online und offline fahren koennen, damit airgapped Releases gleichwertig abgesichert sind.
+- Als Betreiber moechte ich Security-Artefakte in einer OCI-faehigen Registry (GHCR oder internes Pendant) finden, damit Betrieb und Incident-Analyse konsistent bleiben.
+- Als Produktverantwortlicher moechte ich den Security-Reifegrad im Dashboard sehen, damit der Auslieferungsstatus fuer Nicht-Entwickler transparent bleibt.
 
 ## Acceptance Criteria
-- [ ] SBOM wird bei jedem Release-Build erzeugt (via `syft`) im Format CycloneDX oder SPDX
-- [ ] SBOM umfasst alle direkten und transitiven Abhängigkeiten (Frontend, Backend, Basis-Images)
-- [ ] SBOM wird dem Release als Anhang zugeordnet (OBJ-14) und in der Artefakt-Registry archiviert (OBJ-18)
-- [ ] SAST-Scan (Code-Ebene via `semgrep`) läuft bei jedem CI-Build; Ergebnisse im SARIF-Format
-- [ ] SCA-Scan (Dependency-Ebene via `npm audit` / `trivy fs`) läuft bei jedem CI-Build
-- [ ] Container-Image-Scan (CVE via `trivy image`) läuft bei Release-Builds
-- [ ] Container-Image-Scan umfasst Runtime-Base-Image (inkl. Digest) und prueft freigegebenes gehaertetes Minimal-Base
-- [ ] Konfigurations-Scan (Misconfiguration via `trivy config`) läuft bei Release-Builds auf K8s-Manifesten und Helm Charts
-- [ ] Kritische Findings (CVSS ≥ 9.0) blockieren automatisch das Release bis zur dokumentierten Accept/Fix-Entscheidung
-- [ ] Security-Ergebnisse werden versionsbezogen archiviert (als Release-Anhang im JSON- oder SARIF-Format)
-- [ ] SBOM und Security-Ergebnisse sind Bestandteil der Übergabe- und Freigabeunterlagen für jede Auslieferung
-- [ ] Scan-Konfigurationen liegen im Repository (`.trivy.yaml`, `.semgrep.yaml`) und sind versioniert
-- [ ] Security-Status ist im Maturitätsstatus (OBJ-16) sichtbar: SBOM vorhanden, Scans bestanden, kritische Findings offen
+- [ ] Pro Release Candidate und finalem Release wird eine SBOM erstellt und versioniert abgelegt.
+- [ ] Die SBOM umfasst direkte und transitive Abhaengigkeiten aus Application-Layern und Runtime-Base-Image.
+- [ ] Die SBOM wird in mindestens einem Standardformat (CycloneDX oder SPDX) bereitgestellt.
+- [ ] SAST-Scans sind fuer Build-Pipelines verpflichtend und liefern maschinenlesbare Ergebnisse.
+- [ ] SCA-Scans sind fuer Build-Pipelines verpflichtend und erfassen bekannte Paket-Schwachstellen.
+- [ ] Container-Scans pruefen das finale OCI-Image auf Digest-Basis vor Release-Freigabe.
+- [ ] Konfigurationsscans pruefen Kubernetes-Manifeste und Helm Charts vor Release-Freigabe.
+- [ ] Kritische Findings blockieren den Publish-Gate (OBJ-22), bis eine dokumentierte Fix- oder Accept-Entscheidung vorliegt.
+- [ ] High-Findings erfordern eine dokumentierte Risikoentscheidung mit Verfallsdatum und Owner.
+- [ ] Security-Artefakte werden pro Version als Release-Anhang und in einer OCI-faehigen Registry archiviert (GHCR oder internes Pendant).
+- [ ] Offline-Betrieb ist moeglich: Ein Offline-Scanner-DB-Snapshot ist fuer airgapped Releases verfuegbar.
+- [ ] Der Gate-Entscheid enthaelt den DB-Stand (Zeitpunkt/Version), damit die Aussagekraft der Scans nachvollziehbar bleibt.
+- [ ] Security-Ergebnisse sind im Maturitaetsstatus (OBJ-16) sichtbar: SBOM vorhanden, Scan-Status, offene kritische Findings, Gate-Status.
+- [ ] Fuer jedes Release gibt es eine eindeutige Verknuepfung zwischen Version, Scan-Bundle und Freigabeentscheid.
 
 ## Edge Cases
-- Was wenn ein Security-Scan ein kritisches Finding meldet? → Release wird geblockt; Finding muss mit Accept/Fix-Entscheid dokumentiert werden bevor Release fortgesetzt werden kann
-- Was wenn die SBOM unvollständig ist (Transitiv-Abhängigkeiten fehlen)? → syft-Konfiguration mit vollständigem Scan-Scope prüfen; SBOM-Vollständigkeit ist Teil des Release-Review-Kriteriums
-- Was wenn trivy-Datenbanken in einer airgapped Umgebung nicht aktualisierbar sind? → Offline-DB-Update via Zarf-Paket (OBJ-19) – trivy-DB als Bestandteil ins Paket einschliessen
-- Was wenn ein bekanntes False-Positive immer wieder gemeldet wird? → Suppression-File (`.trivyignore`) mit dokumentiertem Grund; liegt im Repository
-- Was wenn semgrep-Regeln zu viele False-Positives erzeugen? → Regel-Set konfigurieren; eigene `.semgrep-ignore`-Datei mit Begründungen
-- Was wenn kein Release-Build gestartet wurde? → SBOM-Status zeigt "Nicht verfügbar"; kein Fehler in der App
+- Was passiert bei kritischem Finding kurz vor Release? -> Release bleibt gesperrt, bis Fix oder formale Risikoakzeptanz dokumentiert ist.
+- Was passiert, wenn die SBOM unvollstaendig wirkt? -> Gate bewertet den Nachweis als nicht bestanden und fordert erneute Erzeugung.
+- Was passiert in airgapped Umgebungen ohne aktuelle Online-Feeds? -> Offline-DB-Snapshot wird genutzt und im Report als Datenbasis ausgewiesen.
+- Was passiert bei veraltetem Offline-DB-Snapshot? -> Gate markiert Ergebnis als eingeschraenkt oder fail gemaess Security-Policy.
+- Was passiert bei wiederkehrenden False Positives? -> Begruendete Ausnahme wird versionsbezogen dokumentiert und periodisch erneut geprueft.
+- Was passiert bei Registry-Ausfall? -> Release darf nicht als vollstaendig markiert werden, solange Security-Artefakte nicht archiviert sind.
+- Was passiert bei mehreren Ziel-Registries (GHCR + intern)? -> Ein primarer Nachweis reicht fuer Gate-Pass, Spiegelung wird separat nachverfolgt.
+- Was passiert bei Nicht-Release-Builds? -> Ergebnisse werden als Vorab-Feedback angezeigt, blockieren aber keinen offiziellen Release ohne Gate-Lauf.
 
 ## Technical Requirements
-- SBOM-Tool: `syft` (Anchore); Format: CycloneDX 1.4+ oder SPDX 2.3+
-- SAST: `semgrep` mit Community-Regelset (owasp-top-ten, security-audit)
-- SCA: `trivy fs` (Filesystem-Scan) + `npm audit`
-- Container-CVE: `trivy image` (gegen finales Container-Image)
-- Konfigurationsscan: `trivy config` (Kubernetes-Manifeste, Helm Charts)
-- Ergebnisformat: SARIF (für GitHub/GitLab Security-Integration) und JSON (für Archivierung)
-- Archivierung: Release-Anhang in GitLab/GitHub Releases + Nexus/Harbor (OBJ-18)
-- Scan-Konfigurationen: `.trivy.yaml`, `.trivyignore`, `.semgrep.yaml` im Repository-Root
-- Offline-Betrieb: trivy-Offline-Datenbank als Bestandteil des Zarf-Pakets (OBJ-19)
+- Die Loesung arbeitet mit OCI-konformen Images und Digest-basierter Nachweisfuehrung.
+- SBOM-Nachweise werden standardisiert als CycloneDX oder SPDX pro Version bereitgestellt.
+- Security-Scans decken Code, Dependencies, Container und Deployment-Konfiguration ab.
+- Security-Ergebnisse sind maschinenlesbar und revisionssicher archivierbar.
+- Release-Freigabe ist an einen formalen Security-Gate gekoppelt (OBJ-22).
+- Security-Artefakte werden in Release-Unterlagen und in OCI-Registry-Storage (GHCR/Harbor/Nexus) abgelegt.
+- Offline-Scanning wird ueber einen versionierten Trivy-DB-Snapshot unterstuetzt, der mit dem Release transportiert werden kann.
+- Ausnahmeentscheidungen (Accept Risk) benoetigen Owner, Begruendung und Verfallsdatum.
+- Security-Status wird in der Reifegradsicht (OBJ-16) sichtbar und fuer Management auswertbar.
 
 ---
 <!-- Sections below are added by subsequent skills -->
 
 ## Tech Design (Solution Architect)
-_To be added by /architecture_
+### Scope
+**In Scope**
+- Einheitlicher Security-Nachweis pro Release: SBOM, Scan-Ergebnisse, Gate-Entscheid.
+- Verbindlicher Security-Gate fuer Release-Freigabe in Zusammenspiel mit OBJ-14 und OBJ-22.
+- Online- und Offline-faehiger Scan-Prozess inklusive Trivy-DB-Snapshot fuer airgapped Nutzung.
+- Registry-Ablage der Security-Artefakte (GHCR oder interne OCI-Registry).
+- Management-sichtbarer Security-Status fuer OBJ-16.
+
+**Out of Scope**
+- Laufzeit-Policy-Enforcement im Cluster (separate Features fuer OPA/Cilium/Tetragon).
+- Vollstaendige Incident-Response-Automation.
+- Ersatz des gesamten CI/CD-Frameworks.
+
+### Visual Tree
+```text
+Release Security Flow (OBJ-17)
++-- Input Layer
+|   +-- Source Snapshot (Version/Commit)
+|   +-- Container Image (OCI Digest)
+|   +-- Deployment Config (Helm/K8s)
+|   +-- Scan Policy Profile (Severity/Gate Rules)
++-- Analysis Layer
+|   +-- SBOM Generation
+|   +-- SAST Scan
+|   +-- Dependency Scan
+|   +-- Container Scan
+|   +-- Config Scan
++-- Decision Layer
+|   +-- Findings Aggregation
+|   +-- Exception Validation (Accept Risk)
+|   +-- Release Gate Decision (Pass/Fail/Conditional)
++-- Evidence Layer
+|   +-- Release Attachments (Scan Bundle)
+|   +-- OCI Registry Archive (GHCR/Internal)
+|   +-- Export/Trace Link for Audit
++-- Visibility Layer
+    +-- Maturitaetsstatus (OBJ-16)
+    +-- Release View (OBJ-14)
+```
+
+### Data Model (plain language)
+- **Release Security Profile:** Definiert, welche Scans fuer einen Release-Typ verpflichtend sind.
+- **SBOM Artifact:** Enthaltene Abhaengigkeiten, Erstellungszeitpunkt, Quelle, zugeordnete Version.
+- **Scan Run:** Einzelner Prueflauf mit Typ (SAST/SCA/Container/Config), Ergebnisstatus und Zeitstempel.
+- **Finding Summary:** Aggregierte Anzahl Findings pro Severity und Scan-Typ.
+- **Exception Record:** Dokumentierte Risikoakzeptanz mit Begruendung, Owner und Ablaufdatum.
+- **Gate Decision Record:** Finale Freigabeentscheidung inkl. Verweis auf alle Nachweise.
+- **Offline DB Snapshot Record:** Herkunft, Versionsstand und Alter der verwendeten Offline-Datenbank.
+
+### Technical Decisions
+- **Ein Security-Bundle pro Release:** Erhoeht Auditierbarkeit und vereinfacht Release-Freigaben fuer Fach- und Betriebsrollen.
+- **Digest-basierte Container-Pruefung:** Verhindert, dass ein anderes Image als das gepruefte Image ausgerollt wird.
+- **Gate nach Severity und Ausnahmeprozess:** Schafft klare, wiederholbare Regeln statt Ad-hoc-Entscheidungen.
+- **Duale Ablage (Release + OCI-Registry):** Reduziert Risiko von Nachweisverlust und unterstuetzt Offline-Importwege.
+- **Offline-First-Unterstuetzung:** Airgapped Betriebsmodell bleibt ohne Sicherheitsluecke nutzbar.
+- **Management-Transparenz in OBJ-16:** Security-Status wird nicht nur technisch, sondern auch steuerbar sichtbar.
+
+### Dependencies
+- **Prozessabhaengigkeiten:** OBJ-1 (CI), OBJ-14 (Release-Steuerung), OBJ-22 (Publish-Gate), OBJ-18 (Registry), OBJ-19 (Offline-Transport), OBJ-16 (Statussicht).
+- **Werkzeugabhaengigkeiten:** Syft (SBOM), Trivy (SCA/Container/Config), Semgrep (SAST), npm audit (Node-Dependency-Pruefung).
+- **Ablageabhaengigkeiten:** Git Release-Artefakte und OCI-Registry (GHCR oder internes Pendant wie Harbor/Nexus).
+
+### QA Readiness
+- **Abnahmekriterium 1:** Fuer ein Test-Release liegen SBOM und alle verpflichtenden Scan-Reports vor.
+- **Abnahmekriterium 2:** Ein absichtlich provoziertes kritisches Finding blockiert den Gate nachweisbar.
+- **Abnahmekriterium 3:** Ein dokumentierter Accept-Risk-Fall wird mit Ablaufdatum und Owner korrekt dargestellt.
+- **Abnahmekriterium 4:** Offline-Scan mit bereitgestelltem DB-Snapshot liefert reproduzierbares Ergebnis.
+- **Abnahmekriterium 5:** Security-Status erscheint in der Maturitaetssicht inklusive Gate-Status.
+- **Abnahmekriterium 6:** Audit-Trace von Release-Version zu Security-Bundle ist ohne Medienbruch nachvollziehbar.
+
+## Implementation Update (Backend + Frontend)
+- **Datum:** 2026-04-10
+- **Backend/API:** OBJ-17 Loader in `src/lib/obj17-security-scanning.ts` umgesetzt und als API unter `/api/v1/security/scans` bereitgestellt (Auth-Schutz `viewer+`, Filter `version/channel/limit`).
+- **Artefaktstruktur:** Versionierte Security-Bundles als Source-of-Truth in `docs/releases/SECURITY-SCAN-BUNDLES.json` eingefuehrt.
+- **Frontend/GUI:** Management-Lesesicht unter `/security-posture` umgesetzt (`src/app/security-posture/page.tsx`, `src/components/obj17-security-overview.tsx`) mit SBOM-, Scan-, Gate- und Offline-Status.
+- **Legacy-Cleanup:** Legacy-Pfad (`/security`, `/api/v1/security`, `security-artifacts/INDEX.json`) wurde entfernt; Primaerpfad ist ausschliesslich `/security-posture` und `/api/v1/security/scans`.
+- **Checks:** Repro-Check `npm run check:obj17` in `scripts/check-obj17-security-scanning.mjs` erstellt.
+- **CI:** `check:obj17` in `.github/workflows/ci.yml` in Quality- und Release-Gate-Lauf integriert.
+- **Integration OBJ-16:** Security-Kennzahlen werden in der Maturity-Sicht aus dem OBJ-17 Loader referenziert.
 
 ## QA Test Results
 _To be added by /qa_

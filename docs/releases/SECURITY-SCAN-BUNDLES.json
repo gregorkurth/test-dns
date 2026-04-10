@@ -1,0 +1,109 @@
+{
+  "service": "DNS Management Service",
+  "sourceOfTruth": "git",
+  "updatedAt": "2026-04-09T18:30:00Z",
+  "bundles": [
+    {
+      "version": "v1.0.0-beta.1",
+      "channel": "beta",
+      "generatedAt": "2026-04-09T18:20:00Z",
+      "sbom": {
+        "available": true,
+        "format": "spdx-json",
+        "path": "artifacts/security/v1.0.0-beta.1/sbom.spdx.json"
+      },
+      "scans": {
+        "sast": {
+          "status": "passed",
+          "tool": "semgrep",
+          "reportPath": "artifacts/security/v1.0.0-beta.1/semgrep.sarif"
+        },
+        "sca": {
+          "status": "passed",
+          "tool": "npm-audit",
+          "reportPath": "artifacts/security/v1.0.0-beta.1/npm-audit.json"
+        },
+        "container": {
+          "status": "passed",
+          "tool": "trivy image",
+          "reportPath": "artifacts/security/v1.0.0-beta.1/trivy-image.json"
+        },
+        "config": {
+          "status": "passed",
+          "tool": "trivy config",
+          "reportPath": "artifacts/security/v1.0.0-beta.1/trivy-config.json"
+        }
+      },
+      "findings": {
+        "criticalOpen": 0,
+        "highOpen": 2,
+        "highAcceptedRisk": 1
+      },
+      "gate": {
+        "status": "accepted-risk",
+        "decisionRef": "docs/security/policy-exceptions.md",
+        "owner": "Security Review Board",
+        "acceptedRiskExpiresAt": "2026-05-31",
+        "dbSnapshotVersion": "trivy-db-2026-04-09",
+        "dbSnapshotUpdatedAt": "2026-04-09T08:00:00Z"
+      },
+      "evidence": {
+        "releaseAttachment": true,
+        "ociRegistryReference": "ghcr.io/gregorkurth/test-dns-security-bundle:v1.0.0-beta.1",
+        "offlineSnapshotAvailable": true,
+        "offlineSnapshotPath": "artifacts/security/offline/trivy-db-2026-04-09.tar.zst"
+      }
+    },
+    {
+      "version": "v0.9.0",
+      "channel": "ga",
+      "generatedAt": "2026-04-06T09:30:00Z",
+      "sbom": {
+        "available": true,
+        "format": "spdx-json",
+        "path": "artifacts/security/v0.9.0/sbom.spdx.json"
+      },
+      "scans": {
+        "sast": {
+          "status": "passed",
+          "tool": "semgrep",
+          "reportPath": "artifacts/security/v0.9.0/semgrep.sarif"
+        },
+        "sca": {
+          "status": "passed",
+          "tool": "npm-audit",
+          "reportPath": "artifacts/security/v0.9.0/npm-audit.json"
+        },
+        "container": {
+          "status": "passed",
+          "tool": "trivy image",
+          "reportPath": "artifacts/security/v0.9.0/trivy-image.json"
+        },
+        "config": {
+          "status": "passed",
+          "tool": "trivy config",
+          "reportPath": "artifacts/security/v0.9.0/trivy-config.json"
+        }
+      },
+      "findings": {
+        "criticalOpen": 0,
+        "highOpen": 0,
+        "highAcceptedRisk": 0
+      },
+      "gate": {
+        "status": "pass",
+        "decisionRef": "docs/releases/README.md",
+        "owner": "Release Manager",
+        "acceptedRiskExpiresAt": null,
+        "dbSnapshotVersion": "trivy-db-2026-04-06",
+        "dbSnapshotUpdatedAt": "2026-04-06T07:00:00Z"
+      },
+      "evidence": {
+        "releaseAttachment": true,
+        "ociRegistryReference": "ghcr.io/gregorkurth/test-dns-security-bundle:v0.9.0",
+        "offlineSnapshotAvailable": true,
+        "offlineSnapshotPath": "artifacts/security/offline/trivy-db-2026-04-06.tar.zst"
+      }
+    }
+  ]
+}

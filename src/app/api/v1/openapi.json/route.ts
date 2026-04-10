@@ -187,6 +187,14 @@ const openApiSpec = {
         },
       },
     },
+    '/product-website': {
+      get: {
+        summary: 'Produkt-Website-Daten fuer Startseite und Management-Sicht laden',
+        responses: {
+          '200': { description: 'Produkt-Website-Daten erfolgreich geladen.' },
+        },
+      },
+    },
     '/telemetry': {
       get: {
         summary: 'Observability-Probe abrufen',
@@ -227,6 +235,99 @@ const openApiSpec = {
         responses: {
           '200': { description: 'Release-Hinweise erfolgreich geladen.' },
           '404': { description: 'Release-Hinweis nicht gefunden.' },
+        },
+      },
+    },
+    '/maturity': {
+      get: {
+        summary: 'Maturitaetsstatus (L0-L5) und Feature-Risikotabelle abrufen',
+        security: [{ bearerAuth: [] }],
+        parameters: [
+          {
+            in: 'query',
+            name: 'phase',
+            required: false,
+            schema: { type: 'string' },
+          },
+          {
+            in: 'query',
+            name: 'status',
+            required: false,
+            schema: {
+              type: 'string',
+              enum: ['Planned', 'In Progress', 'In Review', 'Completed', 'Deployed'],
+            },
+          },
+          {
+            in: 'query',
+            name: 'releaseChannel',
+            required: false,
+            schema: {
+              type: 'string',
+              enum: ['released', 'beta', 'preview', 'unknown'],
+            },
+          },
+          {
+            in: 'query',
+            name: 'riskPriority',
+            required: false,
+            schema: {
+              type: 'string',
+              enum: ['blocker', 'high', 'normal'],
+            },
+          },
+          {
+            in: 'query',
+            name: 'testStatus',
+            required: false,
+            schema: {
+              type: 'string',
+              enum: ['passed', 'failed', 'never_executed'],
+            },
+          },
+          {
+            in: 'query',
+            name: 'query',
+            required: false,
+            schema: { type: 'string' },
+          },
+        ],
+        responses: {
+          '200': { description: 'Maturitaetsdaten erfolgreich geladen.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
+          '422': { description: 'Ungueltige Filterparameter.' },
+        },
+      },
+    },
+    '/security/scans': {
+      get: {
+        summary: 'SBOM- und Security-Scan-Bundles pro Version abrufen',
+        security: [{ bearerAuth: [] }],
+        parameters: [
+          {
+            in: 'query',
+            name: 'version',
+            required: false,
+            schema: { type: 'string' },
+          },
+          {
+            in: 'query',
+            name: 'channel',
+            required: false,
+            schema: { type: 'string', enum: ['ga', 'beta', 'rc'] },
+          },
+          {
+            in: 'query',
+            name: 'limit',
+            required: false,
+            schema: { type: 'integer', minimum: 1 },
+          },
+        ],
+        responses: {
+          '200': { description: 'Security-Bundles erfolgreich geladen.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
+          '404': { description: 'Version nicht gefunden.' },
+          '422': { description: 'Ungueltige Query-Parameter.' },
         },
       },
     },

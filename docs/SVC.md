@@ -34,9 +34,9 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 5 – Plattform | P1 | OBJ-12: Security & Authentifizierung | In Review |
 | 5 – Plattform | P2 | OBJ-13: Kubernetes Operator | In Review |
 | 6 – Abschluss | P1 | OBJ-14: Release Management | In Review |
-| 6 – Abschluss | P1 | OBJ-15: Produkt-Website | Planned |
-| 6 – Abschluss | P1 | OBJ-16: Maturitaetsstatus / Reifegraduebersicht | Planned |
-| 6 – Abschluss | P1 | OBJ-17: SBOM & Security-Scanning | Planned |
+| 6 – Abschluss | P1 | OBJ-15: Produkt-Website | In Review |
+| 6 – Abschluss | P1 | OBJ-16: Maturitaetsstatus / Reifegraduebersicht | In Review |
+| 6 – Abschluss | P1 | OBJ-17: SBOM & Security-Scanning | In Review |
 | 6 – Abschluss | P1 | OBJ-22: Release-Artefaktpruefung / Publish-Gate | Planned |
 | 6 – Abschluss | P1 | OBJ-18: Artefakt-Registry (Harbor / Nexus) | Planned |
 | 6 – Abschluss | P1 | OBJ-19: Zarf-Paket / Offline-Weitergabe | Planned |

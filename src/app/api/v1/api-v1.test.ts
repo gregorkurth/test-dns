@@ -11,7 +11,10 @@ import { GET as getCapabilityDetail } from './capabilities/[id]/route'
 import { GET as getCapabilities } from './capabilities/route'
 import { GET as getOpenApi } from './openapi.json/route'
 import { GET as getOperatorStatus } from './operator/route'
+import { GET as getProductWebsite } from './product-website/route'
 import { GET as getReleaseNotices } from './releases/route'
+import { GET as getMaturity } from './maturity/route'
+import { GET as getSecurityScans } from './security/scans/route'
 import { GET as getSwaggerUi } from './swagger/route'
 import { GET as getTelemetry } from './telemetry/route'
 import {
@@ -317,6 +320,69 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     expect(invalidLimitBody.error).toMatchObject({ code: 'INVALID_RELEASE_LIMIT' })
   })
 
+  it('serves maturity overview with viewer auth and validates filters', async () => {
+    const viewerToken = await createAccessToken('viewer')
+
+    const response = await getMaturity(
+      createRequest('/api/v1/maturity?releaseChannel=beta', {
+        headers: authHeaders(viewerToken),
+      }),
+    )
+    expect(response.status).toBe(200)
+    const body = await response.json()
+    expect(body.data.overall.level).toMatch(/^L[0-5]$/)
+    expect(Array.isArray(body.data.features)).toBe(true)
+    expect(body.data.filtersApplied.releaseChannel).toBe('beta')
+
+    const invalidResponse = await getMaturity(
+      createRequest('/api/v1/maturity?status=broken', {
+        headers: authHeaders(viewerToken),
+      }),
+    )
+    expect(invalidResponse.status).toBe(422)
+    const invalidBody = await invalidResponse.json()
+    expect(invalidBody.error).toMatchObject({ code: 'INVALID_MATURITY_STATUS' })
+  })
+
+  it('serves security scan bundles with viewer auth and validates channel input', async () => {
+    const viewerToken = await createAccessToken('viewer')
+
+    const response = await getSecurityScans(
+      createRequest('/api/v1/security/scans?channel=beta&limit=1', {
+        headers: authHeaders(viewerToken),
+      }),
+    )
+    expect(response.status).toBe(200)
+    const body = await response.json()
+    expect(body.data.summary).toMatchObject({
+      sbomAvailable: true,
+    })
+    expect(Array.isArray(body.data.bundles)).toBe(true)
+    expect(body.data.bundles.length).toBeLessThanOrEqual(1)
+
+    const invalidResponse = await getSecurityScans(
+      createRequest('/api/v1/security/scans?channel=preview', {
+        headers: authHeaders(viewerToken),
+      }),
+    )
+    expect(invalidResponse.status).toBe(422)
+    const invalidBody = await invalidResponse.json()
+    expect(invalidBody.error).toMatchObject({ code: 'INVALID_SECURITY_CHANNEL' })
+  })
+
+  it('serves product website data from versioned release sources', async () => {
+    const response = await getProductWebsite(createRequest('/api/v1/product-website'))
+    expect(response.status).toBe(200)
+    const body = await response.json()
+    expect(body.data).toMatchObject({
+      sourceOfTruth: {
+        releaseNoticesFile: 'docs/releases/UPDATE-NOTICES.json',
+      },
+    })
+    expect(Array.isArray(body.data.updateNotices)).toBe(true)
+    expect(body.data.release).toHaveProperty('channel')
+  })
+
   it('returns 401 on protected calls without authentication', async () => {
     const participantsResponse = await getParticipants(
       createRequest('/api/v1/participants'),
@@ -345,6 +411,18 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     expect(operatorResponse.status).toBe(401)
     const operatorBody = await operatorResponse.json()
     expect(operatorBody.error).toMatchObject({ code: 'AUTH_REQUIRED' })
+
+    const maturityResponse = await getMaturity(createRequest('/api/v1/maturity'))
+    expect(maturityResponse.status).toBe(401)
+    const maturityBody = await maturityResponse.json()
+    expect(maturityBody.error).toMatchObject({ code: 'AUTH_REQUIRED' })
+
+    const securityResponse = await getSecurityScans(
+      createRequest('/api/v1/security/scans'),
+    )
+    expect(securityResponse.status).toBe(401)
+    const securityBody = await securityResponse.json()
+    expect(securityBody.error).toMatchObject({ code: 'AUTH_REQUIRED' })
   })
 
   it('returns 403 when viewer tries to execute operator actions', async () => {
@@ -542,6 +620,9 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     })
     expect(rootBody.data.endpoints).toContain('/api/v1/auth/login')
     expect(rootBody.data.endpoints).toContain('/api/v1/operator')
+    expect(rootBody.data.endpoints).toContain('/api/v1/product-website')
+    expect(rootBody.data.endpoints).toContain('/api/v1/maturity')
+    expect(rootBody.data.endpoints).toContain('/api/v1/security/scans')
     expect(rootBody.data.endpoints).toContain('/api/v1/openapi.json')
 
     const openApiResponse = await getOpenApi(createRequest('/api/v1/openapi.json'))
@@ -552,6 +633,9 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     })
     expect(openApiBody.data.paths).toHaveProperty('/auth/login')
     expect(openApiBody.data.paths).toHaveProperty('/operator')
+    expect(openApiBody.data.paths).toHaveProperty('/product-website')
+    expect(openApiBody.data.paths).toHaveProperty('/maturity')
+    expect(openApiBody.data.paths).toHaveProperty('/security/scans')
     expect(openApiBody.data.paths).toHaveProperty('/participants')
     expect(openApiBody.data.components.securitySchemes).toHaveProperty('bearerAuth')
 

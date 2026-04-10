@@ -14,6 +14,7 @@
     "check:obj10": "node scripts/check-obj10-k8s.mjs",
     "check:obj11": "node scripts/check-obj11-observability.mjs",
     "check:obj14": "node scripts/check-obj14-release-management.mjs",
+    "check:obj17": "node scripts/check-obj17-security-scanning.mjs",
     "test:report:raw": "vitest run --reporter=json --outputFile=.tmp/vitest-report.raw.json",
     "build:vitest-evidence": "node scripts/build-vitest-evidence.mjs",
     "test:report": "npm run test:report:raw && npm run build:vitest-evidence",

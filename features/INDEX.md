@@ -30,9 +30,9 @@
 | OBJ-12 | Security & Authentifizierung | 5 – Plattform | In Review | [OBJ-12-security-authentifizierung.md](OBJ-12-security-authentifizierung.md) | 2026-04-03 |
 | OBJ-13 | Kubernetes Operator | 5 – Plattform | In Review | [OBJ-13-kubernetes-operator.md](OBJ-13-kubernetes-operator.md) | 2026-04-03 |
 | OBJ-14 | Release Management | 6 – Produktabschluss | In Review | [OBJ-14-release-management.md](OBJ-14-release-management.md) | 2026-04-03 |
-| OBJ-15 | Produkt-Website | 6 – Produktabschluss | Planned | [OBJ-15-produkt-website.md](OBJ-15-produkt-website.md) | 2026-04-03 |
-| OBJ-16 | Maturitätsstatus / Reifegradübersicht | 6 – Produktabschluss | Planned | [OBJ-16-maturitaetsstatus.md](OBJ-16-maturitaetsstatus.md) | 2026-04-03 |
-| OBJ-17 | SBOM & Security-Scanning | 6 – Produktabschluss | Planned | [OBJ-17-sbom-security-scanning.md](OBJ-17-sbom-security-scanning.md) | 2026-04-03 |
+| OBJ-15 | Produkt-Website | 6 – Produktabschluss | In Review | [OBJ-15-produkt-website.md](OBJ-15-produkt-website.md) | 2026-04-03 |
+| OBJ-16 | Maturitätsstatus / Reifegradübersicht | 6 – Produktabschluss | In Review | [OBJ-16-maturitaetsstatus.md](OBJ-16-maturitaetsstatus.md) | 2026-04-03 |
+| OBJ-17 | SBOM & Security-Scanning | 6 – Produktabschluss | In Review | [OBJ-17-sbom-security-scanning.md](OBJ-17-sbom-security-scanning.md) | 2026-04-03 |
 | OBJ-22 | Release-Artefaktprüfung / Publish-Gate | 6 – Produktabschluss | Planned | [OBJ-22-release-artefaktpruefung-publish-gate.md](OBJ-22-release-artefaktpruefung-publish-gate.md) | 2026-04-04 |
 | OBJ-18 | Artefakt-Registry (Harbor / Nexus) | 6 – Produktabschluss | Planned | [OBJ-18-artefakt-registry.md](OBJ-18-artefakt-registry.md) | 2026-04-03 |
 | OBJ-19 | Zarf-Paket / Offline-Weitergabe | 6 – Produktabschluss | Planned | [OBJ-19-zarf-paket-offline-weitergabe.md](OBJ-19-zarf-paket-offline-weitergabe.md) | 2026-04-03 |
