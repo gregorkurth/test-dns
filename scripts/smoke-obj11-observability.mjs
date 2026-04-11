@@ -166,8 +166,42 @@ async function main() {
   try {
     await waitForAppReady(appBaseUrl)
 
-    const capabilities = await requestJson(`${appBaseUrl}/api/v1/capabilities`)
-    const dashboard = await requestJson(`${appBaseUrl}/api/test-execution-dashboard`)
+    const login = await requestJson(`${appBaseUrl}/api/v1/auth/login`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        mode: 'local',
+        username: 'viewer',
+        password: 'viewer-demo',
+      }),
+    })
+
+    if (login.status !== 200) {
+      throw new Error(
+        `Expected /api/v1/auth/login to return 200, got ${login.status}`,
+      )
+    }
+
+    const accessToken = login.body?.data?.accessToken
+    if (typeof accessToken !== 'string' || !accessToken.trim()) {
+      throw new Error('Expected auth/login response to include accessToken')
+    }
+
+    const capabilities = await requestJson(`${appBaseUrl}/api/v1/capabilities`, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    })
+    const dashboard = await requestJson(
+      `${appBaseUrl}/api/test-execution-dashboard`,
+      {
+        headers: {
+          authorization: `Bearer ${accessToken}`,
+        },
+      },
+    )
 
     if (capabilities.status !== 200) {
       throw new Error(
@@ -219,6 +253,7 @@ async function main() {
           appUrl: appBaseUrl,
           collectorUrl,
           requests: {
+            login: login.status,
             capabilities: capabilities.status,
             dashboard: dashboard.status,
           },

@@ -18,7 +18,7 @@ Der Kubernetes Operator Service stellt ein CRD-basiertes Steuerungskonzept für 
 |----|-----------------|-------------|-------------|-------|
 | SFN-K8S-003 | CRD Definition | Custom Resource Definition für DNSConfiguration | [Requirements](service-functions/SFN-K8S-003-crd-definition/README.md) | 3 Auto, 3 Manuell |
 | SFN-K8S-004 | Reconciliation Loop | Controller-Logic für CRD-Reconciliation | [Requirements](service-functions/SFN-K8S-004-reconciliation-loop/README.md) | 3 Auto, 3 Manuell |
-| SFN-K8S-005 | Scheduled Test Execution | Periodische automatische Testausfuehrung durch den Operator mit konfigurierbarem Intervall und OTel-Reporting | [Requirements](service-functions/SFN-K8S-005-scheduled-test-execution/README.md) | 0 Auto, 0 Manuell |
+| SFN-K8S-005 | Scheduled Test Execution | Periodische automatische Testausfuehrung durch den Operator mit konfigurierbarem Intervall und OTel-Reporting | [Requirements](service-functions/SFN-K8S-005-scheduled-test-execution/README.md) | 6 Auto, 6 Manuell |
 
 ---
 
@@ -43,4 +43,5 @@ Der Kubernetes Operator Service stellt ein CRD-basiertes Steuerungskonzept für 
 ## Quelldokumente
 
 - App-Template-Anweisung (req-init/app-template.md), Abschnitt 4: Kubernetes Operator
-- Feature-Spec OBJ-9: Kubernetes Operator
+- Feature-Spec OBJ-13: Kubernetes Operator
+- Feature-Spec OBJ-26: Test Operator (Scheduled Test Execution via OTel)

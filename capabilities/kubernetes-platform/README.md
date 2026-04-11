@@ -31,6 +31,7 @@ Die Kubernetes-Platform-Capability stellt sicher, dass die DNS-Konfigurations-Ap
 | SFN-K8S-002 | Manifest Management | SVC-K8S-DEPLOY | [ARCH] |
 | SFN-K8S-003 | CRD Definition | SVC-K8S-OPERATOR | [ARCH] |
 | SFN-K8S-004 | Reconciliation Loop | SVC-K8S-OPERATOR | [ARCH] |
+| SFN-K8S-005 | Scheduled Test Execution | SVC-K8S-OPERATOR | [ARCH] |
 | SFN-K8S-006 | Storage Profile Config | SVC-K8S-STORAGE | [ARCH] |
 | SFN-K8S-007 | Ceph Block Storage | SVC-K8S-STORAGE | [ARCH] |
 | SFN-K8S-008 | Ceph File/CIFS Storage | SVC-K8S-STORAGE | [ARCH] |

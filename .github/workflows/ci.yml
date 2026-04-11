@@ -49,6 +49,9 @@ jobs:
       - name: Security Preflight (OBJ-17)
         run: npm run check:obj17
 
+      - name: Feature Placeholder Guard
+        run: npm run check:feature-placeholders
+
       - name: Vitest-Nachweis als Artifact speichern
         uses: actions/upload-artifact@v4
         with:

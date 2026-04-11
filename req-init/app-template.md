@@ -99,6 +99,7 @@ storage:
    - API
    - MCP-Adapter fuer AI-Agenten (wenn AI-Agent-Nutzung vorgesehen ist)
    - Kubernetes Operator (falls benoetigt in Go)
+   - Dedizierter Go-Testoperator fuer Scheduled Test Execution (Standardintervall 15 Minuten)
    - Externe Service-Nutzbarkeit gemaess FMN/NATO-Vorgaben (falls Service extern bereitgestellt wird)
    - Monitoring und Observability mit OpenTelemetry
    - Security und Authentifizierung
@@ -170,6 +171,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Der Operator verwaltet die Applikationskonfiguration über CRDs.
 - Der Operator soll Status, Konfiguration, Automatisierungen und betrieblich relevante Aktionen steuern können.
 - Falls ein eigener Operator implementiert wird, ist Go (controller-runtime/kubebuilder) der verpflichtende Technologie-Stack.
+- Die periodische Testausfuehrung ist als eigener, dedizierter Testoperator-Baustein zu planen und in den Features als separates Objekt zu fuehren (z. B. `OBJ-26 Test Operator`).
 - Der Operator MUSS alle konfigurierten Tests periodisch und automatisch **auf der Zielplattform** ausführen (Scheduled Test Execution).
   - Die Tests laufen im laufenden Kubernetes-Cluster gegen die tatsächlich deployete Instanz – nicht in CI und nicht lokal.
   - Das Ausführungsintervall ist konfigurierbar; der Standardwert beträgt **15 Minuten**.
@@ -234,6 +236,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Ein Testergebnis muss reproduzierbar und dokumentierbar sein.
 - Die Tests müssen mindestens Build-, Unit-, Integrations-, API-, UI- und Deployability-Aspekte berücksichtigen, soweit fachlich relevant.
 - Der Kubernetes Operator MUSS alle Tests periodisch automatisch **auf der Zielplattform** ausführen (Scheduled Test Execution, Standard: 15 Minuten, Intervall konfigurierbar). Die Tests laufen im Cluster gegen die deployete Instanz – nicht in CI.
+- Die Scheduled Test Execution MUSS durch einen dedizierten Go-Testoperator umgesetzt sein; ein reiner CI- oder lokaler Zeitjob gilt nicht als Erfuellung.
 - Testergebnisse der periodischen Ausführung werden über OTel an ClickHouse (`clickhouse`) oder lokal (`local`) berichtet, analog zu den Observability-Modi in Abschnitt 5.
 - Der kombinierte Teststatus (periodisch automatisch + manuell) muss im Test Execution Dashboard sichtbar sein.
 
@@ -436,6 +439,8 @@ Eine Applikation gilt nicht als vollständig übergabefähig, solange nicht alle
 - [ ] Tetragon-Regeln fuer Runtime-Erkennung sind aktiv und liefern Ereignisse
 - [ ] Cilium-Hubble-Sicht auf Netzwerkfluesse ist verfuegbar
 - [ ] OpenFeature-Integration fuer Feature-Flags ist dokumentiert und nutzbar
+- [ ] Dedizierter Go-Testoperator ist vorhanden und fuehrt alle konfigurierten Tests im 15-Minuten-Intervall auf der Zielplattform aus
+- [ ] Testergebnisse des Testoperators werden via OTel in den Modi `clickhouse` und `local` korrekt berichtet
 - [ ] MCP-Adapter fuer AI-Agenten ist vorhanden, dokumentiert und gegen die freigegebenen API-Endpunkte abgesichert (wenn AI-Agent-Nutzung vorgesehen ist)
 - [ ] In `prod` sind `security-profile=strict`, `secrets-mode=openbao` und `siem-mode=clickhouse` nachweisbar gesetzt
 - [ ] Bei `degraded-local` ist ein sichtbarer Warnhinweis aktiv und eine gueltige Ausnahme dokumentiert
@@ -495,6 +500,8 @@ Eine App gilt erst dann als vollständig template-konform, wenn:
 - [ ] Tetragon-basierte Runtime-Detektion mit Audit-Anbindung umgesetzt ist
 - [ ] Cilium-Hubble fuer Netzwerkbeobachtbarkeit eingebunden ist
 - [ ] OpenFeature-basierte Feature-Flag-Anbindung vorgesehen oder umgesetzt ist
+- [ ] dedizierter Go-Testoperator fuer Scheduled Test Execution (Standard 15 Minuten) vorhanden und konfigurierbar ist
+- [ ] Testoperator-Ergebnisse via OTel in `clickhouse` und `local` nachweisbar sind
 - [ ] OTel-Modusumschaltung (`local`/`clickhouse`) ueber versionierte Konfiguration vorhanden ist
 - [ ] `prod` laeuft im Sicherheitsprofil `strict` mit OpenBao und SIEM via ClickHouse
 - [ ] lokale Telemetrie-Zwischenspeicherung mit spaeterer Nachlieferung vorgesehen oder umgesetzt ist

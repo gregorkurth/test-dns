@@ -22,8 +22,8 @@
 | Capability | Verknüpfte Features |
 |-----------|-------------------|
 | CAP-001 Domain Naming | OBJ-4, OBJ-5, OBJ-6, OBJ-7, OBJ-8 |
-| CAP-002 Kubernetes Platform | OBJ-10, OBJ-13 |
-| CAP-003 Observability | OBJ-11 |
+| CAP-002 Kubernetes Platform | OBJ-10, OBJ-13, OBJ-26 |
+| CAP-003 Observability | OBJ-11, OBJ-26 |
 | CAP-004 Security & Access Control | OBJ-12 |
 | CAP-005 DevOps | OBJ-1, OBJ-14 |
 | CAP-006 Documentation & Quality | OBJ-2, OBJ-15, OBJ-16, OBJ-23 |
@@ -36,7 +36,7 @@
 | Capability | Requirements | Quellentyp |
 |-----------|-------------|-----------|
 | CAP-001 Domain Naming | SREQ-235 bis SREQ-1320, CREQ-001 bis CREQ-005 | [NATO], [CUST] |
-| CAP-002 Kubernetes Platform | RDTS-201 bis RDTS-216 (16 Req) | [ARCH] |
+| CAP-002 Kubernetes Platform | RDTS-201 bis RDTS-222 (22 Req) | [ARCH] |
 | CAP-003 Observability | RDTS-301 bis RDTS-314 (14 Req) | [ARCH] |
 | CAP-004 Security & Access Control | RDTS-401 bis RDTS-416 (16 Req) | [ARCH] |
 | CAP-005 DevOps | RDTS-501 bis RDTS-511 (11 Req) | [ARCH] |

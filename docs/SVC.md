@@ -31,6 +31,7 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 5 – Plattform | P1 | OBJ-10: Kubernetes Deployment | In Progress |
 | 5 – Plattform | P1 | OBJ-11: Monitoring & Observability (OpenTelemetry) | In Progress |
 | 5 – Plattform | P1 | OBJ-25: Helm Charts fuer Kubernetes Deployment | In Progress |
+| 5 – Plattform | P1 | OBJ-26: Test Operator (Scheduled Test Execution via OTel) | Planned |
 | 5 – Plattform | P1 | OBJ-12: Security & Authentifizierung | In Review |
 | 5 – Plattform | P2 | OBJ-13: Kubernetes Operator | In Review |
 | 6 – Abschluss | P1 | OBJ-14: Release Management | In Review |
@@ -55,6 +56,7 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 - Pro Release sind Update-Hinweise im GUI nachvollziehbar und mit Release-Notizen verknuepft
 - Der Lieferpfad GitLab -> Zarf-Transfer -> Gitea-Import -> ArgoCD App-of-Apps ist reproduzierbar nachgewiesen
 - Zero-Trust-Absicherung zwischen Pods ist durch Richtlinien und Runtime-Monitoring nachgewiesen
+- Ein dedizierter Go-Testoperator fuehrt alle 15 Minuten Cluster-nahe Tests aus und berichtet Resultate via OTel nach ClickHouse oder local
 
 ## Rahmenbedingungen
 
@@ -76,4 +78,4 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 
 ---
 
-_Zuletzt aktualisiert: 2026-04-10_
+_Zuletzt aktualisiert: 2026-04-11_
