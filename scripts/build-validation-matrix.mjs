@@ -34,7 +34,10 @@ function compareDatesDesc(left, right) {
 }
 
 async function loadDashboardData() {
-  const source = await fs.readFile(sourcePath, 'utf8')
+  const source = (await fs.readFile(sourcePath, 'utf8')).replace(
+    "import { emitSuccessSignal } from '@/lib/obj11-observability'",
+    'const emitSuccessSignal = async () => undefined',
+  )
   const transpiled = ts.transpileModule(source, {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,

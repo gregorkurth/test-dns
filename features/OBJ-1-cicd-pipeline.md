@@ -1,8 +1,8 @@
 # OBJ-1: CI/CD Pipeline
 
-## Status: Planned
+## Status: In Progress
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-07
+**Last Updated:** 2026-04-11
 
 ## Dependencies
 - OBJ-10: Kubernetes Deployment (Pipeline deployt K8s-Manifeste)

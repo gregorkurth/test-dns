@@ -1,8 +1,8 @@
 # OBJ-2: Dokumentation
 
-## Status: Planned
+## Status: In Progress
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-09
+**Last Updated:** 2026-04-11
 
 ## Dependencies
 - OBJ-1 bis OBJ-21: Alle Features (Dokumentation beschreibt das Gesamtsystem)

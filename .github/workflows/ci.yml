@@ -49,6 +49,9 @@ jobs:
       - name: Security Preflight (OBJ-17)
         run: npm run check:obj17
 
+      - name: Feature Status Sync Guard
+        run: npm run check:feature-status-sync
+
       - name: Feature Placeholder Guard
         run: npm run check:feature-placeholders
 
@@ -194,8 +197,12 @@ jobs:
     name: Validation Matrix Report
     runs-on: ubuntu-latest
     needs: [quality]
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Node.js einrichten
         uses: actions/setup-node@v4
@@ -225,9 +232,23 @@ jobs:
       - name: Report in Job Summary anzeigen
         run: cat docs/testing/VALIDATION-MATRIX.md >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Validation-Matrix committen
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/testing/VALIDATION-MATRIX.md
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: validation matrix aktualisiert [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
+
   traceability:
     name: Traceability Report (OFT)
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: >
       github.event_name == 'workflow_dispatch' ||
       contains(toJSON(github.event.head_commit.modified), 'capabilities/') ||

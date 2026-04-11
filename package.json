@@ -16,6 +16,7 @@
     "check:obj14": "node scripts/check-obj14-release-management.mjs",
     "check:obj17": "node scripts/check-obj17-security-scanning.mjs",
     "check:feature-placeholders": "node scripts/check-feature-placeholders.mjs",
+    "check:feature-status-sync": "node scripts/check-feature-status-sync.mjs",
     "test:report:raw": "vitest run --reporter=json --outputFile=.tmp/vitest-report.raw.json",
     "build:vitest-evidence": "node scripts/build-vitest-evidence.mjs",
     "test:report": "npm run test:report:raw && npm run build:vitest-evidence",
