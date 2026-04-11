@@ -53,6 +53,12 @@ function cleanupRateLimitStore(): void {
   }
 }
 
+export const testExecutionDashboardRouteInternals = {
+  resetRateLimitStore(): void {
+    rateLimitStore.clear()
+  },
+}
+
 export async function GET(request: Request) {
   cleanupRateLimitStore()
 

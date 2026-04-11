@@ -130,8 +130,113 @@ Folgende Punkte muessen vor Abnahme klar testbar sein:
 - Navigation zu App, Doku und Releases funktioniert in Online- und Airgap-Betrieb.
 - Lesbarkeit fuer Nicht-Entwickler ist gegeben und Kerninformationen sind sofort auffindbar.
 
-## QA Test Results
-_To be added by /qa_
+## QA Test Results (Re-Test 2026-04-10)
+
+**Tested:** 2026-04-10
+**App URL:** http://localhost:3000
+**Tester:** QA Engineer (AI)
+
+### Executed Checks
+- `npm run typecheck` -> bestanden
+- `npm run lint` -> bestanden
+- `npm run test:run -- src/lib/obj15-product-website.test.ts` -> bestanden (3/3 Tests)
+- `npm run build` -> bestanden (Route `/` als Static Page generiert)
+
+### Acceptance Criteria Status
+
+#### AC-1: Produkt-Website als erster Einstiegspunkt ohne Login lesbar
+- [x] PASS - Root-Page `/` wird als oeffentliche Seite ohne Auth gerendert. API `GET /api/v1/product-website` hat ebenfalls keinen Auth-Guard, nur Rate Limiting.
+
+#### AC-2: Startseite zeigt Service-Name, Kurzbeschreibung, Zielgruppe, Betriebskontext
+- [x] PASS - Hero-Bereich zeigt Name, shortDescription, audience, purpose und operatingContext.
+
+#### AC-3: Versionsnummer, Release-Datum, Release-Kanal
+- [x] PASS - Status-Panel rendert Version, Release-Datum und Kanal-Badge (GA/Beta/Preview).
+
+#### AC-4: Statuswerte mit einheitlicher Legende
+- [x] PASS - Status-Legende mit drei Karten (Released/Beta/Preview) inkl. riskHint ist vorhanden.
+
+#### AC-5: Beta/Preview visuell markiert mit Risiko-Hinweis
+- [x] PASS - channelBadge mit farblicher Markierung und channelRiskHint ist implementiert.
+
+#### AC-6: Release-Hinweise aus versionierter Quelle
+- [x] PASS - Hinweise stammen aus `docs/releases/UPDATE-NOTICES.json` via `getReleaseNotices()`.
+
+#### AC-7: Globaler Update-Hinweisbereich mit Priorisierung
+- [x] PASS - `Obj15UpdateHints` zeigt Hinweise sortiert nach Prioritaet (critical, important, info).
+
+#### AC-8: Kritische Hinweise nicht dauerhaft ausblendbar
+- [x] PASS - `notice.priority === 'critical'` wird in `visibleNotices` immer angezeigt; dismiss-Button zeigt stattdessen "Kritisch: nicht ausblendbar".
+
+#### AC-9: Nicht-kritische Hinweise lokal quittierbar, bei neuer Version erneut angezeigt
+- [x] PASS - localStorage-Schluessel ist versionsgebunden (`obj15.dismissed.notices:<version>`). Bei neuer Version greift der Schluessel nicht mehr.
+
+#### AC-10: Maturitaetsstatus oder Fallback-Hinweis
+- [x] PASS - `loadMaturityStatus()` liefert echte OBJ-16-Daten oder klaren Fallback "Status nicht verfuegbar".
+
+#### AC-11: Navigation enthaelt App, Dokumentation, Release-Informationen
+- [x] PASS - FIXED seit letzter QA. `buildNavigation()` enthaelt jetzt "App starten", "Maturity Dashboard", "Dokumentation" (-> /documentation), "Security Posture", "API Dokumentation (Swagger)", "Release-Informationen" und optional "Externes Repository".
+
+#### AC-12: Offline nutzbar, keine externen Abhaengigkeiten
+- [x] PASS - Im gesamten OBJ-15-Codepfad (page.tsx, obj15-product-website.ts, obj15-update-hints.tsx) sind keine externen Fonts, Skripte, Bilder oder CDNs fuer Kerninhalte erkennbar. Hinweis: `/api/v1/swagger` (OBJ-3) laedt CDN-Ressourcen, aber das ist kein OBJ-15-Scope.
+
+#### AC-13: Responsive Darstellung 375px, 768px, 1440px
+- [x] PASS (code review) - Layout nutzt responsive Tailwind-Klassen: `md:flex-row`, `md:grid-cols-2`, `md:grid-cols-3`, `lg:grid-cols-[...]`. Tatsaechlicher Browser-Viewport-Test konnte in dieser Umgebung nicht ausgefuehrt werden.
+
+#### AC-14: Ladezeit unter 1 Sekunde
+- [ ] NOT VERIFIED - Kein reproduzierbarer Benchmark erhoben. Seite wird als Static Page generiert (Build-Ausgabe: `○ /`), was fuer schnelles Laden spricht.
+
+#### AC-15: Git als Primaerquelle sichtbar
+- [x] PASS - Source-of-Truth-Block zeigt "Primaerquelle: Git Repository" und "Confluence oder andere Ziele sind abgeleitete Kopien".
+
+### Edge Cases Status
+
+#### EC-1: Versionsdaten fehlen oder unvollstaendig
+- [x] Handled - Fallback "Version unbekannt" und "Nicht veroeffentlicht" im Code vorhanden.
+
+#### EC-2: Externer Repository-Link in airgap ungueltig
+- [x] Handled - `OBJ15_AIRGAP_MODE` blendet Link aus; bei ungueltiger URL greift try/catch.
+
+#### EC-3: Kein Maturitaetsstatus
+- [x] Handled - catch-Block liefert `available: false` mit Fallback-Text.
+
+#### EC-4: Kanal-Konflikt Beta vs GA
+- [x] Handled - `mapReleaseChannelToProductChannel` ist deterministisch; konservative Logik greift.
+
+#### EC-5: Keine Hinweise zur aktuellen Version
+- [x] Handled - "Keine neuen Hinweise fuer diese Version" mit Zeitstempel wird angezeigt.
+
+#### EC-6: Kritischer Hinweis quittiert
+- [x] Handled - Kritische Hinweise werden nach Reload erneut angezeigt (priority check passiert in `visibleNotices`).
+
+#### EC-7: Lokale Quittierungsdaten defekt
+- [x] Handled - `readDismissedNoticeIds` verworfen bei ungueltigem JSON und localStorage-Key geloescht.
+
+#### EC-8: Offline-Modus mit Teilinformationen
+- [x] Handled - Seite bleibt lesbar; Maturitaets-Fallback zeigt klaren Hinweis.
+
+### Security Audit Results
+- [x] XSS: Kein `dangerouslySetInnerHTML` im OBJ-15-Pfad. Alle Inhalte als React-Text gerendert.
+- [x] Secret Exposure: Kein Secret-Leak in `GET /api/v1/product-website` oder View-Model.
+- [x] Rate Limiting: `enforceRateLimit` am API-Endpunkt vorhanden.
+- [x] Airgap-Robustheit: Externer Link wird in Airgap-Mode unterdrueckt.
+- [x] localStorage-Manipulation: Defekte localStorage-Daten werden verworfen (robuste Fehlerbehandlung).
+- [x] Open Redirect: Navigation-Links sind fest kodiert, nicht nutzerkontrolliert.
+
+### Bugs Found
+Keine offenen Bugs. Der Dokumentations-Link-Bug aus der vorherigen QA wurde behoben.
+
+### Regression Check
+- Root-Page `/` baut erfolgreich als Static Page.
+- `ReleaseUpdateNotice` bleibt eingebunden.
+- Build zeigt alle erwarteten Routen: `/`, `/documentation`, `/maturity`, `/security-posture`, `/api/v1/product-website`.
+
+### Summary
+- **Acceptance Criteria:** 14/15 passed, 0 failed, 1 not verified (Performance-Benchmark)
+- **Bugs Found:** 0
+- **Security:** Pass (keine Findings)
+- **Production Ready:** YES (mit der Einschraenkung, dass das Performance-Benchmark und echte Browser-Tests in einer separaten manuellen QA-Runde bestaetigt werden sollten)
+- **Recommendation:** Deploy. Manueller Browser-Smoketest fuer Responsive und Performance als Nachfolgeaufgabe.
 
 ## Deployment
 _To be added by /deploy_

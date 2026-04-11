@@ -10,3 +10,8 @@ data:
 {{- range $key, $value := .Values.config }}
   {{ $key }}: {{ $value | quote }}
 {{- end }}
+  OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
+  OTEL_EXPORT_MODE: {{ .Values.otel.mode | quote }}
+  OTEL_EXPORT_ENDPOINT: {{ .Values.otel.endpoint | quote }}
+  OTEL_EXPORT_TIMEOUT_MS: {{ .Values.otel.exportTimeoutMs | quote }}
+  DEBUG_MODE: {{ ternary "true" "false" .Values.debug.enabled | quote }}

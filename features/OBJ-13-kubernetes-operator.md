@@ -21,6 +21,8 @@
 - Als Auditor moechte ich jede durch den Operator uebernommene Aenderung nachvollziehen koennen, damit klar ist, wer wann was geaendert hat.
 - Als Operator moechte ich einzelne Aenderungen gezielt auf eine fruehere Revision zuruecksetzen koennen, damit fehlerhafte Updates schnell korrigiert werden.
 - Als Integrationsverantwortlicher moechte ich optional eine abgesicherte MCP-CRUD-Schnittstelle fuer KI-Agenten vorsehen, damit spaetere Automatisierung kontrolliert moeglich ist.
+- Als Platform Engineer moechte ich, dass der Operator alle Tests periodisch automatisch auf der Zielplattform ausfuehrt (konfigurierbares Intervall, Standard 15 Minuten), damit Regressionen im laufenden Cluster ohne manuellen Eingriff erkannt werden.
+- Als Beobachter moechte ich, dass Testergebnisse ueber OTel an ClickHouse oder lokal gemeldet werden, damit der Teststatus nahtlos in die Observability-Kette integriert ist.
 
 ## Acceptance Criteria
 - [ ] CRD `DNSConfiguration` (Gruppe: `dns.fmn.mil`, Version: `v1alpha1`) ist definiert und im Cluster installierbar
@@ -39,6 +41,11 @@
 - [ ] Gezieltes Rollback auf eine vorherige Revision ist als kontrollierter Operator-Workflow verfuegbar
 - [ ] Operator-Events und Metriken sind ueber OTel in die Observability-Kette integrierbar
 - [ ] Optionaler MCP-Zugang ist nur als abgesicherte, rollenbasierte Integrationsschnittstelle vorgesehen
+- [ ] Operator fuehrt alle konfigurierten Tests periodisch automatisch auf der Zielplattform aus (Scheduled Test Execution – laeuft im Cluster gegen die deployete Instanz, nicht in CI)
+- [ ] Test-Intervall ist ueber CRD-Spec oder Operator-Konfiguration einstellbar (Standardwert: 15 Minuten)
+- [ ] Testergebnisse werden als OTel-Metriken und/oder strukturierte Logs exportiert (Ziel: `clickhouse` oder `local`)
+- [ ] Bei fehlgeschlagenen Tests wird ein OTel-Event ausgeloest und der CR-Status entsprechend aktualisiert
+- [ ] Ueberlappende Testlaeufe werden uebersprungen (laufender Lauf blockiert den naechsten Intervall-Start)
 
 ## Edge Cases
 - Was passiert wenn die App-API nicht erreichbar ist? → Operator setzt Status `Error`, exponentielles Retry-Backoff, kein Crash
@@ -49,6 +56,9 @@
 - Was wenn Baseline-Revision und Zielkonfiguration divergenz zeigen? → geordneter Konfliktstatus statt stiller Ueberschreibung
 - Was wenn ein Rollback auf ungueltige historische Daten zeigt? → Rollback wird abgelehnt und mit klarer Ursache protokolliert
 - Was wenn MCP-Client unzulaessige Schreiboperationen versucht? → Zugriff wird per RBAC/Policy blockiert und als Security-Ereignis geloggt
+- Was wenn ein Testlauf laenger als das konfigurierte Intervall dauert? → Ueberlappender Lauf wird uebersprungen; naechster Lauf startet zum naechsten Intervall-Zeitpunkt
+- Was wenn das OTel-Ziel (ClickHouse) nicht erreichbar ist? → Testergebnisse werden lokal gepuffert und spaeter nachgeliefert (analog zu OBJ-11)
+- Was wenn einzelne Tests innerhalb des periodischen Laufs fehlschlagen? → Fehlgeschlagene Tests werden einzeln als OTel-Events gemeldet; der Lauf gilt als teilweise fehlgeschlagen
 
 ## Technical Requirements
 - Implementierungssprache: Go ist verpflichtend, wenn ein eigener Operator umgesetzt wird (controller-runtime / kubebuilder)
@@ -60,6 +70,8 @@
 - Change-History: strukturierte, revisionsbezogene Aenderungsnachweise fuer Apply, Fehler und Rollback
 - Observability: OTel-kompatible Operator-Metriken und Ereignisse fuer OBJ-11
 - MCP-Optionalitaet: nur als abgesicherte, rollenbasierte CRUD-Integrationsschicht ohne Umgehung des Reconcile-Modells
+- Scheduled Test Execution: konfigurierbares Intervall-basiertes Testausfuehrungsmodell im Operator (Standard: 15 Minuten); Intervall ist per CRD-Annotation oder Operator-ConfigMap setzbar; Tests laufen im Cluster gegen die tatsaechlich deployete Instanz (nicht in CI oder lokal)
+- Test-Reporting via OTel: Testergebnisse werden als strukturierte OTel-Metriken/Logs exportiert; Ziel `clickhouse` (produktiv) oder `local` (Offline/Dev), analog zu OBJ-11
 
 ---
 <!-- Sections below are added by subsequent skills -->

@@ -31,6 +31,7 @@ function createFeatureEntry(
     documentationIndicator: 'healthy',
     offlineIndicator: 'warning',
     riskPriority: 'high',
+    hasConflict: false,
     milestone: 'Resolve in current planning cycle',
     nextStep: 'Create/execute evidence for this feature',
     ...overrides,

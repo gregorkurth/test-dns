@@ -1,0 +1,100 @@
+{
+  "service": "DNS Management Service",
+  "sourceOfTruth": "git",
+  "generatedAt": "2026-04-10T12:00:33.600Z",
+  "version": "v0.9.0",
+  "channel": "ga",
+  "releaseStatus": "released",
+  "releaseTitle": "Dokumentations- und Dashboard-Basisstand",
+  "policyVersion": "2026.04.10-obj22",
+  "policyPath": "release-policy/policy.yaml",
+  "decision": "fail",
+  "blockPublish": true,
+  "blockExport": true,
+  "summary": {
+    "artifactCount": 2,
+    "passedArtifacts": 1,
+    "failedArtifacts": 1,
+    "acceptedRiskArtifacts": 0,
+    "blockingViolations": 1,
+    "warningViolations": 0
+  },
+  "artifacts": [
+    {
+      "id": "v0.9.0:release-attachment:Dokumentationsstand OBJ-4/OBJ-23",
+      "name": "Dokumentationsstand OBJ-4/OBJ-23",
+      "kind": "release-attachment",
+      "version": "v0.9.0",
+      "channel": "ga",
+      "reference": "docs/exports/EXPORT-20260406-01",
+      "localPath": "docs/exports/EXPORT-20260406-01",
+      "status": "missing",
+      "exists": false,
+      "decision": "fail",
+      "sizeBytes": null,
+      "fileCount": null,
+      "topLevelEntries": [],
+      "digest": null,
+      "releaseStatus": "released",
+      "checks": {
+        "allowlist": true,
+        "forbiddenContent": true,
+        "fileCountWithinLimit": true,
+        "sizeWithinLimit": true,
+        "securityState": true,
+        "ociConformant": true
+      },
+      "violations": [
+        {
+          "ruleId": "ARTIFACT_PATH_MISSING",
+          "severity": "blocking",
+          "path": "docs/exports/EXPORT-20260406-01",
+          "message": "Das erwartete Endartefakt ist lokal nicht vorhanden und kann daher nicht freigegeben werden.",
+          "waived": false,
+          "exceptionId": null
+        }
+      ],
+      "exceptionsApplied": [],
+      "notes": []
+    },
+    {
+      "id": "v0.9.0:security-bundle",
+      "name": "Security bundle v0.9.0",
+      "kind": "security-bundle",
+      "version": "v0.9.0",
+      "channel": "ga",
+      "reference": "ghcr.io/gregorkurth/test-dns-security-bundle:v0.9.0",
+      "localPath": "artifacts/security/v0.9.0",
+      "status": "checked",
+      "exists": true,
+      "decision": "pass",
+      "sizeBytes": 22760,
+      "fileCount": 5,
+      "topLevelEntries": [
+        "npm-audit.json",
+        "sbom.spdx.json",
+        "semgrep.sarif",
+        "trivy-config.json",
+        "trivy-image.json"
+      ],
+      "digest": null,
+      "releaseStatus": "released",
+      "checks": {
+        "allowlist": true,
+        "forbiddenContent": true,
+        "fileCountWithinLimit": true,
+        "sizeWithinLimit": true,
+        "securityState": true,
+        "ociConformant": true
+      },
+      "violations": [],
+      "exceptionsApplied": [],
+      "notes": []
+    }
+  ],
+  "exceptionsApplied": [],
+  "notes": [
+    "Publish und Export bleiben blockiert, bis alle blockierenden Verstosse beseitigt oder formal genehmigt sind.",
+    "Gate-Berichte werden aus Git-Quellen und den finalen Artefaktpfaden erzeugt."
+  ]
+}

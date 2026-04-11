@@ -84,6 +84,10 @@ function statusClassName(value: DashboardStatus): string {
   return 'bg-zinc-100 text-zinc-700 border-zinc-200'
 }
 
+function evidenceIssueLabel(count: number): string {
+  return count === 1 ? '1 Nachweisfehler' : `${count} Nachweisfehler`
+}
+
 function normalizeRunId(record: TestExecutionRecord): string {
   if (record.runId && record.runId.trim()) {
     return record.runId.trim()
@@ -523,6 +527,7 @@ export function TestExecutionDashboardClient({
                         <TableHead>Requirement</TableHead>
                         <TableHead>Typ</TableHead>
                         <TableHead>Status</TableHead>
+                        <TableHead>Hinweise</TableHead>
                         <TableHead>Run</TableHead>
                         <TableHead>Release</TableHead>
                       </TableRow>
@@ -530,7 +535,7 @@ export function TestExecutionDashboardClient({
                     <TableBody>
                       {filteredTests.length === 0 ? (
                         <TableRow>
-                          <TableCell colSpan={7} className="text-slate-500">
+                          <TableCell colSpan={8} className="text-slate-500">
                             Keine Tests fuer den aktuellen Filter gefunden.
                           </TableCell>
                         </TableRow>
@@ -552,6 +557,18 @@ export function TestExecutionDashboardClient({
                               >
                                 {statusLabel(test.status)}
                               </Badge>
+                            </TableCell>
+                            <TableCell>
+                              {test.evidenceIssueCount > 0 ? (
+                                <Badge
+                                  variant="outline"
+                                  className="border-amber-300 bg-amber-50 text-amber-800"
+                                >
+                                  {evidenceIssueLabel(test.evidenceIssueCount)}
+                                </Badge>
+                              ) : (
+                                '—'
+                              )}
                             </TableCell>
                             <TableCell>{test.lastRunId ?? '—'}</TableCell>
                             <TableCell>{test.lastReleaseId ?? '—'}</TableCell>
@@ -596,6 +613,22 @@ export function TestExecutionDashboardClient({
                           <p>{formatDateTime(selectedTest.lastExecutedAt)}</p>
                         </div>
                       </div>
+                      {selectedTest.evidenceIssueCount > 0 ? (
+                        <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+                          <p className="font-medium">
+                            {evidenceIssueLabel(selectedTest.evidenceIssueCount)}
+                          </p>
+                          <p className="mt-1">
+                            Fehlerhafte oder zeitlich nicht auswertbare Nachweise bleiben in der
+                            Historie sichtbar, zaehlen aber nicht als gueltiger letzter Nachweis.
+                          </p>
+                          {selectedTest.latestEvidenceIssue ? (
+                            <p className="mt-2 text-xs text-amber-800">
+                              Letzter Hinweis: {selectedTest.latestEvidenceIssue}
+                            </p>
+                          ) : null}
+                        </div>
+                      ) : null}
                       <div>
                         <p className="mb-1 text-sm text-slate-500">Historie</p>
                         <div className="max-h-72 space-y-2 overflow-auto pr-1">

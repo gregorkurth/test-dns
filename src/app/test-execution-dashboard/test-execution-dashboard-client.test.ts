@@ -25,6 +25,8 @@ function createEntry(
     lastReleaseId: 'REL-1.0.0',
     lastNote: null,
     lastEvidencePath: 'tests/results/TEST-1.md',
+    latestEvidenceIssue: null,
+    evidenceIssueCount: 0,
     history: [],
     ...overrides,
   }

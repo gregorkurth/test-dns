@@ -54,7 +54,13 @@
       "Bash(mv OBJ-8-rest-api.md                 TEMP-3-rest-api.md)",
       "Bash(mv OBJ-1-capabilities-dashboard.md   TEMP-4-capabilities-dashboard.md)",
       "Bash(mv OBJ-2-participant-configuration-form.md TEMP-5-participant-configuration-form.md)",
-      "Read(//Users/gregorkurth/Documents/Dev/test-dns/**)"
+      "Read(//Users/gregorkurth/Documents/Dev/test-dns/**)",
+      "Bash(npm run:*)",
+      "Bash(python3 -c \"import zstandard; print\\('available'\\)\")",
+      "Bash(node scripts/check-obj17-security-scanning.mjs)",
+      "Bash(npx vitest:*)",
+      "Bash(node scripts/publish-gate.mjs --no-write)",
+      "Bash(npx next:*)"
     ]
   }
 }

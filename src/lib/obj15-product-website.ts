@@ -167,6 +167,11 @@ function buildNavigation(): ProductWebsiteNavigationLink[] {
       type: 'internal',
     },
     {
+      label: 'Dokumentation',
+      href: '/documentation',
+      type: 'internal',
+    },
+    {
       label: 'Security Posture',
       href: '/security-posture',
       type: 'internal',

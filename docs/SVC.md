@@ -38,9 +38,9 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 6 – Abschluss | P1 | OBJ-16: Maturitaetsstatus / Reifegraduebersicht | In Review |
 | 6 – Abschluss | P1 | OBJ-17: SBOM & Security-Scanning | In Review |
 | 6 – Abschluss | P1 | OBJ-22: Release-Artefaktpruefung / Publish-Gate | Planned |
-| 6 – Abschluss | P1 | OBJ-18: Artefakt-Registry (Harbor / Nexus) | Planned |
-| 6 – Abschluss | P1 | OBJ-19: Zarf-Paket / Offline-Weitergabe | Planned |
-| 6 – Abschluss | P1 | OBJ-20: Zielumgebung / Import / Rehydrierung | Planned |
+| 6 – Abschluss | P1 | OBJ-18: Artefakt-Registry (Harbor / Nexus) | In Progress |
+| 6 – Abschluss | P1 | OBJ-19: Zarf-Paket / Offline-Weitergabe | In Progress |
+| 6 – Abschluss | P1 | OBJ-20: Zielumgebung / Import / Rehydrierung | In Progress |
 | 6 – Abschluss | P1 | OBJ-21: GitOps / Argo CD / App-of-Apps | Planned |
 
 ## Erfolgskriterien
@@ -76,4 +76,4 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 
 ---
 
-_Zuletzt aktualisiert: 2026-04-09_
+_Zuletzt aktualisiert: 2026-04-10_

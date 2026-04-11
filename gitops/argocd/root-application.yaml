@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dns-management-root
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: dns-management-root
+    app.kubernetes.io/part-of: dns-management-service
+    dns-management.io/objective: OBJ-21
+  annotations:
+    dns-management.io/bootstrap: offline
+    dns-management.io/sync-mode: manual-default
+spec:
+  project: default
+  source:
+    repoURL: https://gitea.fmn.local/platform/dns-release.git
+    targetRevision: release/v1.0.0
+    path: gitops/argocd/bootstrap-resources
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

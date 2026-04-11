@@ -239,6 +239,12 @@ th {
   color: #334155;
 }
 
+.status-warning {
+  background: #fef3c7;
+  border-color: #fcd34d;
+  color: #92400e;
+}
+
 tr.is-active {
   background: #f1f5f9;
 }
@@ -247,6 +253,13 @@ tr.is-active {
   padding: 0.9rem;
   display: grid;
   gap: 0.8rem;
+}
+
+.evidence-warning {
+  border: 1px solid #fcd34d;
+  border-radius: 12px;
+  background: #fffbeb;
+  padding: 0.85rem;
 }
 
 .detail-block {

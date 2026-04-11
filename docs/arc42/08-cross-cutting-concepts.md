@@ -15,6 +15,20 @@ Hier sammeln wir Regeln, die fast ueberall gelten.
 - Traceability
 - Release- und Change-Management
 
+## Helm-Standards (OBJ-25)
+
+- Chart-Werte muessen schema-validiert sein (`values.schema.json`).
+- Widerspruechliche Werte werden frueh im Template-Validierungsblock gestoppt (`templates/validation.yaml`).
+- Security Defaults sind im Basisprofil verpflichtend:
+- `runAsNonRoot`
+- `readOnlyRootFilesystem`
+- `allowPrivilegeEscalation: false`
+- Profiletrennung lokal/internal/prod ist verbindlich, um Fehlverwendung in Produktion zu reduzieren.
+- OCI Push Readiness ist Teil des Release-Prozesses:
+- Erst bei erfolgreichem Lint/Template + chart push gilt der Schritt als abgeschlossen.
+- Management-Transparenz fuer Betreiber ist Pflicht:
+- Chart-Dateien, Offline-Checks und Release-Status muessen in API/UI sichtbar sein.
+
 ## Wann pflegen?
 
 - wenn neue teamweite Regeln entstehen

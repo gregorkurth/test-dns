@@ -45,5 +45,6 @@ describe('OBJ-15 product website mapping', () => {
     expect(model.sourceOfTruth.releaseNoticesFile).toBe('docs/releases/UPDATE-NOTICES.json')
     expect(Array.isArray(model.updateNotices)).toBe(true)
     expect(model.navigation.length).toBeGreaterThan(0)
+    expect(model.navigation.some((entry) => entry.href === '/documentation')).toBe(true)
   })
 })

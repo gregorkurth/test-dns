@@ -1,0 +1,61 @@
+namespace:
+  name: dns-management
+
+replicaCount: 3
+
+image:
+  repository: ghcr.io/gregorkurth/test-dns
+  tag: "1.0.0"
+  digest: sha256:2222222222222222222222222222222222222222222222222222222222222222
+  pullPolicy: IfNotPresent
+
+ingress:
+  enabled: true
+  className: internal-nginx
+  hostname: dns.prod.example.mil
+  tls:
+    enabled: true
+    secretName: dns-management-service-tls
+  annotations:
+    kubernetes.io/ingress.class: internal-nginx
+    security.fmn.dev/opa-note: Production ingress must stay hostname- and TLS-restricted.
+
+service:
+  type: ClusterIP
+  nodePort: null
+
+config:
+  NODE_ENV: production
+  APP_BASE_URL: https://dns.prod.example.mil
+  LOG_LEVEL: warn
+
+otel:
+  mode: clickhouse
+  endpoint: http://otel-collector.monitoring.svc.cluster.local:4318
+  exportTimeoutMs: "5000"
+
+debug:
+  enabled: false
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+securityContext:
+  pod:
+    runAsNonRoot: true
+    runAsUser: 1001
+    runAsGroup: 1001
+    fsGroup: 1001
+    seccompProfile:
+      type: RuntimeDefault
+  container:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    capabilities:
+      drop:
+        - ALL

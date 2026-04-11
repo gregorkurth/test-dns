@@ -1,0 +1,319 @@
+{
+  "service": "DNS Management Service",
+  "sourceOfTruth": "git",
+  "generatedAt": "2026-04-10T12:00:33.598Z",
+  "version": "v1.0.0-beta.1",
+  "channel": "beta",
+  "releaseStatus": "planned",
+  "releaseTitle": "Release-Management Baseline mit Update-Hinweisen",
+  "policyVersion": "2026.04.10-obj22",
+  "policyPath": "release-policy/policy.yaml",
+  "decision": "fail",
+  "blockPublish": true,
+  "blockExport": true,
+  "summary": {
+    "artifactCount": 7,
+    "passedArtifacts": 2,
+    "failedArtifacts": 3,
+    "acceptedRiskArtifacts": 2,
+    "blockingViolations": 4,
+    "warningViolations": 1
+  },
+  "artifacts": [
+    {
+      "id": "v1.0.0-beta.1:oci-image:OCI Container Image",
+      "name": "OCI Container Image",
+      "kind": "oci-image",
+      "version": "v1.0.0-beta.1",
+      "channel": "beta",
+      "reference": "ghcr.io/gregorkurth/test-dns:v1.0.0-beta.1",
+      "localPath": null,
+      "status": "remote-only",
+      "exists": false,
+      "decision": "fail",
+      "sizeBytes": null,
+      "fileCount": null,
+      "topLevelEntries": [],
+      "digest": null,
+      "releaseStatus": "planned",
+      "checks": {
+        "allowlist": true,
+        "forbiddenContent": true,
+        "fileCountWithinLimit": true,
+        "sizeWithinLimit": true,
+        "securityState": true,
+        "ociConformant": false
+      },
+      "violations": [
+        {
+          "ruleId": "OCI_DIGEST_REQUIRED",
+          "severity": "blocking",
+          "path": "ghcr.io/gregorkurth/test-dns:v1.0.0-beta.1",
+          "message": "Container-Image ist nur per Tag referenziert. Fuer den Publish-Gate ist ein Digest-Nachweis verpflichtend.",
+          "waived": false,
+          "exceptionId": null
+        },
+        {
+          "ruleId": "OCI_MEDIA_TYPE_MISSING",
+          "severity": "blocking",
+          "path": "ghcr.io/gregorkurth/test-dns:v1.0.0-beta.1",
+          "message": "OCI-Media-Type ist nicht nachgewiesen und kann daher nicht als konform bestaetigt werden.",
+          "waived": false,
+          "exceptionId": null
+        }
+      ],
+      "exceptionsApplied": [],
+      "notes": []
+    },
+    {
+      "id": "v1.0.0-beta.1:release-attachment:Dokumentationspaket fuer Confluence-Kopie",
+      "name": "Dokumentationspaket fuer Confluence-Kopie",
+      "kind": "release-attachment",
+      "version": "v1.0.0-beta.1",
+      "channel": "beta",
+      "reference": "docs/releases/export-package-v1.0.0-beta.1.zip",
+      "localPath": "docs/releases/export-package-v1.0.0-beta.1.zip",
+      "status": "missing",
+      "exists": false,
+      "decision": "accepted-risk",
+      "sizeBytes": null,
+      "fileCount": null,
+      "topLevelEntries": [],
+      "digest": null,
+      "releaseStatus": "planned",
+      "checks": {
+        "allowlist": true,
+        "forbiddenContent": true,
+        "fileCountWithinLimit": true,
+        "sizeWithinLimit": true,
+        "securityState": true,
+        "ociConformant": true
+      },
+      "violations": [
+        {
+          "ruleId": "ARTIFACT_PATH_MISSING",
+          "severity": "blocking",
+          "path": "docs/releases/export-package-v1.0.0-beta.1.zip",
+          "message": "Das erwartete Endartefakt ist lokal nicht vorhanden und kann daher nicht freigegeben werden.",
+          "waived": true,
+          "exceptionId": "EX-OBJ22-2026-04-10-BETA-DOC-BUNDLE"
+        }
+      ],
+      "exceptionsApplied": [
+        {
+          "id": "EX-OBJ22-2026-04-10-BETA-DOC-BUNDLE",
+          "title": "Beta-Dokumentationspaket wird noch manuell fuer Export vorbereitet",
+          "version": "v1.0.0-beta.1",
+          "artifactKinds": [
+            "release-attachment"
+          ],
+          "artifactNamePattern": "Dokumentationspaket",
+          "ruleIds": [
+            "ARTIFACT_PATH_MISSING"
+          ],
+          "decision": "accepted-risk",
+          "reason": "Der Beta-Stand darf fuer interne Review-Zwecke freigegeben werden, obwohl das finale Export-ZIP erst beim Release-Cut erzeugt wird.",
+          "approvedBy": "Release Board",
+          "expiresAt": "2026-05-15"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "v1.0.0-beta.1:security-bundle",
+      "name": "Security bundle v1.0.0-beta.1",
+      "kind": "security-bundle",
+      "version": "v1.0.0-beta.1",
+      "channel": "beta",
+      "reference": "ghcr.io/gregorkurth/test-dns-security-bundle:v1.0.0-beta.1",
+      "localPath": "artifacts/security/v1.0.0-beta.1",
+      "status": "checked",
+      "exists": true,
+      "decision": "accepted-risk",
+      "sizeBytes": 28424,
+      "fileCount": 5,
+      "topLevelEntries": [
+        "npm-audit.json",
+        "sbom.spdx.json",
+        "semgrep.sarif",
+        "trivy-config.json",
+        "trivy-image.json"
+      ],
+      "digest": null,
+      "releaseStatus": "planned",
+      "checks": {
+        "allowlist": true,
+        "forbiddenContent": true,
+        "fileCountWithinLimit": true,
+        "sizeWithinLimit": true,
+        "securityState": true,
+        "ociConformant": true
+      },
+      "violations": [],
+      "exceptionsApplied": [],
+      "notes": [
+        "Security-Bundle hat einen dokumentierten accepted-risk-Status aus OBJ-17."
+      ]
+    },
+    {
+      "id": "v1.0.0-beta.1:zarf-package:minimal",
+      "name": "Zarf package minimal",
+      "kind": "zarf-package",
+      "version": "v1.0.0-beta.1",
+      "channel": "beta",
+      "reference": "dist/zarf/dns-management-service-v1.0.0-beta.1-minimal-amd64.tar.zst",
+      "localPath": "dist/zarf/dns-management-service-v1.0.0-beta.1-minimal-amd64.tar.zst",
+      "status": "missing",
+      "exists": false,
+      "decision": "fail",
+      "sizeBytes": null,
+      "fileCount": null,
+      "topLevelEntries": [],
+      "digest": null,
+      "releaseStatus": "planned",
+      "checks": {
+        "allowlist": true,
+        "forbiddenContent": true,
+        "fileCountWithinLimit": true,
+        "sizeWithinLimit": true,
+        "securityState": true,
+        "ociConformant": true
+      },
+      "violations": [
+        {
+          "ruleId": "ARTIFACT_PATH_MISSING",
+          "severity": "blocking",
+          "path": "dist/zarf/dns-management-service-v1.0.0-beta.1-minimal-amd64.tar.zst",
+          "message": "Das erwartete Endartefakt ist lokal nicht vorhanden und kann daher nicht freigegeben werden.",
+          "waived": false,
+          "exceptionId": null
+        }
+      ],
+      "exceptionsApplied": [],
+      "notes": []
+    },
+    {
+      "id": "v1.0.0-beta.1:manifest-bundle:minimal",
+      "name": "Manifest bundle minimal",
+      "kind": "manifest-bundle",
+      "version": "v1.0.0-beta.1",
+      "channel": "beta",
+      "reference": "artifacts/offline-package/v1.0.0-beta.1/minimal/manifest.json",
+      "localPath": "artifacts/offline-package/v1.0.0-beta.1/minimal",
+      "status": "checked",
+      "exists": true,
+      "decision": "pass",
+      "sizeBytes": 3433,
+      "fileCount": 3,
+      "topLevelEntries": [
+        "SHA256SUMS.txt",
+        "handover.json",
+        "manifest.json"
+      ],
+      "digest": null,
+      "releaseStatus": "planned",
+      "checks": {
+        "allowlist": true,
+        "forbiddenContent": true,
+        "fileCountWithinLimit": true,
+        "sizeWithinLimit": true,
+        "securityState": true,
+        "ociConformant": true
+      },
+      "violations": [],
+      "exceptionsApplied": [],
+      "notes": []
+    },
+    {
+      "id": "v1.0.0-beta.1:zarf-package:full",
+      "name": "Zarf package full",
+      "kind": "zarf-package",
+      "version": "v1.0.0-beta.1",
+      "channel": "beta",
+      "reference": "dist/zarf/dns-management-service-v1.0.0-beta.1-full-amd64.tar.zst",
+      "localPath": "dist/zarf/dns-management-service-v1.0.0-beta.1-full-amd64.tar.zst",
+      "status": "missing",
+      "exists": false,
+      "decision": "fail",
+      "sizeBytes": null,
+      "fileCount": null,
+      "topLevelEntries": [],
+      "digest": null,
+      "releaseStatus": "planned",
+      "checks": {
+        "allowlist": true,
+        "forbiddenContent": true,
+        "fileCountWithinLimit": true,
+        "sizeWithinLimit": true,
+        "securityState": true,
+        "ociConformant": true
+      },
+      "violations": [
+        {
+          "ruleId": "ARTIFACT_PATH_MISSING",
+          "severity": "blocking",
+          "path": "dist/zarf/dns-management-service-v1.0.0-beta.1-full-amd64.tar.zst",
+          "message": "Das erwartete Endartefakt ist lokal nicht vorhanden und kann daher nicht freigegeben werden.",
+          "waived": false,
+          "exceptionId": null
+        }
+      ],
+      "exceptionsApplied": [],
+      "notes": []
+    },
+    {
+      "id": "v1.0.0-beta.1:manifest-bundle:full",
+      "name": "Manifest bundle full",
+      "kind": "manifest-bundle",
+      "version": "v1.0.0-beta.1",
+      "channel": "beta",
+      "reference": "artifacts/offline-package/v1.0.0-beta.1/full/manifest.json",
+      "localPath": "artifacts/offline-package/v1.0.0-beta.1/full",
+      "status": "checked",
+      "exists": true,
+      "decision": "pass",
+      "sizeBytes": 3668,
+      "fileCount": 3,
+      "topLevelEntries": [
+        "SHA256SUMS.txt",
+        "handover.json",
+        "manifest.json"
+      ],
+      "digest": null,
+      "releaseStatus": "planned",
+      "checks": {
+        "allowlist": true,
+        "forbiddenContent": true,
+        "fileCountWithinLimit": true,
+        "sizeWithinLimit": true,
+        "securityState": true,
+        "ociConformant": true
+      },
+      "violations": [],
+      "exceptionsApplied": [],
+      "notes": []
+    }
+  ],
+  "exceptionsApplied": [
+    {
+      "id": "EX-OBJ22-2026-04-10-BETA-DOC-BUNDLE",
+      "title": "Beta-Dokumentationspaket wird noch manuell fuer Export vorbereitet",
+      "version": "v1.0.0-beta.1",
+      "artifactKinds": [
+        "release-attachment"
+      ],
+      "artifactNamePattern": "Dokumentationspaket",
+      "ruleIds": [
+        "ARTIFACT_PATH_MISSING"
+      ],
+      "decision": "accepted-risk",
+      "reason": "Der Beta-Stand darf fuer interne Review-Zwecke freigegeben werden, obwohl das finale Export-ZIP erst beim Release-Cut erzeugt wird.",
+      "approvedBy": "Release Board",
+      "expiresAt": "2026-05-15"
+    }
+  ],
+  "notes": [
+    "Publish und Export bleiben blockiert, bis alle blockierenden Verstosse beseitigt oder formal genehmigt sind.",
+    "Gate-Berichte werden aus Git-Quellen und den finalen Artefaktpfaden erzeugt."
+  ]
+}

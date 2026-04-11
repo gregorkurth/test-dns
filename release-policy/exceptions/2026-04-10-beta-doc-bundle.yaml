@@ -1,0 +1,16 @@
+{
+  "id": "EX-OBJ22-2026-04-10-BETA-DOC-BUNDLE",
+  "title": "Beta-Dokumentationspaket wird noch manuell fuer Export vorbereitet",
+  "version": "v1.0.0-beta.1",
+  "artifactKinds": [
+    "release-attachment"
+  ],
+  "artifactNamePattern": "Dokumentationspaket",
+  "ruleIds": [
+    "ARTIFACT_PATH_MISSING"
+  ],
+  "decision": "accepted-risk",
+  "reason": "Der Beta-Stand darf fuer interne Review-Zwecke freigegeben werden, obwohl das finale Export-ZIP erst beim Release-Cut erzeugt wird.",
+  "approvedBy": "Release Board",
+  "expiresAt": "2026-05-15"
+}

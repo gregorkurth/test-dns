@@ -306,5 +306,20 @@ Der sichtbare "aktuelle Status" entsteht aus dem letzten gueltigen Nachweis pro 
 - **Production Ready:** YES
 - **Hinweis Testumgebung:** Browser-/Viewport-Pruefung erfolgte technisch ueber responsive Klassen/Media-Queries und HTML-Render-Check im lokalen QA-Setup; kein nativer Multi-Browser-GUI-Durchlauf im CLI.
 
+### QA Re-Run (2026-04-10)
+- [x] Vollstaendiger Technik-Check erneut erfolgreich: `npm run test:run -- src/lib/test-execution-dashboard.test.ts src/app/test-execution-dashboard/test-execution-dashboard-client.test.ts src/app/api/test-execution-dashboard/route.test.ts`, `npm run lint`, `npm run typecheck`, `npm run build`, `npm run build:obj23-live-data`.
+- [x] API-Retest erfolgreich: `/api/test-execution-dashboard` liefert weiterhin konsistente Summary-, Filter-, Snapshot- und Statusregeln-Daten.
+- [x] UI-Retest erfolgreich: `/test-execution-dashboard` rendert KPI-Karten, Filter, Tabs `Aktueller Stand`, `Pro OBJ`, `Pro Release`, `Pro Run`, `Regeln & Quellen`.
+- [x] Edge-Case-Retest erfolgreich: temporare QA-Nachweise fuer `JSON nicht parsebar` und `ungueltiger Zeitstempel` wurden sichtbar als `Nachweis fehlerhaft`; sie zaehlen nicht als gueltiger letzter Nachweis und fuehren damit korrekt zu `Never Executed` plus Hinweis.
+- [x] Security-Retest erfolgreich: Rate-Limit bleibt ueber Route-Test aktiv (`HTTP 429` mit `Retry-After` nach Ueberschreitung).
+- [x] Regression-Retest erfolgreich: keine neuen Findings gegenueber dem Re-Test vom 2026-04-06.
+
+### QA Re-Run Summary (2026-04-10)
+- **Acceptance Criteria:** 13/13 weiterhin bestanden
+- **Open Bugs:** 0 (0 Critical, 0 High, 0 Medium, 0 Low)
+- **Security:** Pass
+- **Production Ready:** YES
+- **Hinweis Testumgebung:** Direkter API- und HTML-Retest lokal erfolgreich; nativer Multi-Browser-/Viewport-GUI-Lauf blieb im CLI weiterhin eingeschraenkt.
+
 ## Deployment
 Feature in Git abgeschlossen und nach `main` ueberfuehrt.

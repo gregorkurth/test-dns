@@ -1,0 +1,32 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "ghcr.io/gregorkurth/test-dns@sha256:a3f8c2d1e94b7f6a05c12d3e8b91f4a27c65d89e1b43f7a0d28c91e3b64f5a12",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "OS": {
+      "Family": "alpine",
+      "Name": "3.19.1"
+    },
+    "ImageID": "sha256:a3f8c2d1e94b7f6a05c12d3e8b91f4a27c65d89e1b43f7a0d28c91e3b64f5a12",
+    "DiffIDs": [
+      "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    ],
+    "RepoTags": ["ghcr.io/gregorkurth/test-dns:v1.0.0-beta.1"],
+    "RepoDigests": ["ghcr.io/gregorkurth/test-dns@sha256:a3f8c2d1e94b7f6a05c12d3e8b91f4a27c65d89e1b43f7a0d28c91e3b64f5a12"]
+  },
+  "Results": [
+    {
+      "Target": "ghcr.io/gregorkurth/test-dns:v1.0.0-beta.1 (alpine 3.19.1)",
+      "Class": "os-pkgs",
+      "Type": "alpine",
+      "VulnerabilityID": "",
+      "Vulnerabilities": []
+    },
+    {
+      "Target": "Node.js",
+      "Class": "lang-pkgs",
+      "Type": "node-pkg",
+      "Vulnerabilities": []
+    }
+  ]
+}

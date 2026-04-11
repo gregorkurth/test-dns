@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, existsSync, statSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -16,6 +16,10 @@ const securityBundlesPath = path.join(
 )
 const releaseNoticesPath = path.join(repoRoot, 'docs', 'releases', 'UPDATE-NOTICES.json')
 const workflowPath = path.join(repoRoot, '.github', 'workflows', 'ci.yml')
+const maxOfflineDbAgeDays = Number.parseInt(
+  process.env.OBJ17_MAX_OFFLINE_DB_AGE_DAYS ?? '14',
+  10,
+)
 
 const semverPattern =
   /^v(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?:-(?<prerelease>[0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?$/
@@ -28,6 +32,36 @@ function ensure(condition, message) {
 
 function readJson(filePath) {
   return JSON.parse(readFileSync(filePath, 'utf8'))
+}
+
+function resolveRepoPath(relativePath) {
+  return path.resolve(repoRoot, relativePath)
+}
+
+function parseIsoDate(value, fieldName, version) {
+  const parsed = Date.parse(value)
+  ensure(
+    Number.isFinite(parsed),
+    `${fieldName} ist kein gueltiger ISO-Zeitstempel fuer ${version}`,
+  )
+  return parsed
+}
+
+function ageInDaysFromNow(timestampMs) {
+  const diffMs = Date.now() - timestampMs
+  if (diffMs < 0) {
+    return 0
+  }
+  return Math.floor(diffMs / (24 * 60 * 60 * 1000))
+}
+
+function ensureArtifactExists(relativePath, label, version) {
+  ensure(
+    typeof relativePath === 'string' && relativePath.trim().length > 0,
+    `${label} Pfad fehlt fuer ${version}`,
+  )
+  const absolutePath = resolveRepoPath(relativePath)
+  ensure(existsSync(absolutePath), `${label} fehlt fuer ${version}: ${relativePath}`)
 }
 
 function parseVersion(version) {
@@ -131,11 +165,27 @@ function validateBundle(bundle) {
     typeof bundle.sbom?.path === 'string' && bundle.sbom.path.trim().length > 0,
     `SBOM Pfad fehlt fuer ${bundle.version}`,
   )
+  ensureArtifactExists(bundle.sbom.path, 'SBOM Artefakt', bundle.version)
+
+  const sbomAbsPath = resolveRepoPath(bundle.sbom.path)
+  const sbomDoc = readJson(sbomAbsPath)
+  ensure(
+    Array.isArray(sbomDoc.packages) && sbomDoc.packages.length > 0,
+    `SBOM fuer ${bundle.version} enthaelt kein 'packages'-Array mit Eintraegen. Bitte mit syft oder vergleichbarem Tool neu erzeugen.`,
+  )
 
   ensureScanResult(bundle.scans?.sast, 'SAST', bundle.version)
   ensureScanResult(bundle.scans?.sca, 'SCA', bundle.version)
   ensureScanResult(bundle.scans?.container, 'Container', bundle.version)
   ensureScanResult(bundle.scans?.config, 'Config', bundle.version)
+  ensureArtifactExists(bundle.scans.sast.reportPath, 'SAST Report', bundle.version)
+  ensureArtifactExists(bundle.scans.sca.reportPath, 'SCA Report', bundle.version)
+  ensureArtifactExists(
+    bundle.scans.container.reportPath,
+    'Container Report',
+    bundle.version,
+  )
+  ensureArtifactExists(bundle.scans.config.reportPath, 'Config Report', bundle.version)
 
   ensure(
     Number.isInteger(bundle.findings?.criticalOpen) && bundle.findings.criticalOpen >= 0,
@@ -169,6 +219,20 @@ function validateBundle(bundle) {
       bundle.gate.dbSnapshotUpdatedAt.trim().length > 0,
     `DB Snapshot Zeitpunkt fehlt fuer ${bundle.version}`,
   )
+  const dbSnapshotTimestamp = parseIsoDate(
+    bundle.gate.dbSnapshotUpdatedAt,
+    'dbSnapshotUpdatedAt',
+    bundle.version,
+  )
+  ensure(
+    Number.isInteger(maxOfflineDbAgeDays) && maxOfflineDbAgeDays > 0,
+    'OBJ17_MAX_OFFLINE_DB_AGE_DAYS muss > 0 sein',
+  )
+  const dbSnapshotAgeDays = ageInDaysFromNow(dbSnapshotTimestamp)
+  ensure(
+    dbSnapshotAgeDays <= maxOfflineDbAgeDays,
+    `Offline DB Snapshot ist zu alt fuer ${bundle.version}: ${dbSnapshotAgeDays} Tage (Limit ${maxOfflineDbAgeDays})`,
+  )
 
   if (bundle.findings.criticalOpen > 0) {
     ensure(bundle.gate.status === 'fail', `Critical Findings muessen Gate failen: ${bundle.version}`)
@@ -184,6 +248,15 @@ function validateBundle(bundle) {
         typeof bundle.gate.acceptedRiskExpiresAt === 'string' &&
           bundle.gate.acceptedRiskExpiresAt.trim().length > 0,
         `acceptedRiskExpiresAt fehlt fuer ${bundle.version}`,
+      )
+      const acceptedRiskExpiry = Date.parse(bundle.gate.acceptedRiskExpiresAt)
+      ensure(
+        Number.isFinite(acceptedRiskExpiry),
+        `acceptedRiskExpiresAt ist ungueltig fuer ${bundle.version}`,
+      )
+      ensure(
+        acceptedRiskExpiry >= Date.now(),
+        `acceptedRisk fuer ${bundle.version} ist abgelaufen`,
       )
     }
   }
@@ -206,6 +279,21 @@ function validateBundle(bundle) {
       bundle.evidence.offlineSnapshotPath.trim().length > 0,
     `Offline Snapshot Pfad fehlt fuer ${bundle.version}`,
   )
+  const snapshotAbsPath = resolveRepoPath(bundle.evidence.offlineSnapshotPath)
+  ensureArtifactExists(
+    bundle.evidence.offlineSnapshotPath,
+    'Offline Snapshot Artefakt',
+    bundle.version,
+  )
+
+  const snapshotSizeBytes = statSync(snapshotAbsPath).size
+  const minSnapshotSizeBytes = 1024 * 1024 // 1 MB
+  if (snapshotSizeBytes < minSnapshotSizeBytes) {
+    console.warn(
+      `[WARN] Offline DB Snapshot fuer ${bundle.version} ist nur ${snapshotSizeBytes} Bytes gross.` +
+      ` Erwartet: >= ${minSnapshotSizeBytes} Bytes. Platzhalter erkannt – bitte durch echten Trivy-DB-Snapshot aus dem CI-Release-Gate-Lauf ersetzen.`,
+    )
+  }
 }
 
 function main() {
@@ -256,6 +344,22 @@ function main() {
   ensure(
     workflow.includes('npm run check:obj17'),
     'CI Workflow fuehrt check:obj17 noch nicht aus',
+  )
+  ensure(
+    workflow.includes('SAST Scan (Semgrep)'),
+    'CI Workflow fuehrt keinen SAST Scan (Semgrep) aus',
+  )
+  ensure(
+    workflow.includes('SCA Scan (npm audit)'),
+    'CI Workflow fuehrt keinen SCA Scan (npm audit) aus',
+  )
+  ensure(
+    workflow.includes('Config Scan (Trivy)'),
+    'CI Workflow fuehrt keinen Config Scan (Trivy) aus',
+  )
+  ensure(
+    workflow.includes('Container Scan by Digest (Trivy)'),
+    'CI Workflow fuehrt keinen digest-basierten Container-Scan aus',
   )
 
   console.log('OBJ-17 verification passed')

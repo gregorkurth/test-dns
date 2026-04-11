@@ -48,6 +48,28 @@ describe('test-execution-dashboard data validation', () => {
     expect(record.note).toContain('Nachweis fehlerhaft')
     expect(record.note).toContain('JSON nicht parsebar')
   })
+
+  it('marks empty JSON collections as failed evidence instead of ignoring them', () => {
+    const evidencePath = path.join(
+      process.cwd(),
+      'tests',
+      'results',
+      'qa-empty-evidence.json',
+    )
+
+    const [record] = testExecutionDashboardInternals.parseJsonEvidence(
+      evidencePath,
+      '[]',
+    )
+
+    expect(record).toMatchObject({
+      status: 'failed',
+      executedAt: null,
+      source: 'result_json',
+    })
+    expect(record.note).toContain('Nachweis fehlerhaft')
+    expect(record.note).toContain('keine Testrecords gefunden')
+  })
 })
 
 describe('test-execution-dashboard status resolution', () => {
@@ -69,5 +91,19 @@ describe('test-execution-dashboard status resolution', () => {
     expect(latest).not.toBeNull()
     expect(latest?.status).toBe('passed')
     expect(latest?.executedAt).toBe('2026-04-06T12:00:00.000Z')
+  })
+
+  it('treats undated invalid evidence as non-authoritative for current status', () => {
+    const history: TestExecutionRecord[] = [
+      createRecord({
+        status: 'failed',
+        executedAt: null,
+        note: 'Nachweis fehlerhaft: zeitlich nicht auswertbar',
+      }),
+    ]
+
+    const latest = resolveLatestRecord(history)
+
+    expect(latest).toBeNull()
   })
 })

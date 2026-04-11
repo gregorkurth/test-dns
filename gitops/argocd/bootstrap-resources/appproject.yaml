@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: dns-management
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: dns-management-service
+    dns-management.io/objective: OBJ-21
+spec:
+  description: DNS Management Service deployed via App-of-Apps with separate release and config sources.
+  sourceRepos:
+    - https://gitea.fmn.local/platform/dns-release.git
+    - https://gitea.fmn.local/platform/dns-config.git
+  destinations:
+    - namespace: dns-system
+      server: https://kubernetes.default.svc
+    - namespace: dns-monitoring
+      server: https://kubernetes.default.svc
+    - namespace: dns-ingress
+      server: https://kubernetes.default.svc
+    - namespace: dns-security
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+    - group: networking.k8s.io
+      kind: IngressClass
+  namespaceResourceWhitelist:
+    - group: ''
+      kind: ConfigMap
+    - group: ''
+      kind: Secret
+    - group: ''
+      kind: Service
+    - group: ''
+      kind: ServiceAccount
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: StatefulSet
+    - group: networking.k8s.io
+      kind: Ingress
+    - group: networking.k8s.io
+      kind: NetworkPolicy
+    - group: cilium.io
+      kind: CiliumNetworkPolicy
+    - group: batch
+      kind: Job
+    - group: batch
+      kind: CronJob

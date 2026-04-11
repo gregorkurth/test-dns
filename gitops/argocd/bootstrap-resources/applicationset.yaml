@@ -1,0 +1,61 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: dns-management-apps
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: dns-management-service
+    dns-management.io/objective: OBJ-21
+spec:
+  goTemplate: true
+  generators:
+    - list:
+        elements:
+          - name: dns-core
+            namespace: dns-system
+            valuesPath: environments/fmn-core/core-values.yaml
+            syncMode: manual
+            selfHeal: 'false'
+          - name: dns-monitoring
+            namespace: dns-monitoring
+            valuesPath: environments/fmn-core/monitoring-values.yaml
+            syncMode: manual
+            selfHeal: 'false'
+          - name: dns-ingress
+            namespace: dns-ingress
+            valuesPath: environments/fmn-core/ingress-values.yaml
+            syncMode: manual
+            selfHeal: 'false'
+          - name: dns-security
+            namespace: dns-security
+            valuesPath: environments/fmn-core/security-values.yaml
+            syncMode: automated
+            selfHeal: 'true'
+  template:
+    metadata:
+      name: '{{ .name }}'
+      labels:
+        app.kubernetes.io/part-of: dns-management-service
+        dns-management.io/sync-mode: '{{ .syncMode }}'
+      annotations:
+        dns-management.io/release-source: dns-release
+        dns-management.io/config-source: dns-config
+        dns-management.io/self-heal: '{{ .selfHeal }}'
+    spec:
+      project: dns-management
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ .namespace }}'
+      sources:
+        - repoURL: https://gitea.fmn.local/platform/dns-release.git
+          targetRevision: release/v1.0.0
+          path: helm/dns-management-service
+          helm:
+            valueFiles:
+              - $values/{{ .valuesPath }}
+        - repoURL: https://gitea.fmn.local/platform/dns-config.git
+          targetRevision: env/fmn-core/v1.0.0
+          ref: values
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true

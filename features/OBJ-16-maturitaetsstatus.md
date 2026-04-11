@@ -131,8 +131,119 @@ Maturitaetsstatus-Seite
 - Negative Tests decken Konflikte zwischen Datenquellen, fehlende Security-Artefakte und fehlende Testlaeufe ab.
 - Offline-Tests bestaetigen, dass die Sicht ohne externe Abhaengigkeiten vollstaendig lesbar bleibt.
 
-## QA Test Results
-_To be added by /qa_
+## QA Test Results (Re-Test 2026-04-10)
+
+**Tested:** 2026-04-10
+**App URL:** http://localhost:3000
+**Tester:** QA Engineer (AI)
+
+### Executed Checks
+- `npm run typecheck` -> bestanden
+- `npm run lint` -> bestanden
+- `npm run test:run -- src/lib/obj16-maturity.test.ts src/app/api/v1/api-v1.test.ts` -> bestanden (alle Tests)
+- `npm run build` -> bestanden; Routen `/maturity` und `/api/v1/maturity` erfolgreich generiert
+
+### Acceptance Criteria Status
+
+#### AC-1: Maturitaetsansicht im GUI erreichbar und verstaendlich benannt
+- [x] PASS - Route `/maturity` mit Ueberschrift "Maturity Status (L0-L5)" vorhanden.
+
+#### AC-2: Gesamt-Reifegrad L0-L5 mit erklaerter Bewertungslogik
+- [x] PASS - Overall Level Card zeigt Score/100 und Formel wird im UI erklaert.
+
+#### AC-3: Feature-Tabelle mit ID, Name, Phase, Status, Release-Kanal, Teststatus
+- [x] PASS - Feature Table rendert alle geforderten Spalten.
+
+#### AC-4: Teststatus konsolidiert: Passed, Failed, Never Executed
+- [x] PASS - Teststatus-Badge und Zaehler (T/P/F/N) pro Feature sichtbar.
+
+#### AC-5: Anforderungsabdeckung als Kennzahl
+- [x] PASS - "Req Coverage" Spalte zeigt Prozent oder "n/a".
+
+#### AC-6: Security-Indikator mit SBOM, Scan-Status, Critical/High Findings
+- [x] PASS - FIXED seit letzter QA. Neue "Security Indicator" Card zeigt SBOM vorhanden (Ja/Nein), Letzter Scan-Status, Gate-Status und Open Critical/High Findings.
+
+#### AC-7: Doku-Indikator mit arc42, Benutzerhandbuch, Betriebsdoku
+- [x] PASS - FIXED seit letzter QA. Neue "Documentation Indicator" Card zeigt arc42 aktuell, Benutzerhandbuch aktuell, Betriebsdoku aktuell (jeweils Ja/Nein).
+
+#### AC-8: Offline-Indikator mit Zarf, Export-Status, App-of-Apps
+- [x] PASS - FIXED seit letzter QA. Neue "Offline Indicator" Card zeigt Zarf verfuegbar, Export-Status und App-of-Apps bereit (jeweils Badge mit Status).
+
+#### AC-9: Offene Punkte priorisiert sichtbar
+- [x] PASS - "Open Points (prioritized)" mit Blocker/High/Normal Badges.
+
+#### AC-10: Naechste Meilensteine konfigurierbar und sichtbar
+- [x] PASS - "Milestones (configurable)" mit Target Level, Owner und Due Date. Konfigurierbar via `OBJ16_MILESTONES_JSON`.
+
+#### AC-11: Komplett offline nutzbar
+- [x] PASS - Alle Datenquellen sind repository-basiert. Kein externer Online-Zugriff im OBJ-16-Codepfad.
+
+#### AC-12: Konsistente Kanal-Semantik Released/Beta/Preview
+- [x] PASS - "Release Channel Legend" mit vier Eintraegen (Released, Beta, Preview, Unknown) inkl. Bedeutung und Risikohinweis.
+
+#### AC-13: Druck-/exportfreundliche Darstellung
+- [x] PASS - "Druckansicht" Button ruft `window.print()`. Print-Styles vorhanden (`print:bg-white`, `print:hidden` fuer Filter, `print:max-w-none`).
+
+### Edge Cases Status
+
+#### EC-1: Keine Testdaten vorhanden
+- [x] Handled - `resolveTestStatus` gibt "never_executed" zurueck bei leerem Aggregat.
+
+#### EC-2: Feature deployed aber Tests failed
+- [x] Handled - Feature wird als Blocker markiert durch `determineRiskPriority`.
+
+#### EC-3: Feature ohne Release-Kanal
+- [x] Handled - Fallback auf "Unknown" via `channelFromFeatureStatus`.
+
+#### EC-4: Security-Artefakte fehlen
+- [x] Handled - `computeSecurityScore` gibt 0 Punkte fuer fehlende SBOM/Scans.
+
+#### EC-5: Doku fehlt oder veraltet
+- [x] Handled - `computeDocumentationSignals` prueft Existenz und Alter (120 Tage Frische).
+
+#### EC-6: Offline-Artefakte fehlen
+- [x] Handled - `computeOfflineSignals` faellt auf Score 0 zurueck.
+
+#### EC-7: Widerspruechliche Datenquellen
+- [x] Partially handled - Risiko-Prioritaet wird konservativ bestimmt; ein expliziter "Konflikt"-Hinweis wird allerdings nicht als eigenes UI-Element angezeigt.
+
+#### EC-8: Einzelne Quellen nicht lesbar
+- [x] Handled - Robuste try/catch Blocks in allen Datenladequellen.
+
+#### EC-9: Viele Features vorhanden
+- [x] Handled - Filter nach Phase, Status, Kanal, Risiko, Teststatus und Freitextsuche.
+
+#### EC-10: Nur lokale Umgebung
+- [x] Handled - Alle Kennzahlen aus Repository-Dateien generierbar.
+
+### Security Audit Results
+- [x] Authentication: `GET /api/v1/maturity` ist mit `requireSession(request, 'viewer')` geschuetzt; 401 bei fehlendem Token.
+- [x] Input Validation: Ungueltiger Filter-Wert liefert 422 `INVALID_MATURITY_STATUS`.
+- [x] Rate Limiting: `enforceRateLimit(...)` aktiv.
+- [x] XSS: Kein `dangerouslySetInnerHTML`. Alle Werte als React-Text gerendert.
+- [x] Secret Exposure: Keine Secrets im OBJ-16-Codepfad.
+
+### Bugs Found
+
+#### BUG-1: Edge Case "Widerspruechliche Datenquellen" ohne expliziten Konflikt-Hinweis
+- **Severity:** Low
+- **Steps to Reproduce:**
+  1. Setze in INDEX.md einen Feature-Status auf "Completed".
+  2. Stelle sicher, dass QA-Abschnitt offene High Findings zeigt.
+  3. Expected: Ansicht zeigt "Konflikt" gemaess Edge Case EC-7.
+  4. Actual: Feature wird konservativ als "high" Risk eingestuft, aber kein explizites "Konflikt"-Label.
+- **Priority:** Nice to have (konservatives Verhalten ist sicher, nur das explizite Label fehlt)
+
+### Regression Check
+- PASS: API-Discovery/OpenAPI fuer Maturity-Endpunkt wird durch `api-v1.test.ts` abgedeckt.
+- PASS: Build bestaetigt `/maturity` und `/api/v1/maturity` in der generierten App.
+
+### Summary
+- **Acceptance Criteria:** 13/13 passed
+- **Bugs Found:** 1 total (0 critical, 0 high, 0 medium, 1 low)
+- **Security:** Pass
+- **Production Ready:** YES
+- **Recommendation:** Deploy. Der Low-Severity-Bug (fehlender expliziter Konflikt-Hinweis) kann im naechsten Sprint adressiert werden. Manueller Browser-Smoketest fuer Responsive und Print-Ansicht als Nachfolgeaufgabe.
 
 ## Deployment
 _To be added by /deploy_

@@ -23,21 +23,21 @@
 | OBJ-8 | Export & Download | 4 – P1 DNS | In Review | [OBJ-8-export-download.md](OBJ-8-export-download.md) | 2026-03-17 |
 | OBJ-9 | Manual Test Runner | 4 – P1 DNS | In Review | [OBJ-9-manual-test-runner.md](OBJ-9-manual-test-runner.md) | 2026-04-03 |
 | OBJ-23 | Test Execution Dashboard | 4 – P1 DNS | Completed | [OBJ-23-test-execution-dashboard.md](OBJ-23-test-execution-dashboard.md) | 2026-04-04 |
-| OBJ-24 | DNS Baseline Config Repository & Change History | 4 – P1 DNS | Planned | [OBJ-24-dns-baseline-config-repository.md](OBJ-24-dns-baseline-config-repository.md) | 2026-04-09 |
+| OBJ-24 | DNS Baseline Config Repository & Change History | 4 – P1 DNS | In Review | [OBJ-24-dns-baseline-config-repository.md](OBJ-24-dns-baseline-config-repository.md) | 2026-04-09 |
 | OBJ-10 | Kubernetes Deployment | 5 – Plattform | In Review | [OBJ-10-kubernetes-deployment.md](OBJ-10-kubernetes-deployment.md) | 2026-04-03 |
 | OBJ-11 | Monitoring & Observability (OpenTelemetry) | 5 – Plattform | In Review | [OBJ-11-monitoring-observability.md](OBJ-11-monitoring-observability.md) | 2026-04-03 |
-| OBJ-25 | Helm Charts fuer Kubernetes Deployment | 5 – Plattform | In Progress | [OBJ-25-helm-charts.md](OBJ-25-helm-charts.md) | 2026-04-09 |
+| OBJ-25 | Helm Charts fuer Kubernetes Deployment | 5 – Plattform | In Review | [OBJ-25-helm-charts.md](OBJ-25-helm-charts.md) | 2026-04-09 |
 | OBJ-12 | Security & Authentifizierung | 5 – Plattform | In Review | [OBJ-12-security-authentifizierung.md](OBJ-12-security-authentifizierung.md) | 2026-04-03 |
 | OBJ-13 | Kubernetes Operator | 5 – Plattform | In Review | [OBJ-13-kubernetes-operator.md](OBJ-13-kubernetes-operator.md) | 2026-04-03 |
 | OBJ-14 | Release Management | 6 – Produktabschluss | In Review | [OBJ-14-release-management.md](OBJ-14-release-management.md) | 2026-04-03 |
 | OBJ-15 | Produkt-Website | 6 – Produktabschluss | In Review | [OBJ-15-produkt-website.md](OBJ-15-produkt-website.md) | 2026-04-03 |
 | OBJ-16 | Maturitätsstatus / Reifegradübersicht | 6 – Produktabschluss | In Review | [OBJ-16-maturitaetsstatus.md](OBJ-16-maturitaetsstatus.md) | 2026-04-03 |
 | OBJ-17 | SBOM & Security-Scanning | 6 – Produktabschluss | In Review | [OBJ-17-sbom-security-scanning.md](OBJ-17-sbom-security-scanning.md) | 2026-04-03 |
-| OBJ-22 | Release-Artefaktprüfung / Publish-Gate | 6 – Produktabschluss | Planned | [OBJ-22-release-artefaktpruefung-publish-gate.md](OBJ-22-release-artefaktpruefung-publish-gate.md) | 2026-04-04 |
-| OBJ-18 | Artefakt-Registry (Harbor / Nexus) | 6 – Produktabschluss | Planned | [OBJ-18-artefakt-registry.md](OBJ-18-artefakt-registry.md) | 2026-04-03 |
-| OBJ-19 | Zarf-Paket / Offline-Weitergabe | 6 – Produktabschluss | Planned | [OBJ-19-zarf-paket-offline-weitergabe.md](OBJ-19-zarf-paket-offline-weitergabe.md) | 2026-04-03 |
-| OBJ-20 | Zielumgebung / Import / Rehydrierung | 6 – Produktabschluss | Planned | [OBJ-20-zielumgebung-import-rehydrierung.md](OBJ-20-zielumgebung-import-rehydrierung.md) | 2026-04-03 |
-| OBJ-21 | GitOps / Argo CD / App-of-Apps | 6 – Produktabschluss | Planned | [OBJ-21-gitops-argocd.md](OBJ-21-gitops-argocd.md) | 2026-04-03 |
+| OBJ-22 | Release-Artefaktprüfung / Publish-Gate | 6 – Produktabschluss | In Review | [OBJ-22-release-artefaktpruefung-publish-gate.md](OBJ-22-release-artefaktpruefung-publish-gate.md) | 2026-04-04 |
+| OBJ-18 | Artefakt-Registry (Harbor / Nexus) | 6 – Produktabschluss | In Review | [OBJ-18-artefakt-registry.md](OBJ-18-artefakt-registry.md) | 2026-04-03 |
+| OBJ-19 | Zarf-Paket / Offline-Weitergabe | 6 – Produktabschluss | In Progress | [OBJ-19-zarf-paket-offline-weitergabe.md](OBJ-19-zarf-paket-offline-weitergabe.md) | 2026-04-03 |
+| OBJ-20 | Zielumgebung / Import / Rehydrierung | 6 – Produktabschluss | In Review | [OBJ-20-zielumgebung-import-rehydrierung.md](OBJ-20-zielumgebung-import-rehydrierung.md) | 2026-04-03 |
+| OBJ-21 | GitOps / Argo CD / App-of-Apps | 6 – Produktabschluss | In Review | [OBJ-21-gitops-argocd.md](OBJ-21-gitops-argocd.md) | 2026-04-03 |
 
 <!-- Add features above this line -->
 

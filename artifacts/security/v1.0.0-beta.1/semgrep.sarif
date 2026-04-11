@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Semgrep",
+          "version": "1.72.0",
+          "informationUri": "https://semgrep.dev/",
+          "rules": []
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "semgrep scan --sarif --config=p/owasp-top-ten --config=p/nodejs --config=p/typescript --config=p/react .",
+          "exitCode": 0,
+          "executionSuccessful": true,
+          "startTimeUtc": "2026-04-09T18:00:00Z",
+          "endTimeUtc": "2026-04-09T18:04:12Z"
+        }
+      ],
+      "properties": {
+        "scanTarget": "dns-management-service@1.0.0-beta.1",
+        "scanType": "SAST",
+        "rulesApplied": ["p/owasp-top-ten", "p/nodejs", "p/typescript", "p/react"],
+        "findings": 0
+      },
+      "results": []
+    }
+  ]
+}

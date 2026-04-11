@@ -1,0 +1,156 @@
+{
+  "service": "DNS Management Service",
+  "sourceOfTruth": "git",
+  "updatedAt": "2026-04-10T17:30:00Z",
+  "policyVersion": "2026.04.10-obj22",
+  "decisionMode": "strict-allowlist",
+  "defaultBlockOnError": true,
+  "forbiddenContentPatterns": [
+    {
+      "id": "SECRET_PRIVATE_KEY",
+      "pattern": "-----BEGIN (RSA |EC |OPENSSH |)?PRIVATE KEY-----",
+      "description": "Private keys duerfen nie in Release-Artefakten enthalten sein."
+    },
+    {
+      "id": "SECRET_AWS_ACCESS_KEY",
+      "pattern": "AKIA[0-9A-Z]{16}",
+      "description": "AWS Access Keys muessen vor Publish blockiert werden."
+    },
+    {
+      "id": "SECRET_GENERIC_PASSWORD",
+      "pattern": "\"password\"\\s*:\\s*\"[^\"]+\"",
+      "description": "Hart kodierte Passwortfelder muessen erkannt werden."
+    }
+  ],
+  "artifactProfiles": [
+    {
+      "artifactKind": "oci-image",
+      "allowedPathPatterns": [],
+      "allowedFileExtensions": [],
+      "requiredTopLevelEntries": [],
+      "maxFileCount": null,
+      "maxArtifactSizeBytes": null,
+      "requireLocalPath": false,
+      "inspectContents": false,
+      "requireDigest": true,
+      "allowedMediaTypes": [
+        "application/vnd.oci.image.manifest.v1+json",
+        "application/vnd.oci.image.index.v1+json"
+      ],
+      "forbiddenPathPatterns": []
+    },
+    {
+      "artifactKind": "release-attachment",
+      "allowedPathPatterns": [
+        "docs/releases/**",
+        "docs/exports/**"
+      ],
+      "allowedFileExtensions": [
+        ".zip",
+        ".json",
+        ".md",
+        ".txt"
+      ],
+      "requiredTopLevelEntries": [],
+      "maxFileCount": 20,
+      "maxArtifactSizeBytes": 52428800,
+      "requireLocalPath": true,
+      "inspectContents": true,
+      "requireDigest": false,
+      "allowedMediaTypes": [],
+      "forbiddenPathPatterns": [
+        "**/*.map",
+        "**/*.env",
+        "**/*.pem",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "artifactKind": "security-bundle",
+      "allowedPathPatterns": [
+        "artifacts/security/**"
+      ],
+      "allowedFileExtensions": [
+        ".json",
+        ".sarif",
+        ".spdx.json",
+        ".txt",
+        ".zst"
+      ],
+      "requiredTopLevelEntries": [
+        "sbom.spdx.json",
+        "semgrep.sarif",
+        "npm-audit.json",
+        "trivy-image.json",
+        "trivy-config.json"
+      ],
+      "maxFileCount": 10,
+      "maxArtifactSizeBytes": 268435456,
+      "requireLocalPath": true,
+      "inspectContents": true,
+      "requireDigest": false,
+      "allowedMediaTypes": [],
+      "forbiddenPathPatterns": [
+        "**/*.map",
+        "**/*.env",
+        "**/*.pem"
+      ]
+    },
+    {
+      "artifactKind": "manifest-bundle",
+      "allowedPathPatterns": [
+        "artifacts/offline-package/**"
+      ],
+      "allowedFileExtensions": [
+        ".json",
+        ".txt"
+      ],
+      "requiredTopLevelEntries": [
+        "manifest.json",
+        "SHA256SUMS.txt",
+        "handover.json"
+      ],
+      "maxFileCount": 5,
+      "maxArtifactSizeBytes": 5242880,
+      "requireLocalPath": true,
+      "inspectContents": true,
+      "requireDigest": false,
+      "allowedMediaTypes": [],
+      "forbiddenPathPatterns": [
+        "**/*.map",
+        "**/*.env",
+        "**/*.pem"
+      ]
+    },
+    {
+      "artifactKind": "zarf-package",
+      "allowedPathPatterns": [
+        "dist/zarf/**"
+      ],
+      "allowedFileExtensions": [
+        ".tar.zst",
+        ".tar",
+        ".tar.gz",
+        ".txt",
+        ".json",
+        ".yaml",
+        ".yml",
+        ".sh"
+      ],
+      "requiredTopLevelEntries": [],
+      "maxFileCount": 200,
+      "maxArtifactSizeBytes": 1073741824,
+      "requireLocalPath": true,
+      "inspectContents": true,
+      "inspectNestedArchives": true,
+      "requireDigest": false,
+      "allowedMediaTypes": [],
+      "forbiddenPathPatterns": [
+        "**/*.map",
+        "**/*.env",
+        "**/*.pem",
+        "**/node_modules/**"
+      ]
+    }
+  ]
+}

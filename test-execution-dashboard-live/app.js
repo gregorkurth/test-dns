@@ -80,6 +80,10 @@ function statusClassName(value) {
   return 'status-never'
 }
 
+function evidenceIssueLabel(count) {
+  return count === 1 ? '1 Nachweisfehler' : `${count} Nachweisfehler`
+}
+
 function normalizeRunId(record) {
   if (record.runId && String(record.runId).trim()) {
     return String(record.runId).trim()
@@ -366,7 +370,7 @@ function renderTestsTable(filteredTests) {
       null,
       'Keine Testfaelle fuer den aktuellen Filter gefunden.',
     )
-    cell.colSpan = 7
+    cell.colSpan = 8
     row.appendChild(cell)
     dom.testsTableBody.appendChild(row)
     return
@@ -392,6 +396,20 @@ function renderTestsTable(filteredTests) {
     )
     statusCell.appendChild(status)
     row.appendChild(statusCell)
+
+    const issueCell = createElement('td')
+    if ((test.evidenceIssueCount || 0) > 0) {
+      issueCell.appendChild(
+        createElement(
+          'span',
+          'status-pill status-warning',
+          evidenceIssueLabel(test.evidenceIssueCount),
+        ),
+      )
+    } else {
+      issueCell.textContent = '—'
+    }
+    row.appendChild(issueCell)
 
     row.appendChild(createElement('td', null, test.lastRunId || '—'))
     row.appendChild(createElement('td', null, test.lastReleaseId || '—'))
@@ -424,6 +442,30 @@ function renderDetailPanel(filteredTests) {
     block.appendChild(createElement('span', 'detail-label', label))
     block.appendChild(createElement('span', 'detail-value', value))
     dom.detailPanel.appendChild(block)
+  }
+
+  if ((selected.evidenceIssueCount || 0) > 0) {
+    const issueBox = createElement('div', 'evidence-warning')
+    issueBox.appendChild(
+      createElement('span', 'detail-label', evidenceIssueLabel(selected.evidenceIssueCount)),
+    )
+    issueBox.appendChild(
+      createElement(
+        'p',
+        'detail-value',
+        'Fehlerhafte oder zeitlich nicht auswertbare Nachweise bleiben in der Historie sichtbar, zaehlen aber nicht als gueltiger letzter Nachweis.',
+      ),
+    )
+    if (selected.latestEvidenceIssue) {
+      issueBox.appendChild(
+        createElement(
+          'p',
+          'detail-value',
+          `Letzter Hinweis: ${selected.latestEvidenceIssue}`,
+        ),
+      )
+    }
+    dom.detailPanel.appendChild(issueBox)
   }
 
   const historyTitle = createElement('span', 'detail-label', 'Historie')

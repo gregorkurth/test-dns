@@ -28,10 +28,55 @@ kontrolliert installiert werden kann.
    - Fuer standardisierte Installation muss mindestens ein versioniertes Helm Chart bereitgestellt werden (Kustomize optional zusaetzlich).
    - Die App muss in eine standardisierte Plattform-/Namespace-Struktur integrierbar sein.
    - Persistente Daten muessen ueber Kubernetes-Storage deklarativ abbildbar sein (Claims, Klassen, Policies).
-   - Falls in der Zielplattform Rook-Ceph vorhanden ist, muss die App per versionierter Konfiguration mit folgenden Storage-Profilen betreibbar sein:
-     - Block-Storage (z. B. Ceph RBD)
-     - File-Storage (z. B. CephFS)
-     - S3-kompatibles Object-Storage (z. B. Ceph RGW)
+   - Die Plattform stellt Rook-Ceph als primäres Storage-Backend bereit. Wenn Rook-Ceph in der Zielplattform verfügbar ist, MUSS die App per versionierter Konfiguration mit folgenden Storage-Profilen betreibbar sein:
+     - Block-Storage (Ceph RBD – ReadWriteOnce, z. B. für Datenbanken und Single-Pod-Workloads)
+     - File-Storage / CIFS (CephFS – ReadWriteMany, z. B. für geteilte Konfiguration und Logs)
+     - S3-kompatibles Object-Storage (Ceph RGW – für Artefakte, Backups, SBOM-Ablage)
+   - Wenn Rook-Ceph nicht vorhanden ist, MUSS die App auf lokalen Storage zurückfallen (z. B. `hostPath`, `emptyDir` oder `local` PV) und dies im GUI und in der Dokumentation kenntlich machen.
+   - Das Storage-Profil (ceph oder local) muss über versionierte Helm Values konfigurierbar und dokumentiert sein; eine hartcodierte Storage-Entscheidung im Chart ist nicht zulässig.
+
+### 2a. Persistenter Speicher / Rook-Ceph Storage-Profil
+
+Die Plattform stellt Rook-Ceph als zentrales, gemanagtes Storage-Backend bereit. Jede App muss Storage-Profil-fähig sein und zwischen Ceph-Betrieb und lokalem Fallback umschaltbar implementiert sein.
+
+#### Ceph-Profil (wenn Rook-Ceph verfügbar)
+
+| Typ | Ceph-Technologie | Zugriffsmodus | Typische Nutzung |
+|-----|-----------------|---------------|-----------------|
+| Block | Ceph RBD (rook-ceph-block) | ReadWriteOnce | Datenbank, State-Volumes, einzelne Pods |
+| File / CIFS | CephFS (rook-cephfs) | ReadWriteMany | Geteilte Configs, Logs, Multi-Pod-Mounts |
+| Object / S3 | Ceph RGW (S3-kompatibel) | HTTP/S3-API | Artefakte, Backups, SBOM, Zone-File-Ablage |
+
+- StorageClass-Namen, Bucket-URLs und Zugangsdaten müssen über Helm Values konfigurierbar sein.
+- PersistentVolumeClaims und ObjectBucketClaims müssen deklarativ im Chart beschrieben sein.
+- Der Operator muss prüfen, ob die konfigurierten StorageClasses im Cluster vorhanden sind, und den CR-Status entsprechend setzen.
+
+#### Local-Fallback (wenn Rook-Ceph nicht verfügbar)
+
+- Die App MUSS ohne Rook-Ceph lauffähig sein, indem sie auf lokalen Storage zurückgreift:
+  - Block-Ersatz: `local` PV oder `hostPath` (nur Dev/Test)
+  - File-Ersatz: `emptyDir` oder `local` PV (kein Multi-Pod-Betrieb)
+  - S3-Ersatz: lokales Dateisystem-Verzeichnis (kein echter S3-Endpunkt)
+- Im GUI MUSS ein sichtbarer Hinweis angezeigt werden, wenn der Local-Fallback aktiv ist.
+- Die Dokumentation muss den Fallback-Betrieb und seine Einschränkungen beschreiben.
+
+#### Helm-Values-Konvention
+
+```yaml
+storage:
+  profile: ceph          # ceph | local
+  ceph:
+    block:
+      storageClass: rook-ceph-block
+    file:
+      storageClass: rook-cephfs
+    s3:
+      endpoint: ""       # Ceph RGW URL
+      bucket: ""
+      accessKeySecret: "" # ref to Secret
+  local:
+    path: /data          # nur für dev/test
+```
 
 3. **GitOps und deklarative Installation**
    - Die Installation soll GitOps-fähig sein.
@@ -125,6 +170,13 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Der Operator verwaltet die Applikationskonfiguration über CRDs.
 - Der Operator soll Status, Konfiguration, Automatisierungen und betrieblich relevante Aktionen steuern können.
 - Falls ein eigener Operator implementiert wird, ist Go (controller-runtime/kubebuilder) der verpflichtende Technologie-Stack.
+- Der Operator MUSS alle konfigurierten Tests periodisch und automatisch **auf der Zielplattform** ausführen (Scheduled Test Execution).
+  - Die Tests laufen im laufenden Kubernetes-Cluster gegen die tatsächlich deployete Instanz – nicht in CI und nicht lokal.
+  - Das Ausführungsintervall ist konfigurierbar; der Standardwert beträgt **15 Minuten**.
+  - Testergebnisse werden als OTel-Metriken und/oder strukturierte Logs exportiert.
+  - Ziel ist entweder `clickhouse` (produktiv) oder `local` (Offline-/Dev-Betrieb), analog zu Abschnitt 5.
+  - Bei einem fehlgeschlagenen Test wird ein OTel-Event ausgelöst und der CR-Status entsprechend aktualisiert.
+  - Ein bereits laufender Testdurchlauf blockiert den nächsten Intervall-Start; überlappende Läufe werden übersprungen.
 
 ### 5. Monitoring / OpenTelemetry
 - Monitoring und Observability müssen mit OpenTelemetry umgesetzt werden.
@@ -181,6 +233,9 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Der Teststatus muss fuer Nicht-Entwickler mindestens pro Feature/OBJ, pro Run und pro Release sichtbar sein.
 - Ein Testergebnis muss reproduzierbar und dokumentierbar sein.
 - Die Tests müssen mindestens Build-, Unit-, Integrations-, API-, UI- und Deployability-Aspekte berücksichtigen, soweit fachlich relevant.
+- Der Kubernetes Operator MUSS alle Tests periodisch automatisch **auf der Zielplattform** ausführen (Scheduled Test Execution, Standard: 15 Minuten, Intervall konfigurierbar). Die Tests laufen im Cluster gegen die deployete Instanz – nicht in CI.
+- Testergebnisse der periodischen Ausführung werden über OTel an ClickHouse (`clickhouse`) oder lokal (`local`) berichtet, analog zu den Observability-Modi in Abschnitt 5.
+- Der kombinierte Teststatus (periodisch automatisch + manuell) muss im Test Execution Dashboard sichtbar sein.
 
 ### 9. CI/CD Pipeline
 - Jede App benötigt eine Pipeline für Build, Test, Security-Prüfung, Paketierung und Deployment.
@@ -233,7 +288,7 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Fuer Container-Images muss die Basis-Image-Herkunft nachvollziehbar dokumentiert sein (Image-Name, Digest, Hardening-Stand).
 - Container-Images und Artefakt-Distribution muessen OCI-konform sein; nicht-OCI-konforme Image-Layouts sind fuer Release/Publish nicht zulaessig.
 - Es duerfen nur freigegebene gehaertete Basis-Images verwendet werden; generische Full-OS-Images ohne Hardening-Freigabe sind nicht zulaessig.
-- Falls Rook-Ceph in der Zielplattform vorhanden ist, muessen benoetigte Storage-Klassen und Claims fuer Block/File/S3-Profil deklarativ konfigurierbar sein (z. B. via Helm Values).
+- Die Storage-Klassen und Claims fuer Block/File/S3-Profil (Rook-Ceph) sowie der Local-Fallback muessen deklarativ via Helm Values konfigurierbar sein (siehe Abschnitt 2a).
 
 ### 13. Zarf-Paket / Offline-Weitergabe
 - Jede App muss als **Zarf-Paket** exportierbar sein.

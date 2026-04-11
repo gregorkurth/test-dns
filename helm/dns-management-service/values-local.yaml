@@ -1,6 +1,8 @@
 namespace:
   name: dns-management-local
 
+replicaCount: 1
+
 image:
   repository: test-dns
   tag: dev
@@ -8,8 +10,12 @@ image:
   pullPolicy: Never
 
 ingress:
+  enabled: true
   className: nginx
-  host: dns.localtest.me
+  hostname: dns.localtest.me
+  tls:
+    enabled: false
+    secretName: ""
   annotations:
     kubernetes.io/ingress.class: nginx
     security.fmn.dev/opa-note: OPA should require an approved hostname, ingress class, and TLS policy for this route.
@@ -20,5 +26,10 @@ service:
 
 config:
   APP_BASE_URL: https://dns.localtest.me
-  OTEL_EXPORT_MODE: local
+  LOG_LEVEL: debug
 
+otel:
+  mode: local
+
+debug:
+  enabled: true

@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dns-monitoring
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: dns-management-service
+    dns-management.io/sync-mode: manual
+spec:
+  project: dns-management
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dns-monitoring
+  sources:
+    - repoURL: https://gitea.fmn.local/platform/dns-release.git
+      targetRevision: release/v1.0.0
+      path: helm/dns-management-service
+      helm:
+        valueFiles:
+          - $values/environments/fmn-core/monitoring-values.yaml
+    - repoURL: https://gitea.fmn.local/platform/dns-config.git
+      targetRevision: env/fmn-core/v1.0.0
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

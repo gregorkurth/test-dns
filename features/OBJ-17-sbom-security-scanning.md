@@ -142,8 +142,145 @@ Release Security Flow (OBJ-17)
 - **CI:** `check:obj17` in `.github/workflows/ci.yml` in Quality- und Release-Gate-Lauf integriert.
 - **Integration OBJ-16:** Security-Kennzahlen werden in der Maturity-Sicht aus dem OBJ-17 Loader referenziert.
 
-## QA Test Results
-_To be added by /qa_
+## QA Test Results (Re-Test 2026-04-10)
+
+**Tested:** 2026-04-10
+**App URL:** http://localhost:3000
+**Tester:** QA Engineer (AI)
+
+### Executed Checks
+- `npm run check:obj17` -> bestanden (2 Bundles validiert, Policy-Checks bestanden)
+- `npm run test:run -- src/lib/obj17-security-scanning.test.ts src/app/api/v1/api-v1.test.ts` -> bestanden
+- `npm run test:run -- src/lib/obj16-maturity.test.ts` -> bestanden
+- `npm run build` -> bestanden; Routen `/security-posture` und `/api/v1/security/scans` generiert
+- `npm run lint` -> bestanden
+- `npm run typecheck` -> bestanden
+- Dateisystem-Checks: `artifacts/security/` existiert mit Bundles fuer v1.0.0-beta.1 und v0.9.0
+
+### Acceptance Criteria Status
+
+#### AC-1: SBOM pro Release versioniert abgelegt
+- [x] PASS - FIXED seit letzter QA. SBOM-Dateien existieren jetzt unter `artifacts/security/v1.0.0-beta.1/sbom.spdx.json` und `artifacts/security/v0.9.0/sbom.spdx.json`. `check:obj17` validiert Pfad-Existenz.
+
+#### AC-2: SBOM umfasst direkte und transitive Abhaengigkeiten
+- [ ] BUG: Die SBOM-Datei (327 Bytes) enthaelt nur den SPDX-Header und `creationInfo`, aber kein `packages`-Array. Es handelt sich um einen Stub, nicht um eine reale Abhaengigkeitsliste. Weder Application-Layer- noch Base-Image-Abhaengigkeiten sind enthalten.
+
+#### AC-3: SBOM in Standardformat (CycloneDX oder SPDX)
+- [x] PASS (teilweise) - Dateiformat ist SPDX-2.3 JSON mit korrektem Header. Inhaltlich ist die SBOM aber ein Stub (siehe AC-2).
+
+#### AC-4: SAST-Scans verpflichtend in Pipeline
+- [x] PASS - FIXED seit letzter QA. `release-gate` Job enthaelt "SAST Scan (Semgrep)" Schritt mit SARIF-Output. Lokaler Nachweis `semgrep.sarif` existiert (209 Bytes, leeres Ergebnis-Array).
+
+#### AC-5: SCA-Scans verpflichtend in Pipeline
+- [x] PASS - FIXED seit letzter QA. `release-gate` Job enthaelt "SCA Scan (npm audit)" Schritt mit JSON-Output. Lokaler Nachweis `npm-audit.json` existiert.
+
+#### AC-6: Container-Scan auf Digest-Basis
+- [x] PASS - FIXED seit letzter QA. `release-gate` Job enthaelt "Container Scan by Digest (Trivy)" mit `image-ref: ghcr.io/.../...@${{ needs.image-build.outputs.image-digest }}`. Lokaler Nachweis `trivy-image.json` existiert.
+
+#### AC-7: Konfigurationsscans fuer K8s-Manifeste und Helm Charts
+- [x] PASS - FIXED seit letzter QA. `release-gate` Job enthaelt "Config Scan (Trivy)" mit `scan-type: config`. Lokaler Nachweis `trivy-config.json` existiert.
+
+#### AC-8: Kritische Findings blockieren Publish-Gate
+- [x] PASS - `check:obj17` erzwingt bei `criticalOpen > 0` einen `fail`-Gate-Status.
+
+#### AC-9: High-Findings erfordern dokumentierte Risikoentscheidung
+- [x] PASS - Bundle-Schema und Check erzwingen `acceptedRiskExpiresAt` und `owner` bei `accepted-risk`. Fuer v1.0.0-beta.1 nachgewiesen.
+
+#### AC-10: Security-Artefakte als Release-Anhang und in OCI-Registry
+- [x] PASS (strukturell) - FIXED seit letzter QA. `release-gate` Job erzeugt Security-Evidence und laedt sie als GitHub Artifact hoch (`security-evidence-${{ github.ref_name }}`). OCI-Registry-Referenz ist im Bundle dokumentiert. Realer Upload-Nachweis nur via CI-Lauf moeglich.
+
+#### AC-11: Offline-Scanner-DB-Snapshot verfuegbar
+- [x] PASS - FIXED seit letzter QA. Offline-Snapshot-Dateien existieren unter `artifacts/security/offline/trivy-db-2026-04-09.tar.zst` und `trivy-db-2026-04-06.tar.zst`. `check:obj17` validiert Pfad-Existenz.
+
+#### AC-12: Gate-Entscheid enthaelt DB-Stand
+- [x] PASS - `dbSnapshotVersion` und `dbSnapshotUpdatedAt` in Datenmodell, API und GUI.
+
+#### AC-13: Security-Ergebnisse in OBJ-16 sichtbar
+- [x] PASS - OBJ-16 liest `getObj17SecuritySummary()` ein. Die neuen KPI-Cards in OBJ-16 zeigen SBOM, Scan-Status, Gate und Findings.
+
+#### AC-14: Eindeutige Verknuepfung Version/Scan-Bundle/Freigabe
+- [x] PASS - `check:obj17` gleicht Versionen zwischen Release-Notices und Security-Bundles ab.
+
+### Edge Cases Status
+
+#### EC-1: Kritisches Finding kurz vor Release
+- [x] Handled - Gate wird auf `fail` gesetzt wenn `criticalOpen > 0`.
+
+#### EC-2: SBOM wirkt unvollstaendig
+- [ ] BUG: SBOM-Vollstaendigkeitspruefung fehlt. Der Check prueft nur `sbom.available === true` und Pfad-Existenz, validiert aber nicht, ob die SBOM-Datei ein `packages`-Array enthaelt.
+
+#### EC-3: Airgapped Umgebung ohne Online-Feeds
+- [x] PASS - FIXED. Offline-DB-Snapshots sind jetzt physisch vorhanden. Staleness-Check implementiert.
+
+#### EC-4: Veralteter Offline-DB-Snapshot
+- [x] PASS - FIXED seit letzter QA. `check:obj17` prueft `ageInDaysFromNow(dbSnapshotTimestamp)` gegen `maxOfflineDbAgeDays` (Default: 14). Zu alter Snapshot verursacht Fehler.
+
+#### EC-5: Wiederkehrende False Positives
+- [x] Teilweise abgedeckt - `decisionRef`, Owner und Ablaufdatum vorhanden. Periodische Revalidierung nicht automatisiert.
+
+#### EC-6: Registry-Ausfall
+- [x] Teilweise abgedeckt - `check:obj17` erzwingt `releaseAttachment === true` und `ociRegistryReference` als Metadatum. Echter Connectivity-Check fehlt.
+
+#### EC-7: Mehrere Ziel-Registries
+- [ ] Nicht getestet - Datenmodell hat nur einen `ociRegistryReference`. Fuer Multi-Registry muesse es erweitert werden.
+
+#### EC-8: Nicht-Release-Builds
+- [x] Handled - Quality-Checks laufen bei jedem Push; Release-Gate nur bei `refs/tags/v*`.
+
+### Security Audit Results
+- [x] Authentication: `GET /api/v1/security/scans` liefert 401 ohne Token (API-Test nachgewiesen).
+- [x] Authorization: Viewer-Rolle darf lesen, kein Schreibzugriff.
+- [x] Input Validation: Ungueltiger `channel` -> 422 `INVALID_SECURITY_CHANNEL`. Ungueltiger `limit` -> 422 `INVALID_SECURITY_LIMIT`.
+- [x] Sensitive Data: Keine Secrets in API-Antworten.
+- [x] Rate Limiting: `enforceRateLimit` aktiv.
+- [x] XSS: Kein `dangerouslySetInnerHTML` im OBJ-17-UI-Code.
+
+### Bugs Found
+
+#### BUG-1: SBOM-Dateien sind Stubs ohne reale Abhaengigkeitslisten
+- **Severity:** High
+- **Steps to Reproduce:**
+  1. Oeffne `artifacts/security/v1.0.0-beta.1/sbom.spdx.json`.
+  2. Expected: SPDX-Dokument mit `packages`-Array, das direkte und transitive Abhaengigkeiten listet.
+  3. Actual: Nur SPDX-Header (327 Bytes) ohne `packages`. Selbes Problem bei v0.9.0.
+- **Priority:** Fix before deployment. Die SBOM muss mit echtem `syft` oder vergleichbarem Tool erzeugt werden.
+
+#### BUG-2: SBOM-Vollstaendigkeitspruefung fehlt im Check-Script
+- **Severity:** Medium
+- **Steps to Reproduce:**
+  1. `check:obj17` prueft nur `sbom.available === true` und Pfad-Existenz.
+  2. Expected: Pruefung, ob SBOM-Datei valides SPDX mit mindestens einem Package enthaelt.
+  3. Actual: Leere/Stub-SBOMs werden akzeptiert.
+- **Priority:** Fix before deployment.
+
+#### BUG-3: Scan-Report-Dateien sind Stubs mit leeren Ergebnissen
+- **Severity:** Medium
+- **Steps to Reproduce:**
+  1. Oeffne `artifacts/security/v1.0.0-beta.1/semgrep.sarif` (209 Bytes).
+  2. Expected: Echter SARIF-Report mit Scan-Ergebnissen oder dokumentierter Clean-Run.
+  3. Actual: Stub mit leerem `results`-Array. Selbes Muster fuer npm-audit.json, trivy-config.json, trivy-image.json.
+- **Priority:** Fix before deployment. Die Stubs genuegen fuer die Struktur, aber nicht fuer einen echten Sicherheitsnachweis. Muss durch einen realen CI-Lauf ersetzt werden.
+
+#### BUG-4: Offline-DB-Snapshot ist ein Platzhalter
+- **Severity:** Medium
+- **Steps to Reproduce:**
+  1. Pruefe `artifacts/security/offline/trivy-db-2026-04-09.tar.zst` (53 Bytes).
+  2. Expected: Trivy-Datenbank-Snapshot fuer Offline-Scanning (>= 1 MB, echtes tar.zst-Archiv).
+  3. Actual: 53-Byte-Platzhalter, kein echtes Archiv.
+- **Priority:** Fix before deployment.
+- **CI-Abhaengigkeit:** Kann nur durch einen echten CI-Release-Gate-Lauf (Git-Tag `v*` pushen) behoben werden. Der Workflow laedt den Trivy-DB-Snapshot automatisch herunter und legt ihn unter `artifacts/security/offline/` ab. Das Check-Script gibt ab sofort eine WARN-Meldung aus, solange die Datei kleiner als 1 MB ist.
+
+### Regression Testing
+- [x] OBJ-17 Route- und Datenmodelltests laufen erfolgreich.
+- [x] OBJ-16 Reifegradtests laufen ohne Regression.
+- [x] Gesamt-Build, Lint und Typecheck bestehen.
+
+### Summary
+- **Acceptance Criteria:** 12/14 passed, 1 failed (AC-2: SBOM-Inhalt), 1 partial pass (AC-3: Format korrekt, Inhalt Stub)
+- **Bugs Found:** 4 total (0 critical, 1 high, 3 medium)
+- **Security:** Pass (API-Schutz korrekt)
+- **Production Ready:** NO
+- **Recommendation:** Die Strukturen und Workflows sind korrekt aufgebaut und die vorherigen High-Severity-Bugs (fehlende Artefakte, fehlende Pipeline-Schritte, fehlende Staleness-Pruefung) wurden behoben. Das verbleibende Problem ist, dass alle Security-Artefakte Stubs/Platzhalter sind statt echter Scan-Ergebnisse. Ein realer CI-Lauf mit Tag-Release muss ausgefuehrt werden, um echte Artefakte zu erzeugen. Nach dem ersten echten Release-Gate-Lauf sollte `/qa` erneut ausgefuehrt werden.
 
 ## Deployment
 _To be added by /deploy_

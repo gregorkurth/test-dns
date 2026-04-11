@@ -13,7 +13,7 @@ namespace:
 
 image:
   repository: ghcr.io/gregorkurth/test-dns
-  tag: ""
+  tag: "1.0.0"
   digest: sha256:1111111111111111111111111111111111111111111111111111111111111111
   pullPolicy: IfNotPresent
 
@@ -29,7 +29,7 @@ labels:
 
 service:
   type: ClusterIP
-  port: 80
+  port: 3000
   targetPort: 3000
   nodePort: null
   annotations:
@@ -37,27 +37,38 @@ service:
     security.fmn.dev/mtls-note: Downstream clients should use authenticated pod-to-pod transport before production enablement.
 
 ingress:
-  enabled: true
-  className: internal-nginx
-  host: dns.internal.example.mil
+  enabled: false
+  className: ""
+  hostname: ""
   path: /
   pathType: Prefix
+  tls:
+    enabled: false
+    secretName: ""
   annotations:
-    kubernetes.io/ingress.class: internal-nginx
     security.fmn.dev/opa-note: OPA should require an approved hostname, ingress class, and TLS policy for this route.
 
 config:
   NODE_ENV: production
   PORT: "3000"
-  APP_BASE_URL: https://dns.internal.example.mil
+  APP_BASE_URL: https://dns.example.mil
   SERVICE_NAME: dns-management-service
-  OTEL_SERVICE_NAME: dns-management-service
-  OTEL_EXPORT_MODE: local
-  OTEL_EXPORT_ENDPOINT: http://otel-collector.observability.svc.cluster.local:4318
-  OTEL_EXPORT_TIMEOUT_MS: "5000"
   OBSERVABILITY_SPOOL_DIR: /tmp/otel/spool
   OBSERVABILITY_QUEUE_DIR: /tmp/otel/queue
   LOG_LEVEL: info
+
+otel:
+  serviceName: dns-management-service
+  mode: local
+  endpoint: http://otel-collector.observability.svc.cluster.local:4318
+  exportTimeoutMs: "5000"
+
+debug:
+  enabled: false
+
+oci:
+  repository: oci://harbor.internal/dns-management/charts
+  pushEnabled: true
 
 resources:
   requests:

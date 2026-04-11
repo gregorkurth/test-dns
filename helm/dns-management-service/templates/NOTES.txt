@@ -11,3 +11,10 @@
 
 5. Interner Modus:
    helm upgrade --install {{ .Release.Name }} {{ .Chart.Name }} -f values.yaml -f values-internal.yaml
+
+6. Produktiver Modus:
+   helm upgrade --install {{ .Release.Name }} {{ .Chart.Name }} -f values.yaml -f values-prod.yaml
+
+7. OCI Paket + Push:
+   helm package {{ .Chart.Name }} --destination artifacts/charts
+   helm push artifacts/charts/{{ .Chart.Name }}-{{ .Chart.Version }}.tgz {{ .Values.oci.repository }}

@@ -1,0 +1,23 @@
+{
+  "id": "HANDOVER-OBJ19-20260410-02",
+  "version": "v1.0.0-beta.1",
+  "variant": "full",
+  "createdAt": "2026-04-10T15:10:00Z",
+  "createdByRole": "Release Manager",
+  "recipientRole": "Platform Engineer",
+  "targetEnvironment": "FMN production / full offline security validation",
+  "transferMedium": "USB",
+  "checksumVerifiedBeforeTransfer": true,
+  "checksumVerifiedAfterTransfer": true,
+  "releaseEvidenceRef": "REL-OBJ19-v1.0.0-beta.1-full",
+  "requiredArtifacts": [
+    "Zarf package",
+    "SHA256SUMS",
+    "Manifest",
+    "Release notes",
+    "Security bundle",
+    "Offline vulnerability database",
+    "Release project snapshot",
+    "Configuration project reference"
+  ]
+}

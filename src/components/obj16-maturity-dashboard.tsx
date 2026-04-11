@@ -58,6 +58,7 @@ interface Obj16FeatureEntry {
   documentationIndicator: Obj16IndicatorState
   offlineIndicator: Obj16IndicatorState
   riskPriority: Obj16Priority
+  hasConflict?: boolean
   milestone: string
   nextStep: string
 }
@@ -71,6 +72,25 @@ interface Obj16MaturityData {
   }
   model: {
     formula: string
+  }
+  kpis: {
+    security: {
+      sbomAvailable: boolean
+      lastScanStatus: 'passed' | 'failed' | 'unknown'
+      openCriticalFindings: number
+      openHighFindings: number
+      gateStatus: 'pass' | 'fail' | 'accepted-risk' | 'unknown'
+    }
+    documentation: {
+      arc42Current: boolean
+      userManualCurrent: boolean
+      operationsCurrent: boolean
+    }
+    offline: {
+      zarfAvailable: boolean
+      exportStatus: 'completed' | 'pending' | 'unknown'
+      appOfAppsReady: boolean
+    }
   }
   legend: Array<{
     channel: Obj16ReleaseChannel
@@ -221,6 +241,38 @@ function formatDateTime(value: string): string {
     return value
   }
   return `${parsed.toLocaleDateString('de-CH')} ${parsed.toLocaleTimeString('de-CH')}`
+}
+
+function booleanBadgeClassName(value: boolean): string {
+  if (value) {
+    return 'border-emerald-200 bg-emerald-50 text-emerald-700'
+  }
+  return 'border-rose-200 bg-rose-50 text-rose-700'
+}
+
+function scanStatusClassName(value: 'passed' | 'failed' | 'unknown'): string {
+  if (value === 'passed') {
+    return 'border-emerald-200 bg-emerald-50 text-emerald-700'
+  }
+  if (value === 'failed') {
+    return 'border-rose-200 bg-rose-50 text-rose-700'
+  }
+  return 'border-slate-200 bg-slate-50 text-slate-700'
+}
+
+function gateStatusClassName(
+  value: 'pass' | 'fail' | 'accepted-risk' | 'unknown',
+): string {
+  if (value === 'pass') {
+    return 'border-emerald-200 bg-emerald-50 text-emerald-700'
+  }
+  if (value === 'accepted-risk') {
+    return 'border-amber-200 bg-amber-50 text-amber-700'
+  }
+  if (value === 'fail') {
+    return 'border-rose-200 bg-rose-50 text-rose-700'
+  }
+  return 'border-slate-200 bg-slate-50 text-slate-700'
 }
 
 export function Obj16MaturityDashboard({
@@ -379,6 +431,130 @@ export function Obj16MaturityDashboard({
               </CardContent>
             </Card>
           ))}
+        </section>
+
+        <section className="grid gap-4 lg:grid-cols-3">
+          <Card className="border-slate-200 bg-white">
+            <CardHeader>
+              <CardTitle className="text-base">Security Indicator</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-slate-600">SBOM vorhanden</span>
+                <Badge
+                  variant="outline"
+                  className={booleanBadgeClassName(initialData.kpis.security.sbomAvailable)}
+                >
+                  {initialData.kpis.security.sbomAvailable ? 'Ja' : 'Nein'}
+                </Badge>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-slate-600">Letzter Scan-Status</span>
+                <Badge
+                  variant="outline"
+                  className={scanStatusClassName(initialData.kpis.security.lastScanStatus)}
+                >
+                  {initialData.kpis.security.lastScanStatus}
+                </Badge>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-slate-600">Gate</span>
+                <Badge
+                  variant="outline"
+                  className={gateStatusClassName(initialData.kpis.security.gateStatus)}
+                >
+                  {initialData.kpis.security.gateStatus}
+                </Badge>
+              </div>
+              <p className="text-slate-700">
+                Open Critical/High Findings:{' '}
+                <span className="font-medium">
+                  {initialData.kpis.security.openCriticalFindings}/
+                  {initialData.kpis.security.openHighFindings}
+                </span>
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-slate-200 bg-white">
+            <CardHeader>
+              <CardTitle className="text-base">Documentation Indicator</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-slate-600">arc42 aktuell</span>
+                <Badge
+                  variant="outline"
+                  className={booleanBadgeClassName(initialData.kpis.documentation.arc42Current)}
+                >
+                  {initialData.kpis.documentation.arc42Current ? 'Ja' : 'Nein'}
+                </Badge>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-slate-600">Benutzerhandbuch aktuell</span>
+                <Badge
+                  variant="outline"
+                  className={booleanBadgeClassName(
+                    initialData.kpis.documentation.userManualCurrent,
+                  )}
+                >
+                  {initialData.kpis.documentation.userManualCurrent ? 'Ja' : 'Nein'}
+                </Badge>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-slate-600">Betriebsdoku aktuell</span>
+                <Badge
+                  variant="outline"
+                  className={booleanBadgeClassName(
+                    initialData.kpis.documentation.operationsCurrent,
+                  )}
+                >
+                  {initialData.kpis.documentation.operationsCurrent ? 'Ja' : 'Nein'}
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="border-slate-200 bg-white">
+            <CardHeader>
+              <CardTitle className="text-base">Offline Indicator</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-slate-600">Zarf verfuegbar</span>
+                <Badge
+                  variant="outline"
+                  className={booleanBadgeClassName(initialData.kpis.offline.zarfAvailable)}
+                >
+                  {initialData.kpis.offline.zarfAvailable ? 'Ja' : 'Nein'}
+                </Badge>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-slate-600">Export-Status</span>
+                <Badge
+                  variant="outline"
+                  className={
+                    initialData.kpis.offline.exportStatus === 'completed'
+                      ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                      : initialData.kpis.offline.exportStatus === 'pending'
+                        ? 'border-amber-200 bg-amber-50 text-amber-700'
+                        : 'border-slate-200 bg-slate-50 text-slate-700'
+                  }
+                >
+                  {initialData.kpis.offline.exportStatus}
+                </Badge>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-slate-600">App-of-Apps bereit</span>
+                <Badge
+                  variant="outline"
+                  className={booleanBadgeClassName(initialData.kpis.offline.appOfAppsReady)}
+                >
+                  {initialData.kpis.offline.appOfAppsReady ? 'Ja' : 'Nein'}
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
         </section>
 
         <section className="rounded-2xl border bg-white p-4 shadow-sm print:hidden">
@@ -549,9 +725,16 @@ export function Obj16MaturityDashboard({
                       </div>
                     </TableCell>
                     <TableCell>
-                      <Badge variant="outline" className={riskClassName(feature.riskPriority)}>
-                        {riskLabel(feature.riskPriority)}
-                      </Badge>
+                      <div className="flex items-center gap-1">
+                        <Badge variant="outline" className={riskClassName(feature.riskPriority)}>
+                          {riskLabel(feature.riskPriority)}
+                        </Badge>
+                        {feature.hasConflict === true && (
+                          <Badge variant="outline" className="border-orange-400 text-orange-700 bg-orange-50 text-xs">
+                            Konflikt
+                          </Badge>
+                        )}
+                      </div>
                     </TableCell>
                     <TableCell>
                       <p className="text-sm text-slate-700">{feature.milestone}</p>

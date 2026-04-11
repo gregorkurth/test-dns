@@ -6,6 +6,12 @@ import { getProductWebsiteViewModel } from '@/lib/obj15-product-website'
 
 const modules = [
   {
+    href: '/documentation',
+    title: 'Dokumentation Hub',
+    description:
+      'Zentraler Einstieg fuer Service-, arc42- und Betriebsdokumentation.',
+  },
+  {
     href: '/maturity',
     title: 'OBJ-16 Maturitaetsstatus',
     description:

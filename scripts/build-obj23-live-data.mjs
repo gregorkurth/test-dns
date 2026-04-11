@@ -6,6 +6,7 @@ import { createRequire } from 'node:module'
 
 const require = createRequire(import.meta.url)
 const ts = require('typescript')
+const tsconfigPaths = require('tsconfig-paths')
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -19,7 +20,10 @@ const outputPath = path.join(
 )
 
 async function loadDashboardDataFromTypeScript() {
-  const source = await fs.readFile(sourcePath, 'utf8')
+  const source = (await fs.readFile(sourcePath, 'utf8')).replace(
+    "import { emitSuccessSignal } from '@/lib/obj11-observability'",
+    'const emitSuccessSignal = async () => undefined',
+  )
   const transpiled = ts.transpileModule(source, {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
@@ -36,6 +40,12 @@ async function loadDashboardDataFromTypeScript() {
 
   const previousCwd = process.cwd()
   process.chdir(repoRoot)
+  const cleanupTsconfigPaths = tsconfigPaths.register({
+    baseUrl: repoRoot,
+    paths: {
+      '@/*': ['src/*'],
+    },
+  })
 
   try {
     const loadedModule = require(tempFile)
@@ -47,6 +57,7 @@ async function loadDashboardDataFromTypeScript() {
     }
     return await fn()
   } finally {
+    cleanupTsconfigPaths()
     process.chdir(previousCwd)
     await fs.unlink(tempFile).catch(() => {})
   }

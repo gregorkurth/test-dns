@@ -1,0 +1,21 @@
+{
+  "id": "HANDOVER-OBJ19-20260410-01",
+  "version": "v1.0.0-beta.1",
+  "variant": "minimal",
+  "createdAt": "2026-04-10T15:05:00Z",
+  "createdByRole": "Release Manager",
+  "recipientRole": "Platform Engineer",
+  "targetEnvironment": "FMN lab / low-bandwidth validation",
+  "transferMedium": "USB",
+  "checksumVerifiedBeforeTransfer": true,
+  "checksumVerifiedAfterTransfer": false,
+  "releaseEvidenceRef": "REL-OBJ19-v1.0.0-beta.1-minimal",
+  "requiredArtifacts": [
+    "Zarf package",
+    "SHA256SUMS",
+    "Manifest",
+    "Release notes",
+    "Release project snapshot",
+    "Configuration project reference"
+  ]
+}

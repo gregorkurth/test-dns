@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-04-06T15:52:45.975Z",
+  "generatedAt": "2026-04-10T12:03:51.198Z",
   "summary": {
-    "totalTests": 218,
+    "totalTests": 270,
     "passed": 10,
     "failed": 0,
-    "neverExecuted": 208,
-    "manualTests": 104,
-    "autoTests": 114
+    "neverExecuted": 260,
+    "manualTests": 130,
+    "autoTests": 140
   },
   "filters": {
     "objects": [
@@ -305,7 +305,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-309-001-manual",
@@ -331,7 +333,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-310-001",
@@ -357,7 +361,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-310-001-manual",
@@ -383,7 +389,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-53-001",
@@ -409,7 +417,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-53-001-manual",
@@ -435,7 +445,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-54-001",
@@ -461,7 +473,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-54-001-manual",
@@ -487,7 +501,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-240-001",
@@ -513,7 +529,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-240-001-manual",
@@ -539,7 +557,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-238-resolv-001",
@@ -565,7 +585,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-238-resolv-001-manual",
@@ -591,7 +613,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-611-resolv-001",
@@ -617,7 +641,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-611-resolv-001-manual",
@@ -643,7 +669,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-615-001",
@@ -669,7 +697,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-615-001-manual",
@@ -695,7 +725,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-creq-005-001",
@@ -721,7 +753,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-creq-005-001-manual",
@@ -747,7 +781,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-609-001",
@@ -773,7 +809,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-609-001-manual",
@@ -799,7 +837,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-610-001",
@@ -825,7 +865,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-610-001-manual",
@@ -851,7 +893,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-creq-001-001",
@@ -877,7 +921,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-creq-001-001-manual",
@@ -903,7 +949,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-creq-002-001",
@@ -929,7 +977,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-creq-002-001-manual",
@@ -955,7 +1005,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-creq-003-001",
@@ -981,7 +1033,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-creq-003-001-manual",
@@ -1007,7 +1061,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1311-001",
@@ -1033,7 +1089,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1311-001-manual",
@@ -1059,7 +1117,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1312-001",
@@ -1085,7 +1145,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1312-001-manual",
@@ -1111,7 +1173,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1313-001",
@@ -1137,7 +1201,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1313-001-manual",
@@ -1163,7 +1229,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1314-001",
@@ -1189,7 +1257,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1314-001-manual",
@@ -1215,7 +1285,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1315-001",
@@ -1241,7 +1313,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1315-001-manual",
@@ -1267,7 +1341,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1316-001",
@@ -1293,7 +1369,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1316-001-manual",
@@ -1319,7 +1397,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1317-001",
@@ -1345,7 +1425,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1317-001-manual",
@@ -1371,7 +1453,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1318-001",
@@ -1397,7 +1481,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1318-001-manual",
@@ -1423,7 +1509,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1319-001",
@@ -1449,7 +1537,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1319-001-manual",
@@ -1475,7 +1565,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1320-001",
@@ -1501,7 +1593,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1320-001-manual",
@@ -1527,7 +1621,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:sreq-234-001",
@@ -1553,7 +1649,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:sreq-234-001",
@@ -1579,7 +1677,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-235-001",
@@ -1605,7 +1705,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-235-001-manual",
@@ -1631,7 +1733,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-238-001",
@@ -1657,7 +1761,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-238-001-manual",
@@ -1683,7 +1789,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-239-001",
@@ -1709,7 +1817,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-239-001-manual",
@@ -1735,7 +1845,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-378-001",
@@ -1761,7 +1873,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-378-001-manual",
@@ -1787,7 +1901,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-379-001",
@@ -1813,7 +1929,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-379-001-manual",
@@ -1839,7 +1957,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-380-001",
@@ -1865,7 +1985,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-380-001-manual",
@@ -1891,7 +2013,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-382-001",
@@ -1917,7 +2041,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-382-001-manual",
@@ -1943,7 +2069,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-611-001",
@@ -1969,7 +2097,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-611-001-manual",
@@ -1995,7 +2125,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-613-001",
@@ -2021,7 +2153,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-613-001-manual",
@@ -2047,7 +2181,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-614-001",
@@ -2073,7 +2209,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-614-001-manual",
@@ -2099,7 +2237,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-615-001",
@@ -2125,7 +2265,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-615-001-manual",
@@ -2151,7 +2293,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-616-001",
@@ -2177,7 +2321,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-616-001-manual",
@@ -2203,7 +2349,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-creq-004-001",
@@ -2229,7 +2377,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-creq-004-001-manual",
@@ -2255,7 +2405,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1159-001",
@@ -2281,7 +2433,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1159-001-manual",
@@ -2307,7 +2461,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-1272-001",
@@ -2333,7 +2489,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-1272-001-manual",
@@ -2359,7 +2517,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-242-001",
@@ -2385,7 +2545,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-242-001-manual",
@@ -2411,7 +2573,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-525-001",
@@ -2437,7 +2601,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-525-001-manual",
@@ -2463,7 +2629,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-617-001",
@@ -2489,7 +2657,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-617-001-manual",
@@ -2515,7 +2685,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-241-001",
@@ -2541,7 +2713,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-241-001-manual",
@@ -2567,7 +2741,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-529-001",
@@ -2593,7 +2769,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-529-001-manual",
@@ -2619,7 +2797,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-sreq-612-001",
@@ -2645,7 +2825,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-sreq-612-001-manual",
@@ -2671,7 +2853,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-201-001",
@@ -2694,7 +2878,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-201-001-manual",
@@ -2717,7 +2903,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-202-001",
@@ -2740,7 +2928,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-202-001-manual",
@@ -2763,7 +2953,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-203-001",
@@ -2786,7 +2978,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-203-001-manual",
@@ -2809,7 +3003,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-204-001",
@@ -2832,7 +3028,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-204-001-manual",
@@ -2855,7 +3053,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-205-001",
@@ -2878,7 +3078,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-205-001-manual",
@@ -2901,7 +3103,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-206-001",
@@ -2924,7 +3128,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-206-001-manual",
@@ -2947,7 +3153,209 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-213-001",
+      "testId": "TEST-RDTS-213-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-002",
+      "capabilityName": "Kubernetes Platform",
+      "serviceFunctionId": "SFN-K8S-002-MANIFEST-MANAGEMENT",
+      "serviceFunctionName": "SFN K8S 002 Manifest Management",
+      "testType": "auto",
+      "sourcePath": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/tests/auto/TEST-RDTS-213-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-213-001-manual",
+      "testId": "TEST-RDTS-213-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-002",
+      "capabilityName": "Kubernetes Platform",
+      "serviceFunctionId": "SFN-K8S-002-MANIFEST-MANAGEMENT",
+      "serviceFunctionName": "SFN K8S 002 Manifest Management",
+      "testType": "manual",
+      "sourcePath": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/tests/manual/TEST-RDTS-213-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-214-001",
+      "testId": "TEST-RDTS-214-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-002",
+      "capabilityName": "Kubernetes Platform",
+      "serviceFunctionId": "SFN-K8S-002-MANIFEST-MANAGEMENT",
+      "serviceFunctionName": "SFN K8S 002 Manifest Management",
+      "testType": "auto",
+      "sourcePath": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/tests/auto/TEST-RDTS-214-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-214-001-manual",
+      "testId": "TEST-RDTS-214-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-002",
+      "capabilityName": "Kubernetes Platform",
+      "serviceFunctionId": "SFN-K8S-002-MANIFEST-MANAGEMENT",
+      "serviceFunctionName": "SFN K8S 002 Manifest Management",
+      "testType": "manual",
+      "sourcePath": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/tests/manual/TEST-RDTS-214-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-215-001",
+      "testId": "TEST-RDTS-215-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-002",
+      "capabilityName": "Kubernetes Platform",
+      "serviceFunctionId": "SFN-K8S-002-MANIFEST-MANAGEMENT",
+      "serviceFunctionName": "SFN K8S 002 Manifest Management",
+      "testType": "auto",
+      "sourcePath": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/tests/auto/TEST-RDTS-215-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-215-001-manual",
+      "testId": "TEST-RDTS-215-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-002",
+      "capabilityName": "Kubernetes Platform",
+      "serviceFunctionId": "SFN-K8S-002-MANIFEST-MANAGEMENT",
+      "serviceFunctionName": "SFN K8S 002 Manifest Management",
+      "testType": "manual",
+      "sourcePath": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/tests/manual/TEST-RDTS-215-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-216-001",
+      "testId": "TEST-RDTS-216-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-002",
+      "capabilityName": "Kubernetes Platform",
+      "serviceFunctionId": "SFN-K8S-002-MANIFEST-MANAGEMENT",
+      "serviceFunctionName": "SFN K8S 002 Manifest Management",
+      "testType": "auto",
+      "sourcePath": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/tests/auto/TEST-RDTS-216-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-216-001-manual",
+      "testId": "TEST-RDTS-216-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-002",
+      "capabilityName": "Kubernetes Platform",
+      "serviceFunctionId": "SFN-K8S-002-MANIFEST-MANAGEMENT",
+      "serviceFunctionName": "SFN K8S 002 Manifest Management",
+      "testType": "manual",
+      "sourcePath": "capabilities/kubernetes-platform/services/kubernetes-deployment/service-functions/SFN-K8S-002-manifest-management/tests/manual/TEST-RDTS-216-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-207-001",
@@ -2970,7 +3378,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-207-001-manual",
@@ -2993,7 +3403,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-208-001",
@@ -3016,7 +3428,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-208-001-manual",
@@ -3039,7 +3453,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-209-001",
@@ -3062,7 +3478,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-209-001-manual",
@@ -3085,7 +3503,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-210-001",
@@ -3108,7 +3528,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-210-001-manual",
@@ -3131,7 +3553,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-211-001",
@@ -3154,7 +3578,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-211-001-manual",
@@ -3177,7 +3603,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-212-001",
@@ -3200,7 +3628,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-212-001-manual",
@@ -3223,7 +3653,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-301-001",
@@ -3245,7 +3677,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-301-001-manual",
@@ -3267,7 +3701,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-302-001",
@@ -3289,7 +3725,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-302-001-manual",
@@ -3311,7 +3749,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-303-001",
@@ -3333,7 +3773,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-303-001-manual",
@@ -3355,7 +3797,201 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-309-001",
+      "testId": "TEST-RDTS-309-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-001-METRICS-EXPORT",
+      "serviceFunctionName": "SFN OBS 001 Metrics Export",
+      "testType": "auto",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/tests/auto/TEST-RDTS-309-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-309-001-manual",
+      "testId": "TEST-RDTS-309-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-001-METRICS-EXPORT",
+      "serviceFunctionName": "SFN OBS 001 Metrics Export",
+      "testType": "manual",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/tests/manual/TEST-RDTS-309-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-310-001",
+      "testId": "TEST-RDTS-310-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-001-METRICS-EXPORT",
+      "serviceFunctionName": "SFN OBS 001 Metrics Export",
+      "testType": "auto",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/tests/auto/TEST-RDTS-310-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-310-001-manual",
+      "testId": "TEST-RDTS-310-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-001-METRICS-EXPORT",
+      "serviceFunctionName": "SFN OBS 001 Metrics Export",
+      "testType": "manual",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/tests/manual/TEST-RDTS-310-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-311-001",
+      "testId": "TEST-RDTS-311-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-001-METRICS-EXPORT",
+      "serviceFunctionName": "SFN OBS 001 Metrics Export",
+      "testType": "auto",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/tests/auto/TEST-RDTS-311-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-311-001-manual",
+      "testId": "TEST-RDTS-311-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-001-METRICS-EXPORT",
+      "serviceFunctionName": "SFN OBS 001 Metrics Export",
+      "testType": "manual",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/tests/manual/TEST-RDTS-311-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-312-001",
+      "testId": "TEST-RDTS-312-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-001-METRICS-EXPORT",
+      "serviceFunctionName": "SFN OBS 001 Metrics Export",
+      "testType": "auto",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/tests/auto/TEST-RDTS-312-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-312-001-manual",
+      "testId": "TEST-RDTS-312-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-001-METRICS-EXPORT",
+      "serviceFunctionName": "SFN OBS 001 Metrics Export",
+      "testType": "manual",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-001-metrics-export/tests/manual/TEST-RDTS-312-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-304-001",
@@ -3377,7 +4013,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-304-001-manual",
@@ -3399,7 +4037,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-305-001",
@@ -3421,7 +4061,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-305-001-manual",
@@ -3443,7 +4085,105 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-313-001",
+      "testId": "TEST-RDTS-313-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-002-STRUCTURED-LOGGING",
+      "serviceFunctionName": "SFN OBS 002 Structured Logging",
+      "testType": "auto",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/tests/auto/TEST-RDTS-313-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-313-001-manual",
+      "testId": "TEST-RDTS-313-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-002-STRUCTURED-LOGGING",
+      "serviceFunctionName": "SFN OBS 002 Structured Logging",
+      "testType": "manual",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/tests/manual/TEST-RDTS-313-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-314-001",
+      "testId": "TEST-RDTS-314-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-002-STRUCTURED-LOGGING",
+      "serviceFunctionName": "SFN OBS 002 Structured Logging",
+      "testType": "auto",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/tests/auto/TEST-RDTS-314-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-314-001-manual",
+      "testId": "TEST-RDTS-314-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-11"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-003",
+      "capabilityName": "Observability",
+      "serviceFunctionId": "SFN-OBS-002-STRUCTURED-LOGGING",
+      "serviceFunctionName": "SFN OBS 002 Structured Logging",
+      "testType": "manual",
+      "sourcePath": "capabilities/observability/services/monitoring-tracing/service-functions/SFN-OBS-002-structured-logging/tests/manual/TEST-RDTS-314-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-306-001",
@@ -3465,7 +4205,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-306-001-manual",
@@ -3487,7 +4229,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-307-001",
@@ -3509,7 +4253,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-307-001-manual",
@@ -3531,7 +4277,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-308-001",
@@ -3553,7 +4301,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-308-001-manual",
@@ -3575,7 +4325,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-401-001",
@@ -3597,7 +4349,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-401-001-manual",
@@ -3619,7 +4373,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-402-001",
@@ -3641,7 +4397,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-402-001-manual",
@@ -3663,7 +4421,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-403-001",
@@ -3685,7 +4445,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-403-001-manual",
@@ -3707,7 +4469,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-404-001",
@@ -3729,7 +4493,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-404-001-manual",
@@ -3751,7 +4517,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-405-001",
@@ -3773,7 +4541,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-405-001-manual",
@@ -3795,7 +4565,57 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-416-001",
+      "testId": "TEST-RDTS-416-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-002-RBAC",
+      "serviceFunctionName": "SFN SEC 002 Rbac",
+      "testType": "auto",
+      "sourcePath": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-002-rbac/tests/auto/TEST-RDTS-416-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-416-001-manual",
+      "testId": "TEST-RDTS-416-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-002-RBAC",
+      "serviceFunctionName": "SFN SEC 002 Rbac",
+      "testType": "manual",
+      "sourcePath": "capabilities/security-access-control/services/authentication/service-functions/SFN-SEC-002-rbac/tests/manual/TEST-RDTS-416-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-406-001",
@@ -3817,7 +4637,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-406-001-manual",
@@ -3839,7 +4661,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-407-001",
@@ -3861,7 +4685,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-407-001-manual",
@@ -3883,7 +4709,105 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-412-001",
+      "testId": "TEST-RDTS-412-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-003-SECRETS-HANDLING",
+      "serviceFunctionName": "SFN SEC 003 Secrets Handling",
+      "testType": "auto",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/tests/auto/TEST-RDTS-412-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-412-001-manual",
+      "testId": "TEST-RDTS-412-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-003-SECRETS-HANDLING",
+      "serviceFunctionName": "SFN SEC 003 Secrets Handling",
+      "testType": "manual",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/tests/manual/TEST-RDTS-412-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-413-001",
+      "testId": "TEST-RDTS-413-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-003-SECRETS-HANDLING",
+      "serviceFunctionName": "SFN SEC 003 Secrets Handling",
+      "testType": "auto",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/tests/auto/TEST-RDTS-413-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-413-001-manual",
+      "testId": "TEST-RDTS-413-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-003-SECRETS-HANDLING",
+      "serviceFunctionName": "SFN SEC 003 Secrets Handling",
+      "testType": "manual",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-003-secrets-handling/tests/manual/TEST-RDTS-413-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-408-001",
@@ -3905,7 +4829,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-408-001-manual",
@@ -3927,7 +4853,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-409-001",
@@ -3949,7 +4877,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-409-001-manual",
@@ -3971,7 +4901,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-410-001",
@@ -3993,7 +4925,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-410-001-manual",
@@ -4015,7 +4949,153 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-411-001",
+      "testId": "TEST-RDTS-411-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-004-AUDIT-LOGGING",
+      "serviceFunctionName": "SFN SEC 004 Audit Logging",
+      "testType": "auto",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/tests/auto/TEST-RDTS-411-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-411-001-manual",
+      "testId": "TEST-RDTS-411-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-004-AUDIT-LOGGING",
+      "serviceFunctionName": "SFN SEC 004 Audit Logging",
+      "testType": "manual",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/tests/manual/TEST-RDTS-411-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-414-001",
+      "testId": "TEST-RDTS-414-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-004-AUDIT-LOGGING",
+      "serviceFunctionName": "SFN SEC 004 Audit Logging",
+      "testType": "auto",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/tests/auto/TEST-RDTS-414-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-414-001-manual",
+      "testId": "TEST-RDTS-414-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-004-AUDIT-LOGGING",
+      "serviceFunctionName": "SFN SEC 004 Audit Logging",
+      "testType": "manual",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/tests/manual/TEST-RDTS-414-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-415-001",
+      "testId": "TEST-RDTS-415-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-004-AUDIT-LOGGING",
+      "serviceFunctionName": "SFN SEC 004 Audit Logging",
+      "testType": "auto",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/tests/auto/TEST-RDTS-415-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-415-001-manual",
+      "testId": "TEST-RDTS-415-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-12"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-004",
+      "capabilityName": "Security & Access Control",
+      "serviceFunctionId": "SFN-SEC-004-AUDIT-LOGGING",
+      "serviceFunctionName": "SFN SEC 004 Audit Logging",
+      "testType": "manual",
+      "sourcePath": "capabilities/security-access-control/services/secrets-management/service-functions/SFN-SEC-004-audit-logging/tests/manual/TEST-RDTS-415-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-501-001",
@@ -4038,7 +5118,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-501-001-manual",
@@ -4061,7 +5143,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-502-001",
@@ -4084,7 +5168,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-502-001-manual",
@@ -4107,7 +5193,59 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-511-001",
+      "testId": "TEST-RDTS-511-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-005",
+      "capabilityName": "DevOps",
+      "serviceFunctionId": "SFN-DEV-001-PR-CHECKS",
+      "serviceFunctionName": "SFN DEV 001 Pr Checks",
+      "testType": "auto",
+      "sourcePath": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-001-pr-checks/tests/auto/TEST-RDTS-511-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-511-001-manual",
+      "testId": "TEST-RDTS-511-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-005",
+      "capabilityName": "DevOps",
+      "serviceFunctionId": "SFN-DEV-001-PR-CHECKS",
+      "serviceFunctionName": "SFN DEV 001 Pr Checks",
+      "testType": "manual",
+      "sourcePath": "capabilities/devops/services/cicd-pipeline/service-functions/SFN-DEV-001-pr-checks/tests/manual/TEST-RDTS-511-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-503-001",
@@ -4130,7 +5268,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-503-001-manual",
@@ -4153,7 +5293,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-504-001",
@@ -4176,7 +5318,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-504-001-manual",
@@ -4199,7 +5343,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-505-001",
@@ -4222,7 +5368,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-505-001-manual",
@@ -4245,7 +5393,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-506-001",
@@ -4268,7 +5418,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-506-001-manual",
@@ -4291,7 +5443,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-507-001",
@@ -4314,7 +5468,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-507-001-manual",
@@ -4337,7 +5493,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-508-001",
@@ -4360,7 +5518,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-508-001-manual",
@@ -4383,7 +5543,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-509-001",
@@ -4406,7 +5568,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-509-001-manual",
@@ -4429,7 +5593,59 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-510-001",
+      "testId": "TEST-RDTS-510-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-005",
+      "capabilityName": "DevOps",
+      "serviceFunctionId": "SFN-DEV-004-RELEASE-AUTOMATION",
+      "serviceFunctionName": "SFN DEV 004 Release Automation",
+      "testType": "auto",
+      "sourcePath": "capabilities/devops/services/release-management/service-functions/SFN-DEV-004-release-automation/tests/auto/TEST-RDTS-510-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-510-001-manual",
+      "testId": "TEST-RDTS-510-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-005",
+      "capabilityName": "DevOps",
+      "serviceFunctionId": "SFN-DEV-004-RELEASE-AUTOMATION",
+      "serviceFunctionName": "SFN DEV 004 Release Automation",
+      "testType": "manual",
+      "sourcePath": "capabilities/devops/services/release-management/service-functions/SFN-DEV-004-release-automation/tests/manual/TEST-RDTS-510-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-601-001",
@@ -4454,7 +5670,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-601-001-manual",
@@ -4479,7 +5697,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-602-001",
@@ -4504,7 +5724,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-602-001-manual",
@@ -4529,7 +5751,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-603-001",
@@ -4554,7 +5778,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-603-001-manual",
@@ -4579,7 +5805,333 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-613-001",
+      "testId": "TEST-RDTS-613-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "auto",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/auto/TEST-RDTS-613-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-613-001-manual",
+      "testId": "TEST-RDTS-613-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "manual",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/manual/TEST-RDTS-613-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-614-001",
+      "testId": "TEST-RDTS-614-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "auto",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/auto/TEST-RDTS-614-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-614-001-manual",
+      "testId": "TEST-RDTS-614-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "manual",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/manual/TEST-RDTS-614-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-615-001",
+      "testId": "TEST-RDTS-615-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "auto",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/auto/TEST-RDTS-615-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-615-001-manual",
+      "testId": "TEST-RDTS-615-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "manual",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/manual/TEST-RDTS-615-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-616-001",
+      "testId": "TEST-RDTS-616-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "auto",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/auto/TEST-RDTS-616-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-616-001-manual",
+      "testId": "TEST-RDTS-616-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "manual",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/manual/TEST-RDTS-616-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-618-001",
+      "testId": "TEST-RDTS-618-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "auto",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/auto/TEST-RDTS-618-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-618-001-manual",
+      "testId": "TEST-RDTS-618-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "manual",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/manual/TEST-RDTS-618-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-619-001",
+      "testId": "TEST-RDTS-619-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "auto",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/auto/TEST-RDTS-619-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-619-001-manual",
+      "testId": "TEST-RDTS-619-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-001-REPO-DOCUMENTATION",
+      "serviceFunctionName": "SFN DOC 001 Repo Documentation",
+      "testType": "manual",
+      "sourcePath": "capabilities/documentation-quality/services/technical-documentation/service-functions/SFN-DOC-001-repo-documentation/tests/manual/TEST-RDTS-619-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-604-001",
@@ -4604,7 +6156,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-604-001-manual",
@@ -4629,7 +6183,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-605-001",
@@ -4654,7 +6210,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-605-001-manual",
@@ -4679,7 +6237,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-606-001",
@@ -4704,7 +6264,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-606-001-manual",
@@ -4729,7 +6291,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-607-001",
@@ -4754,7 +6318,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-607-001-manual",
@@ -4779,7 +6345,117 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-617-001",
+      "testId": "TEST-RDTS-617-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-003-MATURITY-TRACKING",
+      "serviceFunctionName": "SFN DOC 003 Maturity Tracking",
+      "testType": "auto",
+      "sourcePath": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/tests/auto/TEST-RDTS-617-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-617-001-manual",
+      "testId": "TEST-RDTS-617-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-003-MATURITY-TRACKING",
+      "serviceFunctionName": "SFN DOC 003 Maturity Tracking",
+      "testType": "manual",
+      "sourcePath": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/tests/manual/TEST-RDTS-617-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "auto:test-rdts-620-001",
+      "testId": "TEST-RDTS-620-001",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-003-MATURITY-TRACKING",
+      "serviceFunctionName": "SFN DOC 003 Maturity Tracking",
+      "testType": "auto",
+      "sourcePath": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/tests/auto/TEST-RDTS-620-001.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
+    },
+    {
+      "key": "manual:test-rdts-620-001-manual",
+      "testId": "TEST-RDTS-620-001-manual",
+      "tagId": null,
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "requirementId": null,
+      "capabilityId": "CAP-006",
+      "capabilityName": "Documentation & Quality",
+      "serviceFunctionId": "SFN-DOC-003-MATURITY-TRACKING",
+      "serviceFunctionName": "SFN DOC 003 Maturity Tracking",
+      "testType": "manual",
+      "sourcePath": "capabilities/documentation-quality/services/maturity-quality/service-functions/SFN-DOC-003-maturity-tracking/tests/manual/TEST-RDTS-620-001-manual.md",
+      "history": [],
+      "status": "never_executed",
+      "lastExecutedAt": null,
+      "lastRunId": null,
+      "lastReleaseId": null,
+      "lastNote": null,
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-608-001",
@@ -4804,7 +6480,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-608-001-manual",
@@ -4829,7 +6507,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-609-001",
@@ -4854,7 +6534,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-609-001-manual",
@@ -4879,7 +6561,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:rdts-610-001",
@@ -4904,7 +6588,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:rdts-610-001",
@@ -4929,7 +6615,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:rdts-611-001",
@@ -4954,7 +6642,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:rdts-611-001",
@@ -4979,7 +6669,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:rdts-612-001",
@@ -5004,7 +6696,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:rdts-612-001",
@@ -5029,7 +6723,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-701-001",
@@ -5054,7 +6750,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-701-001-manual",
@@ -5079,7 +6777,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-705-001",
@@ -5104,7 +6804,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-705-001-manual",
@@ -5129,7 +6831,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-707-001",
@@ -5154,7 +6858,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-707-001-manual",
@@ -5179,7 +6885,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-801-001",
@@ -5202,7 +6910,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-801-001-manual",
@@ -5225,7 +6935,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-805-001",
@@ -5248,7 +6960,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-805-001-manual",
@@ -5271,7 +6985,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-901-001",
@@ -5295,7 +7011,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-901-001-manual",
@@ -5319,7 +7037,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:test-rdts-905-001",
@@ -5343,7 +7063,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "manual:test-rdts-905-001-manual",
@@ -5367,7 +7089,9 @@
       "lastRunId": null,
       "lastReleaseId": null,
       "lastNote": null,
-      "lastEvidencePath": null
+      "lastEvidencePath": null,
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-1",
@@ -5405,7 +7129,9 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-10",
@@ -5443,7 +7169,9 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-2",
@@ -5481,7 +7209,9 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-3",
@@ -5519,7 +7249,9 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-4",
@@ -5557,7 +7289,9 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-5",
@@ -5595,7 +7329,9 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-6",
@@ -5633,7 +7369,9 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-7",
@@ -5671,7 +7409,9 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-8",
@@ -5709,7 +7449,9 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     },
     {
       "key": "auto:orphan-9",
@@ -5747,17 +7489,19 @@
       "lastRunId": "LOCAL-20260406-155219",
       "lastReleaseId": "RELEASE-UNASSIGNED",
       "lastNote": null,
-      "lastEvidencePath": "tests/executions/vitest-report.latest.json"
+      "lastEvidencePath": "tests/executions/vitest-report.latest.json",
+      "latestEvidenceIssue": null,
+      "evidenceIssueCount": 0
     }
   ],
   "runSnapshots": [
     {
       "id": "LOCAL-20260406-155219",
       "lastExecutedAt": "2026-04-06T15:52:19.840Z",
-      "totalTests": 218,
+      "totalTests": 270,
       "passed": 10,
       "failed": 0,
-      "neverExecuted": 208,
+      "neverExecuted": 260,
       "incomplete": true,
       "runCount": 1
     }
@@ -5766,10 +7510,10 @@
     {
       "id": "RELEASE-UNASSIGNED",
       "lastExecutedAt": "2026-04-06T15:52:19.840Z",
-      "totalTests": 218,
+      "totalTests": 270,
       "passed": 10,
       "failed": 0,
-      "neverExecuted": 208,
+      "neverExecuted": 260,
       "incomplete": true,
       "runCount": 1
     }

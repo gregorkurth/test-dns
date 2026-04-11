@@ -1,0 +1,67 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "semver": {
+      "name": "semver",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1096516,
+          "name": "semver",
+          "dependency": "semver",
+          "title": "semver vulnerable to Regular Expression Denial of Service",
+          "url": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw",
+          "severity": "high",
+          "cwe": ["CWE-1333"],
+          "cvss": { "score": 7.5, "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H" },
+          "range": "<7.5.2"
+        }
+      ],
+      "effects": [],
+      "range": "<7.5.2",
+      "nodes": ["node_modules/semver"],
+      "fixAvailable": { "name": "semver", "version": "7.5.2", "isSemVerMajor": false }
+    },
+    "tough-cookie": {
+      "name": "tough-cookie",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1096489,
+          "name": "tough-cookie",
+          "dependency": "tough-cookie",
+          "title": "tough-cookie Prototype Pollution vulnerability",
+          "url": "https://github.com/advisories/GHSA-72xf-g2v4-qvf3",
+          "severity": "high",
+          "cwe": ["CWE-1321"],
+          "cvss": { "score": 7.3, "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L" },
+          "range": "<4.1.3"
+        }
+      ],
+      "effects": [],
+      "range": "<4.1.3",
+      "nodes": ["node_modules/tough-cookie"],
+      "fixAvailable": { "name": "tough-cookie", "version": "4.1.3", "isSemVerMajor": false }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 2,
+      "critical": 0,
+      "total": 2
+    },
+    "dependencies": {
+      "prod": 33,
+      "dev": 13,
+      "optional": 0,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 46
+    }
+  }
+}

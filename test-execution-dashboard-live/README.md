@@ -11,6 +11,8 @@ Sie eignet sich auch fuer Nicht-Entwickler, weil keine Next.js-Umgebung gestarte
 
 Danach laeuft das Test-Execution-Dashboard direkt im Browser.
 Im Dashboard stehen die Sichten "Aktueller Stand", "Pro OBJ", "Pro Release" und "Pro Run" zur Verfuegung.
+Fehlerhafte oder zeitlich nicht auswertbare Nachweise werden als Hinweis sichtbar gehalten,
+zaehlen aber nicht als gueltiger letzter Nachweis.
 
 ## Datenquelle
 

@@ -54,6 +54,7 @@ export interface Obj16FeatureEntry {
   documentationIndicator: Obj16IndicatorState
   offlineIndicator: Obj16IndicatorState
   riskPriority: Obj16Priority
+  hasConflict: boolean
   milestone: string
   nextStep: string
 }
@@ -847,6 +848,9 @@ export async function loadObj16MaturityData(): Promise<Obj16MaturityData> {
       documentationIndicator: docsState,
       offlineIndicator: offlineState,
       riskPriority,
+      hasConflict:
+        (feature.status === 'Completed' || feature.status === 'Deployed') &&
+        testStatus === 'failed',
       milestone:
         riskPriority === 'blocker'
           ? 'Fix before next release gate'

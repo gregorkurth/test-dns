@@ -38,6 +38,8 @@ export interface TestExecutionEntry {
   lastReleaseId: string | null
   lastNote: string | null
   lastEvidencePath: string | null
+  latestEvidenceIssue: string | null
+  evidenceIssueCount: number
   history: TestExecutionRecord[]
 }
 
@@ -784,6 +786,23 @@ function parseJsonEvidence(absolutePath: string, content: string): TestExecution
     })
   }
 
+  if (normalizedRecords.length === 0) {
+    return [
+      {
+        testType: inferTestTypeFromPath(absolutePath, 'auto'),
+        tagId: null,
+        testId: null,
+        status: 'failed',
+        executedAt: null,
+        runId: null,
+        releaseId: null,
+        note: 'Nachweis fehlerhaft: keine Testrecords gefunden',
+        evidencePath,
+        source: 'result_json',
+      },
+    ]
+  }
+
   return normalizedRecords
 }
 
@@ -799,12 +818,8 @@ export function resolveLatestRecord(
   )
   const latestWithValidTimestamp =
     sortedHistory.find((record) => record.executedAt !== null) ?? null
-  const latestUndatedFailure =
-    sortedHistory.find(
-      (record) => record.executedAt === null && record.status === 'failed',
-    ) ?? null
 
-  return latestWithValidTimestamp ?? latestUndatedFailure ?? null
+  return latestWithValidTimestamp ?? null
 }
 
 export function filterDashboardEntries(
@@ -859,9 +874,6 @@ async function loadEvidenceRecords(): Promise<TestExecutionRecord[]> {
   const records: TestExecutionRecord[] = []
   for (const filePath of evidenceFiles) {
     const content = await fs.readFile(filePath, 'utf8').catch(() => '')
-    if (!content) {
-      continue
-    }
 
     if (filePath.endsWith('.md')) {
       records.push(...parseMarkdownEvidence(filePath, content))
@@ -1117,6 +1129,9 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
   const tests: TestExecutionEntry[] = definitionEntries.map((entry) => {
     entry.history.sort((left, right) => compareDatesDesc(left.executedAt, right.executedAt))
     const latest = resolveLatestRecord(entry.history)
+    const evidenceIssues = entry.history
+      .filter((record) => record.note?.includes('Nachweis fehlerhaft'))
+      .sort((left, right) => compareDatesDesc(left.executedAt, right.executedAt))
 
     return {
       ...entry,
@@ -1126,6 +1141,8 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
       lastReleaseId: latest?.releaseId ?? null,
       lastNote: latest?.note ?? null,
       lastEvidencePath: latest?.evidencePath ?? null,
+      latestEvidenceIssue: evidenceIssues[0]?.note ?? null,
+      evidenceIssueCount: evidenceIssues.length,
     }
   })
 

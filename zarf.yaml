@@ -1,0 +1,124 @@
+# OBJ-19 baseline package definition for offline handover.
+# This file is intentionally checked into Git so the package structure stays reviewable.
+# The image digests below are digest-pinned placeholders and must be replaced by the
+# release pipeline with the approved OCI references from OBJ-18 before packaging.
+
+kind: ZarfPackageConfig
+
+metadata:
+  name: dns-management-service
+  version: v1.0.0-beta.1
+  description: >
+    Offline package baseline for the DNS Management Service.
+    Includes OCI images, deployment assets, GitOps source snapshots and
+    optional offline security data for air-gapped transfer.
+  architecture: amd64
+
+variables:
+  - name: PACKAGE_VARIANT
+    default: minimal
+    prompt: false
+  - name: TARGET_NAMESPACE
+    default: dns-management
+    prompt: false
+  - name: TARGET_REGISTRY
+    default: harbor.fmn.local/fmn
+    prompt: false
+  - name: RELEASE_PROJECT_REPO
+    default: gitea.fmn.local/releases/dns-management-service-release
+    prompt: false
+  - name: CONFIG_PROJECT_REPO
+    default: gitea.fmn.local/config/dns-management-service-config
+    prompt: false
+
+components:
+  - name: core-images
+    description: >
+      Core OCI images for the service. Replace the placeholder digests during release
+      creation so every package uses approved image references only.
+    required: true
+    images:
+      - ghcr.io/gregorkurth/test-dns@sha256:1111111111111111111111111111111111111111111111111111111111111111
+      - ghcr.io/gregorkurth/test-dns-operator@sha256:2222222222222222222222222222222222222222222222222222222222222222
+
+  - name: deployment-assets
+    description: Helm chart, Kubernetes manifests and operator bundle required for import.
+    required: true
+    files:
+      - source: helm/dns-management-service
+        target: /opt/dns-management/helm/dns-management-service
+      - source: k8s/base
+        target: /opt/dns-management/k8s/base
+      - source: k8s/operator
+        target: /opt/dns-management/k8s/operator
+      - source: docs/zarf.md
+        target: /opt/dns-management/docs/zarf.md
+      - source: docs/offline-install.md
+        target: /opt/dns-management/docs/offline-install.md
+
+  - name: gitops-sources
+    description: >
+      Placeholder structure for the release snapshot and the separate configuration project.
+      In the real release flow these are exported from Git and attached as immutable payloads.
+    required: true
+    files:
+      - source: artifacts/offline-package/v1.0.0-beta.1/minimal/handover.json
+        target: /opt/dns-management/gitops/release-project-handover.json
+      - source: artifacts/offline-package/v1.0.0-beta.1/full/handover.json
+        target: /opt/dns-management/gitops/full-handover.json
+
+  - name: argocd-manifests
+    description: >
+      Argo CD GitOps manifests for App-of-Apps deployment. Includes root application,
+      AppProject, ApplicationSet, fallback applications and bootstrap scripts.
+    required: true
+    files:
+      - source: gitops/argocd/root-application.yaml
+        target: /opt/dns-management/gitops/argocd/root-application.yaml
+      - source: gitops/argocd/bootstrap-resources/appproject.yaml
+        target: /opt/dns-management/gitops/argocd/bootstrap-resources/appproject.yaml
+      - source: gitops/argocd/bootstrap-resources/applicationset.yaml
+        target: /opt/dns-management/gitops/argocd/bootstrap-resources/applicationset.yaml
+      - source: gitops/argocd/applications/app-core.yaml
+        target: /opt/dns-management/gitops/argocd/applications/app-core.yaml
+      - source: gitops/argocd/applications/app-monitoring.yaml
+        target: /opt/dns-management/gitops/argocd/applications/app-monitoring.yaml
+      - source: gitops/argocd/applications/app-ingress.yaml
+        target: /opt/dns-management/gitops/argocd/applications/app-ingress.yaml
+      - source: gitops/argocd/applications/app-security.yaml
+        target: /opt/dns-management/gitops/argocd/applications/app-security.yaml
+      - source: gitops/bootstrap/bootstrap.sh
+        target: /opt/dns-management/gitops/bootstrap/bootstrap.sh
+      - source: gitops/bootstrap/README.md
+        target: /opt/dns-management/gitops/bootstrap/README.md
+
+  - name: security-offline-db
+    description: >
+      Optional full-package component with offline vulnerability database and scan bundle.
+      Keep disabled for minimal packages and enable for full air-gap validation bundles.
+    required: false
+    only:
+      cluster:
+        architecture: amd64
+    files:
+      - source: artifacts/security/offline/trivy-db-2026-04-09.tar.zst
+        target: /opt/dns-management/security/trivy-db-2026-04-09.tar.zst
+      - source: artifacts/security/v1.0.0-beta.1
+        target: /opt/dns-management/security/v1.0.0-beta.1
+
+  - name: import-preflight
+    description: >
+      Import metadata used by the target environment to verify checksums, package variant,
+      expected registry and Git source mapping before deployment.
+    required: true
+    files:
+      - source: artifacts/offline-package/INDEX.json
+        target: /opt/dns-management/metadata/offline-package-index.json
+      - source: artifacts/offline-package/v1.0.0-beta.1/minimal/manifest.json
+        target: /opt/dns-management/metadata/minimal-manifest.json
+      - source: artifacts/offline-package/v1.0.0-beta.1/minimal/SHA256SUMS.txt
+        target: /opt/dns-management/metadata/minimal-SHA256SUMS.txt
+      - source: artifacts/offline-package/v1.0.0-beta.1/full/manifest.json
+        target: /opt/dns-management/metadata/full-manifest.json
+      - source: artifacts/offline-package/v1.0.0-beta.1/full/SHA256SUMS.txt
+        target: /opt/dns-management/metadata/full-SHA256SUMS.txt

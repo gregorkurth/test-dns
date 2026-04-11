@@ -1,0 +1,19 @@
+{{- if and .Values.ingress.enabled (empty .Values.ingress.className) -}}
+{{- fail "ingress.className is required when ingress.enabled=true" -}}
+{{- end -}}
+
+{{- if and .Values.ingress.enabled (empty .Values.ingress.hostname) -}}
+{{- fail "ingress.hostname is required when ingress.enabled=true" -}}
+{{- end -}}
+
+{{- if and .Values.ingress.enabled .Values.ingress.tls.enabled (empty .Values.ingress.tls.secretName) -}}
+{{- fail "ingress.tls.secretName is required when ingress.tls.enabled=true" -}}
+{{- end -}}
+
+{{- if and (eq .Values.service.type "NodePort") (not .Values.service.nodePort) -}}
+{{- fail "service.nodePort is required when service.type=NodePort" -}}
+{{- end -}}
+
+{{- if and .Values.service.nodePort (or (lt (int .Values.service.nodePort) 30000) (gt (int .Values.service.nodePort) 32767)) -}}
+{{- fail "service.nodePort must be between 30000 and 32767" -}}
+{{- end -}}

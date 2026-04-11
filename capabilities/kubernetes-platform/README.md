@@ -19,6 +19,7 @@ Die Kubernetes-Platform-Capability stellt sicher, dass die DNS-Konfigurations-Ap
 |----|---------|-------------|------|
 | SVC-K8S-DEPLOY | Kubernetes Deployment | Deklaratives Deployment der App auf Kubernetes | [README](services/kubernetes-deployment/README.md) |
 | SVC-K8S-OPERATOR | Kubernetes Operator | CRD-basierte Steuerung der DNS-Konfiguration | [README](services/kubernetes-operator/README.md) |
+| SVC-K8S-STORAGE | Storage Management | Rook-Ceph-Storage-Profile (Block/File/S3) mit Local-Fallback | [README](services/kubernetes-storage/README.md) |
 
 ---
 
@@ -30,6 +31,11 @@ Die Kubernetes-Platform-Capability stellt sicher, dass die DNS-Konfigurations-Ap
 | SFN-K8S-002 | Manifest Management | SVC-K8S-DEPLOY | [ARCH] |
 | SFN-K8S-003 | CRD Definition | SVC-K8S-OPERATOR | [ARCH] |
 | SFN-K8S-004 | Reconciliation Loop | SVC-K8S-OPERATOR | [ARCH] |
+| SFN-K8S-006 | Storage Profile Config | SVC-K8S-STORAGE | [ARCH] |
+| SFN-K8S-007 | Ceph Block Storage | SVC-K8S-STORAGE | [ARCH] |
+| SFN-K8S-008 | Ceph File/CIFS Storage | SVC-K8S-STORAGE | [ARCH] |
+| SFN-K8S-009 | Ceph S3 Object Storage | SVC-K8S-STORAGE | [ARCH] |
+| SFN-K8S-010 | Local Storage Fallback | SVC-K8S-STORAGE | [ARCH] |
 
 ---
 
