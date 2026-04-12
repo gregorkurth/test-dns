@@ -22,10 +22,10 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 2 – API-Fundament | P1 | OBJ-3: REST API | Completed |
 | 3 – P0 MVP | P0 | OBJ-4: Capabilities Dashboard | Completed |
 | 3 – P0 MVP | P0 | OBJ-5: Participant Configuration Form | Completed |
-| 3 – P0 MVP | P0 | OBJ-6: DNS Zone File Generator | In Progress |
-| 4 – P1 DNS | P1 | OBJ-7: Requirements Traceability View | Planned |
-| 4 – P1 DNS | P1 | OBJ-8: Export & Download | Planned |
-| 4 – P1 DNS | P1 | OBJ-9: Manual Test Runner | Planned |
+| 3 – P0 MVP | P0 | OBJ-6: DNS Zone File Generator | Completed |
+| 4 – P1 DNS | P1 | OBJ-7: Requirements Traceability View | Completed |
+| 4 – P1 DNS | P1 | OBJ-8: Export & Download | Completed |
+| 4 – P1 DNS | P1 | OBJ-9: Manual Test Runner | Completed |
 | 4 – P1 DNS | P1 | OBJ-23: Test Execution Dashboard | Completed |
 | 4 – P1 DNS | P1 | OBJ-24: DNS Baseline Config Repository & Change History | Planned |
 | 5 – Plattform | P1 | OBJ-10: Kubernetes Deployment | In Progress |
@@ -35,8 +35,8 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 5 – Plattform | P1 | OBJ-12: Security & Authentifizierung | In Review |
 | 5 – Plattform | P2 | OBJ-13: Kubernetes Operator | In Review |
 | 6 – Abschluss | P1 | OBJ-14: Release Management | In Review |
-| 6 – Abschluss | P1 | OBJ-15: Produkt-Website | In Review |
-| 6 – Abschluss | P1 | OBJ-16: Maturitaetsstatus / Reifegraduebersicht | In Review |
+| 6 – Abschluss | P1 | OBJ-15: Produkt-Website | Completed |
+| 6 – Abschluss | P1 | OBJ-16: Maturitaetsstatus / Reifegraduebersicht | Completed |
 | 6 – Abschluss | P1 | OBJ-17: SBOM & Security-Scanning | In Review |
 | 6 – Abschluss | P1 | OBJ-22: Release-Artefaktpruefung / Publish-Gate | Planned |
 | 6 – Abschluss | P1 | OBJ-18: Artefakt-Registry (Harbor / Nexus) | In Progress |
