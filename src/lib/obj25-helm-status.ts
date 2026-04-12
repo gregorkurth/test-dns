@@ -2,6 +2,23 @@ import { spawnSync } from 'node:child_process'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
+// Erlaubte Zeichen für den Helm-Binary-Pfad (S-14).
+// Nur alphanumerisch, Bindestrich, Unterstrich, Punkt und Slash.
+const SAFE_BINARY_PATTERN = /^[a-zA-Z0-9_./-]+$/
+
+function resolveHelmBinary(): string {
+  const configured = process.env.OBJ25_HELM_BIN?.trim()
+  if (!configured) {
+    return 'helm'
+  }
+  if (!SAFE_BINARY_PATTERN.test(configured)) {
+    throw new Error(
+      `OBJ25_HELM_BIN enthält ungültige Zeichen: "${configured}". Nur a-z, A-Z, 0-9, _, -, ., / erlaubt.`,
+    )
+  }
+  return configured
+}
+
 export type Obj25HelmProfile = 'local' | 'internal' | 'prod'
 export type Obj25HelmCheckType = 'lint' | 'template'
 export type Obj25HelmCheckStatus = 'passed' | 'failed' | 'skipped'
@@ -216,7 +233,7 @@ async function runReleaseStatusCheck(input: {
   releaseName: string
   namespace: string
 }): Promise<Obj25HelmReleaseStatus> {
-  const helmBinary = process.env.OBJ25_HELM_BIN?.trim() || 'helm'
+  const helmBinary = resolveHelmBinary()
   const args = [
     'status',
     input.releaseName,
@@ -329,7 +346,7 @@ async function runHelmCommandCheck(
   profile: Obj25HelmProfile,
   checkType: Obj25HelmCheckType,
 ): Promise<Obj25HelmCommandCheck> {
-  const helmBinary = process.env.OBJ25_HELM_BIN?.trim() || 'helm'
+  const helmBinary = resolveHelmBinary()
   const valuesBase = path.join(chartPath, 'values.yaml')
   const profileFile = path.join(chartPath, `values-${profile}.yaml`)
   const helmHomes = buildHelmHomePaths()
