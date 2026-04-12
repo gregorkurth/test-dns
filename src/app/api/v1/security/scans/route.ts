@@ -3,6 +3,7 @@ import {
   apiSuccess,
   enforceRateLimit,
   handleUnexpectedApiError,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import { requireSession } from '@/lib/obj12-auth'
 import {
@@ -46,7 +47,7 @@ export async function GET(request: Request) {
     if (channel && !validChannels.includes(channel as Obj17ReleaseChannel)) {
       return apiError(422, {
         code: 'INVALID_SECURITY_CHANNEL',
-        message: `Ungueltiger channel-Parameter: ${channel}. Erlaubt sind ga, beta, rc.`,
+        message: `Ungueltiger channel-Parameter: ${sanitizeForMessage(channel)}. Erlaubt sind ga, beta, rc.`,
       })
     }
 
@@ -82,7 +83,7 @@ export async function GET(request: Request) {
     if (version && bundles.length === 0) {
       return apiError(404, {
         code: 'SECURITY_BUNDLE_NOT_FOUND',
-        message: `Kein Security-Bundle fuer Version ${version} gefunden.`,
+        message: `Kein Security-Bundle fuer Version ${sanitizeForMessage(version)} gefunden.`,
       })
     }
 

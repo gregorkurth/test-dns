@@ -43,10 +43,10 @@ function applyCors(request: NextRequest, response: NextResponse): NextResponse {
 }
 
 export function middleware(request: NextRequest): NextResponse {
-  const { pathname, method } = request.nextUrl
+  const { pathname } = request.nextUrl
 
   // OPTIONS Preflight direkt beantworten
-  if (method === 'OPTIONS') {
+  if (request.method === 'OPTIONS') {
     return applyCors(request, new NextResponse(null, { status: 204 }))
   }
 

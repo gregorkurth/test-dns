@@ -3,6 +3,7 @@ import {
   apiSuccess,
   enforceRateLimit,
   handleUnexpectedApiError,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import { requireSession } from '@/lib/obj12-auth'
 import { getObj24HistoryEntryById, Obj24DomainError } from '@/lib/obj24-baseline-history'
@@ -37,7 +38,7 @@ export async function GET(
     if (!entry) {
       return apiError(404, {
         code: 'HISTORY_ENTRY_NOT_FOUND',
-        message: `Kein Verlaufseintrag mit ID ${id} gefunden.`,
+        message: `Kein Verlaufseintrag mit ID ${sanitizeForMessage(id)} gefunden.`,
       })
     }
 

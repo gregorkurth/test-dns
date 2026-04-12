@@ -3,6 +3,7 @@ import {
   apiSuccess,
   enforceRateLimit,
   handleUnexpectedApiError,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import { requireSession } from '@/lib/obj12-auth'
 import {
@@ -40,7 +41,7 @@ export async function GET(request: Request) {
     if (channel && !parseObj18RegistryChannel(channel)) {
       return apiError(422, {
         code: 'INVALID_REGISTRY_CHANNEL',
-        message: `Ungueltiger channel-Parameter: ${channel}. Erlaubt sind ga, beta oder rc.`,
+        message: `Ungueltiger channel-Parameter: ${sanitizeForMessage(channel)}. Erlaubt sind ga, beta oder rc.`,
       })
     }
 

@@ -21,6 +21,17 @@ export interface ApiResponseShape<TData> {
   meta: ApiMeta
 }
 
+/**
+ * Bereinigt User-Input für die Verwendung in Fehlermeldungen (S-15).
+ * Entfernt Steuerzeichen (Log-Injection) und kürzt auf max. 80 Zeichen.
+ */
+export function sanitizeForMessage(value: string | null | undefined, maxLength = 80): string {
+  if (value == null) return ''
+  return value
+    .replace(/[\x00-\x1f\x7f]/g, '')
+    .slice(0, maxLength)
+}
+
 interface RateLimitBucket {
   windowStart: number
   count: number

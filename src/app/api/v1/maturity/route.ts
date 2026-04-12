@@ -3,6 +3,7 @@ import {
   apiSuccess,
   enforceRateLimit,
   handleUnexpectedApiError,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import { requireSession } from '@/lib/obj12-auth'
 import {
@@ -51,7 +52,7 @@ export async function GET(request: Request) {
     if (status && !validStatuses.includes(status as (typeof validStatuses)[number])) {
       return apiError(422, {
         code: 'INVALID_MATURITY_STATUS',
-        message: `Ungueltiger status-Parameter: ${status}`,
+        message: `Ungueltiger status-Parameter: ${sanitizeForMessage(status)}`,
       })
     }
     if (releaseChannel && !validChannels.includes(releaseChannel as Obj16ReleaseChannel)) {
