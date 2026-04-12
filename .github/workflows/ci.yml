@@ -136,15 +136,18 @@ jobs:
 
       - name: Image-Metadaten als Artifact speichern
         run: |
-          mkdir -p .tmp
-          echo "${{ steps.build.outputs.digest }}" > .tmp/ghcr-image-digest.txt
-          printf '%s\n' "${{ steps.meta.outputs.tags }}" > .tmp/ghcr-image-tags.txt
+          mkdir -p tmp/ghcr
+          echo "${{ steps.build.outputs.digest }}" > tmp/ghcr/ghcr-image-digest.txt
+          printf '%s\n' "${{ steps.meta.outputs.tags }}" > tmp/ghcr/ghcr-image-tags.txt
 
       - name: GHCR-Metadaten hochladen
         uses: actions/upload-artifact@v4
         with:
           name: ghcr-image-metadata
-          path: .tmp/ghcr-image-*.txt
+          path: |
+            tmp/ghcr/ghcr-image-digest.txt
+            tmp/ghcr/ghcr-image-tags.txt
+          if-no-files-found: error
           retention-days: 90
 
   registry-catalog:
@@ -159,15 +162,15 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ghcr-image-metadata
-          path: .tmp
+          path: tmp/ghcr
 
       - name: Registry-Katalog erzeugen
         run: |
-          mkdir -p .tmp/registry
-          DIGEST="$(cat .tmp/ghcr-image-digest.txt)"
-          FIRST_TAG="$(head -n 1 .tmp/ghcr-image-tags.txt)"
+          mkdir -p tmp/registry
+          DIGEST="$(cat tmp/ghcr/ghcr-image-digest.txt)"
+          FIRST_TAG="$(head -n 1 tmp/ghcr/ghcr-image-tags.txt)"
           PUBLISHED_AT="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          cat > .tmp/registry/registry-catalog.json <<EOF
+          cat > tmp/registry/registry-catalog.json <<EOF
           {
             "sourceOfTruth": "git",
             "primaryRegistry": "ghcr.io",
@@ -190,7 +193,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: registry-catalog
-          path: .tmp/registry/registry-catalog.json
+          path: tmp/registry/registry-catalog.json
           retention-days: 90
 
   validation-matrix:
@@ -235,13 +238,19 @@ jobs:
       - name: Validation-Matrix committen
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ "$(git rev-parse --abbrev-ref HEAD)" = "HEAD" ]; then
+            git checkout -B main origin/main
+          fi
           git add docs/testing/VALIDATION-MATRIX.md
           if ! git diff --staged --quiet; then
             git commit -m "chore: validation matrix aktualisiert [skip ci]"
             git pull --rebase origin main
-            git push
+            if ! git push origin HEAD:main; then
+              echo "::warning::Validation-Matrix konnte nicht automatisch nach main gepusht werden."
+            fi
           fi
 
   traceability:
@@ -359,13 +368,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ghcr-image-metadata
-          path: .tmp/registry
+          path: tmp/registry
 
       - name: Registry-Katalog laden
         uses: actions/download-artifact@v4
         with:
           name: registry-catalog
-          path: .tmp/registry
+          path: tmp/registry
 
       - name: Node.js einrichten (fuer Publish Gate)
         uses: actions/setup-node@v4
@@ -381,11 +390,11 @@ jobs:
 
       - name: Registry Preflight (OBJ-18)
         run: |
-          test -s .tmp/registry/ghcr-image-digest.txt
-          grep -Eq '^sha256:' .tmp/registry/ghcr-image-digest.txt
-          test -s .tmp/registry/ghcr-image-tags.txt
-          test -s .tmp/registry/registry-catalog.json
-          grep -q '"securityGate": "passed-before-publish"' .tmp/registry/registry-catalog.json
+          test -s tmp/registry/ghcr-image-digest.txt
+          grep -Eq '^sha256:' tmp/registry/ghcr-image-digest.txt
+          test -s tmp/registry/ghcr-image-tags.txt
+          test -s tmp/registry/registry-catalog.json
+          grep -q '"securityGate": "passed-before-publish"' tmp/registry/registry-catalog.json
 
       - name: Security Evidence Directory vorbereiten
         run: |
