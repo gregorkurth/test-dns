@@ -29,16 +29,23 @@ Optional:
    ```bash
    cp .env.local.example .env.local
    ```
-4. Falls du Supabase aktiv nutzt, beide Werte in `.env.local` setzen:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-5. Lokalen Entwicklungsserver starten.
+4. Session-Secret generieren und in `.env.local` eintragen.
+   ```bash
+   echo "OBJ12_SESSION_SECRET=$(openssl rand -base64 48)" >> .env.local
+   ```
+5. User-Konfiguration anlegen.
+   ```bash
+   cp config/users.local.json.example config/users.local.json
+   ```
+   Dann in `config/users.local.json` die Passwörter durch sichere Werte ersetzen.
+   Die Datei ist gitignored und wird nie eingecheckt.
+7. Lokalen Entwicklungsserver starten.
    ```bash
    npm run dev
    ```
-6. App im Browser oeffnen.
+8. App im Browser oeffnen.
    - `http://localhost:3000`
-7. Wenn du die technische Basis pruefen willst, laufe danach noch:
+9. Wenn du die technische Basis pruefen willst, laufe danach noch:
    ```bash
    npm run lint
    npm run build
@@ -54,7 +61,8 @@ Optional:
 
 - Pruefe, ob Node und npm installiert sind.
 - Pruefe, ob `npm install` ohne Fehler durchgelaufen ist.
-- Pruefe, ob die Datei `.env.local` vorhanden ist.
+- Pruefe, ob die Datei `.env.local` vorhanden ist und `OBJ12_SESSION_SECRET` gesetzt ist.
+- Pruefe, ob `config/users.local.json` vorhanden ist (aus `.example` kopieren und Passwörter setzen).
 - Pruefe, ob Port `3000` frei ist.
 
 ## Weiter lesen
