@@ -32,6 +32,14 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+
+  async rewrites() {
+    // MkDocs static site is served from public/docs/ (OBJ-27).
+    // use_directory_urls: false in mkdocs.yml generates flat .html files,
+    // so all internal nav links are explicit (e.g. operations.html).
+    // Only the entry point /docs needs rewriting to /docs/index.html.
+    return [{ source: '/docs', destination: '/docs/index.html' }]
+  },
 }
 
 export default nextConfig
