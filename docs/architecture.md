@@ -65,6 +65,8 @@ Im aktuellen Repository liegt das Blackbox-Diagramm bereits als Quelle und Expor
 
 - `docs/arc42/diagrams/blackbox-overview.drawio`
 - `docs/arc42/diagrams/blackbox-overview.svg`
+- `docs/arc42/diagrams/pod-connectivity.drawio`
+- `docs/arc42/diagrams/pod-connectivity.svg`
 
 Der Zielstandard fuer neue Diagramme ist die klare Trennung in Source und Export, damit die Markdown-Doku und spaetere E-Book-Exporte immer auf die exportierten Bilder verweisen.
 

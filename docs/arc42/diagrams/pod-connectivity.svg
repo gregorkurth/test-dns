@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1080" viewBox="0 0 1700 1080" role="img" aria-label="Pod-Topologie und Verbindungen fuer DNS Management Service">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 z" fill="#374151" />
+    </marker>
+    <style>
+      .title { font: 700 24px Arial, sans-serif; fill: #111827; }
+      .boxText { font: 600 14px Arial, sans-serif; fill: #111827; }
+      .lineText { font: 12px Arial, sans-serif; fill: #374151; }
+      .box { stroke-width: 2; rx: 10; ry: 10; }
+      .edge { stroke: #374151; stroke-width: 2; marker-end: url(#arrow); fill: none; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1700" height="1080" fill="#f9fafb" />
+  <text class="title" x="40" y="46">Pod-Topologie und Verbindungen (arc42 Kapitel 7)</text>
+
+  <rect class="box" x="300" y="140" width="1380" height="860" fill="#ffffff" stroke="#6b7280" stroke-dasharray="9 7" />
+  <text class="boxText" x="320" y="172">Kubernetes Cluster</text>
+  <text class="lineText" x="320" y="194">Namespace: dns-management-local</text>
+
+  <rect class="box" x="660" y="180" width="740" height="420" fill="none" stroke="#c2410c" stroke-dasharray="7 6" />
+  <text class="boxText" x="678" y="208">Cilium NetworkPolicy + mTLS</text>
+  <text class="lineText" x="678" y="228">(Pod-zu-Pod verschluesselt)</text>
+
+  <rect class="box" x="40" y="120" width="220" height="80" fill="#dae8fc" stroke="#6c8ebf" />
+  <text class="boxText" x="85" y="166">Benutzer (Browser)</text>
+
+  <rect class="box" x="40" y="350" width="220" height="80" fill="#dae8fc" stroke="#6c8ebf" />
+  <text class="boxText" x="90" y="396">OIDC / Keycloak</text>
+
+  <rect class="box" x="40" y="600" width="220" height="90" fill="#f8cecc" stroke="#b85450" />
+  <text class="boxText" x="96" y="642">Argo CD</text>
+  <text class="lineText" x="75" y="664">(GitOps Sync)</text>
+
+  <rect class="box" x="360" y="40" width="220" height="70" fill="#ffe6cc" stroke="#d79b00" />
+  <text class="boxText" x="396" y="84">Kubernetes API</text>
+
+  <rect class="box" x="360" y="250" width="250" height="110" fill="#fff2cc" stroke="#d6b656" />
+  <text class="boxText" x="406" y="295">Service</text>
+  <text class="lineText" x="390" y="318">dns-management-service</text>
+  <text class="lineText" x="400" y="338">(ClusterIP/NodePort)</text>
+
+  <rect class="box" x="700" y="220" width="300" height="120" fill="#fff2cc" stroke="#d6b656" />
+  <text class="boxText" x="820" y="266">Pod</text>
+  <text class="lineText" x="744" y="288">dns-management-service</text>
+  <text class="lineText" x="780" y="308">Web GUI + API</text>
+
+  <rect class="box" x="1060" y="220" width="300" height="120" fill="#fff2cc" stroke="#d6b656" />
+  <text class="boxText" x="1180" y="266">Pod</text>
+  <text class="lineText" x="1104" y="288">dns-management-service</text>
+  <text class="lineText" x="1164" y="308">Replica 2</text>
+
+  <rect class="box" x="700" y="430" width="300" height="120" fill="#e1d5e7" stroke="#9673a6" />
+  <text class="boxText" x="820" y="476">Pod</text>
+  <text class="lineText" x="726" y="498">dns-management-service-test-operator</text>
+  <text class="lineText" x="795" y="518">(Intervall 15 min)</text>
+
+  <rect class="box" x="700" y="630" width="260" height="110" fill="#d5e8d4" stroke="#82b366" />
+  <text class="boxText" x="807" y="676">Pod</text>
+  <text class="lineText" x="760" y="698">otel-collector</text>
+
+  <rect class="box" x="1050" y="620" width="260" height="110" fill="#d5e8d4" stroke="#82b366" />
+  <text class="boxText" x="1158" y="666">Pod</text>
+  <text class="lineText" x="1122" y="688">clickhouse</text>
+
+  <rect class="box" x="1050" y="780" width="260" height="110" fill="#d5e8d4" stroke="#82b366" />
+  <text class="boxText" x="1158" y="826">Pod</text>
+  <text class="lineText" x="1140" y="848">grafana</text>
+
+  <line class="edge" x1="260" y1="160" x2="360" y2="295" />
+  <text class="lineText" x="268" y="220">HTTPS UI/API</text>
+
+  <line class="edge" x1="610" y1="300" x2="700" y2="280" />
+  <text class="lineText" x="625" y="270">Load-Balancing</text>
+
+  <line class="edge" x1="610" y1="320" x2="1060" y2="280" />
+  <text class="lineText" x="770" y="262">Load-Balancing</text>
+
+  <line class="edge" x1="700" y1="250" x2="260" y2="390" />
+  <text class="lineText" x="430" y="306">OIDC Auth</text>
+
+  <line class="edge" x1="260" y1="645" x2="360" y2="85" />
+  <text class="lineText" x="280" y="370">GitOps Deploy/Sync</text>
+
+  <line class="edge" x1="580" y1="90" x2="820" y2="220" />
+  <text class="lineText" x="640" y="136">Applies Manifests</text>
+
+  <line class="edge" x1="580" y1="98" x2="820" y2="430" />
+  <text class="lineText" x="600" y="240">Applies Manifests</text>
+
+  <line class="edge" x1="850" y1="550" x2="850" y2="340" />
+  <text class="lineText" x="865" y="452">API Smoke/Regression</text>
+
+  <line class="edge" x1="850" y1="340" x2="830" y2="630" />
+  <text class="lineText" x="860" y="490">OTLP Logs/Metrics/Traces</text>
+
+  <line class="edge" x1="850" y1="550" x2="830" y2="630" />
+  <text class="lineText" x="865" y="600">OTLP Test Results</text>
+
+  <line class="edge" x1="960" y1="685" x2="1050" y2="675" />
+  <text class="lineText" x="970" y="665">Export</text>
+
+  <line class="edge" x1="1050" y1="810" x2="1180" y2="730" />
+  <text class="lineText" x="1060" y="774">Query / Dashboards</text>
+</svg>

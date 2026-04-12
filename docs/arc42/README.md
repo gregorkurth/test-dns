@@ -37,6 +37,24 @@ arc42 ist gut fuer dieses Repo, weil:
 | 11. Risiken und technische Schulden | `11-risks-and-technical-debt.md` | wenn Risiken erkannt oder reduziert werden |
 | 12. Glossar und Arbeitsprodukte | `12-glossary-and-work-products.md` | wenn Begriffe, Artefakte oder Export-Regeln wachsen |
 
+## Detaillierungsgrad (Stand)
+
+Die Kapitel sind bewusst in zwei Perspektiven geschrieben:
+
+- Management-Perspektive: Zweck, Wirkung, Risiken, Entscheidungsfolgen
+- Technik-Perspektive: Schnittstellen, Ablaufe, Deployment, Security, Nachweise
+
+Ziel ist, dass jedes Kapitel einzeln exportierbar und ohne Vorwissen lesbar ist.
+
+## Mindestpflege pro abgeschlossenem Feature
+
+1. Betroffene arc42-Kapitel aktualisieren.
+2. Verweise auf Feature/Requirement/Test/ADR pruefen.
+3. DoD und QA-Status abgleichen.
+4. Export-Log aktualisieren, wenn externe Kopie erstellt wird.
+
+Diese vier Schritte sind verpflichtend, damit Architektur und Umsetzung nicht auseinanderlaufen.
+
 ## Die einfache Pflege-Regel
 
 Wenn etwas Neues entsteht, pruefe immer diese 4 Fragen:
