@@ -24,13 +24,13 @@ Sie deckt Start, Stop, Update, Backup und die wichtigsten Fehlersuchen ab.
    ```bash
    npm run build
    ```
-2. Produktionsserver starten.
-   ```bash
-   npm run start
-   ```
+2. Zielpfad waehlen:
+   - Local Integration auf Docker-basiertem Kubernetes
+   - On-Prem Integration/Production auf eigenem Cluster
 3. Im Kubernetes-/GitOps-Betrieb den vorgesehenen Deploy-Pfad nutzen.
-   - Release importieren
+   - Release importieren (ggf. ueber Zarf)
    - Argo CD synchronisieren
+   - Smoke-Test ausfuehren
 
 ## Stop
 
@@ -42,6 +42,16 @@ Sie deckt Start, Stop, Update, Backup und die wichtigsten Fehlersuchen ab.
 
 - Deployment skalieren oder die Application in Argo CD pausieren.
 - Danach den Status der Pods und der Application pruefen.
+
+### Docker-basierter Testcluster
+
+- Bei Docker Desktop: Kubernetes im Docker Desktop aktivieren.
+- Kontext pruefen:
+  ```bash
+  kubectl config current-context
+  kubectl cluster-info
+  ```
+- Danach local Deploy-Profil nutzen (Helm/Kustomize), nicht Vercel.
 
 ## Update
 
@@ -110,6 +120,7 @@ Dann muessen Pufferung, Retry und die Uebergabe spaeter nachvollziehbar sein.
 ## Weiter lesen
 
 - [Konfiguration](configuration.md)
+- [Deployment On-Prem Kubernetes](DEPLOYMENT-ONPREM-KUBERNETES.md)
 - [Offline-Installation](offline-install.md)
 - [Argo CD](argocd.md)
 - [Release-Prozess](release-process.md)

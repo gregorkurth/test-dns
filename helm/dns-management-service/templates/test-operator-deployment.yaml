@@ -1,0 +1,51 @@
+{{- if .Values.testOperator.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "dns-management-service.fullname" . }}-test-operator
+  namespace: {{ .Values.namespace.name }}
+  labels:
+{{ include "dns-management-service.labels" . | indent 4 }}
+    app.kubernetes.io/component: test-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "dns-management-service.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/component: test-operator
+  template:
+    metadata:
+      labels:
+{{ include "dns-management-service.labels" . | indent 8 }}
+        app.kubernetes.io/component: test-operator
+    spec:
+      serviceAccountName: {{ .Values.testOperator.rbac.serviceAccountName }}
+      automountServiceAccountToken: true
+      containers:
+        - name: test-operator
+          image: {{ include "dns-management-service.testOperatorImage" . | quote }}
+          imagePullPolicy: {{ .Values.testOperator.image.pullPolicy }}
+          args:
+            - --leader-elect
+          envFrom:
+            - configMapRef:
+                name: {{ include "dns-management-service.fullname" . }}-test-operator-config
+          ports:
+            - containerPort: 8080
+              name: metrics
+            - containerPort: 8081
+              name: probes
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: probes
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: probes
+          resources:
+{{ toYaml .Values.testOperator.resources | indent 12 }}
+          securityContext:
+{{ toYaml .Values.testOperator.securityContext | indent 12 }}
+{{- end }}

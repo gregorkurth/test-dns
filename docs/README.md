@@ -50,6 +50,7 @@ Sie ist fuer:
 Wenn ein neues Thema kommt, beginne hier:
 - Neues Requirement oder neues Feature: `docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md`
 - Testing Schritt fuer Schritt: `docs/QUICK-GUIDE-TESTING.md`
+- Deployment On-Prem (gesamt oder pro Feature): `docs/DEPLOYMENT-ONPREM-KUBERNETES.md`
 - AI-Agent Anbindung ueber MCP (DNS CRUD): `docs/MCP-DNS-CRUD.md`
 - Architektur dokumentieren: `docs/arc42/README.md`
 - Security-Baseline umsetzen: `docs/security/README.md`
@@ -84,6 +85,7 @@ Wenn etwas wichtig ist, muss es an mindestens einem dieser Orte stehen:
 | Was kam beim Test heraus? | `docs/testing/VALIDATION-MATRIX.md`, Testnachweis im Repo, QA-Abschnitt im Feature |
 | Warum wurde eine Architekturentscheidung getroffen? | `docs/adr/*.md` |
 | Wie ist die Architektur im Ganzen? | `docs/arc42/` |
+| Wie deployen wir auf On-Prem Kubernetes? | `docs/DEPLOYMENT-ONPREM-KUBERNETES.md` |
 | Was wurde released? | Release-Doku, Pipeline, Artefakte, `features/OBJ-14-*.md` |
 | Was wurde nach Confluence kopiert? | `docs/CONFLUENCE-EXPORT-GUIDE.md` und `docs/exports/EXPORT-LOG.md` |
 

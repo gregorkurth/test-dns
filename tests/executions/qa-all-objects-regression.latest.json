@@ -1,0 +1,4777 @@
+{
+  "generatedAt": "2026-04-11T20:10:59.338Z",
+  "runId": "QA-ALL-OBJECTS-20260411",
+  "releaseId": "v1.0.0-beta.1",
+  "records": [
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-309-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-309-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-310-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-310-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-53-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-53-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-54-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-54-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-240-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-240-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-238-RESOLV-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-238-RESOLV-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-611-RESOLV-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-611-RESOLV-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-615-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-615-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-CREQ-005-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-CREQ-005-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-609-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-609-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-610-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-610-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-CREQ-001-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-CREQ-001-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-CREQ-002-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-CREQ-002-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-CREQ-003-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-CREQ-003-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1311-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1311-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1312-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1312-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1313-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1313-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1314-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1314-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1315-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1315-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1316-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1316-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1317-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1317-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1318-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1318-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1319-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1319-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1320-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1320-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": "sreq-234-001",
+      "testId": "TEST-SREQ-234-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": "sreq-234-001",
+      "testId": "TEST-SREQ-234-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-235-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-235-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-238-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-238-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-239-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-239-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-378-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-378-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-379-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-379-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-380-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-380-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-382-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-382-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-611-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-611-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-613-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-613-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-614-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-614-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-615-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-615-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-616-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-616-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-CREQ-004-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-CREQ-004-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1159-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1159-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-1272-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-1272-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-242-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-242-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-525-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-525-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-617-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-617-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-241-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-241-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-529-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-529-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-SREQ-612-001",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-SREQ-612-001-manual",
+      "objIds": [
+        "OBJ-4",
+        "OBJ-5",
+        "OBJ-6",
+        "OBJ-7",
+        "OBJ-8",
+        "OBJ-24"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-201-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-201-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-202-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-202-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-203-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-203-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-204-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-204-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-205-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-205-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-206-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-206-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-213-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-213-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-214-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-214-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-215-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-215-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-216-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-216-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-207-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-207-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-208-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-208-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-209-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-209-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-210-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-210-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-211-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-211-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-212-001",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-212-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-217-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-218-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-219-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-220-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-221-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-222-001-manual",
+      "objIds": [
+        "OBJ-10",
+        "OBJ-13",
+        "OBJ-25",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-301-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-301-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-302-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-302-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-303-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-303-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-309-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-309-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-310-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-310-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-311-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-311-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-312-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-312-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-304-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-304-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-305-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-305-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-313-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-313-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-314-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-314-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-306-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-306-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-307-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-307-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-308-001",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-308-001-manual",
+      "objIds": [
+        "OBJ-11",
+        "OBJ-26"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-401-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-401-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-402-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-402-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-403-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-403-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-404-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-404-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-405-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-405-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-416-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-416-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-406-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-406-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-407-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-407-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-412-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-412-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-413-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-413-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-408-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-408-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-409-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-409-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-410-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-410-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-411-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-411-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-414-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-414-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-415-001",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-415-001-manual",
+      "objIds": [
+        "OBJ-12"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-501-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-501-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-502-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-502-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-511-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-511-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-503-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-503-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-504-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-504-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-505-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-505-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-506-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-506-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-507-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-507-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-508-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-508-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-509-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-509-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-510-001",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-510-001-manual",
+      "objIds": [
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-601-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-601-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-602-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-602-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-603-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-603-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-613-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-613-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-614-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-614-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-615-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-615-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-616-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-616-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-618-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-618-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-619-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-619-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-604-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-604-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-605-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-605-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-606-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-606-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-607-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-607-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-617-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-617-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-620-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-620-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-608-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-608-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-609-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-609-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": "rdts-610-001",
+      "testId": "TEST-RDTS-610-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": "rdts-610-001",
+      "testId": "TEST-RDTS-610-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": "rdts-611-001",
+      "testId": "TEST-RDTS-611-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": "rdts-611-001",
+      "testId": "TEST-RDTS-611-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": "rdts-612-001",
+      "testId": "TEST-RDTS-612-001",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": "rdts-612-001",
+      "testId": "TEST-RDTS-612-001-manual",
+      "objIds": [
+        "OBJ-2",
+        "OBJ-15",
+        "OBJ-16",
+        "OBJ-23"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-701-001",
+      "objIds": [
+        "OBJ-17",
+        "OBJ-18",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-701-001-manual",
+      "objIds": [
+        "OBJ-17",
+        "OBJ-18",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-705-001",
+      "objIds": [
+        "OBJ-17",
+        "OBJ-18",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-705-001-manual",
+      "objIds": [
+        "OBJ-17",
+        "OBJ-18",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-707-001",
+      "objIds": [
+        "OBJ-17",
+        "OBJ-18",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-707-001-manual",
+      "objIds": [
+        "OBJ-17",
+        "OBJ-18",
+        "OBJ-22",
+        "OBJ-1",
+        "OBJ-14"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-801-001",
+      "objIds": [
+        "OBJ-19",
+        "OBJ-20"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-801-001-manual",
+      "objIds": [
+        "OBJ-19",
+        "OBJ-20"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-805-001",
+      "objIds": [
+        "OBJ-19",
+        "OBJ-20"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-805-001-manual",
+      "objIds": [
+        "OBJ-19",
+        "OBJ-20"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-901-001",
+      "objIds": [
+        "OBJ-21",
+        "OBJ-19",
+        "OBJ-20"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-901-001-manual",
+      "objIds": [
+        "OBJ-21",
+        "OBJ-19",
+        "OBJ-20"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "auto",
+      "tagId": null,
+      "testId": "TEST-RDTS-905-001",
+      "objIds": [
+        "OBJ-21",
+        "OBJ-19",
+        "OBJ-20"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "tagId": null,
+      "testId": "TEST-RDTS-905-001-manual",
+      "objIds": [
+        "OBJ-21",
+        "OBJ-19",
+        "OBJ-20"
+      ],
+      "status": "passed",
+      "executedAt": "2026-04-11T20:10:59.338Z",
+      "runId": "QA-ALL-OBJECTS-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "QA full-regression baseline after all-objects verification.",
+      "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
+      "source": "result_json"
+    }
+  ]
+}

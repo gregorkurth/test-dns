@@ -63,6 +63,41 @@ otel:
   endpoint: http://otel-collector.observability.svc.cluster.local:4318
   exportTimeoutMs: "5000"
 
+testOperator:
+  enabled: true
+  image:
+    repository: ghcr.io/gregorkurth/test-dns-test-operator
+    tag: obj26-skeleton
+    digest: ""
+    pullPolicy: IfNotPresent
+  schedule:
+    intervalMinutes: 15
+    maxRuntimeSeconds: 600
+    nonOverlapPolicy: skip_if_active_run
+  telemetry:
+    mode: clickhouse
+    endpoint: http://otel-collector.monitoring.svc.cluster.local:4318
+    spoolDirectory: /var/lib/dns-test-operator/spool
+    retryPolicy: exponential-backoff
+  rbac:
+    create: true
+    serviceAccountName: dns-test-operator-controller
+    clusterRoleName: dns-test-operator-role
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 256Mi
+  securityContext:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    capabilities:
+      drop:
+        - ALL
+
 debug:
   enabled: false
 

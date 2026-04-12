@@ -63,5 +63,5 @@ export const getStats = unstable_cache(
 - [ ] No unnecessary client-side JavaScript (`"use client"` only when needed)
 
 ## Automated Monitoring
-- **Vercel Analytics** - Automatic on Pro plan, shows Core Web Vitals
-- **Vercel Speed Insights** - Real user performance data
+- **Prometheus + Grafana** - On-prem metrics and dashboards for response time, error rate, saturation
+- **OpenTelemetry Metrics/Traces** - Runtime performance telemetry in `local` or `clickhouse` mode

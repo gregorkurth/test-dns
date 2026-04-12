@@ -228,7 +228,11 @@ Die Export-Datei wird erst nach vollstaendigem Schreiben ausgeliefert. Ein fehlg
 - **Recommendation:** Zuerst Rollback-changeType-Zuweisung, Rollback-Semantik fuer den initialen Baseline-Load, DNS-Validierung fuer manuelle Aenderungen, echte Git-Commit-Nachvollziehbarkeit und Zugriffskontrolle schliessen; danach `/qa` fuer OBJ-24 erneut ausfuehren.
 
 ## Deployment
-_To be added by /deploy_
+### Deployment-Status (Stand: 2026-04-11)
+- Auslieferung erfolgt Git-first ueber Branch/PR/Merge nach `main`.
+- Release- und Export-Nachweise werden in `docs/releases/` und `docs/exports/EXPORT-LOG.md` dokumentiert.
+- Confluence bleibt Sekundaerziel: Export erst nach gepflegter Git-Dokumentation.
+- Falls **Production Ready: NO** gilt, bleibt das Deployment als vorbereitet markiert und wird erst nach Freigabe produktiv ausgerollt.
 
 ## Implementation Update (2026-04-10)
 - OBJ-24 ist als Backend+Frontend-Ende-zu-Ende umgesetzt:

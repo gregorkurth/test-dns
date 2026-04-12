@@ -37,6 +37,7 @@
 | Technischer Doku-Guide | [docs/DOCUMENTATION-GUIDE.md](docs/DOCUMENTATION-GUIDE.md) |
 | Quick Guide fuer neues Feature/Requirement | [docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md](docs/QUICK-GUIDE-FEATURE-UND-REQUIREMENT.md) |
 | Quick Guide fuer Testing | [docs/QUICK-GUIDE-TESTING.md](docs/QUICK-GUIDE-TESTING.md) |
+| Deployment Guide On-Prem Kubernetes | [docs/DEPLOYMENT-ONPREM-KUBERNETES.md](docs/DEPLOYMENT-ONPREM-KUBERNETES.md) |
 | OBJ-4 Live Server Start | [capability-dashboard-live/README.md](capability-dashboard-live/README.md) |
 | MCP fuer DNS CRUD (AI-Agent Zugriff) | [docs/MCP-DNS-CRUD.md](docs/MCP-DNS-CRUD.md) |
 
@@ -56,6 +57,7 @@
 
 - Change-Management laeuft ueber Feature-Specs, Requirements, Tests, ADRs und arc42.
 - Release-Management wird in Features und Release-Kontext dokumentiert (u. a. [OBJ-14](features/OBJ-14-release-management.md), [OBJ-22](features/OBJ-22-release-artefaktpruefung-publish-gate.md)).
+- Deployment-Ziel ist On-Prem Kubernetes (gesamt oder pro Feature), nicht Vercel.
 - Confluence ist Lesekopie, nicht Primaerquelle:
   Git zuerst -> Freigabe -> Export -> Export-Log.
 

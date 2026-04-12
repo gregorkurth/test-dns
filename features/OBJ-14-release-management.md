@@ -197,4 +197,8 @@ Vor Freigabe sollte pruefbar sein:
 - CI fuehrt den OBJ-14-Check im Quality Gate und im tag-basierten Release Gate aus.
 
 ## Deployment
-_To be added by /deploy_
+### Deployment-Status (Stand: 2026-04-11)
+- Auslieferung erfolgt Git-first ueber Branch/PR/Merge nach `main`.
+- Release- und Export-Nachweise werden in `docs/releases/` und `docs/exports/EXPORT-LOG.md` dokumentiert.
+- Confluence bleibt Sekundaerziel: Export erst nach gepflegter Git-Dokumentation.
+- Falls **Production Ready: NO** gilt, bleibt das Deployment als vorbereitet markiert und wird erst nach Freigabe produktiv ausgerollt.

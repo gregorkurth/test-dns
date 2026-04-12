@@ -98,4 +98,4 @@ export const config = {
 | File Upload | 5 requests | 1 minute |
 
 ## Alternative
-**Vercel Edge Config** - Simpler but less flexible. Built into Vercel, no external service needed.
+**NGINX Ingress / API Gateway Rate Limiting** - Enforce limits at ingress or gateway layer in on-prem Kubernetes.

@@ -33,3 +33,7 @@ otel:
 
 debug:
   enabled: true
+
+testOperator:
+  telemetry:
+    mode: local

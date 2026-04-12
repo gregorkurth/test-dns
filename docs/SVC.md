@@ -31,7 +31,7 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 5 – Plattform | P1 | OBJ-10: Kubernetes Deployment | In Progress |
 | 5 – Plattform | P1 | OBJ-11: Monitoring & Observability (OpenTelemetry) | In Progress |
 | 5 – Plattform | P1 | OBJ-25: Helm Charts fuer Kubernetes Deployment | In Progress |
-| 5 – Plattform | P1 | OBJ-26: Test Operator (Scheduled Test Execution via OTel) | Planned |
+| 5 – Plattform | P1 | OBJ-26: Test Operator (Scheduled Test Execution via OTel) | In Progress |
 | 5 – Plattform | P1 | OBJ-12: Security & Authentifizierung | In Review |
 | 5 – Plattform | P2 | OBJ-13: Kubernetes Operator | In Review |
 | 6 – Abschluss | P1 | OBJ-14: Release Management | In Review |
@@ -61,7 +61,7 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 ## Rahmenbedingungen
 
 - **Airgapped:** Keine externen APIs, kein CDN, keine Cloud-Dienste
-- **Deployment:** Next.js Web-App, lokal oder auf einem internen Server betreibbar
+- **Deployment:** On-Prem Kubernetes ist der verbindliche Zielpfad (gesamt oder pro Feature); lokale Test-/Integrationslaeufe duerfen auf Docker-basiertem Kubernetes erfolgen
 - **Template-Konformitaet:** Release- und Publish-Artefakte muessen vor Freigabe gegen eine versionierte Inhaltsrichtlinie geprueft werden
 - **Observability-Modi:** OTel-Betrieb muss sowohl `local` (persistente Zwischenspeicherung) als auch `clickhouse` (zentrale Auswertung) unterstuetzen
 - **Git-Modell:** Quelle in GitLab, Zielumgebungs-Git in Gitea (Release-Projekt + separates Konfigurationsprojekt)
@@ -78,4 +78,4 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 
 ---
 
-_Zuletzt aktualisiert: 2026-04-11_
+_Zuletzt aktualisiert: 2026-04-12_

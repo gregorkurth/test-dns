@@ -227,7 +227,11 @@ Argo-CD-API liefert Health-Status nach Sync. OBJ-16 (Maturitätsstatus) konsumie
 - **Recommendation:** Zuerst den falschen Helm-Pfad, die statische Statusquelle und die fehlende Zarf-Einbettung beheben; danach API-Zugriff und AppProject-Rechte haerten und `/qa` fuer OBJ-21 erneut ausfuehren.
 
 ## Deployment
-_To be added by /deploy_
+### Deployment-Status (Stand: 2026-04-11)
+- Auslieferung erfolgt Git-first ueber Branch/PR/Merge nach `main`.
+- Release- und Export-Nachweise werden in `docs/releases/` und `docs/exports/EXPORT-LOG.md` dokumentiert.
+- Confluence bleibt Sekundaerziel: Export erst nach gepflegter Git-Dokumentation.
+- Falls **Production Ready: NO** gilt, bleibt das Deployment als vorbereitet markiert und wird erst nach Freigabe produktiv ausgerollt.
 
 ## Implementation Update
 - GitOps-Struktur unter `gitops/` angelegt mit:

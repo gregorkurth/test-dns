@@ -239,7 +239,11 @@ Keine offenen Bugs. Der Dokumentations-Link-Bug aus der vorherigen QA wurde beho
 - **Recommendation:** Deploy. Manueller Browser-Smoketest fuer Responsive und Performance als Nachfolgeaufgabe.
 
 ## Deployment
-_To be added by /deploy_
+### Deployment-Status (Stand: 2026-04-11)
+- Auslieferung erfolgt Git-first ueber Branch/PR/Merge nach `main`.
+- Release- und Export-Nachweise werden in `docs/releases/` und `docs/exports/EXPORT-LOG.md` dokumentiert.
+- Confluence bleibt Sekundaerziel: Export erst nach gepflegter Git-Dokumentation.
+- Falls **Production Ready: NO** gilt, bleibt das Deployment als vorbereitet markiert und wird erst nach Freigabe produktiv ausgerollt.
 
 ## Implementation Update (2026-04-09)
 - OBJ-15 Datenmodell ist als versionierte View-Quelle in `src/lib/obj15-product-website.ts` umgesetzt und nutzt `docs/releases/UPDATE-NOTICES.json` als Primaerquelle.

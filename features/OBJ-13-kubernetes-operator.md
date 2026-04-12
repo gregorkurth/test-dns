@@ -199,4 +199,8 @@ Vor Freigabe sollte pruefbar sein:
 - Aktueller Stand ist bewusst als `skeleton` markiert: Git-Fetch, produktiver OBJ-3-Sync und dauerhafte Change-History folgen in spaeteren Schritten
 
 ## Deployment
-_To be added by /deploy_
+### Deployment-Status (Stand: 2026-04-11)
+- Auslieferung erfolgt Git-first ueber Branch/PR/Merge nach `main`.
+- Release- und Export-Nachweise werden in `docs/releases/` und `docs/exports/EXPORT-LOG.md` dokumentiert.
+- Confluence bleibt Sekundaerziel: Export erst nach gepflegter Git-Dokumentation.
+- Falls **Production Ready: NO** gilt, bleibt das Deployment als vorbereitet markiert und wird erst nach Freigabe produktiv ausgerollt.

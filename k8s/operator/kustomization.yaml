@@ -5,3 +5,6 @@ resources:
   - ../crd
   - rbac.yaml
   - deployment.yaml
+  - test-operator-configmap.yaml
+  - test-operator-rbac.yaml
+  - test-operator-deployment.yaml

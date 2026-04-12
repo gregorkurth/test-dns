@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dns-test-operator
+  namespace: dns-config-system
+  labels:
+    app.kubernetes.io/name: dns-test-operator
+    app.kubernetes.io/component: scheduler
+    app.kubernetes.io/part-of: dns-management-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dns-test-operator
+      app.kubernetes.io/component: scheduler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dns-test-operator
+        app.kubernetes.io/component: scheduler
+        app.kubernetes.io/part-of: dns-management-service
+    spec:
+      serviceAccountName: dns-test-operator-controller
+      automountServiceAccountToken: true
+      containers:
+        - name: test-operator
+          image: ghcr.io/gregorkurth/test-dns-test-operator:obj26-skeleton
+          imagePullPolicy: IfNotPresent
+          args:
+            - --leader-elect
+          envFrom:
+            - configMapRef:
+                name: dns-test-operator-config
+          ports:
+            - containerPort: 8080
+              name: metrics
+            - containerPort: 8081
+              name: probes
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: probes
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: probes
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault

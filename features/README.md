@@ -76,7 +76,10 @@ Am Ende des Feature-Dokuments fügt QA die Test-Ergebnisse hinzu:
 
 **Status:** ✅ Deployed
 **Deployed:** 2026-01-13
-**Production URL:** https://your-app.vercel.app
+**Environment:** onprem-prod
+**Production URL:** https://dns.prod.example.mil
+**Namespace:** dns-management
+**Argo App:** dns-management-service
 **Git Tag:** v1.0.0-OBJ-1
 ```
 

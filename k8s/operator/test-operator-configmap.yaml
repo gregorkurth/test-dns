@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dns-test-operator-config
+  namespace: dns-config-system
+  labels:
+    app.kubernetes.io/name: dns-test-operator
+    app.kubernetes.io/component: scheduler
+    app.kubernetes.io/part-of: dns-management-service
+data:
+  DNS_TEST_OPERATOR_INTERVAL_MINUTES: "15"
+  DNS_TEST_OPERATOR_MAX_RUNTIME_SECONDS: "600"
+  DNS_TEST_OPERATOR_NON_OVERLAP_POLICY: "skip_if_active_run"
+  DNS_TEST_OPERATOR_TARGET_BASE_URL: "http://dns-management-service.dns.svc.cluster.local:3000/api/v1"
+  DNS_TEST_OPERATOR_OTEL_MODE: "clickhouse"
+  DNS_TEST_OPERATOR_OTEL_ENDPOINT: "http://otel-collector.monitoring.svc.cluster.local:4318"
+  DNS_TEST_OPERATOR_SPOOL_DIR: "/var/lib/dns-test-operator/spool"

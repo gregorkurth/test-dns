@@ -2,13 +2,785 @@
   {
     "testType": "auto",
     "tagId": null,
+    "testId": "loadObj13OperatorData loads the operator skeleton view with required status fields",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.908Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj13-operator.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "loadObj13OperatorData keeps history sorted newest first and MCP guarded",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.908Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj13-operator.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-15 product website mapping maps release severity to UI priorities",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.134Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj15-product-website.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-15 product website mapping maps release channel to released/beta/preview model",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.134Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj15-product-website.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-15 product website mapping builds view model from versioned release source with fallback maturity",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.134Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj15-product-website.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj16 feature filtering filters by release channel and risk priority",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.159Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj16-maturity.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj16 maturity data loads overall maturity data with weighted dimensions",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.159Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj16-maturity.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj17 security scanning model loads bundles sorted by newest version first",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.439Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj17-security-scanning.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj17 security scanning model returns latest bundle summary for maturity/security indicators",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.439Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj17-security-scanning.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj17 security scanning model derives summary with gate and findings data",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.439Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj17-security-scanning.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-18 registry data model loads a registry catalog with summary and records",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.412Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj18-artifact-registry.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-18 registry data model supports filtering by publish state and zarf relevance",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.412Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj18-artifact-registry.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-18 registry data model exposes stable labels for UI badges",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.412Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj18-artifact-registry.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-19 offline package metadata loads package descriptors with manifest, checksums and handover data",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.915Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj19-offline-package.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-19 offline package metadata derives a summary for the dashboard and API",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.915Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj19-offline-package.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-19 offline package metadata returns the newest package record",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.915Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj19-offline-package.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj20 target import model loads target import runs sorted by latest startedAt first",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.930Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj20-target-import.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj20 target import model derives summary counts across completed, degraded and blocked runs",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.930Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj20-target-import.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj20 target import model filters runs by environment and mode",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.930Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj20-target-import.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj20 target import model returns the latest run shortcut",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.930Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj20-target-import.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj20 target import model creates a blocked dry-run when mandatory prerequisites fail",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.930Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj20-target-import.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj21 gitops model loads the gitops document with two tracked sources and offline bootstrap",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.783Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj21-gitops.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj21 gitops model derives summary counts from child application health",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.783Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj21-gitops.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj21 gitops model filters applications by status and sync mode",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.783Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj21-gitops.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-22 publish gate reports loads the persisted gate index with multiple release reports",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.462Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj22-release-gate.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-22 publish gate reports returns the latest report and exposes blocking state",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.462Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj22-release-gate.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-22 publish gate reports filters reports by artifact kind",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.462Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj22-release-gate.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-22 publish gate reports builds a management summary for the dashboard",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.462Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj22-release-gate.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-24 baseline & history starts in initial state and loads baseline with source ref",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.627Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj24-baseline-history.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-24 baseline & history writes manual changes append-only and supports rollback of latest entry",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.627Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj24-baseline-history.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-24 baseline & history returns rollback conflict when non-latest entry is requested",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.627Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj24-baseline-history.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-24 baseline & history exports history as csv with mandatory columns",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.627Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj24-baseline-history.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj25 chart.yaml parsing extracts chart metadata scalars from Chart.yaml content",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.626Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj25-helm-status.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj25 helm status parsing parses helm status json payload",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.626Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj25-helm-status.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "obj25 helm status data loads chart metadata and required files without running helm binary checks",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.626Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj25-helm-status.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "loadObj26TestOperatorData loads scheduled test operator baseline data",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.604Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj26-test-operator.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "loadObj26TestOperatorData keeps run history sorted and exposes dashboard bridge evidence",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.604Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj26-test-operator.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "participantFormSchema enforces at least two nameservers (SREQ-613 guard)",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.516Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj5-participant-config.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "buildParticipantUpsertPayload normalizes zones and writes obj5 metadata payload",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.516Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj5-participant-config.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "participantFormValuesFromRecord hydrates form from participant metadata when obj5 payload exists",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.516Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj5-participant-config.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "prepareZoneGenerationInputFromParticipant builds forward and reverse payloads from OBJ-5 participant metadata",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.810Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj6-zone-generation.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "prepareZoneGenerationInputFromParticipant throws when mandatory OBJ-5 data is missing",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.810Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj6-zone-generation.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-7 traceability evaluation marks explicit objective requirements as fulfilled when OBJ-5 data matches",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.460Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj7-traceability.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-7 traceability evaluation marks anycast requirements as partial when only some facts match",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.460Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj7-traceability.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-7 traceability evaluation marks manual requirements as manual",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.460Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj7-traceability.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-7 traceability evaluation marks objective requirements as open when no OBJ-5 configuration is available",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.460Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj7-traceability.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-7 filter logic filters by source, priority, status and open-only toggle",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.460Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj7-traceability.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "sanitizeObj8FileNameSegment removes unsafe characters and keeps a fallback",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.883Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj8-export.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "file naming helpers builds safe download filenames",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.883Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj8-export.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "export draft and manifest creates a ready draft with manifest and download files",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.883Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj8-export.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "export draft and manifest blocks export when the configuration is incomplete",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.883Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj8-export.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "JSON import validation rejects invalid or mismatched JSON with a friendly error",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.883Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj8-export.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "ZIP archive creates a local zip archive with the PK signature",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.883Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj8-export.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "document builder creates a serializable config export document",
+    "objIds": [],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.883Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/obj8-export.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
     "testId": "test-execution-dashboard data validation marks malformed JSON evidence as failed with a validation note",
     "objIds": [
       "OBJ-23"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.751Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:52.957Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-execution-dashboard.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "test-execution-dashboard data validation marks empty JSON collections as failed evidence instead of ignoring them",
+    "objIds": [
+      "OBJ-23"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.957Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -23,8 +795,8 @@
       "OBJ-23"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.751Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:52.957Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -34,13 +806,125 @@
   {
     "testType": "auto",
     "tagId": null,
-    "testId": "loadManualTests loads manual tests from capabilities",
+    "testId": "test-execution-dashboard status resolution treats undated invalid evidence as non-authoritative for current status",
+    "objIds": [
+      "OBJ-23"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.957Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-execution-dashboard.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "loadManualTests loads manual tests from capabilities with categories",
     "objIds": [
       "OBJ-9"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.774Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:50.925Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-runner.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "loadManualTests enforces explicit category frontmatter on all manual tests",
+    "objIds": [
+      "OBJ-9"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.925Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-runner.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "parseManualTestMarkdown parses the classic numbered markdown format",
+    "objIds": [
+      "OBJ-9"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.925Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-runner.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "parseManualTestMarkdown parses step tables and infers the category",
+    "objIds": [
+      "OBJ-9"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.925Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-runner.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "parseManualTestMarkdown falls back to Unkategorisiert when no category can be inferred",
+    "objIds": [
+      "OBJ-9"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.925Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-runner.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "validateTestRun requires overall rating, date and at least one rated step",
+    "objIds": [
+      "OBJ-9"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.925Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/lib/test-runner.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "validateTestRun allows download once the required fields are filled",
+    "objIds": [
+      "OBJ-9"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.925Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -55,8 +939,8 @@
       "OBJ-23"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.840Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:53.039Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -66,13 +950,45 @@
   {
     "testType": "auto",
     "tagId": null,
-    "testId": "OBJ-3 API v1 serves capabilities list and capability detail",
+    "testId": "GET /api/test-execution-dashboard returns dashboard data for allowed requests",
+    "objIds": [
+      "OBJ-23"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.924Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/test-execution-dashboard/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "GET /api/test-execution-dashboard rate limits repeated requests from the same client",
+    "objIds": [
+      "OBJ-23"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:50.924Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/test-execution-dashboard/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth issues local sessions with configurable TTL and validates logout",
     "objIds": [
       "OBJ-3"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.828Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -82,13 +998,13 @@
   {
     "testType": "auto",
     "tagId": null,
-    "testId": "OBJ-3 API v1 handles participants CRUD and invalid JSON body",
+    "testId": "OBJ-3 API v1 with OBJ-12 auth accepts an oidc-compatible token exchange and maps roles",
     "objIds": [
       "OBJ-3"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.828Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -98,13 +1014,13 @@
   {
     "testType": "auto",
     "tagId": null,
-    "testId": "OBJ-3 API v1 validates zone generation payload and returns zone file on success",
+    "testId": "OBJ-3 API v1 with OBJ-12 auth returns 503 when session secret is missing in production",
     "objIds": [
       "OBJ-3"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.828Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -114,13 +1030,13 @@
   {
     "testType": "auto",
     "tagId": null,
-    "testId": "OBJ-3 API v1 serves API root and OpenAPI contract",
+    "testId": "OBJ-3 API v1 with OBJ-12 auth protects capabilities with viewer access and returns detail",
     "objIds": [
       "OBJ-3"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.828Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -130,13 +1046,13 @@
   {
     "testType": "auto",
     "tagId": null,
-    "testId": "OBJ-3 API v1 sanitizes participant fields to reduce stored XSS risk",
+    "testId": "OBJ-3 API v1 with OBJ-12 auth allows operator status read for viewer role",
     "objIds": [
       "OBJ-3"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.828Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
@@ -146,17 +1062,657 @@
   {
     "testType": "auto",
     "tagId": null,
-    "testId": "OBJ-3 API v1 rate limits repeated requests for same client on api-v1",
+    "testId": "OBJ-3 API v1 with OBJ-12 auth allows scheduled test operator status read for viewer role",
     "objIds": [
       "OBJ-3"
     ],
     "status": "passed",
-    "executedAt": "2026-04-06T15:52:19.828Z",
-    "runId": "LOCAL-20260406-155219",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
     "releaseId": "RELEASE-UNASSIGNED",
     "note": null,
     "evidencePath": "tests/executions/vitest-report.latest.json",
     "source": "result_json",
     "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth validates release notice query parameters",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth serves maturity overview with viewer auth and validates filters",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth serves security scan bundles with viewer auth and validates channel input",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth serves product website data from versioned release sources",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth returns 401 on protected calls without authentication",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth returns 403 when viewer tries to execute operator actions",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth handles participants CRUD and invalid JSON body for operator role",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth validates zone generation payload and returns zone file on success",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth rejects type-specific invalid DNS record values during zone generation",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth serves API root and OpenAPI contract with auth metadata",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth serves a telemetry probe with structured observability metadata",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth sanitizes participant fields to reduce stored XSS risk",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-3 API v1 with OBJ-12 auth rate limits repeated requests for same client on api-v1 root",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.682Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/api-v1.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-22 gate API returns summary and reports for authenticated viewers",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.648Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/gate/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-22 gate API filters by decision and artifact kind",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.648Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/gate/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-22 gate API rejects invalid decision filters",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.648Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/gate/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-22 gate API requires authentication",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.648Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/gate/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-21 gitops route returns root application, sources and child app summary",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.172Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/gitops/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-21 gitops route filters managed applications by health status",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.172Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/gitops/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-21 gitops route returns 422 for invalid status filters",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.172Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/gitops/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-21 gitops route returns 401 without bearer token",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.172Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/gitops/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-24 baseline API returns initial status before baseline load",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.283Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/baseline/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-24 baseline API loads baseline and returns source commit reference",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.283Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/baseline/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-24 history API writes history entries and filters by change type",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.395Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/history/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-24 history API loads history detail, rolls back latest entry and exports csv",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.395Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/history/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-19 offline package API returns summary and package list",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.622Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/offline-package/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-19 offline package API filters by variant",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.622Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/offline-package/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-19 offline package API rejects invalid variants",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.622Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/offline-package/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-18 registry API returns the registry catalog summary and records",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.192Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/registry/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-18 registry API filters by artifact type",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.192Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/registry/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-18 registry API rejects invalid filter values",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:52.192Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/registry/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-20 target import route returns summary, environments and runs",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.876Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/target-import/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-20 target import route filters by environment and returns matching run only",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.876Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/target-import/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-20 target import route returns 422 for invalid filters",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.876Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/target-import/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-20 target import route returns a blocked dry-run with HTTP 409 when prerequisites fail",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.876Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/target-import/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-20 target import route returns validation errors for malformed dry-run payloads",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.876Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/target-import/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-25 helm status API route returns 401 without bearer token",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.746Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/helm/status/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-25 helm status API route validates runChecks query parameter",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.746Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/helm/status/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-25 helm status API route validates empty release parameter",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.746Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/helm/status/route.test.ts"
+  },
+  {
+    "testType": "auto",
+    "tagId": null,
+    "testId": "OBJ-25 helm status API route returns helm status data for authenticated viewer",
+    "objIds": [
+      "OBJ-3"
+    ],
+    "status": "passed",
+    "executedAt": "2026-04-11T20:03:51.746Z",
+    "runId": "LOCAL-20260411-200353",
+    "releaseId": "RELEASE-UNASSIGNED",
+    "note": null,
+    "evidencePath": "tests/executions/vitest-report.latest.json",
+    "source": "result_json",
+    "suitePath": "src/app/api/v1/helm/status/route.test.ts"
   }
 ]

@@ -283,4 +283,8 @@ Release Security Flow (OBJ-17)
 - **Recommendation:** Die Strukturen und Workflows sind korrekt aufgebaut und die vorherigen High-Severity-Bugs (fehlende Artefakte, fehlende Pipeline-Schritte, fehlende Staleness-Pruefung) wurden behoben. Das verbleibende Problem ist, dass alle Security-Artefakte Stubs/Platzhalter sind statt echter Scan-Ergebnisse. Ein realer CI-Lauf mit Tag-Release muss ausgefuehrt werden, um echte Artefakte zu erzeugen. Nach dem ersten echten Release-Gate-Lauf sollte `/qa` erneut ausgefuehrt werden.
 
 ## Deployment
-_To be added by /deploy_
+### Deployment-Status (Stand: 2026-04-11)
+- Auslieferung erfolgt Git-first ueber Branch/PR/Merge nach `main`.
+- Release- und Export-Nachweise werden in `docs/releases/` und `docs/exports/EXPORT-LOG.md` dokumentiert.
+- Confluence bleibt Sekundaerziel: Export erst nach gepflegter Git-Dokumentation.
+- Falls **Production Ready: NO** gilt, bleibt das Deployment als vorbereitet markiert und wird erst nach Freigabe produktiv ausgerollt.

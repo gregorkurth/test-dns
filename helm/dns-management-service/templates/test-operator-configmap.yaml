@@ -1,0 +1,19 @@
+{{- if .Values.testOperator.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "dns-management-service.fullname" . }}-test-operator-config
+  namespace: {{ .Values.namespace.name }}
+  labels:
+{{ include "dns-management-service.labels" . | indent 4 }}
+    app.kubernetes.io/component: test-operator
+data:
+  DNS_TEST_OPERATOR_INTERVAL_MINUTES: {{ .Values.testOperator.schedule.intervalMinutes | quote }}
+  DNS_TEST_OPERATOR_MAX_RUNTIME_SECONDS: {{ .Values.testOperator.schedule.maxRuntimeSeconds | quote }}
+  DNS_TEST_OPERATOR_NON_OVERLAP_POLICY: {{ .Values.testOperator.schedule.nonOverlapPolicy | quote }}
+  DNS_TEST_OPERATOR_OTEL_MODE: {{ .Values.testOperator.telemetry.mode | quote }}
+  DNS_TEST_OPERATOR_OTEL_ENDPOINT: {{ .Values.testOperator.telemetry.endpoint | quote }}
+  DNS_TEST_OPERATOR_SPOOL_DIR: {{ .Values.testOperator.telemetry.spoolDirectory | quote }}
+  DNS_TEST_OPERATOR_RETRY_POLICY: {{ .Values.testOperator.telemetry.retryPolicy | quote }}
+  DNS_TEST_OPERATOR_TARGET_BASE_URL: "http://{{ include "dns-management-service.fullname" . }}.{{ .Values.namespace.name }}.svc.cluster.local:{{ .Values.service.port }}/api/v1"
+{{- end }}

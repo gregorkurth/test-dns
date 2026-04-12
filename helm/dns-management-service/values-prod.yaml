@@ -34,6 +34,10 @@ otel:
   endpoint: http://otel-collector.monitoring.svc.cluster.local:4318
   exportTimeoutMs: "5000"
 
+testOperator:
+  telemetry:
+    mode: clickhouse
+
 debug:
   enabled: false
 

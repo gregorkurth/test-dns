@@ -1079,12 +1079,15 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
   }
 
   const byTag = new Map<string, DraftExecutionEntry>()
-  const byId = new Map<string, DraftExecutionEntry>()
+  const byId = new Map<string, DraftExecutionEntry[]>()
   for (const entry of definitionEntries) {
     if (entry.tagId) {
       byTag.set(`${entry.testType}:${entry.tagId}`, entry)
     }
-    byId.set(`${entry.testType}:${normalizeIdentifier(entry.testId)}`, entry)
+    const byIdKey = `${entry.testType}:${normalizeIdentifier(entry.testId)}`
+    const currentByIdEntries = byId.get(byIdKey) ?? []
+    currentByIdEntries.push(entry)
+    byId.set(byIdKey, currentByIdEntries)
   }
 
   const evidenceRecords = await loadEvidenceRecords()
@@ -1092,17 +1095,21 @@ export async function loadTestExecutionDashboardData(): Promise<TestExecutionDas
 
   for (const record of evidenceRecords) {
     const matchedByTag = record.tagId
-      ? byTag.get(`${record.testType}:${record.tagId}`)
+      ? byTag.get(`${record.testType}:${record.tagId}`) ?? null
       : null
 
-    const matchedById = record.testId
+    const matchedByIdEntries = record.testId
       ? byId.get(`${record.testType}:${normalizeIdentifier(record.testId)}`) ?? null
       : null
 
-    const matched = matchedByTag ?? matchedById
+    const matchedEntries = matchedByTag
+      ? [matchedByTag]
+      : matchedByIdEntries
 
-    if (matched) {
-      matched.history.push(record)
+    if (matchedEntries && matchedEntries.length > 0) {
+      for (const matched of matchedEntries) {
+        matched.history.push(record)
+      }
       continue
     }
 

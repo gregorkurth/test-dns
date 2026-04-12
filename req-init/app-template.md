@@ -24,6 +24,8 @@ kontrolliert installiert werden kann.
 
 2. **Kubernetes als Zielplattform**
    - Die Applikation muss für den Betrieb auf Kubernetes vorgesehen sein.
+   - Der bevorzugte und verbindliche Laufzeitpfad ist On-Prem Kubernetes; ein Deployment nach Vercel oder vergleichbaren Public-PaaS-Zielen ist nicht Teil des Standardpfads.
+   - Fuer Test und Integration darf ein Docker-basierter Kubernetes-Cluster verwendet werden (z. B. Docker Desktop Kubernetes, kind, k3d), bevor auf die On-Prem-Zielumgebung ausgerollt wird.
    - Deployment-Artefakte müssen deklarativ und versioniert vorliegen.
    - Fuer standardisierte Installation muss mindestens ein versioniertes Helm Chart bereitgestellt werden (Kustomize optional zusaetzlich).
    - Die App muss in eine standardisierte Plattform-/Namespace-Struktur integrierbar sein.
@@ -254,7 +256,8 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 
 ### 10. Release Management
 - Jede App benötigt ein geregeltes Release Management.
-- Releases folgen einer Versionierungslogik, idealerweise SemVer.
+- Releases folgen verbindlich dem Schema `YYYY.MM.N` (Jahr.Monat.fortlaufende Nummer), z. B. `2026.04.1`.
+- Die fortlaufende Nummer `N` wird je Monat hochgezählt und bei Monatswechsel wieder bei `1` gestartet.
 - Ein CHANGELOG muss gepflegt werden.
 - Release-Artefakte, Tags und Versionsstände müssen nachvollziehbar sein.
 - Ein Release ist erst vollständig, wenn die zugehörigen Sicherheits- und Paketierungsartefakte mitgeführt werden.

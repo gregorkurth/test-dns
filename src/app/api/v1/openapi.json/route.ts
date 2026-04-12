@@ -187,6 +187,17 @@ const openApiSpec = {
         },
       },
     },
+    '/operator/tests': {
+      get: {
+        summary:
+          'Scheduled Test Operator Status (Intervall, letzte Runs, OTel-Modus) abrufen',
+        security: [{ bearerAuth: [] }],
+        responses: {
+          '200': { description: 'Testoperator-Status erfolgreich geladen.' },
+          '401': { description: 'Authentifizierung erforderlich.' },
+        },
+      },
+    },
     '/product-website': {
       get: {
         summary: 'Produkt-Website-Daten fuer Startseite und Management-Sicht laden',

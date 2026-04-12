@@ -1,0 +1,55 @@
+{{- if and .Values.testOperator.enabled .Values.testOperator.rbac.create }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.testOperator.rbac.serviceAccountName }}
+  namespace: {{ .Values.namespace.name }}
+  labels:
+{{ include "dns-management-service.labels" . | indent 4 }}
+    app.kubernetes.io/component: test-operator
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Values.testOperator.rbac.clusterRoleName }}
+  labels:
+{{ include "dns-management-service.labels" . | indent 4 }}
+    app.kubernetes.io/component: test-operator
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - configmaps
+      - events
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - patch
+  - apiGroups:
+      - apps
+    resources:
+      - deployments
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ .Values.testOperator.rbac.clusterRoleName }}-binding
+  labels:
+{{ include "dns-management-service.labels" . | indent 4 }}
+    app.kubernetes.io/component: test-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Values.testOperator.rbac.clusterRoleName }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Values.testOperator.rbac.serviceAccountName }}
+    namespace: {{ .Values.namespace.name }}
+{{- end }}

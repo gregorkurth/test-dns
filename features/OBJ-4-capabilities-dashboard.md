@@ -214,8 +214,9 @@ Die Filter arbeiten auf Requirement-Ebene, beeinflussen aber die sichtbare Bauma
 **Git Branch:** `main`
 **Git Commit (main):** `016e736`
 **Deployment Trigger:** Push auf `origin/main` erfolgt.
-**Production URL:** Ausstehend (Vercel-URL noch nicht verifiziert)
-**Status:** Deploy angestossen, Verifikation der produktiven URL noch offen.
+**Environment:** onprem-prod (Kubernetes)
+**Production URL:** https://dns.prod.example.mil (Verifikation in Zielumgebung erforderlich)
+**Status:** Deploy ueber On-Prem-GitOps-Pfad vorgesehen; Laufzeitverifikation im Zielcluster offen.
 
 ### Deploy Checklist (aktuell)
 - [x] `npm run lint`
@@ -224,5 +225,5 @@ Die Filter arbeiten auf Requirement-Ebene, beeinflussen aber die sichtbare Bauma
 - [x] `npm run build:obj4-live-data`
 - [x] QA-Freigabe ohne Critical/High-Bugs
 - [x] Code nach `main` gepusht
-- [ ] Direkter `npx vercel --prod --yes` Lauf (in dieser Session wegen verweigerter Netz-Freigabe nicht ausgefuehrt)
-- [ ] Produktions-URL + Laufzeitchecks (Browser/Logs) final bestaetigt
+- [ ] GitOps-Sync in On-Prem-Cluster final bestaetigt (Argo CD / Helm)
+- [ ] Produktions-URL + Laufzeitchecks (Browser/Logs) im Zielcluster final bestaetigt

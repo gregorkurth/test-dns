@@ -25,3 +25,7 @@ otel:
 
 debug:
   enabled: false
+
+testOperator:
+  telemetry:
+    mode: clickhouse

@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-04-11T22:15:00Z",
+  "operator": {
+    "name": "dns-test-operator",
+    "namespace": "dns-config-system",
+    "image": "ghcr.io/gregorkurth/test-dns-test-operator:obj26-skeleton",
+    "leaderElectionEnabled": true,
+    "intervalMinutes": 15,
+    "maxRuntimeSeconds": 600,
+    "nonOverlapPolicy": "skip_if_active_run"
+  },
+  "telemetry": {
+    "mode": "clickhouse",
+    "endpoint": "http://otel-collector.monitoring.svc.cluster.local:4318",
+    "spoolDirectory": "/var/lib/dns-test-operator/spool",
+    "retryPolicy": "exponential-backoff"
+  },
+  "security": {
+    "serviceAccount": "dns-test-operator-controller",
+    "rbacProfile": "least-privilege",
+    "policyProfile": "restricted"
+  },
+  "dashboardBridge": {
+    "evidenceFile": "tests/executions/operator-test-runs.latest.json",
+    "dataSource": "operator-scheduled-runs",
+    "mappedTests": 6,
+    "lastExportedAt": "2026-04-11T22:15:00Z"
+  },
+  "limitations": [
+    "Der produktive Go-Controller-Loop wird im Cluster ausgefuehrt; diese Datei spiegelt den letzten bekannten Stand als Read-Modell.",
+    "Failure-Retry arbeitet aktuell mit Backoff und ohne parallelisierte Teilrouten, um Ueberlappungen strikt zu vermeiden.",
+    "ClickHouse-Ausfall wird ueber lokale Spool-Dateien abgefedert; die Nachlieferung bleibt sequenziell."
+  ]
+}

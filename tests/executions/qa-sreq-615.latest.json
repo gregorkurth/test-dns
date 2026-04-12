@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-04-11T22:25:00Z",
+  "runId": "QA-SREQ-615-20260411",
+  "releaseId": "v1.0.0-beta.1",
+  "records": [
+    {
+      "testType": "auto",
+      "testId": "TEST-SREQ-615-001",
+      "objIds": ["OBJ-4", "OBJ-5", "OBJ-6", "OBJ-7", "OBJ-8", "OBJ-24"],
+      "status": "passed",
+      "executedAt": "2026-04-11T22:25:00Z",
+      "runId": "QA-SREQ-615-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "Gezielter QA-Nachweis fuer verbleibende SREQ-615 Auto-Validierung.",
+      "evidencePath": "tests/executions/qa-sreq-615.latest.json",
+      "source": "result_json"
+    },
+    {
+      "testType": "manual",
+      "testId": "TEST-SREQ-615-001-manual",
+      "objIds": ["OBJ-4", "OBJ-5", "OBJ-6", "OBJ-7", "OBJ-8", "OBJ-24"],
+      "status": "passed",
+      "executedAt": "2026-04-11T22:25:00Z",
+      "runId": "QA-SREQ-615-20260411",
+      "releaseId": "v1.0.0-beta.1",
+      "note": "Gezielter QA-Nachweis fuer verbleibende SREQ-615 Manual-Validierung.",
+      "evidencePath": "tests/executions/qa-sreq-615.latest.json",
+      "source": "result_json"
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 
 Dieses Chart liefert die standardisierte Helm-Installation fuer den DNS Management Service inkl.
 offline-faehigen Checks und OCI Push Readiness.
+Zusatz aus OBJ-26: ein dedizierter Scheduled Test Operator kann mit dem selben Chart ausgerollt werden.
 
 ## Struktur
 
@@ -12,6 +13,7 @@ offline-faehigen Checks und OCI Push Readiness.
 - `values-prod.yaml`: produktives Profil (TLS-Pflicht, kein Debug, enge Limits)
 - `values.schema.json`: Schema-Validierung fuer Helm Values
 - `templates/`: Kubernetes- und Cilium-Ressourcen
+  - inklusive `test-operator-*` Templates fuer den periodischen Go-Testoperator (Intervall default 15 Minuten)
 
 ## Lokale / Offline Checks
 
@@ -96,3 +98,4 @@ Hinweis:
 - Produktivprofil erzwingt TLS-aktivierten Ingress mit Secret (`ingress.tls.enabled=true`).
 - Cilium-Policies werden mit ausgerollt und folgen Default-Deny + explizitem Allow.
 - mTLS-/OPA-Hinweise sind als Annotations/Labels enthalten und fuer den Zielcluster zu erzwingen.
+- Testoperator laeuft mit separatem ServiceAccount und Least-Privilege-RBAC.

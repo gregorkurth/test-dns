@@ -45,3 +45,14 @@ Container image reference from repository/tag/digest.
 {{ printf "%s:%s" .Values.image.repository (default .Chart.AppVersion .Values.image.tag) }}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Test operator image reference from repository/tag/digest.
+*/}}
+{{- define "dns-management-service.testOperatorImage" -}}
+{{- if .Values.testOperator.image.digest -}}
+{{ printf "%s@%s" .Values.testOperator.image.repository .Values.testOperator.image.digest }}
+{{- else -}}
+{{ printf "%s:%s" .Values.testOperator.image.repository .Values.testOperator.image.tag }}
+{{- end -}}
+{{- end -}}

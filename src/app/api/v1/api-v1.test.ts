@@ -11,6 +11,7 @@ import { GET as getCapabilityDetail } from './capabilities/[id]/route'
 import { GET as getCapabilities } from './capabilities/route'
 import { GET as getOpenApi } from './openapi.json/route'
 import { GET as getOperatorStatus } from './operator/route'
+import { GET as getOperatorTests } from './operator/tests/route'
 import { GET as getProductWebsite } from './product-website/route'
 import { GET as getReleaseNotices } from './releases/route'
 import { GET as getMaturity } from './maturity/route'
@@ -304,6 +305,27 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     })
   })
 
+  it('allows scheduled test operator status read for viewer role', async () => {
+    const viewerToken = await createAccessToken('viewer')
+
+    const response = await getOperatorTests(
+      createRequest('/api/v1/operator/tests', {
+        headers: authHeaders(viewerToken),
+      }),
+    )
+
+    expect(response.status).toBe(200)
+    const body = await response.json()
+    expect(body.data.operator).toMatchObject({
+      name: 'dns-test-operator',
+      intervalMinutes: 15,
+      nonOverlapPolicy: 'skip_if_active_run',
+    })
+    expect(Array.isArray(body.data.runs)).toBe(true)
+    expect(body.data.runs.length).toBeGreaterThan(0)
+    expect(body.data.summary).toHaveProperty('lastRunStatus')
+  })
+
   it('validates release notice query parameters', async () => {
     const invalidChannelResponse = await getReleaseNotices(
       createRequest('/api/v1/releases?channel=preview'),
@@ -411,6 +433,13 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     expect(operatorResponse.status).toBe(401)
     const operatorBody = await operatorResponse.json()
     expect(operatorBody.error).toMatchObject({ code: 'AUTH_REQUIRED' })
+
+    const operatorTestsResponse = await getOperatorTests(
+      createRequest('/api/v1/operator/tests'),
+    )
+    expect(operatorTestsResponse.status).toBe(401)
+    const operatorTestsBody = await operatorTestsResponse.json()
+    expect(operatorTestsBody.error).toMatchObject({ code: 'AUTH_REQUIRED' })
 
     const maturityResponse = await getMaturity(createRequest('/api/v1/maturity'))
     expect(maturityResponse.status).toBe(401)
@@ -620,6 +649,7 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     })
     expect(rootBody.data.endpoints).toContain('/api/v1/auth/login')
     expect(rootBody.data.endpoints).toContain('/api/v1/operator')
+    expect(rootBody.data.endpoints).toContain('/api/v1/operator/tests')
     expect(rootBody.data.endpoints).toContain('/api/v1/product-website')
     expect(rootBody.data.endpoints).toContain('/api/v1/maturity')
     expect(rootBody.data.endpoints).toContain('/api/v1/security/scans')
@@ -633,6 +663,7 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     })
     expect(openApiBody.data.paths).toHaveProperty('/auth/login')
     expect(openApiBody.data.paths).toHaveProperty('/operator')
+    expect(openApiBody.data.paths).toHaveProperty('/operator/tests')
     expect(openApiBody.data.paths).toHaveProperty('/product-website')
     expect(openApiBody.data.paths).toHaveProperty('/maturity')
     expect(openApiBody.data.paths).toHaveProperty('/security/scans')
