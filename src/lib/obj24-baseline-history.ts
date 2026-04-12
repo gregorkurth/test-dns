@@ -616,9 +616,15 @@ function filterHistoryEntries(
     return true
   })
 
-  return filtered
-    .sort((left, right) => Date.parse(right.timestamp) - Date.parse(left.timestamp))
-    .slice(0, limit)
+  // Stable sort: primary by timestamp descending, secondary by original insertion
+  // order descending (entries appended later in the file win on equal timestamps).
+  const withIndex = filtered.map((entry, originalIndex) => ({ entry, originalIndex }))
+  withIndex.sort((left, right) => {
+    const tsDiff = Date.parse(right.entry.timestamp) - Date.parse(left.entry.timestamp)
+    if (tsDiff !== 0) return tsDiff
+    return right.originalIndex - left.originalIndex
+  })
+  return withIndex.map(({ entry }) => entry).slice(0, limit)
 }
 
 export async function getObj24BaselineStatusView(): Promise<Obj24BaselineStatusView> {
@@ -787,8 +793,11 @@ export async function appendObj24HistoryChange(
     after: afterSnapshot,
     diff,
     rollbackOf: null,
-    sourceCommit: parsedInput.sourceCommit ?? baselineState.commitSha,
-    sourceRef: parsedInput.sourceRef ?? baselineState.ref,
+    // S-03 (BUG-3): manual_update entries are NOT backed by a git commit unless
+    // the caller explicitly provides one. Do not inherit the baseline commitSha
+    // to avoid implying that this change exists in the config repository.
+    sourceCommit: parsedInput.sourceCommit ?? null,
+    sourceRef: parsedInput.sourceRef ?? null,
     result: 'applied',
   }
 
@@ -824,10 +833,9 @@ export async function rollbackObj24HistoryEntry(
   input: z.infer<typeof obj24HistoryRollbackSchema>,
 ): Promise<Obj24HistoryEntry> {
   const parsedInput = obj24HistoryRollbackSchema.parse(input)
-  const [entries, currentSnapshot, baselineState] = await Promise.all([
+  const [entries, currentSnapshot] = await Promise.all([
     readHistoryEntries(),
     readCurrentSnapshot(),
-    readBaselineState(),
   ])
 
   if (entries.length === 0) {
@@ -888,8 +896,9 @@ export async function rollbackObj24HistoryEntry(
     after: afterSnapshot,
     diff,
     rollbackOf: target.id,
-    sourceCommit: baselineState.commitSha,
-    sourceRef: baselineState.ref,
+    // BUG-3: rollback entries are not backed by a new git commit.
+    sourceCommit: null,
+    sourceRef: null,
     result: 'applied',
   }
 

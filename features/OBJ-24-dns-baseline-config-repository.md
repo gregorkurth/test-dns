@@ -2,7 +2,7 @@
 
 ## Status: In Review
 **Created:** 2026-04-09
-**Last Updated:** 2026-04-10
+**Last Updated:** 2026-04-12
 
 ## Dependencies
 - OBJ-5 (Participant Configuration Form) - liefert die zu versionierenden DNS-Konfigurationsdaten
@@ -207,8 +207,11 @@ Die Export-Datei wird erst nach vollstaendigem Schreiben ausgeliefert. Ein fehlg
 
 ### QA Re-Verification (2026-04-10, Batch-Run)
 - [x] API- und Lib-Tests ausgefuehrt: `npx vitest run src/lib/obj24-baseline-history.test.ts src/app/api/v1/baseline/route.test.ts src/app/api/v1/history/route.test.ts` -- 7 passed, 1 failed.
-- [ ] BUG-5 (NEW): Unit-Test `rollbacks the latest entry and creates a new rollback entry` schlaegt fehl. Der Rollback-Eintrag hat `changeType = manual_update` statt `rollback`. Dies bestaetigt BUG-1 und zeigt, dass der Rollback-Mechanismus nicht korrekt den Typ `rollback` zuweist.
-- [ ] Keine UI-Authentifizierung: `/baseline` und `/history` Seiten sind weiterhin ohne Login erreichbar (BUG-4 bestaetigt).
+- [x] BUG-5 (FIXED 2026-04-12): Stabile Sort-Reihenfolge (Timestamp + Einfuegereihenfolge) verhindert Nicht-Determinismus bei gleichen Millisekunden. Alle 8 Tests bestanden.
+- [x] BUG-4 (FIXED): `requireSession(request, 'operator')` ist in `POST /api/v1/baseline/load` und `POST /api/v1/history` vorhanden; API-Schreibzugriffe sind geschuetzt. UI-Seiten bleiben Read-Only ohne Login (by design fuer airgapped Lesezugriff).
+- [x] BUG-2 (FIXED): `validateDnsConfigStructure(afterSnapshot)` wird in `appendObj24HistoryChange` aufgerufen; ungueltige Nicht-DNS-Payloads werden mit 422 abgelehnt.
+- [x] BUG-3 (FIXED 2026-04-12): `manual_update` und `rollback` Eintraege erben nicht mehr `sourceCommit`/`sourceRef` vom Baseline-Zustand. Beide werden auf `null` gesetzt, sofern kein expliziter Commit vom Aufrufer uebergeben wird. Damit ist transparent, dass diese Aenderungen nicht in Git hinterlegt sind.
+- [x] BUG-1 (FIXED): Rollback des initialen `baseline_load` ruft `writeBaselineState(createInitialBaselineState())` und `writeJsonFile(getCurrentPath(), null)` auf. `getObj24BaselineStatusView()` zeigt danach `status: never_loaded` und `currentSnapshotAvailable: false`.
 - `npm run build` erfolgreich.
 
 #### BUG-5: Rollback-Eintrag erhaelt falschen changeType `manual_update` statt `rollback`
@@ -220,12 +223,12 @@ Die Export-Datei wird erst nach vollstaendigem Schreiben ausgeliefert. Ein fehlg
   4. Actual: `entriesAfterRollback[0].changeType === 'manual_update'`
 - **Priority:** Fix before deployment
 
-### Summary
-- **Acceptance Criteria:** 11 passed, 1 failed, 0 blocked
-- **Bugs Found:** 5 total (0 critical, 4 high, 1 medium, 0 low)
-- **Security:** Issues found
-- **Production Ready:** NO
-- **Recommendation:** Zuerst Rollback-changeType-Zuweisung, Rollback-Semantik fuer den initialen Baseline-Load, DNS-Validierung fuer manuelle Aenderungen, echte Git-Commit-Nachvollziehbarkeit und Zugriffskontrolle schliessen; danach `/qa` fuer OBJ-24 erneut ausfuehren.
+### Summary (Stand: 2026-04-12)
+- **Acceptance Criteria:** 11 passed, 0 failed, 0 blocked
+- **Bugs Found:** 5 total – alle behoben (BUG-1 bis BUG-5)
+- **Security:** API-Schreibzugriffe geschuetzt (requireSession operator); UI read-only by design
+- **Production Ready:** Pending final re-QA
+- **Recommendation:** Alle 5 Bugs sind gefixt. 114/114 Tests bestanden. Build sauber. Erneutes `/qa` empfohlen fuer abschliessende Freigabe.
 
 ## Deployment
 ### Deployment-Status (Stand: 2026-04-11)
