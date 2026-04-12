@@ -11,7 +11,6 @@ export async function GET(request: Request) {
 
   const authConfig = getPublicAuthConfiguration()
   return apiSuccess({
-    accessToken: request.headers.get('authorization')?.replace(/^Bearer\s+/i, '') ?? '',
     tokenType: 'Bearer' as const,
     expiresAt: sessionResult.session.expiresAt,
     expiresInSeconds: authConfig.ttlSeconds,

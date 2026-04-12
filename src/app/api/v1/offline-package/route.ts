@@ -3,6 +3,7 @@ import {
   apiSuccess,
   enforceRateLimit,
   handleUnexpectedApiError,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import { requireSession } from '@/lib/obj12-auth'
 import {
@@ -47,7 +48,7 @@ export async function GET(request: Request) {
     if (variant && !validVariants.includes(variant as Obj19PackageVariant)) {
       return apiError(422, {
         code: 'INVALID_OFFLINE_PACKAGE_VARIANT',
-        message: `Ungueltiger variant-Parameter: ${variant}. Erlaubt sind minimal oder full.`,
+        message: `Ungueltiger variant-Parameter: ${sanitizeForMessage(variant)}. Erlaubt sind minimal oder full.`,
       })
     }
 

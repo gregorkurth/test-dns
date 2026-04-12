@@ -3,6 +3,7 @@ import {
   apiSuccess,
   enforceRateLimit,
   handleUnexpectedApiError,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import { requireSession } from '@/lib/obj12-auth'
 import { getCapabilityById } from '@/lib/obj3-capabilities'
@@ -29,7 +30,7 @@ export async function GET(
     if (!capability) {
       return apiError(404, {
         code: 'CAPABILITY_NOT_FOUND',
-        message: `Capability "${id}" wurde nicht gefunden.`,
+        message: `Capability "${sanitizeForMessage(id)}" wurde nicht gefunden.`,
       })
     }
 

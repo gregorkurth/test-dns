@@ -5,6 +5,7 @@ import {
   handleUnexpectedApiError,
   parseJsonBody,
   toValidationIssues,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import { requireSession } from '@/lib/obj12-auth'
 import {
@@ -57,14 +58,14 @@ export async function GET(request: Request) {
     if (status && !validStatuses.includes(status as Obj20RunStatus)) {
       return apiError(422, {
         code: 'INVALID_TARGET_IMPORT_STATUS',
-        message: `Ungueltiger status-Parameter: ${status}.`,
+        message: `Ungueltiger status-Parameter: ${sanitizeForMessage(status)}.`,
       })
     }
 
     if (deploymentMode && !validModes.includes(deploymentMode as Obj20DeploymentMode)) {
       return apiError(422, {
         code: 'INVALID_TARGET_IMPORT_MODE',
-        message: `Ungueltiger deploymentMode-Parameter: ${deploymentMode}.`,
+        message: `Ungueltiger deploymentMode-Parameter: ${sanitizeForMessage(deploymentMode)}.`,
       })
     }
 

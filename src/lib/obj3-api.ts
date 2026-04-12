@@ -21,6 +21,17 @@ export interface ApiResponseShape<TData> {
   meta: ApiMeta
 }
 
+/**
+ * Bereinigt User-Input für die Verwendung in Fehlermeldungen (S-15).
+ * Entfernt Steuerzeichen (Log-Injection) und kürzt auf max. 80 Zeichen.
+ */
+export function sanitizeForMessage(value: string | null | undefined, maxLength = 80): string {
+  if (value == null) return ''
+  return value
+    .replace(/[\x00-\x1f\x7f]/g, '')
+    .slice(0, maxLength)
+}
+
 interface RateLimitBucket {
   windowStart: number
   count: number
@@ -149,11 +160,16 @@ export function handleUnexpectedApiError(
 }
 
 function getClientId(request: Request): string {
+  // Nur die LETZTE (rechteste) Adresse aus X-Forwarded-For verwenden.
+  // Die letzte Adresse wird vom direkt vorgelagerten Proxy (Ingress/Load Balancer)
+  // eingetragen und kann vom Client nicht gefälscht werden – im Gegensatz zur
+  // ersten Adresse, die der Client selbst setzen kann (S-09).
   const forwarded = request.headers.get('x-forwarded-for')
   if (forwarded) {
-    const first = forwarded.split(',')[0]?.trim()
-    if (first) {
-      return first
+    const parts = forwarded.split(',')
+    const last = parts[parts.length - 1]?.trim()
+    if (last) {
+      return last
     }
   }
 

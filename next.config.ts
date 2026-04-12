@@ -1,5 +1,14 @@
 import type { NextConfig } from 'next'
 
+// Erlaubte Origins für CORS (S-13).
+// Im Airgap-Betrieb ist der Wert typischerweise leer – dann wird kein
+// Access-Control-Allow-Origin Header gesetzt und Same-Origin erzwungen.
+// Für Multi-Origin-Deployments: NEXT_PUBLIC_ALLOWED_ORIGINS=https://a.example,https://b.example
+const allowedOrigins = (process.env.NEXT_PUBLIC_ALLOWED_ORIGINS ?? '')
+  .split(',')
+  .map((o) => o.trim())
+  .filter(Boolean)
+
 const securityHeaders = [
   {
     key: 'X-Frame-Options',

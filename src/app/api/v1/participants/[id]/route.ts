@@ -5,6 +5,7 @@ import {
   handleUnexpectedApiError,
   parseJsonBody,
   toValidationIssues,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import {
   deleteParticipant,
@@ -36,7 +37,7 @@ export async function GET(
     if (!participant) {
       return apiError(404, {
         code: 'PARTICIPANT_NOT_FOUND',
-        message: `Participant "${id}" wurde nicht gefunden.`,
+        message: `Participant "${sanitizeForMessage(id)}" wurde nicht gefunden.`,
       })
     }
 
@@ -83,7 +84,7 @@ export async function PUT(
     if (!updated) {
       return apiError(404, {
         code: 'PARTICIPANT_NOT_FOUND',
-        message: `Participant "${id}" wurde nicht gefunden.`,
+        message: `Participant "${sanitizeForMessage(id)}" wurde nicht gefunden.`,
       })
     }
 
@@ -116,7 +117,7 @@ export async function DELETE(
     if (!deleted) {
       return apiError(404, {
         code: 'PARTICIPANT_NOT_FOUND',
-        message: `Participant "${id}" wurde nicht gefunden.`,
+        message: `Participant "${sanitizeForMessage(id)}" wurde nicht gefunden.`,
       })
     }
 

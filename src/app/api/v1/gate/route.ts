@@ -3,6 +3,7 @@ import {
   apiSuccess,
   enforceRateLimit,
   handleUnexpectedApiError,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import { requireSession } from '@/lib/obj12-auth'
 import {
@@ -49,7 +50,7 @@ export async function GET(request: Request) {
     if (decisionRaw && !decision) {
       return apiError(422, {
         code: 'INVALID_GATE_DECISION',
-        message: `Ungueltiger decision-Parameter: ${decisionRaw}.`,
+        message: `Ungueltiger decision-Parameter: ${sanitizeForMessage(decisionRaw)}.`,
       })
     }
 

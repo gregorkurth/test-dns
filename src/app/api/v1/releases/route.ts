@@ -3,6 +3,7 @@ import {
   apiSuccess,
   enforceRateLimit,
   handleUnexpectedApiError,
+  sanitizeForMessage,
 } from '@/lib/obj3-api'
 import { requireSession } from '@/lib/obj12-auth'
 import {
@@ -34,7 +35,7 @@ export async function GET(request: Request) {
     if (channel && !RELEASE_CHANNELS.includes(channel as (typeof RELEASE_CHANNELS)[number])) {
       return apiError(422, {
         code: 'INVALID_RELEASE_CHANNEL',
-        message: `Ungueltiger channel-Parameter: ${channel}. Erlaubt sind ga, beta oder rc.`,
+        message: `Ungueltiger channel-Parameter: ${sanitizeForMessage(channel)}. Erlaubt sind ga, beta oder rc.`,
       })
     }
 
@@ -77,7 +78,7 @@ export async function GET(request: Request) {
     if (version && notices.length === 0) {
       return apiError(404, {
         code: 'RELEASE_NOTICE_NOT_FOUND',
-        message: `Kein Release-Hinweis fuer ${version} gefunden.`,
+        message: `Kein Release-Hinweis fuer ${sanitizeForMessage(version)} gefunden.`,
       })
     }
 
