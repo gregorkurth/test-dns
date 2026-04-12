@@ -208,7 +208,9 @@ function allowUnsignedOidcTokenExchange(): boolean {
     return explicit
   }
 
-  return process.env.NODE_ENV !== 'production'
+  // Signaturverifizierung ist in allen Umgebungen Standard.
+  // Nur via explizitem Opt-in deaktivierbar (OBJ12_OIDC_ALLOW_UNSIGNED_TOKEN=true).
+  return false
 }
 
 function isLocalModeEnabled(): boolean {
