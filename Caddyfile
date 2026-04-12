@@ -1,0 +1,27 @@
+# OBJ-27: Caddy configuration for the MkDocs documentation portal.
+# Runs on port 8080 (non-root compatible).
+# Caddy's file_server automatically serves index.html for directory requests,
+# so MkDocs clean URLs (use_directory_urls: true) work out of the box.
+
+:8080 {
+	root * /srv/docs
+	file_server
+
+	# Security headers (airgapped-compatible – no CDN references)
+	header X-Frame-Options DENY
+	header X-Content-Type-Options nosniff
+	header Referrer-Policy origin-when-cross-origin
+
+	# Cache static assets for one day
+	@static {
+		path *.css *.js *.png *.svg *.ico *.woff *.woff2
+	}
+	header @static Cache-Control "public, max-age=86400, immutable"
+
+	# Suppress verbose access logs for health probes
+	log {
+		output stdout
+		format json
+		level INFO
+	}
+}

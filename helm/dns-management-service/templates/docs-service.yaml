@@ -1,0 +1,21 @@
+{{- if .Values.docs.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "dns-management-service.fullname" . }}-docs
+  namespace: {{ .Values.namespace.name }}
+  labels:
+{{ include "dns-management-service.labels" . | indent 4 }}
+    app.kubernetes.io/component: docs
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: {{ include "dns-management-service.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: docs
+  ports:
+    - name: http
+      port: 80
+      targetPort: {{ .Values.docs.port }}
+      protocol: TCP
+{{- end }}

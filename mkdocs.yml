@@ -45,6 +45,5 @@ markdown_extensions:
   - fenced_code
   - toc:
       permalink: true
-use_directory_urls: false
 plugins:
   - search

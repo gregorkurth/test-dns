@@ -1,13 +1,5 @@
 # syntax=docker/dockerfile:1
 
-# Stage 1: Build MkDocs documentation (OBJ-27)
-FROM python:3.12-alpine AS docs-builder
-WORKDIR /docs
-RUN pip install --no-cache-dir mkdocs==1.6.1
-COPY mkdocs.yml .
-COPY docs/ docs/
-RUN mkdocs build --strict --site-dir /docs/site
-
 FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
@@ -18,8 +10,6 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-# Embed the MkDocs static site so Next.js serves it under /docs/
-COPY --from=docs-builder /docs/site ./public/docs
 RUN npm run build
 
 FROM node:20-alpine AS runner

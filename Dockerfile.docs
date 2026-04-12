@@ -1,0 +1,30 @@
+# syntax=docker/dockerfile:1
+# OBJ-27: Dokumentationsportal – eigenständiges Container-Image
+#
+# Stage 1: MkDocs static site build
+# Stage 2: Caddy static file server (non-root, read-only FS)
+
+FROM python:3.12-alpine AS builder
+WORKDIR /docs
+RUN pip install --no-cache-dir mkdocs==1.6.1
+COPY mkdocs.yml .
+COPY docs/ docs/
+RUN mkdocs build --strict --site-dir /docs/site
+
+# ---------------------------------------------------------------------------
+FROM caddy:2-alpine AS runner
+
+# Copy the generated MkDocs site into the Caddy web root
+COPY --from=builder /docs/site /srv/docs
+
+# Copy the Caddyfile
+COPY Caddyfile /etc/caddy/Caddyfile
+
+# Caddy writes certificates and config state to /data and /config.
+# For a plain static server these stay empty, but the dirs must be writable.
+# The Kubernetes deployment mounts these as emptyDir volumes.
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget -qO- http://localhost:8080/ || exit 1

@@ -37,3 +37,11 @@ debug:
 testOperator:
   telemetry:
     mode: local
+
+docs:
+  enabled: true
+  replicaCount: 1
+  image:
+    repository: test-dns-docs
+    tag: dev
+    pullPolicy: Never
