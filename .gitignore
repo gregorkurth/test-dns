@@ -16,6 +16,10 @@
 # production
 /build
 
+# MkDocs generated output (OBJ-27) – built at Docker build time, not committed
+/public/docs/
+/site/
+
 # misc
 .DS_Store
 *.pem

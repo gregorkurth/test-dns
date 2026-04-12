@@ -43,6 +43,7 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 6 – Abschluss | P1 | OBJ-19: Zarf-Paket / Offline-Weitergabe | In Progress |
 | 6 – Abschluss | P1 | OBJ-20: Zielumgebung / Import / Rehydrierung | In Progress |
 | 6 – Abschluss | P1 | OBJ-21: GitOps / Argo CD / App-of-Apps | Planned |
+| 6 – Abschluss | P1 | OBJ-27: Dokumentationsportal (MkDocs in Next.js) | Planned |
 
 ## Erfolgskriterien
 
@@ -78,4 +79,4 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 
 ---
 
-_Zuletzt aktualisiert: 2026-04-12_
+_Zuletzt aktualisiert: 2026-04-12_ (OBJ-27 ergaenzt)

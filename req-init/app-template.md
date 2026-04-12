@@ -347,8 +347,14 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
   - Argo-CD- / App-of-Apps-Installationsablauf
 - Die Dokumentation muss in drei Darstellungsformen verfuegbar sein:
   - als Markdown-Quelle im Repository
-  - als MkDocs-basierte Website
+  - als MkDocs-basierte Website (erreichbar unter `/docs/` im laufenden Cluster-Service)
   - als E-Book (z. B. PDF) pro freigegebener Version
+- Die MkDocs-Website wird als statische HTML-Site in den bestehenden App-Container integriert (kein separater Webserver-Container):
+  - `mkdocs build --strict` laeuft als dedizierter Python-Stage im Multi-Stage-Dockerfile.
+  - Das erzeugte `site/`-Verzeichnis wird als `public/docs/` in den App-Builder-Stage kopiert.
+  - Der App-Container liefert die Dokumentation unter `/docs/` aus; kein zweiter Kubernetes-Service oder Deployment noetig.
+  - `public/docs/` ist in `.gitignore` (generiertes Artefakt, nicht im Repository versioniert).
+  - `mkdocs build --strict` ist verbindlich: schlaegt der Build fehl (kaputte Links, fehlende Dateien), schlaegt der gesamte Docker-Build fehl.
 - Architektur- und Prozessdiagramme muessen mit `draw.io` erstellt werden.
 - Diagramm-Dateien muessen in einer festen Struktur gepflegt werden:
   - Quellen: `docs/diagrams/source/*.drawio`
