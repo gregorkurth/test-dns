@@ -290,44 +290,48 @@ export function compareReleaseVersions(left: string, right: string): number {
     return 0
   }
 
-  if (a.major !== b.major) {
-    return a.major - b.major
-  }
-  if (a.minor !== b.minor) {
-    return a.minor - b.minor
-  }
-  if (a.patch !== b.patch) {
-    return a.patch - b.patch
-  }
-
-  if (!a.prerelease && !b.prerelease) {
-    return 0
-  }
-  if (!a.prerelease) {
-    return 1
-  }
-  if (!b.prerelease) {
-    return -1
-  }
-
-  const leftTokens = a.prerelease.split('.')
-  const rightTokens = b.prerelease.split('.')
-  const maxLength = Math.max(leftTokens.length, rightTokens.length)
-
-  for (let index = 0; index < maxLength; index += 1) {
-    const leftToken = leftTokens[index]
-    const rightToken = rightTokens[index]
-    if (!leftToken) {
-      return -1
+  if (a.kind === 'semver' && b.kind === 'semver') {
+    if (a.major !== b.major) {
+      return a.major - b.major
     }
-    if (!rightToken) {
+    if (a.minor !== b.minor) {
+      return a.minor - b.minor
+    }
+    if (a.patch !== b.patch) {
+      return a.patch - b.patch
+    }
+
+    if (!a.prerelease && !b.prerelease) {
+      return 0
+    }
+    if (!a.prerelease) {
       return 1
     }
-
-    const diff = comparePrereleaseToken(leftToken, rightToken)
-    if (diff !== 0) {
-      return diff
+    if (!b.prerelease) {
+      return -1
     }
+
+    const leftTokens = a.prerelease.split('.')
+    const rightTokens = b.prerelease.split('.')
+    const maxLength = Math.max(leftTokens.length, rightTokens.length)
+
+    for (let index = 0; index < maxLength; index += 1) {
+      const leftToken = leftTokens[index]
+      const rightToken = rightTokens[index]
+      if (!leftToken) {
+        return -1
+      }
+      if (!rightToken) {
+        return 1
+      }
+
+      const diff = comparePrereleaseToken(leftToken, rightToken)
+      if (diff !== 0) {
+        return diff
+      }
+    }
+
+    return 0
   }
 
   return 0
