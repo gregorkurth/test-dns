@@ -3,6 +3,7 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
+COPY scripts/ ./scripts/
 RUN npm ci
 
 FROM node:20-alpine AS builder
@@ -19,7 +20,7 @@ ENV PORT=3000
 RUN addgroup -S nextjs && adduser -S nextjs -G nextjs
 
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci --omit=dev --ignore-scripts
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 
