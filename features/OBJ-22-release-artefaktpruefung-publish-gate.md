@@ -66,7 +66,7 @@ release-policy/
     +-- 2026-04-10-sourcemap.yaml  (zeitlich begrenzte, dokumentierte Ausnahme)
 artifacts/
 +-- gate-reports/
-    +-- v1.0.0/gate-report.json    (maschinenlesbarer Prüfbericht pro Release)
+    +-- 2026.04.1/gate-report.json (maschinenlesbarer Prüfbericht pro Release)
 src/app/api/v1/gate/
 +-- route.ts                       (GET-Endpunkt: Gate-Status für OBJ-16/OBJ-17)
 ```
@@ -98,13 +98,13 @@ policy.yaml (Allowlist-Strategie):
 
 gate-report.json (pro Build + Release):
 - artifact: Name und Pfad des geprüften Artefakts
-- version: SemVer oder Commit-SHA
+- version: `YYYY.MM.N` oder Commit-SHA (nur fuer lokale Vorpruefung)
 - timestamp: ISO-8601
 - result: "pass" | "fail" | "accepted-risk"
 - violations: Liste der festgestellten Verstösse (Regel, Fundort)
 - exceptions_applied: angewandte Ausnahmen mit Verweis
 
-GET /api/v1/gate?version=v1.0.0:
+GET /api/v1/gate?version=2026.04.1:
 - Liefert: { version, result, timestamp, report_url }
 - Konsumenten: OBJ-16 (Maturitätsstatus), OBJ-17 (Security-Scanning)
 ```

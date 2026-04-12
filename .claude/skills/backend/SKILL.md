@@ -87,8 +87,8 @@ CREATE INDEX idx_tasks_status ON tasks(status);
 ```
 
 ## Production References
-- See [database-optimization.md](../../docs/production/database-optimization.md) for query optimization
-- See [rate-limiting.md](../../docs/production/rate-limiting.md) for rate limiting setup
+- See [database-optimization.md](../../../docs/production/database-optimization.md) for query optimization
+- See [rate-limiting.md](../../../docs/production/rate-limiting.md) for rate limiting setup
 
 ## Checklist
 See [checklist.md](checklist.md) for the full implementation checklist.

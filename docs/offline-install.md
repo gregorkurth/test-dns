@@ -60,7 +60,7 @@ Empfohlene Transferstruktur:
 
 ```text
 transfer/
-+-- dns-management-service-v1.0.0-beta.1-minimal-amd64.tar.zst
++-- dns-management-service-2026.04.1-minimal-amd64.tar.zst
 +-- SHA256SUMS.txt
 +-- manifest.json
 +-- handover.json

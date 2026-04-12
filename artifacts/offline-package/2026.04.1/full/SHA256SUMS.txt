@@ -1,0 +1,8 @@
+# OBJ-19 example checksum set for the full package.
+1212121212121212121212121212121212121212121212121212121212121212  dist/zarf/dns-management-service-2026.04.1-full-amd64.tar.zst
+7777777777777777777777777777777777777777777777777777777777777777  zarf.yaml
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  docs/zarf.md
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb  docs/offline-install.md
+ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff  artifacts/offline-package/2026.04.1/full/handover.json
+1313131313131313131313131313131313131313131313131313131313131313  artifacts/offline-package/2026.04.1/full/manifest.json
+dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd  artifacts/security/offline/trivy-db-2026-04-09.tar.zst

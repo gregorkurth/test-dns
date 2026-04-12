@@ -4,34 +4,34 @@
   "updatedAt": "2026-04-09T18:30:00Z",
   "bundles": [
     {
-      "version": "v1.0.0-beta.1",
+      "version": "2026.04.1",
       "channel": "beta",
       "generatedAt": "2026-04-09T18:20:00Z",
       "sbom": {
         "available": true,
         "format": "spdx-json",
-        "path": "artifacts/security/v1.0.0-beta.1/sbom.spdx.json"
+        "path": "artifacts/security/2026.04.1/sbom.spdx.json"
       },
       "scans": {
         "sast": {
           "status": "passed",
           "tool": "semgrep",
-          "reportPath": "artifacts/security/v1.0.0-beta.1/semgrep.sarif"
+          "reportPath": "artifacts/security/2026.04.1/semgrep.sarif"
         },
         "sca": {
           "status": "passed",
           "tool": "npm-audit",
-          "reportPath": "artifacts/security/v1.0.0-beta.1/npm-audit.json"
+          "reportPath": "artifacts/security/2026.04.1/npm-audit.json"
         },
         "container": {
           "status": "passed",
           "tool": "trivy image",
-          "reportPath": "artifacts/security/v1.0.0-beta.1/trivy-image.json"
+          "reportPath": "artifacts/security/2026.04.1/trivy-image.json"
         },
         "config": {
           "status": "passed",
           "tool": "trivy config",
-          "reportPath": "artifacts/security/v1.0.0-beta.1/trivy-config.json"
+          "reportPath": "artifacts/security/2026.04.1/trivy-config.json"
         }
       },
       "findings": {
@@ -49,40 +49,40 @@
       },
       "evidence": {
         "releaseAttachment": true,
-        "ociRegistryReference": "ghcr.io/gregorkurth/test-dns-security-bundle:v1.0.0-beta.1",
+        "ociRegistryReference": "ghcr.io/gregorkurth/test-dns-security-bundle:2026.04.1",
         "offlineSnapshotAvailable": true,
         "offlineSnapshotPath": "artifacts/security/offline/trivy-db-2026-04-09.tar.zst"
       }
     },
     {
-      "version": "v0.9.0",
+      "version": "2026.03.1",
       "channel": "ga",
       "generatedAt": "2026-04-06T09:30:00Z",
       "sbom": {
         "available": true,
         "format": "spdx-json",
-        "path": "artifacts/security/v0.9.0/sbom.spdx.json"
+        "path": "artifacts/security/2026.03.1/sbom.spdx.json"
       },
       "scans": {
         "sast": {
           "status": "passed",
           "tool": "semgrep",
-          "reportPath": "artifacts/security/v0.9.0/semgrep.sarif"
+          "reportPath": "artifacts/security/2026.03.1/semgrep.sarif"
         },
         "sca": {
           "status": "passed",
           "tool": "npm-audit",
-          "reportPath": "artifacts/security/v0.9.0/npm-audit.json"
+          "reportPath": "artifacts/security/2026.03.1/npm-audit.json"
         },
         "container": {
           "status": "passed",
           "tool": "trivy image",
-          "reportPath": "artifacts/security/v0.9.0/trivy-image.json"
+          "reportPath": "artifacts/security/2026.03.1/trivy-image.json"
         },
         "config": {
           "status": "passed",
           "tool": "trivy config",
-          "reportPath": "artifacts/security/v0.9.0/trivy-config.json"
+          "reportPath": "artifacts/security/2026.03.1/trivy-config.json"
         }
       },
       "findings": {
@@ -100,7 +100,7 @@
       },
       "evidence": {
         "releaseAttachment": true,
-        "ociRegistryReference": "ghcr.io/gregorkurth/test-dns-security-bundle:v0.9.0",
+        "ociRegistryReference": "ghcr.io/gregorkurth/test-dns-security-bundle:2026.03.1",
         "offlineSnapshotAvailable": true,
         "offlineSnapshotPath": "artifacts/security/offline/trivy-db-2026-04-06.tar.zst"
       }

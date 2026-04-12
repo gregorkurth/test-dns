@@ -25,6 +25,7 @@ Wenn etwas nur in Confluence steht, gilt es nicht als abgeschlossen.
 ## Release-Regel
 
 Bei Release-bezogenen Exporten gilt zusaetzlich:
+- Release-Version folgt `YYYY.MM.N` und wird identisch in Export-Log und `docs/releases/UPDATE-NOTICES.json` gefuehrt
 - Update-Hinweise in `docs/releases/UPDATE-NOTICES.json` zuerst aktualisieren
 - Release-Check (`npm run check:obj14`) vor dem Kopieren ausfuehren
 - Exportstatus im Release-Hinweis pflegen (`pending` oder `completed`)

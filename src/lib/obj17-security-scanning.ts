@@ -78,8 +78,7 @@ const securityBundlesPath = path.join(
   'SECURITY-SCAN-BUNDLES.json',
 )
 
-const semverPattern =
-  /^v\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/
+const releaseVersionPattern = /^\d{4}\.(0[1-9]|1[0-2])\.[1-9]\d*$/
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
@@ -152,7 +151,7 @@ function parseBundle(value: unknown, index: number): Obj17SecurityBundle {
   }
 
   const version = ensureString(value.version, `bundles[${index}].version`)
-  if (!semverPattern.test(version)) {
+  if (!releaseVersionPattern.test(version)) {
     throw new Error(`Invalid OBJ-17 bundle version: ${version}`)
   }
 

@@ -6,7 +6,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T22:16:10Z",
       "runId": "OBJ26-RUN-20260411-2215",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "objId": "OBJ-26",
       "note": "Operator run against deployed cluster completed successfully."
     },
@@ -16,7 +16,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T22:16:14Z",
       "runId": "OBJ26-RUN-20260411-2215",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "objId": "OBJ-26",
       "note": "Dedicated test-operator object and scheduling metadata verified."
     },
@@ -26,7 +26,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T22:16:19Z",
       "runId": "OBJ26-RUN-20260411-2215",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "objId": "OBJ-26",
       "note": "OTel export in clickhouse mode acknowledged by collector."
     },
@@ -36,7 +36,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T22:16:24Z",
       "runId": "OBJ26-RUN-20260411-2215",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "objId": "OBJ-26",
       "note": "Failure-event pipeline check passed (no unresolved alert)."
     },
@@ -46,7 +46,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T22:16:30Z",
       "runId": "OBJ26-RUN-20260411-2215",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "objId": "OBJ-26",
       "note": "Non-overlap guard recorded skip of overlapping run as expected."
     },
@@ -56,7 +56,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T22:16:35Z",
       "runId": "OBJ26-RUN-20260411-2215",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "objId": "OBJ-26",
       "note": "Local spool fallback replayed successfully to central pipeline."
     }

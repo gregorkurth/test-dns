@@ -73,7 +73,7 @@ Phase 5 – Plattform & Betrieb
   OBJ-13 Kubernetes Operator       ← braucht OBJ-10 + OBJ-3 + OBJ-12
 
 Phase 6 – Produktabschluss
-  OBJ-14 Release Management        ← SemVer, CHANGELOG, Freigabeprozess
+  OBJ-14 Release Management        ← YYYY.MM.N, CHANGELOG, Freigabeprozess
   OBJ-15 Produkt-Website           ← Landing-Page
   OBJ-16 Maturitätsstatus          ← braucht OBJ-7, OBJ-9, OBJ-23, OBJ-2
   OBJ-17 SBOM & Security-Scanning  ← braucht OBJ-1 (Pipeline), OBJ-14 (Release)

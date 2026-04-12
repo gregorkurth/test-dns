@@ -19,8 +19,7 @@ const workflowPath = path.join(repoRoot, '.github', 'workflows', 'ci.yml')
 const releaseReadmePath = path.join(repoRoot, 'docs', 'releases', 'README.md')
 const changelogPath = path.join(repoRoot, 'CHANGELOG.md')
 
-const semverPattern =
-  /^v(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?:-(?<prerelease>[0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?$/
+const releasePattern = /^(?<year>\d{4})\.(?<month>0[1-9]|1[0-2])\.(?<sequence>[1-9]\d*)$/
 
 function ensure(condition, message) {
   if (!condition) {
@@ -33,75 +32,28 @@ function readJson(filePath) {
 }
 
 function parseVersion(version) {
-  const match = version.match(semverPattern)
-  ensure(match?.groups, `Version entspricht nicht SemVer mit v-Praefix: ${version}`)
+  const match = version.match(releasePattern)
+  ensure(match?.groups, `Version entspricht nicht YYYY.MM.N: ${version}`)
 
   return {
-    major: Number(match.groups.major),
-    minor: Number(match.groups.minor),
-    patch: Number(match.groups.patch),
-    prerelease: match.groups.prerelease ?? null,
+    year: Number(match.groups.year),
+    month: Number(match.groups.month),
+    sequence: Number(match.groups.sequence),
   }
-}
-
-function comparePrereleaseToken(left, right) {
-  const leftNumeric = /^\d+$/.test(left)
-  const rightNumeric = /^\d+$/.test(right)
-
-  if (leftNumeric && rightNumeric) {
-    return Number(left) - Number(right)
-  }
-  if (leftNumeric) {
-    return -1
-  }
-  if (rightNumeric) {
-    return 1
-  }
-
-  return left.localeCompare(right)
 }
 
 function compareVersions(left, right) {
   const a = parseVersion(left)
   const b = parseVersion(right)
 
-  if (a.major !== b.major) {
-    return a.major - b.major
+  if (a.year !== b.year) {
+    return a.year - b.year
   }
-  if (a.minor !== b.minor) {
-    return a.minor - b.minor
+  if (a.month !== b.month) {
+    return a.month - b.month
   }
-  if (a.patch !== b.patch) {
-    return a.patch - b.patch
-  }
-  if (!a.prerelease && !b.prerelease) {
-    return 0
-  }
-  if (!a.prerelease) {
-    return 1
-  }
-  if (!b.prerelease) {
-    return -1
-  }
-
-  const leftTokens = a.prerelease.split('.')
-  const rightTokens = b.prerelease.split('.')
-  const maxLength = Math.max(leftTokens.length, rightTokens.length)
-
-  for (let index = 0; index < maxLength; index += 1) {
-    const leftToken = leftTokens[index]
-    const rightToken = rightTokens[index]
-    if (!leftToken) {
-      return -1
-    }
-    if (!rightToken) {
-      return 1
-    }
-
-    const diff = comparePrereleaseToken(leftToken, rightToken)
-    if (diff !== 0) {
-      return diff
-    }
+  if (a.sequence !== b.sequence) {
+    return a.sequence - b.sequence
   }
 
   return 0
@@ -109,7 +61,10 @@ function compareVersions(left, right) {
 
 function validateReleaseEntry(entry, exportLogContent) {
   ensure(typeof entry.version === 'string', 'Release-Version fehlt')
-  ensure(semverPattern.test(entry.version), `Ungueltige Version: ${entry.version}`)
+  ensure(
+    releasePattern.test(entry.version),
+    `Ungueltige Version (erwartet YYYY.MM.N): ${entry.version}`,
+  )
   ensure(typeof entry.channel === 'string', `Release-Kanal fehlt fuer ${entry.version}`)
   ensure(typeof entry.status === 'string', `Release-Status fehlt fuer ${entry.version}`)
   ensure(typeof entry.title === 'string' && entry.title.trim(), `Release-Titel fehlt fuer ${entry.version}`)

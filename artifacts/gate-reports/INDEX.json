@@ -8,7 +8,7 @@
       "service": "DNS Management Service",
       "sourceOfTruth": "git",
       "generatedAt": "2026-04-10T12:00:33.598Z",
-      "version": "v1.0.0-beta.1",
+      "version": "2026.04.1",
       "channel": "beta",
       "releaseStatus": "planned",
       "releaseTitle": "Release-Management Baseline mit Update-Hinweisen",
@@ -27,12 +27,12 @@
       },
       "artifacts": [
         {
-          "id": "v1.0.0-beta.1:oci-image:OCI Container Image",
+          "id": "2026.04.1:oci-image:OCI Container Image",
           "name": "OCI Container Image",
           "kind": "oci-image",
-          "version": "v1.0.0-beta.1",
+          "version": "2026.04.1",
           "channel": "beta",
-          "reference": "ghcr.io/gregorkurth/test-dns:v1.0.0-beta.1",
+          "reference": "ghcr.io/gregorkurth/test-dns:2026.04.1",
           "localPath": null,
           "status": "remote-only",
           "exists": false,
@@ -54,7 +54,7 @@
             {
               "ruleId": "OCI_DIGEST_REQUIRED",
               "severity": "blocking",
-              "path": "ghcr.io/gregorkurth/test-dns:v1.0.0-beta.1",
+              "path": "ghcr.io/gregorkurth/test-dns:2026.04.1",
               "message": "Container-Image ist nur per Tag referenziert. Fuer den Publish-Gate ist ein Digest-Nachweis verpflichtend.",
               "waived": false,
               "exceptionId": null
@@ -62,7 +62,7 @@
             {
               "ruleId": "OCI_MEDIA_TYPE_MISSING",
               "severity": "blocking",
-              "path": "ghcr.io/gregorkurth/test-dns:v1.0.0-beta.1",
+              "path": "ghcr.io/gregorkurth/test-dns:2026.04.1",
               "message": "OCI-Media-Type ist nicht nachgewiesen und kann daher nicht als konform bestaetigt werden.",
               "waived": false,
               "exceptionId": null
@@ -72,13 +72,13 @@
           "notes": []
         },
         {
-          "id": "v1.0.0-beta.1:release-attachment:Dokumentationspaket fuer Confluence-Kopie",
+          "id": "2026.04.1:release-attachment:Dokumentationspaket fuer Confluence-Kopie",
           "name": "Dokumentationspaket fuer Confluence-Kopie",
           "kind": "release-attachment",
-          "version": "v1.0.0-beta.1",
+          "version": "2026.04.1",
           "channel": "beta",
-          "reference": "docs/releases/export-package-v1.0.0-beta.1.zip",
-          "localPath": "docs/releases/export-package-v1.0.0-beta.1.zip",
+          "reference": "docs/releases/export-package-2026.04.1.zip",
+          "localPath": "docs/releases/export-package-2026.04.1.zip",
           "status": "missing",
           "exists": false,
           "decision": "accepted-risk",
@@ -99,7 +99,7 @@
             {
               "ruleId": "ARTIFACT_PATH_MISSING",
               "severity": "blocking",
-              "path": "docs/releases/export-package-v1.0.0-beta.1.zip",
+              "path": "docs/releases/export-package-2026.04.1.zip",
               "message": "Das erwartete Endartefakt ist lokal nicht vorhanden und kann daher nicht freigegeben werden.",
               "waived": true,
               "exceptionId": "EX-OBJ22-2026-04-10-BETA-DOC-BUNDLE"
@@ -109,7 +109,7 @@
             {
               "id": "EX-OBJ22-2026-04-10-BETA-DOC-BUNDLE",
               "title": "Beta-Dokumentationspaket wird noch manuell fuer Export vorbereitet",
-              "version": "v1.0.0-beta.1",
+              "version": "2026.04.1",
               "artifactKinds": [
                 "release-attachment"
               ],
@@ -126,13 +126,13 @@
           "notes": []
         },
         {
-          "id": "v1.0.0-beta.1:security-bundle",
-          "name": "Security bundle v1.0.0-beta.1",
+          "id": "2026.04.1:security-bundle",
+          "name": "Security bundle 2026.04.1",
           "kind": "security-bundle",
-          "version": "v1.0.0-beta.1",
+          "version": "2026.04.1",
           "channel": "beta",
-          "reference": "ghcr.io/gregorkurth/test-dns-security-bundle:v1.0.0-beta.1",
-          "localPath": "artifacts/security/v1.0.0-beta.1",
+          "reference": "ghcr.io/gregorkurth/test-dns-security-bundle:2026.04.1",
+          "localPath": "artifacts/security/2026.04.1",
           "status": "checked",
           "exists": true,
           "decision": "accepted-risk",
@@ -162,13 +162,13 @@
           ]
         },
         {
-          "id": "v1.0.0-beta.1:zarf-package:minimal",
+          "id": "2026.04.1:zarf-package:minimal",
           "name": "Zarf package minimal",
           "kind": "zarf-package",
-          "version": "v1.0.0-beta.1",
+          "version": "2026.04.1",
           "channel": "beta",
-          "reference": "dist/zarf/dns-management-service-v1.0.0-beta.1-minimal-amd64.tar.zst",
-          "localPath": "dist/zarf/dns-management-service-v1.0.0-beta.1-minimal-amd64.tar.zst",
+          "reference": "dist/zarf/dns-management-service-2026.04.1-minimal-amd64.tar.zst",
+          "localPath": "dist/zarf/dns-management-service-2026.04.1-minimal-amd64.tar.zst",
           "status": "missing",
           "exists": false,
           "decision": "fail",
@@ -189,7 +189,7 @@
             {
               "ruleId": "ARTIFACT_PATH_MISSING",
               "severity": "blocking",
-              "path": "dist/zarf/dns-management-service-v1.0.0-beta.1-minimal-amd64.tar.zst",
+              "path": "dist/zarf/dns-management-service-2026.04.1-minimal-amd64.tar.zst",
               "message": "Das erwartete Endartefakt ist lokal nicht vorhanden und kann daher nicht freigegeben werden.",
               "waived": false,
               "exceptionId": null
@@ -199,13 +199,13 @@
           "notes": []
         },
         {
-          "id": "v1.0.0-beta.1:manifest-bundle:minimal",
+          "id": "2026.04.1:manifest-bundle:minimal",
           "name": "Manifest bundle minimal",
           "kind": "manifest-bundle",
-          "version": "v1.0.0-beta.1",
+          "version": "2026.04.1",
           "channel": "beta",
-          "reference": "artifacts/offline-package/v1.0.0-beta.1/minimal/manifest.json",
-          "localPath": "artifacts/offline-package/v1.0.0-beta.1/minimal",
+          "reference": "artifacts/offline-package/2026.04.1/minimal/manifest.json",
+          "localPath": "artifacts/offline-package/2026.04.1/minimal",
           "status": "checked",
           "exists": true,
           "decision": "pass",
@@ -231,13 +231,13 @@
           "notes": []
         },
         {
-          "id": "v1.0.0-beta.1:zarf-package:full",
+          "id": "2026.04.1:zarf-package:full",
           "name": "Zarf package full",
           "kind": "zarf-package",
-          "version": "v1.0.0-beta.1",
+          "version": "2026.04.1",
           "channel": "beta",
-          "reference": "dist/zarf/dns-management-service-v1.0.0-beta.1-full-amd64.tar.zst",
-          "localPath": "dist/zarf/dns-management-service-v1.0.0-beta.1-full-amd64.tar.zst",
+          "reference": "dist/zarf/dns-management-service-2026.04.1-full-amd64.tar.zst",
+          "localPath": "dist/zarf/dns-management-service-2026.04.1-full-amd64.tar.zst",
           "status": "missing",
           "exists": false,
           "decision": "fail",
@@ -258,7 +258,7 @@
             {
               "ruleId": "ARTIFACT_PATH_MISSING",
               "severity": "blocking",
-              "path": "dist/zarf/dns-management-service-v1.0.0-beta.1-full-amd64.tar.zst",
+              "path": "dist/zarf/dns-management-service-2026.04.1-full-amd64.tar.zst",
               "message": "Das erwartete Endartefakt ist lokal nicht vorhanden und kann daher nicht freigegeben werden.",
               "waived": false,
               "exceptionId": null
@@ -268,13 +268,13 @@
           "notes": []
         },
         {
-          "id": "v1.0.0-beta.1:manifest-bundle:full",
+          "id": "2026.04.1:manifest-bundle:full",
           "name": "Manifest bundle full",
           "kind": "manifest-bundle",
-          "version": "v1.0.0-beta.1",
+          "version": "2026.04.1",
           "channel": "beta",
-          "reference": "artifacts/offline-package/v1.0.0-beta.1/full/manifest.json",
-          "localPath": "artifacts/offline-package/v1.0.0-beta.1/full",
+          "reference": "artifacts/offline-package/2026.04.1/full/manifest.json",
+          "localPath": "artifacts/offline-package/2026.04.1/full",
           "status": "checked",
           "exists": true,
           "decision": "pass",
@@ -304,7 +304,7 @@
         {
           "id": "EX-OBJ22-2026-04-10-BETA-DOC-BUNDLE",
           "title": "Beta-Dokumentationspaket wird noch manuell fuer Export vorbereitet",
-          "version": "v1.0.0-beta.1",
+          "version": "2026.04.1",
           "artifactKinds": [
             "release-attachment"
           ],
@@ -327,7 +327,7 @@
       "service": "DNS Management Service",
       "sourceOfTruth": "git",
       "generatedAt": "2026-04-10T12:00:33.600Z",
-      "version": "v0.9.0",
+      "version": "2026.03.1",
       "channel": "ga",
       "releaseStatus": "released",
       "releaseTitle": "Dokumentations- und Dashboard-Basisstand",
@@ -346,10 +346,10 @@
       },
       "artifacts": [
         {
-          "id": "v0.9.0:release-attachment:Dokumentationsstand OBJ-4/OBJ-23",
+          "id": "2026.03.1:release-attachment:Dokumentationsstand OBJ-4/OBJ-23",
           "name": "Dokumentationsstand OBJ-4/OBJ-23",
           "kind": "release-attachment",
-          "version": "v0.9.0",
+          "version": "2026.03.1",
           "channel": "ga",
           "reference": "docs/exports/EXPORT-20260406-01",
           "localPath": "docs/exports/EXPORT-20260406-01",
@@ -383,13 +383,13 @@
           "notes": []
         },
         {
-          "id": "v0.9.0:security-bundle",
-          "name": "Security bundle v0.9.0",
+          "id": "2026.03.1:security-bundle",
+          "name": "Security bundle 2026.03.1",
           "kind": "security-bundle",
-          "version": "v0.9.0",
+          "version": "2026.03.1",
           "channel": "ga",
-          "reference": "ghcr.io/gregorkurth/test-dns-security-bundle:v0.9.0",
-          "localPath": "artifacts/security/v0.9.0",
+          "reference": "ghcr.io/gregorkurth/test-dns-security-bundle:2026.03.1",
+          "localPath": "artifacts/security/2026.03.1",
           "status": "checked",
           "exists": true,
           "decision": "pass",

@@ -78,8 +78,8 @@ Die Revisionsbindung wird ueber eine feste Matrix gepflegt, zum Beispiel:
 
 | Umgebung | Release-Revision | Konfigurations-Revision | Status |
 |---|---|---|---|
-| FMN Core | `release/v1.0.0` | `env/fmn-core/v1.0.0` | validiert |
-| FMN Staging | `release/v1.0.0-rc.1` | `env/fmn-staging/v1.0.0-rc.1` | pruefen |
+| FMN Core | `release/2026.04.1` | `env/fmn-core/2026.04.1` | validiert |
+| FMN Staging | `release/2026.04.2` | `env/fmn-staging/2026.04.2` | pruefen |
 
 Wenn Release- und Konfigurationsrevision nicht zusammenpassen, darf der Sync
 nicht als freigegeben gelten.

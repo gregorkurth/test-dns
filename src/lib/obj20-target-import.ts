@@ -103,8 +103,8 @@ export interface Obj20RunFilters {
 export const obj20TargetImportRequestSchema = z.object({
   environmentId: z.string().trim().min(2).max(60),
   environmentName: z.string().trim().min(2).max(120),
-  version: z.string().trim().regex(/^v\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/, {
-    message: 'Version muss im SemVer-Format vorliegen, z. B. v1.2.3 oder v1.2.3-beta.1.',
+  version: z.string().trim().regex(/^\d{4}\.(0[1-9]|1[0-2])\.[1-9]\d*$/, {
+    message: 'Version muss im Format YYYY.MM.N vorliegen, z. B. 2026.04.1.',
   }),
   deploymentMode: z.enum(['fresh', 'rerun', 'recovery']),
   target: z.object({
@@ -185,7 +185,7 @@ const obj20Document: Obj20TargetImportDocument = {
       id: 'run-obj20-001',
       environmentId: 'fmn-core',
       environmentName: 'FMN Core Target',
-      version: 'v1.0.0',
+      version: '2026.04.1',
       channel: 'ga',
       status: 'completed',
       deploymentMode: 'fresh',
@@ -228,12 +228,12 @@ const obj20Document: Obj20TargetImportDocument = {
       sourceBinding: {
         releaseProject: {
           name: 'dns-release',
-          revision: 'release/v1.0.0',
-          path: 'releases/v1.0.0',
+          revision: 'release/2026.04.1',
+          path: 'releases/2026.04.1',
         },
         configProject: {
           name: 'dns-config-fmn-core',
-          revision: 'env/fmn-core/v1.0.0',
+          revision: 'env/fmn-core/2026.04.1',
           path: 'environments/fmn-core',
         },
         appOfAppsRef: 'argocd/root-apps/dns-management-service',
@@ -250,7 +250,7 @@ const obj20Document: Obj20TargetImportDocument = {
       },
       recovery: {
         available: true,
-        previousStableVersion: 'v0.9.4',
+        previousStableVersion: '2026.03.4',
         commandHint: 'Zarf-Re-Deploy der Vorversion und erneuter Root-App Sync',
         note: 'Recovery bleibt vorbereitet, wurde in diesem Lauf aber nicht benoetigt.',
       },
@@ -263,7 +263,7 @@ const obj20Document: Obj20TargetImportDocument = {
       id: 'run-obj20-002',
       environmentId: 'fmn-staging',
       environmentName: 'FMN Staging Target',
-      version: 'v1.0.0-beta.1',
+      version: '2026.04.1',
       channel: 'beta',
       status: 'degraded',
       deploymentMode: 'rerun',
@@ -306,12 +306,12 @@ const obj20Document: Obj20TargetImportDocument = {
       sourceBinding: {
         releaseProject: {
           name: 'dns-release',
-          revision: 'release/v1.0.0-beta.1',
-          path: 'releases/v1.0.0-beta.1',
+          revision: 'release/2026.04.1',
+          path: 'releases/2026.04.1',
         },
         configProject: {
           name: 'dns-config-fmn-staging',
-          revision: 'env/fmn-staging/v1.0.0-beta.1',
+          revision: 'env/fmn-staging/2026.04.1',
           path: 'environments/fmn-staging',
         },
         appOfAppsRef: 'argocd/root-apps/dns-management-service-staging',
@@ -328,8 +328,8 @@ const obj20Document: Obj20TargetImportDocument = {
       },
       recovery: {
         available: true,
-        previousStableVersion: 'v0.9.4',
-        commandHint: 'Konfigurationsrevision auf env/fmn-staging/v0.9.4 zuruecksetzen und Root-App erneut synchronisieren',
+        previousStableVersion: '2026.03.4',
+        commandHint: 'Konfigurationsrevision auf env/fmn-staging/2026.03.4 zuruecksetzen und Root-App erneut synchronisieren',
         note: 'Re-Run ist erlaubt, solange zuerst die degradierte Child-Application bereinigt wird.',
       },
       notes: [
@@ -341,7 +341,7 @@ const obj20Document: Obj20TargetImportDocument = {
       id: 'run-obj20-003',
       environmentId: 'fmn-recovery',
       environmentName: 'FMN Recovery Target',
-      version: 'v1.0.0',
+      version: '2026.04.1',
       channel: 'ga',
       status: 'blocked',
       deploymentMode: 'recovery',
@@ -384,12 +384,12 @@ const obj20Document: Obj20TargetImportDocument = {
       sourceBinding: {
         releaseProject: {
           name: 'dns-release',
-          revision: 'release/v1.0.0',
-          path: 'releases/v1.0.0',
+          revision: 'release/2026.04.1',
+          path: 'releases/2026.04.1',
         },
         configProject: {
           name: 'dns-config-fmn-recovery',
-          revision: 'env/fmn-recovery/v1.0.0',
+          revision: 'env/fmn-recovery/2026.04.1',
           path: 'environments/fmn-recovery',
         },
         appOfAppsRef: 'argocd/root-apps/dns-management-service-recovery',
@@ -406,7 +406,7 @@ const obj20Document: Obj20TargetImportDocument = {
       },
       recovery: {
         available: true,
-        previousStableVersion: 'v0.9.4',
+        previousStableVersion: '2026.03.4',
         commandHint: 'Harbor-Zugang reparieren, dann Recovery-Lauf mit derselben Paketversion erneut starten',
         note: 'Kein partieller Import wurde ausgefuehrt.',
       },

@@ -80,7 +80,7 @@ Am Ende des Feature-Dokuments fügt QA die Test-Ergebnisse hinzu:
 **Production URL:** https://dns.prod.example.mil
 **Namespace:** dns-management
 **Argo App:** dns-management-service
-**Git Tag:** v1.0.0-OBJ-1
+**Git Tag:** 2026.04.1
 ```
 
 ## Workflow

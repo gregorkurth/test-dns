@@ -21,8 +21,7 @@ const maxOfflineDbAgeDays = Number.parseInt(
   10,
 )
 
-const semverPattern =
-  /^v(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?:-(?<prerelease>[0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?$/
+const releasePattern = /^(?<year>\d{4})\.(?<month>0[1-9]|1[0-2])\.(?<sequence>[1-9]\d*)$/
 
 function ensure(condition, message) {
   if (!condition) {
@@ -65,71 +64,27 @@ function ensureArtifactExists(relativePath, label, version) {
 }
 
 function parseVersion(version) {
-  const match = version.match(semverPattern)
-  ensure(match?.groups, `Ungueltige Version: ${version}`)
+  const match = version.match(releasePattern)
+  ensure(match?.groups, `Ungueltige Version (erwartet YYYY.MM.N): ${version}`)
   return {
-    major: Number(match.groups.major),
-    minor: Number(match.groups.minor),
-    patch: Number(match.groups.patch),
-    prerelease: match.groups.prerelease ?? null,
+    year: Number(match.groups.year),
+    month: Number(match.groups.month),
+    sequence: Number(match.groups.sequence),
   }
-}
-
-function comparePrereleaseToken(left, right) {
-  const leftNumeric = /^\d+$/.test(left)
-  const rightNumeric = /^\d+$/.test(right)
-  if (leftNumeric && rightNumeric) {
-    return Number(left) - Number(right)
-  }
-  if (leftNumeric) {
-    return -1
-  }
-  if (rightNumeric) {
-    return 1
-  }
-  return left.localeCompare(right)
 }
 
 function compareVersions(left, right) {
   const a = parseVersion(left)
   const b = parseVersion(right)
 
-  if (a.major !== b.major) {
-    return a.major - b.major
+  if (a.year !== b.year) {
+    return a.year - b.year
   }
-  if (a.minor !== b.minor) {
-    return a.minor - b.minor
+  if (a.month !== b.month) {
+    return a.month - b.month
   }
-  if (a.patch !== b.patch) {
-    return a.patch - b.patch
-  }
-  if (!a.prerelease && !b.prerelease) {
-    return 0
-  }
-  if (!a.prerelease) {
-    return 1
-  }
-  if (!b.prerelease) {
-    return -1
-  }
-
-  const leftTokens = a.prerelease.split('.')
-  const rightTokens = b.prerelease.split('.')
-  const maxLength = Math.max(leftTokens.length, rightTokens.length)
-
-  for (let index = 0; index < maxLength; index += 1) {
-    const leftToken = leftTokens[index]
-    const rightToken = rightTokens[index]
-    if (!leftToken) {
-      return -1
-    }
-    if (!rightToken) {
-      return 1
-    }
-    const diff = comparePrereleaseToken(leftToken, rightToken)
-    if (diff !== 0) {
-      return diff
-    }
+  if (a.sequence !== b.sequence) {
+    return a.sequence - b.sequence
   }
 
   return 0
@@ -153,7 +108,10 @@ function ensureScanResult(scan, name, version) {
 
 function validateBundle(bundle) {
   ensure(typeof bundle.version === 'string', 'Bundle Version fehlt')
-  ensure(semverPattern.test(bundle.version), `Bundle Version ungueltig: ${bundle.version}`)
+  ensure(
+    releasePattern.test(bundle.version),
+    `Bundle Version ungueltig (erwartet YYYY.MM.N): ${bundle.version}`,
+  )
   ensure(['ga', 'beta', 'rc'].includes(bundle.channel), `Bundle Kanal ungueltig: ${bundle.version}`)
 
   ensure(bundle.sbom?.available === true, `SBOM fehlt fuer ${bundle.version}`)

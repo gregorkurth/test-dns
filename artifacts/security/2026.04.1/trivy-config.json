@@ -1,0 +1,32 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": ".",
+  "ArtifactType": "filesystem",
+  "Metadata": {
+    "ImageConfig": {}
+  },
+  "Results": [
+    {
+      "Target": "k8s/",
+      "Class": "config",
+      "Type": "kubernetes",
+      "MisconfSummary": {
+        "Successes": 12,
+        "Failures": 0,
+        "Exceptions": 0
+      },
+      "Misconfigurations": []
+    },
+    {
+      "Target": "helm/",
+      "Class": "config",
+      "Type": "helm",
+      "MisconfSummary": {
+        "Successes": 8,
+        "Failures": 0,
+        "Exceptions": 0
+      },
+      "Misconfigurations": []
+    }
+  ]
+}

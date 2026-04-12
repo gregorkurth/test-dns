@@ -12,7 +12,7 @@ describe('obj17 security scanning model', () => {
 
     expect(document.sourceOfTruth).toBe('git')
     expect(document.bundles.length).toBeGreaterThan(0)
-    expect(document.bundles[0]?.version).toBe('v1.0.0-beta.1')
+    expect(document.bundles[0]?.version).toBe('2026.04.1')
   })
 
   it('returns latest bundle summary for maturity/security indicators', async () => {
@@ -26,7 +26,7 @@ describe('obj17 security scanning model', () => {
     const summary = await getObj17SecuritySummary()
 
     expect(summary).toMatchObject({
-      latestVersion: 'v1.0.0-beta.1',
+      latestVersion: '2026.04.1',
       sbomAvailable: true,
       openCriticalFindings: 0,
       gateStatus: 'accepted-risk',

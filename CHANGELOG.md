@@ -12,7 +12,7 @@ und verwendet SemVer (`vMAJOR.MINOR.PATCH`).
 - OBJ-13: API-Endpunkt `/api/v1/operator` mit Auth-Schutz (`viewer` oder hoeher).
 - OBJ-14: Release-Notices als Source of Truth mit CI-Check (`check:obj14`).
 
-## [v1.0.0-beta.1] - 2026-04-09
+## [2026.04.1] - 2026-04-09
 
 ### Added
 - Versionierte Update-Hinweise unter `docs/releases/UPDATE-NOTICES.json`.
@@ -21,7 +21,7 @@ und verwendet SemVer (`vMAJOR.MINOR.PATCH`).
 - Kubernetes-Operator-Grundgeruest (CRD, RBAC, Deployment, Lesesicht).
 - Auth/RBAC-Basis mit `local`/`oidc`/`hybrid` und geschuetzten API-Endpunkten.
 
-## [v0.9.0] - 2026-04-06
+## [2026.03.1] - 2026-04-06
 
 ### Added
 - Basisstand fuer Capabilities-, Testing- und Export-Dokumentation.

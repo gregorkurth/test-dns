@@ -1,6 +1,6 @@
 # Validation Matrix (Repo-Testnachweis)
 
-**Generiert am:** 2026-04-11T20:14:27.011Z
+**Generiert am:** 2026-04-12T09:27:38.926Z
 **Commit:** local
 **Quelle:** Git Repository (Single Source of Truth)
 
@@ -21,14 +21,14 @@
 |---|---|---|---|---|---|---|---|
 | OBJ-1 | CI/CD Pipeline | In Progress | Nein | - | 28/28/0/0 | 2026-04-11T20:10:59Z | In Arbeit |
 | OBJ-2 | Dokumentation | In Progress | Nein | - | 40/40/0/0 | 2026-04-11T20:10:59Z | In Arbeit |
-| OBJ-3 | REST API | Completed | Ja (2026-04-06) | YES | 46/46/0/0 | 2026-04-11T20:03:52Z | Validiert |
+| OBJ-3 | REST API | Completed | Ja (2026-04-06) | YES | 46/46/0/0 | 2026-04-12T09:27:38Z | Validiert |
 | OBJ-4 | Capabilities Dashboard | Completed | Ja (2026-04-06) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | Validiert |
 | OBJ-5 | Participant Configuration Form | Completed | Ja (2026-04-06) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | Validiert |
 | OBJ-6 | DNS Zone File Generator | In Review | Ja (2026-04-09) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | In Arbeit |
 | OBJ-7 | Requirements Traceability View | In Review | Ja (2026-04-09) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | In Arbeit |
 | OBJ-8 | Export & Download | In Review | Ja (2026-04-09) | NO | 92/92/0/0 | 2026-04-11T22:25:00Z | QA sagt Nein |
-| OBJ-9 | Manual Test Runner | In Review | Ja (2026-04-09) | NO | 7/7/0/0 | 2026-04-11T20:03:50Z | QA sagt Nein |
-| OBJ-23 | Test Execution Dashboard | Completed | Ja (2026-04-04) | YES | 47/47/0/0 | 2026-04-11T20:10:59Z | Validiert |
+| OBJ-9 | Manual Test Runner | In Review | Ja (2026-04-09) | NO | 7/7/0/0 | 2026-04-12T09:27:36Z | QA sagt Nein |
+| OBJ-23 | Test Execution Dashboard | Completed | Ja (2026-04-04) | YES | 47/47/0/0 | 2026-04-12T09:27:38Z | Validiert |
 | OBJ-24 | DNS Baseline Config Repository & Change History | In Review | Ja (2026-04-10) | NO | 92/92/0/0 | 2026-04-11T22:25:00Z | QA sagt Nein |
 | OBJ-10 | Kubernetes Deployment | In Review | Ja (2026-04-09) | NO | 44/44/0/0 | 2026-04-11T22:16:35Z | QA sagt Nein |
 | OBJ-11 | Monitoring & Observability (OpenTelemetry) | In Review | Ja (2026-04-09) | NO | 28/28/0/0 | 2026-04-11T20:10:59Z | QA sagt Nein |

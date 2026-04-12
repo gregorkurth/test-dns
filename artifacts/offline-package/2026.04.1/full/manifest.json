@@ -1,0 +1,69 @@
+{
+  "version": "2026.04.1",
+  "variant": "full",
+  "generatedAt": "2026-04-10T15:10:00Z",
+  "images": [
+    {
+      "name": "dns-management-service",
+      "reference": "harbor.fmn.local/fmn/dns-management-service@sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "required": true
+    },
+    {
+      "name": "dns-management-operator",
+      "reference": "harbor.fmn.local/fmn/dns-management-operator@sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "required": true
+    }
+  ],
+  "deploymentAssets": [
+    {
+      "path": "helm/dns-management-service",
+      "type": "helm-chart",
+      "sizeBytes": 32768,
+      "integrity": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "required": true
+    },
+    {
+      "path": "k8s/base",
+      "type": "kustomize-base",
+      "sizeBytes": 16384,
+      "integrity": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "required": true
+    },
+    {
+      "path": "artifacts/security/offline/trivy-db-2026-04-09.tar.zst",
+      "type": "offline-security-db",
+      "sizeBytes": 73400320,
+      "integrity": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "required": true
+    },
+    {
+      "path": "artifacts/security/2026.04.1",
+      "type": "security-bundle",
+      "sizeBytes": 24576,
+      "integrity": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "required": true
+    }
+  ],
+  "gitSources": [
+    {
+      "role": "release-project",
+      "repository": "gitea.fmn.local/releases/dns-management-service-release",
+      "revision": "refs/tags/2026.04.1"
+    },
+    {
+      "role": "configuration-project",
+      "repository": "gitea.fmn.local/config/dns-management-service-config",
+      "revision": "main"
+    }
+  ],
+  "integrity": [
+    {
+      "path": "zarf.yaml",
+      "sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+    },
+    {
+      "path": "artifacts/offline-package/2026.04.1/full/handover.json",
+      "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    }
+  ]
+}

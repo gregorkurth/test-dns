@@ -13,7 +13,7 @@ describe('OBJ-19 offline package metadata', () => {
     expect(document.service).toBe('DNS Management Service')
     expect(document.packages).toHaveLength(2)
     expect(document.packages[0]).toMatchObject({
-      version: 'v1.0.0-beta.1',
+      version: '2026.04.1',
       variant: 'full',
       importReady: true,
       releaseAssigned: true,
@@ -27,7 +27,7 @@ describe('OBJ-19 offline package metadata', () => {
     const summary = await getObj19OfflinePackageSummary()
 
     expect(summary.totalPackages).toBe(2)
-    expect(summary.latestVersion).toBe('v1.0.0-beta.1')
+    expect(summary.latestVersion).toBe('2026.04.1')
     expect(summary.variantsAvailable).toEqual(['full', 'minimal'])
     expect(summary.packagesWithOfflineDb).toBe(1)
   })

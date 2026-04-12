@@ -19,6 +19,7 @@ Ein Feature gilt erst als abgeschlossen, wenn alle Punkte geprueft sind.
 - [ ] Benutzerhandbuch geprueft und falls betroffen nachgezogen (`docs/user-manual/`)
 - [ ] Betriebs-/Technikdoku geprueft und falls betroffen nachgezogen (`docs/operations.md`, `docs/architecture.md`, `docs/release-process.md`)
 - [ ] QA hat Dokumentationsqualitaet mitgeprueft (vollstaendige Links, konsistente Begriffe, nachvollziehbare Ergebnisse)
+- [ ] Falls Release betroffen: Version folgt `YYYY.MM.N` und ist in Release-Doku konsistent gepflegt
 - [ ] Confluence-Export durchgefuehrt (falls gefordert)
 - [ ] Export im zentralen Log dokumentiert (`docs/exports/EXPORT-LOG.md`)
 

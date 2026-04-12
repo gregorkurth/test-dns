@@ -113,7 +113,7 @@ function buildInitialForm(
   return {
     environmentId: run?.environmentId ?? fallbackEnvironment?.id ?? 'fmn-core',
     environmentName: run?.environmentName ?? fallbackEnvironment?.name ?? 'FMN Core Target',
-    version: run?.version ?? 'v1.0.0',
+    version: run?.version ?? '2026.04.1',
     deploymentMode: run?.deploymentMode ?? ('fresh' as Obj20DeploymentMode),
     cluster: run?.target.cluster ?? 'fmn-core-cluster',
     namespace: run?.target.namespace ?? 'dns-prod',
@@ -124,12 +124,12 @@ function buildInitialForm(
     argocdUrl: run?.target.argocdUrl ?? 'https://argocd.fmn-core.example',
     releaseProjectName: run?.sourceBinding.releaseProject.name ?? 'dns-release',
     releaseProjectRevision:
-      run?.sourceBinding.releaseProject.revision ?? 'release/v1.0.0',
-    releaseProjectPath: run?.sourceBinding.releaseProject.path ?? 'releases/v1.0.0',
+      run?.sourceBinding.releaseProject.revision ?? 'release/2026.04.1',
+    releaseProjectPath: run?.sourceBinding.releaseProject.path ?? 'releases/2026.04.1',
     configProjectName:
       run?.sourceBinding.configProject.name ?? 'dns-config-fmn-core',
     configProjectRevision:
-      run?.sourceBinding.configProject.revision ?? 'env/fmn-core/v1.0.0',
+      run?.sourceBinding.configProject.revision ?? 'env/fmn-core/2026.04.1',
     configProjectPath:
       run?.sourceBinding.configProject.path ?? 'environments/fmn-core',
     appOfAppsRef:

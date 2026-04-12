@@ -13,7 +13,7 @@
 - OBJ-2: Dokumentation (arc42, Benutzerhandbuch, Export-Log und DoD-Nachweise)
 
 ## User Stories
-- Als Entwickler möchte ich ein Release durch das Setzen eines Git-Tags (`v1.2.3`) auslösen können, damit der Release-Prozess reproduzierbar und einfach ist.
+- Als Entwickler möchte ich ein Release durch das Setzen eines Git-Tags (`2026.04.1`) auslösen können, damit der Release-Prozess reproduzierbar und einfach ist.
 - Als Mission Network Operator möchte ich im GitLab-Release-Bereich alle Versionen mit Changelog und Download-Links finden.
 - Als Platform Engineer möchte ich wissen, welche Änderungen in einem Release enthalten sind, damit ich entscheide, ob ein Update nötig ist.
 - Als Entwickler möchte ich, dass der CHANGELOG automatisch aus Commit-Messages generiert wird.
@@ -25,8 +25,8 @@
 - Als Dokumentationsverantwortlicher moechte ich pro Release einen exportierbaren arc42-/Handbuch-Stand fuer Confluence-Kopie erhalten, damit Offline-Zielumgebungen dieselbe Doku-Version nutzen.
 
 ## Acceptance Criteria
-- [ ] Versionierung folgt SemVer (MAJOR.MINOR.PATCH)
-- [ ] Git-Tags folgen dem Format `v<MAJOR>.<MINOR>.<PATCH>` (z. B. `v1.0.0`)
+- [ ] Versionierung folgt dem verbindlichen Schema `YYYY.MM.N` (Jahr.Monat.fortlaufende Nummer)
+- [ ] Git-Tags folgen dem Format `YYYY.MM.N` (z. B. `2026.04.1`)
 - [ ] `CHANGELOG.md` im Repository-Root vorhanden und aktuell
 - [ ] CHANGELOG wird automatisch aus Conventional Commits generiert
 - [ ] GitLab Release wird automatisch via CI/CD Pipeline (OBJ-1) bei Tag-Push erstellt
@@ -34,7 +34,7 @@
 - [ ] Container-Image wird mit dem Release-Tag und `latest` getaggt
 - [ ] Release-Artefakte werden mit cosign signiert
 - [ ] Container-Image und Manifest sind OCI-konform nachweisbar (Media Types / Artifact-Inspection dokumentiert)
-- [ ] Pre-Release-Versionen folgen dem Format `v1.0.0-rc.1` oder `v1.0.0-beta.1`
+- [ ] Vorabstaende werden ueber `channel` und `status` gesteuert; die Version bleibt immer im Format `YYYY.MM.N`
 - [ ] SBOM wird bei jedem Release erzeugt (via `syft`) und als Release-Anhang beigefügt (OBJ-17)
 - [ ] Release wird nur veröffentlicht, wenn die Prüfung des finalen Artefaktinhalts erfolgreich war und ein Prüfbericht vorliegt (OBJ-22)
 - [ ] Container-Image wird nach erfolgreichen Security-Scans in Harbor veröffentlicht (OBJ-18)
@@ -88,7 +88,7 @@ Das Objekt koppelt Code-, Artefakt- und Dokumentationsstand zu einem gemeinsamen
 ```text
 Release Orchestration
 +-- Trigger Layer
-|   +-- Git Tag (SemVer / Pre-Release)
+|   +-- Git Tag (YYYY.MM.N)
 |   +-- Pipeline Start
 +-- Build & Package Layer
 |   +-- Container Image
@@ -116,7 +116,7 @@ Release Orchestration
 
 ### Release Data Model
 Der Release-Stand wird als Satz aus zusammengehoerigen Nachweisen betrachtet:
-- Version (SemVer, Kanal wie GA/Beta/RC).
+- Version (`YYYY.MM.N`, Kanal wie GA/Beta/RC).
 - Artefakte (Image, Helm, Manifeste, Zarf) inkl. Hashes und Signatur.
 - Sicherheitsnachweise (SBOM, Scan-Ergebnisse, Bewertungsentscheid).
 - Dokumentationsnachweise (Release Notes, Update-Hinweise, Export-Log).
@@ -152,7 +152,7 @@ Vor Freigabe sollte pruefbar sein:
 **Tester:** QA Engineer (AI)
 
 ### Acceptance Criteria Status
-- [x] SemVer-Format mit `v`-Praefix wird fuer Update-Notices validiert
+- [x] Release-Format `YYYY.MM.N` wird fuer Update-Notices validiert
 - [x] Versionierte Hinweisquelle `docs/releases/UPDATE-NOTICES.json` ist vorhanden und CI-geprueft
 - [x] `docs/exports/EXPORT-LOG.md` ist als zentraler Export-Nachweis eingebunden
 - [x] API-Endpunkt `/api/v1/releases` liefert Notice-/Summary-Daten
@@ -161,7 +161,7 @@ Vor Freigabe sollte pruefbar sein:
 - [x] `CHANGELOG.md` ist jetzt im Repo vorhanden
 - [ ] Vollautomatischer GitLab-Tag->Release-Flow mit realem Publish-Nachweis ist noch nicht durchgaengig nachgewiesen
 - [ ] Reale Signierung/OCI-/SBOM-/Security-Gates auf finalem Release-Lauf bleiben als Integrationsschritt offen
-- [ ] Finale Confluence-Kopie pro Release ist weiterhin manuell und fuer `v1.0.0-beta.1` noch `pending`
+- [ ] Finale Confluence-Kopie pro Release ist weiterhin manuell und fuer `2026.04.1` noch `pending`
 
 ### Edge Cases Status
 - [x] Ungueltige oder unsortierte Versionsdaten werden durch `check:obj14` abgefangen
@@ -192,7 +192,7 @@ Vor Freigabe sollte pruefbar sein:
 
 ## Implementation Update
 - Versionierte Release-Hinweisquelle unter `docs/releases/UPDATE-NOTICES.json` eingefuehrt.
-- Repo-Check `npm run check:obj14` validiert SemVer, Update-Hinweise, OCI-/Doku-Pfad und Export-Log-Verknuepfung.
+- Repo-Check `npm run check:obj14` validiert `YYYY.MM.N`, Update-Hinweise, OCI-/Doku-Pfad und Export-Log-Verknuepfung.
 - API-Endpunkt `/api/v1/releases` und eine kompakte Startseiten-Sicht fuer aktuelle Update-Hinweise ergaenzt.
 - CI fuehrt den OBJ-14-Check im Quality Gate und im tag-basierten Release Gate aus.
 

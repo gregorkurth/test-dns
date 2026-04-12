@@ -117,8 +117,7 @@ export interface Obj19OfflinePackageSummary {
 }
 
 const indexPath = path.join(process.cwd(), 'artifacts', 'offline-package', 'INDEX.json')
-const semverPattern =
-  /^v\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/
+const releaseVersionPattern = /^\d{4}\.(0[1-9]|1[0-2])\.[1-9]\d*$/
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
@@ -182,7 +181,7 @@ function ensureDigest(value: unknown, fieldName: string): string {
 
 function ensureVersion(value: unknown, fieldName: string): string {
   const version = ensureString(value, fieldName)
-  if (!semverPattern.test(version)) {
+  if (!releaseVersionPattern.test(version)) {
     throw new Error(`Invalid OBJ-19 version in ${fieldName}: ${version}`)
   }
   return version

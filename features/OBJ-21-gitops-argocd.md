@@ -103,7 +103,7 @@ Application (pro Teilkomponente):
 - Health-Check: Healthy / Degraded / Progressing / Missing
 
 Revisionsbindung:
-- Release-Projekt: semantischer Tag (z.B. v1.0.0)
+- Release-Projekt: Release-Tag im Format `YYYY.MM.N` (z.B. `2026.04.1`)
 - Konfigurations-Projekt: Branch oder separater Tag
 - Bindungs-Matrix: dokumentiert in docs/argocd.md
 ```

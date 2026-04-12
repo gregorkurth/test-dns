@@ -22,7 +22,7 @@ Ein Release ist erst fertig, wenn die technischen Artefakte, die Security-Nachwe
 
 1. Aenderungen mergen.
 2. Release-Version festlegen.
-3. Tag im SemVer-Format setzen.
+3. Tag im Format `YYYY.MM.N` setzen.
 4. Pipeline laeuft mit Build, Tests und Security-Pruefungen.
 5. SBOM und Security-Bericht erzeugen.
 6. Zarf-Paket bauen.

@@ -155,12 +155,12 @@ Release Security Flow (OBJ-17)
 - `npm run build` -> bestanden; Routen `/security-posture` und `/api/v1/security/scans` generiert
 - `npm run lint` -> bestanden
 - `npm run typecheck` -> bestanden
-- Dateisystem-Checks: `artifacts/security/` existiert mit Bundles fuer v1.0.0-beta.1 und v0.9.0
+- Dateisystem-Checks: `artifacts/security/` existiert mit Bundles fuer `2026.04.1` und `2026.03.1`
 
 ### Acceptance Criteria Status
 
 #### AC-1: SBOM pro Release versioniert abgelegt
-- [x] PASS - FIXED seit letzter QA. SBOM-Dateien existieren jetzt unter `artifacts/security/v1.0.0-beta.1/sbom.spdx.json` und `artifacts/security/v0.9.0/sbom.spdx.json`. `check:obj17` validiert Pfad-Existenz.
+- [x] PASS - FIXED seit letzter QA. SBOM-Dateien existieren jetzt unter `artifacts/security/2026.04.1/sbom.spdx.json` und `artifacts/security/2026.03.1/sbom.spdx.json`. `check:obj17` validiert Pfad-Existenz.
 
 #### AC-2: SBOM umfasst direkte und transitive Abhaengigkeiten
 - [ ] BUG: Die SBOM-Datei (327 Bytes) enthaelt nur den SPDX-Header und `creationInfo`, aber kein `packages`-Array. Es handelt sich um einen Stub, nicht um eine reale Abhaengigkeitsliste. Weder Application-Layer- noch Base-Image-Abhaengigkeiten sind enthalten.
@@ -184,7 +184,7 @@ Release Security Flow (OBJ-17)
 - [x] PASS - `check:obj17` erzwingt bei `criticalOpen > 0` einen `fail`-Gate-Status.
 
 #### AC-9: High-Findings erfordern dokumentierte Risikoentscheidung
-- [x] PASS - Bundle-Schema und Check erzwingen `acceptedRiskExpiresAt` und `owner` bei `accepted-risk`. Fuer v1.0.0-beta.1 nachgewiesen.
+- [x] PASS - Bundle-Schema und Check erzwingen `acceptedRiskExpiresAt` und `owner` bei `accepted-risk`. Fuer `2026.04.1` nachgewiesen.
 
 #### AC-10: Security-Artefakte als Release-Anhang und in OCI-Registry
 - [x] PASS (strukturell) - FIXED seit letzter QA. `release-gate` Job erzeugt Security-Evidence und laedt sie als GitHub Artifact hoch (`security-evidence-${{ github.ref_name }}`). OCI-Registry-Referenz ist im Bundle dokumentiert. Realer Upload-Nachweis nur via CI-Lauf moeglich.
@@ -240,9 +240,9 @@ Release Security Flow (OBJ-17)
 #### BUG-1: SBOM-Dateien sind Stubs ohne reale Abhaengigkeitslisten
 - **Severity:** High
 - **Steps to Reproduce:**
-  1. Oeffne `artifacts/security/v1.0.0-beta.1/sbom.spdx.json`.
+  1. Oeffne `artifacts/security/2026.04.1/sbom.spdx.json`.
   2. Expected: SPDX-Dokument mit `packages`-Array, das direkte und transitive Abhaengigkeiten listet.
-  3. Actual: Nur SPDX-Header (327 Bytes) ohne `packages`. Selbes Problem bei v0.9.0.
+  3. Actual: Nur SPDX-Header (327 Bytes) ohne `packages`. Selbes Problem bei `2026.03.1`.
 - **Priority:** Fix before deployment. Die SBOM muss mit echtem `syft` oder vergleichbarem Tool erzeugt werden.
 
 #### BUG-2: SBOM-Vollstaendigkeitspruefung fehlt im Check-Script
@@ -256,7 +256,7 @@ Release Security Flow (OBJ-17)
 #### BUG-3: Scan-Report-Dateien sind Stubs mit leeren Ergebnissen
 - **Severity:** Medium
 - **Steps to Reproduce:**
-  1. Oeffne `artifacts/security/v1.0.0-beta.1/semgrep.sarif` (209 Bytes).
+  1. Oeffne `artifacts/security/2026.04.1/semgrep.sarif` (209 Bytes).
   2. Expected: Echter SARIF-Report mit Scan-Ergebnissen oder dokumentierter Clean-Run.
   3. Actual: Stub mit leerem `results`-Array. Selbes Muster fuer npm-audit.json, trivy-config.json, trivy-image.json.
 - **Priority:** Fix before deployment. Die Stubs genuegen fuer die Struktur, aber nicht fuer einen echten Sicherheitsnachweis. Muss durch einen realen CI-Lauf ersetzt werden.

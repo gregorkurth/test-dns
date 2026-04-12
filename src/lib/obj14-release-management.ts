@@ -56,7 +56,8 @@ const UPDATE_NOTICES_PATH = path.join(
   'UPDATE-NOTICES.json',
 )
 
-const SEMVER_PATTERN =
+const RELEASE_VERSION_PATTERN = /^(\d{4})\.(0[1-9]|1[0-2])\.([1-9]\d*)$/
+const LEGACY_SEMVER_PATTERN =
   /^v(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?$/
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -88,8 +89,8 @@ function ensureBoolean(value: unknown, fieldName: string): boolean {
 }
 
 function ensureVersion(version: string): string {
-  if (!SEMVER_PATTERN.test(version)) {
-    throw new Error(`Version entspricht nicht SemVer mit v-Praefix: ${version}`)
+  if (!RELEASE_VERSION_PATTERN.test(version)) {
+    throw new Error(`Version entspricht nicht YYYY.MM.N: ${version}`)
   }
 
   return version
@@ -227,17 +228,28 @@ function parseReleaseNotice(value: unknown, index: number): ReleaseNotice {
 }
 
 function parseVersionParts(version: string) {
-  const match = version.match(SEMVER_PATTERN)
-  if (!match) {
-    throw new Error(`Version kann nicht verglichen werden: ${version}`)
+  const calendarMatch = version.match(RELEASE_VERSION_PATTERN)
+  if (calendarMatch) {
+    return {
+      kind: 'calendar' as const,
+      year: Number(calendarMatch[1]),
+      month: Number(calendarMatch[2]),
+      sequence: Number(calendarMatch[3]),
+    }
   }
 
-  return {
-    major: Number(match[1]),
-    minor: Number(match[2]),
-    patch: Number(match[3]),
-    prerelease: match[4] ?? null,
+  const semverMatch = version.match(LEGACY_SEMVER_PATTERN)
+  if (semverMatch) {
+    return {
+      kind: 'semver' as const,
+      major: Number(semverMatch[1]),
+      minor: Number(semverMatch[2]),
+      patch: Number(semverMatch[3]),
+      prerelease: semverMatch[4] ?? null,
+    }
   }
+
+  throw new Error(`Version kann nicht verglichen werden: ${version}`)
 }
 
 function comparePrereleaseToken(left: string, right: string): number {
@@ -247,11 +259,9 @@ function comparePrereleaseToken(left: string, right: string): number {
   if (leftIsNumber && rightIsNumber) {
     return Number(left) - Number(right)
   }
-
   if (leftIsNumber) {
     return -1
   }
-
   if (rightIsNumber) {
     return 1
   }
@@ -262,6 +272,23 @@ function comparePrereleaseToken(left: string, right: string): number {
 export function compareReleaseVersions(left: string, right: string): number {
   const a = parseVersionParts(left)
   const b = parseVersionParts(right)
+
+  if (a.kind !== b.kind) {
+    return a.kind === 'calendar' ? 1 : -1
+  }
+
+  if (a.kind === 'calendar' && b.kind === 'calendar') {
+    if (a.year !== b.year) {
+      return a.year - b.year
+    }
+    if (a.month !== b.month) {
+      return a.month - b.month
+    }
+    if (a.sequence !== b.sequence) {
+      return a.sequence - b.sequence
+    }
+    return 0
+  }
 
   if (a.major !== b.major) {
     return a.major - b.major

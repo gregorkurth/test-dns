@@ -23,7 +23,7 @@
 ## Acceptance Criteria
 - [ ] Harbor ist die einzige zulässige produktive Primär-Registry; andere Registries (z.B. GHCR) dürfen als Build-Staging-Target verwendet werden, gelten aber nicht als erfüllte Harbor-Anforderung
 - [ ] Container-Images werden in Harbor nach jedem erfolgreichen Build auf `main` oder bei Release-Tags gespeichert; der Push-Nachweis (Digest, Timestamp) ist im Release-Protokoll festgehalten
-- [ ] Images werden mit Git-SHA und Git-Tag getaggt (z.B. `image:sha-abc123`, `image:v1.2.0`, `image:latest`)
+- [ ] Images werden mit Git-SHA und Git-Tag getaggt (z.B. `image:sha-abc123`, `image:2026.04.1`, `image:latest`)
 - [ ] Container-Images und Push/Distribution sind OCI-konform (Open Container Initiative)
 - [ ] Container-Images werden erst nach bestandenen Security-Scans (OBJ-17) in Harbor veröffentlicht; Artefakte mit `publishState = pending` zählen nicht als "published after gate" — die Kennzahl umfasst ausschliesslich Artefakte mit echtem Publish-Nachweis
 - [ ] Weitere Release-Artefakte (Helm Charts, K8s-Manifest-Bundles, SBOMs, Security-Reports) werden in Nexus oder Harbor abgelegt; lokale `docs/`- oder `artifacts/`-Pfade gelten nicht als Registry-Ablage

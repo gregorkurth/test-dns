@@ -39,7 +39,7 @@ describe('OBJ-15 product website mapping', () => {
   it('builds view model from versioned release source with fallback maturity', async () => {
     const model = await getProductWebsiteViewModel()
 
-    expect(model.release.version).toMatch(/^v\d+\.\d+\.\d+/)
+    expect(model.release.version).toMatch(/^\d{4}\.(0[1-9]|1[0-2])\.[1-9]\d*$/)
     expect(model.release.channel).toMatch(/released|beta|preview/)
     expect(model.channelLegend).toHaveLength(3)
     expect(model.sourceOfTruth.releaseNoticesFile).toBe('docs/releases/UPDATE-NOTICES.json')

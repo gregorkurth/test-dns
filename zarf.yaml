@@ -7,7 +7,7 @@ kind: ZarfPackageConfig
 
 metadata:
   name: dns-management-service
-  version: v1.0.0-beta.1
+  version: 2026.04.1
   description: >
     Offline package baseline for the DNS Management Service.
     Includes OCI images, deployment assets, GitOps source snapshots and
@@ -62,9 +62,9 @@ components:
       In the real release flow these are exported from Git and attached as immutable payloads.
     required: true
     files:
-      - source: artifacts/offline-package/v1.0.0-beta.1/minimal/handover.json
+      - source: artifacts/offline-package/2026.04.1/minimal/handover.json
         target: /opt/dns-management/gitops/release-project-handover.json
-      - source: artifacts/offline-package/v1.0.0-beta.1/full/handover.json
+      - source: artifacts/offline-package/2026.04.1/full/handover.json
         target: /opt/dns-management/gitops/full-handover.json
 
   - name: argocd-manifests
@@ -103,8 +103,8 @@ components:
     files:
       - source: artifacts/security/offline/trivy-db-2026-04-09.tar.zst
         target: /opt/dns-management/security/trivy-db-2026-04-09.tar.zst
-      - source: artifacts/security/v1.0.0-beta.1
-        target: /opt/dns-management/security/v1.0.0-beta.1
+      - source: artifacts/security/2026.04.1
+        target: /opt/dns-management/security/2026.04.1
 
   - name: import-preflight
     description: >
@@ -114,11 +114,11 @@ components:
     files:
       - source: artifacts/offline-package/INDEX.json
         target: /opt/dns-management/metadata/offline-package-index.json
-      - source: artifacts/offline-package/v1.0.0-beta.1/minimal/manifest.json
+      - source: artifacts/offline-package/2026.04.1/minimal/manifest.json
         target: /opt/dns-management/metadata/minimal-manifest.json
-      - source: artifacts/offline-package/v1.0.0-beta.1/minimal/SHA256SUMS.txt
+      - source: artifacts/offline-package/2026.04.1/minimal/SHA256SUMS.txt
         target: /opt/dns-management/metadata/minimal-SHA256SUMS.txt
-      - source: artifacts/offline-package/v1.0.0-beta.1/full/manifest.json
+      - source: artifacts/offline-package/2026.04.1/full/manifest.json
         target: /opt/dns-management/metadata/full-manifest.json
-      - source: artifacts/offline-package/v1.0.0-beta.1/full/SHA256SUMS.txt
+      - source: artifacts/offline-package/2026.04.1/full/SHA256SUMS.txt
         target: /opt/dns-management/metadata/full-SHA256SUMS.txt

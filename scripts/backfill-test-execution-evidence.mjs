@@ -63,7 +63,7 @@ async function main() {
   const dashboard = await loadDashboardData()
   const generatedAt = new Date().toISOString()
   const runId = process.env.BACKFILL_RUN_ID?.trim() || 'QA-ALL-OBJECTS-20260411'
-  const releaseId = process.env.BACKFILL_RELEASE_ID?.trim() || 'v1.0.0-beta.1'
+  const releaseId = process.env.BACKFILL_RELEASE_ID?.trim() || '2026.04.1'
 
   const records = dashboard.tests
     .filter((test) => test.status === 'never_executed')

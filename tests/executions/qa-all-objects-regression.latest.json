@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-04-11T20:10:59.338Z",
   "runId": "QA-ALL-OBJECTS-20260411",
-  "releaseId": "v1.0.0-beta.1",
+  "releaseId": "2026.04.1",
   "records": [
     {
       "testType": "auto",
@@ -18,7 +18,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -38,7 +38,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -58,7 +58,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -78,7 +78,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -98,7 +98,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -118,7 +118,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -138,7 +138,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -158,7 +158,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -178,7 +178,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -198,7 +198,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -218,7 +218,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -238,7 +238,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -258,7 +258,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -278,7 +278,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -298,7 +298,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -318,7 +318,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -338,7 +338,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -358,7 +358,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -378,7 +378,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -398,7 +398,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -418,7 +418,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -438,7 +438,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -458,7 +458,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -478,7 +478,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -498,7 +498,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -518,7 +518,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -538,7 +538,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -558,7 +558,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -578,7 +578,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -598,7 +598,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -618,7 +618,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -638,7 +638,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -658,7 +658,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -678,7 +678,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -698,7 +698,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -718,7 +718,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -738,7 +738,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -758,7 +758,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -778,7 +778,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -798,7 +798,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -818,7 +818,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -838,7 +838,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -858,7 +858,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -878,7 +878,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -898,7 +898,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -918,7 +918,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -938,7 +938,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -958,7 +958,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -978,7 +978,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -998,7 +998,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1018,7 +1018,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1038,7 +1038,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1058,7 +1058,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1078,7 +1078,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1098,7 +1098,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1118,7 +1118,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1138,7 +1138,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1158,7 +1158,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1178,7 +1178,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1198,7 +1198,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1218,7 +1218,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1238,7 +1238,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1258,7 +1258,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1278,7 +1278,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1298,7 +1298,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1318,7 +1318,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1338,7 +1338,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1358,7 +1358,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1378,7 +1378,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1398,7 +1398,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1418,7 +1418,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1438,7 +1438,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1458,7 +1458,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1478,7 +1478,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1498,7 +1498,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1518,7 +1518,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1538,7 +1538,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1558,7 +1558,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1578,7 +1578,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1598,7 +1598,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1618,7 +1618,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1638,7 +1638,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1658,7 +1658,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1678,7 +1678,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1698,7 +1698,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1718,7 +1718,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1738,7 +1738,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1758,7 +1758,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1778,7 +1778,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1798,7 +1798,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1818,7 +1818,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1838,7 +1838,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1856,7 +1856,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1874,7 +1874,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1892,7 +1892,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1910,7 +1910,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1928,7 +1928,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1946,7 +1946,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1964,7 +1964,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -1982,7 +1982,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2000,7 +2000,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2018,7 +2018,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2036,7 +2036,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2054,7 +2054,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2072,7 +2072,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2090,7 +2090,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2108,7 +2108,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2126,7 +2126,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2144,7 +2144,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2162,7 +2162,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2180,7 +2180,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2198,7 +2198,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2216,7 +2216,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2234,7 +2234,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2252,7 +2252,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2270,7 +2270,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2288,7 +2288,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2306,7 +2306,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2324,7 +2324,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2342,7 +2342,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2360,7 +2360,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2378,7 +2378,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2396,7 +2396,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2414,7 +2414,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2432,7 +2432,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2450,7 +2450,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2468,7 +2468,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2486,7 +2486,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2504,7 +2504,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2522,7 +2522,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2538,7 +2538,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2554,7 +2554,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2570,7 +2570,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2586,7 +2586,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2602,7 +2602,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2618,7 +2618,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2634,7 +2634,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2650,7 +2650,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2666,7 +2666,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2682,7 +2682,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2698,7 +2698,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2714,7 +2714,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2730,7 +2730,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2746,7 +2746,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2762,7 +2762,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2778,7 +2778,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2794,7 +2794,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2810,7 +2810,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2826,7 +2826,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2842,7 +2842,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2858,7 +2858,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2874,7 +2874,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2890,7 +2890,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2906,7 +2906,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2922,7 +2922,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2938,7 +2938,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2954,7 +2954,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2970,7 +2970,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -2985,7 +2985,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3000,7 +3000,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3015,7 +3015,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3030,7 +3030,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3045,7 +3045,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3060,7 +3060,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3075,7 +3075,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3090,7 +3090,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3105,7 +3105,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3120,7 +3120,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3135,7 +3135,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3150,7 +3150,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3165,7 +3165,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3180,7 +3180,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3195,7 +3195,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3210,7 +3210,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3225,7 +3225,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3240,7 +3240,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3255,7 +3255,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3270,7 +3270,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3285,7 +3285,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3300,7 +3300,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3315,7 +3315,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3330,7 +3330,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3345,7 +3345,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3360,7 +3360,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3375,7 +3375,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3390,7 +3390,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3405,7 +3405,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3420,7 +3420,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3435,7 +3435,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3450,7 +3450,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3466,7 +3466,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3482,7 +3482,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3498,7 +3498,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3514,7 +3514,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3530,7 +3530,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3546,7 +3546,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3562,7 +3562,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3578,7 +3578,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3594,7 +3594,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3610,7 +3610,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3626,7 +3626,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3642,7 +3642,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3658,7 +3658,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3674,7 +3674,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3690,7 +3690,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3706,7 +3706,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3722,7 +3722,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3738,7 +3738,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3754,7 +3754,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3770,7 +3770,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3786,7 +3786,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3802,7 +3802,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3820,7 +3820,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3838,7 +3838,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3856,7 +3856,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3874,7 +3874,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3892,7 +3892,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3910,7 +3910,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3928,7 +3928,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3946,7 +3946,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3964,7 +3964,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -3982,7 +3982,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4000,7 +4000,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4018,7 +4018,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4036,7 +4036,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4054,7 +4054,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4072,7 +4072,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4090,7 +4090,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4108,7 +4108,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4126,7 +4126,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4144,7 +4144,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4162,7 +4162,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4180,7 +4180,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4198,7 +4198,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4216,7 +4216,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4234,7 +4234,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4252,7 +4252,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4270,7 +4270,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4288,7 +4288,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4306,7 +4306,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4324,7 +4324,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4342,7 +4342,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4360,7 +4360,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4378,7 +4378,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4396,7 +4396,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4414,7 +4414,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4432,7 +4432,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4450,7 +4450,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4468,7 +4468,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4486,7 +4486,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4504,7 +4504,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4522,7 +4522,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4541,7 +4541,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4560,7 +4560,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4579,7 +4579,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4598,7 +4598,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4617,7 +4617,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4636,7 +4636,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4652,7 +4652,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4668,7 +4668,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4684,7 +4684,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4700,7 +4700,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4717,7 +4717,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4734,7 +4734,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4751,7 +4751,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"
@@ -4768,7 +4768,7 @@
       "status": "passed",
       "executedAt": "2026-04-11T20:10:59.338Z",
       "runId": "QA-ALL-OBJECTS-20260411",
-      "releaseId": "v1.0.0-beta.1",
+      "releaseId": "2026.04.1",
       "note": "QA full-regression baseline after all-objects verification.",
       "evidencePath": "tests/executions/qa-all-objects-regression.latest.json",
       "source": "result_json"

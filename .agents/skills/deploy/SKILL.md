@@ -77,11 +77,11 @@ kubectl rollout status deploy/<app-name> -n <namespace>
 
 For first deployment, guide the user through these setup guides:
 
-**Error Tracking (5 min):** See [error-tracking.md](../../docs/production/error-tracking.md)
-**Security Headers (copy-paste):** See [security-headers.md](../../docs/production/security-headers.md)
-**Performance Check:** See [performance.md](../../docs/production/performance.md)
-**Database Optimization:** See [database-optimization.md](../../docs/production/database-optimization.md)
-**Rate Limiting (optional):** See [rate-limiting.md](../../docs/production/rate-limiting.md)
+**Error Tracking (5 min):** See [error-tracking.md](../../../docs/production/error-tracking.md)
+**Security Headers (copy-paste):** See [security-headers.md](../../../docs/production/security-headers.md)
+**Performance Check:** See [performance.md](../../../docs/production/performance.md)
+**Database Optimization:** See [database-optimization.md](../../../docs/production/database-optimization.md)
+**Rate Limiting (optional):** See [rate-limiting.md](../../../docs/production/rate-limiting.md)
 
 ### 7. Post-Deployment Bookkeeping
 - Update feature spec deployment section with:
@@ -91,8 +91,8 @@ For first deployment, guide the user through these setup guides:
   - image digest
   - deployment date
 - Update `features/INDEX.md`: Set status to **Deployed** when production rollout is done
-- Create git tag: `git tag -a v1.X.0-OBJ-X -m "Deploy OBJ-X: [Feature Name]"`
-- Push tag: `git push origin v1.X.0-OBJ-X`
+- Create git tag: `git tag -a 2026.04.3 -m "Release 2026.04.3: [Feature Name]"`
+- Push tag: `git push origin 2026.04.3`
 - Update export docs if required:
   - `docs/exports/EXPORT-LOG.md`
   - `docs/CONFLUENCE-EXPORT-GUIDE.md`

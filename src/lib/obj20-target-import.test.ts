@@ -26,7 +26,7 @@ describe('obj20 target import model', () => {
       degradedRuns: 1,
       blockedRuns: 1,
       recoveryRuns: 1,
-      latestVersion: 'v1.0.0',
+      latestVersion: '2026.04.1',
       latestCompletedEnvironment: 'FMN Core Target',
     })
   })
@@ -56,7 +56,7 @@ describe('obj20 target import model', () => {
     const result = buildObj20DryRun({
       environmentId: 'fmn-core',
       environmentName: 'FMN Core Target',
-      version: 'v1.0.1',
+      version: '2026.04.2',
       deploymentMode: 'fresh',
       target: {
         cluster: 'fmn-core-cluster',
@@ -69,12 +69,12 @@ describe('obj20 target import model', () => {
       sourceBinding: {
         releaseProject: {
           name: 'dns-release',
-          revision: 'release/v1.0.1',
-          path: 'releases/v1.0.1',
+          revision: 'release/2026.04.2',
+          path: 'releases/2026.04.2',
         },
         configProject: {
           name: 'dns-config-fmn-core',
-          revision: 'env/fmn-core/v1.0.1',
+          revision: 'env/fmn-core/2026.04.2',
           path: 'environments/fmn-core',
         },
         appOfAppsRef: 'argocd/root-apps/dns-management-service',

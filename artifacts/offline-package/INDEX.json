@@ -4,30 +4,30 @@
   "updatedAt": "2026-04-10T15:15:00Z",
   "packages": [
     {
-      "version": "v1.0.0-beta.1",
+      "version": "2026.04.1",
       "variant": "minimal",
       "channel": "beta",
       "createdAt": "2026-04-10T15:05:00Z",
       "ownerRole": "Release Manager",
       "targetEnvironment": "FMN lab / low-bandwidth validation",
-      "packageFile": "dist/zarf/dns-management-service-v1.0.0-beta.1-minimal-amd64.tar.zst",
+      "packageFile": "dist/zarf/dns-management-service-2026.04.1-minimal-amd64.tar.zst",
       "packageSizeBytes": 268435456,
-      "checksumFile": "artifacts/offline-package/v1.0.0-beta.1/minimal/SHA256SUMS.txt",
-      "manifestFile": "artifacts/offline-package/v1.0.0-beta.1/minimal/manifest.json",
-      "handoverFile": "artifacts/offline-package/v1.0.0-beta.1/minimal/handover.json",
+      "checksumFile": "artifacts/offline-package/2026.04.1/minimal/SHA256SUMS.txt",
+      "manifestFile": "artifacts/offline-package/2026.04.1/minimal/manifest.json",
+      "handoverFile": "artifacts/offline-package/2026.04.1/minimal/handover.json",
       "releaseAssigned": true,
       "pipelineArtifactStored": true,
       "importReady": true,
       "releaseProject": {
         "repository": "gitea.fmn.local/releases/dns-management-service-release",
-        "revision": "refs/tags/v1.0.0-beta.1"
+        "revision": "refs/tags/2026.04.1"
       },
       "configurationProject": {
         "repository": "gitea.fmn.local/config/dns-management-service-config",
         "revision": "main"
       },
       "security": {
-        "bundleVersion": "v1.0.0-beta.1",
+        "bundleVersion": "2026.04.1",
         "offlineDbIncluded": false,
         "offlineDbPath": null
       },
@@ -37,30 +37,30 @@
       ]
     },
     {
-      "version": "v1.0.0-beta.1",
+      "version": "2026.04.1",
       "variant": "full",
       "channel": "beta",
       "createdAt": "2026-04-10T15:10:00Z",
       "ownerRole": "Release Manager",
       "targetEnvironment": "FMN production / full offline security validation",
-      "packageFile": "dist/zarf/dns-management-service-v1.0.0-beta.1-full-amd64.tar.zst",
+      "packageFile": "dist/zarf/dns-management-service-2026.04.1-full-amd64.tar.zst",
       "packageSizeBytes": 402653184,
-      "checksumFile": "artifacts/offline-package/v1.0.0-beta.1/full/SHA256SUMS.txt",
-      "manifestFile": "artifacts/offline-package/v1.0.0-beta.1/full/manifest.json",
-      "handoverFile": "artifacts/offline-package/v1.0.0-beta.1/full/handover.json",
+      "checksumFile": "artifacts/offline-package/2026.04.1/full/SHA256SUMS.txt",
+      "manifestFile": "artifacts/offline-package/2026.04.1/full/manifest.json",
+      "handoverFile": "artifacts/offline-package/2026.04.1/full/handover.json",
       "releaseAssigned": true,
       "pipelineArtifactStored": true,
       "importReady": true,
       "releaseProject": {
         "repository": "gitea.fmn.local/releases/dns-management-service-release",
-        "revision": "refs/tags/v1.0.0-beta.1"
+        "revision": "refs/tags/2026.04.1"
       },
       "configurationProject": {
         "repository": "gitea.fmn.local/config/dns-management-service-config",
         "revision": "main"
       },
       "security": {
-        "bundleVersion": "v1.0.0-beta.1",
+        "bundleVersion": "2026.04.1",
         "offlineDbIncluded": true,
         "offlineDbPath": "artifacts/security/offline/trivy-db-2026-04-09.tar.zst"
       },

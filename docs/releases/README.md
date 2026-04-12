@@ -8,6 +8,13 @@ Diese Ablage ist die Git-Quelle fuer Release-Hinweise, Release-Checks und den Do
 - Der Export-Nachweis fuer Confluence-Kopien steht in `docs/exports/EXPORT-LOG.md`.
 - Confluence wird nie direkt als Primaerquelle gepflegt. Erst Git, dann Export.
 
+## Versionsregel
+
+- Jede Release-Version folgt dem festen Schema `YYYY.MM.N`.
+- `N` ist die fortlaufende Nummer innerhalb eines Monats.
+- Bei Monatswechsel beginnt `N` wieder bei `1`.
+- Kanal (`ga`, `beta`, `rc`) und Status (`planned`, `released`) werden getrennt von der Versionsnummer gepflegt.
+
 ## Was wird pro Release gepflegt?
 
 1. `UPDATE-NOTICES.json` aktualisieren

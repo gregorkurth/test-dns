@@ -16,7 +16,7 @@
 ## User Stories
 - Als Entwickler möchte ich, dass bei jedem Push auf einen Feature-Branch automatisch Lint, Tests und ein Build-Check ausgeführt werden, damit ich Fehler frühzeitig erkenne.
 - Als Entwickler möchte ich, dass bei einem Merge auf `main` ein Container-Image gebaut und in Harbor/Nexus gepusht wird, damit ein Deploy-Ready-Artefakt entsteht.
-- Als Platform Engineer möchte ich, dass die Pipeline bei einem Git-Tag (z. B. `v1.2.0`) automatisch ein Release erstellt, damit der Deploymentprozess reproduzierbar ist.
+- Als Platform Engineer möchte ich, dass die Pipeline bei einem Git-Tag (z. B. `2026.04.1`) automatisch ein Release erstellt, damit der Deploymentprozess reproduzierbar ist.
 - Als Teamleiter möchte ich den Pipeline-Status im Merge-Request (GitLab) oder Pull-Request (GitHub) sehen, damit ich auf einen Blick weiss, ob der Build grün ist.
 - Als Entwickler möchte ich, dass die Pipeline-Konfiguration im Repository liegt, damit sie versioniert und nachvollziehbar ist.
 - Als Security-Verantwortlicher möchte ich, dass die Pipeline automatisch Security-Scans und eine SBOM erzeugt, damit Schwachstellen frühzeitig erkannt werden.
@@ -27,7 +27,7 @@
 - [ ] CI/CD-Pipeline-Konfiguration liegt vollständig im Repository (`.github/workflows/` für GitHub Actions, `.gitlab-ci.yml` für GitLab CI)
 - [ ] Pipeline für Merge/Pull Requests: Lint, Type-Check, Tests, Build-Check
 - [ ] Pipeline für `main`-Branch: alle PR-Checks + Docker-Image-Build + Push in Harbor/Nexus
-- [ ] Pipeline für Tags (`v*`): alle main-Checks + Release-Erzeugung + SBOM + Security-Scans + Zarf-Paket-Build
+- [ ] Pipeline für Release-Tags (`YYYY.MM.N`): alle main-Checks + Release-Erzeugung + SBOM + Security-Scans + Zarf-Paket-Build
 - [ ] Tag-Pipeline erstellt ein versioniertes GitLab-Release als Fuehrungsrelease
 - [ ] Container-Image wird mit Multi-Stage-Dockerfile gebaut (Build-Stage + Runtime-Stage)
 - [ ] Image wird getaggt mit Git-SHA und Git-Tag (falls vorhanden)
@@ -47,7 +47,7 @@
 ## Edge Cases
 - Was passiert wenn ein Test flaky ist (sporadisch fehlschlägt)? → Kein automatisches Retry; Entwickler muss manuell neu starten
 - Was wenn Harbor/Nexus nicht erreichbar sind? → Pipeline-Schritt schlägt fehl; kein Image wird deployt; Fehler klar gemeldet
-- Was wenn ein Tag wie `v1.0.0` bereits existiert? → Pipeline schlägt fehl; keine doppelten Releases
+- Was wenn ein Tag wie `2026.04.1` bereits existiert? → Pipeline schlägt fehl; keine doppelten Releases
 - Was wenn der Security-Scan kritische Findings meldet? → Pipeline schlägt fehl; Release wird geblockt bis Findings bewertet sind
 - Was wenn die Artefaktprüfung unerlaubte Inhalte erkennt? → Pipeline schlägt fehl; Artefakt wird weder publiziert noch exportiert
 - Was wenn der Zarf-Build fehlschlägt? → Release-Pipeline bricht ab; kein unvollständiges Release wird veröffentlicht

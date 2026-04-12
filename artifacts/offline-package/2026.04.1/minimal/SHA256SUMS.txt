@@ -1,0 +1,7 @@
+# OBJ-19 example checksum set for the minimal package.
+9999999999999999999999999999999999999999999999999999999999999999  dist/zarf/dns-management-service-2026.04.1-minimal-amd64.tar.zst
+7777777777777777777777777777777777777777777777777777777777777777  zarf.yaml
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  docs/zarf.md
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb  docs/offline-install.md
+8888888888888888888888888888888888888888888888888888888888888888  artifacts/offline-package/2026.04.1/minimal/handover.json
+cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc  artifacts/offline-package/2026.04.1/minimal/manifest.json

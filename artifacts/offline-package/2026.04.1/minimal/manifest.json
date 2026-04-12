@@ -1,0 +1,69 @@
+{
+  "version": "2026.04.1",
+  "variant": "minimal",
+  "generatedAt": "2026-04-10T15:05:00Z",
+  "images": [
+    {
+      "name": "dns-management-service",
+      "reference": "harbor.fmn.local/fmn/dns-management-service@sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "required": true
+    },
+    {
+      "name": "dns-management-operator",
+      "reference": "harbor.fmn.local/fmn/dns-management-operator@sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "required": false
+    }
+  ],
+  "deploymentAssets": [
+    {
+      "path": "helm/dns-management-service",
+      "type": "helm-chart",
+      "sizeBytes": 32768,
+      "integrity": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "required": true
+    },
+    {
+      "path": "k8s/base",
+      "type": "kustomize-base",
+      "sizeBytes": 16384,
+      "integrity": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "required": true
+    },
+    {
+      "path": "docs/zarf.md",
+      "type": "documentation",
+      "sizeBytes": 4096,
+      "integrity": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+      "required": true
+    },
+    {
+      "path": "docs/offline-install.md",
+      "type": "documentation",
+      "sizeBytes": 5120,
+      "integrity": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+      "required": true
+    }
+  ],
+  "gitSources": [
+    {
+      "role": "release-project",
+      "repository": "gitea.fmn.local/releases/dns-management-service-release",
+      "revision": "refs/tags/2026.04.1"
+    },
+    {
+      "role": "configuration-project",
+      "repository": "gitea.fmn.local/config/dns-management-service-config",
+      "revision": "main"
+    }
+  ],
+  "integrity": [
+    {
+      "path": "zarf.yaml",
+      "sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+    },
+    {
+      "path": "artifacts/offline-package/2026.04.1/minimal/handover.json",
+      "sha256": "8888888888888888888888888888888888888888888888888888888888888888"
+    }
+  ]
+}

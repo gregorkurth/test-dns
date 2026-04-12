@@ -12,7 +12,7 @@ describe('OBJ-18 registry data model', () => {
 
     expect(data.summary.primaryRegistry).toBe('ghcr.io')
     expect(data.summary.totalArtifacts).toBeGreaterThan(0)
-    expect(data.summary.versions).toContain('v1.0.0-beta.1')
+    expect(data.summary.versions).toContain('2026.04.1')
     expect(
       data.records.some((record) => record.artifactType === 'oci-image'),
     ).toBe(true)

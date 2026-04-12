@@ -13,14 +13,14 @@ describe('OBJ-22 publish gate reports', () => {
 
     expect(index.service).toBe('DNS Management Service')
     expect(index.reports.length).toBeGreaterThanOrEqual(2)
-    expect(index.reports.some((report) => report.version === 'v1.0.0-beta.1')).toBe(true)
+    expect(index.reports.some((report) => report.version === '2026.04.1')).toBe(true)
   })
 
   it('returns the latest report and exposes blocking state', async () => {
     const latest = await getLatestObj22GateReport()
 
     expect(latest).not.toBeNull()
-    expect(latest?.version).toBe('v1.0.0-beta.1')
+    expect(latest?.version).toBe('2026.04.1')
     expect(latest?.decision).toBe('fail')
     expect(latest?.blockPublish).toBe(true)
   })
@@ -37,6 +37,6 @@ describe('OBJ-22 publish gate reports', () => {
 
     expect(summary.totalReports).toBeGreaterThanOrEqual(2)
     expect(summary.releaseDecisions.fail).toBeGreaterThanOrEqual(1)
-    expect(summary.blockedVersions).toContain('v1.0.0-beta.1')
+    expect(summary.blockedVersions).toContain('2026.04.1')
   })
 })

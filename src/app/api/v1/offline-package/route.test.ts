@@ -18,7 +18,7 @@ describe('OBJ-19 offline package API', () => {
     const body = await response.json()
     expect(body.data.summary).toMatchObject({
       totalPackages: 2,
-      latestVersion: 'v1.0.0-beta.1',
+      latestVersion: '2026.04.1',
     })
     expect(body.data.packages).toHaveLength(2)
   })

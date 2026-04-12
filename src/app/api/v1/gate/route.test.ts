@@ -49,7 +49,7 @@ describe('OBJ-22 gate API', () => {
     expect(response.status).toBe(200)
     const body = await response.json()
     expect(body.data.summary.totalReports).toBeGreaterThanOrEqual(2)
-    expect(body.data.latest.version).toBe('v1.0.0-beta.1')
+    expect(body.data.latest.version).toBe('2026.04.1')
   })
 
   it('filters by decision and artifact kind', async () => {
