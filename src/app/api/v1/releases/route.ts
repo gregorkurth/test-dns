@@ -4,6 +4,7 @@ import {
   enforceRateLimit,
   handleUnexpectedApiError,
 } from '@/lib/obj3-api'
+import { requireSession } from '@/lib/obj12-auth'
 import {
   getLatestReleaseNotice,
   getReleaseNotices,
@@ -19,6 +20,11 @@ export async function GET(request: Request) {
   const rateLimited = enforceRateLimit(request, { namespace: 'api-v1-releases' })
   if (rateLimited) {
     return rateLimited
+  }
+
+  const authResult = await requireSession(request, 'viewer')
+  if (!authResult.ok) {
+    return authResult.response
   }
 
   try {

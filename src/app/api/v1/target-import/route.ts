@@ -6,6 +6,7 @@ import {
   parseJsonBody,
   toValidationIssues,
 } from '@/lib/obj3-api'
+import { requireSession } from '@/lib/obj12-auth'
 import {
   buildObj20DryRun,
   getLatestObj20TargetImportRun,
@@ -37,6 +38,11 @@ export async function GET(request: Request) {
   })
   if (rateLimited) {
     return rateLimited
+  }
+
+  const authResult = await requireSession(request, 'viewer')
+  if (!authResult.ok) {
+    return authResult.response
   }
 
   try {
@@ -98,6 +104,11 @@ export async function POST(request: Request) {
   })
   if (rateLimited) {
     return rateLimited
+  }
+
+  const authResult = await requireSession(request, 'operator')
+  if (!authResult.ok) {
+    return authResult.response
   }
 
   const parsedBody = await parseJsonBody<unknown>(request)

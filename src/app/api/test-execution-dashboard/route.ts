@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 
+import { requireSession } from '@/lib/obj12-auth'
 import { loadTestExecutionDashboardData } from '@/lib/test-execution-dashboard'
 
 export const dynamic = 'force-dynamic'
@@ -73,6 +74,11 @@ export async function GET(request: Request) {
         },
       },
     )
+  }
+
+  const authResult = await requireSession(request, 'viewer')
+  if (!authResult.ok) {
+    return authResult.response
   }
 
   try {
