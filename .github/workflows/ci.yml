@@ -82,17 +82,23 @@ jobs:
         run: npm run build
 
       - name: Start + Smoke pruefen
+        env:
+          OBJ12_SESSION_SECRET: ${{ secrets.OBJ12_SESSION_SECRET || 'ci-smoke-test-secret-not-for-production-32c' }}
+          OBJ12_AUTH_MODE: local
         run: |
           npm run start &
           APP_PID=$!
           sleep 3
+          # Oeffentliche Seiten und Endpunkte: 200 erwartet
           curl -fsS -I http://127.0.0.1:3000/
           curl -fsS -I http://127.0.0.1:3000/registry
           curl -fsS -I http://127.0.0.1:3000/participant-config
           curl -fsS -I http://127.0.0.1:3000/test-execution-dashboard
           curl -fsS -I http://127.0.0.1:3000/api/v1
-          curl -fsS http://127.0.0.1:3000/api/v1/registry > /dev/null
           curl -fsS -I http://127.0.0.1:3000/api/v1/swagger
+          # Geschuetzte Endpunkte: 401 erwartet (beweist Auth-Enforcement)
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3000/api/v1/registry)
+          [ "$STATUS" = "401" ] || { echo "FAIL: /api/v1/registry erwartete 401, bekam $STATUS"; kill $APP_PID; exit 1; }
           kill $APP_PID
 
   image-build:

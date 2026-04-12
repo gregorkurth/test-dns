@@ -110,9 +110,13 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
 
     tmpDataDir = await fs.mkdtemp(path.join(os.tmpdir(), 'obj3-api-'))
     process.env.OBJ3_DATA_DIR = tmpDataDir
-    process.env.OBJ12_SESSION_SECRET = 'vitest-obj12-secret'
+    process.env.OBJ12_SESSION_SECRET = 'vitest-obj12-auth-test-secret-min32chars'
     delete process.env.OBJ12_AUTH_MODE
-    delete process.env.OBJ12_LOCAL_USERS_JSON
+    process.env.OBJ12_LOCAL_USERS_JSON = JSON.stringify([
+      { username: 'viewer', role: 'viewer', password: 'viewer-demo' },
+      { username: 'operator', role: 'operator', password: 'operator-demo' },
+      { username: 'admin', role: 'admin', password: 'admin-demo' },
+    ])
     delete process.env.OBJ12_SESSION_TTL_SECONDS
     delete process.env.OBJ12_SESSION_TTL_HOURS
     delete process.env.OBJ12_OIDC_ISSUER
@@ -192,6 +196,7 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
   it('accepts an oidc-compatible token exchange and maps roles', async () => {
     process.env.OBJ12_OIDC_ISSUER = 'https://sso.example.test/realms/dns'
     process.env.OBJ12_OIDC_AUDIENCE = 'dns-management-service'
+    process.env.OBJ12_OIDC_ALLOW_UNSIGNED_TOKEN = 'true'
 
     const oidcToken = createOidcToken({
       sub: 'oidc-user-1',
@@ -327,15 +332,17 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
   })
 
   it('validates release notice query parameters', async () => {
+    const viewerToken = await createAccessToken('viewer')
+
     const invalidChannelResponse = await getReleaseNotices(
-      createRequest('/api/v1/releases?channel=preview'),
+      createRequest('/api/v1/releases?channel=preview', { headers: authHeaders(viewerToken) }),
     )
     expect(invalidChannelResponse.status).toBe(422)
     const invalidChannelBody = await invalidChannelResponse.json()
     expect(invalidChannelBody.error).toMatchObject({ code: 'INVALID_RELEASE_CHANNEL' })
 
     const invalidLimitResponse = await getReleaseNotices(
-      createRequest('/api/v1/releases?limit=0'),
+      createRequest('/api/v1/releases?limit=0', { headers: authHeaders(viewerToken) }),
     )
     expect(invalidLimitResponse.status).toBe(422)
     const invalidLimitBody = await invalidLimitResponse.json()
@@ -393,7 +400,10 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
   })
 
   it('serves product website data from versioned release sources', async () => {
-    const response = await getProductWebsite(createRequest('/api/v1/product-website'))
+    const viewerToken = await createAccessToken('viewer')
+    const response = await getProductWebsite(
+      createRequest('/api/v1/product-website', { headers: authHeaders(viewerToken) }),
+    )
     expect(response.status).toBe(200)
     const body = await response.json()
     expect(body.data).toMatchObject({
@@ -678,6 +688,9 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
   })
 
   it('serves a telemetry probe with structured observability metadata', async () => {
+    // Token vor NODE_ENV=production holen, da der 20-Zeichen-Secret sonst zu kurz wäre
+    const viewerToken = await createAccessToken('viewer')
+
     const previousTelemetryEnv = {
       OTEL_SERVICE_NAME: process.env.OTEL_SERVICE_NAME,
       OTEL_EXPORT_MODE: process.env.OTEL_EXPORT_MODE,
@@ -700,7 +713,9 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     const consoleSpy = vi.spyOn(console, 'info').mockImplementation(() => {})
 
     try {
-      const response = await getTelemetry(createRequest('/api/v1/telemetry'))
+      const response = await getTelemetry(
+        createRequest('/api/v1/telemetry', { headers: authHeaders(viewerToken) }),
+      )
 
       expect(response.status).toBe(200)
       const body = await response.json()

@@ -6,6 +6,13 @@ vi.mock('@/lib/test-execution-dashboard', () => ({
   loadTestExecutionDashboardData,
 }))
 
+vi.mock('@/lib/obj12-auth', () => ({
+  requireSession: vi.fn().mockResolvedValue({
+    ok: true,
+    session: { username: 'viewer', role: 'viewer', provider: 'local' },
+  }),
+}))
+
 function createRequest(clientId = 'qa-obj23-client'): Request {
   return new Request('http://localhost/api/test-execution-dashboard', {
     headers: {

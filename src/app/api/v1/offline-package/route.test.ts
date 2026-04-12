@@ -1,4 +1,11 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
+
+vi.mock('@/lib/obj12-auth', () => ({
+  requireSession: vi.fn().mockResolvedValue({
+    ok: true,
+    session: { username: 'viewer', role: 'viewer', provider: 'local' },
+  }),
+}))
 
 import { GET } from '@/app/api/v1/offline-package/route'
 
