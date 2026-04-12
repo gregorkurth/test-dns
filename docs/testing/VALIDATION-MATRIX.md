@@ -1,6 +1,6 @@
 # Validation Matrix (Repo-Testnachweis)
 
-**Generiert am:** 2026-04-12T09:27:38.926Z
+**Generiert am:** 2026-04-12T16:50:35.443Z
 **Commit:** local
 **Quelle:** Git Repository (Single Source of Truth)
 
@@ -24,12 +24,12 @@
 | OBJ-3 | REST API | Completed | Ja (2026-04-06) | YES | 46/46/0/0 | 2026-04-12T09:27:38Z | Validiert |
 | OBJ-4 | Capabilities Dashboard | Completed | Ja (2026-04-06) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | Validiert |
 | OBJ-5 | Participant Configuration Form | Completed | Ja (2026-04-06) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | Validiert |
-| OBJ-6 | DNS Zone File Generator | In Review | Ja (2026-04-09) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | In Arbeit |
-| OBJ-7 | Requirements Traceability View | In Review | Ja (2026-04-09) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | In Arbeit |
-| OBJ-8 | Export & Download | In Review | Ja (2026-04-09) | NO | 92/92/0/0 | 2026-04-11T22:25:00Z | QA sagt Nein |
-| OBJ-9 | Manual Test Runner | In Review | Ja (2026-04-09) | NO | 7/7/0/0 | 2026-04-12T09:27:36Z | QA sagt Nein |
+| OBJ-6 | DNS Zone File Generator | Completed | Ja (2026-04-09) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | Validiert |
+| OBJ-7 | Requirements Traceability View | Completed | Ja (2026-04-09) | YES | 92/92/0/0 | 2026-04-11T22:25:00Z | Validiert |
+| OBJ-8 | Export & Download | Completed | Ja (2026-04-09) | NO | 92/92/0/0 | 2026-04-11T22:25:00Z | QA sagt Nein |
+| OBJ-9 | Manual Test Runner | Completed | Ja (2026-04-09) | NO | 7/7/0/0 | 2026-04-12T09:27:36Z | QA sagt Nein |
 | OBJ-23 | Test Execution Dashboard | Completed | Ja (2026-04-04) | YES | 47/47/0/0 | 2026-04-12T09:27:38Z | Validiert |
-| OBJ-24 | DNS Baseline Config Repository & Change History | In Review | Ja (2026-04-10) | NO | 92/92/0/0 | 2026-04-11T22:25:00Z | QA sagt Nein |
+| OBJ-24 | DNS Baseline Config Repository & Change History | In Review | Ja (2026-04-10) | - | 92/92/0/0 | 2026-04-11T22:25:00Z | In Arbeit |
 | OBJ-10 | Kubernetes Deployment | In Review | Ja (2026-04-09) | NO | 44/44/0/0 | 2026-04-11T22:16:35Z | QA sagt Nein |
 | OBJ-11 | Monitoring & Observability (OpenTelemetry) | In Review | Ja (2026-04-09) | NO | 28/28/0/0 | 2026-04-11T20:10:59Z | QA sagt Nein |
 | OBJ-25 | Helm Charts fuer Kubernetes Deployment | In Review | Ja (2026-04-10) | NO | 44/44/0/0 | 2026-04-11T22:16:35Z | QA sagt Nein |
@@ -37,14 +37,15 @@
 | OBJ-12 | Security & Authentifizierung | In Review | Ja (2026-04-09) | NO | 32/32/0/0 | 2026-04-11T20:10:59Z | QA sagt Nein |
 | OBJ-13 | Kubernetes Operator | In Review | Ja (2026-04-09) | NO | 44/44/0/0 | 2026-04-11T22:16:35Z | QA sagt Nein |
 | OBJ-14 | Release Management | In Review | Ja (2026-04-09) | NO | 28/28/0/0 | 2026-04-11T20:10:59Z | QA sagt Nein |
-| OBJ-15 | Produkt-Website | In Review | Ja (2026-04-10) | YES | 40/40/0/0 | 2026-04-11T20:10:59Z | In Arbeit |
-| OBJ-16 | Maturitätsstatus / Reifegradübersicht | In Review | Ja (2026-04-10) | YES | 40/40/0/0 | 2026-04-11T20:10:59Z | In Arbeit |
+| OBJ-15 | Produkt-Website | Completed | Ja (2026-04-10) | YES | 40/40/0/0 | 2026-04-11T20:10:59Z | Validiert |
+| OBJ-16 | Maturitätsstatus / Reifegradübersicht | Completed | Ja (2026-04-10) | YES | 40/40/0/0 | 2026-04-11T20:10:59Z | Validiert |
 | OBJ-17 | SBOM & Security-Scanning | In Review | Ja (2026-04-10) | NO | 6/6/0/0 | 2026-04-11T20:10:59Z | QA sagt Nein |
 | OBJ-22 | Release-Artefaktprüfung / Publish-Gate | In Review | Ja (2026-04-10) | NO | 6/6/0/0 | 2026-04-11T20:10:59Z | QA sagt Nein |
 | OBJ-18 | Artefakt-Registry (Harbor / Nexus) | In Review | Ja (2026-04-10) | NO | 6/6/0/0 | 2026-04-11T20:10:59Z | QA sagt Nein |
 | OBJ-19 | Zarf-Paket / Offline-Weitergabe | In Progress | Nein | - | 8/8/0/0 | 2026-04-11T20:10:59Z | In Arbeit |
 | OBJ-20 | Zielumgebung / Import / Rehydrierung | In Review | Ja (2026-04-10) | NO | 8/8/0/0 | 2026-04-11T20:10:59Z | QA sagt Nein |
 | OBJ-21 | GitOps / Argo CD / App-of-Apps | In Review | Ja (2026-04-10) | NO | 4/4/0/0 | 2026-04-11T20:10:59Z | QA sagt Nein |
+| OBJ-27 | Dokumentationsportal (MkDocs in Next.js) | Planned | Nein | - | 0/0/0/0 | - | Kein Testfall verknuepft |
 
 ## Statusregeln
 

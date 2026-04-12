@@ -14,6 +14,14 @@ const collectorUrl = `http://127.0.0.1:${collectorPort}`
 const spoolDir =
   process.env.OBJ11_SMOKE_SPOOL_DIR?.trim() ||
   path.join(os.tmpdir(), `obj11-smoke-spool-${Date.now()}`)
+const defaultLocalUsersJson = JSON.stringify([
+  {
+    username: 'viewer',
+    role: 'viewer',
+    displayName: 'Observability Smoke Viewer',
+    password: 'viewer-demo',
+  },
+])
 
 const collectorRequests = []
 
@@ -61,6 +69,18 @@ function spawnAppServer() {
       env: {
         ...process.env,
         NODE_ENV: 'development',
+        OBJ12_AUTH_MODE:
+          process.env.OBJ11_SMOKE_AUTH_MODE ||
+          process.env.OBJ12_AUTH_MODE ||
+          'local',
+        OBJ12_SESSION_SECRET:
+          process.env.OBJ11_SMOKE_SESSION_SECRET ||
+          process.env.OBJ12_SESSION_SECRET ||
+          'obj11-smoke-session-secret-0123456789',
+        OBJ12_LOCAL_USERS_JSON:
+          process.env.OBJ11_SMOKE_LOCAL_USERS_JSON ||
+          process.env.OBJ12_LOCAL_USERS_JSON ||
+          defaultLocalUsersJson,
         OTEL_EXPORT_MODE: 'clickhouse',
         OTEL_EXPORT_ENDPOINT: collectorUrl,
         OTEL_EXPORT_TIMEOUT_MS: '2500',

@@ -1,8 +1,8 @@
 # OBJ-6: DNS Zone File Generator
 
-## Status: In Review
+## Status: Completed
 **Created:** 2026-03-17
-**Last Updated:** 2026-04-09
+**Last Updated:** 2026-04-12
 
 ## Dependencies
 - OBJ-5 (Participant Configuration Form) - Konfigurationsdaten werden als Input verwendet

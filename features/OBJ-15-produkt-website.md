@@ -1,8 +1,8 @@
 # OBJ-15: Produkt-Website
 
-## Status: In Review
+## Status: Completed
 **Created:** 2026-04-03
-**Last Updated:** 2026-04-09
+**Last Updated:** 2026-04-12
 
 ## Dependencies
 - OBJ-4: Capabilities Dashboard (Navigation und konsistente Einstiegspunkte)

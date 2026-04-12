@@ -1,8 +1,8 @@
 # OBJ-8: Export & Download
 
-## Status: In Review
+## Status: Completed
 **Created:** 2026-03-17
-**Last Updated:** 2026-04-09
+**Last Updated:** 2026-04-12
 
 ## Dependencies
 - OBJ-5 (Participant Configuration Form) – Konfigurationsdaten
