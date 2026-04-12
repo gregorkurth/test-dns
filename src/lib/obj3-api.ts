@@ -29,6 +29,11 @@ interface RateLimitBucket {
 
 const DEFAULT_RATE_LIMIT_WINDOW_MS = 60_000
 const DEFAULT_RATE_LIMIT_MAX_REQUESTS = 60
+// BEKANNTE EINSCHRÄNKUNG (S-11): Rate-Limiting ist in-memory pro Prozess.
+// Bei Multi-Replica-Deployments (Helm replicaCount > 1) sind die Limits pro Replica
+// wirksam – ein Angreifer kann effektiv replicaCount × Limit Anfragen senden.
+// Bei Server-Restart wird der Zähler zurückgesetzt. Für Produktionsumgebungen
+// mit erhöhter Bedrohungslage: Shared Store (z.B. Redis) verwenden.
 const rateLimitStore = new Map<string, RateLimitBucket>()
 
 function createRequestId(): string {

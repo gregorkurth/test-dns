@@ -88,6 +88,10 @@ type Obj12VerifyResult = Obj12VerifyResultSuccess | Obj12VerifyResultFailure
 const DEFAULT_SESSION_TTL_SECONDS = 8 * 60 * 60
 const MIN_PRODUCTION_SESSION_SECRET_LENGTH = 32
 const OIDC_JWKS_CACHE_TTL_MS = 5 * 60 * 1000
+// BEKANNTE EINSCHRÄNKUNG (S-10): Session-Revocations sind nur in-memory gespeichert.
+// Bei Server-Restart oder in Multi-Replica-Deployments (Helm replicaCount > 1) können
+// abgemeldete Tokens bis zum natürlichen Ablauf (OBJ12_SESSION_TTL_HOURS) wieder
+// gültig sein. Für erhöhte Sicherheit: Shared Store (z.B. Redis) verwenden.
 const revokedSessionTokens = new Map<string, number>()
 let oidcJwksCache:
   | {
