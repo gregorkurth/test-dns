@@ -238,16 +238,18 @@ jobs:
       - name: Validation-Matrix committen
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [ "$(git rev-parse --abbrev-ref HEAD)" = "HEAD" ]; then
-            git checkout -B main origin/main
-          fi
+          git fetch origin main
+          git switch -C ci-validation-matrix
           git add docs/testing/VALIDATION-MATRIX.md
           if ! git diff --staged --quiet; then
             git commit -m "chore: validation matrix aktualisiert [skip ci]"
-            git pull --rebase origin main
+            if ! git rebase origin/main; then
+              echo "::warning::Rebase auf origin/main fehlgeschlagen; Validation-Matrix Auto-Commit wird uebersprungen."
+              git rebase --abort || true
+              exit 0
+            fi
             if ! git push origin HEAD:main; then
               echo "::warning::Validation-Matrix konnte nicht automatisch nach main gepusht werden."
             fi
