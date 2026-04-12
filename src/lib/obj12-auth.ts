@@ -6,6 +6,8 @@ import {
   timingSafeEqual,
   verify as verifySignature,
 } from 'node:crypto'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 import type { NextResponse } from 'next/server'
 import { z } from 'zod'
@@ -84,9 +86,12 @@ interface Obj12VerifyResultFailure {
 type Obj12VerifyResult = Obj12VerifyResultSuccess | Obj12VerifyResultFailure
 
 const DEFAULT_SESSION_TTL_SECONDS = 8 * 60 * 60
-const DEFAULT_SESSION_SECRET = 'obj12-dev-session-secret-change-me'
 const MIN_PRODUCTION_SESSION_SECRET_LENGTH = 32
 const OIDC_JWKS_CACHE_TTL_MS = 5 * 60 * 1000
+// BEKANNTE EINSCHRÄNKUNG (S-10): Session-Revocations sind nur in-memory gespeichert.
+// Bei Server-Restart oder in Multi-Replica-Deployments (Helm replicaCount > 1) können
+// abgemeldete Tokens bis zum natürlichen Ablauf (OBJ12_SESSION_TTL_HOURS) wieder
+// gültig sein. Für erhöhte Sicherheit: Shared Store (z.B. Redis) verwenden.
 const revokedSessionTokens = new Map<string, number>()
 let oidcJwksCache:
   | {
@@ -114,26 +119,6 @@ const configuredLocalUserSchema = z
     message: 'Jeder lokale Benutzer benoetigt password oder passwordHash.',
   })
 
-const defaultLocalUsers: Obj12ConfiguredLocalUser[] = [
-  {
-    username: 'viewer',
-    role: 'viewer',
-    displayName: 'Viewer Demo',
-    password: 'viewer-demo',
-  },
-  {
-    username: 'operator',
-    role: 'operator',
-    displayName: 'Operator Demo',
-    password: 'operator-demo',
-  },
-  {
-    username: 'admin',
-    role: 'admin',
-    displayName: 'Admin Demo',
-    password: 'admin-demo',
-  },
-]
 
 function parseAuthMode(value: string | undefined): Obj12AuthMode {
   const normalized = value?.trim().toLowerCase()
@@ -176,13 +161,9 @@ function getSessionSecret(): string {
     return configured
   }
 
-  if (process.env.NODE_ENV === 'production') {
-    throw new Error(
-      'OBJ12 Session-Konfiguration ungueltig: OBJ12_SESSION_SECRET ist in Produktion erforderlich.',
-    )
-  }
-
-  return DEFAULT_SESSION_SECRET
+  throw new Error(
+    'OBJ12 Session-Konfiguration ungueltig: OBJ12_SESSION_SECRET ist erforderlich. Bitte in .env.local setzen.',
+  )
 }
 
 function getSessionTtlSeconds(): number {
@@ -231,7 +212,9 @@ function allowUnsignedOidcTokenExchange(): boolean {
     return explicit
   }
 
-  return process.env.NODE_ENV !== 'production'
+  // Signaturverifizierung ist in allen Umgebungen Standard.
+  // Nur via explizitem Opt-in deaktivierbar (OBJ12_OIDC_ALLOW_UNSIGNED_TOKEN=true).
+  return false
 }
 
 function isLocalModeEnabled(): boolean {
@@ -244,15 +227,9 @@ function isOidcModeEnabled(): boolean {
   return mode === 'oidc' || mode === 'hybrid'
 }
 
-function getConfiguredLocalUsers(): Obj12ConfiguredLocalUser[] {
-  const raw = process.env.OBJ12_LOCAL_USERS_JSON?.trim()
-  if (!raw) {
-    return process.env.NODE_ENV === 'production' ? [] : defaultLocalUsers
-  }
-
+function parseLocalUsers(raw: string): Obj12ConfiguredLocalUser[] {
   const parsed = JSON.parse(raw) as unknown
   const users = z.array(configuredLocalUserSchema).parse(parsed)
-
   return users
     .map((entry) => ({
       username: entry.username.trim(),
@@ -263,6 +240,26 @@ function getConfiguredLocalUsers(): Obj12ConfiguredLocalUser[] {
       disabled: entry.disabled ?? false,
     }))
     .filter((entry) => !entry.disabled)
+}
+
+function getConfiguredLocalUsers(): Obj12ConfiguredLocalUser[] {
+  // 1. Env-Variable hat Vorrang
+  const rawEnv = process.env.OBJ12_LOCAL_USERS_JSON?.trim()
+  if (rawEnv) {
+    return parseLocalUsers(rawEnv)
+  }
+
+  // 2. Separates Value-File (OBJ12_LOCAL_USERS_FILE oder Standard-Pfad)
+  const filePath =
+    process.env.OBJ12_LOCAL_USERS_FILE?.trim() ||
+    join(process.cwd(), 'config', 'users.local.json')
+
+  try {
+    const content = readFileSync(filePath, 'utf-8')
+    return parseLocalUsers(content)
+  } catch {
+    return []
+  }
 }
 
 function encodeBase64Url(value: string): string {

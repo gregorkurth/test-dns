@@ -8,7 +8,7 @@ const swaggerHtml = `<!doctype html>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>OBJ-3 API Swagger UI</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css" />
+    <link rel="stylesheet" href="/swagger-ui/swagger-ui.css" />
     <style>
       body {
         margin: 0;
@@ -22,13 +22,13 @@ const swaggerHtml = `<!doctype html>
   </head>
   <body>
     <div id="swagger-ui"></div>
-    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-standalone-preset.js"></script>
+    <script src="/swagger-ui/swagger-ui-bundle.js"></script>
+    <script src="/swagger-ui/swagger-ui-standalone-preset.js"></script>
     <script>
       window.onload = function() {
         if (!window.SwaggerUIBundle || !window.SwaggerUIStandalonePreset) {
           document.getElementById('swagger-ui').innerHTML =
-            '<div style="font-family: sans-serif; padding: 16px;">Swagger UI konnte nicht geladen werden. Bitte Internetzugang fuer CDN pruefen oder /api/v1/openapi.json direkt nutzen.</div>'
+            '<div style="font-family: sans-serif; padding: 16px;">Swagger UI konnte nicht geladen werden. /api/v1/openapi.json direkt nutzen.</div>'
           return
         }
 

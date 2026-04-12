@@ -30,6 +30,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# local auth config (contains credentials – niemals committen)
+config/users.local.json
+
 # vercel
 .vercel
 
