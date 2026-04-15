@@ -6,6 +6,9 @@ namespace: dns-management
 resources:
   - ../../base
 
+components:
+  - ../../components/cilium
+
 patches:
   - path: patch-namespace.yaml
   - path: patch-configmap.yaml
