@@ -12,3 +12,21 @@ spec:
         - name: app
           image: test-dns:dev
           imagePullPolicy: Never
+          env:
+            - name: OBJ12_LOCAL_USERS_FILE
+              value: /etc/dns-users/users.local.json
+            - name: OBJ12_AUTH_MODE
+              value: local
+            - name: OBJ12_SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: dns-management-auth-config
+                  key: OBJ12_SESSION_SECRET
+          volumeMounts:
+            - name: users-secret
+              mountPath: /etc/dns-users
+              readOnly: true
+      volumes:
+        - name: users-secret
+          secret:
+            secretName: dns-management-users
