@@ -1,8 +1,4 @@
-import {
-  apiSuccess,
-  enforceRateLimit,
-  handleUnexpectedApiError,
-} from '@/lib/obj3-api'
+import { enforceRateLimit } from '@/lib/obj3-api'
 
 export const dynamic = 'force-dynamic'
 
@@ -367,12 +363,10 @@ export async function GET(request: Request) {
     return rateLimited
   }
 
-  try {
-    return apiSuccess(openApiSpec)
-  } catch (error) {
-    return handleUnexpectedApiError(
-      error,
-      'OpenAPI-Spezifikation konnte nicht geladen werden.',
-    )
-  }
+  return new Response(JSON.stringify(openApiSpec), {
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': 'no-store',
+    },
+  })
 }
