@@ -14,6 +14,11 @@ RUN mkdocs build --strict --site-dir /docs/site
 # ---------------------------------------------------------------------------
 FROM caddy:2-alpine AS runner
 
+# Remove the file capability cap_net_bind_service from the Caddy binary.
+# This capability conflicts with allowPrivilegeEscalation: false (no_new_privs)
+# in strict Kubernetes security contexts. Port 8080 does not need it.
+RUN apk add --no-cache libcap && setcap -r /usr/bin/caddy && apk del libcap
+
 # Copy the generated MkDocs site into the Caddy web root
 COPY --from=builder /docs/site /srv/docs
 

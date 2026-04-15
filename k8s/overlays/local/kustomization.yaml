@@ -5,6 +5,8 @@ namespace: dns-management-local
 
 resources:
   - ../../base
+  - docs-deployment.yaml
+  - docs-service.yaml
 
 patches:
   - path: patch-namespace.yaml
