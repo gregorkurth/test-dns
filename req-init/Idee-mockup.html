@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DTS // DISTRIBUTED TIME SERVICE // CC291</title>
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --bg-base: #070b0f;
+      --bg-surface: #0d1117;
+      --bg-panel: #111820;
+      --bg-panel-2: #161e28;
+      --border: #1e2a38;
+      --border-accent: #1a4a2e;
+      --text-primary: #c9d1d9;
+      --text-bright: #e6edf3;
+      --text-muted: #6e7681;
+      --text-dim: #30363d;
+      --accent: #00ff41;
+      --accent-dim: #00cc33;
+      --accent-glow: rgba(0, 255, 65, 0.10);
+      --accent-glow-strong: rgba(0, 255, 65, 0.22);
+      --warn: #d29922;
+      --warn-bg: rgba(210, 153, 34, 0.08);
+      --error: #da3633;
+      --error-bg: rgba(218, 54, 51, 0.08);
+      --online: #3fb950;
+      --degraded: #d29922;
+      --offline: #da3633;
+      --sidebar-w: 210px;
+      --topbar-h: 54px;
+      --font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ===== SCANLINE EFFECT ===== */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(0,0,0,0.05) 3px,
+        rgba(0,0,0,0.05) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ===== BASE ===== */
+    html, body {
+      height: 100%;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== APP LAYOUT ===== */
+    .app {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-width: var(--sidebar-w);
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-logo {
+      padding: 18px 16px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo-mark {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-shadow: 0 0 14px var(--accent-glow-strong);
+    }
+    .logo-title {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      margin-top: 3px;
+    }
+    .logo-sub {
+      font-size: 9px;
+      color: var(--text-dim);
+      margin-top: 5px;
+      letter-spacing: 0.12em;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 10px 0;
+    }
+    .nav-section {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--text-dim);
+      padding: 10px 16px 4px;
+      text-transform: uppercase;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 16px;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      border-left: 2px solid transparent;
+      transition: all 0.12s;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    .nav-item:hover { color: var(--text-primary); background: rgba(255,255,255,0.025); }
+    .nav-item.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: var(--accent-glow);
+    }
+    .nav-icon { width: 16px; text-align: center; font-size: 13px; }
+
+    .sidebar-footer {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+    }
+    .sys-health {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--online);
+      animation: pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    .pulse-dot.warn { background: var(--warn); animation: pulse-warn 1.4s ease-in-out infinite; }
+    @keyframes pulse {
+      0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(63,185,80,0.5); }
+      50% { opacity:.7; box-shadow: 0 0 0 5px rgba(63,185,80,0); }
+    }
+    @keyframes pulse-warn {
+      0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(210,153,34,0.5); }
+      50% { opacity:.7; box-shadow: 0 0 0 5px rgba(210,153,34,0); }
+    }
+
+    /* ===== MAIN ===== */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    /* ===== TOPBAR ===== */
+    .topbar {
+      height: var(--topbar-h);
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .topbar-mission {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .topbar-sep { color: var(--text-dim); opacity: 0.35; }
+    .topbar-page-title {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      flex: 1;
+    }
+    .sys-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border: 1px solid;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .sys-badge.online { border-color: var(--border-accent); background: var(--accent-glow); color: var(--accent); }
+    .sys-badge.degraded { border-color: rgba(210,153,34,0.3); background: var(--warn-bg); color: var(--warn); }
+    .topbar-clock {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      text-shadow: 0 0 22px var(--accent-glow-strong), 0 0 50px var(--accent-glow);
+      flex-shrink: 0;
+    }
+    .colon { animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.15; } }
+    .utc-label {
+      font-size: 9px;
+      color: var(--text-dim);
+      letter-spacing: 0.16em;
+      align-self: flex-end;
+      margin-bottom: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ===== CONTENT ===== */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 22px 24px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .content::-webkit-scrollbar { width: 5px; }
+    .content::-webkit-scrollbar-thumb { background: var(--border); }
+
+    /* ===== PAGES ===== */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ===== PANEL ===== */
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      position: relative;
+    }
+    /* Corner bracket accents */
+    .panel::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px;
+      width: 12px; height: 12px;
+      border-top: 2px solid var(--accent-dim);
+      border-left: 2px solid var(--accent-dim);
+      opacity: 0.6;
+    }
+    .panel::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; right: -1px;
+      width: 12px; height: 12px;
+      border-bottom: 2px solid var(--accent-dim);
+      border-right: 2px solid var(--accent-dim);
+      opacity: 0.6;
+    }
+
+    .panel-label {
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent-dim);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .panel-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--border), transparent);
+    }
+
+    /* ===== GRID ===== */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    .gap { margin-bottom: 14px; }
+    .gap-sm { margin-bottom: 8px; }
+
+    /* ===== STATUS ATOMS ===== */
+    .sdot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .sdot.online { background: var(--online); animation: pulse 2s ease-in-out infinite; }
+    .sdot.degraded { background: var(--degraded); animation: pulse-warn 1.4s ease-in-out infinite; }
+    .sdot.offline { background: var(--offline); }
+
+    .sbadge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border: 1px solid;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .sbadge.online { color: var(--online); border-color: rgba(63,185,80,0.35); background: rgba(63,185,80,0.07); }
+    .sbadge.degraded { color: var(--degraded); border-color: rgba(210,153,34,0.35); background: rgba(210,153,34,0.07); }
+    .sbadge.offline { color: var(--error); border-color: rgba(218,54,51,0.35); background: rgba(218,54,51,0.07); }
+
+    /* ===== DASHBOARD PAGE ===== */
+    .status-banner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+    .status-banner.online { color: var(--accent); border-color: var(--border-accent); background: var(--accent-glow); }
+    .status-banner.degraded { color: var(--warn); border-color: rgba(210,153,34,0.35); background: var(--warn-bg); }
+
+    .server-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .server-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-bright);
+      letter-spacing: 0.03em;
+    }
+    .server-meta {
+      font-size: 10px;
+      color: var(--accent-dim);
+      margin-top: 2px;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+    .metric {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+    }
+    .metric-lbl {
+      font-size: 8px;
+      color: var(--text-dim);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .metric-val {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-bright);
+      line-height: 1;
+    }
+    .metric-val.g { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
+    .metric-val.y { color: var(--warn); }
+    .metric-val.r { color: var(--error); }
+    .metric-unit { font-size: 9px; color: var(--text-dim); margin-left: 1px; font-weight: 400; }
+
+    .stat-card { padding: 14px 16px; text-align: center; }
+    .stat-lbl { font-size: 8px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px; }
+    .stat-val { font-size: 30px; font-weight: 700; color: var(--text-bright); line-height: 1; }
+    .stat-val.g { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow-strong); }
+    .stat-sub { font-size: 9px; color: var(--text-dim); margin-top: 5px; }
+
+    .update-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      margin-top: 14px;
+    }
+    .poll-bar {
+      width: 64px;
+      height: 3px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+    .poll-fill {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      background: var(--accent);
+      animation: poll 15s linear infinite;
+    }
+    @keyframes poll { 0% { width: 100%; } 100% { width: 0%; } }
+
+    /* ===== CONFIG PAGE ===== */
+    .cfg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .cfg-full { grid-column: 1 / -1; }
+
+    .form-group { margin-bottom: 13px; }
+    .form-lbl {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 13px;
+      padding: 7px 10px;
+      outline: none;
+      transition: border-color 0.12s, box-shadow 0.12s;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--accent-dim);
+      box-shadow: 0 0 0 2px var(--accent-glow);
+    }
+    .form-input.err { border-color: var(--error); }
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236e7681'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      cursor: pointer;
+    }
+    .form-readonly {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .form-hint { font-size: 10px; color: var(--text-dim); margin-top: 3px; }
+    .form-err-msg { font-size: 10px; color: var(--error); margin-top: 3px; display: none; }
+    .form-err-msg.show { display: block; }
+
+    .sfn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .sfn-chip {
+      padding: 4px 10px;
+      border: 1px solid var(--border-accent);
+      background: var(--accent-glow);
+      color: var(--accent-dim);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+    }
+
+    .action-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      margin-top: 14px;
+    }
+    .unsaved-note {
+      font-size: 10px;
+      color: var(--warn);
+      letter-spacing: 0.05em;
+      display: none;
+    }
+    .unsaved-note.show { display: flex; align-items: center; gap: 4px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      font-family: var(--font);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid;
+      transition: all 0.12s;
+      background: transparent;
+    }
+    .btn-primary {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: #000;
+      font-weight: 700;
+    }
+    .btn-primary:hover { background: var(--accent); box-shadow: 0 0 14px var(--accent-glow-strong); }
+    .btn-ghost { border-color: var(--border); color: var(--text-muted); }
+    .btn-ghost:hover { border-color: var(--text-muted); color: var(--text-primary); }
+    .btn-danger { border-color: rgba(218,54,51,0.35); color: var(--error); }
+    .btn-danger:hover { background: var(--error-bg); }
+
+    /* ===== ALERT ===== */
+    .alert {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 9px 12px;
+      border: 1px solid;
+      font-size: 11px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .alert-info { border-color: var(--border-accent); background: var(--accent-glow); color: var(--accent-dim); }
+    .alert-warn { border-color: rgba(210,153,34,0.35); background: var(--warn-bg); color: var(--warn); }
+    .alert-err { border-color: rgba(218,54,51,0.35); background: var(--error-bg); color: var(--error); }
+
+    /* ===== TEST RUNNER ===== */
+    .test-stats {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .tstat {
+      padding: 12px 14px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .tstat-val { font-size: 34px; font-weight: 700; line-height: 1; }
+    .tstat-val.t { color: var(--text-bright); }
+    .tstat-val.p { color: var(--online); }
+    .tstat-val.f { color: var(--error); }
+    .tstat-val.n { color: var(--text-muted); }
+    .tstat-lbl { font-size: 8px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-top: 6px; }
+
+    .filter-bar {
+      display: flex;
+      border: 1px solid var(--border);
+      margin-bottom: 10px;
+    }
+    .filt {
+      flex: 1;
+      padding: 7px 10px;
+      font-family: var(--font);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      border: none;
+      border-right: 1px solid var(--border);
+      transition: all 0.12s;
+    }
+    .filt:last-child { border-right: none; }
+    .filt.active { background: var(--accent-glow); color: var(--accent); }
+    .filt:hover:not(.active) { background: rgba(255,255,255,0.025); color: var(--text-primary); }
+
+    .test-list { display: flex; flex-direction: column; gap: 5px; }
+    .ti {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .ti-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      cursor: pointer;
+    }
+    .ti-head:hover { background: rgba(255,255,255,0.02); }
+    .ti-id { font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; min-width: 48px; }
+    .ti-icon {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+      border: 1px solid;
+    }
+    .ti-icon.p { background: rgba(63,185,80,0.15); color: var(--online); border-color: rgba(63,185,80,0.35); }
+    .ti-icon.f { background: rgba(218,54,51,0.12); color: var(--error); border-color: rgba(218,54,51,0.35); }
+    .ti-icon.n { background: rgba(255,255,255,0.04); color: var(--text-dim); border-color: var(--border); }
+    .ti-name { flex: 1; font-size: 12px; color: var(--text-primary); }
+    .ti-type {
+      font-size: 8px;
+      padding: 2px 6px;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .ti-type.auto { border-color: rgba(0,204,51,0.3); color: var(--accent-dim); background: var(--accent-glow); }
+    .ti-ts { font-size: 10px; color: var(--text-dim); }
+    .run-btn {
+      padding: 4px 9px;
+      font-family: var(--font);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: all 0.12s;
+    }
+    .run-btn:hover { border-color: var(--accent-dim); color: var(--accent); background: var(--accent-glow); }
+    .ti-body {
+      display: none;
+      padding: 0 14px 13px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-surface);
+    }
+    .ti-body.open { display: block; }
+    .ti-desc { font-size: 11px; color: var(--text-muted); padding: 10px 0 8px; line-height: 1.6; }
+    .ti-expected {
+      font-size: 10px;
+      color: var(--text-dim);
+      padding: 6px 10px;
+      background: var(--bg-panel);
+      border-left: 2px solid var(--border-accent);
+      margin-bottom: 10px;
+    }
+    .ti-expected strong { color: var(--accent-dim); }
+    .notes-lbl { font-size: 9px; letter-spacing: 0.15em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 4px; }
+    .notes-input {
+      width: 100%;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 11px;
+      padding: 6px 10px;
+      resize: vertical;
+      min-height: 46px;
+      outline: none;
+    }
+    .notes-input:focus { border-color: var(--accent-dim); }
+    .manual-btns { display: flex; gap: 7px; margin-top: 8px; }
+
+    .test-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">▸ DTS</div>
+      <div class="logo-title">Distributed Time Service</div>
+      <div class="logo-sub">FMN SP4 // CC291 // CHE</div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">Navigation</div>
+      <div class="nav-item active" onclick="goTo('dashboard', this)">
+        <span class="nav-icon">▦</span> Dashboard
+      </div>
+      <div class="nav-item" onclick="goTo('config', this)">
+        <span class="nav-icon">⚙</span> Configuration
+      </div>
+      <div class="nav-item" onclick="goTo('tests', this)">
+        <span class="nav-icon">✓</span> Test Runner
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sys-health">
+        <div class="pulse-dot" id="sidebar-health-dot"></div>
+        <span id="sidebar-health-text">SYSTEM OPERATIONAL</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <div class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <span class="topbar-mission">FMN SP4 // CC291</span>
+      <span class="topbar-sep">/</span>
+      <span class="topbar-page-title" id="page-title">Dashboard</span>
+      <div class="sys-badge online" id="top-badge">
+        <div class="sdot online"></div> OPERATIONAL
+      </div>
+      <span class="topbar-clock" id="clock">00<span class="colon">:</span>00<span class="colon">:</span>00</span>
+      <span class="utc-label">UTC</span>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- ════════════════════════
+           PAGE: DASHBOARD
+           ════════════════════════ -->
+      <div class="page active" id="page-dashboard">
+
+        <!-- Status Banner -->
+        <div class="status-banner online gap" id="main-banner">
+          <div class="sdot online"></div>
+          ALL SYSTEMS OPERATIONAL &nbsp;·&nbsp; REF: GPS PRIMARY &nbsp;·&nbsp; STRATUM-1 SYNCHRONIZED
+        </div>
+
+        <!-- Server Cards -->
+        <div class="grid-2 gap">
+
+          <!-- Stratum-1 -->
+          <div class="panel">
+            <div class="server-card-header">
+              <div>
+                <div class="panel-label" style="margin-bottom:6px">Stratum-1</div>
+                <div class="server-name">ntp1.cc291.che</div>
+                <div class="server-meta">192.168.&lt;che&gt;.40 &nbsp;·&nbsp; GPS + TCXO</div>
+              </div>
+              <div class="sbadge online"><div class="sdot online"></div> Online</div>
+            </div>
+            <div class="metrics-grid">
+              <div class="metric">
+                <div class="metric-lbl">Offset</div>
+                <div class="metric-val g">+0.003<span class="metric-unit">ms</span></div>
+              </div>
+              <div class="metric">
+                <div class="metric-lbl">Stratum</div>
+                <div class="metric-val">1</div>
+              </div>
+              <div class="metric">
+                <div class="metric-lbl">Reference</div>
+                <div class="metric-val" style="font-size:14px">GPS</div>
+              </div>
+              <div class="metric">
+                <div class="metric-lbl">Peers</div>
+                <div class="metric-val g">4<span class="metric-unit">/4</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stratum-2 -->
+          <div class="panel">
+            <div class="server-card-header">
+              <div>
+                <div class="panel-label" style="margin-bottom:6px">Stratum-2</div>
+                <div class="server-name">ntp2.cc291.che</div>
+                <div class="server-meta">192.168.&lt;che&gt;.50 &nbsp;·&nbsp; Chrony</div>
+              </div>
+              <div class="sbadge online"><div class="sdot online"></div> Online</div>
+            </div>
+            <div class="metrics-grid">
+              <div class="metric">
+                <div class="metric-lbl">Offset</div>
+                <div class="metric-val g">+0.011<span class="metric-unit">ms</span></div>
+              </div>
+              <div class="metric">
+                <div class="metric-lbl">Stratum</div>
+                <div class="metric-val">2</div>
+              </div>
+              <div class="metric">
+                <div class="metric-lbl">Upstream</div>
+                <div class="metric-val" style="font-size:13px">STR-1</div>
+              </div>
+              <div class="metric">
+                <div class="metric-lbl">Clients</div>
+                <div class="metric-val g">12</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Global Stats -->
+        <div class="grid-4 gap">
+          <div class="panel stat-card">
+            <div class="stat-lbl">Max Stratum</div>
+            <div class="stat-val">4</div>
+            <div class="stat-sub">Configured limit</div>
+          </div>
+          <div class="panel stat-card">
+            <div class="stat-lbl">Sync Accuracy</div>
+            <div class="stat-val g">0.003<span style="font-size:15px">ms</span></div>
+            <div class="stat-sub">vs. Stratum-0</div>
+          </div>
+          <div class="panel stat-card">
+            <div class="stat-lbl">Active Clients</div>
+            <div class="stat-val g">12</div>
+            <div class="stat-sub">Synchronized</div>
+          </div>
+          <div class="panel stat-card">
+            <div class="stat-lbl">Uptime</div>
+            <div class="stat-val">14d</div>
+            <div class="stat-sub">Since last restart</div>
+          </div>
+        </div>
+
+        <!-- Stratum Topology Diagram -->
+        <div class="panel gap">
+          <div class="panel-label">Stratum Topology — NTP Hierarchy</div>
+          <svg viewBox="0 0 720 230" height="230" style="width:100%">
+            <defs>
+              <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#1a4a2e"/>
+              </marker>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- GPS / Reference Source -->
+            <rect x="260" y="8" width="200" height="46" fill="#0d1117" stroke="#1a4a2e" stroke-width="1.5" rx="0"/>
+            <text x="360" y="24" fill="#00cc33" font-size="8" letter-spacing="3" text-anchor="middle" font-family="monospace">REFERENCE SOURCE</text>
+            <text x="360" y="44" fill="#00ff41" font-size="16" font-weight="bold" text-anchor="middle" font-family="monospace" filter="url(#glow)">GPS / GNSS</text>
+            <circle cx="252" cy="31" r="5" fill="#3fb950" opacity="0.6">
+              <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Line: GPS → Stratum-1 -->
+            <line x1="360" y1="54" x2="360" y2="94" stroke="#1a4a2e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+            <text x="368" y="79" fill="#30363d" font-size="9" font-family="monospace">NTP v4 / MD5</text>
+
+            <!-- Stratum-1 -->
+            <rect x="210" y="94" width="300" height="52" fill="#111820" stroke="#00cc33" stroke-width="1.5" rx="0"/>
+            <text x="224" y="112" fill="#00cc33" font-size="8" letter-spacing="3" font-family="monospace">STRATUM-1</text>
+            <text x="360" y="134" fill="#e6edf3" font-size="14" font-weight="bold" text-anchor="middle" font-family="monospace">ntp1.cc291.che</text>
+            <circle cx="502" cy="120" r="5" fill="#3fb950">
+              <animate attributeName="opacity" values="1;0.3;1" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Line: Stratum-1 → Stratum-2 -->
+            <line x1="360" y1="146" x2="360" y2="178" stroke="#1a4a2e" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+            <text x="368" y="166" fill="#30363d" font-size="9" font-family="monospace">NTP v4</text>
+
+            <!-- Stratum-2 -->
+            <rect x="210" y="178" width="300" height="46" fill="#111820" stroke="#3fb950" stroke-width="1" rx="0"/>
+            <text x="224" y="196" fill="#3fb950" font-size="8" letter-spacing="3" font-family="monospace">STRATUM-2</text>
+            <text x="360" y="214" fill="#e6edf3" font-size="14" font-weight="bold" text-anchor="middle" font-family="monospace">ntp2.cc291.che</text>
+            <circle cx="502" cy="201" r="5" fill="#3fb950">
+              <animate attributeName="opacity" values="1;0.3;1" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+
+            <!-- Fan out to clients -->
+            <line x1="210" y1="201" x2="60" y2="201" stroke="#1e2a38" stroke-width="1"/>
+            <line x1="510" y1="201" x2="660" y2="201" stroke="#1e2a38" stroke-width="1"/>
+
+            <!-- Client boxes -->
+            <rect x="14" y="189" width="82" height="24" fill="#0d1117" stroke="#1e2a38" stroke-width="1"/>
+            <text x="55" y="205" fill="#6e7681" font-size="10" text-anchor="middle" font-family="monospace">Client 1–4</text>
+
+            <rect x="108" y="189" width="82" height="24" fill="#0d1117" stroke="#1e2a38" stroke-width="1"/>
+            <text x="149" y="205" fill="#6e7681" font-size="10" text-anchor="middle" font-family="monospace">Client 5–8</text>
+
+            <rect x="530" y="189" width="82" height="24" fill="#0d1117" stroke="#1e2a38" stroke-width="1"/>
+            <text x="571" y="205" fill="#6e7681" font-size="10" text-anchor="middle" font-family="monospace">Client 9–12</text>
+
+            <rect x="624" y="189" width="82" height="24" fill="#0d1117" stroke="#1e2a38" stroke-width="1"/>
+            <text x="665" y="205" fill="#6e7681" font-size="10" text-anchor="middle" font-family="monospace">MNSMA</text>
+
+            <!-- Ellipsis between client groups -->
+            <text x="400" y="206" fill="#30363d" font-size="16" text-anchor="middle" font-family="monospace">· · ·</text>
+          </svg>
+        </div>
+
+        <!-- Update bar -->
+        <div class="update-bar">
+          <span>Last updated: <strong id="last-upd" style="color:var(--text-muted)">—</strong></span>
+          <span>
+            Next poll in
+            <span class="poll-bar"><span class="poll-fill"></span></span>
+            <span id="countdown" style="color:var(--text-muted)">15s</span>
+          </span>
+        </div>
+
+      </div><!-- /page-dashboard -->
+
+
+      <!-- ════════════════════════
+           PAGE: CONFIGURATION
+           ════════════════════════ -->
+      <div class="page" id="page-config">
+
+        <div class="alert alert-info">
+          ▸ Configuration sourced from Kubernetes CRD <strong>distributed-time-service/dts-config</strong>.
+          Changes are applied by the DTS Operator and may briefly interrupt NTP service.
+        </div>
+
+        <div class="cfg-grid">
+
+          <!-- Stratum-1 -->
+          <div class="panel">
+            <div class="panel-label">Stratum-1 Parameters</div>
+            <div class="form-group">
+              <label class="form-lbl">FQDN</label>
+              <input class="form-input" type="text" value="ntp1.cc291.che" oninput="dirty()">
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">IP Address</label>
+              <input class="form-input" id="str1-ip" type="text" value="192.168.&lt;che&gt;.40" oninput="dirty(); validateIP('str1-ip','str1-ip-err')">
+              <div class="form-hint">Replace &lt;che&gt; with mission-net prefix</div>
+              <div class="form-err-msg" id="str1-ip-err">Invalid IP address format</div>
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">Time Reference</label>
+              <select class="form-select" onchange="dirty()">
+                <option selected>GPS (Primary)</option>
+                <option>TCXO (Backup)</option>
+                <option>GPS + TCXO (Auto-Failover)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Stratum-2 -->
+          <div class="panel">
+            <div class="panel-label">Stratum-2 Parameters</div>
+            <div class="form-group">
+              <label class="form-lbl">FQDN</label>
+              <input class="form-input" type="text" value="ntp2.cc291.che" oninput="dirty()">
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">IP Address</label>
+              <input class="form-input" id="str2-ip" type="text" value="192.168.&lt;che&gt;.50" oninput="dirty(); validateIP('str2-ip','str2-ip-err')">
+              <div class="form-err-msg" id="str2-ip-err">Invalid IP address format</div>
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">Software</label>
+              <input class="form-input form-readonly" type="text" value="Chrony (Open Source)" readonly>
+            </div>
+          </div>
+
+          <!-- NTP Service -->
+          <div class="panel">
+            <div class="panel-label">NTP Service Parameters</div>
+            <div class="form-group">
+              <label class="form-lbl">Port / Protocol</label>
+              <input class="form-input" type="number" value="123" min="1" max="65535" oninput="dirty()">
+              <div class="form-hint">UDP — Range: 1–65535</div>
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">Max Stratum</label>
+              <input class="form-input" type="number" value="4" min="1" max="15" oninput="dirty()">
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">Mission Timezone</label>
+              <select class="form-select" onchange="dirty()">
+                <option selected>UTC</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">UTC Offset</label>
+              <input class="form-input" type="text" value="None" oninput="dirty()">
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div class="panel">
+            <div class="panel-label">Security Parameters</div>
+            <div class="form-group">
+              <label class="form-lbl">Key Distribution</label>
+              <select class="form-select" onchange="dirty()">
+                <option selected>Classified IoCore</option>
+                <option>Manual</option>
+              </select>
+              <div class="form-hint">NTP Symmetric Key MD5 — SREQ-38</div>
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">Authentication Method</label>
+              <input class="form-input form-readonly" type="text" value="NTP Symmetric Key / MD5" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-lbl">Key Status</label>
+              <input class="form-input form-readonly" type="text" value="Active (Key ID: 1)" readonly>
+            </div>
+          </div>
+
+          <!-- Service Functions (full width) -->
+          <div class="panel cfg-full">
+            <div class="panel-label">Active Service Functions (FMN SP4)</div>
+            <div class="sfn-row">
+              <div class="sfn-chip">▸ SFN-0029 — Reference Time Provisioning</div>
+              <div class="sfn-chip">▸ SFN-0030 — Time Provisioning</div>
+              <div class="sfn-chip">▸ SFN-0031 — Device Synchronization</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="saveConfig()">▸ Save Configuration</button>
+          <button class="btn btn-ghost" onclick="exportCfg()">↓ Export JSON</button>
+          <button class="btn btn-danger" onclick="resetCfg()">↺ Reset Changes</button>
+          <div class="unsaved-note" id="unsaved">⚠ Unsaved changes</div>
+        </div>
+
+      </div><!-- /page-config -->
+
+
+      <!-- ════════════════════════
+           PAGE: TEST RUNNER
+           ════════════════════════ -->
+      <div class="page" id="page-tests">
+
+        <!-- Stats -->
+        <div class="test-stats">
+          <div class="tstat">
+            <div class="tstat-val t" id="s-total">8</div>
+            <div class="tstat-lbl">Total</div>
+          </div>
+          <div class="tstat">
+            <div class="tstat-val p" id="s-pass">3</div>
+            <div class="tstat-lbl">Passed</div>
+          </div>
+          <div class="tstat">
+            <div class="tstat-val f" id="s-fail">1</div>
+            <div class="tstat-lbl">Failed</div>
+          </div>
+          <div class="tstat">
+            <div class="tstat-val n" id="s-pend">4</div>
+            <div class="tstat-lbl">Pending</div>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-bar">
+          <button class="filt active" onclick="filter('all',this)">All (8)</button>
+          <button class="filt" onclick="filter('p',this)">Pass (3)</button>
+          <button class="filt" onclick="filter('f',this)">Fail (1)</button>
+          <button class="filt" onclick="filter('n',this)">Pending (4)</button>
+        </div>
+
+        <!-- Test List -->
+        <div class="test-list" id="test-list">
+
+          <!-- TC-001 PASS AUTO -->
+          <div class="ti" data-s="p">
+            <div class="ti-head" onclick="toggleTi(this)">
+              <span class="ti-id">TC-001</span>
+              <div class="ti-icon p">✓</div>
+              <span class="ti-name">NTP Server Reachability — Stratum-1</span>
+              <span class="ti-type auto">AUTO</span>
+              <span class="ti-ts">14:31:02 UTC</span>
+            </div>
+            <div class="ti-body">
+              <div class="ti-desc">Verify ntp1.cc291.che responds on UDP/123. Send NTP query and validate response packet structure (RFC 5905).</div>
+              <div class="ti-expected"><strong>Expected:</strong> Response &lt;500ms, Stratum = 1, Reference ID = .GPS.</div>
+              <div class="notes-lbl">Notes</div>
+              <textarea class="notes-input">Response: 12ms. Ref: .GPS. All fields valid. ✓</textarea>
+            </div>
+          </div>
+
+          <!-- TC-002 PASS AUTO -->
+          <div class="ti" data-s="p">
+            <div class="ti-head" onclick="toggleTi(this)">
+              <span class="ti-id">TC-002</span>
+              <div class="ti-icon p">✓</div>
+              <span class="ti-name">NTP Server Reachability — Stratum-2</span>
+              <span class="ti-type auto">AUTO</span>
+              <span class="ti-ts">14:31:04 UTC</span>
+            </div>
+            <div class="ti-body">
+              <div class="ti-desc">Verify ntp2.cc291.che responds on UDP/123. Validate Stratum-2 synchronizes to Stratum-1 upstream.</div>
+              <div class="ti-expected"><strong>Expected:</strong> Response &lt;500ms, Stratum = 2, upstream = ntp1.cc291.che</div>
+              <div class="notes-lbl">Notes</div>
+              <textarea class="notes-input">Upstream confirmed: ntp1.cc291.che ✓</textarea>
+            </div>
+          </div>
+
+          <!-- TC-003 FAIL AUTO -->
+          <div class="ti" data-s="f">
+            <div class="ti-head" onclick="toggleTi(this)">
+              <span class="ti-id">TC-003</span>
+              <div class="ti-icon f">✕</div>
+              <span class="ti-name">NTP Authentication — Symmetric Key (MD5)</span>
+              <span class="ti-type auto">AUTO</span>
+              <span class="ti-ts">14:31:06 UTC</span>
+            </div>
+            <div class="ti-body">
+              <div class="alert alert-err" style="margin-top:10px;margin-bottom:0">
+                ✕ FAIL — Connection refused on :8080. DTS Operator pod not running in current environment.
+              </div>
+              <div class="ti-desc" style="margin-top:8px">Verify NTP authenticated request accepted; unauthenticated rejected. SREQ-38 compliance required.</div>
+              <div class="ti-expected"><strong>Expected:</strong> Auth query accepted, unauth query silently dropped</div>
+              <div class="notes-lbl">Notes</div>
+              <textarea class="notes-input">Operator pod missing in test namespace. Deploy PROJ-5 first.</textarea>
+            </div>
+          </div>
+
+          <!-- TC-004 PASS MANUAL -->
+          <div class="ti" data-s="p">
+            <div class="ti-head" onclick="toggleTi(this)">
+              <span class="ti-id">TC-004</span>
+              <div class="ti-icon p">✓</div>
+              <span class="ti-name">Time Accuracy — Offset &lt; 10ms vs Stratum-0</span>
+              <span class="ti-type">MANUAL</span>
+              <span class="ti-ts">14:28:55 UTC</span>
+            </div>
+            <div class="ti-body">
+              <div class="ti-desc">Measure NTP offset between Stratum-1 and GPS reference. Must be below 10ms threshold per RDTS-001.</div>
+              <div class="ti-expected"><strong>Expected:</strong> Offset &lt; 10ms, jitter &lt; 5ms</div>
+              <div class="notes-lbl">Notes</div>
+              <textarea class="notes-input">Offset: 0.003ms. Jitter: 0.001ms. Well within threshold.</textarea>
+            </div>
+          </div>
+
+          <!-- TC-005 PENDING MANUAL -->
+          <div class="ti" data-s="n">
+            <div class="ti-head" onclick="toggleTi(this)">
+              <span class="ti-id">TC-005</span>
+              <div class="ti-icon n">—</div>
+              <span class="ti-name">GPS Failover → TCXO Backup</span>
+              <span class="ti-type">MANUAL</span>
+              <span class="ti-ts">—</span>
+              <button class="run-btn" onclick="event.stopPropagation(); runTest(this,'TC-005')">▸ Run</button>
+            </div>
+            <div class="ti-body">
+              <div class="ti-desc">Simulate GPS signal loss. Verify automatic failover to TCXO backup. Stratum-1 must remain operational throughout transition.</div>
+              <div class="ti-expected"><strong>Expected:</strong> Failover &lt;30s, offset &lt;100ms during transition, status: TCXO (Fallback)</div>
+              <div class="notes-lbl">Notes</div>
+              <textarea class="notes-input" placeholder="Record your observations here..."></textarea>
+              <div class="manual-btns">
+                <button class="btn btn-ghost" style="font-size:9px;padding:5px 10px" onclick="verdict(this,'p')">✓ Mark PASS</button>
+                <button class="btn btn-danger" style="font-size:9px;padding:5px 10px" onclick="verdict(this,'f')">✕ Mark FAIL</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TC-006 PENDING MANUAL -->
+          <div class="ti" data-s="n">
+            <div class="ti-head" onclick="toggleTi(this)">
+              <span class="ti-id">TC-006</span>
+              <div class="ti-icon n">—</div>
+              <span class="ti-name">Stratum-1 High Availability — Pod Restart</span>
+              <span class="ti-type">MANUAL</span>
+              <span class="ti-ts">—</span>
+              <button class="run-btn" onclick="event.stopPropagation(); runTest(this,'TC-006')">▸ Run</button>
+            </div>
+            <div class="ti-body">
+              <div class="ti-desc">Delete Stratum-1 pod. Verify restart within liveness probe timeout. Clients must not lose sync during restart window.</div>
+              <div class="ti-expected"><strong>Expected:</strong> Pod restart &lt;30s, Stratum-2 holds sync, client drift &lt;100ms</div>
+              <div class="notes-lbl">Notes</div>
+              <textarea class="notes-input" placeholder="Record your observations here..."></textarea>
+              <div class="manual-btns">
+                <button class="btn btn-ghost" style="font-size:9px;padding:5px 10px" onclick="verdict(this,'p')">✓ Mark PASS</button>
+                <button class="btn btn-danger" style="font-size:9px;padding:5px 10px" onclick="verdict(this,'f')">✕ Mark FAIL</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TC-007 PENDING MANUAL -->
+          <div class="ti" data-s="n">
+            <div class="ti-head" onclick="toggleTi(this)">
+              <span class="ti-id">TC-007</span>
+              <div class="ti-icon n">—</div>
+              <span class="ti-name">Airgapped Deployment — Zero External Requests</span>
+              <span class="ti-type">MANUAL</span>
+              <span class="ti-ts">—</span>
+              <button class="run-btn" onclick="event.stopPropagation(); runTest(this,'TC-007')">▸ Run</button>
+            </div>
+            <div class="ti-body">
+              <div class="ti-desc">Monitor network traffic during cold start for 10 minutes. Verify zero outbound requests to external IPs. All images must be served from Harbor registry.</div>
+              <div class="ti-expected"><strong>Expected:</strong> 0 external DNS lookups, 0 external HTTP/S connections observed</div>
+              <div class="notes-lbl">Notes</div>
+              <textarea class="notes-input" placeholder="Record your observations here..."></textarea>
+              <div class="manual-btns">
+                <button class="btn btn-ghost" style="font-size:9px;padding:5px 10px" onclick="verdict(this,'p')">✓ Mark PASS</button>
+                <button class="btn btn-danger" style="font-size:9px;padding:5px 10px" onclick="verdict(this,'f')">✕ Mark FAIL</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TC-008 PENDING AUTO -->
+          <div class="ti" data-s="n">
+            <div class="ti-head" onclick="toggleTi(this)">
+              <span class="ti-id">TC-008</span>
+              <div class="ti-icon n">—</div>
+              <span class="ti-name">Web GUI — Dashboard Load &lt; 3 Seconds</span>
+              <span class="ti-type auto">AUTO</span>
+              <span class="ti-ts">—</span>
+              <button class="run-btn" onclick="event.stopPropagation(); runTest(this,'TC-008')">▸ Run</button>
+            </div>
+            <div class="ti-body">
+              <div class="ti-desc">Measure time-to-first-contentful-paint from cold cache. Network: local LAN only. Measured in Chromium headless.</div>
+              <div class="ti-expected"><strong>Expected:</strong> FCP &lt; 3000ms (no external resources)</div>
+              <div class="notes-lbl">Notes</div>
+              <textarea class="notes-input" placeholder="Record your observations here..."></textarea>
+              <div class="manual-btns">
+                <button class="btn btn-ghost" style="font-size:9px;padding:5px 10px" onclick="verdict(this,'p')">✓ Mark PASS</button>
+                <button class="btn btn-danger" style="font-size:9px;padding:5px 10px" onclick="verdict(this,'f')">✕ Mark FAIL</button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /test-list -->
+
+        <!-- Actions -->
+        <div class="test-actions">
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-primary" onclick="exportResults()">↓ Export JSON</button>
+            <button class="btn btn-ghost">↓ Export PDF</button>
+          </div>
+          <button class="btn btn-danger" onclick="if(confirm('Reset all test results?')) resetAll()">↺ Reset All</button>
+        </div>
+
+      </div><!-- /page-tests -->
+
+    </main>
+  </div>
+</div>
+
+<script>
+  /* ===== NAVIGATION ===== */
+  const titles = { dashboard:'Dashboard', config:'Configuration', tests:'Test Runner' };
+  function goTo(id, el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    el.classList.add('active');
+    document.getElementById('page-title').textContent = titles[id];
+  }
+
+  /* ===== UTC CLOCK ===== */
+  function tick() {
+    const n = new Date();
+    const pad = x => String(x).padStart(2,'0');
+    const ts = `${pad(n.getUTCHours())}<span class="colon">:</span>${pad(n.getUTCMinutes())}<span class="colon">:</span>${pad(n.getUTCSeconds())}`;
+    document.getElementById('clock').innerHTML = ts;
+    const friendly = `${pad(n.getUTCHours())}:${pad(n.getUTCMinutes())}:${pad(n.getUTCSeconds())} UTC`;
+    document.getElementById('last-upd').textContent = friendly;
+  }
+  setInterval(tick, 1000); tick();
+
+  /* ===== POLL COUNTDOWN ===== */
+  let cd = 15;
+  setInterval(() => {
+    cd = cd <= 1 ? 15 : cd - 1;
+    document.getElementById('countdown').textContent = cd + 's';
+  }, 1000);
+
+  /* ===== CONFIG FORM ===== */
+  let isDirty = false;
+  function dirty() {
+    isDirty = true;
+    document.getElementById('unsaved').classList.add('show');
+  }
+  function validateIP(inputId, errId) {
+    const val = document.getElementById(inputId).value;
+    const ok = /^(\d{1,3}\.){3}\d{1,3}$/.test(val) || val.includes('<che>');
+    document.getElementById(inputId).classList.toggle('err', !ok);
+    document.getElementById(errId).classList.toggle('show', !ok);
+  }
+  function saveConfig() {
+    if (!isDirty) return;
+    if (confirm('Apply configuration? This may briefly interrupt NTP service.')) {
+      isDirty = false;
+      document.getElementById('unsaved').classList.remove('show');
+      const t = document.getElementById('top-badge');
+      t.innerHTML = '<div class="sdot online"></div> CONFIG SAVED';
+      setTimeout(() => { t.innerHTML = '<div class="sdot online"></div> OPERATIONAL'; }, 3000);
+    }
+  }
+  function resetCfg() {
+    if (isDirty && confirm('Discard all unsaved changes?')) location.reload();
+  }
+  function exportCfg() {
+    const cfg = {
+      exportedAt: new Date().toISOString(),
+      missionId: 'CC291-CHE',
+      stratum1: { fqdn: 'ntp1.cc291.che', ip: '192.168.<che>.40', ref: 'GPS+TCXO' },
+      stratum2: { fqdn: 'ntp2.cc291.che', ip: '192.168.<che>.50', sw: 'Chrony' },
+      ntp: { port: 123, maxStratum: 4, tz: 'UTC', utcOffset: 'None' },
+      security: { keyDist: 'IoCore', auth: 'NTP-MD5' },
+      sfn: ['SFN-0029','SFN-0030','SFN-0031']
+    };
+    dl(JSON.stringify(cfg, null, 2), 'dts-config-cc291.json', 'application/json');
+  }
+
+  /* ===== TEST RUNNER ===== */
+  function toggleTi(head) {
+    const body = head.nextElementSibling;
+    if (body) body.classList.toggle('open');
+  }
+  function filter(s, btn) {
+    document.querySelectorAll('.filt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.ti').forEach(ti => {
+      ti.style.display = (s === 'all' || ti.dataset.s === s) ? '' : 'none';
+    });
+  }
+  function verdict(btn, result) {
+    const ti = btn.closest('.ti');
+    const icon = ti.querySelector('.ti-icon');
+    const ts = ti.querySelector('.ti-ts');
+    const n = new Date();
+    const pad = x => String(x).padStart(2,'0');
+    ts.textContent = `${pad(n.getUTCHours())}:${pad(n.getUTCMinutes())}:${pad(n.getUTCSeconds())} UTC`;
+    ti.dataset.s = result;
+    icon.className = `ti-icon ${result}`;
+    icon.textContent = result === 'p' ? '✓' : '✕';
+    updateStats();
+  }
+  function runTest(btn, id) {
+    btn.textContent = '⟳ Running…';
+    btn.disabled = true;
+    setTimeout(() => { btn.textContent = '▸ Run'; btn.disabled = false; }, 1800);
+  }
+  function updateStats() {
+    const items = [...document.querySelectorAll('.ti')];
+    const p = items.filter(i => i.dataset.s==='p').length;
+    const f = items.filter(i => i.dataset.s==='f').length;
+    const n = items.filter(i => i.dataset.s==='n').length;
+    document.getElementById('s-total').textContent = items.length;
+    document.getElementById('s-pass').textContent = p;
+    document.getElementById('s-fail').textContent = f;
+    document.getElementById('s-pend').textContent = n;
+  }
+  function resetAll() {
+    document.querySelectorAll('.ti').forEach(ti => {
+      ti.dataset.s = 'n';
+      const icon = ti.querySelector('.ti-icon');
+      icon.className = 'ti-icon n';
+      icon.textContent = '—';
+      ti.querySelector('.ti-ts').textContent = '—';
+      const nt = ti.querySelector('.notes-input');
+      if (nt) nt.value = '';
+    });
+    updateStats();
+  }
+  function exportResults() {
+    const data = [...document.querySelectorAll('.ti')].map(ti => ({
+      id: ti.querySelector('.ti-id').textContent,
+      name: ti.querySelector('.ti-name').textContent,
+      status: { p:'PASS', f:'FAIL', n:'PENDING' }[ti.dataset.s],
+      timestamp: ti.querySelector('.ti-ts').textContent,
+      notes: ti.querySelector('.notes-input') ? ti.querySelector('.notes-input').value : ''
+    }));
+    dl(JSON.stringify({ exportedAt: new Date().toISOString(), results: data }, null, 2), `dts-tests-${Date.now()}.json`, 'application/json');
+  }
+
+  /* ===== UTIL ===== */
+  function dl(content, filename, mime) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([content], { type: mime }));
+    a.download = filename;
+    a.click();
+  }
+</script>
+</body>
+</html>
