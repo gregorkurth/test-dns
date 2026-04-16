@@ -668,17 +668,17 @@ describe('OBJ-3 API v1 with OBJ-12 auth', () => {
     const openApiResponse = await getOpenApi(createRequest('/api/v1/openapi.json'))
     expect(openApiResponse.status).toBe(200)
     const openApiBody = await openApiResponse.json()
-    expect(openApiBody.data).toMatchObject({
+    expect(openApiBody).toMatchObject({
       openapi: '3.0.3',
     })
-    expect(openApiBody.data.paths).toHaveProperty('/auth/login')
-    expect(openApiBody.data.paths).toHaveProperty('/operator')
-    expect(openApiBody.data.paths).toHaveProperty('/operator/tests')
-    expect(openApiBody.data.paths).toHaveProperty('/product-website')
-    expect(openApiBody.data.paths).toHaveProperty('/maturity')
-    expect(openApiBody.data.paths).toHaveProperty('/security/scans')
-    expect(openApiBody.data.paths).toHaveProperty('/participants')
-    expect(openApiBody.data.components.securitySchemes).toHaveProperty('bearerAuth')
+    expect(openApiBody.paths).toHaveProperty('/auth/login')
+    expect(openApiBody.paths).toHaveProperty('/operator')
+    expect(openApiBody.paths).toHaveProperty('/operator/tests')
+    expect(openApiBody.paths).toHaveProperty('/product-website')
+    expect(openApiBody.paths).toHaveProperty('/maturity')
+    expect(openApiBody.paths).toHaveProperty('/security/scans')
+    expect(openApiBody.paths).toHaveProperty('/participants')
+    expect(openApiBody.components.securitySchemes).toHaveProperty('bearerAuth')
 
     const swaggerResponse = await getSwaggerUi(createRequest('/api/v1/swagger'))
     expect(swaggerResponse.status).toBe(200)
