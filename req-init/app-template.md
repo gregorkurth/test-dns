@@ -168,6 +168,21 @@ Die Standard-Delivery-Kette einer App ist wie folgt:
 - Das Web GUI dient mindestens für Statusanzeige, Konfiguration, Betriebsübersicht und gegebenenfalls Test-/Admin-Funktionen.
 - Das Web GUI darf keine hardcodierten Betriebsdaten enthalten; Daten müssen über API bzw. Backend-Schnittstellen geladen werden.
 
+#### 3a. Operatives Übersichts-Dashboard (Terminal-Style)
+- Jede Applikation mit operativem Betrieb SOLL ein dunkles Terminal-Style-Dashboard bereitstellen.
+- Das Dashboard-Design folgt dem Service-Design-Standard in `req-init/web-dashboard-design-template.md`.
+- Mindestanforderungen an ein operatives Dashboard:
+  - Stat-Cards für globale Kennzahlen (z. B. Gesamtanzahl Ressourcen, aktive Instanzen)
+  - Panel-Cards pro verwaltete Ressource/Instanz mit Statusanzeige
+  - Status-Dots pulsierend: Online (grün), Degraded (gelb), Offline (rot)
+  - UTC-Clock im Topbar (live, sekundengenau)
+  - Systemstatus-Badge (OPERATIONAL / DEGRADED) im Topbar
+  - Auto-Refresh (Standardintervall: 30 Sekunden) mit Countdown-Balken und "Last updated"-Timestamp
+  - Empty-State und Error-State für alle Datenpanels (kein Crash bei leerer Datenbasis)
+  - Responsive: Grid kollabiert unterhalb 768px zu 1 Spalte
+- Auth: Dashboard ist mindestens mit Viewer-Rolle zugänglich.
+- Design-Tokens, Komponenten und Implementierungshinweise sind in `req-init/web-dashboard-design-template.md` dokumentiert.
+
 ### 4. Kubernetes Operator
 - Jede Applikation besitzt einen Operator oder ein gleichwertiges Kubernetes-natives Steuerungskonzept.
 - Der Operator verwaltet die Applikationskonfiguration über CRDs.

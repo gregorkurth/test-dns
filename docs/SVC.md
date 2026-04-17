@@ -24,6 +24,7 @@ Ein airgapped-faehiger DNS-Management-Service fuer Mission Network Operators, de
 | 3 – P0 MVP | P0 | OBJ-5: Participant Configuration Form | Completed |
 | 3 – P0 MVP | P0 | OBJ-6: DNS Zone File Generator | Completed |
 | 3 – P0 MVP | P0 | OBJ-28: DNS Overview Dashboard | Planned |
+| 3 – P0 MVP | P0 | OBJ-29: Capabilities Overview Page | Planned |
 | 4 – P1 DNS | P1 | OBJ-7: Requirements Traceability View | Completed |
 | 4 – P1 DNS | P1 | OBJ-8: Export & Download | Completed |
 | 4 – P1 DNS | P1 | OBJ-9: Manual Test Runner | Completed |
