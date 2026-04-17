@@ -6,6 +6,18 @@ import { getProductWebsiteViewModel } from '@/lib/obj15-product-website'
 
 const modules = [
   {
+    href: '/dns-dashboard',
+    title: 'OBJ-28 DNS Overview Dashboard',
+    description:
+      'Terminal-Style Live-Übersicht: Forward DNS Server, Zonen, Topologie, globale Statistiken.',
+  },
+  {
+    href: '/capabilities',
+    title: 'OBJ-29 Capabilities Overview',
+    description:
+      'Terminal-Style Übersicht über FMN-Capabilities, Services, Functions und Requirements.',
+  },
+  {
     href: '/documentation',
     title: 'Dokumentation Hub',
     description:

@@ -1,7 +1,16 @@
 # OBJ-28: DNS Overview Dashboard
 
 ## Status
-Planned
+In Review
+
+## Implementation Notes
+- Route `/dns-dashboard` als Client Component implementiert (`src/app/dns-dashboard/page.tsx` + `dns-dashboard-client.tsx`).
+- Terminal-Design-Tokens sind in `src/app/globals.css` unter dem Namespace `.terminal` ergaenzt; keine Auswirkung auf die bestehenden Light-Mode-Seiten.
+- Shared Terminal-Shell (Sidebar, Topbar, UTC-Clock, Update-Bar, Panels) liegt unter `src/components/terminal/`.
+- Auto-Refresh auf 30s (NICHT 15s wie in US-5 erwaehnt) umgesetzt, gemaess Vorgabe im Design-Template und Alignment mit OBJ-29. Ausgabe im Update-Bar sichtbar.
+- Datenquellen: `/api/v1/participants` + `/api/v1/capabilities`. Record-Anzahl pro Zone wird aus Nameservers + Resolvers + Anycast in `metadata.obj5` abgeleitet; kein Aufruf auf `/api/v1/zones/generate` da dieser POST + operator-Rolle erfordert.
+- Auth: `AuthGuard minimumRole="viewer"` + Bearer-Token aus `useObj12Auth`.
+- SVG-Topologie zeigt Anycast Root → Authoritative NS → Resolvers mit Pulsing-Dots und gestrichelten Kanten.
 
 ## Summary
 Terminal-style web dashboard that gives Mission Network Operators a live overview of the DNS infrastructure: forward DNS servers with IP and operational status, hosted zones/domains with record overview and health, DNS hierarchy topology diagram, and global statistics. Design follows the dark terminal aesthetic established in `req-init/Idee-mockup.html` (NTP Mockup).

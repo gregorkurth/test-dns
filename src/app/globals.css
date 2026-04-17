@@ -83,3 +83,381 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ==========================================================================
+   Terminal Dashboard Theme (OBJ-28 DNS Overview, OBJ-29 Capabilities)
+   Applied only under .terminal root — keeps the rest of the app untouched.
+   Reference: req-init/web-dashboard-design-template.md
+   ========================================================================== */
+.terminal {
+  --bg-base: #070b0f;
+  --bg-surface: #0d1117;
+  --bg-panel: #111820;
+  --bg-panel-2: #161e28;
+  --tborder: #1e2a38;
+  --border-accent: #1a4a2e;
+  --text-primary: #c9d1d9;
+  --text-bright: #e6edf3;
+  --text-muted: #6e7681;
+  --text-dim: #30363d;
+  --accent-color: #00ff41;
+  --accent-dim: #00cc33;
+  --accent-glow: rgba(0, 255, 65, 0.1);
+  --accent-glow-strong: rgba(0, 255, 65, 0.22);
+  --online: #3fb950;
+  --degraded: #d29922;
+  --offline: #da3633;
+  --warn: #d29922;
+  --warn-bg: rgba(210, 153, 34, 0.08);
+  --error: #da3633;
+  --error-bg: rgba(218, 54, 51, 0.08);
+  --sidebar-w: 210px;
+  --topbar-h: 54px;
+  --term-font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--term-font);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Scanline overlay — subtle, non-interactive */
+.terminal::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.05) 3px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Panel with corner brackets */
+.terminal .panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--tborder);
+  padding: 16px 18px;
+  position: relative;
+}
+
+.terminal .panel::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid var(--accent-dim);
+  border-left: 2px solid var(--accent-dim);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.terminal .panel::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid var(--accent-dim);
+  border-right: 2px solid var(--accent-dim);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.terminal .panel-label {
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal .panel-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--tborder), transparent);
+}
+
+/* Status dot (pulsing) */
+.terminal .sdot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+  background: var(--text-dim);
+}
+.terminal .sdot.online {
+  background: var(--online);
+  animation: term-pulse 2s ease-in-out infinite;
+}
+.terminal .sdot.degraded {
+  background: var(--degraded);
+  animation: term-pulse-warn 1.4s ease-in-out infinite;
+}
+.terminal .sdot.offline {
+  background: var(--offline);
+}
+
+@keyframes term-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(63, 185, 80, 0.5);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 5px rgba(63, 185, 80, 0);
+  }
+}
+@keyframes term-pulse-warn {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(210, 153, 34, 0.5);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 5px rgba(210, 153, 34, 0);
+  }
+}
+
+/* Status badge */
+.terminal .sbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border: 1px solid;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-color: var(--tborder);
+  background: transparent;
+}
+.terminal .sbadge.online {
+  color: var(--online);
+  border-color: rgba(63, 185, 80, 0.35);
+  background: rgba(63, 185, 80, 0.07);
+}
+.terminal .sbadge.degraded {
+  color: var(--degraded);
+  border-color: rgba(210, 153, 34, 0.35);
+  background: rgba(210, 153, 34, 0.07);
+}
+.terminal .sbadge.offline {
+  color: var(--error);
+  border-color: rgba(218, 54, 51, 0.35);
+  background: rgba(218, 54, 51, 0.07);
+}
+
+/* Stat card */
+.terminal .stat-card {
+  padding: 14px 16px;
+  text-align: center;
+}
+.terminal .stat-lbl {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.terminal .stat-val {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1;
+}
+.terminal .stat-val.g {
+  color: var(--accent-color);
+  text-shadow: 0 0 20px var(--accent-glow-strong);
+}
+.terminal .stat-sub {
+  font-size: 9px;
+  color: var(--text-dim);
+  margin-top: 5px;
+}
+
+/* Metric box inside cards */
+.terminal .metric {
+  background: var(--bg-surface);
+  border: 1px solid var(--tborder);
+  padding: 8px 10px;
+}
+.terminal .metric-lbl {
+  font-size: 8px;
+  color: var(--text-dim);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.terminal .metric-val {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1;
+}
+.terminal .metric-val.g {
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+.terminal .metric-val.y {
+  color: var(--warn);
+}
+.terminal .metric-val.r {
+  color: var(--error);
+}
+.terminal .metric-unit {
+  font-size: 9px;
+  color: var(--text-dim);
+  margin-left: 1px;
+  font-weight: 400;
+}
+
+/* Topbar clock */
+.terminal .topbar-clock {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 22px var(--accent-glow-strong), 0 0 50px var(--accent-glow);
+  font-variant-numeric: tabular-nums;
+}
+.terminal .colon {
+  animation: term-blink 1s step-end infinite;
+}
+@keyframes term-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+
+/* Poll / update bar */
+.terminal .update-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--tborder);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  margin-top: 14px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.terminal .poll-bar {
+  width: 64px;
+  height: 3px;
+  background: var(--tborder);
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 6px;
+}
+.terminal .poll-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--accent-color);
+  animation: term-poll 30s linear infinite;
+}
+@keyframes term-poll {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* Sidebar nav item */
+.terminal .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  border-left: 2px solid transparent;
+  transition: all 0.12s;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.terminal .nav-item:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.025);
+}
+.terminal .nav-item.active {
+  color: var(--accent-color);
+  border-left-color: var(--accent-color);
+  background: var(--accent-glow);
+}
+
+/* Alerts */
+.terminal .alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1px solid;
+  font-size: 11px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.terminal .alert-info {
+  border-color: var(--border-accent);
+  background: var(--accent-glow);
+  color: var(--accent-dim);
+}
+.terminal .alert-warn {
+  border-color: rgba(210, 153, 34, 0.35);
+  background: var(--warn-bg);
+  color: var(--warn);
+}
+.terminal .alert-err {
+  border-color: rgba(218, 54, 51, 0.35);
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+/* Topology diagram node pulse */
+.terminal .topo-node-pulse {
+  animation: term-node-pulse 2.2s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes term-node-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}

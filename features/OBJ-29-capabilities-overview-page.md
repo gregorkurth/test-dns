@@ -1,7 +1,16 @@
 # OBJ-29: Capabilities Overview Page
 
 ## Status
-Planned
+In Review
+
+## Implementation Notes
+- Route `/capabilities` als Client Component implementiert (`src/app/capabilities/page.tsx` + `capabilities-overview-client.tsx`).
+- Verwendet das gemeinsame Terminal-Shell-System (`src/components/terminal/*`) und die Tokens in `src/app/globals.css` unter dem Namespace `.terminal`.
+- Vier Stat-Cards (Capabilities / Services / Service Functions / Requirements) oben; Systemstatus-Badge im Topbar wird aus dem Anteil operationaler Capabilities berechnet.
+- Capability-Cards zeigen ID, Name, Maturity-Badge (abgeleitet aus `maturity`-String via classifyMaturity), Metrics-Boxen (Services/Functions/Requirements) und Participant-Zuordnung.
+- Participant-Zuordnung ueber `metadata.capabilityId/capabilityIds` oder `metadata.obj5.capabilities/capabilityIds`; Fallback: Participants mit DNS-Payload werden einer Capability mit Namen "Domain Naming" zugeordnet. Falls keine Zuordnung moeglich ist, zeigt die Card "Keine Participants zugeordnet".
+- Auto-Refresh 30s, Poll-Countdown-Bar mit Animation; Error-Handling mit rotem Alert-Banner (inklusive Hinweis auf abgelaufene Session bei 401).
+- Auth: `AuthGuard minimumRole="viewer"` + Bearer-Token aus `useObj12Auth`.
 
 ## Summary
 Terminal-style Seite unter `/capabilities` analog zum DNS Overview Dashboard (OBJ-28). Zeigt alle FMN-Capabilities aus `/api/v1/capabilities` als Panel-Cards mit Maturity-Status, Anzahl Services/Functions/Requirements und Participant-Zuordnung. Globale Stat-Cards oben, Auto-Refresh alle 30 Sekunden, Dark-Terminal-Design. Viewer-Rolle erforderlich.
