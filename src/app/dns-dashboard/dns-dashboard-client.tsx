@@ -2,7 +2,6 @@
 
 import { useCallback, useMemo } from 'react'
 
-import { AuthGuard } from '@/components/auth-guard'
 import { TerminalPanel } from '@/components/terminal/terminal-panel'
 import { TerminalShell } from '@/components/terminal/terminal-shell'
 import { TerminalStatCard } from '@/components/terminal/terminal-stat-card'
@@ -813,9 +812,5 @@ function DnsDashboardContent() {
 }
 
 export function DnsDashboardClient() {
-  return (
-    <AuthGuard minimumRole="viewer">
-      <DnsDashboardContent />
-    </AuthGuard>
-  )
+  return <DnsDashboardContent />
 }

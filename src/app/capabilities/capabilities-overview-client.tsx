@@ -2,7 +2,6 @@
 
 import { useCallback, useMemo } from 'react'
 
-import { AuthGuard } from '@/components/auth-guard'
 import { TerminalPanel } from '@/components/terminal/terminal-panel'
 import { TerminalShell } from '@/components/terminal/terminal-shell'
 import { TerminalStatCard } from '@/components/terminal/terminal-stat-card'
@@ -425,9 +424,5 @@ function CapabilitiesOverviewContent() {
 }
 
 export function CapabilitiesOverviewClient() {
-  return (
-    <AuthGuard minimumRole="viewer">
-      <CapabilitiesOverviewContent />
-    </AuthGuard>
-  )
+  return <CapabilitiesOverviewContent />
 }
