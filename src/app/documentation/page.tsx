@@ -25,10 +25,13 @@ const documentationEntries = [
   },
 ]
 
+const docsPortalUrl =
+  process.env.NEXT_PUBLIC_DOCS_URL?.trim() || 'http://localhost:8081'
+
 const relatedRoutes = [
   {
     title: 'Dokumentationsportal (MkDocs)',
-    href: 'http://localhost:8081',
+    href: docsPortalUrl,
     external: true,
   },
   {
