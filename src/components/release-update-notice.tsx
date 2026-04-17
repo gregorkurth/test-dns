@@ -95,16 +95,10 @@ export async function ReleaseUpdateNotice() {
           </div>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
-              href={`/api/v1/releases?version=${encodeURIComponent(notice.version)}`}
+              href="/documentation"
               className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-700"
             >
               {notice.ui.callToActionLabel}
-            </Link>
-            <Link
-              href="/api/v1/releases"
-              className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-100"
-            >
-              Alle Release-Hinweise
             </Link>
           </div>
         </div>

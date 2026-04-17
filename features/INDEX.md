@@ -40,6 +40,7 @@
 | OBJ-20 | Zielumgebung / Import / Rehydrierung | 6 – Produktabschluss | In Review | [OBJ-20-zielumgebung-import-rehydrierung.md](OBJ-20-zielumgebung-import-rehydrierung.md) | 2026-04-03 |
 | OBJ-21 | GitOps / Argo CD / App-of-Apps | 6 – Produktabschluss | In Review | [OBJ-21-gitops-argocd.md](OBJ-21-gitops-argocd.md) | 2026-04-03 |
 | OBJ-27 | Dokumentationsportal (MkDocs in Next.js) | 6 – Produktabschluss | Planned | [OBJ-27-dokumentationsportal.md](OBJ-27-dokumentationsportal.md) | 2026-04-12 |
+| OBJ-28 | DNS Overview Dashboard | 3 – P0 MVP | Planned | [OBJ-28-dns-overview-dashboard.md](OBJ-28-dns-overview-dashboard.md) | 2026-04-17 |
 
 <!-- Add features above this line -->
 
@@ -85,4 +86,4 @@ Phase 6 – Produktabschluss
   OBJ-20 Zielumgebung / Import     ← braucht OBJ-19 (Paket), OBJ-21 (Argo)
 ```
 
-## Next Available ID: OBJ-28
+## Next Available ID: OBJ-29

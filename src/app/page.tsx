@@ -63,9 +63,9 @@ const modules = [
     description: 'API-Dokumentation fuer die REST-Endpunkte anzeigen.',
   },
   {
-    href: '/api/v1/releases',
-    title: 'OBJ-14 Release Notices API',
-    description: 'Versionierte Update-Hinweise und Exportstatus als JSON abrufen.',
+    href: '/documentation',
+    title: 'Dokumentation',
+    description: 'Dokumentationsportal, API-Docs und Architektur-Nachweise.',
   },
 ]
 
