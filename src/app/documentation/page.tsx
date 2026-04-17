@@ -27,20 +27,24 @@ const documentationEntries = [
 
 const relatedRoutes = [
   {
-    title: 'API Dokumentation (Swagger)',
-    href: '/api/v1/swagger',
+    title: 'Dokumentationsportal (MkDocs)',
+    href: 'http://localhost:8081',
+    external: true,
   },
   {
-    title: 'Release-Informationen',
-    href: '/api/v1/releases',
+    title: 'API Dokumentation (Swagger)',
+    href: '/api/v1/swagger',
+    external: false,
   },
   {
     title: 'Maturity Dashboard',
     href: '/maturity',
+    external: false,
   },
   {
     title: 'Security Posture',
     href: '/security-posture',
+    external: false,
   },
 ]
 
@@ -82,9 +86,14 @@ export default function DocumentationPage() {
               <Link
                 key={route.href}
                 href={route.href}
+                target={route.external ? '_blank' : undefined}
+                rel={route.external ? 'noopener noreferrer' : undefined}
                 className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-800 transition-colors hover:border-slate-300 hover:bg-slate-100"
               >
                 {route.title}
+                {route.external && (
+                  <span className="ml-1 text-xs text-slate-400">↗</span>
+                )}
               </Link>
             ))}
           </div>
